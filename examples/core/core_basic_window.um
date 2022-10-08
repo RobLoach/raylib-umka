@@ -1,0 +1,5 @@
+fn TraceLog(type: int, message: str)
+
+fn main() {
+    TraceLog(3, "Hello World!")
+}
