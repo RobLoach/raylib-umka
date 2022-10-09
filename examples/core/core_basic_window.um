@@ -1,8 +1,5 @@
-fn TraceLog(errorType: int , message: str)
+import "raylib"
 
 fn main() {
-    TraceLog(3, "Hello World!")
-
-    var x: int
-    x = 4 + 5
+    raylib.TraceLog(raylib.LOG_INFO, "Hello World!")
 }

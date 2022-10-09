@@ -1,6 +1,6 @@
 /**
  * raylib-umka
- * 
+ *
  * Dependencies:
  *   - raylib
  *   - umka
@@ -39,11 +39,18 @@ void rlTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 bool umkaAddRaylib(void *umka) {
-    bool success = true;
-    success &= umkaAddFunc(umka, "TraceLog", &rlTraceLog);
+    if (!umkaAddFunc(umka, "TraceLog", &rlTraceLog)) {
+        return false;
+    }
 
-    
-    return success;
+    const char* moduleCode =
+        "fn TraceLog*(errorType: int , message: str)\n"
+        "const LOG_INFO* = 3\n"
+        " ";
+
+
+    TraceLog(LOG_INFO, "Module codE:\n%s", moduleCode);
+    return umkaAddModule(umka, "raylib", moduleCode);
 }
 
 #if defined(__cplusplus)
