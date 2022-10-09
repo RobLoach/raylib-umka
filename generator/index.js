@@ -107,8 +107,7 @@ function buildFunctionReturn(func) {
         ]
     }
 
-    // TODO: Figure out how to return a Vector2 object. For example: GetMousePosition()
-    return ['', '']
+    return [`/* TODO: Unknown type ${func.returnType} */`, '']
 }
 
 /**
