@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.11)
 project(raylib-umka
     DESCRIPTION "raylib-umka: Umka bindings for raylib."
     HOMEPAGE_URL "https://github.com/robloach/raylib-umka"
-    VERSION 0.0.1
+    VERSION 0.0.2
     LANGUAGES C
 )
 

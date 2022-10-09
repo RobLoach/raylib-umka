@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   raylib-umka v0.0.1 - Umka bindings for raylib.
+*   raylib-umka v0.0.2 - Umka bindings for raylib.
 *
 *   https://github.com/RobLoach/raylib-umka
 *
