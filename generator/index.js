@@ -30,52 +30,6 @@ function buildParamType(param, key) {
 }
 
 /**
- * Handles how to format the umka return values from raylib numbers.
- */
-function buildFunctionReturn(func) {
-    switch (func.returnType) {
-        case 'bool':
-            return `result->intVal = (int)`
-        case 'int':
-            return `result->intVal = `
-        case 'unsigned int':
-            return `result->uintVal = `
-        case 'long':
-            return `result->intVal = `
-        case 'float':
-            return `result->real32Val = `
-        case 'double':
-            return 'result->realVal = '
-        case 'void':
-            return ''
-    }
-
-    if (func.returnType.endsWith('*')) {
-        return 'result->ptrVal = (void*)'
-    }
-
-    // TODO: Figure out how to return a Vector2 object. For example: GetMousePosition()
-    return ''
-}
-
-/**
- * The blacklist of functions that will be ignored.
- */
-const functionBlackList = [
-    'TextFormat',
-    'TraceLog',
-    'SetTraceLogCallback',
-    'SetLoadFileDataCallback',
-    'SetSaveFileDataCallback',
-    'SetLoadFileTextCallback',
-    'SetSaveFileTextCallback',
-    'LoadFontData',
-    'SetAudioStreamCallback',
-    'AttachAudioStreamProcessor',
-    'DetachAudioStreamProcessor',
-]
-
-/**
  * Sees whether the given type is a reserved raylib type.
  */
 function getIsRaylibStruct(type) {
@@ -122,6 +76,59 @@ function getIsRaylibStruct(type) {
 }
 
 /**
+ * Handles how to format the umka return values from raylib numbers.
+ */
+function buildFunctionReturn(func) {
+    switch (func.returnType) {
+        case 'bool':
+            return [`result->intVal = (int)`, '']
+        case 'int':
+            return [`result->intVal = `, '']
+        case 'unsigned int':
+            return [`result->uintVal = `, '']
+        case 'long':
+            return [`result->intVal = `, '']
+        case 'float':
+            return [`result->real32Val = `, '']
+        case 'double':
+            return ['result->realVal = ', '']
+        case 'void':
+            return ['', '']
+    }
+
+    if (func.returnType.endsWith('*')) {
+        return ['result->ptrVal = (void*)', '']
+    }
+
+    if (getIsRaylibStruct(func.returnType)) {
+        return [
+            `result->ptrVal = umkaAllocData(result->ptrVal, sizeof(${func.returnType}), NULL);\n    ${func.returnType} out = `,
+            `\n    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(${func.returnType}));`
+        ]
+    }
+
+    // TODO: Figure out how to return a Vector2 object. For example: GetMousePosition()
+    return ['', '']
+}
+
+/**
+ * The blacklist of functions that will be ignored.
+ */
+const functionBlackList = [
+    'TextFormat',
+    'TraceLog',
+    'SetTraceLogCallback',
+    'SetLoadFileDataCallback',
+    'SetSaveFileDataCallback',
+    'SetLoadFileTextCallback',
+    'SetSaveFileTextCallback',
+    'LoadFontData',
+    'SetAudioStreamCallback',
+    'AttachAudioStreamProcessor',
+    'DetachAudioStreamProcessor',
+]
+
+/**
  * Builds the umka function binding implementations.
  */
 function getFunctionImplementations(functions) {
@@ -159,8 +166,8 @@ void umka${func.name}(UmkaStackSlot *params, UmkaStackSlot *result) {\n`
         }
 
         // Call the function
-        const returnVal = buildFunctionReturn(func)
-        output += `    ${returnVal}${func.name}(${paramsInFunction.join(', ')});\n`
+        const [returnVal, returnValAfter] = buildFunctionReturn(func)
+        output += `    ${returnVal}${func.name}(${paramsInFunction.join(', ')});${returnValAfter}\n`
 
         // End the wrapper for the function
         output += '}\n\n';
@@ -495,6 +502,11 @@ bool umkaAddRaylib(void *umka);
 #define RAYLIB_UMKA_UMKA_API_H "umka_api.h"
 #endif
 #include RAYLIB_UMKA_UMKA_API_H
+
+#ifndef RAYLIB_UMKA_MEMCPY
+#include <string.h>
+#define RAYLIB_UMKA_MEMCPY memcpy
+#endif
 
 #if defined(__cplusplus)
 extern "C" {

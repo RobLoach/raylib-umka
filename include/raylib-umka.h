@@ -72,6 +72,11 @@ bool umkaAddRaylib(void *umka);
 #endif
 #include RAYLIB_UMKA_UMKA_API_H
 
+#ifndef RAYLIB_UMKA_MEMCPY
+#include <string.h>
+#define RAYLIB_UMKA_MEMCPY memcpy
+#endif
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -378,7 +383,9 @@ void umkaGetCurrentMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetMonitorPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
-    GetMonitorPosition(monitor);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetMonitorPosition(monitor);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -437,7 +444,9 @@ void umkaGetMonitorRefreshRate(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetWindowPosition()
  */
 void umkaGetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetWindowPosition();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetWindowPosition();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -446,7 +455,9 @@ void umkaGetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetWindowScaleDPI()
  */
 void umkaGetWindowScaleDPI(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetWindowScaleDPI();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetWindowScaleDPI();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -749,7 +760,9 @@ void umkaEndVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
     VrDeviceInfo* device = (VrDeviceInfo*)&params[0];
-    LoadVrStereoConfig(*device);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(VrStereoConfig), NULL);
+    VrStereoConfig out = LoadVrStereoConfig(*device);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(VrStereoConfig));
 }
 
 /**
@@ -770,7 +783,9 @@ void umkaUnloadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaLoadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * vsFileName = (const char *)params[1].ptrVal;
     const char * fsFileName = (const char *)params[0].ptrVal;
-    LoadShader(vsFileName, fsFileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Shader), NULL);
+    Shader out = LoadShader(vsFileName, fsFileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Shader));
 }
 
 /**
@@ -781,7 +796,9 @@ void umkaLoadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaLoadShaderFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * vsCode = (const char *)params[1].ptrVal;
     const char * fsCode = (const char *)params[0].ptrVal;
-    LoadShaderFromMemory(vsCode, fsCode);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Shader), NULL);
+    Shader out = LoadShaderFromMemory(vsCode, fsCode);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Shader));
 }
 
 /**
@@ -875,7 +892,9 @@ void umkaUnloadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetMouseRay(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* mousePosition = (Vector2*)&params[1];
     Camera* camera = (Camera*)&params[0];
-    GetMouseRay(*mousePosition, *camera);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Ray), NULL);
+    Ray out = GetMouseRay(*mousePosition, *camera);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Ray));
 }
 
 /**
@@ -885,7 +904,9 @@ void umkaGetMouseRay(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetCameraMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera* camera = (Camera*)&params[0];
-    GetCameraMatrix(*camera);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = GetCameraMatrix(*camera);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
 }
 
 /**
@@ -895,7 +916,9 @@ void umkaGetCameraMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetCameraMatrix2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera2D* camera = (Camera2D*)&params[0];
-    GetCameraMatrix2D(*camera);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = GetCameraMatrix2D(*camera);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
 }
 
 /**
@@ -906,7 +929,9 @@ void umkaGetCameraMatrix2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetWorldToScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[1];
     Camera* camera = (Camera*)&params[0];
-    GetWorldToScreen(*position, *camera);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetWorldToScreen(*position, *camera);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -917,7 +942,9 @@ void umkaGetWorldToScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetScreenToWorld2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* position = (Vector2*)&params[1];
     Camera2D* camera = (Camera2D*)&params[0];
-    GetScreenToWorld2D(*position, *camera);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetScreenToWorld2D(*position, *camera);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -930,7 +957,9 @@ void umkaGetWorldToScreenEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera* camera = (Camera*)&params[2];
     int width = params[1].intVal;
     int height = params[0].intVal;
-    GetWorldToScreenEx(*position, *camera, width, height);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetWorldToScreenEx(*position, *camera, width, height);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -941,7 +970,9 @@ void umkaGetWorldToScreenEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetWorldToScreen2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* position = (Vector2*)&params[1];
     Camera2D* camera = (Camera2D*)&params[0];
-    GetWorldToScreen2D(*position, *camera);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetWorldToScreen2D(*position, *camera);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -1297,7 +1328,9 @@ void umkaIsPathFile(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * dirPath = (const char *)params[0].ptrVal;
-    LoadDirectoryFiles(dirPath);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(FilePathList), NULL);
+    FilePathList out = LoadDirectoryFiles(dirPath);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(FilePathList));
 }
 
 /**
@@ -1309,7 +1342,9 @@ void umkaLoadDirectoryFilesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * basePath = (const char *)params[2].ptrVal;
     const char * filter = (const char *)params[1].ptrVal;
     bool scanSubdirs = (bool)params[0].intVal;
-    LoadDirectoryFilesEx(basePath, filter, scanSubdirs);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(FilePathList), NULL);
+    FilePathList out = LoadDirectoryFilesEx(basePath, filter, scanSubdirs);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(FilePathList));
 }
 
 /**
@@ -1337,7 +1372,9 @@ void umkaIsFileDropped(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see LoadDroppedFiles()
  */
 void umkaLoadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
-    LoadDroppedFiles();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(FilePathList), NULL);
+    FilePathList out = LoadDroppedFiles();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(FilePathList));
 }
 
 /**
@@ -1643,7 +1680,9 @@ void umkaGetMouseY(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetMousePosition()
  */
 void umkaGetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetMousePosition();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetMousePosition();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -1652,7 +1691,9 @@ void umkaGetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetMouseDelta()
  */
 void umkaGetMouseDelta(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetMouseDelta();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetMouseDelta();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -1703,7 +1744,9 @@ void umkaGetMouseWheelMove(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetMouseWheelMoveV()
  */
 void umkaGetMouseWheelMoveV(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetMouseWheelMoveV();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetMouseWheelMoveV();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -1741,7 +1784,9 @@ void umkaGetTouchY(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetTouchPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     int index = params[0].intVal;
-    GetTouchPosition(index);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetTouchPosition(index);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -1807,7 +1852,9 @@ void umkaGetGestureHoldDuration(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetGestureDragVector()
  */
 void umkaGetGestureDragVector(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetGestureDragVector();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetGestureDragVector();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -1825,7 +1872,9 @@ void umkaGetGestureDragAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetGesturePinchVector()
  */
 void umkaGetGesturePinchVector(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetGesturePinchVector();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = GetGesturePinchVector();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -2519,7 +2568,9 @@ void umkaCheckCollisionPointLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec1 = (Rectangle*)&params[1];
     Rectangle* rec2 = (Rectangle*)&params[0];
-    GetCollisionRec(*rec1, *rec2);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Rectangle), NULL);
+    Rectangle out = GetCollisionRec(*rec1, *rec2);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Rectangle));
 }
 
 /**
@@ -2529,7 +2580,9 @@ void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadImage(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = LoadImage(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2543,7 +2596,9 @@ void umkaLoadImageRaw(UmkaStackSlot *params, UmkaStackSlot *result) {
     int height = params[2].intVal;
     int format = params[1].intVal;
     int headerSize = params[0].intVal;
-    LoadImageRaw(fileName, width, height, format, headerSize);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = LoadImageRaw(fileName, width, height, format, headerSize);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2554,7 +2609,9 @@ void umkaLoadImageRaw(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaLoadImageAnim(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[1].ptrVal;
     int * frames = (int *)params[0].ptrVal;
-    LoadImageAnim(fileName, frames);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = LoadImageAnim(fileName, frames);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2566,7 +2623,9 @@ void umkaLoadImageFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileType = (const char *)params[2].ptrVal;
     const unsigned char * fileData = (const unsigned char *)params[1].ptrVal;
     int dataSize = params[0].intVal;
-    LoadImageFromMemory(fileType, fileData, dataSize);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = LoadImageFromMemory(fileType, fileData, dataSize);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2576,7 +2635,9 @@ void umkaLoadImageFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadImageFromTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[0];
-    LoadImageFromTexture(*texture);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = LoadImageFromTexture(*texture);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2585,7 +2646,9 @@ void umkaLoadImageFromTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see LoadImageFromScreen()
  */
 void umkaLoadImageFromScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
-    LoadImageFromScreen();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = LoadImageFromScreen();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2629,7 +2692,9 @@ void umkaGenImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[2].intVal;
     int height = params[1].intVal;
     Color* color = (Color*)&params[0];
-    GenImageColor(width, height, *color);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageColor(width, height, *color);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2642,7 +2707,9 @@ void umkaGenImageGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
     int height = params[2].intVal;
     Color* top = (Color*)&params[1];
     Color* bottom = (Color*)&params[0];
-    GenImageGradientV(width, height, *top, *bottom);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageGradientV(width, height, *top, *bottom);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2655,7 +2722,9 @@ void umkaGenImageGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
     int height = params[2].intVal;
     Color* left = (Color*)&params[1];
     Color* right = (Color*)&params[0];
-    GenImageGradientH(width, height, *left, *right);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageGradientH(width, height, *left, *right);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2669,7 +2738,9 @@ void umkaGenImageGradientRadial(UmkaStackSlot *params, UmkaStackSlot *result) {
     float density = params[2].real32Val;
     Color* inner = (Color*)&params[1];
     Color* outer = (Color*)&params[0];
-    GenImageGradientRadial(width, height, density, *inner, *outer);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageGradientRadial(width, height, density, *inner, *outer);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2684,7 +2755,9 @@ void umkaGenImageChecked(UmkaStackSlot *params, UmkaStackSlot *result) {
     int checksY = params[2].intVal;
     Color* col1 = (Color*)&params[1];
     Color* col2 = (Color*)&params[0];
-    GenImageChecked(width, height, checksX, checksY, *col1, *col2);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageChecked(width, height, checksX, checksY, *col1, *col2);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2696,7 +2769,9 @@ void umkaGenImageWhiteNoise(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[2].intVal;
     int height = params[1].intVal;
     float factor = params[0].real32Val;
-    GenImageWhiteNoise(width, height, factor);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageWhiteNoise(width, height, factor);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2708,7 +2783,9 @@ void umkaGenImageCellular(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[2].intVal;
     int height = params[1].intVal;
     int tileSize = params[0].intVal;
-    GenImageCellular(width, height, tileSize);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageCellular(width, height, tileSize);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2718,7 +2795,9 @@ void umkaGenImageCellular(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaImageCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[0];
-    ImageCopy(*image);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = ImageCopy(*image);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2729,7 +2808,9 @@ void umkaImageCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaImageFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[1];
     Rectangle* rec = (Rectangle*)&params[0];
-    ImageFromImage(*image, *rec);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = ImageFromImage(*image, *rec);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2741,7 +2822,9 @@ void umkaImageText(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[2].ptrVal;
     int fontSize = params[1].intVal;
     Color* color = (Color*)&params[0];
-    ImageText(text, fontSize, *color);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = ImageText(text, fontSize, *color);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -2755,7 +2838,9 @@ void umkaImageTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     float fontSize = params[2].real32Val;
     float spacing = params[1].real32Val;
     Color* tint = (Color*)&params[0];
-    ImageTextEx(*font, text, fontSize, spacing, *tint);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = ImageTextEx(*font, text, fontSize, spacing, *tint);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -3053,7 +3138,9 @@ void umkaUnloadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetImageAlphaBorder(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[1];
     float threshold = params[0].real32Val;
-    GetImageAlphaBorder(*image, threshold);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Rectangle), NULL);
+    Rectangle out = GetImageAlphaBorder(*image, threshold);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Rectangle));
 }
 
 /**
@@ -3065,7 +3152,9 @@ void umkaGetImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[2];
     int x = params[1].intVal;
     int y = params[0].intVal;
-    GetImageColor(*image, x, y);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = GetImageColor(*image, x, y);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3264,7 +3353,9 @@ void umkaImageDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadTexture(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Texture2D), NULL);
+    Texture2D out = LoadTexture(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Texture2D));
 }
 
 /**
@@ -3274,7 +3365,9 @@ void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[0];
-    LoadTextureFromImage(*image);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Texture2D), NULL);
+    Texture2D out = LoadTextureFromImage(*image);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Texture2D));
 }
 
 /**
@@ -3285,7 +3378,9 @@ void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[1];
     int layout = params[0].intVal;
-    LoadTextureCubemap(*image, layout);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(TextureCubemap), NULL);
+    TextureCubemap out = LoadTextureCubemap(*image, layout);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(TextureCubemap));
 }
 
 /**
@@ -3296,7 +3391,9 @@ void umkaLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaLoadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[1].intVal;
     int height = params[0].intVal;
-    LoadRenderTexture(width, height);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(RenderTexture2D), NULL);
+    RenderTexture2D out = LoadRenderTexture(width, height);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(RenderTexture2D));
 }
 
 /**
@@ -3509,7 +3606,9 @@ void umkaDrawTexturePoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaFade(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* color = (Color*)&params[1];
     float alpha = params[0].real32Val;
-    Fade(*color, alpha);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = Fade(*color, alpha);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3529,7 +3628,9 @@ void umkaColorToInt(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaColorNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* color = (Color*)&params[0];
-    ColorNormalize(*color);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector4), NULL);
+    Vector4 out = ColorNormalize(*color);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector4));
 }
 
 /**
@@ -3539,7 +3640,9 @@ void umkaColorNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaColorFromNormalized(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector4* normalized = (Vector4*)&params[0];
-    ColorFromNormalized(*normalized);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = ColorFromNormalized(*normalized);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3549,7 +3652,9 @@ void umkaColorFromNormalized(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaColorToHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* color = (Color*)&params[0];
-    ColorToHSV(*color);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector3), NULL);
+    Vector3 out = ColorToHSV(*color);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector3));
 }
 
 /**
@@ -3561,7 +3666,9 @@ void umkaColorFromHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
     float hue = params[2].real32Val;
     float saturation = params[1].real32Val;
     float value = params[0].real32Val;
-    ColorFromHSV(hue, saturation, value);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = ColorFromHSV(hue, saturation, value);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3572,7 +3679,9 @@ void umkaColorFromHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaColorAlpha(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* color = (Color*)&params[1];
     float alpha = params[0].real32Val;
-    ColorAlpha(*color, alpha);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = ColorAlpha(*color, alpha);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3584,7 +3693,9 @@ void umkaColorAlphaBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* dst = (Color*)&params[2];
     Color* src = (Color*)&params[1];
     Color* tint = (Color*)&params[0];
-    ColorAlphaBlend(*dst, *src, *tint);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = ColorAlphaBlend(*dst, *src, *tint);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3594,7 +3705,9 @@ void umkaColorAlphaBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int hexValue = params[0].uintVal;
-    GetColor(hexValue);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = GetColor(hexValue);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3605,7 +3718,9 @@ void umkaGetColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     void * srcPtr = (void *)params[1].ptrVal;
     int format = params[0].intVal;
-    GetPixelColor(srcPtr, format);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Color), NULL);
+    Color out = GetPixelColor(srcPtr, format);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Color));
 }
 
 /**
@@ -3638,7 +3753,9 @@ void umkaGetPixelDataSize(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see GetFontDefault()
  */
 void umkaGetFontDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
-    GetFontDefault();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Font), NULL);
+    Font out = GetFontDefault();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Font));
 }
 
 /**
@@ -3648,7 +3765,9 @@ void umkaGetFontDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadFont(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Font), NULL);
+    Font out = LoadFont(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Font));
 }
 
 /**
@@ -3661,7 +3780,9 @@ void umkaLoadFontEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     int fontSize = params[2].intVal;
     int * fontChars = (int *)params[1].ptrVal;
     int glyphCount = params[0].intVal;
-    LoadFontEx(fileName, fontSize, fontChars, glyphCount);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Font), NULL);
+    Font out = LoadFontEx(fileName, fontSize, fontChars, glyphCount);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Font));
 }
 
 /**
@@ -3673,7 +3794,9 @@ void umkaLoadFontFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[2];
     Color* key = (Color*)&params[1];
     int firstChar = params[0].intVal;
-    LoadFontFromImage(*image, *key, firstChar);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Font), NULL);
+    Font out = LoadFontFromImage(*image, *key, firstChar);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Font));
 }
 
 /**
@@ -3688,7 +3811,9 @@ void umkaLoadFontFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     int fontSize = params[2].intVal;
     int * fontChars = (int *)params[1].ptrVal;
     int glyphCount = params[0].intVal;
-    LoadFontFromMemory(fileType, fileData, dataSize, fontSize, fontChars, glyphCount);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Font), NULL);
+    Font out = LoadFontFromMemory(fileType, fileData, dataSize, fontSize, fontChars, glyphCount);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Font));
 }
 
 // Function LoadFontData() skipped
@@ -3705,7 +3830,9 @@ void umkaGenImageFontAtlas(UmkaStackSlot *params, UmkaStackSlot *result) {
     int fontSize = params[2].intVal;
     int padding = params[1].intVal;
     int packMethod = params[0].intVal;
-    GenImageFontAtlas(chars, recs, glyphCount, fontSize, padding, packMethod);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
+    Image out = GenImageFontAtlas(chars, recs, glyphCount, fontSize, padding, packMethod);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
 }
 
 /**
@@ -3848,7 +3975,9 @@ void umkaMeasureTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[2].ptrVal;
     float fontSize = params[1].real32Val;
     float spacing = params[0].real32Val;
-    MeasureTextEx(*font, text, fontSize, spacing);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
+    Vector2 out = MeasureTextEx(*font, text, fontSize, spacing);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Vector2));
 }
 
 /**
@@ -3870,7 +3999,9 @@ void umkaGetGlyphIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetGlyphInfo(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[1];
     int codepoint = params[0].intVal;
-    GetGlyphInfo(*font, codepoint);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(GlyphInfo), NULL);
+    GlyphInfo out = GetGlyphInfo(*font, codepoint);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(GlyphInfo));
 }
 
 /**
@@ -3881,7 +4012,9 @@ void umkaGetGlyphInfo(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetGlyphAtlasRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[1];
     int codepoint = params[0].intVal;
-    GetGlyphAtlasRec(*font, codepoint);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Rectangle), NULL);
+    Rectangle out = GetGlyphAtlasRec(*font, codepoint);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Rectangle));
 }
 
 /**
@@ -4391,7 +4524,9 @@ void umkaDrawGrid(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadModel(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Model), NULL);
+    Model out = LoadModel(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Model));
 }
 
 /**
@@ -4401,7 +4536,9 @@ void umkaLoadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadModelFromMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[0];
-    LoadModelFromMesh(*mesh);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Model), NULL);
+    Model out = LoadModelFromMesh(*mesh);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Model));
 }
 
 /**
@@ -4431,7 +4568,9 @@ void umkaUnloadModelKeepMeshes(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetModelBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[0];
-    GetModelBoundingBox(*model);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(BoundingBox), NULL);
+    BoundingBox out = GetModelBoundingBox(*model);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(BoundingBox));
 }
 
 /**
@@ -4626,7 +4765,9 @@ void umkaExportMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaGetMeshBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[0];
-    GetMeshBoundingBox(*mesh);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(BoundingBox), NULL);
+    BoundingBox out = GetMeshBoundingBox(*mesh);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(BoundingBox));
 }
 
 /**
@@ -4647,7 +4788,9 @@ void umkaGenMeshTangents(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGenMeshPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
     int sides = params[1].intVal;
     float radius = params[0].real32Val;
-    GenMeshPoly(sides, radius);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshPoly(sides, radius);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4660,7 +4803,9 @@ void umkaGenMeshPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
     float length = params[2].real32Val;
     int resX = params[1].intVal;
     int resZ = params[0].intVal;
-    GenMeshPlane(width, length, resX, resZ);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshPlane(width, length, resX, resZ);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4672,7 +4817,9 @@ void umkaGenMeshCube(UmkaStackSlot *params, UmkaStackSlot *result) {
     float width = params[2].real32Val;
     float height = params[1].real32Val;
     float length = params[0].real32Val;
-    GenMeshCube(width, height, length);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshCube(width, height, length);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4684,7 +4831,9 @@ void umkaGenMeshSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     float radius = params[2].real32Val;
     int rings = params[1].intVal;
     int slices = params[0].intVal;
-    GenMeshSphere(radius, rings, slices);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshSphere(radius, rings, slices);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4696,7 +4845,9 @@ void umkaGenMeshHemiSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     float radius = params[2].real32Val;
     int rings = params[1].intVal;
     int slices = params[0].intVal;
-    GenMeshHemiSphere(radius, rings, slices);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshHemiSphere(radius, rings, slices);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4708,7 +4859,9 @@ void umkaGenMeshCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
     float radius = params[2].real32Val;
     float height = params[1].real32Val;
     int slices = params[0].intVal;
-    GenMeshCylinder(radius, height, slices);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshCylinder(radius, height, slices);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4720,7 +4873,9 @@ void umkaGenMeshCone(UmkaStackSlot *params, UmkaStackSlot *result) {
     float radius = params[2].real32Val;
     float height = params[1].real32Val;
     int slices = params[0].intVal;
-    GenMeshCone(radius, height, slices);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshCone(radius, height, slices);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4733,7 +4888,9 @@ void umkaGenMeshTorus(UmkaStackSlot *params, UmkaStackSlot *result) {
     float size = params[2].real32Val;
     int radSeg = params[1].intVal;
     int sides = params[0].intVal;
-    GenMeshTorus(radius, size, radSeg, sides);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshTorus(radius, size, radSeg, sides);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4746,7 +4903,9 @@ void umkaGenMeshKnot(UmkaStackSlot *params, UmkaStackSlot *result) {
     float size = params[2].real32Val;
     int radSeg = params[1].intVal;
     int sides = params[0].intVal;
-    GenMeshKnot(radius, size, radSeg, sides);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshKnot(radius, size, radSeg, sides);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4757,7 +4916,9 @@ void umkaGenMeshKnot(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGenMeshHeightmap(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* heightmap = (Image*)&params[1];
     Vector3* size = (Vector3*)&params[0];
-    GenMeshHeightmap(*heightmap, *size);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshHeightmap(*heightmap, *size);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4768,7 +4929,9 @@ void umkaGenMeshHeightmap(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGenMeshCubicmap(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* cubicmap = (Image*)&params[1];
     Vector3* cubeSize = (Vector3*)&params[0];
-    GenMeshCubicmap(*cubicmap, *cubeSize);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Mesh), NULL);
+    Mesh out = GenMeshCubicmap(*cubicmap, *cubeSize);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Mesh));
 }
 
 /**
@@ -4788,7 +4951,9 @@ void umkaLoadMaterials(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see LoadMaterialDefault()
  */
 void umkaLoadMaterialDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
-    LoadMaterialDefault();
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Material), NULL);
+    Material out = LoadMaterialDefault();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Material));
 }
 
 /**
@@ -4925,7 +5090,9 @@ void umkaGetRayCollisionSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     Ray* ray = (Ray*)&params[2];
     Vector3* center = (Vector3*)&params[1];
     float radius = params[0].real32Val;
-    GetRayCollisionSphere(*ray, *center, radius);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(RayCollision), NULL);
+    RayCollision out = GetRayCollisionSphere(*ray, *center, radius);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(RayCollision));
 }
 
 /**
@@ -4936,7 +5103,9 @@ void umkaGetRayCollisionSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 void umkaGetRayCollisionBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     Ray* ray = (Ray*)&params[1];
     BoundingBox* box = (BoundingBox*)&params[0];
-    GetRayCollisionBox(*ray, *box);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(RayCollision), NULL);
+    RayCollision out = GetRayCollisionBox(*ray, *box);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(RayCollision));
 }
 
 /**
@@ -4948,7 +5117,9 @@ void umkaGetRayCollisionMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     Ray* ray = (Ray*)&params[2];
     Mesh* mesh = (Mesh*)&params[1];
     Matrix* transform = (Matrix*)&params[0];
-    GetRayCollisionMesh(*ray, *mesh, *transform);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(RayCollision), NULL);
+    RayCollision out = GetRayCollisionMesh(*ray, *mesh, *transform);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(RayCollision));
 }
 
 /**
@@ -4961,7 +5132,9 @@ void umkaGetRayCollisionTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* p1 = (Vector3*)&params[2];
     Vector3* p2 = (Vector3*)&params[1];
     Vector3* p3 = (Vector3*)&params[0];
-    GetRayCollisionTriangle(*ray, *p1, *p2, *p3);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(RayCollision), NULL);
+    RayCollision out = GetRayCollisionTriangle(*ray, *p1, *p2, *p3);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(RayCollision));
 }
 
 /**
@@ -4975,7 +5148,9 @@ void umkaGetRayCollisionQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* p2 = (Vector3*)&params[2];
     Vector3* p3 = (Vector3*)&params[1];
     Vector3* p4 = (Vector3*)&params[0];
-    GetRayCollisionQuad(*ray, *p1, *p2, *p3, *p4);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(RayCollision), NULL);
+    RayCollision out = GetRayCollisionQuad(*ray, *p1, *p2, *p3, *p4);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(RayCollision));
 }
 
 /**
@@ -5022,7 +5197,9 @@ void umkaSetMasterVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadWave(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Wave), NULL);
+    Wave out = LoadWave(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Wave));
 }
 
 /**
@@ -5034,7 +5211,9 @@ void umkaLoadWaveFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileType = (const char *)params[2].ptrVal;
     const unsigned char * fileData = (const unsigned char *)params[1].ptrVal;
     int dataSize = params[0].intVal;
-    LoadWaveFromMemory(fileType, fileData, dataSize);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Wave), NULL);
+    Wave out = LoadWaveFromMemory(fileType, fileData, dataSize);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Wave));
 }
 
 /**
@@ -5044,7 +5223,9 @@ void umkaLoadWaveFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadSound(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Sound), NULL);
+    Sound out = LoadSound(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Sound));
 }
 
 /**
@@ -5054,7 +5235,9 @@ void umkaLoadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadSoundFromWave(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave* wave = (Wave*)&params[0];
-    LoadSoundFromWave(*wave);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Sound), NULL);
+    Sound out = LoadSoundFromWave(*wave);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Sound));
 }
 
 /**
@@ -5229,7 +5412,9 @@ void umkaSetSoundPan(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaWaveCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave* wave = (Wave*)&params[0];
-    WaveCopy(*wave);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Wave), NULL);
+    Wave out = WaveCopy(*wave);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Wave));
 }
 
 /**
@@ -5284,7 +5469,9 @@ void umkaUnloadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
  */
 void umkaLoadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
-    LoadMusicStream(fileName);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Music), NULL);
+    Music out = LoadMusicStream(fileName);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Music));
 }
 
 /**
@@ -5296,7 +5483,9 @@ void umkaLoadMusicStreamFromMemory(UmkaStackSlot *params, UmkaStackSlot *result)
     const char * fileType = (const char *)params[2].ptrVal;
     const unsigned char * data = (const unsigned char *)params[1].ptrVal;
     int dataSize = params[0].intVal;
-    LoadMusicStreamFromMemory(fileType, data, dataSize);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Music), NULL);
+    Music out = LoadMusicStreamFromMemory(fileType, data, dataSize);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Music));
 }
 
 /**
@@ -5442,7 +5631,9 @@ void umkaLoadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int sampleRate = params[2].uintVal;
     unsigned int sampleSize = params[1].uintVal;
     unsigned int channels = params[0].uintVal;
-    LoadAudioStream(sampleRate, sampleSize, channels);
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(AudioStream), NULL);
+    AudioStream out = LoadAudioStream(sampleRate, sampleSize, channels);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(AudioStream));
 }
 
 /**

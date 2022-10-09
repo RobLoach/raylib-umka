@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "node generator",
-    "start": "npm run test && cd build && cmake .. && make && ./bin/raylib-umka ../examples/core/core_basic_window.um"
+    "start": "npm test && cd build && cmake .. && make && ./bin/raylib-umka ../examples/core/core_basic_window.um"
   },
   "repository": {
     "type": "git",
