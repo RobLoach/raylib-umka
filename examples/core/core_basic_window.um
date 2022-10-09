@@ -1,5 +1,8 @@
-fn TraceLog(type: int, message: str)
+fn TraceLog(errorType: int , message: str)
 
 fn main() {
     TraceLog(3, "Hello World!")
+
+    var x: int
+    x = 4 + 5
 }

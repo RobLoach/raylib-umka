@@ -16,7 +16,6 @@
 extern "C" {            // Prevents name mangling of functions
 #endif
 
-void rlTraceLog(UmkaStackSlot *params, UmkaStackSlot *result);
 bool umkaAddRaylib(void *umka);
 
 #if defined(__cplusplus)
@@ -32,22 +31,20 @@ bool umkaAddRaylib(void *umka);
 #if defined(__cplusplus)
 extern "C" {            // Prevents name mangling of functions
 #endif
-#include <stddef.h>
-
 
 void rlTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
-    int logType = params[0].intVal;
-    const char* message = (const char*)params[1].ptrVal;
-    
+    int logType = params[1].intVal;
+    const char* message = (const char*)params[0].ptrVal;
     TraceLog(logType, message);
 }
 
 bool umkaAddRaylib(void *umka) {
-    bool out = true;
-    out &= umkaAddFunc(umka, "rlTraceLog", &rlTraceLog);
-    return out;
-}
+    bool success = true;
+    success &= umkaAddFunc(umka, "TraceLog", &rlTraceLog);
 
+    
+    return success;
+}
 
 #if defined(__cplusplus)
 }            // Prevents name mangling of functions
