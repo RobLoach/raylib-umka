@@ -45,11 +45,22 @@ bool umkaAddRaylib(void *umka) {
 
     const char* moduleCode =
         "fn TraceLog*(errorType: int , message: str)\n"
+
+        // Structures
+        "type (\n"
+        "  Vector2* = struct {\n"
+        "        x:real32\n"
+        "       y:real32\n"
+        " }\n"
+        ") \n"
+
+        // Defines
         "const LOG_INFO* = 3\n"
         " ";
+;
 
 
-    TraceLog(LOG_INFO, "Module codE:\n%s", moduleCode);
+    TraceLog(LOG_INFO, "raylib.um\n%s", moduleCode);
     return umkaAddModule(umka, "raylib", moduleCode);
 }
 
