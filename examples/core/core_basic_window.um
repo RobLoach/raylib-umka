@@ -1,5 +1,63 @@
+/*******************************************************************************************
+*
+*   raylib-umka [core] example - Basic window
+*
+*   Welcome to raylib!
+*
+*   To test examples, just press F6 and execute raylib_compile_execute script
+*   Note that compiled executable is placed in the same folder as .c file
+*
+*   You can find all basic examples on C:\raylib\raylib\examples folder or
+*   raylib official webpage: www.raylib.com
+*
+*   Enjoy using raylib. :)
+*
+*   Example originally created with raylib 1.0, last time updated with raylib 1.0
+
+*   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
+*   BSD-like license that allows static linking with closed source software
+*
+*   Copyright (c) 2022 Rob Loach (@RobLoach)
+*
+********************************************************************************************/
+
 import "raylib"
 
+//------------------------------------------------------------------------------------
+// Program main entry point
+//------------------------------------------------------------------------------------
 fn main() {
-    raylib.TraceLog(raylib.LOG_INFO, "Hello World!")
+    // Initialization
+    //--------------------------------------------------------------------------------------
+    screenWidth := 800
+    screenHeight := 450
+
+    raylib.InitWindow(screenWidth, screenHeight, "raylib-umka [core] example - basic window")
+
+    raylib.SetTargetFPS(60)               // Set our game to run at 60 frames-per-second
+    //--------------------------------------------------------------------------------------
+
+    // Main game loop
+    for !raylib.WindowShouldClose() {
+        // Update
+        //----------------------------------------------------------------------------------
+        // TODO: Update your variables here
+        //----------------------------------------------------------------------------------
+
+        // Draw
+        //----------------------------------------------------------------------------------
+        raylib.BeginDrawing()
+
+            raylib.ClearBackground(raylib.RAYWHITE)
+
+            raylib.DrawText("Congrats! You created your first raylib-umka window!", 150, 200, 20, raylib.LIGHTGRAY)
+
+        raylib.EndDrawing()
+        //----------------------------------------------------------------------------------
+    }
+
+    // De-Initialization
+    //--------------------------------------------------------------------------------------
+    raylib.CloseWindow()        // Close window and OpenGL context
+    //--------------------------------------------------------------------------------------
 }

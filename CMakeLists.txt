@@ -10,7 +10,7 @@ project(raylib-umka
 # Register the cmake folder for find_package()
 LIST(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-# raylib-umka
+# raylib-umka-h
 add_subdirectory(include)
 
 # Options
@@ -21,6 +21,7 @@ else()
 endif()
 option(RAYLIB_UMKA_BUILD_BIN "Binary" ${RAYLIB_UMKA_IS_MAIN})
 
+# raylib-umka
 if (RAYLIB_UMKA_BUILD_BIN)
     add_subdirectory(bin)
 

@@ -41,10 +41,11 @@ int main(int argc, char *argv[]) {
 
     if (result) {
         result = umkaInit(umka, NULL, fileText, 1024* 1024, NULL, 0, NULL, false, false, NULL);
-        UnloadFileText(fileText);
     }
-    
+    UnloadFileText(fileText);
+
     if (result) {
+        // Add the raylib module to umka.
         result = umkaAddRaylib(umka);
     }
 
@@ -53,9 +54,9 @@ int main(int argc, char *argv[]) {
     }
 
     // Make sure it runs in the correct folder.
-    //if (!ChangeDirectory(GetDirectoryPath(fileToLoad))) {
-    //    TraceLog(LOG_WARNING, "Failed to change directory");
-    //}
+    if (!ChangeDirectory(GetDirectoryPath(fileToLoad))) {
+       TraceLog(LOG_WARNING, "Failed to change directory");
+    }
 
     if (result) {
         int mainCall = umkaGetFunc(umka, NULL, "main");

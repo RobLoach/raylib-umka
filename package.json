@@ -1,0 +1,26 @@
+{
+  "name": "raylib-umka",
+  "description": "Umka bindings for raylib.",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "test": "node generator",
+    "start": "npm run test && cd build && cmake .. && make && ./bin/raylib-umka ../examples/core/core_basic_window.um"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobLoach/raylib-umka.git"
+  },
+  "keywords": [
+    "raylib"
+  ],
+  "author": "Rob Loach (https://robloach.net)",
+  "license": "zlib/libpng",
+  "bugs": {
+    "url": "https://github.com/RobLoach/raylib-umka/issues"
+  },
+  "homepage": "https://github.com/RobLoach/raylib-umka",
+  "devDependencies": {
+    "@raylib/api": "^4.2.0"
+  }
+}
