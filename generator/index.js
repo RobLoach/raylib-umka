@@ -17,9 +17,13 @@ function buildParamType(param, key) {
             return `params[${key}].realVal`
         case 'unsigned int':
         case 'char':
+        case 'unsigned char':
             return `params[${key}].uintVal`
         case 'int':
+        case 'long':
             return `params[${key}].intVal`
+        case 'bool':
+            return `(bool)params[${key}].intVal`
     }
 
     return `(${param.type})params[${key}].ptrVal`
@@ -34,6 +38,8 @@ function buildFunctionReturn(func) {
             return `result->intVal = (int)`
         case 'int':
             return `result->intVal = `
+        case 'unsigned int':
+            return `result->uintVal = `
         case 'long':
             return `result->intVal = `
         case 'float':
@@ -48,6 +54,7 @@ function buildFunctionReturn(func) {
         return 'result->ptrVal = (void*)'
     }
 
+    // TODO: Figure out how to return a Vector2 object. For example: GetMousePosition()
     return ''
 }
 
@@ -56,7 +63,6 @@ function buildFunctionReturn(func) {
  */
 const functionBlackList = [
     'TextFormat',
-    'UpdateCamera',
     'TraceLog',
     'SetTraceLogCallback',
     'SetLoadFileDataCallback',
@@ -237,6 +243,7 @@ function raylibTypeToUmka(type) {
         case 'const char *':
             return 'str'
         case 'unsigned char *':
+        case 'const unsigned char *':
             return '^uint8'
         case 'unsigned short *':
             return '^uint16'
@@ -245,11 +252,10 @@ function raylibTypeToUmka(type) {
         case 'long':
             return 'int'
         case 'void *':
-        case 'const unsigned char *':
         case 'const void *':
             return '^void'
         case 'char[32]':
-            return '[]char'
+            return '[32]char'
         case 'Texture2D':
         case 'TextureCubemap':
             return 'Texture'
@@ -260,7 +266,7 @@ function raylibTypeToUmka(type) {
         case 'Rectangle *':
             return '^Rectangle'
         case 'Matrix[2]':
-            return '^void'
+            return '[2]Matrix'
     }
 
     if (type.endsWith(' *')) {
@@ -504,11 +510,15 @@ void rlTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
 
 bool umkaAddRaylib(void *umka) {
 
+    // TraceLog -- Manually implemented.
     if (!umkaAddFunc(umka, "TraceLog", &rlTraceLog)) {
         return false;
     }
 
 ${umkaAddFuncCalls}
+    /**
+     * The code for the raylib umka module.
+     */
     const char* moduleCode =
         // Structures
 ${structures}
