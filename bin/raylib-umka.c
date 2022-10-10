@@ -71,5 +71,5 @@ int main(int argc, char *argv[]) {
 
     umkaFree(umka);
 
-    return (int)result;
+    return result ? 0 : 1;
 }

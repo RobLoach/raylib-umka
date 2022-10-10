@@ -26,13 +26,20 @@ option(RAYLIB_UMKA_BUILD_BIN "Binary" ${RAYLIB_UMKA_IS_MAIN})
 if (RAYLIB_UMKA_BUILD_BIN)
     add_subdirectory(bin)
 
-    # # Testing
-    # include(CTest)
-    # enable_testing()
-    # if (BUILD_TESTING)
-    #     # set(CTEST_CUSTOM_TESTS_IGNORE
-    #     #     pkg-config--static
-    #     # )
-    #     add_subdirectory(test)
-    # endif()
+    # Testing
+    include(CTest)
+    enable_testing()
+    if (BUILD_TESTING)
+        # set(CTEST_CUSTOM_TESTS_IGNORE
+        #     pkg-config--static
+        # )
+
+        # On failure, display the output.
+        list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+
+        add_test(
+            NAME raylib-umka-tests
+            COMMAND raylib-umka ${CMAKE_CURRENT_SOURCE_DIR}/tests/raylib-umka-tests.um
+        )
+    endif()
 endif()
