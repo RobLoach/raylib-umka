@@ -11,7 +11,8 @@ project(raylib-umka
 LIST(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # raylib-umka-h
-add_subdirectory(include)
+add_library(raylib-umka-h INTERFACE)
+target_include_directories(raylib-umka-h INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Options
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
