@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (result) {
-        result = umkaInit(umka, NULL, fileText, 1024* 1024, NULL, 0, NULL, false, false, NULL);
+        result = umkaInit(umka, fileToLoad, fileText, 1024* 1024, NULL, argc, argv, false, false, NULL);
     }
     UnloadFileText(fileText);
 
@@ -71,5 +71,5 @@ int main(int argc, char *argv[]) {
 
     umkaFree(umka);
 
-    return 0;
+    return (int)result;
 }

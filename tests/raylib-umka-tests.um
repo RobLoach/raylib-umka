@@ -1,0 +1,43 @@
+import (
+    "raylib"
+    "Assert.um"
+)
+
+fn main() {
+    const screenWidth = 640
+    const screenHeight = 480
+
+    // Window
+    Assert.False(raylib.IsWindowReady(), "IsWindowReady()")
+    raylib.InitWindow(screenWidth, screenHeight, "raylib-umka-tests")
+    Assert.True(raylib.IsWindowReady(), "!IsWindowReady()")
+    Assert.True(raylib.GetScreenWidth() == 640, "GetScreenWidth() != 640")
+
+    raylib.BeginDrawing()
+    raylib.ClearBackground(raylib.RAYWHITE)
+
+    // Color
+    var color:raylib.Color = raylib.PURPLE
+    Assert.True(color.g == 122, "PURPLE.g != 122")
+
+    // Vector2
+    var position:raylib.Vector2 = raylib.Vector2{50, 30}
+    Assert.True(position.x == 50, "position.x != 50")
+    Assert.True(position.y == 30, "position.y != 30")
+    raylib.DrawPixelV(position, color)
+
+    // Rectangle
+    var rect1:raylib.Rectangle = raylib.Rectangle{100, 100, 100, 100}
+    var rect2:raylib.Rectangle = raylib.Rectangle{150, 150, 100, 100}
+    var rect3:raylib.Rectangle = raylib.GetCollisionRec(rect1, rect2)
+    var expectedRect:raylib.Rectangle = raylib.Rectangle{150, 150, 50, 50}
+    Assert.True(expectedRect.x == rect3.x, "GetCollisionRec().x")
+    Assert.True(expectedRect.y == rect3.y, "GetCollisionRec().y")
+    Assert.True(expectedRect.width == rect3.width, "GetCollisionRec().width")
+    Assert.True(expectedRect.height == rect3.height, "GetCollisionRec().height")
+
+    // Finish
+    raylib.EndDrawing()
+    raylib.CloseWindow()
+    Assert.False(raylib.IsWindowReady(), "!IsWindowReady()")
+}

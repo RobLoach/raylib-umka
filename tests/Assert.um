@@ -1,0 +1,35 @@
+/**
+ * Assertion library for raylib-umka, which uses TraceLog().
+ */
+
+import "raylib"
+
+/**
+ * The log type when reporting to TraceLog(). Defaults to LOG_FATAL.
+ */
+var LOG_ASSERT*:int = raylib.LOG_FATAL
+
+/**
+ * Forces a failed assertion.
+ */
+fn Fail*(message:str) {
+    raylib.TraceLog(LOG_ASSERT, message)
+}
+
+/**
+ * Asserts the given condition, and reports the message on failure.
+ */
+fn True*(condition:bool, message:str) {
+    if (!condition) {
+        Fail(message)
+    }
+}
+
+/**
+ * Asserts that the given condition is false, and reports the message when the assert fails.
+ */
+fn False*(condition:bool, message:str) {
+    if (condition) {
+        Fail(message)
+    }
+}
