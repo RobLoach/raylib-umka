@@ -2579,7 +2579,9 @@ void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see LoadImage()
  */
 void umkaLoadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
-    const char * fileName = (const char *)params[0].ptrVal;
+    // TODO: Why does this need to be params[1]? I'd expect it to be 0.
+    const char * fileName = (const char *)params[1].ptrVal;
+    TraceLog(LOG_INFO, "File: %s", fileName);
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
     Image out = LoadImage(fileName);
     RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Image));
@@ -3364,7 +3366,8 @@ void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  * @see LoadTextureFromImage()
  */
 void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
-    Image* image = (Image*)&params[0];
+    // TODO: Why does this need to be params[1]? I'd expect it to be parms[0]
+    Image* image = (Image*)&params[1];
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Texture2D), NULL);
     Texture2D out = LoadTextureFromImage(*image);
     RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Texture2D));
