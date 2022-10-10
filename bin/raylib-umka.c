@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
     if (!result) {
         UmkaError error;
         umkaGetError(umka, &error);
-        TraceLog(LOG_WARNING, "[Umka] %s (%d, %d): %s\n", error.fileName, error.line, error.pos, error.msg);
+        TraceLog(LOG_WARNING, "UMKA: %s (%d, %d): %s\n", error.fileName, error.line, error.pos, error.msg);
     }
 
     umkaFree(umka);

@@ -1,8 +1,8 @@
 /*******************************************************************************************
 *
-*   raylib-umka [core] example - Basic window
+*   raylib-umka [textures] example - Image loading and texture creation
 *
-*   Welcome to raylib!
+*   NOTE: Images are loaded in CPU memory (RAM) textures are loaded in GPU memory (VRAM)
 *
 *   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software
@@ -19,16 +19,22 @@ import "raylib"
 fn main() {
     // Initialization
     //--------------------------------------------------------------------------------------
-    screenWidth := 800
-    screenHeight := 450
+    const screenWidth = 800
+    const screenHeight = 450
 
-    raylib.InitWindow(screenWidth, screenHeight, "raylib-umka [core] example - basic window")
+    raylib.InitWindow(screenWidth, screenHeight, "raylib [textures] example - image loading")
 
-    raylib.SetTargetFPS(60)               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
+    // NOTE: Textures MUST be loaded after Window initialization (OpenGL context is required)
+
+    var image:raylib.Image = raylib.LoadImage("resources/raylib_logo.png") // Loaded in CPU memory (RAM)
+    var texture:raylib.Texture = raylib.LoadTextureFromImage(image)        // Image converted to texture, GPU memory (VRAM)
+    raylib.UnloadImage(image)   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM
+
+    raylib.SetTargetFPS(60)     // Set our game to run at 60 frames-per-second
+    //---------------------------------------------------------------------------------------
 
     // Main game loop
-    for !raylib.WindowShouldClose() {
+    for !raylib.WindowShouldClose() {    // Detect window close button or ESC key
         // Update
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
@@ -40,7 +46,9 @@ fn main() {
 
             raylib.ClearBackground(raylib.RAYWHITE)
 
-            raylib.DrawText("Congrats! You created your first raylib-umka window!", 150, 200, 20, raylib.LIGHTGRAY)
+            raylib.DrawTexture(texture, screenWidth/2 - texture.width/2, screenHeight/2 - texture.height/2, raylib.WHITE)
+
+            raylib.DrawText("this IS a texture loaded from an image!", 300, 370, 10, raylib.GRAY)
 
         raylib.EndDrawing()
         //----------------------------------------------------------------------------------
@@ -48,6 +56,8 @@ fn main() {
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    raylib.CloseWindow()        // Close window and OpenGL context
+    raylib.UnloadTexture(texture)       // Texture unloading
+
+    raylib.CloseWindow()                // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 }

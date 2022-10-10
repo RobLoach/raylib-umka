@@ -146,12 +146,20 @@ function getFunctionImplementations(functions) {
  * @see ${func.name}()
  */
 void umka${func.name}(UmkaStackSlot *params, UmkaStackSlot *result) {\n`
-
         let params = []
         let paramsInFunction = []
         if (func.params) {
             // Params
             let last = func.params.length - 1;
+
+            // Functions that return a struct have a parameter of [0] as their filename.
+            // Given that, offset the last parameter index by 1.
+            // See: https://github.com/vtereshkov/umka-lang/issues/221
+            if (getIsRaylibStruct(func.returnType)) {
+                output += `    // Skipping params[0], as it's a reference to Umka's internal filename\n`
+                last++;
+            }
+
             for (let param of func.params) {
                 if (getIsRaylibStruct(param.type)) {
                     output += `    ${param.type}* ${param.name} = (${param.type}*)&params[${last--}];\n`
@@ -502,6 +510,7 @@ bool umkaAddRaylib(void *umka);
 #endif
 #include RAYLIB_UMKA_UMKA_API_H
 
+// memcpy()
 #ifndef RAYLIB_UMKA_MEMCPY
 #include <string.h>
 #define RAYLIB_UMKA_MEMCPY memcpy
@@ -513,16 +522,20 @@ extern "C" {
 
 ${functionsImplementations}
 
-void rlTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
+/**
+ * Umka implementation for TraceLog(). This is manually implemented.
+ *
+ * @see TraceLog()
+ */
+void umkaTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
     int logType = params[1].intVal;
     const char* message = (const char*)params[0].ptrVal;
     TraceLog(logType, message);
 }
 
 bool umkaAddRaylib(void *umka) {
-
     // TraceLog -- Manually implemented.
-    if (!umkaAddFunc(umka, "TraceLog", &rlTraceLog)) {
+    if (!umkaAddFunc(umka, "TraceLog", &umkaTraceLog)) {
         return false;
     }
 
