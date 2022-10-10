@@ -3,6 +3,11 @@ import (
     "Assert.um"
 )
 
+fn loadText(fileName: str): str {
+    raylib.TraceLog(raylib.LOG_INFO, "Loading file!~!! omgg")
+    return "Hello World!"
+}
+
 fn main() {
     const screenWidth = 640
     const screenHeight = 480
@@ -35,6 +40,13 @@ fn main() {
     Assert.True(expectedRect.y == rect3.y, "GetCollisionRec().y")
     Assert.True(expectedRect.width == rect3.width, "GetCollisionRec().width")
     Assert.True(expectedRect.height == rect3.height, "GetCollisionRec().height")
+
+    raylib.TraceLog(raylib.LOG_INFO, "1")
+    raylib.SetLoadFileTextCallback(loadText)
+    raylib.TraceLog(raylib.LOG_INFO, "2")
+    var output:str = raylib.LoadFileText("Assert.um")
+    raylib.TraceLog(raylib.LOG_INFO, "3")
+    raylib.TraceLog(raylib.LOG_INFO, output)
 
     // Finish
     raylib.EndDrawing()

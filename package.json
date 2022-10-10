@@ -4,13 +4,18 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "test": "node generator",
-    "start": "npm test && cd build && cmake .. && make && ./bin/raylib-umka ../examples/core/core_basic_window.um"
+    "generator": "node generator",
+    "build": "npm run generator && cmake -B build -S . && cmake --build build",
+    "test": "npm run build && ctest --verbose --test-dir build",
+    "start": "npm run build && build/bin/raylib-umka"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RobLoach/raylib-umka.git"
   },
+  "files": [
+    "include"
+  ],
   "keywords": [
     "raylib"
   ],

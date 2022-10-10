@@ -119,7 +119,7 @@ const functionBlackList = [
     'SetTraceLogCallback',
     'SetLoadFileDataCallback',
     'SetSaveFileDataCallback',
-    'SetLoadFileTextCallback',
+    //'SetLoadFileTextCallback',
     'SetSaveFileTextCallback',
     'LoadFontData',
     'SetAudioStreamCallback',
@@ -230,6 +230,8 @@ function raylibTypeToUmka(type) {
             return 'int32'
         case 'char':
             return 'char'
+        case 'char *':
+            return 'str'
         case 'float *':
             return '^real32'
         case 'float[2]':
@@ -302,6 +304,39 @@ const structureBlackList = []
  * Get the structure code.
  */
 const structures = getStructures(raylib.raylib.structs)
+
+const callbacksBlacklist = [
+    'TraceLogCallback'
+]
+function getCallbacks(callbacks) {
+    let output = `        /* ${outputLineNumber()} */ "type (\\n"\n`
+
+    for (let callback of callbacks) {
+        if (callbacksBlacklist.includes(callback.name)) {
+            output += `        // Skipped ${callback.name}\n`
+            continue
+        }
+        let params = []
+
+        for (let param of callback.params) {
+            params.push(`${param.name}: ${raylibTypeToUmka(param.type)}`)
+        }
+        let returnType = raylibTypeToUmka(callback.returnType)
+        if (returnType) {
+            if (returnType == 'void') {
+                returnType = ''
+            }
+            else {
+                returnType = ': ' + returnType
+            }
+        }
+        output += `        /* ${outputLineNumber()} */ "    ${callback.name} = fn(${params.join(', ')})${returnType}\\n"\n`
+    }
+
+    output += `        /* ${outputLineNumber()} */ ")\\n"`
+    return output;
+}
+const callbacks = getCallbacks(raylib.raylib.callbacks)
 
 /**
  * Builds the module declarations for the module.
@@ -434,6 +469,8 @@ function getDefines(defines) {
 }
 
 const defines = getDefines(raylib.raylib.defines)
+
+
 const pkg = require('../package.json')
 let code =
 `/**********************************************************************************************
@@ -530,7 +567,7 @@ ${functionsImplementations}
 void umkaTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
     int logType = params[1].intVal;
     const char* message = (const char*)params[0].ptrVal;
-    TraceLog(logType, message);
+    TraceLog(logType, "%s", message);
 }
 
 bool umkaAddRaylib(void *umka) {
@@ -546,6 +583,9 @@ ${umkaAddFuncCalls}
     const char* moduleCode =
         // Structures
 ${structures}
+
+        // Callbacks
+${callbacks}
 
         // Function Declarations
 ${moduleFunctionDeclarations}
