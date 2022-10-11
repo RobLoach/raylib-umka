@@ -54,7 +54,7 @@ make test
 
 ### Generator
 
-The [raylib-umka.h](includes/raylib-umka.h) file is generated automatically via [Node.js](https://nodejs.org):
+The [raylib-umka.h](include/raylib-umka.h) file is generated automatically via [Node.js](https://nodejs.org):
 
 ``` bash
 npm it
