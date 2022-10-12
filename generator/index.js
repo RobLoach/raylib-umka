@@ -182,7 +182,11 @@ void umka${func.name}(UmkaStackSlot *params, UmkaStackSlot *result) {\n`
     return output
 }
 
-const functionsImplementations = getFunctionImplementations(raylib.raylib.functions)
+function getAllFunctions() {
+    return raylib.raylib.functions
+}
+
+const functionsImplementations = getFunctionImplementations(getAllFunctions())
 
 /**
  * Writes the code to register the functions to Umka.
@@ -300,10 +304,14 @@ let lineNumber = 1
  */
 const structureBlackList = []
 
+function getAllStructs() {
+    return raylib.raylib.structs
+}
+
 /**
  * Get the structure code.
  */
-const structures = getStructures(raylib.raylib.structs)
+const structures = getStructures(getAllStructs())
 
 const callbacksBlacklist = [
     'TraceLogCallback',
@@ -402,6 +410,10 @@ function getStructures(structs) {
     return output
 }
 
+function getAllEnums() {
+    return raylib.raylib.enums
+}
+
 /**
  * Creates Umka code for all the given enums.
  */
@@ -415,7 +427,7 @@ function getEnums(enums) {
     }
     return output.join('\n')
 }
-const enums = getEnums(raylib.raylib.enums)
+const enums = getEnums(getAllEnums())
 
 // Blacklist of defines
 const definesBlackList = []
@@ -454,7 +466,11 @@ function getDefines(defines) {
     return output
 }
 
-const defines = getDefines(raylib.raylib.defines)
+function getAllDefines() {
+    return raylib.raylib.defines
+}
+
+const defines = getDefines(getAllDefines())
 
 
 const pkg = require('../package.json')

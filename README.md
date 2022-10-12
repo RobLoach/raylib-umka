@@ -1,6 +1,8 @@
+![raylib-umka Logo](examples/textures/resources/raylib_logo.png)
+
 # raylib-umka
 
-[Umka](https://github.com/vtereshkov/umka-lang) bindings for [raylib](https://github.com/raysan5/raylib).
+[Umka](https://github.com/vtereshkov/umka-lang) scripting language bindings for [raylib](https://github.com/raysan5/raylib), a simple and easy-to-use library to enjoy videogames programming.
 
 ## Example
 
@@ -50,6 +52,19 @@ cmake ..
 make
 make test
 ./bin/raylib-umka ../examples/core/core_basic_window.um
+```
+
+### API
+
+To integrate the raylib Umka module into your existing Umka instance...
+
+``` c
+#define RAYLIB_UMKA_IMPLEMENTATION
+#include "raylib-umka.h"
+
+// ...
+
+umkaAddRaylib(umka);
 ```
 
 ### Generator
