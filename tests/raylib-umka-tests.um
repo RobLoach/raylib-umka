@@ -40,6 +40,7 @@ fn main() {
     var out:str = raylib.LoadFileText("Assert.um")
     var find:int32 = raylib.TextFindIndex(out, "LOG_ASSERT")
     Assert.True(find > 10, "LOG_ASSERT not found")
+    raylib.UnloadFileText(out)
 
     // Finish
     raylib.EndDrawing()
