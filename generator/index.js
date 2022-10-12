@@ -119,7 +119,7 @@ const functionBlackList = [
     'SetTraceLogCallback',
     'SetLoadFileDataCallback',
     'SetSaveFileDataCallback',
-    //'SetLoadFileTextCallback',
+    'SetLoadFileTextCallback',
     'SetSaveFileTextCallback',
     'LoadFontData',
     'SetAudioStreamCallback',
@@ -306,7 +306,12 @@ const structureBlackList = []
 const structures = getStructures(raylib.raylib.structs)
 
 const callbacksBlacklist = [
-    'TraceLogCallback'
+    'TraceLogCallback',
+    // 'LoadFileDataCallback',
+    // 'SaveFileDataCallback',
+    // 'LoadFileTextCallback',
+    // 'SaveFileTextCallback',
+    // 'AudioCallback'
 ]
 function getCallbacks(callbacks) {
     let output = `        /* ${outputLineNumber()} */ "type (\\n"\n`
@@ -413,26 +418,7 @@ function getEnums(enums) {
 const enums = getEnums(raylib.raylib.enums)
 
 // Blacklist of defines
-const definesBlackList = [
-    'RAYLIB_H',
-    '__declspec(x)',
-    'RLAPI',
-    'DEG2RAD',
-    'RAD2DEG',
-    'RL_MALLOC(sz)',
-    'RL_CALLOC(n,sz)',
-    'RL_REALLOC(ptr,sz)',
-    'RL_FREE(ptr)',
-    'CLITERAL(type)',
-    'RL_COLOR_TYPE',
-    'RL_RECTANGLE_TYPE',
-    'RL_VECTOR2_TYPE',
-    'RL_VECTOR3_TYPE',
-    'RAYLIB_H',
-    'RAYLIB_H',
-    'RAYLIB_H',
-    'RAYLIB_H',
-]
+const definesBlackList = []
 
 function getDefines(defines) {
     let output = ''
