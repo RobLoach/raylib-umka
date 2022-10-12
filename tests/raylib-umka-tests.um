@@ -36,6 +36,12 @@ fn main() {
     Assert.True(expectedRect.width == rect3.width, "GetCollisionRec().width")
     Assert.True(expectedRect.height == rect3.height, "GetCollisionRec().height")
 
+    // LoadFileText()
+    var out:str = raylib.LoadFileText("Assert.um")
+    var find:int32 = raylib.TextFindIndex(out, "LOG_ASSERT")
+    Assert.True(find > 10, "LOG_ASSERT not found")
+    raylib.UnloadFileText(out)
+
     // Finish
     raylib.EndDrawing()
     raylib.CloseWindow()
