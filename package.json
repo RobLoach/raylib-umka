@@ -7,7 +7,9 @@
     "generator": "node generator",
     "build": "npm run generator && cmake -B build -S . && cmake --build build",
     "test": "npm run build && ctest --verbose --test-dir build",
-    "start": "npm run build && build/bin/raylib-umka"
+    "start": "npm run build && build/bin/raylib-umka",
+    "web": "rm -rf build && mkdir build && cd build && emcmake cmake .. -DPLATFORM=Web -DCMAKE_BUILD_TYPE=Release && emmake make",
+    "publish": "npm run web && gh-pages --src \"*.html\" -d build/bin"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
   },
   "homepage": "https://github.com/RobLoach/raylib-umka",
   "devDependencies": {
-    "@raylib/api": "^4.2.0"
+    "@raylib/api": "^4.2.0",
+    "gh-pages": "^4.0.0"
   }
 }
