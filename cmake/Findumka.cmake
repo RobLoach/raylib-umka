@@ -48,6 +48,7 @@ if (UMKA_SHARED)
     add_library(umka SHARED ${UMKA_SRC})
 else()
     add_library(umka STATIC ${UMKA_SRC})
+    target_compile_definitions(umka PUBLIC -DUMKA_STATIC)
 endif()
 
 target_include_directories(umka PUBLIC ${UMKA_SRC_DIR})

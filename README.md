@@ -41,19 +41,6 @@ raylib-umka core_basic_window.um
 
 Some information about how to compile the Umka bindings.
 
-### Compiling
-
-``` bash
-git clone https://github.com/RobLoach/raylib-umka.git
-cd raylib-umka
-mkdir build
-cd build
-cmake ..
-make
-make test
-./bin/raylib-umka ../examples/core/core_basic_window.um
-```
-
 ### API
 
 To integrate the raylib Umka module into your existing Umka instance...
@@ -73,6 +60,29 @@ The [raylib-umka.h](include/raylib-umka.h) file is generated automatically via [
 
 ``` bash
 npm it
+```
+
+### Compiling
+
+While raylib-umka uses CMake, it could be used in other build systems.
+
+#### Desktop
+``` bash
+mkdir build
+cd build
+cmake ..
+make
+make test
+./bin/raylib-umka ../examples/core/core_basic_window.um
+```
+
+#### Web
+
+``` bash
+mkdir build
+cd build
+emcmake cmake .. -DPLATFORM=Web -DCMAKE_BUILD_TYPE=Release
+emmake make
 ```
 
 ## License

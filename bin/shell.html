@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>raylib-app</title>
+
+    <meta name="title" content="raylib-app">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://www.raylib.com/favicon.ico">
+
+    <!-- Foundation -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
+
+    <!-- Compressed JavaScript -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>-->
+
+    <style>
+        canvas.emscripten {
+            border: 0px none;
+            background-color: black;
+        }
+        textarea {
+            width:100%;
+            resize:vertical;
+            font-family: monospace;
+        }
+    </style>
+    <script type='text/javascript' src="https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"> </script>
+    <script type='text/javascript'>
+        function saveFileFromMEMFSToDisk(memoryFSname, localFSname)     // This can be called by C/C++ code
+        {
+            var isSafari = false; // Not supported, navigator.userAgent access is being restricted
+            //var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            var data = FS.readFile(memoryFSname);
+            var blob;
+
+            if (isSafari) blob = new Blob([data.buffer], { type: "application/octet-stream" });
+            else blob = new Blob([data.buffer], { type: "application/octet-binary" });
+
+            // NOTE: SaveAsDialog is a browser setting. For example, in Google Chrome,
+            // in Settings/Advanced/Downloads section you have a setting:
+            // 'Ask where to save each file before downloading' - which you can set true/false.
+            // If you enable this setting it would always ask you and bring the SaveAsDialog
+            saveAs(blob, localFSname);
+        }
+    </script>
+    </head>
+    <body>
+        <div class="grid-x grid-padding-y align-stretch">
+            <div class="cell small-12">
+                <h1>raylib-umka</h1>
+                <p><a href="https://github.com/robloach/raylib-umka">raylib-umka</a> provides <a href="https://github.com/vtereshkov/umka-lang">Umka</a> scripting language bindings for <a href="https://github.com/raysan5/raylib">raylib</a>, a simple and easy-to-use library to enjoy videogames programming.</p>
+            </div>
+            <div class="cell medium-6 small-6">
+                <div class="grid-container">
+                    <div class="grid-x">
+                        <div class="medium-12 cell">
+                            <div class="button-group">
+                                <button id="runButton" class="success button">Run</button>
+                                <a href="https://github.com/robloach/raylib-umka" class="button secondary">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="medium-12 cell">
+                            <textarea id="sourceTextArea" rows="20" style="" class="">
+import "raylib"
+
+fn init() {
+    raylib.InitWindow(600, 350, "raylib-unka [core] example - basic window")
+}
+fn update() {
+    raylib.BeginDrawing()
+    raylib.ClearBackground(raylib.RAYWHITE)
+    raylib.DrawText("Congrats! You created your first raylib-umka window!", 30, 150, 20, raylib.LIGHTGRAY)
+    raylib.EndDrawing()
+}
+fn close() {
+    raylib.CloseWindow()
+}
+
+fn main(){}
+                            </textarea>
+                        </div>
+                    </div>
+            </div>
+            </div>
+
+            <div class="player cell medium-6 small-6">
+                <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+            </div>
+        </div>
+
+        <p id="output" />
+
+        <script>
+            var Module = {
+                print: (function() {
+                    var element = document.getElementById('output');
+                    if (element) element.value = ''; // clear browser cache
+                    return function(text) {
+                        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+                        console.log(text);
+                        if (element) {
+                          element.value += text + "\n";
+                          element.scrollTop = element.scrollHeight; // focus on bottom
+                        }
+                    };
+                })(),
+                canvas: (function() {
+                    var canvas = document.getElementById('canvas');
+                    return canvas;
+                })(),
+                // onRuntimeInitialized: (function() {
+                //     onRun()
+                // })
+            };
+
+
+            var runButton = document.getElementById("runButton")
+            var sourceTextArea = document.getElementById("sourceTextArea")
+            runButton.onclick = onRun
+            sourceTextArea.onkeydown = onKey
+
+            function onRun() {
+                let runCode = Module.cwrap('runCode', 'bool', ['string', 'string'])
+                let source = sourceTextArea.value
+                //outputTextArea.value = ""
+                runCode("playground.um", source)
+            }
+
+            function onKey(e)
+            {
+                var start = this.selectionStart
+                var end = this.selectionEnd
+
+                if (e.key == 'Tab')
+                {
+                    e.preventDefault()
+                    this.value = this.value.substring(0, start) + ' '.repeat(tabWidth) + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + tabWidth
+                }
+                else if (e.key == 'Enter')
+                {
+                    e.preventDefault()
+                    var indent = getLineIndent(start)
+                    this.value = this.value.substring(0, start) + '\n' + ' '.repeat(indent) + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + 1 + indent
+                }
+                else if (e.key == '(')
+                {
+                    e.preventDefault()
+                    this.value = this.value.substring(0, start) + '()' + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + 1
+                }
+                else if (e.key == '[')
+                {
+                    e.preventDefault()
+                    this.value = this.value.substring(0, start) + '[]' + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + 1
+                }
+                else if (e.key == '{')
+                {
+                    e.preventDefault()
+                    this.value = this.value.substring(0, start) + '{}' + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + 1
+                }
+                else if (e.key == '"')
+                {
+                    e.preventDefault()
+                    this.value = this.value.substring(0, start) + '""' + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + 1
+                }
+                else if (e.key == "'")
+                {
+                    e.preventDefault()
+                    this.value = this.value.substring(0, start) + "''" + this.value.substring(end)
+                    this.selectionStart = this.selectionEnd = start + 1
+                }
+            }
+
+        </script>
+        {{{ SCRIPT }}}
+    </body>
+</html>
