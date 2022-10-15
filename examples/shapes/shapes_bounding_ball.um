@@ -1,0 +1,66 @@
+import "raylib"
+
+const screenWidth = 800
+const screenHeight = 450
+
+var ballPosition:raylib.Vector2
+var ballSpeed:raylib.Vector2 = raylib.Vector2{5, 4}
+var ballRadius:int = 20
+var pause:bool = false
+var framesCounter:int = 0
+
+fn init() {
+    raylib.InitWindow(screenWidth, screenHeight, "raylib-umka [shapes] example - bouncing ball")
+    raylib.SetTargetFPS(60)
+
+    ballPosition.x = raylib.GetScreenWidth() / 2
+    ballPosition.y = raylib.GetScreenHeight() / 2
+}
+
+fn update() {
+        // Update
+        //-----------------------------------------------------
+        if raylib.IsKeyPressed(raylib.KEY_SPACE) {
+            pause = !pause
+        }
+
+        if !pause {
+            ballPosition.x += ballSpeed.x
+            ballPosition.y += ballSpeed.y
+
+            // Check walls collision for bouncing
+            if ((ballPosition.x >= (raylib.GetScreenWidth() - ballRadius)) || (ballPosition.x <= ballRadius)) {
+                ballSpeed.x *= -1
+            }
+            if ((ballPosition.y >= (raylib.GetScreenHeight() - ballRadius)) || (ballPosition.y <= ballRadius)) {
+                ballSpeed.y *= -1
+            }
+        } else {
+            framesCounter++
+        }
+        //-----------------------------------------------------
+
+        // Draw
+        //-----------------------------------------------------
+        raylib.BeginDrawing()
+
+            raylib.ClearBackground(raylib.RAYWHITE)
+
+            raylib.DrawCircleV(ballPosition, ballRadius, raylib.MAROON)
+            raylib.DrawText("PRESS SPACE to PAUSE BALL MOVEMENT", 10, raylib.GetScreenHeight() - 25, 20, raylib.LIGHTGRAY)
+
+            // On pause, we draw a blinking message
+            if pause && ((framesCounter / 30) % 2 == 0) {
+                raylib.DrawText("PAUSED", 350, 200, 30, raylib.GRAY)
+            }
+
+            raylib.DrawFPS(10, 10)
+
+        raylib.EndDrawing()
+}
+
+fn close() {
+    raylib.CloseWindow()
+}
+
+fn main(){}
