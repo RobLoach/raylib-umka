@@ -1,29 +1,58 @@
 <!doctype html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <title>raylib-app</title>
+    <title>raylib-umka: Playground</title>
 
-    <meta name="title" content="raylib-umka">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="raylib-umka: Playground" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="https://www.raylib.com/favicon.ico">
+    <link rel="shortcut icon" href="https://www.raylib.com/favicon.ico" />
 
-    <!-- Dracula -->
-    <link rel="stylesheet" href="https://unpkg.com/dracula-ui@1.0.3/styles/dracula-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
 
     <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Courier New, Verdana, Arial;
+            font-size: medium;
+        }
         canvas.emscripten {
-            border: 0px none;
-            background-color: black;
+            border: 1px solid #898888;
+            background-color: #898888;
         }
         textarea {
             width:100%;
             resize:vertical;
             font-family: monospace;
+            background-color: #f0f0f0;
+            border: 1px solid #b0b0b0;
+        }
+        .logo {
+            width: 4em;
+            height: 4em;
+            margin-right: 1em;
+            margin-left: 1em;
+        }
+        button {
+            font-size: 1.5em;
+            background-color: #e1e1e1;
+            border: 3px solid #898888;
+            cursor: pointer;
+            color: #5c5a5a;
+            font-family: monospace;
+            text-transform: lowercase;
+            padding: 5px 15px;
+            margin-left: 10px;
+            margin-right: 10px;
+            text-align: center;
+        }
+        button:hover {
+            background-color: #f1f1f1;
+            border: 3px solid #999999;
         }
     </style>
     <script type='text/javascript' src="https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"> </script>
@@ -45,22 +74,23 @@
             saveAs(blob, localFSname);
         }
     </script>
-    </head>
-    <body class="drac-scrollbar-grey" style="background-color: #1d1e26; margin: 0;">
-        <div class="drac-box drac-p-md">
-            <h1 class="drac-heading drac-heading-2xl drac-text-white">raylib-umka</h1>
-            <p class="drac-text drac-text-white">
-                <a href="https://github.com/robloach/raylib-umka">raylib-umka</a> provides <a href="https://github.com/vtereshkov/umka-lang">Umka</a> scripting language bindings for <a href="https://github.com/raysan5/raylib">raylib</a>, a simple and easy-to-use library to enjoy videogames programming.
-            </p>
+</head>
+<body>
+    <img class="logo" src="https://raw.githubusercontent.com/RobLoach/raylib-umka/master/examples/textures/resources/raylib_logo.png" align="left">
+    <h1>raylib-umka: Playground</h1>
+    <p>
+        <a href="https://github.com/robloach/raylib-umka">raylib-umka</a> provides <a href="https://github.com/vtereshkov/umka-lang">Umka</a> scripting language bindings for <a href="https://github.com/raysan5/raylib">raylib</a>, a simple and easy-to-use library to enjoy videogames programming.
+    </p>
 
-            <button id="runButton" class="drac-btn drac-bg-purple drac-m-sm">Run</button>
-        </div>
+    <p>
+        <button id="runButton">Run</button>
+    </p>
 
-        <textarea id="sourceTextArea" class="drac-input drac-input-white drac-text-white" rows="20" style="height: inherit" class="">
+    <textarea id="sourceTextArea" rows="20" >
 import "raylib"
 
 fn init() {
-    raylib.InitWindow(600, 350, "raylib-unka [core] example - basic window")
+    raylib.InitWindow(600, 350, "raylib-umka [core] example - basic window")
 }
 
 fn update() {
@@ -77,46 +107,157 @@ fn close() {
 fn main(){}
 </textarea>
 
-        <div class="drac-box drac-bg-pink-purple" style="text-align:center">
-            <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
-        </div>
+<div style="text-align:center">
+    <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+</div>
+<textarea id="outputTextArea" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
 
-        <p id="output" />
-        <script>
-            var Module = {
-                print: (function() {
-                    var element = document.getElementById('output');
-                    if (element) element.value = ''; // clear browser cache
-                    return function(text) {
-                        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-                        console.log(text);
-                        if (element) {
-                          element.value += text + "\n";
-                          element.scrollTop = element.scrollHeight; // focus on bottom
-                        }
-                    };
-                })(),
-                canvas: (function() {
-                    var canvas = document.getElementById('canvas');
-                    return canvas;
-                })(),
-                // onRuntimeInitialized: (function() {
-                //     onRun()
-                // })
-            };
 
-            var runButton = document.getElementById("runButton")
-            var sourceTextArea = document.getElementById("sourceTextArea")
-            runButton.onclick = onRun
+    <script>
+        var Module = {
+            print: onPrint,
+            printErr: onPrintErr,
+            canvas: (function() {
+                var canvas = document.getElementById('canvas');
+                return canvas;
+            })(),
+            onRuntimeInitialized: (function() {
+                onRun()
+            })
+        };
 
-            function onRun() {
-                let runCode = Module.cwrap('runCode', 'bool', ['string', 'string'])
-                let source = sourceTextArea.value
-                //outputTextArea.value = ""
-                runCode("playground.um", source)
+        const tabWidth = 4
+
+        var runButton = document.getElementById("runButton")
+        var sourceTextArea = document.getElementById("sourceTextArea")
+        var outputTextArea = document.getElementById("outputTextArea")
+
+        runButton.onclick = onRun
+        sourceTextArea.onkeydown = onKey
+
+        function onRun() {
+            let runCode = Module.cwrap('runCode', 'bool', ['string', 'string'])
+            let source = sourceTextArea.value
+            outputTextArea.value = ""
+            runCode("playground.um", source)
+        }
+
+        function onPrint(text)
+        {
+            outputTextArea.value += text + '\n'
+            outputTextArea.scrollTop = outputTextArea.scrollHeight
+        }
+
+        function onPrintErr(text)
+        {
+            onPrint(text)
+
+            var words = text.split(' ')
+            if (words[0] != "Error" || typeof(words[2]) == "undefined")
+                return
+
+            var lineNum = words[2].replace(',', '').replace('(', '')
+            selectLine(lineNum)
+        }
+
+        function onKey(e)
+        {
+            var start = this.selectionStart
+            var end = this.selectionEnd
+
+            if (e.key == 'Tab')
+            {
+                e.preventDefault()
+                this.value = this.value.substring(0, start) + ' '.repeat(tabWidth) + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + tabWidth
+            }
+            else if (e.key == 'Enter')
+            {
+                e.preventDefault()
+                var indent = getLineIndent(start)
+                this.value = this.value.substring(0, start) + '\n' + ' '.repeat(indent) + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + 1 + indent
+            }
+            else if (e.key == '(')
+            {
+                e.preventDefault()
+                this.value = this.value.substring(0, start) + '()' + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + 1
+            }
+            else if (e.key == '[')
+            {
+                e.preventDefault()
+                this.value = this.value.substring(0, start) + '[]' + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + 1
+            }
+            else if (e.key == '{')
+            {
+                e.preventDefault()
+                this.value = this.value.substring(0, start) + '{}' + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + 1
+            }
+            else if (e.key == '"')
+            {
+                e.preventDefault()
+                this.value = this.value.substring(0, start) + '""' + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + 1
+            }
+            else if (e.key == "'")
+            {
+                e.preventDefault()
+                this.value = this.value.substring(0, start) + "''" + this.value.substring(end)
+                this.selectionStart = this.selectionEnd = start + 1
             }
 
-        </script>
-        {{{ SCRIPT }}}
-    </body>
+
+        }
+
+
+        function selectLine(lineNum)
+        {
+            lineNum--
+            var lines = sourceTextArea.value.split("\n")
+
+            var startPos = 0, endPos = sourceTextArea.value.length
+            for (var i = 0; i < lines.length; i++)
+            {
+                if (i == lineNum)
+                    break;
+                startPos += lines[i].length + 1
+            }
+
+            var endPos = lines[lineNum].length + startPos
+
+            if (typeof(sourceTextArea.selectionStart) != "undefined")
+            {
+                sourceTextArea.focus()
+                sourceTextArea.selectionStart = startPos
+                sourceTextArea.selectionEnd = endPos
+                return true
+            }
+
+            return false
+        }
+
+        function getLineIndent(curPos)
+        {
+            var lineStart = sourceTextArea.value.substring(0, curPos).lastIndexOf('\n') + 1
+            var indent = 0
+
+            for (var i = lineStart; i < curPos; i++)
+            {
+                if (sourceTextArea.value[i] == ' ')
+                    indent++
+                else if (sourceTextArea.value[i] == '\t')
+                    indent += tabWidth
+                else
+                    break
+            }
+
+            return indent
+        }
+
+    </script>
+    {{{ SCRIPT }}}
+</body>
 </html>

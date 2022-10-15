@@ -1,7 +1,7 @@
 import "raylib"
 
 fn init() {
-    raylib.InitWindow(800, 450, "raylib-unka [core] example - basic window")
+    raylib.InitWindow(800, 450, "raylib-umka [core] example - basic window")
 }
 
 fn update() {

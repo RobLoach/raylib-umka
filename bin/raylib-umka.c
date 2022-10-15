@@ -28,6 +28,9 @@ void umkaUpdate(void* userData) {
     umkaCall(umka, *updateCall, 0, NULL, NULL);
 }
 
+/**
+ * Executes the given source string, and names it by the given fileName.
+ */
 EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString) {
     if (umka != NULL) {
         // Stop the main loop if needed.
@@ -46,6 +49,7 @@ EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString
             CloseWindow();
         }
 
+        // Clean up the umka instace.
         umkaFree(umka);
     }
 
@@ -123,6 +127,9 @@ EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString
     return result;
 }
 
+/**
+ * Entry point for the application.
+ */
 int main(int argc, char *argv[]) {
     const char* executableName;
     const char* fileToLoad;
@@ -156,6 +163,7 @@ int main(int argc, char *argv[]) {
     if (result) {
         result = runCode(fileToLoad, fileText);
     }
+    UnloadFileText(fileText);
 
     return result ? 0 : 1;
 }
