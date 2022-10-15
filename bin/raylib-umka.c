@@ -118,7 +118,7 @@ EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString
     if (!result) {
         UmkaError error;
         umkaGetError(umka, &error);
-        TraceLog(LOG_WARNING, "UMKA: %s (%d, %d): %s\n", error.fileName, error.line, error.pos, error.msg);
+        TraceLog(LOG_ERROR, "UMKA: %s (%d, %d): %s\n", error.fileName, error.line, error.pos, error.msg);
     }
 
     umkaFree(umka);
