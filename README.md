@@ -1,4 +1,4 @@
-![raylib-umka Logo](examples/textures/resources/raylib_logo.png)
+[![raylib-umka Logo](examples/textures/resources/raylib_logo.png)](https://robloach.github.io/raylib-umka/)
 
 # raylib-umka
 
