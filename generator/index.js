@@ -24,6 +24,8 @@ function buildParamType(param, key) {
             return `params[${key}].intVal`
         case 'bool':
             return `(bool)params[${key}].intVal`
+        case 'const Vector3':
+            return `(Vector3*)&params[${key}]`
     }
 
     return `(${param.type})params[${key}].ptrVal`
@@ -37,7 +39,9 @@ function getIsRaylibStruct(type) {
         'Color',
         'Vector2',
         'Vector3',
+        'const Vector3',
         'Vector4',
+        'Quaternion',
         'Matrix',
         'Color',
         'Rectangle',
@@ -184,6 +188,7 @@ void umka${func.name}(UmkaStackSlot *params, UmkaStackSlot *result) {\n`
 
 function getAllFunctions() {
     return raylib.raylib.functions
+        .concat(raylib.raymath.functions)
 }
 
 const functionsImplementations = getFunctionImplementations(getAllFunctions())
@@ -207,7 +212,7 @@ function getFuncCalls(functions) {
     }
     return output
 }
-const umkaAddFuncCalls = getFuncCalls(raylib.raylib.functions)
+const umkaAddFuncCalls = getFuncCalls(getAllFunctions())
 
 /**
  * Translates a raylib type over to an Umka type.
@@ -222,6 +227,8 @@ function raylibTypeToUmka(type) {
             return '^str'
         case 'Rectangle **':
             return '^void'
+        case 'const Vector3':
+            return 'Vector3'
         case 'const Matrix *':
             return '^Matrix'
         case 'const GlyphInfo *':
@@ -252,6 +259,10 @@ function raylibTypeToUmka(type) {
             return '^void'
         case 'float[4]':
             return '[4]real32'
+        case 'float[3]':
+            return '[3]real32'
+        case 'float[16]':
+            return '[16]real32'
         case 'unsigned char':
             return 'uint8'
         case 'Transform **':
@@ -305,7 +316,22 @@ let lineNumber = 1
 const structureBlackList = []
 
 function getAllStructs() {
-    return raylib.raylib.structs
+    // Grab all the structs across all libraries
+    let structs = [
+        ...raylib.raylib.structs,
+        ...raylib.raymath.structs
+    ]
+
+    // Remove duplicate structs.
+    let names = []
+    structs = structs.filter(struct => {
+        if (names.includes(struct.name)) {
+            return false
+        }
+        names.push(struct.name)
+        return true
+    })
+    return structs
 }
 
 /**
@@ -379,7 +405,7 @@ function getModuleFunctionDeclarations(functions) {
     }
     return output
 }
-const moduleFunctionDeclarations = getModuleFunctionDeclarations(raylib.raylib.functions)
+const moduleFunctionDeclarations = getModuleFunctionDeclarations(getAllFunctions())
 
 /**
  * Increases the line number and outputs it in a clean format
@@ -411,7 +437,22 @@ function getStructures(structs) {
 }
 
 function getAllEnums() {
-    return raylib.raylib.enums
+    let enumNames = []
+
+    let allEnums = [
+        ...raylib.raylib.enums,
+        ...raylib.raymath.enums
+    ]
+
+    allEnums = allEnums.filter(enumDetails => {
+        if (enumNames.includes(enumDetails.name)) {
+            return false
+        }
+        enumNames.push(enumDetails.name)
+        return true
+    })
+
+    return allEnums
 }
 
 /**
@@ -467,7 +508,23 @@ function getDefines(defines) {
 }
 
 function getAllDefines() {
-    return raylib.raylib.defines
+
+    let defineNames = []
+
+    let allDefines = [
+        ...raylib.raylib.defines,
+        ...raylib.raymath.defines
+    ]
+
+    allDefines = allDefines.filter(defineDetails => {
+        if (defineNames.includes(defineDetails.name)) {
+            return false
+        }
+        defineNames.push(defineDetails.name)
+        return true
+    })
+
+    return allDefines
 }
 
 const defines = getDefines(getAllDefines())
@@ -542,6 +599,12 @@ bool umkaAddRaylib(void *umka);
 #define RAYLIB_UMKA_RAYLIB_H "raylib.h"
 #endif
 #include RAYLIB_UMKA_RAYLIB_H
+
+// raymath.h
+#ifndef RAYLIB_UMKA_RAYMATH_H
+#define RAYLIB_UMKA_RAYMATH_H "raymath.h"
+#endif
+#include RAYLIB_UMKA_RAYMATH_H
 
 // umka_api.h
 #ifndef RAYLIB_UMKA_UMKA_API_H

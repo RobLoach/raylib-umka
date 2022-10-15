@@ -42,6 +42,12 @@ fn main() {
     Assert.True(find > 10, "LOG_ASSERT not found")
     raylib.UnloadFileText(out)
 
+    // raymath
+    var vect1:raylib.Vector2 = raylib.Vector2{50, 100}
+    var vect2:raylib.Vector2 = raylib.Vector2{200, 300}
+    var vect3:raylib.Vector2 = raylib.Vector2Multiply(vect1, vect2)
+    Assert.True(vect1.x * vect2.x == vect3.x, "raymath test")
+
     // Finish
     raylib.EndDrawing()
     raylib.CloseWindow()

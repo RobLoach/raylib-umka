@@ -39,13 +39,21 @@ raylib-umka core_basic_window.um
 
 [![Screenshot of core_basic_window.um](examples/core/core_basic_window.png)](examples/core/core_basic_window.um)
 
+## Features
+
+- [x] raylib
+- [x] raymath
+- [ ] raygui
+- [ ] reasings
+- [ ] rlgl
+
 ## Development
 
 Some information about how to compile the Umka bindings.
 
 ### API
 
-To integrate the raylib Umka module into your existing Umka instance...
+To integrate the raylib Umka module into your own Umka instance...
 
 ``` c
 #define RAYLIB_UMKA_IMPLEMENTATION
