@@ -82,11 +82,7 @@
         <a href="https://github.com/robloach/raylib-umka">raylib-umka</a> provides <a href="https://github.com/vtereshkov/umka-lang">Umka</a> scripting language bindings for <a href="https://github.com/raysan5/raylib">raylib</a>, a simple and easy-to-use library to enjoy videogames programming.
     </p>
 
-    <p>
-        <button id="runButton">Run</button>
-    </p>
-
-    <textarea id="sourceTextArea" rows="20" spellcheck="false">
+    <textarea id="sourceTextArea" rows="20" spellcheck="false" style="margin-top: 1em;">
 import "raylib"
 
 fn init() {
@@ -107,12 +103,14 @@ fn close() {
 fn main(){}
 </textarea>
 
+<p>
+    <button id="runButton">Run</button>
+</p>
+
 <div style="text-align:center">
     <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
 </div>
 <textarea id="outputTextArea" spellcheck="false" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
-
-
     <script>
         var Module = {
             print: onPrint,
@@ -142,15 +140,21 @@ fn main(){}
             runCode("playground.um", source)
         }
 
-        function onPrint(text)
+        function onPrint(text, isError)
         {
             outputTextArea.value += text + '\n'
             outputTextArea.scrollTop = outputTextArea.scrollHeight
+            if (isError) {
+                console.error(text)
+            }
+            else {
+                console.log(text)
+            }
         }
 
         function onPrintErr(text)
         {
-            onPrint(text)
+            onPrint(text, true)
 
             var words = text.split(' ')
             if (words[0] != "Error" || typeof(words[2]) == "undefined")
