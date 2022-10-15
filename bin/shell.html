@@ -86,7 +86,7 @@
         <button id="runButton">Run</button>
     </p>
 
-    <textarea id="sourceTextArea" rows="20" >
+    <textarea id="sourceTextArea" rows="20" spellcheck="false">
 import "raylib"
 
 fn init() {
@@ -110,7 +110,7 @@ fn main(){}
 <div style="text-align:center">
     <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
 </div>
-<textarea id="outputTextArea" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
+<textarea id="outputTextArea" spellcheck="false" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
 
 
     <script>
