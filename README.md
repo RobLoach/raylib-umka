@@ -4,6 +4,8 @@
 
 [Umka](https://github.com/vtereshkov/umka-lang) scripting language bindings for [raylib](https://github.com/raysan5/raylib), a simple and easy-to-use library to enjoy videogames programming.
 
+> [Go to Playground](https://robloach.github.io/raylib-umka/)
+
 ## Example
 
 ``` umka
