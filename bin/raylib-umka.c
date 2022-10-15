@@ -7,7 +7,10 @@
 #include "raylib-umka.h"
 
 #ifdef PLATFORM_WEB
-#include <emscripten/emscripten.h>
+#ifndef RAYLIB_UMKA_EMSCRIPTEN_H
+#define RAYLIB_UMKA_EMSCRIPTEN_H <emscripten/emscripten.h>
+#endif
+#include RAYLIB_UMKA_EMSCRIPTEN_H
 #endif
 
 // Emscripten define to keep the function defined

@@ -8,7 +8,7 @@
     "build": "npm run generator && cmake -B build -S . && cmake --build build",
     "test": "npm run build && ctest --verbose --test-dir build",
     "start": "npm run build && build/bin/raylib-umka",
-    "web": "rm -rf build && mkdir build && cd build && emcmake cmake .. -DPLATFORM=Web -DCMAKE_BUILD_TYPE=Release && emmake make",
+    "web": "mkdir -p build && cd build && emcmake cmake .. -DPLATFORM=Web -DCMAKE_BUILD_TYPE=Release && emmake make",
     "publish": "npm run web && gh-pages --src \"*.html\" -d build/bin"
   },
   "repository": {
