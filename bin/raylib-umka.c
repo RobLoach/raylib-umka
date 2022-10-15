@@ -18,6 +18,9 @@
 #define EMSCRIPTEN_KEEPALIVE
 #endif
 
+/**
+ * The Umka instance used to maintain the scripting environment.
+ */
 void *umka;
 
 /**

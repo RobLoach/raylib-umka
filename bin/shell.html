@@ -37,7 +37,7 @@
             margin-right: 1em;
             margin-left: 1em;
         }
-        button {
+        button, select {
             font-size: 1.5em;
             background-color: #e1e1e1;
             border: 3px solid #898888;
@@ -48,11 +48,13 @@
             padding: 5px 15px;
             margin-left: 10px;
             margin-right: 10px;
-            text-align: center;
         }
-        button:hover, button:focus {
+        select:hover, select:focus, select:active, button:hover, button:focus, button:active {
             background-color: #f1f1f1;
             border: 3px solid #999999;
+        }
+        button {
+            text-align: center;
         }
     </style>
     <script type='text/javascript' src="https://cdn.jsdelivr.net/gh/eligrey/FileSaver.js/dist/FileSaver.min.js"> </script>
@@ -105,6 +107,11 @@ fn main(){}
 
 <p>
     <button id="runButton">Run</button>
+    <select name="example" id="example">
+        <option value="example">Load Example</option>
+        <option value="core_basic_window">Core: Basic Window</option>
+        <option value="shapes_bounding_ball">Shapes: Bounding Ball</option>
+    </select>
 </p>
 
 <div style="text-align:center">
@@ -112,6 +119,92 @@ fn main(){}
 </div>
 <textarea id="outputTextArea" spellcheck="false" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
     <script>
+        const examples = {
+            core_basic_window: `import "raylib"
+
+fn init() {
+    raylib.InitWindow(800, 450, "raylib-umka [core] example - basic window")
+}
+
+fn update() {
+    raylib.BeginDrawing()
+    raylib.ClearBackground(raylib.RAYWHITE)
+    raylib.DrawText("Congrats! You created your first raylib-umka window!", 150, 200, 20, raylib.LIGHTGRAY)
+    raylib.EndDrawing()
+}
+
+fn close() {
+    raylib.CloseWindow()
+}
+
+fn main(){}`,
+        shapes_bounding_ball: `import "raylib"
+
+const screenWidth = 800
+const screenHeight = 450
+
+var ballPosition:raylib.Vector2
+var ballSpeed:raylib.Vector2 = raylib.Vector2{5, 4}
+var ballRadius:int = 20
+var pause:bool = false
+var framesCounter:int = 0
+
+fn init() {
+    raylib.InitWindow(screenWidth, screenHeight, "raylib-umka [shapes] example - bouncing ball")
+    raylib.SetTargetFPS(60)
+
+    ballPosition.x = raylib.GetScreenWidth() / 2
+    ballPosition.y = raylib.GetScreenHeight() / 2
+}
+
+fn update() {
+        // Update
+        //-----------------------------------------------------
+        if raylib.IsKeyPressed(raylib.KEY_SPACE) {
+            pause = !pause
+        }
+
+        if !pause {
+            ballPosition.x += ballSpeed.x
+            ballPosition.y += ballSpeed.y
+
+            // Check walls collision for bouncing
+            if ((ballPosition.x >= (raylib.GetScreenWidth() - ballRadius)) || (ballPosition.x <= ballRadius)) {
+                ballSpeed.x *= -1
+            }
+            if ((ballPosition.y >= (raylib.GetScreenHeight() - ballRadius)) || (ballPosition.y <= ballRadius)) {
+                ballSpeed.y *= -1
+            }
+        } else {
+            framesCounter++
+        }
+        //-----------------------------------------------------
+
+        // Draw
+        //-----------------------------------------------------
+        raylib.BeginDrawing()
+
+            raylib.ClearBackground(raylib.RAYWHITE)
+
+            raylib.DrawCircleV(ballPosition, ballRadius, raylib.MAROON)
+            raylib.DrawText("PRESS SPACE to PAUSE BALL MOVEMENT", 10, raylib.GetScreenHeight() - 25, 20, raylib.LIGHTGRAY)
+
+            // On pause, we draw a blinking message
+            if pause && ((framesCounter / 30) % 2 == 0) {
+                raylib.DrawText("PAUSED", 350, 200, 30, raylib.GRAY)
+            }
+
+            raylib.DrawFPS(10, 10)
+
+        raylib.EndDrawing()
+}
+
+fn close() {
+    raylib.CloseWindow()
+}
+
+fn main(){}`
+        }
         var Module = {
             print: onPrint,
             printErr: onPrintErr,
@@ -129,9 +222,16 @@ fn main(){}
         var runButton = document.getElementById("runButton")
         var sourceTextArea = document.getElementById("sourceTextArea")
         var outputTextArea = document.getElementById("outputTextArea")
+        var exampleSelectBox = document.getElementById("example")
 
         runButton.onclick = onRun
         sourceTextArea.onkeydown = onKey
+        example.onchange = function() {
+            if (examples[exampleSelectBox.value]) {
+                sourceTextArea.value = examples[exampleSelectBox.value]
+                onRun()
+            }
+        }
 
         function onRun() {
             let runCode = Module.cwrap('runCode', 'bool', ['string', 'string'])
