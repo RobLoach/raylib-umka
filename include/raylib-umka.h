@@ -1,6 +1,6 @@
 /**********************************************************************************************
 *
-*   raylib-umka v0.0.2 - Umka bindings for raylib.
+*   raylib-umka v0.0.3 - Umka bindings for raylib.
 *
 *   https://github.com/RobLoach/raylib-umka
 *
@@ -7318,7 +7318,6 @@ void umkaQuaternionEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 
-
 /**
  * Umka implementation for TraceLog(). This is manually implemented.
  *
@@ -7330,8 +7329,15 @@ void umkaTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
     TraceLog(logType, "%s", message);
 }
 
+/**
+ * Adds the raylib module to the given Umka instance.
+ *
+ * @param umka The Umka environment to add the raylib module to.
+ *
+ * @return TRUE when the raylib module is successfully added, FALSE otherwise.
+ */
 bool umkaAddRaylib(void *umka) {
-    // TraceLog -- Manually implemented.
+    // TraceLog() -- Manually implemented.
     if (!umkaAddFunc(umka, "TraceLog", &umkaTraceLog)) {
         return false;
     }
