@@ -23,6 +23,15 @@
         canvas.emscripten {
             border: 1px solid #898888;
             background-color: #898888;
+            max-width: 100%;
+        }
+        .textarea-wrapper {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0.5em;
+            display: block;
+            padding: 1em 0 1em;
         }
         textarea {
             width:100%;
@@ -30,6 +39,9 @@
             font-family: monospace;
             background-color: #f0f0f0;
             border: 1px solid #b0b0b0;
+            font-size: 0.9em;
+            margin: 0;
+            padding: 0;
         }
         .logo {
             width: 128px;
@@ -84,7 +96,8 @@
         <a href="https://github.com/robloach/raylib-umka">raylib-umka</a>&nbsp;provides&nbsp;<a href="https://github.com/vtereshkov/umka-lang">Umka</a>&nbsp;scripting language bindings for&nbsp;<a href="https://github.com/raysan5/raylib">raylib</a>, a simple and easy-to-use library to enjoy videogames programming.
     </p>
 
-    <textarea id="sourceTextArea" rows="20" spellcheck="false" style="margin-top: 1em;">
+    <div class="textarea-wrapper">
+        <textarea id="sourceTextArea" rows="20" spellcheck="false" style="margin-top: 1em;">
 import "raylib"
 
 fn init() {
@@ -104,6 +117,7 @@ fn close() {
 
 fn main(){}
 </textarea>
+</div>
 
 <p>
     <button id="runButton">Run</button>
@@ -117,7 +131,9 @@ fn main(){}
 <div style="text-align:center">
     <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
 </div>
-<textarea id="outputTextArea" spellcheck="false" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
+<div class="textarea-wrapper">
+    <textarea id="outputTextArea" spellcheck="false" rows="10" style="width:100%; resize:vertical; background-color:WhiteSmoke" readonly></textarea>
+</div>
     <script>
         const examples = {
             core_basic_window: `import "raylib"

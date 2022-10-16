@@ -24,7 +24,7 @@
 void *umka;
 
 /**
- * Emscripten update callback
+ * Emscripten update callback.
  */
 void umkaUpdate(void* userData) {
     int* updateCall = (int*)userData;
@@ -33,6 +33,8 @@ void umkaUpdate(void* userData) {
 
 /**
  * Executes the given source string, and names it by the given fileName.
+ *
+ * @return True of false depending on whether or not the code was run successfully.
  */
 EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString) {
     if (umka != NULL) {
