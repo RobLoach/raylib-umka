@@ -59,8 +59,8 @@ fn main() {
             for i := 0; i < 100; i++ {
                 if bunniesCount < MAX_BUNNIES {
                     bunnies[bunniesCount].position = raylib.GetMousePosition()
-                    bunnies[bunniesCount].speed.x = raylib.GetRandomValue(-250, 250) / 60
-                    bunnies[bunniesCount].speed.y = raylib.GetRandomValue(-250, 250) / 60
+                    bunnies[bunniesCount].speed.x = raylib.GetRandomValue(-250, 250) / 60.0
+                    bunnies[bunniesCount].speed.y = raylib.GetRandomValue(-250, 250) / 60.0
                     bunnies[bunniesCount].color = raylib.Color{ raylib.GetRandomValue(50, 240), raylib.GetRandomValue(80, 240), raylib.GetRandomValue(100, 240), 255 }
                     bunniesCount++
                 }
@@ -73,10 +73,10 @@ fn main() {
             bunnies[i].position.y += bunnies[i].speed.y
 
             if ((bunnies[i].position.x + texBunny.width/2) > raylib.GetScreenWidth()) || ((bunnies[i].position.x + texBunny.width/2) < 0) {
-                bunnies[i].speed.x *= -1
+                bunnies[i].speed.x *= -1.0
             }
             if ((bunnies[i].position.y + texBunny.height/2) > raylib.GetScreenHeight()) || ((bunnies[i].position.y + texBunny.height/2 - 40) < 0) {
-                bunnies[i].speed.y *= -1
+                bunnies[i].speed.y *= -1.0
             }
         }
         //----------------------------------------------------------------------------------

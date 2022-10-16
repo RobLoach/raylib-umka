@@ -507,6 +507,9 @@ function getDefines(defines) {
     return output
 }
 
+/**
+ * Retrieve all defines across all the raylib modules.
+ */
 function getAllDefines() {
 
     let defineNames = []
@@ -528,7 +531,6 @@ function getAllDefines() {
 }
 
 const defines = getDefines(getAllDefines())
-
 
 const pkg = require('../package.json')
 let code =
@@ -623,7 +625,6 @@ extern "C" {
 #endif
 
 ${functionsImplementations}
-
 /**
  * Umka implementation for TraceLog(). This is manually implemented.
  *
@@ -635,8 +636,15 @@ void umkaTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
     TraceLog(logType, "%s", message);
 }
 
+/**
+ * Adds the raylib module to the given Umka instance.
+ *
+ * @param umka The Umka environment to add the raylib module to.
+ *
+ * @return TRUE when the raylib module is successfully added, FALSE otherwise.
+ */
 bool umkaAddRaylib(void *umka) {
-    // TraceLog -- Manually implemented.
+    // TraceLog() -- Manually implemented.
     if (!umkaAddFunc(umka, "TraceLog", &umkaTraceLog)) {
         return false;
     }

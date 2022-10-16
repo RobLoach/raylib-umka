@@ -13,28 +13,33 @@
 
 import "raylib"
 
+const screenWidth = 800
+const screenHeight = 450
+
+var image:raylib.Image
+var texture:raylib.Texture
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
 fn main() {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const screenWidth = 800
-    const screenHeight = 450
-
     raylib.InitWindow(screenWidth, screenHeight, "raylib [textures] example - image loading")
 
     // NOTE: Textures MUST be loaded after Window initialization (OpenGL context is required)
 
-    var image:raylib.Image = raylib.LoadImage("resources/raylib_logo.png") // Loaded in CPU memory (RAM)
-    var texture:raylib.Texture = raylib.LoadTextureFromImage(image)        // Image converted to texture, GPU memory (VRAM)
+    image = raylib.LoadImage("resources/raylib_logo.png") // Loaded in CPU memory (RAM)
+    texture = raylib.LoadTextureFromImage(image)        // Image converted to texture, GPU memory (VRAM)
     raylib.UnloadImage(image)   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM
 
     raylib.SetTargetFPS(60)     // Set our game to run at 60 frames-per-second
     //---------------------------------------------------------------------------------------
+}
 
-    // Main game loop
-    for !raylib.WindowShouldClose() {    // Detect window close button or ESC key
+// Main game loop
+fn update() {
+
         // Update
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
@@ -52,8 +57,9 @@ fn main() {
 
         raylib.EndDrawing()
         //----------------------------------------------------------------------------------
-    }
+}
 
+fn close() {
     // De-Initialization
     //--------------------------------------------------------------------------------------
     raylib.UnloadTexture(texture)       // Texture unloading
