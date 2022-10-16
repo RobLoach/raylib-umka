@@ -33,3 +33,5 @@ fn False*(condition:bool, message:str) {
         Fail(message)
     }
 }
+
+// TODO: Add the ability to have variadic parameters for TraceLog() ?
