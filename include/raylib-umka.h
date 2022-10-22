@@ -15,7 +15,7 @@
 *   raylib-umka is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software:
 *
-*   Copyright (c) 2022 Rob Loach (@RobLoach)
+*   Copyright (c) 2022 Rob Loach (https://robloach.net)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -72,6 +72,12 @@ bool umkaAddRaylib(void *umka);
 #endif
 #include RAYLIB_UMKA_RAYMATH_H
 
+// rlgl.h
+#ifndef RAYLIB_UMKA_RLGL_H
+#define RAYLIB_UMKA_RLGL_H "rlgl.h"
+#endif
+#include RAYLIB_UMKA_RLGL_H
+
 // umka_api.h
 #ifndef RAYLIB_UMKA_UMKA_API_H
 #define RAYLIB_UMKA_UMKA_API_H "umka_api.h"
@@ -89,7 +95,7 @@ extern "C" {
 #endif
 
 /**
- * Umka bindings for InitWindow.
+ * Umka bindings for InitWindow().
  *
  * @see InitWindow()
  */
@@ -101,7 +107,7 @@ void umkaInitWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WindowShouldClose.
+ * Umka bindings for WindowShouldClose().
  *
  * @see WindowShouldClose()
  */
@@ -110,7 +116,7 @@ void umkaWindowShouldClose(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CloseWindow.
+ * Umka bindings for CloseWindow().
  *
  * @see CloseWindow()
  */
@@ -119,7 +125,7 @@ void umkaCloseWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowReady.
+ * Umka bindings for IsWindowReady().
  *
  * @see IsWindowReady()
  */
@@ -128,7 +134,7 @@ void umkaIsWindowReady(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowFullscreen.
+ * Umka bindings for IsWindowFullscreen().
  *
  * @see IsWindowFullscreen()
  */
@@ -137,7 +143,7 @@ void umkaIsWindowFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowHidden.
+ * Umka bindings for IsWindowHidden().
  *
  * @see IsWindowHidden()
  */
@@ -146,7 +152,7 @@ void umkaIsWindowHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowMinimized.
+ * Umka bindings for IsWindowMinimized().
  *
  * @see IsWindowMinimized()
  */
@@ -155,7 +161,7 @@ void umkaIsWindowMinimized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowMaximized.
+ * Umka bindings for IsWindowMaximized().
  *
  * @see IsWindowMaximized()
  */
@@ -164,7 +170,7 @@ void umkaIsWindowMaximized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowFocused.
+ * Umka bindings for IsWindowFocused().
  *
  * @see IsWindowFocused()
  */
@@ -173,7 +179,7 @@ void umkaIsWindowFocused(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowResized.
+ * Umka bindings for IsWindowResized().
  *
  * @see IsWindowResized()
  */
@@ -182,7 +188,7 @@ void umkaIsWindowResized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowState.
+ * Umka bindings for IsWindowState().
  *
  * @see IsWindowState()
  */
@@ -192,7 +198,7 @@ void umkaIsWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowState.
+ * Umka bindings for SetWindowState().
  *
  * @see SetWindowState()
  */
@@ -202,7 +208,7 @@ void umkaSetWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ClearWindowState.
+ * Umka bindings for ClearWindowState().
  *
  * @see ClearWindowState()
  */
@@ -212,7 +218,7 @@ void umkaClearWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ToggleFullscreen.
+ * Umka bindings for ToggleFullscreen().
  *
  * @see ToggleFullscreen()
  */
@@ -221,7 +227,7 @@ void umkaToggleFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MaximizeWindow.
+ * Umka bindings for MaximizeWindow().
  *
  * @see MaximizeWindow()
  */
@@ -230,7 +236,7 @@ void umkaMaximizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MinimizeWindow.
+ * Umka bindings for MinimizeWindow().
  *
  * @see MinimizeWindow()
  */
@@ -239,7 +245,7 @@ void umkaMinimizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for RestoreWindow.
+ * Umka bindings for RestoreWindow().
  *
  * @see RestoreWindow()
  */
@@ -248,7 +254,7 @@ void umkaRestoreWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowIcon.
+ * Umka bindings for SetWindowIcon().
  *
  * @see SetWindowIcon()
  */
@@ -258,7 +264,7 @@ void umkaSetWindowIcon(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowTitle.
+ * Umka bindings for SetWindowTitle().
  *
  * @see SetWindowTitle()
  */
@@ -268,7 +274,7 @@ void umkaSetWindowTitle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowPosition.
+ * Umka bindings for SetWindowPosition().
  *
  * @see SetWindowPosition()
  */
@@ -279,7 +285,7 @@ void umkaSetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowMonitor.
+ * Umka bindings for SetWindowMonitor().
  *
  * @see SetWindowMonitor()
  */
@@ -289,7 +295,7 @@ void umkaSetWindowMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowMinSize.
+ * Umka bindings for SetWindowMinSize().
  *
  * @see SetWindowMinSize()
  */
@@ -300,7 +306,7 @@ void umkaSetWindowMinSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowSize.
+ * Umka bindings for SetWindowSize().
  *
  * @see SetWindowSize()
  */
@@ -311,7 +317,7 @@ void umkaSetWindowSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowOpacity.
+ * Umka bindings for SetWindowOpacity().
  *
  * @see SetWindowOpacity()
  */
@@ -321,7 +327,7 @@ void umkaSetWindowOpacity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWindowHandle.
+ * Umka bindings for GetWindowHandle().
  *
  * @see GetWindowHandle()
  */
@@ -330,7 +336,7 @@ void umkaGetWindowHandle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetScreenWidth.
+ * Umka bindings for GetScreenWidth().
  *
  * @see GetScreenWidth()
  */
@@ -339,7 +345,7 @@ void umkaGetScreenWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetScreenHeight.
+ * Umka bindings for GetScreenHeight().
  *
  * @see GetScreenHeight()
  */
@@ -348,7 +354,7 @@ void umkaGetScreenHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRenderWidth.
+ * Umka bindings for GetRenderWidth().
  *
  * @see GetRenderWidth()
  */
@@ -357,7 +363,7 @@ void umkaGetRenderWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRenderHeight.
+ * Umka bindings for GetRenderHeight().
  *
  * @see GetRenderHeight()
  */
@@ -366,7 +372,7 @@ void umkaGetRenderHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorCount.
+ * Umka bindings for GetMonitorCount().
  *
  * @see GetMonitorCount()
  */
@@ -375,7 +381,7 @@ void umkaGetMonitorCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCurrentMonitor.
+ * Umka bindings for GetCurrentMonitor().
  *
  * @see GetCurrentMonitor()
  */
@@ -384,7 +390,7 @@ void umkaGetCurrentMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorPosition.
+ * Umka bindings for GetMonitorPosition().
  *
  * @see GetMonitorPosition()
  */
@@ -397,7 +403,7 @@ void umkaGetMonitorPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorWidth.
+ * Umka bindings for GetMonitorWidth().
  *
  * @see GetMonitorWidth()
  */
@@ -407,7 +413,7 @@ void umkaGetMonitorWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorHeight.
+ * Umka bindings for GetMonitorHeight().
  *
  * @see GetMonitorHeight()
  */
@@ -417,7 +423,7 @@ void umkaGetMonitorHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorPhysicalWidth.
+ * Umka bindings for GetMonitorPhysicalWidth().
  *
  * @see GetMonitorPhysicalWidth()
  */
@@ -427,7 +433,7 @@ void umkaGetMonitorPhysicalWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorPhysicalHeight.
+ * Umka bindings for GetMonitorPhysicalHeight().
  *
  * @see GetMonitorPhysicalHeight()
  */
@@ -437,7 +443,7 @@ void umkaGetMonitorPhysicalHeight(UmkaStackSlot *params, UmkaStackSlot *result) 
 }
 
 /**
- * Umka bindings for GetMonitorRefreshRate.
+ * Umka bindings for GetMonitorRefreshRate().
  *
  * @see GetMonitorRefreshRate()
  */
@@ -447,7 +453,7 @@ void umkaGetMonitorRefreshRate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWindowPosition.
+ * Umka bindings for GetWindowPosition().
  *
  * @see GetWindowPosition()
  */
@@ -458,7 +464,7 @@ void umkaGetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWindowScaleDPI.
+ * Umka bindings for GetWindowScaleDPI().
  *
  * @see GetWindowScaleDPI()
  */
@@ -469,7 +475,7 @@ void umkaGetWindowScaleDPI(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorName.
+ * Umka bindings for GetMonitorName().
  *
  * @see GetMonitorName()
  */
@@ -479,7 +485,7 @@ void umkaGetMonitorName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetClipboardText.
+ * Umka bindings for SetClipboardText().
  *
  * @see SetClipboardText()
  */
@@ -489,7 +495,7 @@ void umkaSetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetClipboardText.
+ * Umka bindings for GetClipboardText().
  *
  * @see GetClipboardText()
  */
@@ -498,7 +504,7 @@ void umkaGetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EnableEventWaiting.
+ * Umka bindings for EnableEventWaiting().
  *
  * @see EnableEventWaiting()
  */
@@ -507,7 +513,7 @@ void umkaEnableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DisableEventWaiting.
+ * Umka bindings for DisableEventWaiting().
  *
  * @see DisableEventWaiting()
  */
@@ -516,7 +522,7 @@ void umkaDisableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SwapScreenBuffer.
+ * Umka bindings for SwapScreenBuffer().
  *
  * @see SwapScreenBuffer()
  */
@@ -525,7 +531,7 @@ void umkaSwapScreenBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PollInputEvents.
+ * Umka bindings for PollInputEvents().
  *
  * @see PollInputEvents()
  */
@@ -534,7 +540,7 @@ void umkaPollInputEvents(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaitTime.
+ * Umka bindings for WaitTime().
  *
  * @see WaitTime()
  */
@@ -544,7 +550,7 @@ void umkaWaitTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ShowCursor.
+ * Umka bindings for ShowCursor().
  *
  * @see ShowCursor()
  */
@@ -553,7 +559,7 @@ void umkaShowCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for HideCursor.
+ * Umka bindings for HideCursor().
  *
  * @see HideCursor()
  */
@@ -562,7 +568,7 @@ void umkaHideCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsCursorHidden.
+ * Umka bindings for IsCursorHidden().
  *
  * @see IsCursorHidden()
  */
@@ -571,7 +577,7 @@ void umkaIsCursorHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EnableCursor.
+ * Umka bindings for EnableCursor().
  *
  * @see EnableCursor()
  */
@@ -580,7 +586,7 @@ void umkaEnableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DisableCursor.
+ * Umka bindings for DisableCursor().
  *
  * @see DisableCursor()
  */
@@ -589,7 +595,7 @@ void umkaDisableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsCursorOnScreen.
+ * Umka bindings for IsCursorOnScreen().
  *
  * @see IsCursorOnScreen()
  */
@@ -598,7 +604,7 @@ void umkaIsCursorOnScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ClearBackground.
+ * Umka bindings for ClearBackground().
  *
  * @see ClearBackground()
  */
@@ -608,7 +614,7 @@ void umkaClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginDrawing.
+ * Umka bindings for BeginDrawing().
  *
  * @see BeginDrawing()
  */
@@ -617,7 +623,7 @@ void umkaBeginDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndDrawing.
+ * Umka bindings for EndDrawing().
  *
  * @see EndDrawing()
  */
@@ -626,7 +632,7 @@ void umkaEndDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginMode2D.
+ * Umka bindings for BeginMode2D().
  *
  * @see BeginMode2D()
  */
@@ -636,7 +642,7 @@ void umkaBeginMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndMode2D.
+ * Umka bindings for EndMode2D().
  *
  * @see EndMode2D()
  */
@@ -645,7 +651,7 @@ void umkaEndMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginMode3D.
+ * Umka bindings for BeginMode3D().
  *
  * @see BeginMode3D()
  */
@@ -655,7 +661,7 @@ void umkaBeginMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndMode3D.
+ * Umka bindings for EndMode3D().
  *
  * @see EndMode3D()
  */
@@ -664,7 +670,7 @@ void umkaEndMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginTextureMode.
+ * Umka bindings for BeginTextureMode().
  *
  * @see BeginTextureMode()
  */
@@ -674,7 +680,7 @@ void umkaBeginTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndTextureMode.
+ * Umka bindings for EndTextureMode().
  *
  * @see EndTextureMode()
  */
@@ -683,7 +689,7 @@ void umkaEndTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginShaderMode.
+ * Umka bindings for BeginShaderMode().
  *
  * @see BeginShaderMode()
  */
@@ -693,7 +699,7 @@ void umkaBeginShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndShaderMode.
+ * Umka bindings for EndShaderMode().
  *
  * @see EndShaderMode()
  */
@@ -702,7 +708,7 @@ void umkaEndShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginBlendMode.
+ * Umka bindings for BeginBlendMode().
  *
  * @see BeginBlendMode()
  */
@@ -712,7 +718,7 @@ void umkaBeginBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndBlendMode.
+ * Umka bindings for EndBlendMode().
  *
  * @see EndBlendMode()
  */
@@ -721,7 +727,7 @@ void umkaEndBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginScissorMode.
+ * Umka bindings for BeginScissorMode().
  *
  * @see BeginScissorMode()
  */
@@ -734,7 +740,7 @@ void umkaBeginScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndScissorMode.
+ * Umka bindings for EndScissorMode().
  *
  * @see EndScissorMode()
  */
@@ -743,7 +749,7 @@ void umkaEndScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginVrStereoMode.
+ * Umka bindings for BeginVrStereoMode().
  *
  * @see BeginVrStereoMode()
  */
@@ -753,7 +759,7 @@ void umkaBeginVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndVrStereoMode.
+ * Umka bindings for EndVrStereoMode().
  *
  * @see EndVrStereoMode()
  */
@@ -762,7 +768,7 @@ void umkaEndVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadVrStereoConfig.
+ * Umka bindings for LoadVrStereoConfig().
  *
  * @see LoadVrStereoConfig()
  */
@@ -775,7 +781,7 @@ void umkaLoadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadVrStereoConfig.
+ * Umka bindings for UnloadVrStereoConfig().
  *
  * @see UnloadVrStereoConfig()
  */
@@ -785,7 +791,7 @@ void umkaUnloadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadShader.
+ * Umka bindings for LoadShader().
  *
  * @see LoadShader()
  */
@@ -799,7 +805,7 @@ void umkaLoadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadShaderFromMemory.
+ * Umka bindings for LoadShaderFromMemory().
  *
  * @see LoadShaderFromMemory()
  */
@@ -813,7 +819,7 @@ void umkaLoadShaderFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetShaderLocation.
+ * Umka bindings for GetShaderLocation().
  *
  * @see GetShaderLocation()
  */
@@ -824,7 +830,7 @@ void umkaGetShaderLocation(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetShaderLocationAttrib.
+ * Umka bindings for GetShaderLocationAttrib().
  *
  * @see GetShaderLocationAttrib()
  */
@@ -835,7 +841,7 @@ void umkaGetShaderLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValue.
+ * Umka bindings for SetShaderValue().
  *
  * @see SetShaderValue()
  */
@@ -848,7 +854,7 @@ void umkaSetShaderValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValueV.
+ * Umka bindings for SetShaderValueV().
  *
  * @see SetShaderValueV()
  */
@@ -862,7 +868,7 @@ void umkaSetShaderValueV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValueMatrix.
+ * Umka bindings for SetShaderValueMatrix().
  *
  * @see SetShaderValueMatrix()
  */
@@ -874,7 +880,7 @@ void umkaSetShaderValueMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValueTexture.
+ * Umka bindings for SetShaderValueTexture().
  *
  * @see SetShaderValueTexture()
  */
@@ -886,7 +892,7 @@ void umkaSetShaderValueTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadShader.
+ * Umka bindings for UnloadShader().
  *
  * @see UnloadShader()
  */
@@ -896,7 +902,7 @@ void umkaUnloadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseRay.
+ * Umka bindings for GetMouseRay().
  *
  * @see GetMouseRay()
  */
@@ -910,7 +916,7 @@ void umkaGetMouseRay(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCameraMatrix.
+ * Umka bindings for GetCameraMatrix().
  *
  * @see GetCameraMatrix()
  */
@@ -923,7 +929,7 @@ void umkaGetCameraMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCameraMatrix2D.
+ * Umka bindings for GetCameraMatrix2D().
  *
  * @see GetCameraMatrix2D()
  */
@@ -936,7 +942,7 @@ void umkaGetCameraMatrix2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorldToScreen.
+ * Umka bindings for GetWorldToScreen().
  *
  * @see GetWorldToScreen()
  */
@@ -950,7 +956,7 @@ void umkaGetWorldToScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetScreenToWorld2D.
+ * Umka bindings for GetScreenToWorld2D().
  *
  * @see GetScreenToWorld2D()
  */
@@ -964,7 +970,7 @@ void umkaGetScreenToWorld2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorldToScreenEx.
+ * Umka bindings for GetWorldToScreenEx().
  *
  * @see GetWorldToScreenEx()
  */
@@ -980,7 +986,7 @@ void umkaGetWorldToScreenEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorldToScreen2D.
+ * Umka bindings for GetWorldToScreen2D().
  *
  * @see GetWorldToScreen2D()
  */
@@ -994,7 +1000,7 @@ void umkaGetWorldToScreen2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetTargetFPS.
+ * Umka bindings for SetTargetFPS().
  *
  * @see SetTargetFPS()
  */
@@ -1004,7 +1010,7 @@ void umkaSetTargetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFPS.
+ * Umka bindings for GetFPS().
  *
  * @see GetFPS()
  */
@@ -1013,16 +1019,16 @@ void umkaGetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFrameTime.
+ * Umka bindings for GetFrameTime().
  *
  * @see GetFrameTime()
  */
 void umkaGetFrameTime(UmkaStackSlot *params, UmkaStackSlot *result) {
-    result->real32Val = GetFrameTime();
+    result->realVal = GetFrameTime();
 }
 
 /**
- * Umka bindings for GetTime.
+ * Umka bindings for GetTime().
  *
  * @see GetTime()
  */
@@ -1031,7 +1037,7 @@ void umkaGetTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRandomValue.
+ * Umka bindings for GetRandomValue().
  *
  * @see GetRandomValue()
  */
@@ -1042,7 +1048,7 @@ void umkaGetRandomValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetRandomSeed.
+ * Umka bindings for SetRandomSeed().
  *
  * @see SetRandomSeed()
  */
@@ -1052,7 +1058,7 @@ void umkaSetRandomSeed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TakeScreenshot.
+ * Umka bindings for TakeScreenshot().
  *
  * @see TakeScreenshot()
  */
@@ -1062,7 +1068,7 @@ void umkaTakeScreenshot(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetConfigFlags.
+ * Umka bindings for SetConfigFlags().
  *
  * @see SetConfigFlags()
  */
@@ -1074,7 +1080,7 @@ void umkaSetConfigFlags(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function TraceLog() skipped
 
 /**
- * Umka bindings for SetTraceLogLevel.
+ * Umka bindings for SetTraceLogLevel().
  *
  * @see SetTraceLogLevel()
  */
@@ -1084,7 +1090,7 @@ void umkaSetTraceLogLevel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MemAlloc.
+ * Umka bindings for MemAlloc().
  *
  * @see MemAlloc()
  */
@@ -1094,7 +1100,7 @@ void umkaMemAlloc(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MemRealloc.
+ * Umka bindings for MemRealloc().
  *
  * @see MemRealloc()
  */
@@ -1105,7 +1111,7 @@ void umkaMemRealloc(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MemFree.
+ * Umka bindings for MemFree().
  *
  * @see MemFree()
  */
@@ -1115,7 +1121,7 @@ void umkaMemFree(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for OpenURL.
+ * Umka bindings for OpenURL().
  *
  * @see OpenURL()
  */
@@ -1135,7 +1141,7 @@ void umkaOpenURL(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function SetSaveFileTextCallback() skipped
 
 /**
- * Umka bindings for LoadFileData.
+ * Umka bindings for LoadFileData().
  *
  * @see LoadFileData()
  */
@@ -1146,7 +1152,7 @@ void umkaLoadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFileData.
+ * Umka bindings for UnloadFileData().
  *
  * @see UnloadFileData()
  */
@@ -1156,7 +1162,7 @@ void umkaUnloadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SaveFileData.
+ * Umka bindings for SaveFileData().
  *
  * @see SaveFileData()
  */
@@ -1168,7 +1174,7 @@ void umkaSaveFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportDataAsCode.
+ * Umka bindings for ExportDataAsCode().
  *
  * @see ExportDataAsCode()
  */
@@ -1180,7 +1186,7 @@ void umkaExportDataAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFileText.
+ * Umka bindings for LoadFileText().
  *
  * @see LoadFileText()
  */
@@ -1190,7 +1196,7 @@ void umkaLoadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFileText.
+ * Umka bindings for UnloadFileText().
  *
  * @see UnloadFileText()
  */
@@ -1200,7 +1206,7 @@ void umkaUnloadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SaveFileText.
+ * Umka bindings for SaveFileText().
  *
  * @see SaveFileText()
  */
@@ -1211,7 +1217,7 @@ void umkaSaveFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for FileExists.
+ * Umka bindings for FileExists().
  *
  * @see FileExists()
  */
@@ -1221,7 +1227,7 @@ void umkaFileExists(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DirectoryExists.
+ * Umka bindings for DirectoryExists().
  *
  * @see DirectoryExists()
  */
@@ -1231,7 +1237,7 @@ void umkaDirectoryExists(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsFileExtension.
+ * Umka bindings for IsFileExtension().
  *
  * @see IsFileExtension()
  */
@@ -1242,7 +1248,7 @@ void umkaIsFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileLength.
+ * Umka bindings for GetFileLength().
  *
  * @see GetFileLength()
  */
@@ -1252,7 +1258,7 @@ void umkaGetFileLength(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileExtension.
+ * Umka bindings for GetFileExtension().
  *
  * @see GetFileExtension()
  */
@@ -1262,7 +1268,7 @@ void umkaGetFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileName.
+ * Umka bindings for GetFileName().
  *
  * @see GetFileName()
  */
@@ -1272,7 +1278,7 @@ void umkaGetFileName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileNameWithoutExt.
+ * Umka bindings for GetFileNameWithoutExt().
  *
  * @see GetFileNameWithoutExt()
  */
@@ -1282,7 +1288,7 @@ void umkaGetFileNameWithoutExt(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetDirectoryPath.
+ * Umka bindings for GetDirectoryPath().
  *
  * @see GetDirectoryPath()
  */
@@ -1292,7 +1298,7 @@ void umkaGetDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetPrevDirectoryPath.
+ * Umka bindings for GetPrevDirectoryPath().
  *
  * @see GetPrevDirectoryPath()
  */
@@ -1302,7 +1308,7 @@ void umkaGetPrevDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorkingDirectory.
+ * Umka bindings for GetWorkingDirectory().
  *
  * @see GetWorkingDirectory()
  */
@@ -1311,7 +1317,7 @@ void umkaGetWorkingDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetApplicationDirectory.
+ * Umka bindings for GetApplicationDirectory().
  *
  * @see GetApplicationDirectory()
  */
@@ -1320,7 +1326,7 @@ void umkaGetApplicationDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ChangeDirectory.
+ * Umka bindings for ChangeDirectory().
  *
  * @see ChangeDirectory()
  */
@@ -1330,7 +1336,7 @@ void umkaChangeDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsPathFile.
+ * Umka bindings for IsPathFile().
  *
  * @see IsPathFile()
  */
@@ -1340,7 +1346,7 @@ void umkaIsPathFile(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadDirectoryFiles.
+ * Umka bindings for LoadDirectoryFiles().
  *
  * @see LoadDirectoryFiles()
  */
@@ -1353,7 +1359,7 @@ void umkaLoadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadDirectoryFilesEx.
+ * Umka bindings for LoadDirectoryFilesEx().
  *
  * @see LoadDirectoryFilesEx()
  */
@@ -1368,7 +1374,7 @@ void umkaLoadDirectoryFilesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadDirectoryFiles.
+ * Umka bindings for UnloadDirectoryFiles().
  *
  * @see UnloadDirectoryFiles()
  */
@@ -1378,7 +1384,7 @@ void umkaUnloadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsFileDropped.
+ * Umka bindings for IsFileDropped().
  *
  * @see IsFileDropped()
  */
@@ -1387,7 +1393,7 @@ void umkaIsFileDropped(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadDroppedFiles.
+ * Umka bindings for LoadDroppedFiles().
  *
  * @see LoadDroppedFiles()
  */
@@ -1398,7 +1404,7 @@ void umkaLoadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadDroppedFiles.
+ * Umka bindings for UnloadDroppedFiles().
  *
  * @see UnloadDroppedFiles()
  */
@@ -1408,7 +1414,7 @@ void umkaUnloadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileModTime.
+ * Umka bindings for GetFileModTime().
  *
  * @see GetFileModTime()
  */
@@ -1418,7 +1424,7 @@ void umkaGetFileModTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CompressData.
+ * Umka bindings for CompressData().
  *
  * @see CompressData()
  */
@@ -1430,7 +1436,7 @@ void umkaCompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DecompressData.
+ * Umka bindings for DecompressData().
  *
  * @see DecompressData()
  */
@@ -1442,7 +1448,7 @@ void umkaDecompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EncodeDataBase64.
+ * Umka bindings for EncodeDataBase64().
  *
  * @see EncodeDataBase64()
  */
@@ -1454,7 +1460,7 @@ void umkaEncodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DecodeDataBase64.
+ * Umka bindings for DecodeDataBase64().
  *
  * @see DecodeDataBase64()
  */
@@ -1465,7 +1471,7 @@ void umkaDecodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyPressed.
+ * Umka bindings for IsKeyPressed().
  *
  * @see IsKeyPressed()
  */
@@ -1475,7 +1481,7 @@ void umkaIsKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyDown.
+ * Umka bindings for IsKeyDown().
  *
  * @see IsKeyDown()
  */
@@ -1485,7 +1491,7 @@ void umkaIsKeyDown(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyReleased.
+ * Umka bindings for IsKeyReleased().
  *
  * @see IsKeyReleased()
  */
@@ -1495,7 +1501,7 @@ void umkaIsKeyReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyUp.
+ * Umka bindings for IsKeyUp().
  *
  * @see IsKeyUp()
  */
@@ -1505,7 +1511,7 @@ void umkaIsKeyUp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetExitKey.
+ * Umka bindings for SetExitKey().
  *
  * @see SetExitKey()
  */
@@ -1515,7 +1521,7 @@ void umkaSetExitKey(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetKeyPressed.
+ * Umka bindings for GetKeyPressed().
  *
  * @see GetKeyPressed()
  */
@@ -1524,7 +1530,7 @@ void umkaGetKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCharPressed.
+ * Umka bindings for GetCharPressed().
  *
  * @see GetCharPressed()
  */
@@ -1533,7 +1539,7 @@ void umkaGetCharPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadAvailable.
+ * Umka bindings for IsGamepadAvailable().
  *
  * @see IsGamepadAvailable()
  */
@@ -1543,7 +1549,7 @@ void umkaIsGamepadAvailable(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadName.
+ * Umka bindings for GetGamepadName().
  *
  * @see GetGamepadName()
  */
@@ -1553,7 +1559,7 @@ void umkaGetGamepadName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonPressed.
+ * Umka bindings for IsGamepadButtonPressed().
  *
  * @see IsGamepadButtonPressed()
  */
@@ -1564,7 +1570,7 @@ void umkaIsGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonDown.
+ * Umka bindings for IsGamepadButtonDown().
  *
  * @see IsGamepadButtonDown()
  */
@@ -1575,7 +1581,7 @@ void umkaIsGamepadButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonReleased.
+ * Umka bindings for IsGamepadButtonReleased().
  *
  * @see IsGamepadButtonReleased()
  */
@@ -1586,7 +1592,7 @@ void umkaIsGamepadButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonUp.
+ * Umka bindings for IsGamepadButtonUp().
  *
  * @see IsGamepadButtonUp()
  */
@@ -1597,7 +1603,7 @@ void umkaIsGamepadButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadButtonPressed.
+ * Umka bindings for GetGamepadButtonPressed().
  *
  * @see GetGamepadButtonPressed()
  */
@@ -1606,7 +1612,7 @@ void umkaGetGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadAxisCount.
+ * Umka bindings for GetGamepadAxisCount().
  *
  * @see GetGamepadAxisCount()
  */
@@ -1616,18 +1622,18 @@ void umkaGetGamepadAxisCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadAxisMovement.
+ * Umka bindings for GetGamepadAxisMovement().
  *
  * @see GetGamepadAxisMovement()
  */
 void umkaGetGamepadAxisMovement(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[1].intVal;
     int axis = params[0].intVal;
-    result->real32Val = GetGamepadAxisMovement(gamepad, axis);
+    result->realVal = GetGamepadAxisMovement(gamepad, axis);
 }
 
 /**
- * Umka bindings for SetGamepadMappings.
+ * Umka bindings for SetGamepadMappings().
  *
  * @see SetGamepadMappings()
  */
@@ -1637,7 +1643,7 @@ void umkaSetGamepadMappings(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonPressed.
+ * Umka bindings for IsMouseButtonPressed().
  *
  * @see IsMouseButtonPressed()
  */
@@ -1647,7 +1653,7 @@ void umkaIsMouseButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonDown.
+ * Umka bindings for IsMouseButtonDown().
  *
  * @see IsMouseButtonDown()
  */
@@ -1657,7 +1663,7 @@ void umkaIsMouseButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonReleased.
+ * Umka bindings for IsMouseButtonReleased().
  *
  * @see IsMouseButtonReleased()
  */
@@ -1667,7 +1673,7 @@ void umkaIsMouseButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonUp.
+ * Umka bindings for IsMouseButtonUp().
  *
  * @see IsMouseButtonUp()
  */
@@ -1677,7 +1683,7 @@ void umkaIsMouseButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseX.
+ * Umka bindings for GetMouseX().
  *
  * @see GetMouseX()
  */
@@ -1686,7 +1692,7 @@ void umkaGetMouseX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseY.
+ * Umka bindings for GetMouseY().
  *
  * @see GetMouseY()
  */
@@ -1695,7 +1701,7 @@ void umkaGetMouseY(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMousePosition.
+ * Umka bindings for GetMousePosition().
  *
  * @see GetMousePosition()
  */
@@ -1706,7 +1712,7 @@ void umkaGetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseDelta.
+ * Umka bindings for GetMouseDelta().
  *
  * @see GetMouseDelta()
  */
@@ -1717,7 +1723,7 @@ void umkaGetMouseDelta(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMousePosition.
+ * Umka bindings for SetMousePosition().
  *
  * @see SetMousePosition()
  */
@@ -1728,7 +1734,7 @@ void umkaSetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMouseOffset.
+ * Umka bindings for SetMouseOffset().
  *
  * @see SetMouseOffset()
  */
@@ -1739,7 +1745,7 @@ void umkaSetMouseOffset(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMouseScale.
+ * Umka bindings for SetMouseScale().
  *
  * @see SetMouseScale()
  */
@@ -1750,16 +1756,16 @@ void umkaSetMouseScale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseWheelMove.
+ * Umka bindings for GetMouseWheelMove().
  *
  * @see GetMouseWheelMove()
  */
 void umkaGetMouseWheelMove(UmkaStackSlot *params, UmkaStackSlot *result) {
-    result->real32Val = GetMouseWheelMove();
+    result->realVal = GetMouseWheelMove();
 }
 
 /**
- * Umka bindings for GetMouseWheelMoveV.
+ * Umka bindings for GetMouseWheelMoveV().
  *
  * @see GetMouseWheelMoveV()
  */
@@ -1770,7 +1776,7 @@ void umkaGetMouseWheelMoveV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMouseCursor.
+ * Umka bindings for SetMouseCursor().
  *
  * @see SetMouseCursor()
  */
@@ -1780,7 +1786,7 @@ void umkaSetMouseCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchX.
+ * Umka bindings for GetTouchX().
  *
  * @see GetTouchX()
  */
@@ -1789,7 +1795,7 @@ void umkaGetTouchX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchY.
+ * Umka bindings for GetTouchY().
  *
  * @see GetTouchY()
  */
@@ -1798,7 +1804,7 @@ void umkaGetTouchY(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchPosition.
+ * Umka bindings for GetTouchPosition().
  *
  * @see GetTouchPosition()
  */
@@ -1811,7 +1817,7 @@ void umkaGetTouchPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchPointId.
+ * Umka bindings for GetTouchPointId().
  *
  * @see GetTouchPointId()
  */
@@ -1821,7 +1827,7 @@ void umkaGetTouchPointId(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchPointCount.
+ * Umka bindings for GetTouchPointCount().
  *
  * @see GetTouchPointCount()
  */
@@ -1830,7 +1836,7 @@ void umkaGetTouchPointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetGesturesEnabled.
+ * Umka bindings for SetGesturesEnabled().
  *
  * @see SetGesturesEnabled()
  */
@@ -1840,7 +1846,7 @@ void umkaSetGesturesEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGestureDetected.
+ * Umka bindings for IsGestureDetected().
  *
  * @see IsGestureDetected()
  */
@@ -1850,7 +1856,7 @@ void umkaIsGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureDetected.
+ * Umka bindings for GetGestureDetected().
  *
  * @see GetGestureDetected()
  */
@@ -1859,16 +1865,16 @@ void umkaGetGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureHoldDuration.
+ * Umka bindings for GetGestureHoldDuration().
  *
  * @see GetGestureHoldDuration()
  */
 void umkaGetGestureHoldDuration(UmkaStackSlot *params, UmkaStackSlot *result) {
-    result->real32Val = GetGestureHoldDuration();
+    result->realVal = GetGestureHoldDuration();
 }
 
 /**
- * Umka bindings for GetGestureDragVector.
+ * Umka bindings for GetGestureDragVector().
  *
  * @see GetGestureDragVector()
  */
@@ -1879,16 +1885,16 @@ void umkaGetGestureDragVector(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureDragAngle.
+ * Umka bindings for GetGestureDragAngle().
  *
  * @see GetGestureDragAngle()
  */
 void umkaGetGestureDragAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
-    result->real32Val = GetGestureDragAngle();
+    result->realVal = GetGestureDragAngle();
 }
 
 /**
- * Umka bindings for GetGesturePinchVector.
+ * Umka bindings for GetGesturePinchVector().
  *
  * @see GetGesturePinchVector()
  */
@@ -1899,16 +1905,16 @@ void umkaGetGesturePinchVector(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGesturePinchAngle.
+ * Umka bindings for GetGesturePinchAngle().
  *
  * @see GetGesturePinchAngle()
  */
 void umkaGetGesturePinchAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
-    result->real32Val = GetGesturePinchAngle();
+    result->realVal = GetGesturePinchAngle();
 }
 
 /**
- * Umka bindings for SetCameraMode.
+ * Umka bindings for SetCameraMode().
  *
  * @see SetCameraMode()
  */
@@ -1919,7 +1925,7 @@ void umkaSetCameraMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateCamera.
+ * Umka bindings for UpdateCamera().
  *
  * @see UpdateCamera()
  */
@@ -1929,7 +1935,7 @@ void umkaUpdateCamera(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraPanControl.
+ * Umka bindings for SetCameraPanControl().
  *
  * @see SetCameraPanControl()
  */
@@ -1939,7 +1945,7 @@ void umkaSetCameraPanControl(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraAltControl.
+ * Umka bindings for SetCameraAltControl().
  *
  * @see SetCameraAltControl()
  */
@@ -1949,7 +1955,7 @@ void umkaSetCameraAltControl(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraSmoothZoomControl.
+ * Umka bindings for SetCameraSmoothZoomControl().
  *
  * @see SetCameraSmoothZoomControl()
  */
@@ -1959,7 +1965,7 @@ void umkaSetCameraSmoothZoomControl(UmkaStackSlot *params, UmkaStackSlot *result
 }
 
 /**
- * Umka bindings for SetCameraMoveControls.
+ * Umka bindings for SetCameraMoveControls().
  *
  * @see SetCameraMoveControls()
  */
@@ -1974,7 +1980,7 @@ void umkaSetCameraMoveControls(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShapesTexture.
+ * Umka bindings for SetShapesTexture().
  *
  * @see SetShapesTexture()
  */
@@ -1985,7 +1991,7 @@ void umkaSetShapesTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPixel.
+ * Umka bindings for DrawPixel().
  *
  * @see DrawPixel()
  */
@@ -1997,7 +2003,7 @@ void umkaDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPixelV.
+ * Umka bindings for DrawPixelV().
  *
  * @see DrawPixelV()
  */
@@ -2008,7 +2014,7 @@ void umkaDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLine.
+ * Umka bindings for DrawLine().
  *
  * @see DrawLine()
  */
@@ -2022,7 +2028,7 @@ void umkaDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineV.
+ * Umka bindings for DrawLineV().
  *
  * @see DrawLineV()
  */
@@ -2034,7 +2040,7 @@ void umkaDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineEx.
+ * Umka bindings for DrawLineEx().
  *
  * @see DrawLineEx()
  */
@@ -2047,7 +2053,7 @@ void umkaDrawLineEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineBezier.
+ * Umka bindings for DrawLineBezier().
  *
  * @see DrawLineBezier()
  */
@@ -2060,7 +2066,7 @@ void umkaDrawLineBezier(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineBezierQuad.
+ * Umka bindings for DrawLineBezierQuad().
  *
  * @see DrawLineBezierQuad()
  */
@@ -2074,7 +2080,7 @@ void umkaDrawLineBezierQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineBezierCubic.
+ * Umka bindings for DrawLineBezierCubic().
  *
  * @see DrawLineBezierCubic()
  */
@@ -2089,7 +2095,7 @@ void umkaDrawLineBezierCubic(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineStrip.
+ * Umka bindings for DrawLineStrip().
  *
  * @see DrawLineStrip()
  */
@@ -2101,7 +2107,7 @@ void umkaDrawLineStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircle.
+ * Umka bindings for DrawCircle().
  *
  * @see DrawCircle()
  */
@@ -2114,7 +2120,7 @@ void umkaDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleSector.
+ * Umka bindings for DrawCircleSector().
  *
  * @see DrawCircleSector()
  */
@@ -2129,7 +2135,7 @@ void umkaDrawCircleSector(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleSectorLines.
+ * Umka bindings for DrawCircleSectorLines().
  *
  * @see DrawCircleSectorLines()
  */
@@ -2144,7 +2150,7 @@ void umkaDrawCircleSectorLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleGradient.
+ * Umka bindings for DrawCircleGradient().
  *
  * @see DrawCircleGradient()
  */
@@ -2158,7 +2164,7 @@ void umkaDrawCircleGradient(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleV.
+ * Umka bindings for DrawCircleV().
  *
  * @see DrawCircleV()
  */
@@ -2170,7 +2176,7 @@ void umkaDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleLines.
+ * Umka bindings for DrawCircleLines().
  *
  * @see DrawCircleLines()
  */
@@ -2183,7 +2189,7 @@ void umkaDrawCircleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawEllipse.
+ * Umka bindings for DrawEllipse().
  *
  * @see DrawEllipse()
  */
@@ -2197,7 +2203,7 @@ void umkaDrawEllipse(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawEllipseLines.
+ * Umka bindings for DrawEllipseLines().
  *
  * @see DrawEllipseLines()
  */
@@ -2211,7 +2217,7 @@ void umkaDrawEllipseLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRing.
+ * Umka bindings for DrawRing().
  *
  * @see DrawRing()
  */
@@ -2227,7 +2233,7 @@ void umkaDrawRing(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRingLines.
+ * Umka bindings for DrawRingLines().
  *
  * @see DrawRingLines()
  */
@@ -2243,7 +2249,7 @@ void umkaDrawRingLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangle.
+ * Umka bindings for DrawRectangle().
  *
  * @see DrawRectangle()
  */
@@ -2257,7 +2263,7 @@ void umkaDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleV.
+ * Umka bindings for DrawRectangleV().
  *
  * @see DrawRectangleV()
  */
@@ -2269,7 +2275,7 @@ void umkaDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleRec.
+ * Umka bindings for DrawRectangleRec().
  *
  * @see DrawRectangleRec()
  */
@@ -2280,7 +2286,7 @@ void umkaDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectanglePro.
+ * Umka bindings for DrawRectanglePro().
  *
  * @see DrawRectanglePro()
  */
@@ -2293,7 +2299,7 @@ void umkaDrawRectanglePro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleGradientV.
+ * Umka bindings for DrawRectangleGradientV().
  *
  * @see DrawRectangleGradientV()
  */
@@ -2308,7 +2314,7 @@ void umkaDrawRectangleGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleGradientH.
+ * Umka bindings for DrawRectangleGradientH().
  *
  * @see DrawRectangleGradientH()
  */
@@ -2323,7 +2329,7 @@ void umkaDrawRectangleGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleGradientEx.
+ * Umka bindings for DrawRectangleGradientEx().
  *
  * @see DrawRectangleGradientEx()
  */
@@ -2337,7 +2343,7 @@ void umkaDrawRectangleGradientEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleLines.
+ * Umka bindings for DrawRectangleLines().
  *
  * @see DrawRectangleLines()
  */
@@ -2351,7 +2357,7 @@ void umkaDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleLinesEx.
+ * Umka bindings for DrawRectangleLinesEx().
  *
  * @see DrawRectangleLinesEx()
  */
@@ -2363,7 +2369,7 @@ void umkaDrawRectangleLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleRounded.
+ * Umka bindings for DrawRectangleRounded().
  *
  * @see DrawRectangleRounded()
  */
@@ -2376,7 +2382,7 @@ void umkaDrawRectangleRounded(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleRoundedLines.
+ * Umka bindings for DrawRectangleRoundedLines().
  *
  * @see DrawRectangleRoundedLines()
  */
@@ -2390,7 +2396,7 @@ void umkaDrawRectangleRoundedLines(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for DrawTriangle.
+ * Umka bindings for DrawTriangle().
  *
  * @see DrawTriangle()
  */
@@ -2403,7 +2409,7 @@ void umkaDrawTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleLines.
+ * Umka bindings for DrawTriangleLines().
  *
  * @see DrawTriangleLines()
  */
@@ -2416,7 +2422,7 @@ void umkaDrawTriangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleFan.
+ * Umka bindings for DrawTriangleFan().
  *
  * @see DrawTriangleFan()
  */
@@ -2428,7 +2434,7 @@ void umkaDrawTriangleFan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleStrip.
+ * Umka bindings for DrawTriangleStrip().
  *
  * @see DrawTriangleStrip()
  */
@@ -2440,7 +2446,7 @@ void umkaDrawTriangleStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPoly.
+ * Umka bindings for DrawPoly().
  *
  * @see DrawPoly()
  */
@@ -2454,7 +2460,7 @@ void umkaDrawPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPolyLines.
+ * Umka bindings for DrawPolyLines().
  *
  * @see DrawPolyLines()
  */
@@ -2468,7 +2474,7 @@ void umkaDrawPolyLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPolyLinesEx.
+ * Umka bindings for DrawPolyLinesEx().
  *
  * @see DrawPolyLinesEx()
  */
@@ -2483,7 +2489,7 @@ void umkaDrawPolyLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionRecs.
+ * Umka bindings for CheckCollisionRecs().
  *
  * @see CheckCollisionRecs()
  */
@@ -2494,7 +2500,7 @@ void umkaCheckCollisionRecs(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionCircles.
+ * Umka bindings for CheckCollisionCircles().
  *
  * @see CheckCollisionCircles()
  */
@@ -2507,7 +2513,7 @@ void umkaCheckCollisionCircles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionCircleRec.
+ * Umka bindings for CheckCollisionCircleRec().
  *
  * @see CheckCollisionCircleRec()
  */
@@ -2519,7 +2525,7 @@ void umkaCheckCollisionCircleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionPointRec.
+ * Umka bindings for CheckCollisionPointRec().
  *
  * @see CheckCollisionPointRec()
  */
@@ -2530,7 +2536,7 @@ void umkaCheckCollisionPointRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionPointCircle.
+ * Umka bindings for CheckCollisionPointCircle().
  *
  * @see CheckCollisionPointCircle()
  */
@@ -2542,7 +2548,7 @@ void umkaCheckCollisionPointCircle(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for CheckCollisionPointTriangle.
+ * Umka bindings for CheckCollisionPointTriangle().
  *
  * @see CheckCollisionPointTriangle()
  */
@@ -2555,7 +2561,7 @@ void umkaCheckCollisionPointTriangle(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for CheckCollisionLines.
+ * Umka bindings for CheckCollisionLines().
  *
  * @see CheckCollisionLines()
  */
@@ -2569,7 +2575,7 @@ void umkaCheckCollisionLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionPointLine.
+ * Umka bindings for CheckCollisionPointLine().
  *
  * @see CheckCollisionPointLine()
  */
@@ -2582,7 +2588,7 @@ void umkaCheckCollisionPointLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCollisionRec.
+ * Umka bindings for GetCollisionRec().
  *
  * @see GetCollisionRec()
  */
@@ -2596,7 +2602,7 @@ void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImage.
+ * Umka bindings for LoadImage().
  *
  * @see LoadImage()
  */
@@ -2609,7 +2615,7 @@ void umkaLoadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageRaw.
+ * Umka bindings for LoadImageRaw().
  *
  * @see LoadImageRaw()
  */
@@ -2626,7 +2632,7 @@ void umkaLoadImageRaw(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageAnim.
+ * Umka bindings for LoadImageAnim().
  *
  * @see LoadImageAnim()
  */
@@ -2640,7 +2646,7 @@ void umkaLoadImageAnim(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageFromMemory.
+ * Umka bindings for LoadImageFromMemory().
  *
  * @see LoadImageFromMemory()
  */
@@ -2655,7 +2661,7 @@ void umkaLoadImageFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageFromTexture.
+ * Umka bindings for LoadImageFromTexture().
  *
  * @see LoadImageFromTexture()
  */
@@ -2668,7 +2674,7 @@ void umkaLoadImageFromTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageFromScreen.
+ * Umka bindings for LoadImageFromScreen().
  *
  * @see LoadImageFromScreen()
  */
@@ -2679,7 +2685,7 @@ void umkaLoadImageFromScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadImage.
+ * Umka bindings for UnloadImage().
  *
  * @see UnloadImage()
  */
@@ -2689,7 +2695,7 @@ void umkaUnloadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportImage.
+ * Umka bindings for ExportImage().
  *
  * @see ExportImage()
  */
@@ -2700,7 +2706,7 @@ void umkaExportImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportImageAsCode.
+ * Umka bindings for ExportImageAsCode().
  *
  * @see ExportImageAsCode()
  */
@@ -2711,7 +2717,7 @@ void umkaExportImageAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageColor.
+ * Umka bindings for GenImageColor().
  *
  * @see GenImageColor()
  */
@@ -2726,7 +2732,7 @@ void umkaGenImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageGradientV.
+ * Umka bindings for GenImageGradientV().
  *
  * @see GenImageGradientV()
  */
@@ -2742,7 +2748,7 @@ void umkaGenImageGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageGradientH.
+ * Umka bindings for GenImageGradientH().
  *
  * @see GenImageGradientH()
  */
@@ -2758,7 +2764,7 @@ void umkaGenImageGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageGradientRadial.
+ * Umka bindings for GenImageGradientRadial().
  *
  * @see GenImageGradientRadial()
  */
@@ -2775,7 +2781,7 @@ void umkaGenImageGradientRadial(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageChecked.
+ * Umka bindings for GenImageChecked().
  *
  * @see GenImageChecked()
  */
@@ -2793,7 +2799,7 @@ void umkaGenImageChecked(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageWhiteNoise.
+ * Umka bindings for GenImageWhiteNoise().
  *
  * @see GenImageWhiteNoise()
  */
@@ -2808,7 +2814,7 @@ void umkaGenImageWhiteNoise(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageCellular.
+ * Umka bindings for GenImageCellular().
  *
  * @see GenImageCellular()
  */
@@ -2823,7 +2829,7 @@ void umkaGenImageCellular(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageCopy.
+ * Umka bindings for ImageCopy().
  *
  * @see ImageCopy()
  */
@@ -2836,7 +2842,7 @@ void umkaImageCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFromImage.
+ * Umka bindings for ImageFromImage().
  *
  * @see ImageFromImage()
  */
@@ -2850,7 +2856,7 @@ void umkaImageFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageText.
+ * Umka bindings for ImageText().
  *
  * @see ImageText()
  */
@@ -2865,7 +2871,7 @@ void umkaImageText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageTextEx.
+ * Umka bindings for ImageTextEx().
  *
  * @see ImageTextEx()
  */
@@ -2882,7 +2888,7 @@ void umkaImageTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFormat.
+ * Umka bindings for ImageFormat().
  *
  * @see ImageFormat()
  */
@@ -2893,7 +2899,7 @@ void umkaImageFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageToPOT.
+ * Umka bindings for ImageToPOT().
  *
  * @see ImageToPOT()
  */
@@ -2904,7 +2910,7 @@ void umkaImageToPOT(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageCrop.
+ * Umka bindings for ImageCrop().
  *
  * @see ImageCrop()
  */
@@ -2915,7 +2921,7 @@ void umkaImageCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaCrop.
+ * Umka bindings for ImageAlphaCrop().
  *
  * @see ImageAlphaCrop()
  */
@@ -2926,7 +2932,7 @@ void umkaImageAlphaCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaClear.
+ * Umka bindings for ImageAlphaClear().
  *
  * @see ImageAlphaClear()
  */
@@ -2938,7 +2944,7 @@ void umkaImageAlphaClear(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaMask.
+ * Umka bindings for ImageAlphaMask().
  *
  * @see ImageAlphaMask()
  */
@@ -2949,7 +2955,7 @@ void umkaImageAlphaMask(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaPremultiply.
+ * Umka bindings for ImageAlphaPremultiply().
  *
  * @see ImageAlphaPremultiply()
  */
@@ -2959,7 +2965,7 @@ void umkaImageAlphaPremultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageResize.
+ * Umka bindings for ImageResize().
  *
  * @see ImageResize()
  */
@@ -2971,7 +2977,7 @@ void umkaImageResize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageResizeNN.
+ * Umka bindings for ImageResizeNN().
  *
  * @see ImageResizeNN()
  */
@@ -2983,7 +2989,7 @@ void umkaImageResizeNN(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageResizeCanvas.
+ * Umka bindings for ImageResizeCanvas().
  *
  * @see ImageResizeCanvas()
  */
@@ -2998,7 +3004,7 @@ void umkaImageResizeCanvas(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageMipmaps.
+ * Umka bindings for ImageMipmaps().
  *
  * @see ImageMipmaps()
  */
@@ -3008,7 +3014,7 @@ void umkaImageMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDither.
+ * Umka bindings for ImageDither().
  *
  * @see ImageDither()
  */
@@ -3022,7 +3028,7 @@ void umkaImageDither(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFlipVertical.
+ * Umka bindings for ImageFlipVertical().
  *
  * @see ImageFlipVertical()
  */
@@ -3032,7 +3038,7 @@ void umkaImageFlipVertical(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFlipHorizontal.
+ * Umka bindings for ImageFlipHorizontal().
  *
  * @see ImageFlipHorizontal()
  */
@@ -3042,7 +3048,7 @@ void umkaImageFlipHorizontal(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageRotateCW.
+ * Umka bindings for ImageRotateCW().
  *
  * @see ImageRotateCW()
  */
@@ -3052,7 +3058,7 @@ void umkaImageRotateCW(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageRotateCCW.
+ * Umka bindings for ImageRotateCCW().
  *
  * @see ImageRotateCCW()
  */
@@ -3062,7 +3068,7 @@ void umkaImageRotateCCW(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorTint.
+ * Umka bindings for ImageColorTint().
  *
  * @see ImageColorTint()
  */
@@ -3073,7 +3079,7 @@ void umkaImageColorTint(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorInvert.
+ * Umka bindings for ImageColorInvert().
  *
  * @see ImageColorInvert()
  */
@@ -3083,7 +3089,7 @@ void umkaImageColorInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorGrayscale.
+ * Umka bindings for ImageColorGrayscale().
  *
  * @see ImageColorGrayscale()
  */
@@ -3093,7 +3099,7 @@ void umkaImageColorGrayscale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorContrast.
+ * Umka bindings for ImageColorContrast().
  *
  * @see ImageColorContrast()
  */
@@ -3104,7 +3110,7 @@ void umkaImageColorContrast(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorBrightness.
+ * Umka bindings for ImageColorBrightness().
  *
  * @see ImageColorBrightness()
  */
@@ -3115,7 +3121,7 @@ void umkaImageColorBrightness(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorReplace.
+ * Umka bindings for ImageColorReplace().
  *
  * @see ImageColorReplace()
  */
@@ -3127,7 +3133,7 @@ void umkaImageColorReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageColors.
+ * Umka bindings for LoadImageColors().
  *
  * @see LoadImageColors()
  */
@@ -3137,7 +3143,7 @@ void umkaLoadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImagePalette.
+ * Umka bindings for LoadImagePalette().
  *
  * @see LoadImagePalette()
  */
@@ -3149,7 +3155,7 @@ void umkaLoadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadImageColors.
+ * Umka bindings for UnloadImageColors().
  *
  * @see UnloadImageColors()
  */
@@ -3159,7 +3165,7 @@ void umkaUnloadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadImagePalette.
+ * Umka bindings for UnloadImagePalette().
  *
  * @see UnloadImagePalette()
  */
@@ -3169,7 +3175,7 @@ void umkaUnloadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetImageAlphaBorder.
+ * Umka bindings for GetImageAlphaBorder().
  *
  * @see GetImageAlphaBorder()
  */
@@ -3183,7 +3189,7 @@ void umkaGetImageAlphaBorder(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetImageColor.
+ * Umka bindings for GetImageColor().
  *
  * @see GetImageColor()
  */
@@ -3198,7 +3204,7 @@ void umkaGetImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageClearBackground.
+ * Umka bindings for ImageClearBackground().
  *
  * @see ImageClearBackground()
  */
@@ -3209,7 +3215,7 @@ void umkaImageClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawPixel.
+ * Umka bindings for ImageDrawPixel().
  *
  * @see ImageDrawPixel()
  */
@@ -3222,7 +3228,7 @@ void umkaImageDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawPixelV.
+ * Umka bindings for ImageDrawPixelV().
  *
  * @see ImageDrawPixelV()
  */
@@ -3234,7 +3240,7 @@ void umkaImageDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawLine.
+ * Umka bindings for ImageDrawLine().
  *
  * @see ImageDrawLine()
  */
@@ -3249,7 +3255,7 @@ void umkaImageDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawLineV.
+ * Umka bindings for ImageDrawLineV().
  *
  * @see ImageDrawLineV()
  */
@@ -3262,7 +3268,7 @@ void umkaImageDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawCircle.
+ * Umka bindings for ImageDrawCircle().
  *
  * @see ImageDrawCircle()
  */
@@ -3276,7 +3282,7 @@ void umkaImageDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawCircleV.
+ * Umka bindings for ImageDrawCircleV().
  *
  * @see ImageDrawCircleV()
  */
@@ -3289,7 +3295,7 @@ void umkaImageDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangle.
+ * Umka bindings for ImageDrawRectangle().
  *
  * @see ImageDrawRectangle()
  */
@@ -3304,7 +3310,7 @@ void umkaImageDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangleV.
+ * Umka bindings for ImageDrawRectangleV().
  *
  * @see ImageDrawRectangleV()
  */
@@ -3317,7 +3323,7 @@ void umkaImageDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangleRec.
+ * Umka bindings for ImageDrawRectangleRec().
  *
  * @see ImageDrawRectangleRec()
  */
@@ -3329,7 +3335,7 @@ void umkaImageDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangleLines.
+ * Umka bindings for ImageDrawRectangleLines().
  *
  * @see ImageDrawRectangleLines()
  */
@@ -3342,7 +3348,7 @@ void umkaImageDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDraw.
+ * Umka bindings for ImageDraw().
  *
  * @see ImageDraw()
  */
@@ -3356,7 +3362,7 @@ void umkaImageDraw(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawText.
+ * Umka bindings for ImageDrawText().
  *
  * @see ImageDrawText()
  */
@@ -3371,7 +3377,7 @@ void umkaImageDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawTextEx.
+ * Umka bindings for ImageDrawTextEx().
  *
  * @see ImageDrawTextEx()
  */
@@ -3387,7 +3393,7 @@ void umkaImageDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadTexture.
+ * Umka bindings for LoadTexture().
  *
  * @see LoadTexture()
  */
@@ -3400,7 +3406,7 @@ void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadTextureFromImage.
+ * Umka bindings for LoadTextureFromImage().
  *
  * @see LoadTextureFromImage()
  */
@@ -3413,7 +3419,7 @@ void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadTextureCubemap.
+ * Umka bindings for LoadTextureCubemap().
  *
  * @see LoadTextureCubemap()
  */
@@ -3427,7 +3433,7 @@ void umkaLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadRenderTexture.
+ * Umka bindings for LoadRenderTexture().
  *
  * @see LoadRenderTexture()
  */
@@ -3441,7 +3447,7 @@ void umkaLoadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadTexture.
+ * Umka bindings for UnloadTexture().
  *
  * @see UnloadTexture()
  */
@@ -3451,7 +3457,7 @@ void umkaUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadRenderTexture.
+ * Umka bindings for UnloadRenderTexture().
  *
  * @see UnloadRenderTexture()
  */
@@ -3461,7 +3467,7 @@ void umkaUnloadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateTexture.
+ * Umka bindings for UpdateTexture().
  *
  * @see UpdateTexture()
  */
@@ -3472,7 +3478,7 @@ void umkaUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateTextureRec.
+ * Umka bindings for UpdateTextureRec().
  *
  * @see UpdateTextureRec()
  */
@@ -3484,7 +3490,7 @@ void umkaUpdateTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenTextureMipmaps.
+ * Umka bindings for GenTextureMipmaps().
  *
  * @see GenTextureMipmaps()
  */
@@ -3494,7 +3500,7 @@ void umkaGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetTextureFilter.
+ * Umka bindings for SetTextureFilter().
  *
  * @see SetTextureFilter()
  */
@@ -3505,7 +3511,7 @@ void umkaSetTextureFilter(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetTextureWrap.
+ * Umka bindings for SetTextureWrap().
  *
  * @see SetTextureWrap()
  */
@@ -3516,7 +3522,7 @@ void umkaSetTextureWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTexture.
+ * Umka bindings for DrawTexture().
  *
  * @see DrawTexture()
  */
@@ -3529,7 +3535,7 @@ void umkaDrawTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureV.
+ * Umka bindings for DrawTextureV().
  *
  * @see DrawTextureV()
  */
@@ -3541,7 +3547,7 @@ void umkaDrawTextureV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureEx.
+ * Umka bindings for DrawTextureEx().
  *
  * @see DrawTextureEx()
  */
@@ -3555,7 +3561,7 @@ void umkaDrawTextureEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureRec.
+ * Umka bindings for DrawTextureRec().
  *
  * @see DrawTextureRec()
  */
@@ -3568,7 +3574,7 @@ void umkaDrawTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureQuad.
+ * Umka bindings for DrawTextureQuad().
  *
  * @see DrawTextureQuad()
  */
@@ -3582,7 +3588,7 @@ void umkaDrawTextureQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureTiled.
+ * Umka bindings for DrawTextureTiled().
  *
  * @see DrawTextureTiled()
  */
@@ -3598,7 +3604,7 @@ void umkaDrawTextureTiled(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTexturePro.
+ * Umka bindings for DrawTexturePro().
  *
  * @see DrawTexturePro()
  */
@@ -3613,7 +3619,7 @@ void umkaDrawTexturePro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureNPatch.
+ * Umka bindings for DrawTextureNPatch().
  *
  * @see DrawTextureNPatch()
  */
@@ -3628,7 +3634,7 @@ void umkaDrawTextureNPatch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTexturePoly.
+ * Umka bindings for DrawTexturePoly().
  *
  * @see DrawTexturePoly()
  */
@@ -3643,7 +3649,7 @@ void umkaDrawTexturePoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Fade.
+ * Umka bindings for Fade().
  *
  * @see Fade()
  */
@@ -3657,7 +3663,7 @@ void umkaFade(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorToInt.
+ * Umka bindings for ColorToInt().
  *
  * @see ColorToInt()
  */
@@ -3667,7 +3673,7 @@ void umkaColorToInt(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorNormalize.
+ * Umka bindings for ColorNormalize().
  *
  * @see ColorNormalize()
  */
@@ -3680,7 +3686,7 @@ void umkaColorNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorFromNormalized.
+ * Umka bindings for ColorFromNormalized().
  *
  * @see ColorFromNormalized()
  */
@@ -3693,7 +3699,7 @@ void umkaColorFromNormalized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorToHSV.
+ * Umka bindings for ColorToHSV().
  *
  * @see ColorToHSV()
  */
@@ -3706,7 +3712,7 @@ void umkaColorToHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorFromHSV.
+ * Umka bindings for ColorFromHSV().
  *
  * @see ColorFromHSV()
  */
@@ -3721,7 +3727,7 @@ void umkaColorFromHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorAlpha.
+ * Umka bindings for ColorAlpha().
  *
  * @see ColorAlpha()
  */
@@ -3735,7 +3741,7 @@ void umkaColorAlpha(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorAlphaBlend.
+ * Umka bindings for ColorAlphaBlend().
  *
  * @see ColorAlphaBlend()
  */
@@ -3750,7 +3756,7 @@ void umkaColorAlphaBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetColor.
+ * Umka bindings for GetColor().
  *
  * @see GetColor()
  */
@@ -3763,7 +3769,7 @@ void umkaGetColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetPixelColor.
+ * Umka bindings for GetPixelColor().
  *
  * @see GetPixelColor()
  */
@@ -3777,7 +3783,7 @@ void umkaGetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetPixelColor.
+ * Umka bindings for SetPixelColor().
  *
  * @see SetPixelColor()
  */
@@ -3789,7 +3795,7 @@ void umkaSetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetPixelDataSize.
+ * Umka bindings for GetPixelDataSize().
  *
  * @see GetPixelDataSize()
  */
@@ -3801,7 +3807,7 @@ void umkaGetPixelDataSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFontDefault.
+ * Umka bindings for GetFontDefault().
  *
  * @see GetFontDefault()
  */
@@ -3812,7 +3818,7 @@ void umkaGetFontDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFont.
+ * Umka bindings for LoadFont().
  *
  * @see LoadFont()
  */
@@ -3825,7 +3831,7 @@ void umkaLoadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFontEx.
+ * Umka bindings for LoadFontEx().
  *
  * @see LoadFontEx()
  */
@@ -3841,7 +3847,7 @@ void umkaLoadFontEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFontFromImage.
+ * Umka bindings for LoadFontFromImage().
  *
  * @see LoadFontFromImage()
  */
@@ -3856,7 +3862,7 @@ void umkaLoadFontFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFontFromMemory.
+ * Umka bindings for LoadFontFromMemory().
  *
  * @see LoadFontFromMemory()
  */
@@ -3876,7 +3882,7 @@ void umkaLoadFontFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function LoadFontData() skipped
 
 /**
- * Umka bindings for GenImageFontAtlas.
+ * Umka bindings for GenImageFontAtlas().
  *
  * @see GenImageFontAtlas()
  */
@@ -3894,7 +3900,7 @@ void umkaGenImageFontAtlas(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFontData.
+ * Umka bindings for UnloadFontData().
  *
  * @see UnloadFontData()
  */
@@ -3905,7 +3911,7 @@ void umkaUnloadFontData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFont.
+ * Umka bindings for UnloadFont().
  *
  * @see UnloadFont()
  */
@@ -3915,7 +3921,7 @@ void umkaUnloadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportFontAsCode.
+ * Umka bindings for ExportFontAsCode().
  *
  * @see ExportFontAsCode()
  */
@@ -3926,7 +3932,7 @@ void umkaExportFontAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawFPS.
+ * Umka bindings for DrawFPS().
  *
  * @see DrawFPS()
  */
@@ -3937,7 +3943,7 @@ void umkaDrawFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawText.
+ * Umka bindings for DrawText().
  *
  * @see DrawText()
  */
@@ -3951,7 +3957,7 @@ void umkaDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextEx.
+ * Umka bindings for DrawTextEx().
  *
  * @see DrawTextEx()
  */
@@ -3966,7 +3972,7 @@ void umkaDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextPro.
+ * Umka bindings for DrawTextPro().
  *
  * @see DrawTextPro()
  */
@@ -3983,7 +3989,7 @@ void umkaDrawTextPro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextCodepoint.
+ * Umka bindings for DrawTextCodepoint().
  *
  * @see DrawTextCodepoint()
  */
@@ -3997,7 +4003,7 @@ void umkaDrawTextCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextCodepoints.
+ * Umka bindings for DrawTextCodepoints().
  *
  * @see DrawTextCodepoints()
  */
@@ -4013,7 +4019,7 @@ void umkaDrawTextCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MeasureText.
+ * Umka bindings for MeasureText().
  *
  * @see MeasureText()
  */
@@ -4024,7 +4030,7 @@ void umkaMeasureText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MeasureTextEx.
+ * Umka bindings for MeasureTextEx().
  *
  * @see MeasureTextEx()
  */
@@ -4040,7 +4046,7 @@ void umkaMeasureTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGlyphIndex.
+ * Umka bindings for GetGlyphIndex().
  *
  * @see GetGlyphIndex()
  */
@@ -4051,7 +4057,7 @@ void umkaGetGlyphIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGlyphInfo.
+ * Umka bindings for GetGlyphInfo().
  *
  * @see GetGlyphInfo()
  */
@@ -4065,7 +4071,7 @@ void umkaGetGlyphInfo(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGlyphAtlasRec.
+ * Umka bindings for GetGlyphAtlasRec().
  *
  * @see GetGlyphAtlasRec()
  */
@@ -4079,7 +4085,7 @@ void umkaGetGlyphAtlasRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadCodepoints.
+ * Umka bindings for LoadCodepoints().
  *
  * @see LoadCodepoints()
  */
@@ -4090,7 +4096,7 @@ void umkaLoadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadCodepoints.
+ * Umka bindings for UnloadCodepoints().
  *
  * @see UnloadCodepoints()
  */
@@ -4100,7 +4106,7 @@ void umkaUnloadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCodepointCount.
+ * Umka bindings for GetCodepointCount().
  *
  * @see GetCodepointCount()
  */
@@ -4110,7 +4116,7 @@ void umkaGetCodepointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCodepoint.
+ * Umka bindings for GetCodepoint().
  *
  * @see GetCodepoint()
  */
@@ -4121,7 +4127,7 @@ void umkaGetCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CodepointToUTF8.
+ * Umka bindings for CodepointToUTF8().
  *
  * @see CodepointToUTF8()
  */
@@ -4132,7 +4138,7 @@ void umkaCodepointToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextCodepointsToUTF8.
+ * Umka bindings for TextCodepointsToUTF8().
  *
  * @see TextCodepointsToUTF8()
  */
@@ -4143,7 +4149,7 @@ void umkaTextCodepointsToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextCopy.
+ * Umka bindings for TextCopy().
  *
  * @see TextCopy()
  */
@@ -4154,7 +4160,7 @@ void umkaTextCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextIsEqual.
+ * Umka bindings for TextIsEqual().
  *
  * @see TextIsEqual()
  */
@@ -4165,7 +4171,7 @@ void umkaTextIsEqual(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextLength.
+ * Umka bindings for TextLength().
  *
  * @see TextLength()
  */
@@ -4177,7 +4183,7 @@ void umkaTextLength(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function TextFormat() skipped
 
 /**
- * Umka bindings for TextSubtext.
+ * Umka bindings for TextSubtext().
  *
  * @see TextSubtext()
  */
@@ -4189,7 +4195,7 @@ void umkaTextSubtext(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextReplace.
+ * Umka bindings for TextReplace().
  *
  * @see TextReplace()
  */
@@ -4201,7 +4207,7 @@ void umkaTextReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextInsert.
+ * Umka bindings for TextInsert().
  *
  * @see TextInsert()
  */
@@ -4213,7 +4219,7 @@ void umkaTextInsert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextJoin.
+ * Umka bindings for TextJoin().
  *
  * @see TextJoin()
  */
@@ -4225,7 +4231,7 @@ void umkaTextJoin(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextSplit.
+ * Umka bindings for TextSplit().
  *
  * @see TextSplit()
  */
@@ -4237,7 +4243,7 @@ void umkaTextSplit(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextAppend.
+ * Umka bindings for TextAppend().
  *
  * @see TextAppend()
  */
@@ -4249,7 +4255,7 @@ void umkaTextAppend(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextFindIndex.
+ * Umka bindings for TextFindIndex().
  *
  * @see TextFindIndex()
  */
@@ -4260,7 +4266,7 @@ void umkaTextFindIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToUpper.
+ * Umka bindings for TextToUpper().
  *
  * @see TextToUpper()
  */
@@ -4270,7 +4276,7 @@ void umkaTextToUpper(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToLower.
+ * Umka bindings for TextToLower().
  *
  * @see TextToLower()
  */
@@ -4280,7 +4286,7 @@ void umkaTextToLower(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToPascal.
+ * Umka bindings for TextToPascal().
  *
  * @see TextToPascal()
  */
@@ -4290,7 +4296,7 @@ void umkaTextToPascal(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToInteger.
+ * Umka bindings for TextToInteger().
  *
  * @see TextToInteger()
  */
@@ -4300,7 +4306,7 @@ void umkaTextToInteger(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLine3D.
+ * Umka bindings for DrawLine3D().
  *
  * @see DrawLine3D()
  */
@@ -4312,7 +4318,7 @@ void umkaDrawLine3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPoint3D.
+ * Umka bindings for DrawPoint3D().
  *
  * @see DrawPoint3D()
  */
@@ -4323,7 +4329,7 @@ void umkaDrawPoint3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircle3D.
+ * Umka bindings for DrawCircle3D().
  *
  * @see DrawCircle3D()
  */
@@ -4337,7 +4343,7 @@ void umkaDrawCircle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangle3D.
+ * Umka bindings for DrawTriangle3D().
  *
  * @see DrawTriangle3D()
  */
@@ -4350,7 +4356,7 @@ void umkaDrawTriangle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleStrip3D.
+ * Umka bindings for DrawTriangleStrip3D().
  *
  * @see DrawTriangleStrip3D()
  */
@@ -4362,7 +4368,7 @@ void umkaDrawTriangleStrip3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCube.
+ * Umka bindings for DrawCube().
  *
  * @see DrawCube()
  */
@@ -4376,7 +4382,7 @@ void umkaDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeV.
+ * Umka bindings for DrawCubeV().
  *
  * @see DrawCubeV()
  */
@@ -4388,7 +4394,7 @@ void umkaDrawCubeV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeWires.
+ * Umka bindings for DrawCubeWires().
  *
  * @see DrawCubeWires()
  */
@@ -4402,7 +4408,7 @@ void umkaDrawCubeWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeWiresV.
+ * Umka bindings for DrawCubeWiresV().
  *
  * @see DrawCubeWiresV()
  */
@@ -4414,7 +4420,7 @@ void umkaDrawCubeWiresV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeTexture.
+ * Umka bindings for DrawCubeTexture().
  *
  * @see DrawCubeTexture()
  */
@@ -4429,7 +4435,7 @@ void umkaDrawCubeTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeTextureRec.
+ * Umka bindings for DrawCubeTextureRec().
  *
  * @see DrawCubeTextureRec()
  */
@@ -4445,7 +4451,7 @@ void umkaDrawCubeTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawSphere.
+ * Umka bindings for DrawSphere().
  *
  * @see DrawSphere()
  */
@@ -4457,7 +4463,7 @@ void umkaDrawSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawSphereEx.
+ * Umka bindings for DrawSphereEx().
  *
  * @see DrawSphereEx()
  */
@@ -4471,7 +4477,7 @@ void umkaDrawSphereEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawSphereWires.
+ * Umka bindings for DrawSphereWires().
  *
  * @see DrawSphereWires()
  */
@@ -4485,7 +4491,7 @@ void umkaDrawSphereWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinder.
+ * Umka bindings for DrawCylinder().
  *
  * @see DrawCylinder()
  */
@@ -4500,7 +4506,7 @@ void umkaDrawCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinderEx.
+ * Umka bindings for DrawCylinderEx().
  *
  * @see DrawCylinderEx()
  */
@@ -4515,7 +4521,7 @@ void umkaDrawCylinderEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinderWires.
+ * Umka bindings for DrawCylinderWires().
  *
  * @see DrawCylinderWires()
  */
@@ -4530,7 +4536,7 @@ void umkaDrawCylinderWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinderWiresEx.
+ * Umka bindings for DrawCylinderWiresEx().
  *
  * @see DrawCylinderWiresEx()
  */
@@ -4545,7 +4551,7 @@ void umkaDrawCylinderWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPlane.
+ * Umka bindings for DrawPlane().
  *
  * @see DrawPlane()
  */
@@ -4557,7 +4563,7 @@ void umkaDrawPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRay.
+ * Umka bindings for DrawRay().
  *
  * @see DrawRay()
  */
@@ -4568,7 +4574,7 @@ void umkaDrawRay(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawGrid.
+ * Umka bindings for DrawGrid().
  *
  * @see DrawGrid()
  */
@@ -4579,7 +4585,7 @@ void umkaDrawGrid(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadModel.
+ * Umka bindings for LoadModel().
  *
  * @see LoadModel()
  */
@@ -4592,7 +4598,7 @@ void umkaLoadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadModelFromMesh.
+ * Umka bindings for LoadModelFromMesh().
  *
  * @see LoadModelFromMesh()
  */
@@ -4605,7 +4611,7 @@ void umkaLoadModelFromMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModel.
+ * Umka bindings for UnloadModel().
  *
  * @see UnloadModel()
  */
@@ -4615,7 +4621,7 @@ void umkaUnloadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModelKeepMeshes.
+ * Umka bindings for UnloadModelKeepMeshes().
  *
  * @see UnloadModelKeepMeshes()
  */
@@ -4625,7 +4631,7 @@ void umkaUnloadModelKeepMeshes(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetModelBoundingBox.
+ * Umka bindings for GetModelBoundingBox().
  *
  * @see GetModelBoundingBox()
  */
@@ -4638,7 +4644,7 @@ void umkaGetModelBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModel.
+ * Umka bindings for DrawModel().
  *
  * @see DrawModel()
  */
@@ -4651,7 +4657,7 @@ void umkaDrawModel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModelEx.
+ * Umka bindings for DrawModelEx().
  *
  * @see DrawModelEx()
  */
@@ -4666,7 +4672,7 @@ void umkaDrawModelEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModelWires.
+ * Umka bindings for DrawModelWires().
  *
  * @see DrawModelWires()
  */
@@ -4679,7 +4685,7 @@ void umkaDrawModelWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModelWiresEx.
+ * Umka bindings for DrawModelWiresEx().
  *
  * @see DrawModelWiresEx()
  */
@@ -4694,7 +4700,7 @@ void umkaDrawModelWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBoundingBox.
+ * Umka bindings for DrawBoundingBox().
  *
  * @see DrawBoundingBox()
  */
@@ -4705,7 +4711,7 @@ void umkaDrawBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBillboard.
+ * Umka bindings for DrawBillboard().
  *
  * @see DrawBillboard()
  */
@@ -4719,7 +4725,7 @@ void umkaDrawBillboard(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBillboardRec.
+ * Umka bindings for DrawBillboardRec().
  *
  * @see DrawBillboardRec()
  */
@@ -4734,7 +4740,7 @@ void umkaDrawBillboardRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBillboardPro.
+ * Umka bindings for DrawBillboardPro().
  *
  * @see DrawBillboardPro()
  */
@@ -4752,7 +4758,7 @@ void umkaDrawBillboardPro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UploadMesh.
+ * Umka bindings for UploadMesh().
  *
  * @see UploadMesh()
  */
@@ -4763,7 +4769,7 @@ void umkaUploadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateMeshBuffer.
+ * Umka bindings for UpdateMeshBuffer().
  *
  * @see UpdateMeshBuffer()
  */
@@ -4777,7 +4783,7 @@ void umkaUpdateMeshBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadMesh.
+ * Umka bindings for UnloadMesh().
  *
  * @see UnloadMesh()
  */
@@ -4787,7 +4793,7 @@ void umkaUnloadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawMesh.
+ * Umka bindings for DrawMesh().
  *
  * @see DrawMesh()
  */
@@ -4799,7 +4805,7 @@ void umkaDrawMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawMeshInstanced.
+ * Umka bindings for DrawMeshInstanced().
  *
  * @see DrawMeshInstanced()
  */
@@ -4812,7 +4818,7 @@ void umkaDrawMeshInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportMesh.
+ * Umka bindings for ExportMesh().
  *
  * @see ExportMesh()
  */
@@ -4823,7 +4829,7 @@ void umkaExportMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMeshBoundingBox.
+ * Umka bindings for GetMeshBoundingBox().
  *
  * @see GetMeshBoundingBox()
  */
@@ -4836,7 +4842,7 @@ void umkaGetMeshBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshTangents.
+ * Umka bindings for GenMeshTangents().
  *
  * @see GenMeshTangents()
  */
@@ -4846,7 +4852,7 @@ void umkaGenMeshTangents(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshPoly.
+ * Umka bindings for GenMeshPoly().
  *
  * @see GenMeshPoly()
  */
@@ -4860,7 +4866,7 @@ void umkaGenMeshPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshPlane.
+ * Umka bindings for GenMeshPlane().
  *
  * @see GenMeshPlane()
  */
@@ -4876,7 +4882,7 @@ void umkaGenMeshPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCube.
+ * Umka bindings for GenMeshCube().
  *
  * @see GenMeshCube()
  */
@@ -4891,7 +4897,7 @@ void umkaGenMeshCube(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshSphere.
+ * Umka bindings for GenMeshSphere().
  *
  * @see GenMeshSphere()
  */
@@ -4906,7 +4912,7 @@ void umkaGenMeshSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshHemiSphere.
+ * Umka bindings for GenMeshHemiSphere().
  *
  * @see GenMeshHemiSphere()
  */
@@ -4921,7 +4927,7 @@ void umkaGenMeshHemiSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCylinder.
+ * Umka bindings for GenMeshCylinder().
  *
  * @see GenMeshCylinder()
  */
@@ -4936,7 +4942,7 @@ void umkaGenMeshCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCone.
+ * Umka bindings for GenMeshCone().
  *
  * @see GenMeshCone()
  */
@@ -4951,7 +4957,7 @@ void umkaGenMeshCone(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshTorus.
+ * Umka bindings for GenMeshTorus().
  *
  * @see GenMeshTorus()
  */
@@ -4967,7 +4973,7 @@ void umkaGenMeshTorus(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshKnot.
+ * Umka bindings for GenMeshKnot().
  *
  * @see GenMeshKnot()
  */
@@ -4983,7 +4989,7 @@ void umkaGenMeshKnot(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshHeightmap.
+ * Umka bindings for GenMeshHeightmap().
  *
  * @see GenMeshHeightmap()
  */
@@ -4997,7 +5003,7 @@ void umkaGenMeshHeightmap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCubicmap.
+ * Umka bindings for GenMeshCubicmap().
  *
  * @see GenMeshCubicmap()
  */
@@ -5011,7 +5017,7 @@ void umkaGenMeshCubicmap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMaterials.
+ * Umka bindings for LoadMaterials().
  *
  * @see LoadMaterials()
  */
@@ -5022,7 +5028,7 @@ void umkaLoadMaterials(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMaterialDefault.
+ * Umka bindings for LoadMaterialDefault().
  *
  * @see LoadMaterialDefault()
  */
@@ -5033,7 +5039,7 @@ void umkaLoadMaterialDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadMaterial.
+ * Umka bindings for UnloadMaterial().
  *
  * @see UnloadMaterial()
  */
@@ -5043,7 +5049,7 @@ void umkaUnloadMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMaterialTexture.
+ * Umka bindings for SetMaterialTexture().
  *
  * @see SetMaterialTexture()
  */
@@ -5055,7 +5061,7 @@ void umkaSetMaterialTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetModelMeshMaterial.
+ * Umka bindings for SetModelMeshMaterial().
  *
  * @see SetModelMeshMaterial()
  */
@@ -5067,7 +5073,7 @@ void umkaSetModelMeshMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadModelAnimations.
+ * Umka bindings for LoadModelAnimations().
  *
  * @see LoadModelAnimations()
  */
@@ -5078,7 +5084,7 @@ void umkaLoadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateModelAnimation.
+ * Umka bindings for UpdateModelAnimation().
  *
  * @see UpdateModelAnimation()
  */
@@ -5090,7 +5096,7 @@ void umkaUpdateModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModelAnimation.
+ * Umka bindings for UnloadModelAnimation().
  *
  * @see UnloadModelAnimation()
  */
@@ -5100,7 +5106,7 @@ void umkaUnloadModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModelAnimations.
+ * Umka bindings for UnloadModelAnimations().
  *
  * @see UnloadModelAnimations()
  */
@@ -5111,7 +5117,7 @@ void umkaUnloadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsModelAnimationValid.
+ * Umka bindings for IsModelAnimationValid().
  *
  * @see IsModelAnimationValid()
  */
@@ -5122,7 +5128,7 @@ void umkaIsModelAnimationValid(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionSpheres.
+ * Umka bindings for CheckCollisionSpheres().
  *
  * @see CheckCollisionSpheres()
  */
@@ -5135,7 +5141,7 @@ void umkaCheckCollisionSpheres(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionBoxes.
+ * Umka bindings for CheckCollisionBoxes().
  *
  * @see CheckCollisionBoxes()
  */
@@ -5146,7 +5152,7 @@ void umkaCheckCollisionBoxes(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionBoxSphere.
+ * Umka bindings for CheckCollisionBoxSphere().
  *
  * @see CheckCollisionBoxSphere()
  */
@@ -5158,7 +5164,7 @@ void umkaCheckCollisionBoxSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionSphere.
+ * Umka bindings for GetRayCollisionSphere().
  *
  * @see GetRayCollisionSphere()
  */
@@ -5173,7 +5179,7 @@ void umkaGetRayCollisionSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionBox.
+ * Umka bindings for GetRayCollisionBox().
  *
  * @see GetRayCollisionBox()
  */
@@ -5187,7 +5193,7 @@ void umkaGetRayCollisionBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionMesh.
+ * Umka bindings for GetRayCollisionMesh().
  *
  * @see GetRayCollisionMesh()
  */
@@ -5202,7 +5208,7 @@ void umkaGetRayCollisionMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionTriangle.
+ * Umka bindings for GetRayCollisionTriangle().
  *
  * @see GetRayCollisionTriangle()
  */
@@ -5218,7 +5224,7 @@ void umkaGetRayCollisionTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionQuad.
+ * Umka bindings for GetRayCollisionQuad().
  *
  * @see GetRayCollisionQuad()
  */
@@ -5235,7 +5241,7 @@ void umkaGetRayCollisionQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for InitAudioDevice.
+ * Umka bindings for InitAudioDevice().
  *
  * @see InitAudioDevice()
  */
@@ -5244,7 +5250,7 @@ void umkaInitAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CloseAudioDevice.
+ * Umka bindings for CloseAudioDevice().
  *
  * @see CloseAudioDevice()
  */
@@ -5253,7 +5259,7 @@ void umkaCloseAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsAudioDeviceReady.
+ * Umka bindings for IsAudioDeviceReady().
  *
  * @see IsAudioDeviceReady()
  */
@@ -5262,7 +5268,7 @@ void umkaIsAudioDeviceReady(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMasterVolume.
+ * Umka bindings for SetMasterVolume().
  *
  * @see SetMasterVolume()
  */
@@ -5272,7 +5278,7 @@ void umkaSetMasterVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadWave.
+ * Umka bindings for LoadWave().
  *
  * @see LoadWave()
  */
@@ -5285,7 +5291,7 @@ void umkaLoadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadWaveFromMemory.
+ * Umka bindings for LoadWaveFromMemory().
  *
  * @see LoadWaveFromMemory()
  */
@@ -5300,7 +5306,7 @@ void umkaLoadWaveFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadSound.
+ * Umka bindings for LoadSound().
  *
  * @see LoadSound()
  */
@@ -5313,7 +5319,7 @@ void umkaLoadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadSoundFromWave.
+ * Umka bindings for LoadSoundFromWave().
  *
  * @see LoadSoundFromWave()
  */
@@ -5326,7 +5332,7 @@ void umkaLoadSoundFromWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateSound.
+ * Umka bindings for UpdateSound().
  *
  * @see UpdateSound()
  */
@@ -5338,7 +5344,7 @@ void umkaUpdateSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadWave.
+ * Umka bindings for UnloadWave().
  *
  * @see UnloadWave()
  */
@@ -5348,7 +5354,7 @@ void umkaUnloadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadSound.
+ * Umka bindings for UnloadSound().
  *
  * @see UnloadSound()
  */
@@ -5358,7 +5364,7 @@ void umkaUnloadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportWave.
+ * Umka bindings for ExportWave().
  *
  * @see ExportWave()
  */
@@ -5369,7 +5375,7 @@ void umkaExportWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportWaveAsCode.
+ * Umka bindings for ExportWaveAsCode().
  *
  * @see ExportWaveAsCode()
  */
@@ -5380,7 +5386,7 @@ void umkaExportWaveAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlaySound.
+ * Umka bindings for PlaySound().
  *
  * @see PlaySound()
  */
@@ -5390,7 +5396,7 @@ void umkaPlaySound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopSound.
+ * Umka bindings for StopSound().
  *
  * @see StopSound()
  */
@@ -5400,7 +5406,7 @@ void umkaStopSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PauseSound.
+ * Umka bindings for PauseSound().
  *
  * @see PauseSound()
  */
@@ -5410,7 +5416,7 @@ void umkaPauseSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ResumeSound.
+ * Umka bindings for ResumeSound().
  *
  * @see ResumeSound()
  */
@@ -5420,7 +5426,7 @@ void umkaResumeSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlaySoundMulti.
+ * Umka bindings for PlaySoundMulti().
  *
  * @see PlaySoundMulti()
  */
@@ -5430,7 +5436,7 @@ void umkaPlaySoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopSoundMulti.
+ * Umka bindings for StopSoundMulti().
  *
  * @see StopSoundMulti()
  */
@@ -5439,7 +5445,7 @@ void umkaStopSoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetSoundsPlaying.
+ * Umka bindings for GetSoundsPlaying().
  *
  * @see GetSoundsPlaying()
  */
@@ -5448,7 +5454,7 @@ void umkaGetSoundsPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsSoundPlaying.
+ * Umka bindings for IsSoundPlaying().
  *
  * @see IsSoundPlaying()
  */
@@ -5458,7 +5464,7 @@ void umkaIsSoundPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetSoundVolume.
+ * Umka bindings for SetSoundVolume().
  *
  * @see SetSoundVolume()
  */
@@ -5469,7 +5475,7 @@ void umkaSetSoundVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetSoundPitch.
+ * Umka bindings for SetSoundPitch().
  *
  * @see SetSoundPitch()
  */
@@ -5480,7 +5486,7 @@ void umkaSetSoundPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetSoundPan.
+ * Umka bindings for SetSoundPan().
  *
  * @see SetSoundPan()
  */
@@ -5491,7 +5497,7 @@ void umkaSetSoundPan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaveCopy.
+ * Umka bindings for WaveCopy().
  *
  * @see WaveCopy()
  */
@@ -5504,7 +5510,7 @@ void umkaWaveCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaveCrop.
+ * Umka bindings for WaveCrop().
  *
  * @see WaveCrop()
  */
@@ -5516,7 +5522,7 @@ void umkaWaveCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaveFormat.
+ * Umka bindings for WaveFormat().
  *
  * @see WaveFormat()
  */
@@ -5529,7 +5535,7 @@ void umkaWaveFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadWaveSamples.
+ * Umka bindings for LoadWaveSamples().
  *
  * @see LoadWaveSamples()
  */
@@ -5539,7 +5545,7 @@ void umkaLoadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadWaveSamples.
+ * Umka bindings for UnloadWaveSamples().
  *
  * @see UnloadWaveSamples()
  */
@@ -5549,7 +5555,7 @@ void umkaUnloadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMusicStream.
+ * Umka bindings for LoadMusicStream().
  *
  * @see LoadMusicStream()
  */
@@ -5562,7 +5568,7 @@ void umkaLoadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMusicStreamFromMemory.
+ * Umka bindings for LoadMusicStreamFromMemory().
  *
  * @see LoadMusicStreamFromMemory()
  */
@@ -5577,7 +5583,7 @@ void umkaLoadMusicStreamFromMemory(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for UnloadMusicStream.
+ * Umka bindings for UnloadMusicStream().
  *
  * @see UnloadMusicStream()
  */
@@ -5587,7 +5593,7 @@ void umkaUnloadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlayMusicStream.
+ * Umka bindings for PlayMusicStream().
  *
  * @see PlayMusicStream()
  */
@@ -5597,7 +5603,7 @@ void umkaPlayMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMusicStreamPlaying.
+ * Umka bindings for IsMusicStreamPlaying().
  *
  * @see IsMusicStreamPlaying()
  */
@@ -5607,7 +5613,7 @@ void umkaIsMusicStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateMusicStream.
+ * Umka bindings for UpdateMusicStream().
  *
  * @see UpdateMusicStream()
  */
@@ -5617,7 +5623,7 @@ void umkaUpdateMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopMusicStream.
+ * Umka bindings for StopMusicStream().
  *
  * @see StopMusicStream()
  */
@@ -5627,7 +5633,7 @@ void umkaStopMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PauseMusicStream.
+ * Umka bindings for PauseMusicStream().
  *
  * @see PauseMusicStream()
  */
@@ -5637,7 +5643,7 @@ void umkaPauseMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ResumeMusicStream.
+ * Umka bindings for ResumeMusicStream().
  *
  * @see ResumeMusicStream()
  */
@@ -5647,7 +5653,7 @@ void umkaResumeMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SeekMusicStream.
+ * Umka bindings for SeekMusicStream().
  *
  * @see SeekMusicStream()
  */
@@ -5658,7 +5664,7 @@ void umkaSeekMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMusicVolume.
+ * Umka bindings for SetMusicVolume().
  *
  * @see SetMusicVolume()
  */
@@ -5669,7 +5675,7 @@ void umkaSetMusicVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMusicPitch.
+ * Umka bindings for SetMusicPitch().
  *
  * @see SetMusicPitch()
  */
@@ -5680,7 +5686,7 @@ void umkaSetMusicPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMusicPan.
+ * Umka bindings for SetMusicPan().
  *
  * @see SetMusicPan()
  */
@@ -5691,27 +5697,27 @@ void umkaSetMusicPan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMusicTimeLength.
+ * Umka bindings for GetMusicTimeLength().
  *
  * @see GetMusicTimeLength()
  */
 void umkaGetMusicTimeLength(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
-    result->real32Val = GetMusicTimeLength(*music);
+    result->realVal = GetMusicTimeLength(*music);
 }
 
 /**
- * Umka bindings for GetMusicTimePlayed.
+ * Umka bindings for GetMusicTimePlayed().
  *
  * @see GetMusicTimePlayed()
  */
 void umkaGetMusicTimePlayed(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
-    result->real32Val = GetMusicTimePlayed(*music);
+    result->realVal = GetMusicTimePlayed(*music);
 }
 
 /**
- * Umka bindings for LoadAudioStream.
+ * Umka bindings for LoadAudioStream().
  *
  * @see LoadAudioStream()
  */
@@ -5726,7 +5732,7 @@ void umkaLoadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadAudioStream.
+ * Umka bindings for UnloadAudioStream().
  *
  * @see UnloadAudioStream()
  */
@@ -5736,7 +5742,7 @@ void umkaUnloadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateAudioStream.
+ * Umka bindings for UpdateAudioStream().
  *
  * @see UpdateAudioStream()
  */
@@ -5748,7 +5754,7 @@ void umkaUpdateAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsAudioStreamProcessed.
+ * Umka bindings for IsAudioStreamProcessed().
  *
  * @see IsAudioStreamProcessed()
  */
@@ -5758,7 +5764,7 @@ void umkaIsAudioStreamProcessed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlayAudioStream.
+ * Umka bindings for PlayAudioStream().
  *
  * @see PlayAudioStream()
  */
@@ -5768,7 +5774,7 @@ void umkaPlayAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PauseAudioStream.
+ * Umka bindings for PauseAudioStream().
  *
  * @see PauseAudioStream()
  */
@@ -5778,7 +5784,7 @@ void umkaPauseAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ResumeAudioStream.
+ * Umka bindings for ResumeAudioStream().
  *
  * @see ResumeAudioStream()
  */
@@ -5788,7 +5794,7 @@ void umkaResumeAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsAudioStreamPlaying.
+ * Umka bindings for IsAudioStreamPlaying().
  *
  * @see IsAudioStreamPlaying()
  */
@@ -5798,7 +5804,7 @@ void umkaIsAudioStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopAudioStream.
+ * Umka bindings for StopAudioStream().
  *
  * @see StopAudioStream()
  */
@@ -5808,7 +5814,7 @@ void umkaStopAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamVolume.
+ * Umka bindings for SetAudioStreamVolume().
  *
  * @see SetAudioStreamVolume()
  */
@@ -5819,7 +5825,7 @@ void umkaSetAudioStreamVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamPitch.
+ * Umka bindings for SetAudioStreamPitch().
  *
  * @see SetAudioStreamPitch()
  */
@@ -5830,7 +5836,7 @@ void umkaSetAudioStreamPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamPan.
+ * Umka bindings for SetAudioStreamPan().
  *
  * @see SetAudioStreamPan()
  */
@@ -5841,7 +5847,7 @@ void umkaSetAudioStreamPan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamBufferSizeDefault.
+ * Umka bindings for SetAudioStreamBufferSizeDefault().
  *
  * @see SetAudioStreamBufferSizeDefault()
  */
@@ -5857,7 +5863,7 @@ void umkaSetAudioStreamBufferSizeDefault(UmkaStackSlot *params, UmkaStackSlot *r
 // Function DetachAudioStreamProcessor() skipped
 
 /**
- * Umka bindings for Clamp.
+ * Umka bindings for Clamp().
  *
  * @see Clamp()
  */
@@ -5865,11 +5871,11 @@ void umkaClamp(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[2].real32Val;
     float min = params[1].real32Val;
     float max = params[0].real32Val;
-    result->real32Val = Clamp(value, min, max);
+    result->realVal = Clamp(value, min, max);
 }
 
 /**
- * Umka bindings for Lerp.
+ * Umka bindings for Lerp().
  *
  * @see Lerp()
  */
@@ -5877,11 +5883,11 @@ void umkaLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     float start = params[2].real32Val;
     float end = params[1].real32Val;
     float amount = params[0].real32Val;
-    result->real32Val = Lerp(start, end, amount);
+    result->realVal = Lerp(start, end, amount);
 }
 
 /**
- * Umka bindings for Normalize.
+ * Umka bindings for Normalize().
  *
  * @see Normalize()
  */
@@ -5889,11 +5895,11 @@ void umkaNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[2].real32Val;
     float start = params[1].real32Val;
     float end = params[0].real32Val;
-    result->real32Val = Normalize(value, start, end);
+    result->realVal = Normalize(value, start, end);
 }
 
 /**
- * Umka bindings for Remap.
+ * Umka bindings for Remap().
  *
  * @see Remap()
  */
@@ -5903,11 +5909,11 @@ void umkaRemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     float inputEnd = params[2].real32Val;
     float outputStart = params[1].real32Val;
     float outputEnd = params[0].real32Val;
-    result->real32Val = Remap(value, inputStart, inputEnd, outputStart, outputEnd);
+    result->realVal = Remap(value, inputStart, inputEnd, outputStart, outputEnd);
 }
 
 /**
- * Umka bindings for Wrap.
+ * Umka bindings for Wrap().
  *
  * @see Wrap()
  */
@@ -5915,11 +5921,11 @@ void umkaWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[2].real32Val;
     float min = params[1].real32Val;
     float max = params[0].real32Val;
-    result->real32Val = Wrap(value, min, max);
+    result->realVal = Wrap(value, min, max);
 }
 
 /**
- * Umka bindings for FloatEquals.
+ * Umka bindings for FloatEquals().
  *
  * @see FloatEquals()
  */
@@ -5930,7 +5936,7 @@ void umkaFloatEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Zero.
+ * Umka bindings for Vector2Zero().
  *
  * @see Vector2Zero()
  */
@@ -5941,7 +5947,7 @@ void umkaVector2Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2One.
+ * Umka bindings for Vector2One().
  *
  * @see Vector2One()
  */
@@ -5952,7 +5958,7 @@ void umkaVector2One(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Add.
+ * Umka bindings for Vector2Add().
  *
  * @see Vector2Add()
  */
@@ -5966,7 +5972,7 @@ void umkaVector2Add(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2AddValue.
+ * Umka bindings for Vector2AddValue().
  *
  * @see Vector2AddValue()
  */
@@ -5980,7 +5986,7 @@ void umkaVector2AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Subtract.
+ * Umka bindings for Vector2Subtract().
  *
  * @see Vector2Subtract()
  */
@@ -5994,7 +6000,7 @@ void umkaVector2Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2SubtractValue.
+ * Umka bindings for Vector2SubtractValue().
  *
  * @see Vector2SubtractValue()
  */
@@ -6008,71 +6014,71 @@ void umkaVector2SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Length.
+ * Umka bindings for Vector2Length().
  *
  * @see Vector2Length()
  */
 void umkaVector2Length(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v = (Vector2*)&params[0];
-    result->real32Val = Vector2Length(*v);
+    result->realVal = Vector2Length(*v);
 }
 
 /**
- * Umka bindings for Vector2LengthSqr.
+ * Umka bindings for Vector2LengthSqr().
  *
  * @see Vector2LengthSqr()
  */
 void umkaVector2LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v = (Vector2*)&params[0];
-    result->real32Val = Vector2LengthSqr(*v);
+    result->realVal = Vector2LengthSqr(*v);
 }
 
 /**
- * Umka bindings for Vector2DotProduct.
+ * Umka bindings for Vector2DotProduct().
  *
  * @see Vector2DotProduct()
  */
 void umkaVector2DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
-    result->real32Val = Vector2DotProduct(*v1, *v2);
+    result->realVal = Vector2DotProduct(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector2Distance.
+ * Umka bindings for Vector2Distance().
  *
  * @see Vector2Distance()
  */
 void umkaVector2Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
-    result->real32Val = Vector2Distance(*v1, *v2);
+    result->realVal = Vector2Distance(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector2DistanceSqr.
+ * Umka bindings for Vector2DistanceSqr().
  *
  * @see Vector2DistanceSqr()
  */
 void umkaVector2DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
-    result->real32Val = Vector2DistanceSqr(*v1, *v2);
+    result->realVal = Vector2DistanceSqr(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector2Angle.
+ * Umka bindings for Vector2Angle().
  *
  * @see Vector2Angle()
  */
 void umkaVector2Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
-    result->real32Val = Vector2Angle(*v1, *v2);
+    result->realVal = Vector2Angle(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector2Scale.
+ * Umka bindings for Vector2Scale().
  *
  * @see Vector2Scale()
  */
@@ -6086,7 +6092,7 @@ void umkaVector2Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Multiply.
+ * Umka bindings for Vector2Multiply().
  *
  * @see Vector2Multiply()
  */
@@ -6100,7 +6106,7 @@ void umkaVector2Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Negate.
+ * Umka bindings for Vector2Negate().
  *
  * @see Vector2Negate()
  */
@@ -6113,7 +6119,7 @@ void umkaVector2Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Divide.
+ * Umka bindings for Vector2Divide().
  *
  * @see Vector2Divide()
  */
@@ -6127,7 +6133,7 @@ void umkaVector2Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Normalize.
+ * Umka bindings for Vector2Normalize().
  *
  * @see Vector2Normalize()
  */
@@ -6140,7 +6146,7 @@ void umkaVector2Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Transform.
+ * Umka bindings for Vector2Transform().
  *
  * @see Vector2Transform()
  */
@@ -6154,7 +6160,7 @@ void umkaVector2Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Lerp.
+ * Umka bindings for Vector2Lerp().
  *
  * @see Vector2Lerp()
  */
@@ -6169,7 +6175,7 @@ void umkaVector2Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Reflect.
+ * Umka bindings for Vector2Reflect().
  *
  * @see Vector2Reflect()
  */
@@ -6183,7 +6189,7 @@ void umkaVector2Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Rotate.
+ * Umka bindings for Vector2Rotate().
  *
  * @see Vector2Rotate()
  */
@@ -6197,7 +6203,7 @@ void umkaVector2Rotate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2MoveTowards.
+ * Umka bindings for Vector2MoveTowards().
  *
  * @see Vector2MoveTowards()
  */
@@ -6212,7 +6218,7 @@ void umkaVector2MoveTowards(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Invert.
+ * Umka bindings for Vector2Invert().
  *
  * @see Vector2Invert()
  */
@@ -6225,7 +6231,7 @@ void umkaVector2Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Clamp.
+ * Umka bindings for Vector2Clamp().
  *
  * @see Vector2Clamp()
  */
@@ -6240,7 +6246,7 @@ void umkaVector2Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2ClampValue.
+ * Umka bindings for Vector2ClampValue().
  *
  * @see Vector2ClampValue()
  */
@@ -6255,7 +6261,7 @@ void umkaVector2ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Equals.
+ * Umka bindings for Vector2Equals().
  *
  * @see Vector2Equals()
  */
@@ -6266,7 +6272,7 @@ void umkaVector2Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Zero.
+ * Umka bindings for Vector3Zero().
  *
  * @see Vector3Zero()
  */
@@ -6277,7 +6283,7 @@ void umkaVector3Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3One.
+ * Umka bindings for Vector3One().
  *
  * @see Vector3One()
  */
@@ -6288,7 +6294,7 @@ void umkaVector3One(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Add.
+ * Umka bindings for Vector3Add().
  *
  * @see Vector3Add()
  */
@@ -6302,7 +6308,7 @@ void umkaVector3Add(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3AddValue.
+ * Umka bindings for Vector3AddValue().
  *
  * @see Vector3AddValue()
  */
@@ -6316,7 +6322,7 @@ void umkaVector3AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Subtract.
+ * Umka bindings for Vector3Subtract().
  *
  * @see Vector3Subtract()
  */
@@ -6330,7 +6336,7 @@ void umkaVector3Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3SubtractValue.
+ * Umka bindings for Vector3SubtractValue().
  *
  * @see Vector3SubtractValue()
  */
@@ -6344,7 +6350,7 @@ void umkaVector3SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Scale.
+ * Umka bindings for Vector3Scale().
  *
  * @see Vector3Scale()
  */
@@ -6358,7 +6364,7 @@ void umkaVector3Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Multiply.
+ * Umka bindings for Vector3Multiply().
  *
  * @see Vector3Multiply()
  */
@@ -6372,7 +6378,7 @@ void umkaVector3Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3CrossProduct.
+ * Umka bindings for Vector3CrossProduct().
  *
  * @see Vector3CrossProduct()
  */
@@ -6386,7 +6392,7 @@ void umkaVector3CrossProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Perpendicular.
+ * Umka bindings for Vector3Perpendicular().
  *
  * @see Vector3Perpendicular()
  */
@@ -6399,71 +6405,71 @@ void umkaVector3Perpendicular(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Length.
+ * Umka bindings for Vector3Length().
  *
  * @see Vector3Length()
  */
 void umkaVector3Length(UmkaStackSlot *params, UmkaStackSlot *result) {
     const Vector3* v = (const Vector3*)&params[0];
-    result->real32Val = Vector3Length(*v);
+    result->realVal = Vector3Length(*v);
 }
 
 /**
- * Umka bindings for Vector3LengthSqr.
+ * Umka bindings for Vector3LengthSqr().
  *
  * @see Vector3LengthSqr()
  */
 void umkaVector3LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     const Vector3* v = (const Vector3*)&params[0];
-    result->real32Val = Vector3LengthSqr(*v);
+    result->realVal = Vector3LengthSqr(*v);
 }
 
 /**
- * Umka bindings for Vector3DotProduct.
+ * Umka bindings for Vector3DotProduct().
  *
  * @see Vector3DotProduct()
  */
 void umkaVector3DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
-    result->real32Val = Vector3DotProduct(*v1, *v2);
+    result->realVal = Vector3DotProduct(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector3Distance.
+ * Umka bindings for Vector3Distance().
  *
  * @see Vector3Distance()
  */
 void umkaVector3Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
-    result->real32Val = Vector3Distance(*v1, *v2);
+    result->realVal = Vector3Distance(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector3DistanceSqr.
+ * Umka bindings for Vector3DistanceSqr().
  *
  * @see Vector3DistanceSqr()
  */
 void umkaVector3DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
-    result->real32Val = Vector3DistanceSqr(*v1, *v2);
+    result->realVal = Vector3DistanceSqr(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector3Angle.
+ * Umka bindings for Vector3Angle().
  *
  * @see Vector3Angle()
  */
 void umkaVector3Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
-    result->real32Val = Vector3Angle(*v1, *v2);
+    result->realVal = Vector3Angle(*v1, *v2);
 }
 
 /**
- * Umka bindings for Vector3Negate.
+ * Umka bindings for Vector3Negate().
  *
  * @see Vector3Negate()
  */
@@ -6476,7 +6482,7 @@ void umkaVector3Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Divide.
+ * Umka bindings for Vector3Divide().
  *
  * @see Vector3Divide()
  */
@@ -6490,7 +6496,7 @@ void umkaVector3Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Normalize.
+ * Umka bindings for Vector3Normalize().
  *
  * @see Vector3Normalize()
  */
@@ -6503,7 +6509,7 @@ void umkaVector3Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3OrthoNormalize.
+ * Umka bindings for Vector3OrthoNormalize().
  *
  * @see Vector3OrthoNormalize()
  */
@@ -6514,7 +6520,7 @@ void umkaVector3OrthoNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Transform.
+ * Umka bindings for Vector3Transform().
  *
  * @see Vector3Transform()
  */
@@ -6528,7 +6534,7 @@ void umkaVector3Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3RotateByQuaternion.
+ * Umka bindings for Vector3RotateByQuaternion().
  *
  * @see Vector3RotateByQuaternion()
  */
@@ -6542,7 +6548,7 @@ void umkaVector3RotateByQuaternion(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for Vector3RotateByAxisAngle.
+ * Umka bindings for Vector3RotateByAxisAngle().
  *
  * @see Vector3RotateByAxisAngle()
  */
@@ -6557,7 +6563,7 @@ void umkaVector3RotateByAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) 
 }
 
 /**
- * Umka bindings for Vector3Lerp.
+ * Umka bindings for Vector3Lerp().
  *
  * @see Vector3Lerp()
  */
@@ -6572,7 +6578,7 @@ void umkaVector3Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Reflect.
+ * Umka bindings for Vector3Reflect().
  *
  * @see Vector3Reflect()
  */
@@ -6586,7 +6592,7 @@ void umkaVector3Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Min.
+ * Umka bindings for Vector3Min().
  *
  * @see Vector3Min()
  */
@@ -6600,7 +6606,7 @@ void umkaVector3Min(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Max.
+ * Umka bindings for Vector3Max().
  *
  * @see Vector3Max()
  */
@@ -6614,7 +6620,7 @@ void umkaVector3Max(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Barycenter.
+ * Umka bindings for Vector3Barycenter().
  *
  * @see Vector3Barycenter()
  */
@@ -6630,7 +6636,7 @@ void umkaVector3Barycenter(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Unproject.
+ * Umka bindings for Vector3Unproject().
  *
  * @see Vector3Unproject()
  */
@@ -6645,17 +6651,20 @@ void umkaVector3Unproject(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3ToFloatV.
+ * Umka bindings for Vector3ToFloatV().
  *
  * @see Vector3ToFloatV()
  */
 void umkaVector3ToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
-    Vector3* v = (Vector3*)&params[0];
-    /* TODO: Unknown type float3 */Vector3ToFloatV(*v);
+    // Skipping params[0], as it's a reference to Umka's internal filename
+    Vector3* v = (Vector3*)&params[1];
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(float3), NULL);
+    float3 out = Vector3ToFloatV(*v);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(float3));
 }
 
 /**
- * Umka bindings for Vector3Invert.
+ * Umka bindings for Vector3Invert().
  *
  * @see Vector3Invert()
  */
@@ -6668,7 +6677,7 @@ void umkaVector3Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Clamp.
+ * Umka bindings for Vector3Clamp().
  *
  * @see Vector3Clamp()
  */
@@ -6683,7 +6692,7 @@ void umkaVector3Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3ClampValue.
+ * Umka bindings for Vector3ClampValue().
  *
  * @see Vector3ClampValue()
  */
@@ -6698,7 +6707,7 @@ void umkaVector3ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Equals.
+ * Umka bindings for Vector3Equals().
  *
  * @see Vector3Equals()
  */
@@ -6709,7 +6718,7 @@ void umkaVector3Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Refract.
+ * Umka bindings for Vector3Refract().
  *
  * @see Vector3Refract()
  */
@@ -6724,27 +6733,27 @@ void umkaVector3Refract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixDeterminant.
+ * Umka bindings for MatrixDeterminant().
  *
  * @see MatrixDeterminant()
  */
 void umkaMatrixDeterminant(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* mat = (Matrix*)&params[0];
-    result->real32Val = MatrixDeterminant(*mat);
+    result->realVal = MatrixDeterminant(*mat);
 }
 
 /**
- * Umka bindings for MatrixTrace.
+ * Umka bindings for MatrixTrace().
  *
  * @see MatrixTrace()
  */
 void umkaMatrixTrace(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* mat = (Matrix*)&params[0];
-    result->real32Val = MatrixTrace(*mat);
+    result->realVal = MatrixTrace(*mat);
 }
 
 /**
- * Umka bindings for MatrixTranspose.
+ * Umka bindings for MatrixTranspose().
  *
  * @see MatrixTranspose()
  */
@@ -6757,7 +6766,7 @@ void umkaMatrixTranspose(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixInvert.
+ * Umka bindings for MatrixInvert().
  *
  * @see MatrixInvert()
  */
@@ -6770,7 +6779,7 @@ void umkaMatrixInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixIdentity.
+ * Umka bindings for MatrixIdentity().
  *
  * @see MatrixIdentity()
  */
@@ -6781,7 +6790,7 @@ void umkaMatrixIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixAdd.
+ * Umka bindings for MatrixAdd().
  *
  * @see MatrixAdd()
  */
@@ -6795,7 +6804,7 @@ void umkaMatrixAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixSubtract.
+ * Umka bindings for MatrixSubtract().
  *
  * @see MatrixSubtract()
  */
@@ -6809,7 +6818,7 @@ void umkaMatrixSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixMultiply.
+ * Umka bindings for MatrixMultiply().
  *
  * @see MatrixMultiply()
  */
@@ -6823,7 +6832,7 @@ void umkaMatrixMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixTranslate.
+ * Umka bindings for MatrixTranslate().
  *
  * @see MatrixTranslate()
  */
@@ -6838,7 +6847,7 @@ void umkaMatrixTranslate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotate.
+ * Umka bindings for MatrixRotate().
  *
  * @see MatrixRotate()
  */
@@ -6852,7 +6861,7 @@ void umkaMatrixRotate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateX.
+ * Umka bindings for MatrixRotateX().
  *
  * @see MatrixRotateX()
  */
@@ -6865,7 +6874,7 @@ void umkaMatrixRotateX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateY.
+ * Umka bindings for MatrixRotateY().
  *
  * @see MatrixRotateY()
  */
@@ -6878,7 +6887,7 @@ void umkaMatrixRotateY(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateZ.
+ * Umka bindings for MatrixRotateZ().
  *
  * @see MatrixRotateZ()
  */
@@ -6891,7 +6900,7 @@ void umkaMatrixRotateZ(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateXYZ.
+ * Umka bindings for MatrixRotateXYZ().
  *
  * @see MatrixRotateXYZ()
  */
@@ -6904,7 +6913,7 @@ void umkaMatrixRotateXYZ(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateZYX.
+ * Umka bindings for MatrixRotateZYX().
  *
  * @see MatrixRotateZYX()
  */
@@ -6917,7 +6926,7 @@ void umkaMatrixRotateZYX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixScale.
+ * Umka bindings for MatrixScale().
  *
  * @see MatrixScale()
  */
@@ -6932,7 +6941,7 @@ void umkaMatrixScale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixFrustum.
+ * Umka bindings for MatrixFrustum().
  *
  * @see MatrixFrustum()
  */
@@ -6950,7 +6959,7 @@ void umkaMatrixFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixPerspective.
+ * Umka bindings for MatrixPerspective().
  *
  * @see MatrixPerspective()
  */
@@ -6966,7 +6975,7 @@ void umkaMatrixPerspective(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixOrtho.
+ * Umka bindings for MatrixOrtho().
  *
  * @see MatrixOrtho()
  */
@@ -6984,7 +6993,7 @@ void umkaMatrixOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixLookAt.
+ * Umka bindings for MatrixLookAt().
  *
  * @see MatrixLookAt()
  */
@@ -6999,17 +7008,20 @@ void umkaMatrixLookAt(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixToFloatV.
+ * Umka bindings for MatrixToFloatV().
  *
  * @see MatrixToFloatV()
  */
 void umkaMatrixToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
-    Matrix* mat = (Matrix*)&params[0];
-    /* TODO: Unknown type float16 */MatrixToFloatV(*mat);
+    // Skipping params[0], as it's a reference to Umka's internal filename
+    Matrix* mat = (Matrix*)&params[1];
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(float16), NULL);
+    float16 out = MatrixToFloatV(*mat);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(float16));
 }
 
 /**
- * Umka bindings for QuaternionAdd.
+ * Umka bindings for QuaternionAdd().
  *
  * @see QuaternionAdd()
  */
@@ -7023,7 +7035,7 @@ void umkaQuaternionAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionAddValue.
+ * Umka bindings for QuaternionAddValue().
  *
  * @see QuaternionAddValue()
  */
@@ -7037,7 +7049,7 @@ void umkaQuaternionAddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionSubtract.
+ * Umka bindings for QuaternionSubtract().
  *
  * @see QuaternionSubtract()
  */
@@ -7051,7 +7063,7 @@ void umkaQuaternionSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionSubtractValue.
+ * Umka bindings for QuaternionSubtractValue().
  *
  * @see QuaternionSubtractValue()
  */
@@ -7065,7 +7077,7 @@ void umkaQuaternionSubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionIdentity.
+ * Umka bindings for QuaternionIdentity().
  *
  * @see QuaternionIdentity()
  */
@@ -7076,17 +7088,17 @@ void umkaQuaternionIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionLength.
+ * Umka bindings for QuaternionLength().
  *
  * @see QuaternionLength()
  */
 void umkaQuaternionLength(UmkaStackSlot *params, UmkaStackSlot *result) {
     Quaternion* q = (Quaternion*)&params[0];
-    result->real32Val = QuaternionLength(*q);
+    result->realVal = QuaternionLength(*q);
 }
 
 /**
- * Umka bindings for QuaternionNormalize.
+ * Umka bindings for QuaternionNormalize().
  *
  * @see QuaternionNormalize()
  */
@@ -7099,7 +7111,7 @@ void umkaQuaternionNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionInvert.
+ * Umka bindings for QuaternionInvert().
  *
  * @see QuaternionInvert()
  */
@@ -7112,7 +7124,7 @@ void umkaQuaternionInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionMultiply.
+ * Umka bindings for QuaternionMultiply().
  *
  * @see QuaternionMultiply()
  */
@@ -7126,7 +7138,7 @@ void umkaQuaternionMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionScale.
+ * Umka bindings for QuaternionScale().
  *
  * @see QuaternionScale()
  */
@@ -7140,7 +7152,7 @@ void umkaQuaternionScale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionDivide.
+ * Umka bindings for QuaternionDivide().
  *
  * @see QuaternionDivide()
  */
@@ -7154,7 +7166,7 @@ void umkaQuaternionDivide(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionLerp.
+ * Umka bindings for QuaternionLerp().
  *
  * @see QuaternionLerp()
  */
@@ -7169,7 +7181,7 @@ void umkaQuaternionLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionNlerp.
+ * Umka bindings for QuaternionNlerp().
  *
  * @see QuaternionNlerp()
  */
@@ -7184,7 +7196,7 @@ void umkaQuaternionNlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionSlerp.
+ * Umka bindings for QuaternionSlerp().
  *
  * @see QuaternionSlerp()
  */
@@ -7199,7 +7211,7 @@ void umkaQuaternionSlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionFromVector3ToVector3.
+ * Umka bindings for QuaternionFromVector3ToVector3().
  *
  * @see QuaternionFromVector3ToVector3()
  */
@@ -7213,7 +7225,7 @@ void umkaQuaternionFromVector3ToVector3(UmkaStackSlot *params, UmkaStackSlot *re
 }
 
 /**
- * Umka bindings for QuaternionFromMatrix.
+ * Umka bindings for QuaternionFromMatrix().
  *
  * @see QuaternionFromMatrix()
  */
@@ -7226,7 +7238,7 @@ void umkaQuaternionFromMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionToMatrix.
+ * Umka bindings for QuaternionToMatrix().
  *
  * @see QuaternionToMatrix()
  */
@@ -7239,7 +7251,7 @@ void umkaQuaternionToMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionFromAxisAngle.
+ * Umka bindings for QuaternionFromAxisAngle().
  *
  * @see QuaternionFromAxisAngle()
  */
@@ -7253,7 +7265,7 @@ void umkaQuaternionFromAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionToAxisAngle.
+ * Umka bindings for QuaternionToAxisAngle().
  *
  * @see QuaternionToAxisAngle()
  */
@@ -7265,7 +7277,7 @@ void umkaQuaternionToAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionFromEuler.
+ * Umka bindings for QuaternionFromEuler().
  *
  * @see QuaternionFromEuler()
  */
@@ -7280,7 +7292,7 @@ void umkaQuaternionFromEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionToEuler.
+ * Umka bindings for QuaternionToEuler().
  *
  * @see QuaternionToEuler()
  */
@@ -7293,7 +7305,7 @@ void umkaQuaternionToEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionTransform.
+ * Umka bindings for QuaternionTransform().
  *
  * @see QuaternionTransform()
  */
@@ -7307,7 +7319,7 @@ void umkaQuaternionTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionEquals.
+ * Umka bindings for QuaternionEquals().
  *
  * @see QuaternionEquals()
  */
@@ -7315,6 +7327,1499 @@ void umkaQuaternionEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
     Quaternion* p = (Quaternion*)&params[1];
     Quaternion* q = (Quaternion*)&params[0];
     result->intVal = QuaternionEquals(*p, *q);
+}
+
+/**
+ * Umka bindings for rlMatrixMode().
+ *
+ * @see rlMatrixMode()
+ */
+void umkarlMatrixMode(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int mode = params[0].intVal;
+    rlMatrixMode(mode);
+}
+
+/**
+ * Umka bindings for rlPushMatrix().
+ *
+ * @see rlPushMatrix()
+ */
+void umkarlPushMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlPushMatrix();
+}
+
+/**
+ * Umka bindings for rlPopMatrix().
+ *
+ * @see rlPopMatrix()
+ */
+void umkarlPopMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlPopMatrix();
+}
+
+/**
+ * Umka bindings for rlLoadIdentity().
+ *
+ * @see rlLoadIdentity()
+ */
+void umkarlLoadIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlLoadIdentity();
+}
+
+/**
+ * Umka bindings for rlTranslatef().
+ *
+ * @see rlTranslatef()
+ */
+void umkarlTranslatef(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[2].real32Val;
+    float y = params[1].real32Val;
+    float z = params[0].real32Val;
+    rlTranslatef(x, y, z);
+}
+
+/**
+ * Umka bindings for rlRotatef().
+ *
+ * @see rlRotatef()
+ */
+void umkarlRotatef(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float angle = params[3].real32Val;
+    float x = params[2].real32Val;
+    float y = params[1].real32Val;
+    float z = params[0].real32Val;
+    rlRotatef(angle, x, y, z);
+}
+
+/**
+ * Umka bindings for rlScalef().
+ *
+ * @see rlScalef()
+ */
+void umkarlScalef(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[2].real32Val;
+    float y = params[1].real32Val;
+    float z = params[0].real32Val;
+    rlScalef(x, y, z);
+}
+
+/**
+ * Umka bindings for rlMultMatrixf().
+ *
+ * @see rlMultMatrixf()
+ */
+void umkarlMultMatrixf(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float * matf = (float *)params[0].ptrVal;
+    rlMultMatrixf(matf);
+}
+
+/**
+ * Umka bindings for rlFrustum().
+ *
+ * @see rlFrustum()
+ */
+void umkarlFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
+    double left = params[5].realVal;
+    double right = params[4].realVal;
+    double bottom = params[3].realVal;
+    double top = params[2].realVal;
+    double znear = params[1].realVal;
+    double zfar = params[0].realVal;
+    rlFrustum(left, right, bottom, top, znear, zfar);
+}
+
+/**
+ * Umka bindings for rlOrtho().
+ *
+ * @see rlOrtho()
+ */
+void umkarlOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
+    double left = params[5].realVal;
+    double right = params[4].realVal;
+    double bottom = params[3].realVal;
+    double top = params[2].realVal;
+    double znear = params[1].realVal;
+    double zfar = params[0].realVal;
+    rlOrtho(left, right, bottom, top, znear, zfar);
+}
+
+/**
+ * Umka bindings for rlViewport().
+ *
+ * @see rlViewport()
+ */
+void umkarlViewport(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int x = params[3].intVal;
+    int y = params[2].intVal;
+    int width = params[1].intVal;
+    int height = params[0].intVal;
+    rlViewport(x, y, width, height);
+}
+
+/**
+ * Umka bindings for rlBegin().
+ *
+ * @see rlBegin()
+ */
+void umkarlBegin(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int mode = params[0].intVal;
+    rlBegin(mode);
+}
+
+/**
+ * Umka bindings for rlEnd().
+ *
+ * @see rlEnd()
+ */
+void umkarlEnd(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnd();
+}
+
+/**
+ * Umka bindings for rlVertex2i().
+ *
+ * @see rlVertex2i()
+ */
+void umkarlVertex2i(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int x = params[1].intVal;
+    int y = params[0].intVal;
+    rlVertex2i(x, y);
+}
+
+/**
+ * Umka bindings for rlVertex2f().
+ *
+ * @see rlVertex2f()
+ */
+void umkarlVertex2f(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[1].real32Val;
+    float y = params[0].real32Val;
+    rlVertex2f(x, y);
+}
+
+/**
+ * Umka bindings for rlVertex3f().
+ *
+ * @see rlVertex3f()
+ */
+void umkarlVertex3f(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[2].real32Val;
+    float y = params[1].real32Val;
+    float z = params[0].real32Val;
+    rlVertex3f(x, y, z);
+}
+
+/**
+ * Umka bindings for rlTexCoord2f().
+ *
+ * @see rlTexCoord2f()
+ */
+void umkarlTexCoord2f(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[1].real32Val;
+    float y = params[0].real32Val;
+    rlTexCoord2f(x, y);
+}
+
+/**
+ * Umka bindings for rlNormal3f().
+ *
+ * @see rlNormal3f()
+ */
+void umkarlNormal3f(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[2].real32Val;
+    float y = params[1].real32Val;
+    float z = params[0].real32Val;
+    rlNormal3f(x, y, z);
+}
+
+/**
+ * Umka bindings for rlColor4ub().
+ *
+ * @see rlColor4ub()
+ */
+void umkarlColor4ub(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned char r = params[3].uintVal;
+    unsigned char g = params[2].uintVal;
+    unsigned char b = params[1].uintVal;
+    unsigned char a = params[0].uintVal;
+    rlColor4ub(r, g, b, a);
+}
+
+/**
+ * Umka bindings for rlColor3f().
+ *
+ * @see rlColor3f()
+ */
+void umkarlColor3f(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[2].real32Val;
+    float y = params[1].real32Val;
+    float z = params[0].real32Val;
+    rlColor3f(x, y, z);
+}
+
+/**
+ * Umka bindings for rlColor4f().
+ *
+ * @see rlColor4f()
+ */
+void umkarlColor4f(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float x = params[3].real32Val;
+    float y = params[2].real32Val;
+    float z = params[1].real32Val;
+    float w = params[0].real32Val;
+    rlColor4f(x, y, z, w);
+}
+
+/**
+ * Umka bindings for rlEnableVertexArray().
+ *
+ * @see rlEnableVertexArray()
+ */
+void umkarlEnableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int vaoId = params[0].uintVal;
+    result->intVal = (int)rlEnableVertexArray(vaoId);
+}
+
+/**
+ * Umka bindings for rlDisableVertexArray().
+ *
+ * @see rlDisableVertexArray()
+ */
+void umkarlDisableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableVertexArray();
+}
+
+/**
+ * Umka bindings for rlEnableVertexBuffer().
+ *
+ * @see rlEnableVertexBuffer()
+ */
+void umkarlEnableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlEnableVertexBuffer(id);
+}
+
+/**
+ * Umka bindings for rlDisableVertexBuffer().
+ *
+ * @see rlDisableVertexBuffer()
+ */
+void umkarlDisableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableVertexBuffer();
+}
+
+/**
+ * Umka bindings for rlEnableVertexBufferElement().
+ *
+ * @see rlEnableVertexBufferElement()
+ */
+void umkarlEnableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlEnableVertexBufferElement(id);
+}
+
+/**
+ * Umka bindings for rlDisableVertexBufferElement().
+ *
+ * @see rlDisableVertexBufferElement()
+ */
+void umkarlDisableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableVertexBufferElement();
+}
+
+/**
+ * Umka bindings for rlEnableVertexAttribute().
+ *
+ * @see rlEnableVertexAttribute()
+ */
+void umkarlEnableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int index = params[0].uintVal;
+    rlEnableVertexAttribute(index);
+}
+
+/**
+ * Umka bindings for rlDisableVertexAttribute().
+ *
+ * @see rlDisableVertexAttribute()
+ */
+void umkarlDisableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int index = params[0].uintVal;
+    rlDisableVertexAttribute(index);
+}
+
+// Function rlEnableStatePointer() skipped
+
+// Function rlDisableStatePointer() skipped
+
+/**
+ * Umka bindings for rlActiveTextureSlot().
+ *
+ * @see rlActiveTextureSlot()
+ */
+void umkarlActiveTextureSlot(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int slot = params[0].intVal;
+    rlActiveTextureSlot(slot);
+}
+
+/**
+ * Umka bindings for rlEnableTexture().
+ *
+ * @see rlEnableTexture()
+ */
+void umkarlEnableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlEnableTexture(id);
+}
+
+/**
+ * Umka bindings for rlDisableTexture().
+ *
+ * @see rlDisableTexture()
+ */
+void umkarlDisableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableTexture();
+}
+
+/**
+ * Umka bindings for rlEnableTextureCubemap().
+ *
+ * @see rlEnableTextureCubemap()
+ */
+void umkarlEnableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlEnableTextureCubemap(id);
+}
+
+/**
+ * Umka bindings for rlDisableTextureCubemap().
+ *
+ * @see rlDisableTextureCubemap()
+ */
+void umkarlDisableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableTextureCubemap();
+}
+
+/**
+ * Umka bindings for rlTextureParameters().
+ *
+ * @see rlTextureParameters()
+ */
+void umkarlTextureParameters(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[2].uintVal;
+    int param = params[1].intVal;
+    int value = params[0].intVal;
+    rlTextureParameters(id, param, value);
+}
+
+/**
+ * Umka bindings for rlEnableShader().
+ *
+ * @see rlEnableShader()
+ */
+void umkarlEnableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlEnableShader(id);
+}
+
+/**
+ * Umka bindings for rlDisableShader().
+ *
+ * @see rlDisableShader()
+ */
+void umkarlDisableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableShader();
+}
+
+/**
+ * Umka bindings for rlEnableFramebuffer().
+ *
+ * @see rlEnableFramebuffer()
+ */
+void umkarlEnableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlEnableFramebuffer(id);
+}
+
+/**
+ * Umka bindings for rlDisableFramebuffer().
+ *
+ * @see rlDisableFramebuffer()
+ */
+void umkarlDisableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableFramebuffer();
+}
+
+/**
+ * Umka bindings for rlActiveDrawBuffers().
+ *
+ * @see rlActiveDrawBuffers()
+ */
+void umkarlActiveDrawBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int count = params[0].intVal;
+    rlActiveDrawBuffers(count);
+}
+
+/**
+ * Umka bindings for rlEnableColorBlend().
+ *
+ * @see rlEnableColorBlend()
+ */
+void umkarlEnableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableColorBlend();
+}
+
+/**
+ * Umka bindings for rlDisableColorBlend().
+ *
+ * @see rlDisableColorBlend()
+ */
+void umkarlDisableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableColorBlend();
+}
+
+/**
+ * Umka bindings for rlEnableDepthTest().
+ *
+ * @see rlEnableDepthTest()
+ */
+void umkarlEnableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableDepthTest();
+}
+
+/**
+ * Umka bindings for rlDisableDepthTest().
+ *
+ * @see rlDisableDepthTest()
+ */
+void umkarlDisableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableDepthTest();
+}
+
+/**
+ * Umka bindings for rlEnableDepthMask().
+ *
+ * @see rlEnableDepthMask()
+ */
+void umkarlEnableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableDepthMask();
+}
+
+/**
+ * Umka bindings for rlDisableDepthMask().
+ *
+ * @see rlDisableDepthMask()
+ */
+void umkarlDisableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableDepthMask();
+}
+
+/**
+ * Umka bindings for rlEnableBackfaceCulling().
+ *
+ * @see rlEnableBackfaceCulling()
+ */
+void umkarlEnableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableBackfaceCulling();
+}
+
+/**
+ * Umka bindings for rlDisableBackfaceCulling().
+ *
+ * @see rlDisableBackfaceCulling()
+ */
+void umkarlDisableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableBackfaceCulling();
+}
+
+/**
+ * Umka bindings for rlEnableScissorTest().
+ *
+ * @see rlEnableScissorTest()
+ */
+void umkarlEnableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableScissorTest();
+}
+
+/**
+ * Umka bindings for rlDisableScissorTest().
+ *
+ * @see rlDisableScissorTest()
+ */
+void umkarlDisableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableScissorTest();
+}
+
+/**
+ * Umka bindings for rlScissor().
+ *
+ * @see rlScissor()
+ */
+void umkarlScissor(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int x = params[3].intVal;
+    int y = params[2].intVal;
+    int width = params[1].intVal;
+    int height = params[0].intVal;
+    rlScissor(x, y, width, height);
+}
+
+/**
+ * Umka bindings for rlEnableWireMode().
+ *
+ * @see rlEnableWireMode()
+ */
+void umkarlEnableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableWireMode();
+}
+
+/**
+ * Umka bindings for rlDisableWireMode().
+ *
+ * @see rlDisableWireMode()
+ */
+void umkarlDisableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableWireMode();
+}
+
+/**
+ * Umka bindings for rlSetLineWidth().
+ *
+ * @see rlSetLineWidth()
+ */
+void umkarlSetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
+    float width = params[0].real32Val;
+    rlSetLineWidth(width);
+}
+
+/**
+ * Umka bindings for rlGetLineWidth().
+ *
+ * @see rlGetLineWidth()
+ */
+void umkarlGetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->realVal = rlGetLineWidth();
+}
+
+/**
+ * Umka bindings for rlEnableSmoothLines().
+ *
+ * @see rlEnableSmoothLines()
+ */
+void umkarlEnableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableSmoothLines();
+}
+
+/**
+ * Umka bindings for rlDisableSmoothLines().
+ *
+ * @see rlDisableSmoothLines()
+ */
+void umkarlDisableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableSmoothLines();
+}
+
+/**
+ * Umka bindings for rlEnableStereoRender().
+ *
+ * @see rlEnableStereoRender()
+ */
+void umkarlEnableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlEnableStereoRender();
+}
+
+/**
+ * Umka bindings for rlDisableStereoRender().
+ *
+ * @see rlDisableStereoRender()
+ */
+void umkarlDisableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDisableStereoRender();
+}
+
+/**
+ * Umka bindings for rlIsStereoRenderEnabled().
+ *
+ * @see rlIsStereoRenderEnabled()
+ */
+void umkarlIsStereoRenderEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->intVal = (int)rlIsStereoRenderEnabled();
+}
+
+/**
+ * Umka bindings for rlClearColor().
+ *
+ * @see rlClearColor()
+ */
+void umkarlClearColor(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned char r = params[3].uintVal;
+    unsigned char g = params[2].uintVal;
+    unsigned char b = params[1].uintVal;
+    unsigned char a = params[0].uintVal;
+    rlClearColor(r, g, b, a);
+}
+
+/**
+ * Umka bindings for rlClearScreenBuffers().
+ *
+ * @see rlClearScreenBuffers()
+ */
+void umkarlClearScreenBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlClearScreenBuffers();
+}
+
+/**
+ * Umka bindings for rlCheckErrors().
+ *
+ * @see rlCheckErrors()
+ */
+void umkarlCheckErrors(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlCheckErrors();
+}
+
+/**
+ * Umka bindings for rlSetBlendMode().
+ *
+ * @see rlSetBlendMode()
+ */
+void umkarlSetBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int mode = params[0].intVal;
+    rlSetBlendMode(mode);
+}
+
+/**
+ * Umka bindings for rlSetBlendFactors().
+ *
+ * @see rlSetBlendFactors()
+ */
+void umkarlSetBlendFactors(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int glSrcFactor = params[2].intVal;
+    int glDstFactor = params[1].intVal;
+    int glEquation = params[0].intVal;
+    rlSetBlendFactors(glSrcFactor, glDstFactor, glEquation);
+}
+
+/**
+ * Umka bindings for rlglInit().
+ *
+ * @see rlglInit()
+ */
+void umkarlglInit(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int width = params[1].intVal;
+    int height = params[0].intVal;
+    rlglInit(width, height);
+}
+
+/**
+ * Umka bindings for rlglClose().
+ *
+ * @see rlglClose()
+ */
+void umkarlglClose(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlglClose();
+}
+
+/**
+ * Umka bindings for rlLoadExtensions().
+ *
+ * @see rlLoadExtensions()
+ */
+void umkarlLoadExtensions(UmkaStackSlot *params, UmkaStackSlot *result) {
+    void * loader = (void *)params[0].ptrVal;
+    rlLoadExtensions(loader);
+}
+
+/**
+ * Umka bindings for rlGetVersion().
+ *
+ * @see rlGetVersion()
+ */
+void umkarlGetVersion(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->intVal = rlGetVersion();
+}
+
+/**
+ * Umka bindings for rlSetFramebufferWidth().
+ *
+ * @see rlSetFramebufferWidth()
+ */
+void umkarlSetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int width = params[0].intVal;
+    rlSetFramebufferWidth(width);
+}
+
+/**
+ * Umka bindings for rlGetFramebufferWidth().
+ *
+ * @see rlGetFramebufferWidth()
+ */
+void umkarlGetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->intVal = rlGetFramebufferWidth();
+}
+
+/**
+ * Umka bindings for rlSetFramebufferHeight().
+ *
+ * @see rlSetFramebufferHeight()
+ */
+void umkarlSetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int height = params[0].intVal;
+    rlSetFramebufferHeight(height);
+}
+
+/**
+ * Umka bindings for rlGetFramebufferHeight().
+ *
+ * @see rlGetFramebufferHeight()
+ */
+void umkarlGetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->intVal = rlGetFramebufferHeight();
+}
+
+/**
+ * Umka bindings for rlGetTextureIdDefault().
+ *
+ * @see rlGetTextureIdDefault()
+ */
+void umkarlGetTextureIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->uintVal = rlGetTextureIdDefault();
+}
+
+/**
+ * Umka bindings for rlGetShaderIdDefault().
+ *
+ * @see rlGetShaderIdDefault()
+ */
+void umkarlGetShaderIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->uintVal = rlGetShaderIdDefault();
+}
+
+/**
+ * Umka bindings for rlGetShaderLocsDefault().
+ *
+ * @see rlGetShaderLocsDefault()
+ */
+void umkarlGetShaderLocsDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->ptrVal = (void*)rlGetShaderLocsDefault();
+}
+
+// Function rlLoadRenderBatch() skipped
+
+// Function rlUnloadRenderBatch() skipped
+
+// Function rlDrawRenderBatch() skipped
+
+// Function rlSetRenderBatchActive() skipped
+
+/**
+ * Umka bindings for rlDrawRenderBatchActive().
+ *
+ * @see rlDrawRenderBatchActive()
+ */
+void umkarlDrawRenderBatchActive(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlDrawRenderBatchActive();
+}
+
+/**
+ * Umka bindings for rlCheckRenderBatchLimit().
+ *
+ * @see rlCheckRenderBatchLimit()
+ */
+void umkarlCheckRenderBatchLimit(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int vCount = params[0].intVal;
+    result->intVal = (int)rlCheckRenderBatchLimit(vCount);
+}
+
+/**
+ * Umka bindings for rlSetTexture().
+ *
+ * @see rlSetTexture()
+ */
+void umkarlSetTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlSetTexture(id);
+}
+
+/**
+ * Umka bindings for rlLoadVertexArray().
+ *
+ * @see rlLoadVertexArray()
+ */
+void umkarlLoadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->uintVal = rlLoadVertexArray();
+}
+
+/**
+ * Umka bindings for rlLoadVertexBuffer().
+ *
+ * @see rlLoadVertexBuffer()
+ */
+void umkarlLoadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    const void * buffer = (const void *)params[2].ptrVal;
+    int size = params[1].intVal;
+    bool dynamic = (bool)params[0].intVal;
+    result->uintVal = rlLoadVertexBuffer(buffer, size, dynamic);
+}
+
+/**
+ * Umka bindings for rlLoadVertexBufferElement().
+ *
+ * @see rlLoadVertexBufferElement()
+ */
+void umkarlLoadVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result) {
+    const void * buffer = (const void *)params[2].ptrVal;
+    int size = params[1].intVal;
+    bool dynamic = (bool)params[0].intVal;
+    result->uintVal = rlLoadVertexBufferElement(buffer, size, dynamic);
+}
+
+/**
+ * Umka bindings for rlUpdateVertexBuffer().
+ *
+ * @see rlUpdateVertexBuffer()
+ */
+void umkarlUpdateVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int bufferId = params[3].uintVal;
+    const void * data = (const void *)params[2].ptrVal;
+    int dataSize = params[1].intVal;
+    int offset = params[0].intVal;
+    rlUpdateVertexBuffer(bufferId, data, dataSize, offset);
+}
+
+/**
+ * Umka bindings for rlUpdateVertexBufferElements().
+ *
+ * @see rlUpdateVertexBufferElements()
+ */
+void umkarlUpdateVertexBufferElements(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[3].uintVal;
+    const void * data = (const void *)params[2].ptrVal;
+    int dataSize = params[1].intVal;
+    int offset = params[0].intVal;
+    rlUpdateVertexBufferElements(id, data, dataSize, offset);
+}
+
+/**
+ * Umka bindings for rlUnloadVertexArray().
+ *
+ * @see rlUnloadVertexArray()
+ */
+void umkarlUnloadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int vaoId = params[0].uintVal;
+    rlUnloadVertexArray(vaoId);
+}
+
+/**
+ * Umka bindings for rlUnloadVertexBuffer().
+ *
+ * @see rlUnloadVertexBuffer()
+ */
+void umkarlUnloadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int vboId = params[0].uintVal;
+    rlUnloadVertexBuffer(vboId);
+}
+
+/**
+ * Umka bindings for rlSetVertexAttribute().
+ *
+ * @see rlSetVertexAttribute()
+ */
+void umkarlSetVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int index = params[5].uintVal;
+    int compSize = params[4].intVal;
+    int type = params[3].intVal;
+    bool normalized = (bool)params[2].intVal;
+    int stride = params[1].intVal;
+    const void * pointer = (const void *)params[0].ptrVal;
+    rlSetVertexAttribute(index, compSize, type, normalized, stride, pointer);
+}
+
+/**
+ * Umka bindings for rlSetVertexAttributeDivisor().
+ *
+ * @see rlSetVertexAttributeDivisor()
+ */
+void umkarlSetVertexAttributeDivisor(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int index = params[1].uintVal;
+    int divisor = params[0].intVal;
+    rlSetVertexAttributeDivisor(index, divisor);
+}
+
+/**
+ * Umka bindings for rlSetVertexAttributeDefault().
+ *
+ * @see rlSetVertexAttributeDefault()
+ */
+void umkarlSetVertexAttributeDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int locIndex = params[3].intVal;
+    const void * value = (const void *)params[2].ptrVal;
+    int attribType = params[1].intVal;
+    int count = params[0].intVal;
+    rlSetVertexAttributeDefault(locIndex, value, attribType, count);
+}
+
+/**
+ * Umka bindings for rlDrawVertexArray().
+ *
+ * @see rlDrawVertexArray()
+ */
+void umkarlDrawVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int offset = params[1].intVal;
+    int count = params[0].intVal;
+    rlDrawVertexArray(offset, count);
+}
+
+/**
+ * Umka bindings for rlDrawVertexArrayElements().
+ *
+ * @see rlDrawVertexArrayElements()
+ */
+void umkarlDrawVertexArrayElements(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int offset = params[2].intVal;
+    int count = params[1].intVal;
+    const void * buffer = (const void *)params[0].ptrVal;
+    rlDrawVertexArrayElements(offset, count, buffer);
+}
+
+/**
+ * Umka bindings for rlDrawVertexArrayInstanced().
+ *
+ * @see rlDrawVertexArrayInstanced()
+ */
+void umkarlDrawVertexArrayInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int offset = params[2].intVal;
+    int count = params[1].intVal;
+    int instances = params[0].intVal;
+    rlDrawVertexArrayInstanced(offset, count, instances);
+}
+
+/**
+ * Umka bindings for rlDrawVertexArrayElementsInstanced().
+ *
+ * @see rlDrawVertexArrayElementsInstanced()
+ */
+void umkarlDrawVertexArrayElementsInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int offset = params[3].intVal;
+    int count = params[2].intVal;
+    const void * buffer = (const void *)params[1].ptrVal;
+    int instances = params[0].intVal;
+    rlDrawVertexArrayElementsInstanced(offset, count, buffer, instances);
+}
+
+/**
+ * Umka bindings for rlLoadTexture().
+ *
+ * @see rlLoadTexture()
+ */
+void umkarlLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    const void * data = (const void *)params[4].ptrVal;
+    int width = params[3].intVal;
+    int height = params[2].intVal;
+    int format = params[1].intVal;
+    int mipmapCount = params[0].intVal;
+    result->uintVal = rlLoadTexture(data, width, height, format, mipmapCount);
+}
+
+/**
+ * Umka bindings for rlLoadTextureDepth().
+ *
+ * @see rlLoadTextureDepth()
+ */
+void umkarlLoadTextureDepth(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int width = params[2].intVal;
+    int height = params[1].intVal;
+    bool useRenderBuffer = (bool)params[0].intVal;
+    result->uintVal = rlLoadTextureDepth(width, height, useRenderBuffer);
+}
+
+/**
+ * Umka bindings for rlLoadTextureCubemap().
+ *
+ * @see rlLoadTextureCubemap()
+ */
+void umkarlLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
+    const void * data = (const void *)params[2].ptrVal;
+    int size = params[1].intVal;
+    int format = params[0].intVal;
+    result->uintVal = rlLoadTextureCubemap(data, size, format);
+}
+
+/**
+ * Umka bindings for rlUpdateTexture().
+ *
+ * @see rlUpdateTexture()
+ */
+void umkarlUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[6].uintVal;
+    int offsetX = params[5].intVal;
+    int offsetY = params[4].intVal;
+    int width = params[3].intVal;
+    int height = params[2].intVal;
+    int format = params[1].intVal;
+    const void * data = (const void *)params[0].ptrVal;
+    rlUpdateTexture(id, offsetX, offsetY, width, height, format, data);
+}
+
+/**
+ * Umka bindings for rlGetGlTextureFormats().
+ *
+ * @see rlGetGlTextureFormats()
+ */
+void umkarlGetGlTextureFormats(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int format = params[3].intVal;
+    unsigned int * glInternalFormat = (unsigned int *)params[2].ptrVal;
+    unsigned int * glFormat = (unsigned int *)params[1].ptrVal;
+    unsigned int * glType = (unsigned int *)params[0].ptrVal;
+    rlGetGlTextureFormats(format, glInternalFormat, glFormat, glType);
+}
+
+/**
+ * Umka bindings for rlGetPixelFormatName().
+ *
+ * @see rlGetPixelFormatName()
+ */
+void umkarlGetPixelFormatName(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int format = params[0].uintVal;
+    result->ptrVal = (void*)rlGetPixelFormatName(format);
+}
+
+/**
+ * Umka bindings for rlUnloadTexture().
+ *
+ * @see rlUnloadTexture()
+ */
+void umkarlUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlUnloadTexture(id);
+}
+
+/**
+ * Umka bindings for rlGenTextureMipmaps().
+ *
+ * @see rlGenTextureMipmaps()
+ */
+void umkarlGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[4].uintVal;
+    int width = params[3].intVal;
+    int height = params[2].intVal;
+    int format = params[1].intVal;
+    int * mipmaps = (int *)params[0].ptrVal;
+    rlGenTextureMipmaps(id, width, height, format, mipmaps);
+}
+
+/**
+ * Umka bindings for rlReadTexturePixels().
+ *
+ * @see rlReadTexturePixels()
+ */
+void umkarlReadTexturePixels(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[3].uintVal;
+    int width = params[2].intVal;
+    int height = params[1].intVal;
+    int format = params[0].intVal;
+    result->ptrVal = (void*)rlReadTexturePixels(id, width, height, format);
+}
+
+/**
+ * Umka bindings for rlReadScreenPixels().
+ *
+ * @see rlReadScreenPixels()
+ */
+void umkarlReadScreenPixels(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int width = params[1].intVal;
+    int height = params[0].intVal;
+    result->ptrVal = (void*)rlReadScreenPixels(width, height);
+}
+
+/**
+ * Umka bindings for rlLoadFramebuffer().
+ *
+ * @see rlLoadFramebuffer()
+ */
+void umkarlLoadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int width = params[1].intVal;
+    int height = params[0].intVal;
+    result->uintVal = rlLoadFramebuffer(width, height);
+}
+
+/**
+ * Umka bindings for rlFramebufferAttach().
+ *
+ * @see rlFramebufferAttach()
+ */
+void umkarlFramebufferAttach(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int fboId = params[4].uintVal;
+    unsigned int texId = params[3].uintVal;
+    int attachType = params[2].intVal;
+    int texType = params[1].intVal;
+    int mipLevel = params[0].intVal;
+    rlFramebufferAttach(fboId, texId, attachType, texType, mipLevel);
+}
+
+/**
+ * Umka bindings for rlFramebufferComplete().
+ *
+ * @see rlFramebufferComplete()
+ */
+void umkarlFramebufferComplete(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    result->intVal = (int)rlFramebufferComplete(id);
+}
+
+/**
+ * Umka bindings for rlUnloadFramebuffer().
+ *
+ * @see rlUnloadFramebuffer()
+ */
+void umkarlUnloadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlUnloadFramebuffer(id);
+}
+
+/**
+ * Umka bindings for rlLoadShaderCode().
+ *
+ * @see rlLoadShaderCode()
+ */
+void umkarlLoadShaderCode(UmkaStackSlot *params, UmkaStackSlot *result) {
+    const char * vsCode = (const char *)params[1].ptrVal;
+    const char * fsCode = (const char *)params[0].ptrVal;
+    result->uintVal = rlLoadShaderCode(vsCode, fsCode);
+}
+
+/**
+ * Umka bindings for rlCompileShader().
+ *
+ * @see rlCompileShader()
+ */
+void umkarlCompileShader(UmkaStackSlot *params, UmkaStackSlot *result) {
+    const char * shaderCode = (const char *)params[1].ptrVal;
+    int type = params[0].intVal;
+    result->uintVal = rlCompileShader(shaderCode, type);
+}
+
+/**
+ * Umka bindings for rlLoadShaderProgram().
+ *
+ * @see rlLoadShaderProgram()
+ */
+void umkarlLoadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int vShaderId = params[1].uintVal;
+    unsigned int fShaderId = params[0].uintVal;
+    result->uintVal = rlLoadShaderProgram(vShaderId, fShaderId);
+}
+
+/**
+ * Umka bindings for rlUnloadShaderProgram().
+ *
+ * @see rlUnloadShaderProgram()
+ */
+void umkarlUnloadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    rlUnloadShaderProgram(id);
+}
+
+/**
+ * Umka bindings for rlGetLocationUniform().
+ *
+ * @see rlGetLocationUniform()
+ */
+void umkarlGetLocationUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int shaderId = params[1].uintVal;
+    const char * uniformName = (const char *)params[0].ptrVal;
+    result->intVal = rlGetLocationUniform(shaderId, uniformName);
+}
+
+/**
+ * Umka bindings for rlGetLocationAttrib().
+ *
+ * @see rlGetLocationAttrib()
+ */
+void umkarlGetLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int shaderId = params[1].uintVal;
+    const char * attribName = (const char *)params[0].ptrVal;
+    result->intVal = rlGetLocationAttrib(shaderId, attribName);
+}
+
+/**
+ * Umka bindings for rlSetUniform().
+ *
+ * @see rlSetUniform()
+ */
+void umkarlSetUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int locIndex = params[3].intVal;
+    const void * value = (const void *)params[2].ptrVal;
+    int uniformType = params[1].intVal;
+    int count = params[0].intVal;
+    rlSetUniform(locIndex, value, uniformType, count);
+}
+
+/**
+ * Umka bindings for rlSetUniformMatrix().
+ *
+ * @see rlSetUniformMatrix()
+ */
+void umkarlSetUniformMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int locIndex = params[1].intVal;
+    Matrix* mat = (Matrix*)&params[0];
+    rlSetUniformMatrix(locIndex, *mat);
+}
+
+/**
+ * Umka bindings for rlSetUniformSampler().
+ *
+ * @see rlSetUniformSampler()
+ */
+void umkarlSetUniformSampler(UmkaStackSlot *params, UmkaStackSlot *result) {
+    int locIndex = params[1].intVal;
+    unsigned int textureId = params[0].uintVal;
+    rlSetUniformSampler(locIndex, textureId);
+}
+
+/**
+ * Umka bindings for rlSetShader().
+ *
+ * @see rlSetShader()
+ */
+void umkarlSetShader(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[1].uintVal;
+    int * locs = (int *)params[0].ptrVal;
+    rlSetShader(id, locs);
+}
+
+/**
+ * Umka bindings for rlLoadComputeShaderProgram().
+ *
+ * @see rlLoadComputeShaderProgram()
+ */
+void umkarlLoadComputeShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int shaderId = params[0].uintVal;
+    result->uintVal = rlLoadComputeShaderProgram(shaderId);
+}
+
+/**
+ * Umka bindings for rlComputeShaderDispatch().
+ *
+ * @see rlComputeShaderDispatch()
+ */
+void umkarlComputeShaderDispatch(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int groupX = params[2].uintVal;
+    unsigned int groupY = params[1].uintVal;
+    unsigned int groupZ = params[0].uintVal;
+    rlComputeShaderDispatch(groupX, groupY, groupZ);
+}
+
+/**
+ * Umka bindings for rlLoadShaderBuffer().
+ *
+ * @see rlLoadShaderBuffer()
+ */
+void umkarlLoadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned long long size = params[2].uintVal;
+    const void * data = (const void *)params[1].ptrVal;
+    int usageHint = params[0].intVal;
+    result->uintVal = rlLoadShaderBuffer(size, data, usageHint);
+}
+
+/**
+ * Umka bindings for rlUnloadShaderBuffer().
+ *
+ * @see rlUnloadShaderBuffer()
+ */
+void umkarlUnloadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int ssboId = params[0].uintVal;
+    rlUnloadShaderBuffer(ssboId);
+}
+
+/**
+ * Umka bindings for rlUpdateShaderBufferElements().
+ *
+ * @see rlUpdateShaderBufferElements()
+ */
+void umkarlUpdateShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[3].uintVal;
+    const void * data = (const void *)params[2].ptrVal;
+    unsigned long long dataSize = params[1].uintVal;
+    unsigned long long offset = params[0].uintVal;
+    rlUpdateShaderBufferElements(id, data, dataSize, offset);
+}
+
+/**
+ * Umka bindings for rlGetShaderBufferSize().
+ *
+ * @see rlGetShaderBufferSize()
+ */
+void umkarlGetShaderBufferSize(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[0].uintVal;
+    result->uintVal = rlGetShaderBufferSize(id);
+}
+
+/**
+ * Umka bindings for rlReadShaderBufferElements().
+ *
+ * @see rlReadShaderBufferElements()
+ */
+void umkarlReadShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[3].uintVal;
+    void * dest = (void *)params[2].ptrVal;
+    unsigned long long count = params[1].uintVal;
+    unsigned long long offset = params[0].uintVal;
+    rlReadShaderBufferElements(id, dest, count, offset);
+}
+
+/**
+ * Umka bindings for rlBindShaderBuffer().
+ *
+ * @see rlBindShaderBuffer()
+ */
+void umkarlBindShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[1].uintVal;
+    unsigned int index = params[0].uintVal;
+    rlBindShaderBuffer(id, index);
+}
+
+/**
+ * Umka bindings for rlCopyBuffersElements().
+ *
+ * @see rlCopyBuffersElements()
+ */
+void umkarlCopyBuffersElements(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int destId = params[4].uintVal;
+    unsigned int srcId = params[3].uintVal;
+    unsigned long long destOffset = params[2].uintVal;
+    unsigned long long srcOffset = params[1].uintVal;
+    unsigned long long count = params[0].uintVal;
+    rlCopyBuffersElements(destId, srcId, destOffset, srcOffset, count);
+}
+
+/**
+ * Umka bindings for rlBindImageTexture().
+ *
+ * @see rlBindImageTexture()
+ */
+void umkarlBindImageTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
+    unsigned int id = params[3].uintVal;
+    unsigned int index = params[2].uintVal;
+    unsigned int format = params[1].uintVal;
+    int readonly = params[0].intVal;
+    rlBindImageTexture(id, index, format, readonly);
+}
+
+/**
+ * Umka bindings for rlGetMatrixModelview().
+ *
+ * @see rlGetMatrixModelview()
+ */
+void umkarlGetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = rlGetMatrixModelview();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
+}
+
+/**
+ * Umka bindings for rlGetMatrixProjection().
+ *
+ * @see rlGetMatrixProjection()
+ */
+void umkarlGetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = rlGetMatrixProjection();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
+}
+
+/**
+ * Umka bindings for rlGetMatrixTransform().
+ *
+ * @see rlGetMatrixTransform()
+ */
+void umkarlGetMatrixTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = rlGetMatrixTransform();
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
+}
+
+/**
+ * Umka bindings for rlGetMatrixProjectionStereo().
+ *
+ * @see rlGetMatrixProjectionStereo()
+ */
+void umkarlGetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
+    // Skipping params[0], as it's a reference to Umka's internal filename
+    int eye = params[1].intVal;
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = rlGetMatrixProjectionStereo(eye);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
+}
+
+/**
+ * Umka bindings for rlGetMatrixViewOffsetStereo().
+ *
+ * @see rlGetMatrixViewOffsetStereo()
+ */
+void umkarlGetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
+    // Skipping params[0], as it's a reference to Umka's internal filename
+    int eye = params[1].intVal;
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
+    Matrix out = rlGetMatrixViewOffsetStereo(eye);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(Matrix));
+}
+
+/**
+ * Umka bindings for rlSetMatrixProjection().
+ *
+ * @see rlSetMatrixProjection()
+ */
+void umkarlSetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
+    Matrix* proj = (Matrix*)&params[0];
+    rlSetMatrixProjection(*proj);
+}
+
+/**
+ * Umka bindings for rlSetMatrixModelview().
+ *
+ * @see rlSetMatrixModelview()
+ */
+void umkarlSetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
+    Matrix* view = (Matrix*)&params[0];
+    rlSetMatrixModelview(*view);
+}
+
+/**
+ * Umka bindings for rlSetMatrixProjectionStereo().
+ *
+ * @see rlSetMatrixProjectionStereo()
+ */
+void umkarlSetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
+    Matrix* right = (Matrix*)&params[1];
+    Matrix* left = (Matrix*)&params[0];
+    rlSetMatrixProjectionStereo(*right, *left);
+}
+
+/**
+ * Umka bindings for rlSetMatrixViewOffsetStereo().
+ *
+ * @see rlSetMatrixViewOffsetStereo()
+ */
+void umkarlSetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
+    Matrix* right = (Matrix*)&params[1];
+    Matrix* left = (Matrix*)&params[0];
+    rlSetMatrixViewOffsetStereo(*right, *left);
+}
+
+/**
+ * Umka bindings for rlLoadDrawCube().
+ *
+ * @see rlLoadDrawCube()
+ */
+void umkarlLoadDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlLoadDrawCube();
+}
+
+/**
+ * Umka bindings for rlLoadDrawQuad().
+ *
+ * @see rlLoadDrawQuad()
+ */
+void umkarlLoadDrawQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
+    rlLoadDrawQuad();
 }
 
 
@@ -10363,6 +11868,702 @@ bool umkaAddRaylib(void *umka) {
         TraceLog(LOG_ERROR, "UMKA: Failed to add function QuaternionEquals()");
         return false;
     }
+    // rlMatrixMode()
+    if (!umkaAddFunc(umka, "rlMatrixMode", &umkarlMatrixMode)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlMatrixMode()");
+        return false;
+    }
+    // rlPushMatrix()
+    if (!umkaAddFunc(umka, "rlPushMatrix", &umkarlPushMatrix)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlPushMatrix()");
+        return false;
+    }
+    // rlPopMatrix()
+    if (!umkaAddFunc(umka, "rlPopMatrix", &umkarlPopMatrix)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlPopMatrix()");
+        return false;
+    }
+    // rlLoadIdentity()
+    if (!umkaAddFunc(umka, "rlLoadIdentity", &umkarlLoadIdentity)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadIdentity()");
+        return false;
+    }
+    // rlTranslatef()
+    if (!umkaAddFunc(umka, "rlTranslatef", &umkarlTranslatef)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlTranslatef()");
+        return false;
+    }
+    // rlRotatef()
+    if (!umkaAddFunc(umka, "rlRotatef", &umkarlRotatef)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlRotatef()");
+        return false;
+    }
+    // rlScalef()
+    if (!umkaAddFunc(umka, "rlScalef", &umkarlScalef)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlScalef()");
+        return false;
+    }
+    // rlMultMatrixf()
+    if (!umkaAddFunc(umka, "rlMultMatrixf", &umkarlMultMatrixf)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlMultMatrixf()");
+        return false;
+    }
+    // rlFrustum()
+    if (!umkaAddFunc(umka, "rlFrustum", &umkarlFrustum)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlFrustum()");
+        return false;
+    }
+    // rlOrtho()
+    if (!umkaAddFunc(umka, "rlOrtho", &umkarlOrtho)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlOrtho()");
+        return false;
+    }
+    // rlViewport()
+    if (!umkaAddFunc(umka, "rlViewport", &umkarlViewport)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlViewport()");
+        return false;
+    }
+    // rlBegin()
+    if (!umkaAddFunc(umka, "rlBegin", &umkarlBegin)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlBegin()");
+        return false;
+    }
+    // rlEnd()
+    if (!umkaAddFunc(umka, "rlEnd", &umkarlEnd)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnd()");
+        return false;
+    }
+    // rlVertex2i()
+    if (!umkaAddFunc(umka, "rlVertex2i", &umkarlVertex2i)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlVertex2i()");
+        return false;
+    }
+    // rlVertex2f()
+    if (!umkaAddFunc(umka, "rlVertex2f", &umkarlVertex2f)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlVertex2f()");
+        return false;
+    }
+    // rlVertex3f()
+    if (!umkaAddFunc(umka, "rlVertex3f", &umkarlVertex3f)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlVertex3f()");
+        return false;
+    }
+    // rlTexCoord2f()
+    if (!umkaAddFunc(umka, "rlTexCoord2f", &umkarlTexCoord2f)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlTexCoord2f()");
+        return false;
+    }
+    // rlNormal3f()
+    if (!umkaAddFunc(umka, "rlNormal3f", &umkarlNormal3f)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlNormal3f()");
+        return false;
+    }
+    // rlColor4ub()
+    if (!umkaAddFunc(umka, "rlColor4ub", &umkarlColor4ub)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlColor4ub()");
+        return false;
+    }
+    // rlColor3f()
+    if (!umkaAddFunc(umka, "rlColor3f", &umkarlColor3f)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlColor3f()");
+        return false;
+    }
+    // rlColor4f()
+    if (!umkaAddFunc(umka, "rlColor4f", &umkarlColor4f)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlColor4f()");
+        return false;
+    }
+    // rlEnableVertexArray()
+    if (!umkaAddFunc(umka, "rlEnableVertexArray", &umkarlEnableVertexArray)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableVertexArray()");
+        return false;
+    }
+    // rlDisableVertexArray()
+    if (!umkaAddFunc(umka, "rlDisableVertexArray", &umkarlDisableVertexArray)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableVertexArray()");
+        return false;
+    }
+    // rlEnableVertexBuffer()
+    if (!umkaAddFunc(umka, "rlEnableVertexBuffer", &umkarlEnableVertexBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableVertexBuffer()");
+        return false;
+    }
+    // rlDisableVertexBuffer()
+    if (!umkaAddFunc(umka, "rlDisableVertexBuffer", &umkarlDisableVertexBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableVertexBuffer()");
+        return false;
+    }
+    // rlEnableVertexBufferElement()
+    if (!umkaAddFunc(umka, "rlEnableVertexBufferElement", &umkarlEnableVertexBufferElement)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableVertexBufferElement()");
+        return false;
+    }
+    // rlDisableVertexBufferElement()
+    if (!umkaAddFunc(umka, "rlDisableVertexBufferElement", &umkarlDisableVertexBufferElement)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableVertexBufferElement()");
+        return false;
+    }
+    // rlEnableVertexAttribute()
+    if (!umkaAddFunc(umka, "rlEnableVertexAttribute", &umkarlEnableVertexAttribute)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableVertexAttribute()");
+        return false;
+    }
+    // rlDisableVertexAttribute()
+    if (!umkaAddFunc(umka, "rlDisableVertexAttribute", &umkarlDisableVertexAttribute)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableVertexAttribute()");
+        return false;
+    }
+    // Skipping rlEnableStatePointer
+    // Skipping rlDisableStatePointer
+    // rlActiveTextureSlot()
+    if (!umkaAddFunc(umka, "rlActiveTextureSlot", &umkarlActiveTextureSlot)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlActiveTextureSlot()");
+        return false;
+    }
+    // rlEnableTexture()
+    if (!umkaAddFunc(umka, "rlEnableTexture", &umkarlEnableTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableTexture()");
+        return false;
+    }
+    // rlDisableTexture()
+    if (!umkaAddFunc(umka, "rlDisableTexture", &umkarlDisableTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableTexture()");
+        return false;
+    }
+    // rlEnableTextureCubemap()
+    if (!umkaAddFunc(umka, "rlEnableTextureCubemap", &umkarlEnableTextureCubemap)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableTextureCubemap()");
+        return false;
+    }
+    // rlDisableTextureCubemap()
+    if (!umkaAddFunc(umka, "rlDisableTextureCubemap", &umkarlDisableTextureCubemap)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableTextureCubemap()");
+        return false;
+    }
+    // rlTextureParameters()
+    if (!umkaAddFunc(umka, "rlTextureParameters", &umkarlTextureParameters)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlTextureParameters()");
+        return false;
+    }
+    // rlEnableShader()
+    if (!umkaAddFunc(umka, "rlEnableShader", &umkarlEnableShader)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableShader()");
+        return false;
+    }
+    // rlDisableShader()
+    if (!umkaAddFunc(umka, "rlDisableShader", &umkarlDisableShader)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableShader()");
+        return false;
+    }
+    // rlEnableFramebuffer()
+    if (!umkaAddFunc(umka, "rlEnableFramebuffer", &umkarlEnableFramebuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableFramebuffer()");
+        return false;
+    }
+    // rlDisableFramebuffer()
+    if (!umkaAddFunc(umka, "rlDisableFramebuffer", &umkarlDisableFramebuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableFramebuffer()");
+        return false;
+    }
+    // rlActiveDrawBuffers()
+    if (!umkaAddFunc(umka, "rlActiveDrawBuffers", &umkarlActiveDrawBuffers)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlActiveDrawBuffers()");
+        return false;
+    }
+    // rlEnableColorBlend()
+    if (!umkaAddFunc(umka, "rlEnableColorBlend", &umkarlEnableColorBlend)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableColorBlend()");
+        return false;
+    }
+    // rlDisableColorBlend()
+    if (!umkaAddFunc(umka, "rlDisableColorBlend", &umkarlDisableColorBlend)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableColorBlend()");
+        return false;
+    }
+    // rlEnableDepthTest()
+    if (!umkaAddFunc(umka, "rlEnableDepthTest", &umkarlEnableDepthTest)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableDepthTest()");
+        return false;
+    }
+    // rlDisableDepthTest()
+    if (!umkaAddFunc(umka, "rlDisableDepthTest", &umkarlDisableDepthTest)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableDepthTest()");
+        return false;
+    }
+    // rlEnableDepthMask()
+    if (!umkaAddFunc(umka, "rlEnableDepthMask", &umkarlEnableDepthMask)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableDepthMask()");
+        return false;
+    }
+    // rlDisableDepthMask()
+    if (!umkaAddFunc(umka, "rlDisableDepthMask", &umkarlDisableDepthMask)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableDepthMask()");
+        return false;
+    }
+    // rlEnableBackfaceCulling()
+    if (!umkaAddFunc(umka, "rlEnableBackfaceCulling", &umkarlEnableBackfaceCulling)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableBackfaceCulling()");
+        return false;
+    }
+    // rlDisableBackfaceCulling()
+    if (!umkaAddFunc(umka, "rlDisableBackfaceCulling", &umkarlDisableBackfaceCulling)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableBackfaceCulling()");
+        return false;
+    }
+    // rlEnableScissorTest()
+    if (!umkaAddFunc(umka, "rlEnableScissorTest", &umkarlEnableScissorTest)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableScissorTest()");
+        return false;
+    }
+    // rlDisableScissorTest()
+    if (!umkaAddFunc(umka, "rlDisableScissorTest", &umkarlDisableScissorTest)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableScissorTest()");
+        return false;
+    }
+    // rlScissor()
+    if (!umkaAddFunc(umka, "rlScissor", &umkarlScissor)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlScissor()");
+        return false;
+    }
+    // rlEnableWireMode()
+    if (!umkaAddFunc(umka, "rlEnableWireMode", &umkarlEnableWireMode)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableWireMode()");
+        return false;
+    }
+    // rlDisableWireMode()
+    if (!umkaAddFunc(umka, "rlDisableWireMode", &umkarlDisableWireMode)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableWireMode()");
+        return false;
+    }
+    // rlSetLineWidth()
+    if (!umkaAddFunc(umka, "rlSetLineWidth", &umkarlSetLineWidth)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetLineWidth()");
+        return false;
+    }
+    // rlGetLineWidth()
+    if (!umkaAddFunc(umka, "rlGetLineWidth", &umkarlGetLineWidth)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetLineWidth()");
+        return false;
+    }
+    // rlEnableSmoothLines()
+    if (!umkaAddFunc(umka, "rlEnableSmoothLines", &umkarlEnableSmoothLines)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableSmoothLines()");
+        return false;
+    }
+    // rlDisableSmoothLines()
+    if (!umkaAddFunc(umka, "rlDisableSmoothLines", &umkarlDisableSmoothLines)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableSmoothLines()");
+        return false;
+    }
+    // rlEnableStereoRender()
+    if (!umkaAddFunc(umka, "rlEnableStereoRender", &umkarlEnableStereoRender)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlEnableStereoRender()");
+        return false;
+    }
+    // rlDisableStereoRender()
+    if (!umkaAddFunc(umka, "rlDisableStereoRender", &umkarlDisableStereoRender)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDisableStereoRender()");
+        return false;
+    }
+    // rlIsStereoRenderEnabled()
+    if (!umkaAddFunc(umka, "rlIsStereoRenderEnabled", &umkarlIsStereoRenderEnabled)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlIsStereoRenderEnabled()");
+        return false;
+    }
+    // rlClearColor()
+    if (!umkaAddFunc(umka, "rlClearColor", &umkarlClearColor)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlClearColor()");
+        return false;
+    }
+    // rlClearScreenBuffers()
+    if (!umkaAddFunc(umka, "rlClearScreenBuffers", &umkarlClearScreenBuffers)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlClearScreenBuffers()");
+        return false;
+    }
+    // rlCheckErrors()
+    if (!umkaAddFunc(umka, "rlCheckErrors", &umkarlCheckErrors)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlCheckErrors()");
+        return false;
+    }
+    // rlSetBlendMode()
+    if (!umkaAddFunc(umka, "rlSetBlendMode", &umkarlSetBlendMode)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetBlendMode()");
+        return false;
+    }
+    // rlSetBlendFactors()
+    if (!umkaAddFunc(umka, "rlSetBlendFactors", &umkarlSetBlendFactors)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetBlendFactors()");
+        return false;
+    }
+    // rlglInit()
+    if (!umkaAddFunc(umka, "rlglInit", &umkarlglInit)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlglInit()");
+        return false;
+    }
+    // rlglClose()
+    if (!umkaAddFunc(umka, "rlglClose", &umkarlglClose)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlglClose()");
+        return false;
+    }
+    // rlLoadExtensions()
+    if (!umkaAddFunc(umka, "rlLoadExtensions", &umkarlLoadExtensions)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadExtensions()");
+        return false;
+    }
+    // rlGetVersion()
+    if (!umkaAddFunc(umka, "rlGetVersion", &umkarlGetVersion)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetVersion()");
+        return false;
+    }
+    // rlSetFramebufferWidth()
+    if (!umkaAddFunc(umka, "rlSetFramebufferWidth", &umkarlSetFramebufferWidth)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetFramebufferWidth()");
+        return false;
+    }
+    // rlGetFramebufferWidth()
+    if (!umkaAddFunc(umka, "rlGetFramebufferWidth", &umkarlGetFramebufferWidth)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetFramebufferWidth()");
+        return false;
+    }
+    // rlSetFramebufferHeight()
+    if (!umkaAddFunc(umka, "rlSetFramebufferHeight", &umkarlSetFramebufferHeight)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetFramebufferHeight()");
+        return false;
+    }
+    // rlGetFramebufferHeight()
+    if (!umkaAddFunc(umka, "rlGetFramebufferHeight", &umkarlGetFramebufferHeight)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetFramebufferHeight()");
+        return false;
+    }
+    // rlGetTextureIdDefault()
+    if (!umkaAddFunc(umka, "rlGetTextureIdDefault", &umkarlGetTextureIdDefault)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetTextureIdDefault()");
+        return false;
+    }
+    // rlGetShaderIdDefault()
+    if (!umkaAddFunc(umka, "rlGetShaderIdDefault", &umkarlGetShaderIdDefault)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetShaderIdDefault()");
+        return false;
+    }
+    // rlGetShaderLocsDefault()
+    if (!umkaAddFunc(umka, "rlGetShaderLocsDefault", &umkarlGetShaderLocsDefault)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetShaderLocsDefault()");
+        return false;
+    }
+    // Skipping rlLoadRenderBatch
+    // Skipping rlUnloadRenderBatch
+    // Skipping rlDrawRenderBatch
+    // Skipping rlSetRenderBatchActive
+    // rlDrawRenderBatchActive()
+    if (!umkaAddFunc(umka, "rlDrawRenderBatchActive", &umkarlDrawRenderBatchActive)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDrawRenderBatchActive()");
+        return false;
+    }
+    // rlCheckRenderBatchLimit()
+    if (!umkaAddFunc(umka, "rlCheckRenderBatchLimit", &umkarlCheckRenderBatchLimit)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlCheckRenderBatchLimit()");
+        return false;
+    }
+    // rlSetTexture()
+    if (!umkaAddFunc(umka, "rlSetTexture", &umkarlSetTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetTexture()");
+        return false;
+    }
+    // rlLoadVertexArray()
+    if (!umkaAddFunc(umka, "rlLoadVertexArray", &umkarlLoadVertexArray)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadVertexArray()");
+        return false;
+    }
+    // rlLoadVertexBuffer()
+    if (!umkaAddFunc(umka, "rlLoadVertexBuffer", &umkarlLoadVertexBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadVertexBuffer()");
+        return false;
+    }
+    // rlLoadVertexBufferElement()
+    if (!umkaAddFunc(umka, "rlLoadVertexBufferElement", &umkarlLoadVertexBufferElement)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadVertexBufferElement()");
+        return false;
+    }
+    // rlUpdateVertexBuffer()
+    if (!umkaAddFunc(umka, "rlUpdateVertexBuffer", &umkarlUpdateVertexBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUpdateVertexBuffer()");
+        return false;
+    }
+    // rlUpdateVertexBufferElements()
+    if (!umkaAddFunc(umka, "rlUpdateVertexBufferElements", &umkarlUpdateVertexBufferElements)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUpdateVertexBufferElements()");
+        return false;
+    }
+    // rlUnloadVertexArray()
+    if (!umkaAddFunc(umka, "rlUnloadVertexArray", &umkarlUnloadVertexArray)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUnloadVertexArray()");
+        return false;
+    }
+    // rlUnloadVertexBuffer()
+    if (!umkaAddFunc(umka, "rlUnloadVertexBuffer", &umkarlUnloadVertexBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUnloadVertexBuffer()");
+        return false;
+    }
+    // rlSetVertexAttribute()
+    if (!umkaAddFunc(umka, "rlSetVertexAttribute", &umkarlSetVertexAttribute)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetVertexAttribute()");
+        return false;
+    }
+    // rlSetVertexAttributeDivisor()
+    if (!umkaAddFunc(umka, "rlSetVertexAttributeDivisor", &umkarlSetVertexAttributeDivisor)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetVertexAttributeDivisor()");
+        return false;
+    }
+    // rlSetVertexAttributeDefault()
+    if (!umkaAddFunc(umka, "rlSetVertexAttributeDefault", &umkarlSetVertexAttributeDefault)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetVertexAttributeDefault()");
+        return false;
+    }
+    // rlDrawVertexArray()
+    if (!umkaAddFunc(umka, "rlDrawVertexArray", &umkarlDrawVertexArray)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDrawVertexArray()");
+        return false;
+    }
+    // rlDrawVertexArrayElements()
+    if (!umkaAddFunc(umka, "rlDrawVertexArrayElements", &umkarlDrawVertexArrayElements)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDrawVertexArrayElements()");
+        return false;
+    }
+    // rlDrawVertexArrayInstanced()
+    if (!umkaAddFunc(umka, "rlDrawVertexArrayInstanced", &umkarlDrawVertexArrayInstanced)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDrawVertexArrayInstanced()");
+        return false;
+    }
+    // rlDrawVertexArrayElementsInstanced()
+    if (!umkaAddFunc(umka, "rlDrawVertexArrayElementsInstanced", &umkarlDrawVertexArrayElementsInstanced)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlDrawVertexArrayElementsInstanced()");
+        return false;
+    }
+    // rlLoadTexture()
+    if (!umkaAddFunc(umka, "rlLoadTexture", &umkarlLoadTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadTexture()");
+        return false;
+    }
+    // rlLoadTextureDepth()
+    if (!umkaAddFunc(umka, "rlLoadTextureDepth", &umkarlLoadTextureDepth)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadTextureDepth()");
+        return false;
+    }
+    // rlLoadTextureCubemap()
+    if (!umkaAddFunc(umka, "rlLoadTextureCubemap", &umkarlLoadTextureCubemap)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadTextureCubemap()");
+        return false;
+    }
+    // rlUpdateTexture()
+    if (!umkaAddFunc(umka, "rlUpdateTexture", &umkarlUpdateTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUpdateTexture()");
+        return false;
+    }
+    // rlGetGlTextureFormats()
+    if (!umkaAddFunc(umka, "rlGetGlTextureFormats", &umkarlGetGlTextureFormats)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetGlTextureFormats()");
+        return false;
+    }
+    // rlGetPixelFormatName()
+    if (!umkaAddFunc(umka, "rlGetPixelFormatName", &umkarlGetPixelFormatName)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetPixelFormatName()");
+        return false;
+    }
+    // rlUnloadTexture()
+    if (!umkaAddFunc(umka, "rlUnloadTexture", &umkarlUnloadTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUnloadTexture()");
+        return false;
+    }
+    // rlGenTextureMipmaps()
+    if (!umkaAddFunc(umka, "rlGenTextureMipmaps", &umkarlGenTextureMipmaps)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGenTextureMipmaps()");
+        return false;
+    }
+    // rlReadTexturePixels()
+    if (!umkaAddFunc(umka, "rlReadTexturePixels", &umkarlReadTexturePixels)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlReadTexturePixels()");
+        return false;
+    }
+    // rlReadScreenPixels()
+    if (!umkaAddFunc(umka, "rlReadScreenPixels", &umkarlReadScreenPixels)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlReadScreenPixels()");
+        return false;
+    }
+    // rlLoadFramebuffer()
+    if (!umkaAddFunc(umka, "rlLoadFramebuffer", &umkarlLoadFramebuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadFramebuffer()");
+        return false;
+    }
+    // rlFramebufferAttach()
+    if (!umkaAddFunc(umka, "rlFramebufferAttach", &umkarlFramebufferAttach)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlFramebufferAttach()");
+        return false;
+    }
+    // rlFramebufferComplete()
+    if (!umkaAddFunc(umka, "rlFramebufferComplete", &umkarlFramebufferComplete)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlFramebufferComplete()");
+        return false;
+    }
+    // rlUnloadFramebuffer()
+    if (!umkaAddFunc(umka, "rlUnloadFramebuffer", &umkarlUnloadFramebuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUnloadFramebuffer()");
+        return false;
+    }
+    // rlLoadShaderCode()
+    if (!umkaAddFunc(umka, "rlLoadShaderCode", &umkarlLoadShaderCode)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadShaderCode()");
+        return false;
+    }
+    // rlCompileShader()
+    if (!umkaAddFunc(umka, "rlCompileShader", &umkarlCompileShader)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlCompileShader()");
+        return false;
+    }
+    // rlLoadShaderProgram()
+    if (!umkaAddFunc(umka, "rlLoadShaderProgram", &umkarlLoadShaderProgram)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadShaderProgram()");
+        return false;
+    }
+    // rlUnloadShaderProgram()
+    if (!umkaAddFunc(umka, "rlUnloadShaderProgram", &umkarlUnloadShaderProgram)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUnloadShaderProgram()");
+        return false;
+    }
+    // rlGetLocationUniform()
+    if (!umkaAddFunc(umka, "rlGetLocationUniform", &umkarlGetLocationUniform)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetLocationUniform()");
+        return false;
+    }
+    // rlGetLocationAttrib()
+    if (!umkaAddFunc(umka, "rlGetLocationAttrib", &umkarlGetLocationAttrib)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetLocationAttrib()");
+        return false;
+    }
+    // rlSetUniform()
+    if (!umkaAddFunc(umka, "rlSetUniform", &umkarlSetUniform)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetUniform()");
+        return false;
+    }
+    // rlSetUniformMatrix()
+    if (!umkaAddFunc(umka, "rlSetUniformMatrix", &umkarlSetUniformMatrix)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetUniformMatrix()");
+        return false;
+    }
+    // rlSetUniformSampler()
+    if (!umkaAddFunc(umka, "rlSetUniformSampler", &umkarlSetUniformSampler)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetUniformSampler()");
+        return false;
+    }
+    // rlSetShader()
+    if (!umkaAddFunc(umka, "rlSetShader", &umkarlSetShader)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetShader()");
+        return false;
+    }
+    // rlLoadComputeShaderProgram()
+    if (!umkaAddFunc(umka, "rlLoadComputeShaderProgram", &umkarlLoadComputeShaderProgram)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadComputeShaderProgram()");
+        return false;
+    }
+    // rlComputeShaderDispatch()
+    if (!umkaAddFunc(umka, "rlComputeShaderDispatch", &umkarlComputeShaderDispatch)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlComputeShaderDispatch()");
+        return false;
+    }
+    // rlLoadShaderBuffer()
+    if (!umkaAddFunc(umka, "rlLoadShaderBuffer", &umkarlLoadShaderBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadShaderBuffer()");
+        return false;
+    }
+    // rlUnloadShaderBuffer()
+    if (!umkaAddFunc(umka, "rlUnloadShaderBuffer", &umkarlUnloadShaderBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUnloadShaderBuffer()");
+        return false;
+    }
+    // rlUpdateShaderBufferElements()
+    if (!umkaAddFunc(umka, "rlUpdateShaderBufferElements", &umkarlUpdateShaderBufferElements)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlUpdateShaderBufferElements()");
+        return false;
+    }
+    // rlGetShaderBufferSize()
+    if (!umkaAddFunc(umka, "rlGetShaderBufferSize", &umkarlGetShaderBufferSize)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetShaderBufferSize()");
+        return false;
+    }
+    // rlReadShaderBufferElements()
+    if (!umkaAddFunc(umka, "rlReadShaderBufferElements", &umkarlReadShaderBufferElements)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlReadShaderBufferElements()");
+        return false;
+    }
+    // rlBindShaderBuffer()
+    if (!umkaAddFunc(umka, "rlBindShaderBuffer", &umkarlBindShaderBuffer)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlBindShaderBuffer()");
+        return false;
+    }
+    // rlCopyBuffersElements()
+    if (!umkaAddFunc(umka, "rlCopyBuffersElements", &umkarlCopyBuffersElements)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlCopyBuffersElements()");
+        return false;
+    }
+    // rlBindImageTexture()
+    if (!umkaAddFunc(umka, "rlBindImageTexture", &umkarlBindImageTexture)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlBindImageTexture()");
+        return false;
+    }
+    // rlGetMatrixModelview()
+    if (!umkaAddFunc(umka, "rlGetMatrixModelview", &umkarlGetMatrixModelview)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetMatrixModelview()");
+        return false;
+    }
+    // rlGetMatrixProjection()
+    if (!umkaAddFunc(umka, "rlGetMatrixProjection", &umkarlGetMatrixProjection)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetMatrixProjection()");
+        return false;
+    }
+    // rlGetMatrixTransform()
+    if (!umkaAddFunc(umka, "rlGetMatrixTransform", &umkarlGetMatrixTransform)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetMatrixTransform()");
+        return false;
+    }
+    // rlGetMatrixProjectionStereo()
+    if (!umkaAddFunc(umka, "rlGetMatrixProjectionStereo", &umkarlGetMatrixProjectionStereo)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetMatrixProjectionStereo()");
+        return false;
+    }
+    // rlGetMatrixViewOffsetStereo()
+    if (!umkaAddFunc(umka, "rlGetMatrixViewOffsetStereo", &umkarlGetMatrixViewOffsetStereo)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlGetMatrixViewOffsetStereo()");
+        return false;
+    }
+    // rlSetMatrixProjection()
+    if (!umkaAddFunc(umka, "rlSetMatrixProjection", &umkarlSetMatrixProjection)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetMatrixProjection()");
+        return false;
+    }
+    // rlSetMatrixModelview()
+    if (!umkaAddFunc(umka, "rlSetMatrixModelview", &umkarlSetMatrixModelview)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetMatrixModelview()");
+        return false;
+    }
+    // rlSetMatrixProjectionStereo()
+    if (!umkaAddFunc(umka, "rlSetMatrixProjectionStereo", &umkarlSetMatrixProjectionStereo)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetMatrixProjectionStereo()");
+        return false;
+    }
+    // rlSetMatrixViewOffsetStereo()
+    if (!umkaAddFunc(umka, "rlSetMatrixViewOffsetStereo", &umkarlSetMatrixViewOffsetStereo)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlSetMatrixViewOffsetStereo()");
+        return false;
+    }
+    // rlLoadDrawCube()
+    if (!umkaAddFunc(umka, "rlLoadDrawCube", &umkarlLoadDrawCube)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadDrawCube()");
+        return false;
+    }
+    // rlLoadDrawQuad()
+    if (!umkaAddFunc(umka, "rlLoadDrawQuad", &umkarlLoadDrawQuad)) {
+        TraceLog(LOG_ERROR, "UMKA: Failed to add function rlLoadDrawQuad()");
+        return false;
+    }
 
     /**
      * The code for the raylib umka module.
@@ -10599,933 +12800,1187 @@ bool umkaAddRaylib(void *umka) {
         /* 0228 */ "  float16* = struct {\n"
         /* 0229 */ "    v: [16]real32\n"
         /* 0230 */ "  }\n"
-        /* 0231 */ ")\n"
+        /* 0231 */ "  rlDrawCall* = struct {\n"
+        /* 0232 */ "    mode: int32\n"
+        /* 0233 */ "    vertexCount: int32\n"
+        /* 0234 */ "    vertexAlignment: int32\n"
+        /* 0235 */ "    textureId: uint32\n"
+        /* 0236 */ "  }\n"
+        /* 0237 */ ")\n"
 
         // Callbacks
-        /* 0232 */ "type (\n"
+        /* 0238 */ "type (\n"
         // Skipped TraceLogCallback
-        /* 0233 */ "    LoadFileDataCallback = fn(fileName: str, bytesRead: ^uint32): ^uint8\n"
-        /* 0234 */ "    SaveFileDataCallback = fn(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
-        /* 0235 */ "    LoadFileTextCallback = fn(fileName: str): str\n"
-        /* 0236 */ "    SaveFileTextCallback = fn(fileName: str, text: str): bool\n"
-        /* 0237 */ "    AudioCallback = fn(bufferData: ^void, frames: uint32)\n"
-        /* 0238 */ ")\n"
+        /* 0239 */ "    LoadFileDataCallback = fn(fileName: str, bytesRead: ^uint32): ^uint8\n"
+        /* 0240 */ "    SaveFileDataCallback = fn(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
+        /* 0241 */ "    LoadFileTextCallback = fn(fileName: str): str\n"
+        /* 0242 */ "    SaveFileTextCallback = fn(fileName: str, text: str): bool\n"
+        /* 0243 */ "    AudioCallback = fn(bufferData: ^void, frames: uint32)\n"
+        /* 0244 */ ")\n"
 
         // Function Declarations
-        /* 0239 */ "fn InitWindow*(width: int32, height: int32, title: str)\n"
-        /* 0240 */ "fn WindowShouldClose*(): bool\n"
-        /* 0241 */ "fn CloseWindow*()\n"
-        /* 0242 */ "fn IsWindowReady*(): bool\n"
-        /* 0243 */ "fn IsWindowFullscreen*(): bool\n"
-        /* 0244 */ "fn IsWindowHidden*(): bool\n"
-        /* 0245 */ "fn IsWindowMinimized*(): bool\n"
-        /* 0246 */ "fn IsWindowMaximized*(): bool\n"
-        /* 0247 */ "fn IsWindowFocused*(): bool\n"
-        /* 0248 */ "fn IsWindowResized*(): bool\n"
-        /* 0249 */ "fn IsWindowState*(flag: uint32): bool\n"
-        /* 0250 */ "fn SetWindowState*(flags: uint32)\n"
-        /* 0251 */ "fn ClearWindowState*(flags: uint32)\n"
-        /* 0252 */ "fn ToggleFullscreen*()\n"
-        /* 0253 */ "fn MaximizeWindow*()\n"
-        /* 0254 */ "fn MinimizeWindow*()\n"
-        /* 0255 */ "fn RestoreWindow*()\n"
-        /* 0256 */ "fn SetWindowIcon*(image: Image)\n"
-        /* 0257 */ "fn SetWindowTitle*(title: str)\n"
-        /* 0258 */ "fn SetWindowPosition*(x: int32, y: int32)\n"
-        /* 0259 */ "fn SetWindowMonitor*(monitor: int32)\n"
-        /* 0260 */ "fn SetWindowMinSize*(width: int32, height: int32)\n"
-        /* 0261 */ "fn SetWindowSize*(width: int32, height: int32)\n"
-        /* 0262 */ "fn SetWindowOpacity*(opacity: real32)\n"
-        /* 0263 */ "fn GetWindowHandle*(): ^void\n"
-        /* 0264 */ "fn GetScreenWidth*(): int32\n"
-        /* 0265 */ "fn GetScreenHeight*(): int32\n"
-        /* 0266 */ "fn GetRenderWidth*(): int32\n"
-        /* 0267 */ "fn GetRenderHeight*(): int32\n"
-        /* 0268 */ "fn GetMonitorCount*(): int32\n"
-        /* 0269 */ "fn GetCurrentMonitor*(): int32\n"
-        /* 0270 */ "fn GetMonitorPosition*(monitor: int32): Vector2\n"
-        /* 0271 */ "fn GetMonitorWidth*(monitor: int32): int32\n"
-        /* 0272 */ "fn GetMonitorHeight*(monitor: int32): int32\n"
-        /* 0273 */ "fn GetMonitorPhysicalWidth*(monitor: int32): int32\n"
-        /* 0274 */ "fn GetMonitorPhysicalHeight*(monitor: int32): int32\n"
-        /* 0275 */ "fn GetMonitorRefreshRate*(monitor: int32): int32\n"
-        /* 0276 */ "fn GetWindowPosition*(): Vector2\n"
-        /* 0277 */ "fn GetWindowScaleDPI*(): Vector2\n"
-        /* 0278 */ "fn GetMonitorName*(monitor: int32): str\n"
-        /* 0279 */ "fn SetClipboardText*(text: str)\n"
-        /* 0280 */ "fn GetClipboardText*(): str\n"
-        /* 0281 */ "fn EnableEventWaiting*()\n"
-        /* 0282 */ "fn DisableEventWaiting*()\n"
-        /* 0283 */ "fn SwapScreenBuffer*()\n"
-        /* 0284 */ "fn PollInputEvents*()\n"
-        /* 0285 */ "fn WaitTime*(seconds: real)\n"
-        /* 0286 */ "fn ShowCursor*()\n"
-        /* 0287 */ "fn HideCursor*()\n"
-        /* 0288 */ "fn IsCursorHidden*(): bool\n"
-        /* 0289 */ "fn EnableCursor*()\n"
-        /* 0290 */ "fn DisableCursor*()\n"
-        /* 0291 */ "fn IsCursorOnScreen*(): bool\n"
-        /* 0292 */ "fn ClearBackground*(color: Color)\n"
-        /* 0293 */ "fn BeginDrawing*()\n"
-        /* 0294 */ "fn EndDrawing*()\n"
-        /* 0295 */ "fn BeginMode2D*(camera: Camera2D)\n"
-        /* 0296 */ "fn EndMode2D*()\n"
-        /* 0297 */ "fn BeginMode3D*(camera: Camera3D)\n"
-        /* 0298 */ "fn EndMode3D*()\n"
-        /* 0299 */ "fn BeginTextureMode*(target: RenderTexture)\n"
-        /* 0300 */ "fn EndTextureMode*()\n"
-        /* 0301 */ "fn BeginShaderMode*(shader: Shader)\n"
-        /* 0302 */ "fn EndShaderMode*()\n"
-        /* 0303 */ "fn BeginBlendMode*(mode: int32)\n"
-        /* 0304 */ "fn EndBlendMode*()\n"
-        /* 0305 */ "fn BeginScissorMode*(x: int32, y: int32, width: int32, height: int32)\n"
-        /* 0306 */ "fn EndScissorMode*()\n"
-        /* 0307 */ "fn BeginVrStereoMode*(config: VrStereoConfig)\n"
-        /* 0308 */ "fn EndVrStereoMode*()\n"
-        /* 0309 */ "fn LoadVrStereoConfig*(device: VrDeviceInfo): VrStereoConfig\n"
-        /* 0310 */ "fn UnloadVrStereoConfig*(config: VrStereoConfig)\n"
-        /* 0311 */ "fn LoadShader*(vsFileName: str, fsFileName: str): Shader\n"
-        /* 0312 */ "fn LoadShaderFromMemory*(vsCode: str, fsCode: str): Shader\n"
-        /* 0313 */ "fn GetShaderLocation*(shader: Shader, uniformName: str): int32\n"
-        /* 0314 */ "fn GetShaderLocationAttrib*(shader: Shader, attribName: str): int32\n"
-        /* 0315 */ "fn SetShaderValue*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32)\n"
-        /* 0316 */ "fn SetShaderValueV*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
-        /* 0317 */ "fn SetShaderValueMatrix*(shader: Shader, locIndex: int32, mat: Matrix)\n"
-        /* 0318 */ "fn SetShaderValueTexture*(shader: Shader, locIndex: int32, texture: Texture)\n"
-        /* 0319 */ "fn UnloadShader*(shader: Shader)\n"
-        /* 0320 */ "fn GetMouseRay*(mousePosition: Vector2, camera: Camera3D): Ray\n"
-        /* 0321 */ "fn GetCameraMatrix*(camera: Camera3D): Matrix\n"
-        /* 0322 */ "fn GetCameraMatrix2D*(camera: Camera2D): Matrix\n"
-        /* 0323 */ "fn GetWorldToScreen*(position: Vector3, camera: Camera3D): Vector2\n"
-        /* 0324 */ "fn GetScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2\n"
-        /* 0325 */ "fn GetWorldToScreenEx*(position: Vector3, camera: Camera3D, width: int32, height: int32): Vector2\n"
-        /* 0326 */ "fn GetWorldToScreen2D*(position: Vector2, camera: Camera2D): Vector2\n"
-        /* 0327 */ "fn SetTargetFPS*(fps: int32)\n"
-        /* 0328 */ "fn GetFPS*(): int32\n"
-        /* 0329 */ "fn GetFrameTime*(): real32\n"
-        /* 0330 */ "fn GetTime*(): real\n"
-        /* 0331 */ "fn GetRandomValue*(min: int32, max: int32): int32\n"
-        /* 0332 */ "fn SetRandomSeed*(seed: uint32)\n"
-        /* 0333 */ "fn TakeScreenshot*(fileName: str)\n"
-        /* 0334 */ "fn SetConfigFlags*(flags: uint32)\n"
+        /* 0245 */ "fn InitWindow*(width: int32, height: int32, title: str)\n"
+        /* 0246 */ "fn WindowShouldClose*(): bool\n"
+        /* 0247 */ "fn CloseWindow*()\n"
+        /* 0248 */ "fn IsWindowReady*(): bool\n"
+        /* 0249 */ "fn IsWindowFullscreen*(): bool\n"
+        /* 0250 */ "fn IsWindowHidden*(): bool\n"
+        /* 0251 */ "fn IsWindowMinimized*(): bool\n"
+        /* 0252 */ "fn IsWindowMaximized*(): bool\n"
+        /* 0253 */ "fn IsWindowFocused*(): bool\n"
+        /* 0254 */ "fn IsWindowResized*(): bool\n"
+        /* 0255 */ "fn IsWindowState*(flag: uint32): bool\n"
+        /* 0256 */ "fn SetWindowState*(flags: uint32)\n"
+        /* 0257 */ "fn ClearWindowState*(flags: uint32)\n"
+        /* 0258 */ "fn ToggleFullscreen*()\n"
+        /* 0259 */ "fn MaximizeWindow*()\n"
+        /* 0260 */ "fn MinimizeWindow*()\n"
+        /* 0261 */ "fn RestoreWindow*()\n"
+        /* 0262 */ "fn SetWindowIcon*(image: Image)\n"
+        /* 0263 */ "fn SetWindowTitle*(title: str)\n"
+        /* 0264 */ "fn SetWindowPosition*(x: int32, y: int32)\n"
+        /* 0265 */ "fn SetWindowMonitor*(monitor: int32)\n"
+        /* 0266 */ "fn SetWindowMinSize*(width: int32, height: int32)\n"
+        /* 0267 */ "fn SetWindowSize*(width: int32, height: int32)\n"
+        /* 0268 */ "fn SetWindowOpacity*(opacity: real32)\n"
+        /* 0269 */ "fn GetWindowHandle*(): ^void\n"
+        /* 0270 */ "fn GetScreenWidth*(): int32\n"
+        /* 0271 */ "fn GetScreenHeight*(): int32\n"
+        /* 0272 */ "fn GetRenderWidth*(): int32\n"
+        /* 0273 */ "fn GetRenderHeight*(): int32\n"
+        /* 0274 */ "fn GetMonitorCount*(): int32\n"
+        /* 0275 */ "fn GetCurrentMonitor*(): int32\n"
+        /* 0276 */ "fn GetMonitorPosition*(monitor: int32): Vector2\n"
+        /* 0277 */ "fn GetMonitorWidth*(monitor: int32): int32\n"
+        /* 0278 */ "fn GetMonitorHeight*(monitor: int32): int32\n"
+        /* 0279 */ "fn GetMonitorPhysicalWidth*(monitor: int32): int32\n"
+        /* 0280 */ "fn GetMonitorPhysicalHeight*(monitor: int32): int32\n"
+        /* 0281 */ "fn GetMonitorRefreshRate*(monitor: int32): int32\n"
+        /* 0282 */ "fn GetWindowPosition*(): Vector2\n"
+        /* 0283 */ "fn GetWindowScaleDPI*(): Vector2\n"
+        /* 0284 */ "fn GetMonitorName*(monitor: int32): str\n"
+        /* 0285 */ "fn SetClipboardText*(text: str)\n"
+        /* 0286 */ "fn GetClipboardText*(): str\n"
+        /* 0287 */ "fn EnableEventWaiting*()\n"
+        /* 0288 */ "fn DisableEventWaiting*()\n"
+        /* 0289 */ "fn SwapScreenBuffer*()\n"
+        /* 0290 */ "fn PollInputEvents*()\n"
+        /* 0291 */ "fn WaitTime*(seconds: real)\n"
+        /* 0292 */ "fn ShowCursor*()\n"
+        /* 0293 */ "fn HideCursor*()\n"
+        /* 0294 */ "fn IsCursorHidden*(): bool\n"
+        /* 0295 */ "fn EnableCursor*()\n"
+        /* 0296 */ "fn DisableCursor*()\n"
+        /* 0297 */ "fn IsCursorOnScreen*(): bool\n"
+        /* 0298 */ "fn ClearBackground*(color: Color)\n"
+        /* 0299 */ "fn BeginDrawing*()\n"
+        /* 0300 */ "fn EndDrawing*()\n"
+        /* 0301 */ "fn BeginMode2D*(camera: Camera2D)\n"
+        /* 0302 */ "fn EndMode2D*()\n"
+        /* 0303 */ "fn BeginMode3D*(camera: Camera3D)\n"
+        /* 0304 */ "fn EndMode3D*()\n"
+        /* 0305 */ "fn BeginTextureMode*(target: RenderTexture)\n"
+        /* 0306 */ "fn EndTextureMode*()\n"
+        /* 0307 */ "fn BeginShaderMode*(shader: Shader)\n"
+        /* 0308 */ "fn EndShaderMode*()\n"
+        /* 0309 */ "fn BeginBlendMode*(mode: int32)\n"
+        /* 0310 */ "fn EndBlendMode*()\n"
+        /* 0311 */ "fn BeginScissorMode*(x: int32, y: int32, width: int32, height: int32)\n"
+        /* 0312 */ "fn EndScissorMode*()\n"
+        /* 0313 */ "fn BeginVrStereoMode*(config: VrStereoConfig)\n"
+        /* 0314 */ "fn EndVrStereoMode*()\n"
+        /* 0315 */ "fn LoadVrStereoConfig*(device: VrDeviceInfo): VrStereoConfig\n"
+        /* 0316 */ "fn UnloadVrStereoConfig*(config: VrStereoConfig)\n"
+        /* 0317 */ "fn LoadShader*(vsFileName: str, fsFileName: str): Shader\n"
+        /* 0318 */ "fn LoadShaderFromMemory*(vsCode: str, fsCode: str): Shader\n"
+        /* 0319 */ "fn GetShaderLocation*(shader: Shader, uniformName: str): int32\n"
+        /* 0320 */ "fn GetShaderLocationAttrib*(shader: Shader, attribName: str): int32\n"
+        /* 0321 */ "fn SetShaderValue*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32)\n"
+        /* 0322 */ "fn SetShaderValueV*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
+        /* 0323 */ "fn SetShaderValueMatrix*(shader: Shader, locIndex: int32, mat: Matrix)\n"
+        /* 0324 */ "fn SetShaderValueTexture*(shader: Shader, locIndex: int32, texture: Texture)\n"
+        /* 0325 */ "fn UnloadShader*(shader: Shader)\n"
+        /* 0326 */ "fn GetMouseRay*(mousePosition: Vector2, camera: Camera3D): Ray\n"
+        /* 0327 */ "fn GetCameraMatrix*(camera: Camera3D): Matrix\n"
+        /* 0328 */ "fn GetCameraMatrix2D*(camera: Camera2D): Matrix\n"
+        /* 0329 */ "fn GetWorldToScreen*(position: Vector3, camera: Camera3D): Vector2\n"
+        /* 0330 */ "fn GetScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2\n"
+        /* 0331 */ "fn GetWorldToScreenEx*(position: Vector3, camera: Camera3D, width: int32, height: int32): Vector2\n"
+        /* 0332 */ "fn GetWorldToScreen2D*(position: Vector2, camera: Camera2D): Vector2\n"
+        /* 0333 */ "fn SetTargetFPS*(fps: int32)\n"
+        /* 0334 */ "fn GetFPS*(): int32\n"
+        /* 0335 */ "fn GetFrameTime*(): real32\n"
+        /* 0336 */ "fn GetTime*(): real\n"
+        /* 0337 */ "fn GetRandomValue*(min: int32, max: int32): int32\n"
+        /* 0338 */ "fn SetRandomSeed*(seed: uint32)\n"
+        /* 0339 */ "fn TakeScreenshot*(fileName: str)\n"
+        /* 0340 */ "fn SetConfigFlags*(flags: uint32)\n"
         // Skipping TraceLog
-        /* 0335 */ "fn SetTraceLogLevel*(logLevel: int32)\n"
-        /* 0336 */ "fn MemAlloc*(size: int32): ^void\n"
-        /* 0337 */ "fn MemRealloc*(ptr: ^void, size: int32): ^void\n"
-        /* 0338 */ "fn MemFree*(ptr: ^void)\n"
-        /* 0339 */ "fn OpenURL*(url: str)\n"
+        /* 0341 */ "fn SetTraceLogLevel*(logLevel: int32)\n"
+        /* 0342 */ "fn MemAlloc*(size: int32): ^void\n"
+        /* 0343 */ "fn MemRealloc*(ptr: ^void, size: int32): ^void\n"
+        /* 0344 */ "fn MemFree*(ptr: ^void)\n"
+        /* 0345 */ "fn OpenURL*(url: str)\n"
         // Skipping SetTraceLogCallback
         // Skipping SetLoadFileDataCallback
         // Skipping SetSaveFileDataCallback
         // Skipping SetLoadFileTextCallback
         // Skipping SetSaveFileTextCallback
-        /* 0340 */ "fn LoadFileData*(fileName: str, bytesRead: ^uint32): ^uint8\n"
-        /* 0341 */ "fn UnloadFileData*(data: ^uint8)\n"
-        /* 0342 */ "fn SaveFileData*(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
-        /* 0343 */ "fn ExportDataAsCode*(data: str, size: uint32, fileName: str): bool\n"
-        /* 0344 */ "fn LoadFileText*(fileName: str): str\n"
-        /* 0345 */ "fn UnloadFileText*(text: str)\n"
-        /* 0346 */ "fn SaveFileText*(fileName: str, text: str): bool\n"
-        /* 0347 */ "fn FileExists*(fileName: str): bool\n"
-        /* 0348 */ "fn DirectoryExists*(dirPath: str): bool\n"
-        /* 0349 */ "fn IsFileExtension*(fileName: str, ext: str): bool\n"
-        /* 0350 */ "fn GetFileLength*(fileName: str): int32\n"
-        /* 0351 */ "fn GetFileExtension*(fileName: str): str\n"
-        /* 0352 */ "fn GetFileName*(filePath: str): str\n"
-        /* 0353 */ "fn GetFileNameWithoutExt*(filePath: str): str\n"
-        /* 0354 */ "fn GetDirectoryPath*(filePath: str): str\n"
-        /* 0355 */ "fn GetPrevDirectoryPath*(dirPath: str): str\n"
-        /* 0356 */ "fn GetWorkingDirectory*(): str\n"
-        /* 0357 */ "fn GetApplicationDirectory*(): str\n"
-        /* 0358 */ "fn ChangeDirectory*(dir: str): bool\n"
-        /* 0359 */ "fn IsPathFile*(path: str): bool\n"
-        /* 0360 */ "fn LoadDirectoryFiles*(dirPath: str): FilePathList\n"
-        /* 0361 */ "fn LoadDirectoryFilesEx*(basePath: str, filter: str, scanSubdirs: bool): FilePathList\n"
-        /* 0362 */ "fn UnloadDirectoryFiles*(files: FilePathList)\n"
-        /* 0363 */ "fn IsFileDropped*(): bool\n"
-        /* 0364 */ "fn LoadDroppedFiles*(): FilePathList\n"
-        /* 0365 */ "fn UnloadDroppedFiles*(files: FilePathList)\n"
-        /* 0366 */ "fn GetFileModTime*(fileName: str): int\n"
-        /* 0367 */ "fn CompressData*(data: ^uint8, dataSize: int32, compDataSize: ^int32): ^uint8\n"
-        /* 0368 */ "fn DecompressData*(compData: ^uint8, compDataSize: int32, dataSize: ^int32): ^uint8\n"
-        /* 0369 */ "fn EncodeDataBase64*(data: ^uint8, dataSize: int32, outputSize: ^int32): str\n"
-        /* 0370 */ "fn DecodeDataBase64*(data: ^uint8, outputSize: ^int32): ^uint8\n"
-        /* 0371 */ "fn IsKeyPressed*(key: int32): bool\n"
-        /* 0372 */ "fn IsKeyDown*(key: int32): bool\n"
-        /* 0373 */ "fn IsKeyReleased*(key: int32): bool\n"
-        /* 0374 */ "fn IsKeyUp*(key: int32): bool\n"
-        /* 0375 */ "fn SetExitKey*(key: int32)\n"
-        /* 0376 */ "fn GetKeyPressed*(): int32\n"
-        /* 0377 */ "fn GetCharPressed*(): int32\n"
-        /* 0378 */ "fn IsGamepadAvailable*(gamepad: int32): bool\n"
-        /* 0379 */ "fn GetGamepadName*(gamepad: int32): str\n"
-        /* 0380 */ "fn IsGamepadButtonPressed*(gamepad: int32, button: int32): bool\n"
-        /* 0381 */ "fn IsGamepadButtonDown*(gamepad: int32, button: int32): bool\n"
-        /* 0382 */ "fn IsGamepadButtonReleased*(gamepad: int32, button: int32): bool\n"
-        /* 0383 */ "fn IsGamepadButtonUp*(gamepad: int32, button: int32): bool\n"
-        /* 0384 */ "fn GetGamepadButtonPressed*(): int32\n"
-        /* 0385 */ "fn GetGamepadAxisCount*(gamepad: int32): int32\n"
-        /* 0386 */ "fn GetGamepadAxisMovement*(gamepad: int32, axis: int32): real32\n"
-        /* 0387 */ "fn SetGamepadMappings*(mappings: str): int32\n"
-        /* 0388 */ "fn IsMouseButtonPressed*(button: int32): bool\n"
-        /* 0389 */ "fn IsMouseButtonDown*(button: int32): bool\n"
-        /* 0390 */ "fn IsMouseButtonReleased*(button: int32): bool\n"
-        /* 0391 */ "fn IsMouseButtonUp*(button: int32): bool\n"
-        /* 0392 */ "fn GetMouseX*(): int32\n"
-        /* 0393 */ "fn GetMouseY*(): int32\n"
-        /* 0394 */ "fn GetMousePosition*(): Vector2\n"
-        /* 0395 */ "fn GetMouseDelta*(): Vector2\n"
-        /* 0396 */ "fn SetMousePosition*(x: int32, y: int32)\n"
-        /* 0397 */ "fn SetMouseOffset*(offsetX: int32, offsetY: int32)\n"
-        /* 0398 */ "fn SetMouseScale*(scaleX: real32, scaleY: real32)\n"
-        /* 0399 */ "fn GetMouseWheelMove*(): real32\n"
-        /* 0400 */ "fn GetMouseWheelMoveV*(): Vector2\n"
-        /* 0401 */ "fn SetMouseCursor*(cursor: int32)\n"
-        /* 0402 */ "fn GetTouchX*(): int32\n"
-        /* 0403 */ "fn GetTouchY*(): int32\n"
-        /* 0404 */ "fn GetTouchPosition*(index: int32): Vector2\n"
-        /* 0405 */ "fn GetTouchPointId*(index: int32): int32\n"
-        /* 0406 */ "fn GetTouchPointCount*(): int32\n"
-        /* 0407 */ "fn SetGesturesEnabled*(flags: uint32)\n"
-        /* 0408 */ "fn IsGestureDetected*(gesture: int32): bool\n"
-        /* 0409 */ "fn GetGestureDetected*(): int32\n"
-        /* 0410 */ "fn GetGestureHoldDuration*(): real32\n"
-        /* 0411 */ "fn GetGestureDragVector*(): Vector2\n"
-        /* 0412 */ "fn GetGestureDragAngle*(): real32\n"
-        /* 0413 */ "fn GetGesturePinchVector*(): Vector2\n"
-        /* 0414 */ "fn GetGesturePinchAngle*(): real32\n"
-        /* 0415 */ "fn SetCameraMode*(camera: Camera3D, mode: int32)\n"
-        /* 0416 */ "fn UpdateCamera*(camera: ^Camera3D)\n"
-        /* 0417 */ "fn SetCameraPanControl*(keyPan: int32)\n"
-        /* 0418 */ "fn SetCameraAltControl*(keyAlt: int32)\n"
-        /* 0419 */ "fn SetCameraSmoothZoomControl*(keySmoothZoom: int32)\n"
-        /* 0420 */ "fn SetCameraMoveControls*(keyFront: int32, keyBack: int32, keyRight: int32, keyLeft: int32, keyUp: int32, keyDown: int32)\n"
-        /* 0421 */ "fn SetShapesTexture*(texture: Texture, source: Rectangle)\n"
-        /* 0422 */ "fn DrawPixel*(posX: int32, posY: int32, color: Color)\n"
-        /* 0423 */ "fn DrawPixelV*(position: Vector2, color: Color)\n"
-        /* 0424 */ "fn DrawLine*(startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
-        /* 0425 */ "fn DrawLineV*(startPos: Vector2, endPos: Vector2, color: Color)\n"
-        /* 0426 */ "fn DrawLineEx*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
-        /* 0427 */ "fn DrawLineBezier*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
-        /* 0428 */ "fn DrawLineBezierQuad*(startPos: Vector2, endPos: Vector2, controlPos: Vector2, thick: real32, color: Color)\n"
-        /* 0429 */ "fn DrawLineBezierCubic*(startPos: Vector2, endPos: Vector2, startControlPos: Vector2, endControlPos: Vector2, thick: real32, color: Color)\n"
-        /* 0430 */ "fn DrawLineStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
-        /* 0431 */ "fn DrawCircle*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
-        /* 0432 */ "fn DrawCircleSector*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0433 */ "fn DrawCircleSectorLines*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0434 */ "fn DrawCircleGradient*(centerX: int32, centerY: int32, radius: real32, color1: Color, color2: Color)\n"
-        /* 0435 */ "fn DrawCircleV*(center: Vector2, radius: real32, color: Color)\n"
-        /* 0436 */ "fn DrawCircleLines*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
-        /* 0437 */ "fn DrawEllipse*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
-        /* 0438 */ "fn DrawEllipseLines*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
-        /* 0439 */ "fn DrawRing*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0440 */ "fn DrawRingLines*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0441 */ "fn DrawRectangle*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
-        /* 0442 */ "fn DrawRectangleV*(position: Vector2, size: Vector2, color: Color)\n"
-        /* 0443 */ "fn DrawRectangleRec*(rec: Rectangle, color: Color)\n"
-        /* 0444 */ "fn DrawRectanglePro*(rec: Rectangle, origin: Vector2, rotation: real32, color: Color)\n"
-        /* 0445 */ "fn DrawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
-        /* 0446 */ "fn DrawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
-        /* 0447 */ "fn DrawRectangleGradientEx*(rec: Rectangle, col1: Color, col2: Color, col3: Color, col4: Color)\n"
-        /* 0448 */ "fn DrawRectangleLines*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
-        /* 0449 */ "fn DrawRectangleLinesEx*(rec: Rectangle, lineThick: real32, color: Color)\n"
-        /* 0450 */ "fn DrawRectangleRounded*(rec: Rectangle, roundness: real32, segments: int32, color: Color)\n"
-        /* 0451 */ "fn DrawRectangleRoundedLines*(rec: Rectangle, roundness: real32, segments: int32, lineThick: real32, color: Color)\n"
-        /* 0452 */ "fn DrawTriangle*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
-        /* 0453 */ "fn DrawTriangleLines*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
-        /* 0454 */ "fn DrawTriangleFan*(points: ^Vector2, pointCount: int32, color: Color)\n"
-        /* 0455 */ "fn DrawTriangleStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
-        /* 0456 */ "fn DrawPoly*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
-        /* 0457 */ "fn DrawPolyLines*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
-        /* 0458 */ "fn DrawPolyLinesEx*(center: Vector2, sides: int32, radius: real32, rotation: real32, lineThick: real32, color: Color)\n"
-        /* 0459 */ "fn CheckCollisionRecs*(rec1: Rectangle, rec2: Rectangle): bool\n"
-        /* 0460 */ "fn CheckCollisionCircles*(center1: Vector2, radius1: real32, center2: Vector2, radius2: real32): bool\n"
-        /* 0461 */ "fn CheckCollisionCircleRec*(center: Vector2, radius: real32, rec: Rectangle): bool\n"
-        /* 0462 */ "fn CheckCollisionPointRec*(point: Vector2, rec: Rectangle): bool\n"
-        /* 0463 */ "fn CheckCollisionPointCircle*(point: Vector2, center: Vector2, radius: real32): bool\n"
-        /* 0464 */ "fn CheckCollisionPointTriangle*(point: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): bool\n"
-        /* 0465 */ "fn CheckCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: ^Vector2): bool\n"
-        /* 0466 */ "fn CheckCollisionPointLine*(point: Vector2, p1: Vector2, p2: Vector2, threshold: int32): bool\n"
-        /* 0467 */ "fn GetCollisionRec*(rec1: Rectangle, rec2: Rectangle): Rectangle\n"
-        /* 0468 */ "fn LoadImage*(fileName: str): Image\n"
-        /* 0469 */ "fn LoadImageRaw*(fileName: str, width: int32, height: int32, format: int32, headerSize: int32): Image\n"
-        /* 0470 */ "fn LoadImageAnim*(fileName: str, frames: ^int32): Image\n"
-        /* 0471 */ "fn LoadImageFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Image\n"
-        /* 0472 */ "fn LoadImageFromTexture*(texture: Texture): Image\n"
-        /* 0473 */ "fn LoadImageFromScreen*(): Image\n"
-        /* 0474 */ "fn UnloadImage*(image: Image)\n"
-        /* 0475 */ "fn ExportImage*(image: Image, fileName: str): bool\n"
-        /* 0476 */ "fn ExportImageAsCode*(image: Image, fileName: str): bool\n"
-        /* 0477 */ "fn GenImageColor*(width: int32, height: int32, color: Color): Image\n"
-        /* 0478 */ "fn GenImageGradientV*(width: int32, height: int32, top: Color, bottom: Color): Image\n"
-        /* 0479 */ "fn GenImageGradientH*(width: int32, height: int32, left: Color, right: Color): Image\n"
-        /* 0480 */ "fn GenImageGradientRadial*(width: int32, height: int32, density: real32, inner: Color, outer: Color): Image\n"
-        /* 0481 */ "fn GenImageChecked*(width: int32, height: int32, checksX: int32, checksY: int32, col1: Color, col2: Color): Image\n"
-        /* 0482 */ "fn GenImageWhiteNoise*(width: int32, height: int32, factor: real32): Image\n"
-        /* 0483 */ "fn GenImageCellular*(width: int32, height: int32, tileSize: int32): Image\n"
-        /* 0484 */ "fn ImageCopy*(image: Image): Image\n"
-        /* 0485 */ "fn ImageFromImage*(image: Image, rec: Rectangle): Image\n"
-        /* 0486 */ "fn ImageText*(text: str, fontSize: int32, color: Color): Image\n"
-        /* 0487 */ "fn ImageTextEx*(font: Font, text: str, fontSize: real32, spacing: real32, tint: Color): Image\n"
-        /* 0488 */ "fn ImageFormat*(image: ^Image, newFormat: int32)\n"
-        /* 0489 */ "fn ImageToPOT*(image: ^Image, fill: Color)\n"
-        /* 0490 */ "fn ImageCrop*(image: ^Image, crop: Rectangle)\n"
-        /* 0491 */ "fn ImageAlphaCrop*(image: ^Image, threshold: real32)\n"
-        /* 0492 */ "fn ImageAlphaClear*(image: ^Image, color: Color, threshold: real32)\n"
-        /* 0493 */ "fn ImageAlphaMask*(image: ^Image, alphaMask: Image)\n"
-        /* 0494 */ "fn ImageAlphaPremultiply*(image: ^Image)\n"
-        /* 0495 */ "fn ImageResize*(image: ^Image, newWidth: int32, newHeight: int32)\n"
-        /* 0496 */ "fn ImageResizeNN*(image: ^Image, newWidth: int32, newHeight: int32)\n"
-        /* 0497 */ "fn ImageResizeCanvas*(image: ^Image, newWidth: int32, newHeight: int32, offsetX: int32, offsetY: int32, fill: Color)\n"
-        /* 0498 */ "fn ImageMipmaps*(image: ^Image)\n"
-        /* 0499 */ "fn ImageDither*(image: ^Image, rBpp: int32, gBpp: int32, bBpp: int32, aBpp: int32)\n"
-        /* 0500 */ "fn ImageFlipVertical*(image: ^Image)\n"
-        /* 0501 */ "fn ImageFlipHorizontal*(image: ^Image)\n"
-        /* 0502 */ "fn ImageRotateCW*(image: ^Image)\n"
-        /* 0503 */ "fn ImageRotateCCW*(image: ^Image)\n"
-        /* 0504 */ "fn ImageColorTint*(image: ^Image, color: Color)\n"
-        /* 0505 */ "fn ImageColorInvert*(image: ^Image)\n"
-        /* 0506 */ "fn ImageColorGrayscale*(image: ^Image)\n"
-        /* 0507 */ "fn ImageColorContrast*(image: ^Image, contrast: real32)\n"
-        /* 0508 */ "fn ImageColorBrightness*(image: ^Image, brightness: int32)\n"
-        /* 0509 */ "fn ImageColorReplace*(image: ^Image, color: Color, replace: Color)\n"
-        /* 0510 */ "fn LoadImageColors*(image: Image): ^Color\n"
-        /* 0511 */ "fn LoadImagePalette*(image: Image, maxPaletteSize: int32, colorCount: ^int32): ^Color\n"
-        /* 0512 */ "fn UnloadImageColors*(colors: ^Color)\n"
-        /* 0513 */ "fn UnloadImagePalette*(colors: ^Color)\n"
-        /* 0514 */ "fn GetImageAlphaBorder*(image: Image, threshold: real32): Rectangle\n"
-        /* 0515 */ "fn GetImageColor*(image: Image, x: int32, y: int32): Color\n"
-        /* 0516 */ "fn ImageClearBackground*(dst: ^Image, color: Color)\n"
-        /* 0517 */ "fn ImageDrawPixel*(dst: ^Image, posX: int32, posY: int32, color: Color)\n"
-        /* 0518 */ "fn ImageDrawPixelV*(dst: ^Image, position: Vector2, color: Color)\n"
-        /* 0519 */ "fn ImageDrawLine*(dst: ^Image, startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
-        /* 0520 */ "fn ImageDrawLineV*(dst: ^Image, start: Vector2, end: Vector2, color: Color)\n"
-        /* 0521 */ "fn ImageDrawCircle*(dst: ^Image, centerX: int32, centerY: int32, radius: int32, color: Color)\n"
-        /* 0522 */ "fn ImageDrawCircleV*(dst: ^Image, center: Vector2, radius: int32, color: Color)\n"
-        /* 0523 */ "fn ImageDrawRectangle*(dst: ^Image, posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
-        /* 0524 */ "fn ImageDrawRectangleV*(dst: ^Image, position: Vector2, size: Vector2, color: Color)\n"
-        /* 0525 */ "fn ImageDrawRectangleRec*(dst: ^Image, rec: Rectangle, color: Color)\n"
-        /* 0526 */ "fn ImageDrawRectangleLines*(dst: ^Image, rec: Rectangle, thick: int32, color: Color)\n"
-        /* 0527 */ "fn ImageDraw*(dst: ^Image, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color)\n"
-        /* 0528 */ "fn ImageDrawText*(dst: ^Image, text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
-        /* 0529 */ "fn ImageDrawTextEx*(dst: ^Image, font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0530 */ "fn LoadTexture*(fileName: str): Texture\n"
-        /* 0531 */ "fn LoadTextureFromImage*(image: Image): Texture\n"
-        /* 0532 */ "fn LoadTextureCubemap*(image: Image, layout: int32): Texture\n"
-        /* 0533 */ "fn LoadRenderTexture*(width: int32, height: int32): RenderTexture\n"
-        /* 0534 */ "fn UnloadTexture*(texture: Texture)\n"
-        /* 0535 */ "fn UnloadRenderTexture*(target: RenderTexture)\n"
-        /* 0536 */ "fn UpdateTexture*(texture: Texture, pixels: ^void)\n"
-        /* 0537 */ "fn UpdateTextureRec*(texture: Texture, rec: Rectangle, pixels: ^void)\n"
-        /* 0538 */ "fn GenTextureMipmaps*(texture: ^Texture)\n"
-        /* 0539 */ "fn SetTextureFilter*(texture: Texture, filter: int32)\n"
-        /* 0540 */ "fn SetTextureWrap*(texture: Texture, wrap: int32)\n"
-        /* 0541 */ "fn DrawTexture*(texture: Texture, posX: int32, posY: int32, tint: Color)\n"
-        /* 0542 */ "fn DrawTextureV*(texture: Texture, position: Vector2, tint: Color)\n"
-        /* 0543 */ "fn DrawTextureEx*(texture: Texture, position: Vector2, rotation: real32, scale: real32, tint: Color)\n"
-        /* 0544 */ "fn DrawTextureRec*(texture: Texture, source: Rectangle, position: Vector2, tint: Color)\n"
-        /* 0545 */ "fn DrawTextureQuad*(texture: Texture, tiling: Vector2, offset: Vector2, quad: Rectangle, tint: Color)\n"
-        /* 0546 */ "fn DrawTextureTiled*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, scale: real32, tint: Color)\n"
-        /* 0547 */ "fn DrawTexturePro*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
-        /* 0548 */ "fn DrawTextureNPatch*(texture: Texture, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
-        /* 0549 */ "fn DrawTexturePoly*(texture: Texture, center: Vector2, points: ^Vector2, texcoords: ^Vector2, pointCount: int32, tint: Color)\n"
-        /* 0550 */ "fn Fade*(color: Color, alpha: real32): Color\n"
-        /* 0551 */ "fn ColorToInt*(color: Color): int32\n"
-        /* 0552 */ "fn ColorNormalize*(color: Color): Vector4\n"
-        /* 0553 */ "fn ColorFromNormalized*(normalized: Vector4): Color\n"
-        /* 0554 */ "fn ColorToHSV*(color: Color): Vector3\n"
-        /* 0555 */ "fn ColorFromHSV*(hue: real32, saturation: real32, value: real32): Color\n"
-        /* 0556 */ "fn ColorAlpha*(color: Color, alpha: real32): Color\n"
-        /* 0557 */ "fn ColorAlphaBlend*(dst: Color, src: Color, tint: Color): Color\n"
-        /* 0558 */ "fn GetColor*(hexValue: uint32): Color\n"
-        /* 0559 */ "fn GetPixelColor*(srcPtr: ^void, format: int32): Color\n"
-        /* 0560 */ "fn SetPixelColor*(dstPtr: ^void, color: Color, format: int32)\n"
-        /* 0561 */ "fn GetPixelDataSize*(width: int32, height: int32, format: int32): int32\n"
-        /* 0562 */ "fn GetFontDefault*(): Font\n"
-        /* 0563 */ "fn LoadFont*(fileName: str): Font\n"
-        /* 0564 */ "fn LoadFontEx*(fileName: str, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
-        /* 0565 */ "fn LoadFontFromImage*(image: Image, key: Color, firstChar: int32): Font\n"
-        /* 0566 */ "fn LoadFontFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
+        /* 0346 */ "fn LoadFileData*(fileName: str, bytesRead: ^uint32): ^uint8\n"
+        /* 0347 */ "fn UnloadFileData*(data: ^uint8)\n"
+        /* 0348 */ "fn SaveFileData*(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
+        /* 0349 */ "fn ExportDataAsCode*(data: str, size: uint32, fileName: str): bool\n"
+        /* 0350 */ "fn LoadFileText*(fileName: str): str\n"
+        /* 0351 */ "fn UnloadFileText*(text: str)\n"
+        /* 0352 */ "fn SaveFileText*(fileName: str, text: str): bool\n"
+        /* 0353 */ "fn FileExists*(fileName: str): bool\n"
+        /* 0354 */ "fn DirectoryExists*(dirPath: str): bool\n"
+        /* 0355 */ "fn IsFileExtension*(fileName: str, ext: str): bool\n"
+        /* 0356 */ "fn GetFileLength*(fileName: str): int32\n"
+        /* 0357 */ "fn GetFileExtension*(fileName: str): str\n"
+        /* 0358 */ "fn GetFileName*(filePath: str): str\n"
+        /* 0359 */ "fn GetFileNameWithoutExt*(filePath: str): str\n"
+        /* 0360 */ "fn GetDirectoryPath*(filePath: str): str\n"
+        /* 0361 */ "fn GetPrevDirectoryPath*(dirPath: str): str\n"
+        /* 0362 */ "fn GetWorkingDirectory*(): str\n"
+        /* 0363 */ "fn GetApplicationDirectory*(): str\n"
+        /* 0364 */ "fn ChangeDirectory*(dir: str): bool\n"
+        /* 0365 */ "fn IsPathFile*(path: str): bool\n"
+        /* 0366 */ "fn LoadDirectoryFiles*(dirPath: str): FilePathList\n"
+        /* 0367 */ "fn LoadDirectoryFilesEx*(basePath: str, filter: str, scanSubdirs: bool): FilePathList\n"
+        /* 0368 */ "fn UnloadDirectoryFiles*(files: FilePathList)\n"
+        /* 0369 */ "fn IsFileDropped*(): bool\n"
+        /* 0370 */ "fn LoadDroppedFiles*(): FilePathList\n"
+        /* 0371 */ "fn UnloadDroppedFiles*(files: FilePathList)\n"
+        /* 0372 */ "fn GetFileModTime*(fileName: str): int\n"
+        /* 0373 */ "fn CompressData*(data: ^uint8, dataSize: int32, compDataSize: ^int32): ^uint8\n"
+        /* 0374 */ "fn DecompressData*(compData: ^uint8, compDataSize: int32, dataSize: ^int32): ^uint8\n"
+        /* 0375 */ "fn EncodeDataBase64*(data: ^uint8, dataSize: int32, outputSize: ^int32): str\n"
+        /* 0376 */ "fn DecodeDataBase64*(data: ^uint8, outputSize: ^int32): ^uint8\n"
+        /* 0377 */ "fn IsKeyPressed*(key: int32): bool\n"
+        /* 0378 */ "fn IsKeyDown*(key: int32): bool\n"
+        /* 0379 */ "fn IsKeyReleased*(key: int32): bool\n"
+        /* 0380 */ "fn IsKeyUp*(key: int32): bool\n"
+        /* 0381 */ "fn SetExitKey*(key: int32)\n"
+        /* 0382 */ "fn GetKeyPressed*(): int32\n"
+        /* 0383 */ "fn GetCharPressed*(): int32\n"
+        /* 0384 */ "fn IsGamepadAvailable*(gamepad: int32): bool\n"
+        /* 0385 */ "fn GetGamepadName*(gamepad: int32): str\n"
+        /* 0386 */ "fn IsGamepadButtonPressed*(gamepad: int32, button: int32): bool\n"
+        /* 0387 */ "fn IsGamepadButtonDown*(gamepad: int32, button: int32): bool\n"
+        /* 0388 */ "fn IsGamepadButtonReleased*(gamepad: int32, button: int32): bool\n"
+        /* 0389 */ "fn IsGamepadButtonUp*(gamepad: int32, button: int32): bool\n"
+        /* 0390 */ "fn GetGamepadButtonPressed*(): int32\n"
+        /* 0391 */ "fn GetGamepadAxisCount*(gamepad: int32): int32\n"
+        /* 0392 */ "fn GetGamepadAxisMovement*(gamepad: int32, axis: int32): real32\n"
+        /* 0393 */ "fn SetGamepadMappings*(mappings: str): int32\n"
+        /* 0394 */ "fn IsMouseButtonPressed*(button: int32): bool\n"
+        /* 0395 */ "fn IsMouseButtonDown*(button: int32): bool\n"
+        /* 0396 */ "fn IsMouseButtonReleased*(button: int32): bool\n"
+        /* 0397 */ "fn IsMouseButtonUp*(button: int32): bool\n"
+        /* 0398 */ "fn GetMouseX*(): int32\n"
+        /* 0399 */ "fn GetMouseY*(): int32\n"
+        /* 0400 */ "fn GetMousePosition*(): Vector2\n"
+        /* 0401 */ "fn GetMouseDelta*(): Vector2\n"
+        /* 0402 */ "fn SetMousePosition*(x: int32, y: int32)\n"
+        /* 0403 */ "fn SetMouseOffset*(offsetX: int32, offsetY: int32)\n"
+        /* 0404 */ "fn SetMouseScale*(scaleX: real32, scaleY: real32)\n"
+        /* 0405 */ "fn GetMouseWheelMove*(): real32\n"
+        /* 0406 */ "fn GetMouseWheelMoveV*(): Vector2\n"
+        /* 0407 */ "fn SetMouseCursor*(cursor: int32)\n"
+        /* 0408 */ "fn GetTouchX*(): int32\n"
+        /* 0409 */ "fn GetTouchY*(): int32\n"
+        /* 0410 */ "fn GetTouchPosition*(index: int32): Vector2\n"
+        /* 0411 */ "fn GetTouchPointId*(index: int32): int32\n"
+        /* 0412 */ "fn GetTouchPointCount*(): int32\n"
+        /* 0413 */ "fn SetGesturesEnabled*(flags: uint32)\n"
+        /* 0414 */ "fn IsGestureDetected*(gesture: int32): bool\n"
+        /* 0415 */ "fn GetGestureDetected*(): int32\n"
+        /* 0416 */ "fn GetGestureHoldDuration*(): real32\n"
+        /* 0417 */ "fn GetGestureDragVector*(): Vector2\n"
+        /* 0418 */ "fn GetGestureDragAngle*(): real32\n"
+        /* 0419 */ "fn GetGesturePinchVector*(): Vector2\n"
+        /* 0420 */ "fn GetGesturePinchAngle*(): real32\n"
+        /* 0421 */ "fn SetCameraMode*(camera: Camera3D, mode: int32)\n"
+        /* 0422 */ "fn UpdateCamera*(camera: ^Camera3D)\n"
+        /* 0423 */ "fn SetCameraPanControl*(keyPan: int32)\n"
+        /* 0424 */ "fn SetCameraAltControl*(keyAlt: int32)\n"
+        /* 0425 */ "fn SetCameraSmoothZoomControl*(keySmoothZoom: int32)\n"
+        /* 0426 */ "fn SetCameraMoveControls*(keyFront: int32, keyBack: int32, keyRight: int32, keyLeft: int32, keyUp: int32, keyDown: int32)\n"
+        /* 0427 */ "fn SetShapesTexture*(texture: Texture, source: Rectangle)\n"
+        /* 0428 */ "fn DrawPixel*(posX: int32, posY: int32, color: Color)\n"
+        /* 0429 */ "fn DrawPixelV*(position: Vector2, color: Color)\n"
+        /* 0430 */ "fn DrawLine*(startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
+        /* 0431 */ "fn DrawLineV*(startPos: Vector2, endPos: Vector2, color: Color)\n"
+        /* 0432 */ "fn DrawLineEx*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
+        /* 0433 */ "fn DrawLineBezier*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
+        /* 0434 */ "fn DrawLineBezierQuad*(startPos: Vector2, endPos: Vector2, controlPos: Vector2, thick: real32, color: Color)\n"
+        /* 0435 */ "fn DrawLineBezierCubic*(startPos: Vector2, endPos: Vector2, startControlPos: Vector2, endControlPos: Vector2, thick: real32, color: Color)\n"
+        /* 0436 */ "fn DrawLineStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
+        /* 0437 */ "fn DrawCircle*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
+        /* 0438 */ "fn DrawCircleSector*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0439 */ "fn DrawCircleSectorLines*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0440 */ "fn DrawCircleGradient*(centerX: int32, centerY: int32, radius: real32, color1: Color, color2: Color)\n"
+        /* 0441 */ "fn DrawCircleV*(center: Vector2, radius: real32, color: Color)\n"
+        /* 0442 */ "fn DrawCircleLines*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
+        /* 0443 */ "fn DrawEllipse*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
+        /* 0444 */ "fn DrawEllipseLines*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
+        /* 0445 */ "fn DrawRing*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0446 */ "fn DrawRingLines*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0447 */ "fn DrawRectangle*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
+        /* 0448 */ "fn DrawRectangleV*(position: Vector2, size: Vector2, color: Color)\n"
+        /* 0449 */ "fn DrawRectangleRec*(rec: Rectangle, color: Color)\n"
+        /* 0450 */ "fn DrawRectanglePro*(rec: Rectangle, origin: Vector2, rotation: real32, color: Color)\n"
+        /* 0451 */ "fn DrawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
+        /* 0452 */ "fn DrawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
+        /* 0453 */ "fn DrawRectangleGradientEx*(rec: Rectangle, col1: Color, col2: Color, col3: Color, col4: Color)\n"
+        /* 0454 */ "fn DrawRectangleLines*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
+        /* 0455 */ "fn DrawRectangleLinesEx*(rec: Rectangle, lineThick: real32, color: Color)\n"
+        /* 0456 */ "fn DrawRectangleRounded*(rec: Rectangle, roundness: real32, segments: int32, color: Color)\n"
+        /* 0457 */ "fn DrawRectangleRoundedLines*(rec: Rectangle, roundness: real32, segments: int32, lineThick: real32, color: Color)\n"
+        /* 0458 */ "fn DrawTriangle*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
+        /* 0459 */ "fn DrawTriangleLines*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
+        /* 0460 */ "fn DrawTriangleFan*(points: ^Vector2, pointCount: int32, color: Color)\n"
+        /* 0461 */ "fn DrawTriangleStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
+        /* 0462 */ "fn DrawPoly*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
+        /* 0463 */ "fn DrawPolyLines*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
+        /* 0464 */ "fn DrawPolyLinesEx*(center: Vector2, sides: int32, radius: real32, rotation: real32, lineThick: real32, color: Color)\n"
+        /* 0465 */ "fn CheckCollisionRecs*(rec1: Rectangle, rec2: Rectangle): bool\n"
+        /* 0466 */ "fn CheckCollisionCircles*(center1: Vector2, radius1: real32, center2: Vector2, radius2: real32): bool\n"
+        /* 0467 */ "fn CheckCollisionCircleRec*(center: Vector2, radius: real32, rec: Rectangle): bool\n"
+        /* 0468 */ "fn CheckCollisionPointRec*(point: Vector2, rec: Rectangle): bool\n"
+        /* 0469 */ "fn CheckCollisionPointCircle*(point: Vector2, center: Vector2, radius: real32): bool\n"
+        /* 0470 */ "fn CheckCollisionPointTriangle*(point: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): bool\n"
+        /* 0471 */ "fn CheckCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: ^Vector2): bool\n"
+        /* 0472 */ "fn CheckCollisionPointLine*(point: Vector2, p1: Vector2, p2: Vector2, threshold: int32): bool\n"
+        /* 0473 */ "fn GetCollisionRec*(rec1: Rectangle, rec2: Rectangle): Rectangle\n"
+        /* 0474 */ "fn LoadImage*(fileName: str): Image\n"
+        /* 0475 */ "fn LoadImageRaw*(fileName: str, width: int32, height: int32, format: int32, headerSize: int32): Image\n"
+        /* 0476 */ "fn LoadImageAnim*(fileName: str, frames: ^int32): Image\n"
+        /* 0477 */ "fn LoadImageFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Image\n"
+        /* 0478 */ "fn LoadImageFromTexture*(texture: Texture): Image\n"
+        /* 0479 */ "fn LoadImageFromScreen*(): Image\n"
+        /* 0480 */ "fn UnloadImage*(image: Image)\n"
+        /* 0481 */ "fn ExportImage*(image: Image, fileName: str): bool\n"
+        /* 0482 */ "fn ExportImageAsCode*(image: Image, fileName: str): bool\n"
+        /* 0483 */ "fn GenImageColor*(width: int32, height: int32, color: Color): Image\n"
+        /* 0484 */ "fn GenImageGradientV*(width: int32, height: int32, top: Color, bottom: Color): Image\n"
+        /* 0485 */ "fn GenImageGradientH*(width: int32, height: int32, left: Color, right: Color): Image\n"
+        /* 0486 */ "fn GenImageGradientRadial*(width: int32, height: int32, density: real32, inner: Color, outer: Color): Image\n"
+        /* 0487 */ "fn GenImageChecked*(width: int32, height: int32, checksX: int32, checksY: int32, col1: Color, col2: Color): Image\n"
+        /* 0488 */ "fn GenImageWhiteNoise*(width: int32, height: int32, factor: real32): Image\n"
+        /* 0489 */ "fn GenImageCellular*(width: int32, height: int32, tileSize: int32): Image\n"
+        /* 0490 */ "fn ImageCopy*(image: Image): Image\n"
+        /* 0491 */ "fn ImageFromImage*(image: Image, rec: Rectangle): Image\n"
+        /* 0492 */ "fn ImageText*(text: str, fontSize: int32, color: Color): Image\n"
+        /* 0493 */ "fn ImageTextEx*(font: Font, text: str, fontSize: real32, spacing: real32, tint: Color): Image\n"
+        /* 0494 */ "fn ImageFormat*(image: ^Image, newFormat: int32)\n"
+        /* 0495 */ "fn ImageToPOT*(image: ^Image, fill: Color)\n"
+        /* 0496 */ "fn ImageCrop*(image: ^Image, crop: Rectangle)\n"
+        /* 0497 */ "fn ImageAlphaCrop*(image: ^Image, threshold: real32)\n"
+        /* 0498 */ "fn ImageAlphaClear*(image: ^Image, color: Color, threshold: real32)\n"
+        /* 0499 */ "fn ImageAlphaMask*(image: ^Image, alphaMask: Image)\n"
+        /* 0500 */ "fn ImageAlphaPremultiply*(image: ^Image)\n"
+        /* 0501 */ "fn ImageResize*(image: ^Image, newWidth: int32, newHeight: int32)\n"
+        /* 0502 */ "fn ImageResizeNN*(image: ^Image, newWidth: int32, newHeight: int32)\n"
+        /* 0503 */ "fn ImageResizeCanvas*(image: ^Image, newWidth: int32, newHeight: int32, offsetX: int32, offsetY: int32, fill: Color)\n"
+        /* 0504 */ "fn ImageMipmaps*(image: ^Image)\n"
+        /* 0505 */ "fn ImageDither*(image: ^Image, rBpp: int32, gBpp: int32, bBpp: int32, aBpp: int32)\n"
+        /* 0506 */ "fn ImageFlipVertical*(image: ^Image)\n"
+        /* 0507 */ "fn ImageFlipHorizontal*(image: ^Image)\n"
+        /* 0508 */ "fn ImageRotateCW*(image: ^Image)\n"
+        /* 0509 */ "fn ImageRotateCCW*(image: ^Image)\n"
+        /* 0510 */ "fn ImageColorTint*(image: ^Image, color: Color)\n"
+        /* 0511 */ "fn ImageColorInvert*(image: ^Image)\n"
+        /* 0512 */ "fn ImageColorGrayscale*(image: ^Image)\n"
+        /* 0513 */ "fn ImageColorContrast*(image: ^Image, contrast: real32)\n"
+        /* 0514 */ "fn ImageColorBrightness*(image: ^Image, brightness: int32)\n"
+        /* 0515 */ "fn ImageColorReplace*(image: ^Image, color: Color, replace: Color)\n"
+        /* 0516 */ "fn LoadImageColors*(image: Image): ^Color\n"
+        /* 0517 */ "fn LoadImagePalette*(image: Image, maxPaletteSize: int32, colorCount: ^int32): ^Color\n"
+        /* 0518 */ "fn UnloadImageColors*(colors: ^Color)\n"
+        /* 0519 */ "fn UnloadImagePalette*(colors: ^Color)\n"
+        /* 0520 */ "fn GetImageAlphaBorder*(image: Image, threshold: real32): Rectangle\n"
+        /* 0521 */ "fn GetImageColor*(image: Image, x: int32, y: int32): Color\n"
+        /* 0522 */ "fn ImageClearBackground*(dst: ^Image, color: Color)\n"
+        /* 0523 */ "fn ImageDrawPixel*(dst: ^Image, posX: int32, posY: int32, color: Color)\n"
+        /* 0524 */ "fn ImageDrawPixelV*(dst: ^Image, position: Vector2, color: Color)\n"
+        /* 0525 */ "fn ImageDrawLine*(dst: ^Image, startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
+        /* 0526 */ "fn ImageDrawLineV*(dst: ^Image, start: Vector2, end: Vector2, color: Color)\n"
+        /* 0527 */ "fn ImageDrawCircle*(dst: ^Image, centerX: int32, centerY: int32, radius: int32, color: Color)\n"
+        /* 0528 */ "fn ImageDrawCircleV*(dst: ^Image, center: Vector2, radius: int32, color: Color)\n"
+        /* 0529 */ "fn ImageDrawRectangle*(dst: ^Image, posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
+        /* 0530 */ "fn ImageDrawRectangleV*(dst: ^Image, position: Vector2, size: Vector2, color: Color)\n"
+        /* 0531 */ "fn ImageDrawRectangleRec*(dst: ^Image, rec: Rectangle, color: Color)\n"
+        /* 0532 */ "fn ImageDrawRectangleLines*(dst: ^Image, rec: Rectangle, thick: int32, color: Color)\n"
+        /* 0533 */ "fn ImageDraw*(dst: ^Image, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color)\n"
+        /* 0534 */ "fn ImageDrawText*(dst: ^Image, text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
+        /* 0535 */ "fn ImageDrawTextEx*(dst: ^Image, font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0536 */ "fn LoadTexture*(fileName: str): Texture\n"
+        /* 0537 */ "fn LoadTextureFromImage*(image: Image): Texture\n"
+        /* 0538 */ "fn LoadTextureCubemap*(image: Image, layout: int32): Texture\n"
+        /* 0539 */ "fn LoadRenderTexture*(width: int32, height: int32): RenderTexture\n"
+        /* 0540 */ "fn UnloadTexture*(texture: Texture)\n"
+        /* 0541 */ "fn UnloadRenderTexture*(target: RenderTexture)\n"
+        /* 0542 */ "fn UpdateTexture*(texture: Texture, pixels: ^void)\n"
+        /* 0543 */ "fn UpdateTextureRec*(texture: Texture, rec: Rectangle, pixels: ^void)\n"
+        /* 0544 */ "fn GenTextureMipmaps*(texture: ^Texture)\n"
+        /* 0545 */ "fn SetTextureFilter*(texture: Texture, filter: int32)\n"
+        /* 0546 */ "fn SetTextureWrap*(texture: Texture, wrap: int32)\n"
+        /* 0547 */ "fn DrawTexture*(texture: Texture, posX: int32, posY: int32, tint: Color)\n"
+        /* 0548 */ "fn DrawTextureV*(texture: Texture, position: Vector2, tint: Color)\n"
+        /* 0549 */ "fn DrawTextureEx*(texture: Texture, position: Vector2, rotation: real32, scale: real32, tint: Color)\n"
+        /* 0550 */ "fn DrawTextureRec*(texture: Texture, source: Rectangle, position: Vector2, tint: Color)\n"
+        /* 0551 */ "fn DrawTextureQuad*(texture: Texture, tiling: Vector2, offset: Vector2, quad: Rectangle, tint: Color)\n"
+        /* 0552 */ "fn DrawTextureTiled*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, scale: real32, tint: Color)\n"
+        /* 0553 */ "fn DrawTexturePro*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
+        /* 0554 */ "fn DrawTextureNPatch*(texture: Texture, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
+        /* 0555 */ "fn DrawTexturePoly*(texture: Texture, center: Vector2, points: ^Vector2, texcoords: ^Vector2, pointCount: int32, tint: Color)\n"
+        /* 0556 */ "fn Fade*(color: Color, alpha: real32): Color\n"
+        /* 0557 */ "fn ColorToInt*(color: Color): int32\n"
+        /* 0558 */ "fn ColorNormalize*(color: Color): Vector4\n"
+        /* 0559 */ "fn ColorFromNormalized*(normalized: Vector4): Color\n"
+        /* 0560 */ "fn ColorToHSV*(color: Color): Vector3\n"
+        /* 0561 */ "fn ColorFromHSV*(hue: real32, saturation: real32, value: real32): Color\n"
+        /* 0562 */ "fn ColorAlpha*(color: Color, alpha: real32): Color\n"
+        /* 0563 */ "fn ColorAlphaBlend*(dst: Color, src: Color, tint: Color): Color\n"
+        /* 0564 */ "fn GetColor*(hexValue: uint32): Color\n"
+        /* 0565 */ "fn GetPixelColor*(srcPtr: ^void, format: int32): Color\n"
+        /* 0566 */ "fn SetPixelColor*(dstPtr: ^void, color: Color, format: int32)\n"
+        /* 0567 */ "fn GetPixelDataSize*(width: int32, height: int32, format: int32): int32\n"
+        /* 0568 */ "fn GetFontDefault*(): Font\n"
+        /* 0569 */ "fn LoadFont*(fileName: str): Font\n"
+        /* 0570 */ "fn LoadFontEx*(fileName: str, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
+        /* 0571 */ "fn LoadFontFromImage*(image: Image, key: Color, firstChar: int32): Font\n"
+        /* 0572 */ "fn LoadFontFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
         // Skipping LoadFontData
-        /* 0567 */ "fn GenImageFontAtlas*(chars: ^void, recs: ^void, glyphCount: int32, fontSize: int32, padding: int32, packMethod: int32): Image\n"
-        /* 0568 */ "fn UnloadFontData*(chars: ^GlyphInfo, glyphCount: int32)\n"
-        /* 0569 */ "fn UnloadFont*(font: Font)\n"
-        /* 0570 */ "fn ExportFontAsCode*(font: Font, fileName: str): bool\n"
-        /* 0571 */ "fn DrawFPS*(posX: int32, posY: int32)\n"
-        /* 0572 */ "fn DrawText*(text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
-        /* 0573 */ "fn DrawTextEx*(font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0574 */ "fn DrawTextPro*(font: Font, text: str, position: Vector2, origin: Vector2, rotation: real32, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0575 */ "fn DrawTextCodepoint*(font: Font, codepoint: int32, position: Vector2, fontSize: real32, tint: Color)\n"
-        /* 0576 */ "fn DrawTextCodepoints*(font: Font, codepoints: ^int32, count: int32, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0577 */ "fn MeasureText*(text: str, fontSize: int32): int32\n"
-        /* 0578 */ "fn MeasureTextEx*(font: Font, text: str, fontSize: real32, spacing: real32): Vector2\n"
-        /* 0579 */ "fn GetGlyphIndex*(font: Font, codepoint: int32): int32\n"
-        /* 0580 */ "fn GetGlyphInfo*(font: Font, codepoint: int32): GlyphInfo\n"
-        /* 0581 */ "fn GetGlyphAtlasRec*(font: Font, codepoint: int32): Rectangle\n"
-        /* 0582 */ "fn LoadCodepoints*(text: str, count: ^int32): ^int32\n"
-        /* 0583 */ "fn UnloadCodepoints*(codepoints: ^int32)\n"
-        /* 0584 */ "fn GetCodepointCount*(text: str): int32\n"
-        /* 0585 */ "fn GetCodepoint*(text: str, bytesProcessed: ^int32): int32\n"
-        /* 0586 */ "fn CodepointToUTF8*(codepoint: int32, byteSize: ^int32): str\n"
-        /* 0587 */ "fn TextCodepointsToUTF8*(codepoints: ^int32, length: int32): str\n"
-        /* 0588 */ "fn TextCopy*(dst: str, src: str): int32\n"
-        /* 0589 */ "fn TextIsEqual*(text1: str, text2: str): bool\n"
-        /* 0590 */ "fn TextLength*(text: str): uint32\n"
+        /* 0573 */ "fn GenImageFontAtlas*(chars: ^void, recs: ^void, glyphCount: int32, fontSize: int32, padding: int32, packMethod: int32): Image\n"
+        /* 0574 */ "fn UnloadFontData*(chars: ^GlyphInfo, glyphCount: int32)\n"
+        /* 0575 */ "fn UnloadFont*(font: Font)\n"
+        /* 0576 */ "fn ExportFontAsCode*(font: Font, fileName: str): bool\n"
+        /* 0577 */ "fn DrawFPS*(posX: int32, posY: int32)\n"
+        /* 0578 */ "fn DrawText*(text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
+        /* 0579 */ "fn DrawTextEx*(font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0580 */ "fn DrawTextPro*(font: Font, text: str, position: Vector2, origin: Vector2, rotation: real32, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0581 */ "fn DrawTextCodepoint*(font: Font, codepoint: int32, position: Vector2, fontSize: real32, tint: Color)\n"
+        /* 0582 */ "fn DrawTextCodepoints*(font: Font, codepoints: ^int32, count: int32, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0583 */ "fn MeasureText*(text: str, fontSize: int32): int32\n"
+        /* 0584 */ "fn MeasureTextEx*(font: Font, text: str, fontSize: real32, spacing: real32): Vector2\n"
+        /* 0585 */ "fn GetGlyphIndex*(font: Font, codepoint: int32): int32\n"
+        /* 0586 */ "fn GetGlyphInfo*(font: Font, codepoint: int32): GlyphInfo\n"
+        /* 0587 */ "fn GetGlyphAtlasRec*(font: Font, codepoint: int32): Rectangle\n"
+        /* 0588 */ "fn LoadCodepoints*(text: str, count: ^int32): ^int32\n"
+        /* 0589 */ "fn UnloadCodepoints*(codepoints: ^int32)\n"
+        /* 0590 */ "fn GetCodepointCount*(text: str): int32\n"
+        /* 0591 */ "fn GetCodepoint*(text: str, bytesProcessed: ^int32): int32\n"
+        /* 0592 */ "fn CodepointToUTF8*(codepoint: int32, byteSize: ^int32): str\n"
+        /* 0593 */ "fn TextCodepointsToUTF8*(codepoints: ^int32, length: int32): str\n"
+        /* 0594 */ "fn TextCopy*(dst: str, src: str): int32\n"
+        /* 0595 */ "fn TextIsEqual*(text1: str, text2: str): bool\n"
+        /* 0596 */ "fn TextLength*(text: str): uint32\n"
         // Skipping TextFormat
-        /* 0591 */ "fn TextSubtext*(text: str, position: int32, length: int32): str\n"
-        /* 0592 */ "fn TextReplace*(text: str, replace: str, by: str): str\n"
-        /* 0593 */ "fn TextInsert*(text: str, insert: str, position: int32): str\n"
-        /* 0594 */ "fn TextJoin*(textList: ^str, count: int32, delimiter: str): str\n"
-        /* 0595 */ "fn TextSplit*(text: str, delimiter: char, count: ^int32): ^str\n"
-        /* 0596 */ "fn TextAppend*(text: str, append: str, position: ^int32)\n"
-        /* 0597 */ "fn TextFindIndex*(text: str, find: str): int32\n"
-        /* 0598 */ "fn TextToUpper*(text: str): str\n"
-        /* 0599 */ "fn TextToLower*(text: str): str\n"
-        /* 0600 */ "fn TextToPascal*(text: str): str\n"
-        /* 0601 */ "fn TextToInteger*(text: str): int32\n"
-        /* 0602 */ "fn DrawLine3D*(startPos: Vector3, endPos: Vector3, color: Color)\n"
-        /* 0603 */ "fn DrawPoint3D*(position: Vector3, color: Color)\n"
-        /* 0604 */ "fn DrawCircle3D*(center: Vector3, radius: real32, rotationAxis: Vector3, rotationAngle: real32, color: Color)\n"
-        /* 0605 */ "fn DrawTriangle3D*(v1: Vector3, v2: Vector3, v3: Vector3, color: Color)\n"
-        /* 0606 */ "fn DrawTriangleStrip3D*(points: ^Vector3, pointCount: int32, color: Color)\n"
-        /* 0607 */ "fn DrawCube*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0608 */ "fn DrawCubeV*(position: Vector3, size: Vector3, color: Color)\n"
-        /* 0609 */ "fn DrawCubeWires*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0610 */ "fn DrawCubeWiresV*(position: Vector3, size: Vector3, color: Color)\n"
-        /* 0611 */ "fn DrawCubeTexture*(texture: Texture, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0612 */ "fn DrawCubeTextureRec*(texture: Texture, source: Rectangle, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0613 */ "fn DrawSphere*(centerPos: Vector3, radius: real32, color: Color)\n"
-        /* 0614 */ "fn DrawSphereEx*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
-        /* 0615 */ "fn DrawSphereWires*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
-        /* 0616 */ "fn DrawCylinder*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
-        /* 0617 */ "fn DrawCylinderEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
-        /* 0618 */ "fn DrawCylinderWires*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
-        /* 0619 */ "fn DrawCylinderWiresEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
-        /* 0620 */ "fn DrawPlane*(centerPos: Vector3, size: Vector2, color: Color)\n"
-        /* 0621 */ "fn DrawRay*(ray: Ray, color: Color)\n"
-        /* 0622 */ "fn DrawGrid*(slices: int32, spacing: real32)\n"
-        /* 0623 */ "fn LoadModel*(fileName: str): Model\n"
-        /* 0624 */ "fn LoadModelFromMesh*(mesh: Mesh): Model\n"
-        /* 0625 */ "fn UnloadModel*(model: Model)\n"
-        /* 0626 */ "fn UnloadModelKeepMeshes*(model: Model)\n"
-        /* 0627 */ "fn GetModelBoundingBox*(model: Model): BoundingBox\n"
-        /* 0628 */ "fn DrawModel*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
-        /* 0629 */ "fn DrawModelEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
-        /* 0630 */ "fn DrawModelWires*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
-        /* 0631 */ "fn DrawModelWiresEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
-        /* 0632 */ "fn DrawBoundingBox*(box: BoundingBox, color: Color)\n"
-        /* 0633 */ "fn DrawBillboard*(camera: Camera3D, texture: Texture, position: Vector3, size: real32, tint: Color)\n"
-        /* 0634 */ "fn DrawBillboardRec*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, size: Vector2, tint: Color)\n"
-        /* 0635 */ "fn DrawBillboardPro*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, up: Vector3, size: Vector2, origin: Vector2, rotation: real32, tint: Color)\n"
-        /* 0636 */ "fn UploadMesh*(mesh: ^Mesh, dynamic: bool)\n"
-        /* 0637 */ "fn UpdateMeshBuffer*(mesh: Mesh, index: int32, data: ^void, dataSize: int32, offset: int32)\n"
-        /* 0638 */ "fn UnloadMesh*(mesh: Mesh)\n"
-        /* 0639 */ "fn DrawMesh*(mesh: Mesh, material: Material, transform: Matrix)\n"
-        /* 0640 */ "fn DrawMeshInstanced*(mesh: Mesh, material: Material, transforms: ^Matrix, instances: int32)\n"
-        /* 0641 */ "fn ExportMesh*(mesh: Mesh, fileName: str): bool\n"
-        /* 0642 */ "fn GetMeshBoundingBox*(mesh: Mesh): BoundingBox\n"
-        /* 0643 */ "fn GenMeshTangents*(mesh: ^Mesh)\n"
-        /* 0644 */ "fn GenMeshPoly*(sides: int32, radius: real32): Mesh\n"
-        /* 0645 */ "fn GenMeshPlane*(width: real32, length: real32, resX: int32, resZ: int32): Mesh\n"
-        /* 0646 */ "fn GenMeshCube*(width: real32, height: real32, length: real32): Mesh\n"
-        /* 0647 */ "fn GenMeshSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
-        /* 0648 */ "fn GenMeshHemiSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
-        /* 0649 */ "fn GenMeshCylinder*(radius: real32, height: real32, slices: int32): Mesh\n"
-        /* 0650 */ "fn GenMeshCone*(radius: real32, height: real32, slices: int32): Mesh\n"
-        /* 0651 */ "fn GenMeshTorus*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
-        /* 0652 */ "fn GenMeshKnot*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
-        /* 0653 */ "fn GenMeshHeightmap*(heightmap: Image, size: Vector3): Mesh\n"
-        /* 0654 */ "fn GenMeshCubicmap*(cubicmap: Image, cubeSize: Vector3): Mesh\n"
-        /* 0655 */ "fn LoadMaterials*(fileName: str, materialCount: ^int32): ^Material\n"
-        /* 0656 */ "fn LoadMaterialDefault*(): Material\n"
-        /* 0657 */ "fn UnloadMaterial*(material: Material)\n"
-        /* 0658 */ "fn SetMaterialTexture*(material: ^Material, mapType: int32, texture: Texture)\n"
-        /* 0659 */ "fn SetModelMeshMaterial*(model: ^Model, meshId: int32, materialId: int32)\n"
-        /* 0660 */ "fn LoadModelAnimations*(fileName: str, animCount: ^uint32): ^ModelAnimation\n"
-        /* 0661 */ "fn UpdateModelAnimation*(model: Model, anim: ModelAnimation, frame: int32)\n"
-        /* 0662 */ "fn UnloadModelAnimation*(anim: ModelAnimation)\n"
-        /* 0663 */ "fn UnloadModelAnimations*(animations: ^ModelAnimation, count: uint32)\n"
-        /* 0664 */ "fn IsModelAnimationValid*(model: Model, anim: ModelAnimation): bool\n"
-        /* 0665 */ "fn CheckCollisionSpheres*(center1: Vector3, radius1: real32, center2: Vector3, radius2: real32): bool\n"
-        /* 0666 */ "fn CheckCollisionBoxes*(box1: BoundingBox, box2: BoundingBox): bool\n"
-        /* 0667 */ "fn CheckCollisionBoxSphere*(box: BoundingBox, center: Vector3, radius: real32): bool\n"
-        /* 0668 */ "fn GetRayCollisionSphere*(ray: Ray, center: Vector3, radius: real32): RayCollision\n"
-        /* 0669 */ "fn GetRayCollisionBox*(ray: Ray, box: BoundingBox): RayCollision\n"
-        /* 0670 */ "fn GetRayCollisionMesh*(ray: Ray, mesh: Mesh, transform: Matrix): RayCollision\n"
-        /* 0671 */ "fn GetRayCollisionTriangle*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3): RayCollision\n"
-        /* 0672 */ "fn GetRayCollisionQuad*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3, p4: Vector3): RayCollision\n"
-        /* 0673 */ "fn InitAudioDevice*()\n"
-        /* 0674 */ "fn CloseAudioDevice*()\n"
-        /* 0675 */ "fn IsAudioDeviceReady*(): bool\n"
-        /* 0676 */ "fn SetMasterVolume*(volume: real32)\n"
-        /* 0677 */ "fn LoadWave*(fileName: str): Wave\n"
-        /* 0678 */ "fn LoadWaveFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Wave\n"
-        /* 0679 */ "fn LoadSound*(fileName: str): Sound\n"
-        /* 0680 */ "fn LoadSoundFromWave*(wave: Wave): Sound\n"
-        /* 0681 */ "fn UpdateSound*(sound: Sound, data: ^void, sampleCount: int32)\n"
-        /* 0682 */ "fn UnloadWave*(wave: Wave)\n"
-        /* 0683 */ "fn UnloadSound*(sound: Sound)\n"
-        /* 0684 */ "fn ExportWave*(wave: Wave, fileName: str): bool\n"
-        /* 0685 */ "fn ExportWaveAsCode*(wave: Wave, fileName: str): bool\n"
-        /* 0686 */ "fn PlaySound*(sound: Sound)\n"
-        /* 0687 */ "fn StopSound*(sound: Sound)\n"
-        /* 0688 */ "fn PauseSound*(sound: Sound)\n"
-        /* 0689 */ "fn ResumeSound*(sound: Sound)\n"
-        /* 0690 */ "fn PlaySoundMulti*(sound: Sound)\n"
-        /* 0691 */ "fn StopSoundMulti*()\n"
-        /* 0692 */ "fn GetSoundsPlaying*(): int32\n"
-        /* 0693 */ "fn IsSoundPlaying*(sound: Sound): bool\n"
-        /* 0694 */ "fn SetSoundVolume*(sound: Sound, volume: real32)\n"
-        /* 0695 */ "fn SetSoundPitch*(sound: Sound, pitch: real32)\n"
-        /* 0696 */ "fn SetSoundPan*(sound: Sound, pan: real32)\n"
-        /* 0697 */ "fn WaveCopy*(wave: Wave): Wave\n"
-        /* 0698 */ "fn WaveCrop*(wave: ^Wave, initSample: int32, finalSample: int32)\n"
-        /* 0699 */ "fn WaveFormat*(wave: ^Wave, sampleRate: int32, sampleSize: int32, channels: int32)\n"
-        /* 0700 */ "fn LoadWaveSamples*(wave: Wave): ^real32\n"
-        /* 0701 */ "fn UnloadWaveSamples*(samples: ^real32)\n"
-        /* 0702 */ "fn LoadMusicStream*(fileName: str): Music\n"
-        /* 0703 */ "fn LoadMusicStreamFromMemory*(fileType: str, data: ^uint8, dataSize: int32): Music\n"
-        /* 0704 */ "fn UnloadMusicStream*(music: Music)\n"
-        /* 0705 */ "fn PlayMusicStream*(music: Music)\n"
-        /* 0706 */ "fn IsMusicStreamPlaying*(music: Music): bool\n"
-        /* 0707 */ "fn UpdateMusicStream*(music: Music)\n"
-        /* 0708 */ "fn StopMusicStream*(music: Music)\n"
-        /* 0709 */ "fn PauseMusicStream*(music: Music)\n"
-        /* 0710 */ "fn ResumeMusicStream*(music: Music)\n"
-        /* 0711 */ "fn SeekMusicStream*(music: Music, position: real32)\n"
-        /* 0712 */ "fn SetMusicVolume*(music: Music, volume: real32)\n"
-        /* 0713 */ "fn SetMusicPitch*(music: Music, pitch: real32)\n"
-        /* 0714 */ "fn SetMusicPan*(music: Music, pan: real32)\n"
-        /* 0715 */ "fn GetMusicTimeLength*(music: Music): real32\n"
-        /* 0716 */ "fn GetMusicTimePlayed*(music: Music): real32\n"
-        /* 0717 */ "fn LoadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream\n"
-        /* 0718 */ "fn UnloadAudioStream*(stream: AudioStream)\n"
-        /* 0719 */ "fn UpdateAudioStream*(stream: AudioStream, data: ^void, frameCount: int32)\n"
-        /* 0720 */ "fn IsAudioStreamProcessed*(stream: AudioStream): bool\n"
-        /* 0721 */ "fn PlayAudioStream*(stream: AudioStream)\n"
-        /* 0722 */ "fn PauseAudioStream*(stream: AudioStream)\n"
-        /* 0723 */ "fn ResumeAudioStream*(stream: AudioStream)\n"
-        /* 0724 */ "fn IsAudioStreamPlaying*(stream: AudioStream): bool\n"
-        /* 0725 */ "fn StopAudioStream*(stream: AudioStream)\n"
-        /* 0726 */ "fn SetAudioStreamVolume*(stream: AudioStream, volume: real32)\n"
-        /* 0727 */ "fn SetAudioStreamPitch*(stream: AudioStream, pitch: real32)\n"
-        /* 0728 */ "fn SetAudioStreamPan*(stream: AudioStream, pan: real32)\n"
-        /* 0729 */ "fn SetAudioStreamBufferSizeDefault*(size: int32)\n"
+        /* 0597 */ "fn TextSubtext*(text: str, position: int32, length: int32): str\n"
+        /* 0598 */ "fn TextReplace*(text: str, replace: str, by: str): str\n"
+        /* 0599 */ "fn TextInsert*(text: str, insert: str, position: int32): str\n"
+        /* 0600 */ "fn TextJoin*(textList: ^str, count: int32, delimiter: str): str\n"
+        /* 0601 */ "fn TextSplit*(text: str, delimiter: char, count: ^int32): ^str\n"
+        /* 0602 */ "fn TextAppend*(text: str, append: str, position: ^int32)\n"
+        /* 0603 */ "fn TextFindIndex*(text: str, find: str): int32\n"
+        /* 0604 */ "fn TextToUpper*(text: str): str\n"
+        /* 0605 */ "fn TextToLower*(text: str): str\n"
+        /* 0606 */ "fn TextToPascal*(text: str): str\n"
+        /* 0607 */ "fn TextToInteger*(text: str): int32\n"
+        /* 0608 */ "fn DrawLine3D*(startPos: Vector3, endPos: Vector3, color: Color)\n"
+        /* 0609 */ "fn DrawPoint3D*(position: Vector3, color: Color)\n"
+        /* 0610 */ "fn DrawCircle3D*(center: Vector3, radius: real32, rotationAxis: Vector3, rotationAngle: real32, color: Color)\n"
+        /* 0611 */ "fn DrawTriangle3D*(v1: Vector3, v2: Vector3, v3: Vector3, color: Color)\n"
+        /* 0612 */ "fn DrawTriangleStrip3D*(points: ^Vector3, pointCount: int32, color: Color)\n"
+        /* 0613 */ "fn DrawCube*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0614 */ "fn DrawCubeV*(position: Vector3, size: Vector3, color: Color)\n"
+        /* 0615 */ "fn DrawCubeWires*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0616 */ "fn DrawCubeWiresV*(position: Vector3, size: Vector3, color: Color)\n"
+        /* 0617 */ "fn DrawCubeTexture*(texture: Texture, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0618 */ "fn DrawCubeTextureRec*(texture: Texture, source: Rectangle, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0619 */ "fn DrawSphere*(centerPos: Vector3, radius: real32, color: Color)\n"
+        /* 0620 */ "fn DrawSphereEx*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
+        /* 0621 */ "fn DrawSphereWires*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
+        /* 0622 */ "fn DrawCylinder*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
+        /* 0623 */ "fn DrawCylinderEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
+        /* 0624 */ "fn DrawCylinderWires*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
+        /* 0625 */ "fn DrawCylinderWiresEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
+        /* 0626 */ "fn DrawPlane*(centerPos: Vector3, size: Vector2, color: Color)\n"
+        /* 0627 */ "fn DrawRay*(ray: Ray, color: Color)\n"
+        /* 0628 */ "fn DrawGrid*(slices: int32, spacing: real32)\n"
+        /* 0629 */ "fn LoadModel*(fileName: str): Model\n"
+        /* 0630 */ "fn LoadModelFromMesh*(mesh: Mesh): Model\n"
+        /* 0631 */ "fn UnloadModel*(model: Model)\n"
+        /* 0632 */ "fn UnloadModelKeepMeshes*(model: Model)\n"
+        /* 0633 */ "fn GetModelBoundingBox*(model: Model): BoundingBox\n"
+        /* 0634 */ "fn DrawModel*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
+        /* 0635 */ "fn DrawModelEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
+        /* 0636 */ "fn DrawModelWires*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
+        /* 0637 */ "fn DrawModelWiresEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
+        /* 0638 */ "fn DrawBoundingBox*(box: BoundingBox, color: Color)\n"
+        /* 0639 */ "fn DrawBillboard*(camera: Camera3D, texture: Texture, position: Vector3, size: real32, tint: Color)\n"
+        /* 0640 */ "fn DrawBillboardRec*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, size: Vector2, tint: Color)\n"
+        /* 0641 */ "fn DrawBillboardPro*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, up: Vector3, size: Vector2, origin: Vector2, rotation: real32, tint: Color)\n"
+        /* 0642 */ "fn UploadMesh*(mesh: ^Mesh, dynamic: bool)\n"
+        /* 0643 */ "fn UpdateMeshBuffer*(mesh: Mesh, index: int32, data: ^void, dataSize: int32, offset: int32)\n"
+        /* 0644 */ "fn UnloadMesh*(mesh: Mesh)\n"
+        /* 0645 */ "fn DrawMesh*(mesh: Mesh, material: Material, transform: Matrix)\n"
+        /* 0646 */ "fn DrawMeshInstanced*(mesh: Mesh, material: Material, transforms: ^Matrix, instances: int32)\n"
+        /* 0647 */ "fn ExportMesh*(mesh: Mesh, fileName: str): bool\n"
+        /* 0648 */ "fn GetMeshBoundingBox*(mesh: Mesh): BoundingBox\n"
+        /* 0649 */ "fn GenMeshTangents*(mesh: ^Mesh)\n"
+        /* 0650 */ "fn GenMeshPoly*(sides: int32, radius: real32): Mesh\n"
+        /* 0651 */ "fn GenMeshPlane*(width: real32, length: real32, resX: int32, resZ: int32): Mesh\n"
+        /* 0652 */ "fn GenMeshCube*(width: real32, height: real32, length: real32): Mesh\n"
+        /* 0653 */ "fn GenMeshSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
+        /* 0654 */ "fn GenMeshHemiSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
+        /* 0655 */ "fn GenMeshCylinder*(radius: real32, height: real32, slices: int32): Mesh\n"
+        /* 0656 */ "fn GenMeshCone*(radius: real32, height: real32, slices: int32): Mesh\n"
+        /* 0657 */ "fn GenMeshTorus*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
+        /* 0658 */ "fn GenMeshKnot*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
+        /* 0659 */ "fn GenMeshHeightmap*(heightmap: Image, size: Vector3): Mesh\n"
+        /* 0660 */ "fn GenMeshCubicmap*(cubicmap: Image, cubeSize: Vector3): Mesh\n"
+        /* 0661 */ "fn LoadMaterials*(fileName: str, materialCount: ^int32): ^Material\n"
+        /* 0662 */ "fn LoadMaterialDefault*(): Material\n"
+        /* 0663 */ "fn UnloadMaterial*(material: Material)\n"
+        /* 0664 */ "fn SetMaterialTexture*(material: ^Material, mapType: int32, texture: Texture)\n"
+        /* 0665 */ "fn SetModelMeshMaterial*(model: ^Model, meshId: int32, materialId: int32)\n"
+        /* 0666 */ "fn LoadModelAnimations*(fileName: str, animCount: ^uint32): ^ModelAnimation\n"
+        /* 0667 */ "fn UpdateModelAnimation*(model: Model, anim: ModelAnimation, frame: int32)\n"
+        /* 0668 */ "fn UnloadModelAnimation*(anim: ModelAnimation)\n"
+        /* 0669 */ "fn UnloadModelAnimations*(animations: ^ModelAnimation, count: uint32)\n"
+        /* 0670 */ "fn IsModelAnimationValid*(model: Model, anim: ModelAnimation): bool\n"
+        /* 0671 */ "fn CheckCollisionSpheres*(center1: Vector3, radius1: real32, center2: Vector3, radius2: real32): bool\n"
+        /* 0672 */ "fn CheckCollisionBoxes*(box1: BoundingBox, box2: BoundingBox): bool\n"
+        /* 0673 */ "fn CheckCollisionBoxSphere*(box: BoundingBox, center: Vector3, radius: real32): bool\n"
+        /* 0674 */ "fn GetRayCollisionSphere*(ray: Ray, center: Vector3, radius: real32): RayCollision\n"
+        /* 0675 */ "fn GetRayCollisionBox*(ray: Ray, box: BoundingBox): RayCollision\n"
+        /* 0676 */ "fn GetRayCollisionMesh*(ray: Ray, mesh: Mesh, transform: Matrix): RayCollision\n"
+        /* 0677 */ "fn GetRayCollisionTriangle*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3): RayCollision\n"
+        /* 0678 */ "fn GetRayCollisionQuad*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3, p4: Vector3): RayCollision\n"
+        /* 0679 */ "fn InitAudioDevice*()\n"
+        /* 0680 */ "fn CloseAudioDevice*()\n"
+        /* 0681 */ "fn IsAudioDeviceReady*(): bool\n"
+        /* 0682 */ "fn SetMasterVolume*(volume: real32)\n"
+        /* 0683 */ "fn LoadWave*(fileName: str): Wave\n"
+        /* 0684 */ "fn LoadWaveFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Wave\n"
+        /* 0685 */ "fn LoadSound*(fileName: str): Sound\n"
+        /* 0686 */ "fn LoadSoundFromWave*(wave: Wave): Sound\n"
+        /* 0687 */ "fn UpdateSound*(sound: Sound, data: ^void, sampleCount: int32)\n"
+        /* 0688 */ "fn UnloadWave*(wave: Wave)\n"
+        /* 0689 */ "fn UnloadSound*(sound: Sound)\n"
+        /* 0690 */ "fn ExportWave*(wave: Wave, fileName: str): bool\n"
+        /* 0691 */ "fn ExportWaveAsCode*(wave: Wave, fileName: str): bool\n"
+        /* 0692 */ "fn PlaySound*(sound: Sound)\n"
+        /* 0693 */ "fn StopSound*(sound: Sound)\n"
+        /* 0694 */ "fn PauseSound*(sound: Sound)\n"
+        /* 0695 */ "fn ResumeSound*(sound: Sound)\n"
+        /* 0696 */ "fn PlaySoundMulti*(sound: Sound)\n"
+        /* 0697 */ "fn StopSoundMulti*()\n"
+        /* 0698 */ "fn GetSoundsPlaying*(): int32\n"
+        /* 0699 */ "fn IsSoundPlaying*(sound: Sound): bool\n"
+        /* 0700 */ "fn SetSoundVolume*(sound: Sound, volume: real32)\n"
+        /* 0701 */ "fn SetSoundPitch*(sound: Sound, pitch: real32)\n"
+        /* 0702 */ "fn SetSoundPan*(sound: Sound, pan: real32)\n"
+        /* 0703 */ "fn WaveCopy*(wave: Wave): Wave\n"
+        /* 0704 */ "fn WaveCrop*(wave: ^Wave, initSample: int32, finalSample: int32)\n"
+        /* 0705 */ "fn WaveFormat*(wave: ^Wave, sampleRate: int32, sampleSize: int32, channels: int32)\n"
+        /* 0706 */ "fn LoadWaveSamples*(wave: Wave): ^real32\n"
+        /* 0707 */ "fn UnloadWaveSamples*(samples: ^real32)\n"
+        /* 0708 */ "fn LoadMusicStream*(fileName: str): Music\n"
+        /* 0709 */ "fn LoadMusicStreamFromMemory*(fileType: str, data: ^uint8, dataSize: int32): Music\n"
+        /* 0710 */ "fn UnloadMusicStream*(music: Music)\n"
+        /* 0711 */ "fn PlayMusicStream*(music: Music)\n"
+        /* 0712 */ "fn IsMusicStreamPlaying*(music: Music): bool\n"
+        /* 0713 */ "fn UpdateMusicStream*(music: Music)\n"
+        /* 0714 */ "fn StopMusicStream*(music: Music)\n"
+        /* 0715 */ "fn PauseMusicStream*(music: Music)\n"
+        /* 0716 */ "fn ResumeMusicStream*(music: Music)\n"
+        /* 0717 */ "fn SeekMusicStream*(music: Music, position: real32)\n"
+        /* 0718 */ "fn SetMusicVolume*(music: Music, volume: real32)\n"
+        /* 0719 */ "fn SetMusicPitch*(music: Music, pitch: real32)\n"
+        /* 0720 */ "fn SetMusicPan*(music: Music, pan: real32)\n"
+        /* 0721 */ "fn GetMusicTimeLength*(music: Music): real32\n"
+        /* 0722 */ "fn GetMusicTimePlayed*(music: Music): real32\n"
+        /* 0723 */ "fn LoadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream\n"
+        /* 0724 */ "fn UnloadAudioStream*(stream: AudioStream)\n"
+        /* 0725 */ "fn UpdateAudioStream*(stream: AudioStream, data: ^void, frameCount: int32)\n"
+        /* 0726 */ "fn IsAudioStreamProcessed*(stream: AudioStream): bool\n"
+        /* 0727 */ "fn PlayAudioStream*(stream: AudioStream)\n"
+        /* 0728 */ "fn PauseAudioStream*(stream: AudioStream)\n"
+        /* 0729 */ "fn ResumeAudioStream*(stream: AudioStream)\n"
+        /* 0730 */ "fn IsAudioStreamPlaying*(stream: AudioStream): bool\n"
+        /* 0731 */ "fn StopAudioStream*(stream: AudioStream)\n"
+        /* 0732 */ "fn SetAudioStreamVolume*(stream: AudioStream, volume: real32)\n"
+        /* 0733 */ "fn SetAudioStreamPitch*(stream: AudioStream, pitch: real32)\n"
+        /* 0734 */ "fn SetAudioStreamPan*(stream: AudioStream, pan: real32)\n"
+        /* 0735 */ "fn SetAudioStreamBufferSizeDefault*(size: int32)\n"
         // Skipping SetAudioStreamCallback
         // Skipping AttachAudioStreamProcessor
         // Skipping DetachAudioStreamProcessor
-        /* 0730 */ "fn Clamp*(value: real32, min: real32, max: real32): real32\n"
-        /* 0731 */ "fn Lerp*(start: real32, end: real32, amount: real32): real32\n"
-        /* 0732 */ "fn Normalize*(value: real32, start: real32, end: real32): real32\n"
-        /* 0733 */ "fn Remap*(value: real32, inputStart: real32, inputEnd: real32, outputStart: real32, outputEnd: real32): real32\n"
-        /* 0734 */ "fn Wrap*(value: real32, min: real32, max: real32): real32\n"
-        /* 0735 */ "fn FloatEquals*(x: real32, y: real32): int32\n"
-        /* 0736 */ "fn Vector2Zero*(): Vector2\n"
-        /* 0737 */ "fn Vector2One*(): Vector2\n"
-        /* 0738 */ "fn Vector2Add*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0739 */ "fn Vector2AddValue*(v: Vector2, add: real32): Vector2\n"
-        /* 0740 */ "fn Vector2Subtract*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0741 */ "fn Vector2SubtractValue*(v: Vector2, sub: real32): Vector2\n"
-        /* 0742 */ "fn Vector2Length*(v: Vector2): real32\n"
-        /* 0743 */ "fn Vector2LengthSqr*(v: Vector2): real32\n"
-        /* 0744 */ "fn Vector2DotProduct*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0745 */ "fn Vector2Distance*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0746 */ "fn Vector2DistanceSqr*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0747 */ "fn Vector2Angle*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0748 */ "fn Vector2Scale*(v: Vector2, scale: real32): Vector2\n"
-        /* 0749 */ "fn Vector2Multiply*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0750 */ "fn Vector2Negate*(v: Vector2): Vector2\n"
-        /* 0751 */ "fn Vector2Divide*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0752 */ "fn Vector2Normalize*(v: Vector2): Vector2\n"
-        /* 0753 */ "fn Vector2Transform*(v: Vector2, mat: Matrix): Vector2\n"
-        /* 0754 */ "fn Vector2Lerp*(v1: Vector2, v2: Vector2, amount: real32): Vector2\n"
-        /* 0755 */ "fn Vector2Reflect*(v: Vector2, normal: Vector2): Vector2\n"
-        /* 0756 */ "fn Vector2Rotate*(v: Vector2, angle: real32): Vector2\n"
-        /* 0757 */ "fn Vector2MoveTowards*(v: Vector2, target: Vector2, maxDistance: real32): Vector2\n"
-        /* 0758 */ "fn Vector2Invert*(v: Vector2): Vector2\n"
-        /* 0759 */ "fn Vector2Clamp*(v: Vector2, min: Vector2, max: Vector2): Vector2\n"
-        /* 0760 */ "fn Vector2ClampValue*(v: Vector2, min: real32, max: real32): Vector2\n"
-        /* 0761 */ "fn Vector2Equals*(p: Vector2, q: Vector2): int32\n"
-        /* 0762 */ "fn Vector3Zero*(): Vector3\n"
-        /* 0763 */ "fn Vector3One*(): Vector3\n"
-        /* 0764 */ "fn Vector3Add*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0765 */ "fn Vector3AddValue*(v: Vector3, add: real32): Vector3\n"
-        /* 0766 */ "fn Vector3Subtract*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0767 */ "fn Vector3SubtractValue*(v: Vector3, sub: real32): Vector3\n"
-        /* 0768 */ "fn Vector3Scale*(v: Vector3, scalar: real32): Vector3\n"
-        /* 0769 */ "fn Vector3Multiply*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0770 */ "fn Vector3CrossProduct*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0771 */ "fn Vector3Perpendicular*(v: Vector3): Vector3\n"
-        /* 0772 */ "fn Vector3Length*(v: Vector3): real32\n"
-        /* 0773 */ "fn Vector3LengthSqr*(v: Vector3): real32\n"
-        /* 0774 */ "fn Vector3DotProduct*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0775 */ "fn Vector3Distance*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0776 */ "fn Vector3DistanceSqr*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0777 */ "fn Vector3Angle*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0778 */ "fn Vector3Negate*(v: Vector3): Vector3\n"
-        /* 0779 */ "fn Vector3Divide*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0780 */ "fn Vector3Normalize*(v: Vector3): Vector3\n"
-        /* 0781 */ "fn Vector3OrthoNormalize*(v1: ^Vector3, v2: ^Vector3)\n"
-        /* 0782 */ "fn Vector3Transform*(v: Vector3, mat: Matrix): Vector3\n"
-        /* 0783 */ "fn Vector3RotateByQuaternion*(v: Vector3, q: Vector4): Vector3\n"
-        /* 0784 */ "fn Vector3RotateByAxisAngle*(v: Vector3, axis: Vector3, angle: real32): Vector3\n"
-        /* 0785 */ "fn Vector3Lerp*(v1: Vector3, v2: Vector3, amount: real32): Vector3\n"
-        /* 0786 */ "fn Vector3Reflect*(v: Vector3, normal: Vector3): Vector3\n"
-        /* 0787 */ "fn Vector3Min*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0788 */ "fn Vector3Max*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0789 */ "fn Vector3Barycenter*(p: Vector3, a: Vector3, b: Vector3, c: Vector3): Vector3\n"
-        /* 0790 */ "fn Vector3Unproject*(source: Vector3, projection: Matrix, view: Matrix): Vector3\n"
-        /* 0791 */ "fn Vector3ToFloatV*(v: Vector3): float3\n"
-        /* 0792 */ "fn Vector3Invert*(v: Vector3): Vector3\n"
-        /* 0793 */ "fn Vector3Clamp*(v: Vector3, min: Vector3, max: Vector3): Vector3\n"
-        /* 0794 */ "fn Vector3ClampValue*(v: Vector3, min: real32, max: real32): Vector3\n"
-        /* 0795 */ "fn Vector3Equals*(p: Vector3, q: Vector3): int32\n"
-        /* 0796 */ "fn Vector3Refract*(v: Vector3, n: Vector3, r: real32): Vector3\n"
-        /* 0797 */ "fn MatrixDeterminant*(mat: Matrix): real32\n"
-        /* 0798 */ "fn MatrixTrace*(mat: Matrix): real32\n"
-        /* 0799 */ "fn MatrixTranspose*(mat: Matrix): Matrix\n"
-        /* 0800 */ "fn MatrixInvert*(mat: Matrix): Matrix\n"
-        /* 0801 */ "fn MatrixIdentity*(): Matrix\n"
-        /* 0802 */ "fn MatrixAdd*(left: Matrix, right: Matrix): Matrix\n"
-        /* 0803 */ "fn MatrixSubtract*(left: Matrix, right: Matrix): Matrix\n"
-        /* 0804 */ "fn MatrixMultiply*(left: Matrix, right: Matrix): Matrix\n"
-        /* 0805 */ "fn MatrixTranslate*(x: real32, y: real32, z: real32): Matrix\n"
-        /* 0806 */ "fn MatrixRotate*(axis: Vector3, angle: real32): Matrix\n"
-        /* 0807 */ "fn MatrixRotateX*(angle: real32): Matrix\n"
-        /* 0808 */ "fn MatrixRotateY*(angle: real32): Matrix\n"
-        /* 0809 */ "fn MatrixRotateZ*(angle: real32): Matrix\n"
-        /* 0810 */ "fn MatrixRotateXYZ*(angle: Vector3): Matrix\n"
-        /* 0811 */ "fn MatrixRotateZYX*(angle: Vector3): Matrix\n"
-        /* 0812 */ "fn MatrixScale*(x: real32, y: real32, z: real32): Matrix\n"
-        /* 0813 */ "fn MatrixFrustum*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
-        /* 0814 */ "fn MatrixPerspective*(fovy: real, aspect: real, near: real, far: real): Matrix\n"
-        /* 0815 */ "fn MatrixOrtho*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
-        /* 0816 */ "fn MatrixLookAt*(eye: Vector3, target: Vector3, up: Vector3): Matrix\n"
-        /* 0817 */ "fn MatrixToFloatV*(mat: Matrix): float16\n"
-        /* 0818 */ "fn QuaternionAdd*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0819 */ "fn QuaternionAddValue*(q: Vector4, add: real32): Vector4\n"
-        /* 0820 */ "fn QuaternionSubtract*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0821 */ "fn QuaternionSubtractValue*(q: Vector4, sub: real32): Vector4\n"
-        /* 0822 */ "fn QuaternionIdentity*(): Vector4\n"
-        /* 0823 */ "fn QuaternionLength*(q: Vector4): real32\n"
-        /* 0824 */ "fn QuaternionNormalize*(q: Vector4): Vector4\n"
-        /* 0825 */ "fn QuaternionInvert*(q: Vector4): Vector4\n"
-        /* 0826 */ "fn QuaternionMultiply*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0827 */ "fn QuaternionScale*(q: Vector4, mul: real32): Vector4\n"
-        /* 0828 */ "fn QuaternionDivide*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0829 */ "fn QuaternionLerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
-        /* 0830 */ "fn QuaternionNlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
-        /* 0831 */ "fn QuaternionSlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
-        /* 0832 */ "fn QuaternionFromVector3ToVector3*(from: Vector3, to: Vector3): Vector4\n"
-        /* 0833 */ "fn QuaternionFromMatrix*(mat: Matrix): Vector4\n"
-        /* 0834 */ "fn QuaternionToMatrix*(q: Vector4): Matrix\n"
-        /* 0835 */ "fn QuaternionFromAxisAngle*(axis: Vector3, angle: real32): Vector4\n"
-        /* 0836 */ "fn QuaternionToAxisAngle*(q: Vector4, outAxis: ^Vector3, outAngle: ^real32)\n"
-        /* 0837 */ "fn QuaternionFromEuler*(pitch: real32, yaw: real32, roll: real32): Vector4\n"
-        /* 0838 */ "fn QuaternionToEuler*(q: Vector4): Vector3\n"
-        /* 0839 */ "fn QuaternionTransform*(q: Vector4, mat: Matrix): Vector4\n"
-        /* 0840 */ "fn QuaternionEquals*(p: Vector4, q: Vector4): int32\n"
+        /* 0736 */ "fn Clamp*(value: real32, min: real32, max: real32): real32\n"
+        /* 0737 */ "fn Lerp*(start: real32, end: real32, amount: real32): real32\n"
+        /* 0738 */ "fn Normalize*(value: real32, start: real32, end: real32): real32\n"
+        /* 0739 */ "fn Remap*(value: real32, inputStart: real32, inputEnd: real32, outputStart: real32, outputEnd: real32): real32\n"
+        /* 0740 */ "fn Wrap*(value: real32, min: real32, max: real32): real32\n"
+        /* 0741 */ "fn FloatEquals*(x: real32, y: real32): int32\n"
+        /* 0742 */ "fn Vector2Zero*(): Vector2\n"
+        /* 0743 */ "fn Vector2One*(): Vector2\n"
+        /* 0744 */ "fn Vector2Add*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0745 */ "fn Vector2AddValue*(v: Vector2, add: real32): Vector2\n"
+        /* 0746 */ "fn Vector2Subtract*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0747 */ "fn Vector2SubtractValue*(v: Vector2, sub: real32): Vector2\n"
+        /* 0748 */ "fn Vector2Length*(v: Vector2): real32\n"
+        /* 0749 */ "fn Vector2LengthSqr*(v: Vector2): real32\n"
+        /* 0750 */ "fn Vector2DotProduct*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0751 */ "fn Vector2Distance*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0752 */ "fn Vector2DistanceSqr*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0753 */ "fn Vector2Angle*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0754 */ "fn Vector2Scale*(v: Vector2, scale: real32): Vector2\n"
+        /* 0755 */ "fn Vector2Multiply*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0756 */ "fn Vector2Negate*(v: Vector2): Vector2\n"
+        /* 0757 */ "fn Vector2Divide*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0758 */ "fn Vector2Normalize*(v: Vector2): Vector2\n"
+        /* 0759 */ "fn Vector2Transform*(v: Vector2, mat: Matrix): Vector2\n"
+        /* 0760 */ "fn Vector2Lerp*(v1: Vector2, v2: Vector2, amount: real32): Vector2\n"
+        /* 0761 */ "fn Vector2Reflect*(v: Vector2, normal: Vector2): Vector2\n"
+        /* 0762 */ "fn Vector2Rotate*(v: Vector2, angle: real32): Vector2\n"
+        /* 0763 */ "fn Vector2MoveTowards*(v: Vector2, target: Vector2, maxDistance: real32): Vector2\n"
+        /* 0764 */ "fn Vector2Invert*(v: Vector2): Vector2\n"
+        /* 0765 */ "fn Vector2Clamp*(v: Vector2, min: Vector2, max: Vector2): Vector2\n"
+        /* 0766 */ "fn Vector2ClampValue*(v: Vector2, min: real32, max: real32): Vector2\n"
+        /* 0767 */ "fn Vector2Equals*(p: Vector2, q: Vector2): int32\n"
+        /* 0768 */ "fn Vector3Zero*(): Vector3\n"
+        /* 0769 */ "fn Vector3One*(): Vector3\n"
+        /* 0770 */ "fn Vector3Add*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0771 */ "fn Vector3AddValue*(v: Vector3, add: real32): Vector3\n"
+        /* 0772 */ "fn Vector3Subtract*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0773 */ "fn Vector3SubtractValue*(v: Vector3, sub: real32): Vector3\n"
+        /* 0774 */ "fn Vector3Scale*(v: Vector3, scalar: real32): Vector3\n"
+        /* 0775 */ "fn Vector3Multiply*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0776 */ "fn Vector3CrossProduct*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0777 */ "fn Vector3Perpendicular*(v: Vector3): Vector3\n"
+        /* 0778 */ "fn Vector3Length*(v: Vector3): real32\n"
+        /* 0779 */ "fn Vector3LengthSqr*(v: Vector3): real32\n"
+        /* 0780 */ "fn Vector3DotProduct*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0781 */ "fn Vector3Distance*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0782 */ "fn Vector3DistanceSqr*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0783 */ "fn Vector3Angle*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0784 */ "fn Vector3Negate*(v: Vector3): Vector3\n"
+        /* 0785 */ "fn Vector3Divide*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0786 */ "fn Vector3Normalize*(v: Vector3): Vector3\n"
+        /* 0787 */ "fn Vector3OrthoNormalize*(v1: ^Vector3, v2: ^Vector3)\n"
+        /* 0788 */ "fn Vector3Transform*(v: Vector3, mat: Matrix): Vector3\n"
+        /* 0789 */ "fn Vector3RotateByQuaternion*(v: Vector3, q: Vector4): Vector3\n"
+        /* 0790 */ "fn Vector3RotateByAxisAngle*(v: Vector3, axis: Vector3, angle: real32): Vector3\n"
+        /* 0791 */ "fn Vector3Lerp*(v1: Vector3, v2: Vector3, amount: real32): Vector3\n"
+        /* 0792 */ "fn Vector3Reflect*(v: Vector3, normal: Vector3): Vector3\n"
+        /* 0793 */ "fn Vector3Min*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0794 */ "fn Vector3Max*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0795 */ "fn Vector3Barycenter*(p: Vector3, a: Vector3, b: Vector3, c: Vector3): Vector3\n"
+        /* 0796 */ "fn Vector3Unproject*(source: Vector3, projection: Matrix, view: Matrix): Vector3\n"
+        /* 0797 */ "fn Vector3ToFloatV*(v: Vector3): float3\n"
+        /* 0798 */ "fn Vector3Invert*(v: Vector3): Vector3\n"
+        /* 0799 */ "fn Vector3Clamp*(v: Vector3, min: Vector3, max: Vector3): Vector3\n"
+        /* 0800 */ "fn Vector3ClampValue*(v: Vector3, min: real32, max: real32): Vector3\n"
+        /* 0801 */ "fn Vector3Equals*(p: Vector3, q: Vector3): int32\n"
+        /* 0802 */ "fn Vector3Refract*(v: Vector3, n: Vector3, r: real32): Vector3\n"
+        /* 0803 */ "fn MatrixDeterminant*(mat: Matrix): real32\n"
+        /* 0804 */ "fn MatrixTrace*(mat: Matrix): real32\n"
+        /* 0805 */ "fn MatrixTranspose*(mat: Matrix): Matrix\n"
+        /* 0806 */ "fn MatrixInvert*(mat: Matrix): Matrix\n"
+        /* 0807 */ "fn MatrixIdentity*(): Matrix\n"
+        /* 0808 */ "fn MatrixAdd*(left: Matrix, right: Matrix): Matrix\n"
+        /* 0809 */ "fn MatrixSubtract*(left: Matrix, right: Matrix): Matrix\n"
+        /* 0810 */ "fn MatrixMultiply*(left: Matrix, right: Matrix): Matrix\n"
+        /* 0811 */ "fn MatrixTranslate*(x: real32, y: real32, z: real32): Matrix\n"
+        /* 0812 */ "fn MatrixRotate*(axis: Vector3, angle: real32): Matrix\n"
+        /* 0813 */ "fn MatrixRotateX*(angle: real32): Matrix\n"
+        /* 0814 */ "fn MatrixRotateY*(angle: real32): Matrix\n"
+        /* 0815 */ "fn MatrixRotateZ*(angle: real32): Matrix\n"
+        /* 0816 */ "fn MatrixRotateXYZ*(angle: Vector3): Matrix\n"
+        /* 0817 */ "fn MatrixRotateZYX*(angle: Vector3): Matrix\n"
+        /* 0818 */ "fn MatrixScale*(x: real32, y: real32, z: real32): Matrix\n"
+        /* 0819 */ "fn MatrixFrustum*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
+        /* 0820 */ "fn MatrixPerspective*(fovy: real, aspect: real, near: real, far: real): Matrix\n"
+        /* 0821 */ "fn MatrixOrtho*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
+        /* 0822 */ "fn MatrixLookAt*(eye: Vector3, target: Vector3, up: Vector3): Matrix\n"
+        /* 0823 */ "fn MatrixToFloatV*(mat: Matrix): float16\n"
+        /* 0824 */ "fn QuaternionAdd*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0825 */ "fn QuaternionAddValue*(q: Vector4, add: real32): Vector4\n"
+        /* 0826 */ "fn QuaternionSubtract*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0827 */ "fn QuaternionSubtractValue*(q: Vector4, sub: real32): Vector4\n"
+        /* 0828 */ "fn QuaternionIdentity*(): Vector4\n"
+        /* 0829 */ "fn QuaternionLength*(q: Vector4): real32\n"
+        /* 0830 */ "fn QuaternionNormalize*(q: Vector4): Vector4\n"
+        /* 0831 */ "fn QuaternionInvert*(q: Vector4): Vector4\n"
+        /* 0832 */ "fn QuaternionMultiply*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0833 */ "fn QuaternionScale*(q: Vector4, mul: real32): Vector4\n"
+        /* 0834 */ "fn QuaternionDivide*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0835 */ "fn QuaternionLerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
+        /* 0836 */ "fn QuaternionNlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
+        /* 0837 */ "fn QuaternionSlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
+        /* 0838 */ "fn QuaternionFromVector3ToVector3*(from: Vector3, to: Vector3): Vector4\n"
+        /* 0839 */ "fn QuaternionFromMatrix*(mat: Matrix): Vector4\n"
+        /* 0840 */ "fn QuaternionToMatrix*(q: Vector4): Matrix\n"
+        /* 0841 */ "fn QuaternionFromAxisAngle*(axis: Vector3, angle: real32): Vector4\n"
+        /* 0842 */ "fn QuaternionToAxisAngle*(q: Vector4, outAxis: ^Vector3, outAngle: ^real32)\n"
+        /* 0843 */ "fn QuaternionFromEuler*(pitch: real32, yaw: real32, roll: real32): Vector4\n"
+        /* 0844 */ "fn QuaternionToEuler*(q: Vector4): Vector3\n"
+        /* 0845 */ "fn QuaternionTransform*(q: Vector4, mat: Matrix): Vector4\n"
+        /* 0846 */ "fn QuaternionEquals*(p: Vector4, q: Vector4): int32\n"
+        /* 0847 */ "fn rlMatrixMode*(mode: int32)\n"
+        /* 0848 */ "fn rlPushMatrix*()\n"
+        /* 0849 */ "fn rlPopMatrix*()\n"
+        /* 0850 */ "fn rlLoadIdentity*()\n"
+        /* 0851 */ "fn rlTranslatef*(x: real32, y: real32, z: real32)\n"
+        /* 0852 */ "fn rlRotatef*(angle: real32, x: real32, y: real32, z: real32)\n"
+        /* 0853 */ "fn rlScalef*(x: real32, y: real32, z: real32)\n"
+        /* 0854 */ "fn rlMultMatrixf*(matf: ^real32)\n"
+        /* 0855 */ "fn rlFrustum*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)\n"
+        /* 0856 */ "fn rlOrtho*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)\n"
+        /* 0857 */ "fn rlViewport*(x: int32, y: int32, width: int32, height: int32)\n"
+        /* 0858 */ "fn rlBegin*(mode: int32)\n"
+        /* 0859 */ "fn rlEnd*()\n"
+        /* 0860 */ "fn rlVertex2i*(x: int32, y: int32)\n"
+        /* 0861 */ "fn rlVertex2f*(x: real32, y: real32)\n"
+        /* 0862 */ "fn rlVertex3f*(x: real32, y: real32, z: real32)\n"
+        /* 0863 */ "fn rlTexCoord2f*(x: real32, y: real32)\n"
+        /* 0864 */ "fn rlNormal3f*(x: real32, y: real32, z: real32)\n"
+        /* 0865 */ "fn rlColor4ub*(r: uint8, g: uint8, b: uint8, a: uint8)\n"
+        /* 0866 */ "fn rlColor3f*(x: real32, y: real32, z: real32)\n"
+        /* 0867 */ "fn rlColor4f*(x: real32, y: real32, z: real32, w: real32)\n"
+        /* 0868 */ "fn rlEnableVertexArray*(vaoId: uint32): bool\n"
+        /* 0869 */ "fn rlDisableVertexArray*()\n"
+        /* 0870 */ "fn rlEnableVertexBuffer*(id: uint32)\n"
+        /* 0871 */ "fn rlDisableVertexBuffer*()\n"
+        /* 0872 */ "fn rlEnableVertexBufferElement*(id: uint32)\n"
+        /* 0873 */ "fn rlDisableVertexBufferElement*()\n"
+        /* 0874 */ "fn rlEnableVertexAttribute*(index: uint32)\n"
+        /* 0875 */ "fn rlDisableVertexAttribute*(index: uint32)\n"
+        // Skipping rlEnableStatePointer
+        // Skipping rlDisableStatePointer
+        /* 0876 */ "fn rlActiveTextureSlot*(slot: int32)\n"
+        /* 0877 */ "fn rlEnableTexture*(id: uint32)\n"
+        /* 0878 */ "fn rlDisableTexture*()\n"
+        /* 0879 */ "fn rlEnableTextureCubemap*(id: uint32)\n"
+        /* 0880 */ "fn rlDisableTextureCubemap*()\n"
+        /* 0881 */ "fn rlTextureParameters*(id: uint32, param: int32, value: int32)\n"
+        /* 0882 */ "fn rlEnableShader*(id: uint32)\n"
+        /* 0883 */ "fn rlDisableShader*()\n"
+        /* 0884 */ "fn rlEnableFramebuffer*(id: uint32)\n"
+        /* 0885 */ "fn rlDisableFramebuffer*()\n"
+        /* 0886 */ "fn rlActiveDrawBuffers*(count: int32)\n"
+        /* 0887 */ "fn rlEnableColorBlend*()\n"
+        /* 0888 */ "fn rlDisableColorBlend*()\n"
+        /* 0889 */ "fn rlEnableDepthTest*()\n"
+        /* 0890 */ "fn rlDisableDepthTest*()\n"
+        /* 0891 */ "fn rlEnableDepthMask*()\n"
+        /* 0892 */ "fn rlDisableDepthMask*()\n"
+        /* 0893 */ "fn rlEnableBackfaceCulling*()\n"
+        /* 0894 */ "fn rlDisableBackfaceCulling*()\n"
+        /* 0895 */ "fn rlEnableScissorTest*()\n"
+        /* 0896 */ "fn rlDisableScissorTest*()\n"
+        /* 0897 */ "fn rlScissor*(x: int32, y: int32, width: int32, height: int32)\n"
+        /* 0898 */ "fn rlEnableWireMode*()\n"
+        /* 0899 */ "fn rlDisableWireMode*()\n"
+        /* 0900 */ "fn rlSetLineWidth*(width: real32)\n"
+        /* 0901 */ "fn rlGetLineWidth*(): real32\n"
+        /* 0902 */ "fn rlEnableSmoothLines*()\n"
+        /* 0903 */ "fn rlDisableSmoothLines*()\n"
+        /* 0904 */ "fn rlEnableStereoRender*()\n"
+        /* 0905 */ "fn rlDisableStereoRender*()\n"
+        /* 0906 */ "fn rlIsStereoRenderEnabled*(): bool\n"
+        /* 0907 */ "fn rlClearColor*(r: uint8, g: uint8, b: uint8, a: uint8)\n"
+        /* 0908 */ "fn rlClearScreenBuffers*()\n"
+        /* 0909 */ "fn rlCheckErrors*()\n"
+        /* 0910 */ "fn rlSetBlendMode*(mode: int32)\n"
+        /* 0911 */ "fn rlSetBlendFactors*(glSrcFactor: int32, glDstFactor: int32, glEquation: int32)\n"
+        /* 0912 */ "fn rlglInit*(width: int32, height: int32)\n"
+        /* 0913 */ "fn rlglClose*()\n"
+        /* 0914 */ "fn rlLoadExtensions*(loader: ^void)\n"
+        /* 0915 */ "fn rlGetVersion*(): int32\n"
+        /* 0916 */ "fn rlSetFramebufferWidth*(width: int32)\n"
+        /* 0917 */ "fn rlGetFramebufferWidth*(): int32\n"
+        /* 0918 */ "fn rlSetFramebufferHeight*(height: int32)\n"
+        /* 0919 */ "fn rlGetFramebufferHeight*(): int32\n"
+        /* 0920 */ "fn rlGetTextureIdDefault*(): uint32\n"
+        /* 0921 */ "fn rlGetShaderIdDefault*(): uint32\n"
+        /* 0922 */ "fn rlGetShaderLocsDefault*(): ^int32\n"
+        // Skipping rlLoadRenderBatch
+        // Skipping rlUnloadRenderBatch
+        // Skipping rlDrawRenderBatch
+        // Skipping rlSetRenderBatchActive
+        /* 0923 */ "fn rlDrawRenderBatchActive*()\n"
+        /* 0924 */ "fn rlCheckRenderBatchLimit*(vCount: int32): bool\n"
+        /* 0925 */ "fn rlSetTexture*(id: uint32)\n"
+        /* 0926 */ "fn rlLoadVertexArray*(): uint32\n"
+        /* 0927 */ "fn rlLoadVertexBuffer*(buffer: ^void, size: int32, dynamic: bool): uint32\n"
+        /* 0928 */ "fn rlLoadVertexBufferElement*(buffer: ^void, size: int32, dynamic: bool): uint32\n"
+        /* 0929 */ "fn rlUpdateVertexBuffer*(bufferId: uint32, data: ^void, dataSize: int32, offset: int32)\n"
+        /* 0930 */ "fn rlUpdateVertexBufferElements*(id: uint32, data: ^void, dataSize: int32, offset: int32)\n"
+        /* 0931 */ "fn rlUnloadVertexArray*(vaoId: uint32)\n"
+        /* 0932 */ "fn rlUnloadVertexBuffer*(vboId: uint32)\n"
+        /* 0933 */ "fn rlSetVertexAttribute*(index: uint32, compSize: int32, typeInput: int32, normalized: bool, stride: int32, pointer: ^void)\n"
+        /* 0934 */ "fn rlSetVertexAttributeDivisor*(index: uint32, divisor: int32)\n"
+        /* 0935 */ "fn rlSetVertexAttributeDefault*(locIndex: int32, value: ^void, attribType: int32, count: int32)\n"
+        /* 0936 */ "fn rlDrawVertexArray*(offset: int32, count: int32)\n"
+        /* 0937 */ "fn rlDrawVertexArrayElements*(offset: int32, count: int32, buffer: ^void)\n"
+        /* 0938 */ "fn rlDrawVertexArrayInstanced*(offset: int32, count: int32, instances: int32)\n"
+        /* 0939 */ "fn rlDrawVertexArrayElementsInstanced*(offset: int32, count: int32, buffer: ^void, instances: int32)\n"
+        /* 0940 */ "fn rlLoadTexture*(data: ^void, width: int32, height: int32, format: int32, mipmapCount: int32): uint32\n"
+        /* 0941 */ "fn rlLoadTextureDepth*(width: int32, height: int32, useRenderBuffer: bool): uint32\n"
+        /* 0942 */ "fn rlLoadTextureCubemap*(data: ^void, size: int32, format: int32): uint32\n"
+        /* 0943 */ "fn rlUpdateTexture*(id: uint32, offsetX: int32, offsetY: int32, width: int32, height: int32, format: int32, data: ^void)\n"
+        /* 0944 */ "fn rlGetGlTextureFormats*(format: int32, glInternalFormat: ^uint32, glFormat: ^uint32, glType: ^uint32)\n"
+        /* 0945 */ "fn rlGetPixelFormatName*(format: uint32): str\n"
+        /* 0946 */ "fn rlUnloadTexture*(id: uint32)\n"
+        /* 0947 */ "fn rlGenTextureMipmaps*(id: uint32, width: int32, height: int32, format: int32, mipmaps: ^int32)\n"
+        /* 0948 */ "fn rlReadTexturePixels*(id: uint32, width: int32, height: int32, format: int32): ^void\n"
+        /* 0949 */ "fn rlReadScreenPixels*(width: int32, height: int32): ^uint8\n"
+        /* 0950 */ "fn rlLoadFramebuffer*(width: int32, height: int32): uint32\n"
+        /* 0951 */ "fn rlFramebufferAttach*(fboId: uint32, texId: uint32, attachType: int32, texType: int32, mipLevel: int32)\n"
+        /* 0952 */ "fn rlFramebufferComplete*(id: uint32): bool\n"
+        /* 0953 */ "fn rlUnloadFramebuffer*(id: uint32)\n"
+        /* 0954 */ "fn rlLoadShaderCode*(vsCode: str, fsCode: str): uint32\n"
+        /* 0955 */ "fn rlCompileShader*(shaderCode: str, typeInput: int32): uint32\n"
+        /* 0956 */ "fn rlLoadShaderProgram*(vShaderId: uint32, fShaderId: uint32): uint32\n"
+        /* 0957 */ "fn rlUnloadShaderProgram*(id: uint32)\n"
+        /* 0958 */ "fn rlGetLocationUniform*(shaderId: uint32, uniformName: str): int32\n"
+        /* 0959 */ "fn rlGetLocationAttrib*(shaderId: uint32, attribName: str): int32\n"
+        /* 0960 */ "fn rlSetUniform*(locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
+        /* 0961 */ "fn rlSetUniformMatrix*(locIndex: int32, mat: Matrix)\n"
+        /* 0962 */ "fn rlSetUniformSampler*(locIndex: int32, textureId: uint32)\n"
+        /* 0963 */ "fn rlSetShader*(id: uint32, locs: ^int32)\n"
+        /* 0964 */ "fn rlLoadComputeShaderProgram*(shaderId: uint32): uint32\n"
+        /* 0965 */ "fn rlComputeShaderDispatch*(groupX: uint32, groupY: uint32, groupZ: uint32)\n"
+        /* 0966 */ "fn rlLoadShaderBuffer*(size: uint, data: ^void, usageHint: int32): uint32\n"
+        /* 0967 */ "fn rlUnloadShaderBuffer*(ssboId: uint32)\n"
+        /* 0968 */ "fn rlUpdateShaderBufferElements*(id: uint32, data: ^void, dataSize: uint, offset: uint)\n"
+        /* 0969 */ "fn rlGetShaderBufferSize*(id: uint32): uint\n"
+        /* 0970 */ "fn rlReadShaderBufferElements*(id: uint32, dest: ^void, count: uint, offset: uint)\n"
+        /* 0971 */ "fn rlBindShaderBuffer*(id: uint32, index: uint32)\n"
+        /* 0972 */ "fn rlCopyBuffersElements*(destId: uint32, srcId: uint32, destOffset: uint, srcOffset: uint, count: uint)\n"
+        /* 0973 */ "fn rlBindImageTexture*(id: uint32, index: uint32, format: uint32, readonly: int32)\n"
+        /* 0974 */ "fn rlGetMatrixModelview*(): Matrix\n"
+        /* 0975 */ "fn rlGetMatrixProjection*(): Matrix\n"
+        /* 0976 */ "fn rlGetMatrixTransform*(): Matrix\n"
+        /* 0977 */ "fn rlGetMatrixProjectionStereo*(eye: int32): Matrix\n"
+        /* 0978 */ "fn rlGetMatrixViewOffsetStereo*(eye: int32): Matrix\n"
+        /* 0979 */ "fn rlSetMatrixProjection*(proj: Matrix)\n"
+        /* 0980 */ "fn rlSetMatrixModelview*(view: Matrix)\n"
+        /* 0981 */ "fn rlSetMatrixProjectionStereo*(right: Matrix, left: Matrix)\n"
+        /* 0982 */ "fn rlSetMatrixViewOffsetStereo*(right: Matrix, left: Matrix)\n"
+        /* 0983 */ "fn rlLoadDrawCube*()\n"
+        /* 0984 */ "fn rlLoadDrawQuad*()\n"
 
         // Enums
-        /* 0841 */ "const FLAG_VSYNC_HINT* = 64\n"
-        /* 0842 */ "const FLAG_FULLSCREEN_MODE* = 2\n"
-        /* 0843 */ "const FLAG_WINDOW_RESIZABLE* = 4\n"
-        /* 0844 */ "const FLAG_WINDOW_UNDECORATED* = 8\n"
-        /* 0845 */ "const FLAG_WINDOW_HIDDEN* = 128\n"
-        /* 0846 */ "const FLAG_WINDOW_MINIMIZED* = 512\n"
-        /* 0847 */ "const FLAG_WINDOW_MAXIMIZED* = 1024\n"
-        /* 0848 */ "const FLAG_WINDOW_UNFOCUSED* = 2048\n"
-        /* 0849 */ "const FLAG_WINDOW_TOPMOST* = 4096\n"
-        /* 0850 */ "const FLAG_WINDOW_ALWAYS_RUN* = 256\n"
-        /* 0851 */ "const FLAG_WINDOW_TRANSPARENT* = 16\n"
-        /* 0852 */ "const FLAG_WINDOW_HIGHDPI* = 8192\n"
-        /* 0853 */ "const FLAG_WINDOW_MOUSE_PASSTHROUGH* = 16384\n"
-        /* 0854 */ "const FLAG_MSAA_4X_HINT* = 32\n"
-        /* 0855 */ "const FLAG_INTERLACED_HINT* = 65536\n"
-        /* 0856 */ "const LOG_ALL* = 0\n"
-        /* 0857 */ "const LOG_TRACE* = 1\n"
-        /* 0858 */ "const LOG_DEBUG* = 2\n"
-        /* 0859 */ "const LOG_INFO* = 3\n"
-        /* 0860 */ "const LOG_WARNING* = 4\n"
-        /* 0861 */ "const LOG_ERROR* = 5\n"
-        /* 0862 */ "const LOG_FATAL* = 6\n"
-        /* 0863 */ "const LOG_NONE* = 7\n"
-        /* 0864 */ "const KEY_NULL* = 0\n"
-        /* 0865 */ "const KEY_APOSTROPHE* = 39\n"
-        /* 0866 */ "const KEY_COMMA* = 44\n"
-        /* 0867 */ "const KEY_MINUS* = 45\n"
-        /* 0868 */ "const KEY_PERIOD* = 46\n"
-        /* 0869 */ "const KEY_SLASH* = 47\n"
-        /* 0870 */ "const KEY_ZERO* = 48\n"
-        /* 0871 */ "const KEY_ONE* = 49\n"
-        /* 0872 */ "const KEY_TWO* = 50\n"
-        /* 0873 */ "const KEY_THREE* = 51\n"
-        /* 0874 */ "const KEY_FOUR* = 52\n"
-        /* 0875 */ "const KEY_FIVE* = 53\n"
-        /* 0876 */ "const KEY_SIX* = 54\n"
-        /* 0877 */ "const KEY_SEVEN* = 55\n"
-        /* 0878 */ "const KEY_EIGHT* = 56\n"
-        /* 0879 */ "const KEY_NINE* = 57\n"
-        /* 0880 */ "const KEY_SEMICOLON* = 59\n"
-        /* 0881 */ "const KEY_EQUAL* = 61\n"
-        /* 0882 */ "const KEY_A* = 65\n"
-        /* 0883 */ "const KEY_B* = 66\n"
-        /* 0884 */ "const KEY_C* = 67\n"
-        /* 0885 */ "const KEY_D* = 68\n"
-        /* 0886 */ "const KEY_E* = 69\n"
-        /* 0887 */ "const KEY_F* = 70\n"
-        /* 0888 */ "const KEY_G* = 71\n"
-        /* 0889 */ "const KEY_H* = 72\n"
-        /* 0890 */ "const KEY_I* = 73\n"
-        /* 0891 */ "const KEY_J* = 74\n"
-        /* 0892 */ "const KEY_K* = 75\n"
-        /* 0893 */ "const KEY_L* = 76\n"
-        /* 0894 */ "const KEY_M* = 77\n"
-        /* 0895 */ "const KEY_N* = 78\n"
-        /* 0896 */ "const KEY_O* = 79\n"
-        /* 0897 */ "const KEY_P* = 80\n"
-        /* 0898 */ "const KEY_Q* = 81\n"
-        /* 0899 */ "const KEY_R* = 82\n"
-        /* 0900 */ "const KEY_S* = 83\n"
-        /* 0901 */ "const KEY_T* = 84\n"
-        /* 0902 */ "const KEY_U* = 85\n"
-        /* 0903 */ "const KEY_V* = 86\n"
-        /* 0904 */ "const KEY_W* = 87\n"
-        /* 0905 */ "const KEY_X* = 88\n"
-        /* 0906 */ "const KEY_Y* = 89\n"
-        /* 0907 */ "const KEY_Z* = 90\n"
-        /* 0908 */ "const KEY_LEFT_BRACKET* = 91\n"
-        /* 0909 */ "const KEY_BACKSLASH* = 92\n"
-        /* 0910 */ "const KEY_RIGHT_BRACKET* = 93\n"
-        /* 0911 */ "const KEY_GRAVE* = 96\n"
-        /* 0912 */ "const KEY_SPACE* = 32\n"
-        /* 0913 */ "const KEY_ESCAPE* = 256\n"
-        /* 0914 */ "const KEY_ENTER* = 257\n"
-        /* 0915 */ "const KEY_TAB* = 258\n"
-        /* 0916 */ "const KEY_BACKSPACE* = 259\n"
-        /* 0917 */ "const KEY_INSERT* = 260\n"
-        /* 0918 */ "const KEY_DELETE* = 261\n"
-        /* 0919 */ "const KEY_RIGHT* = 262\n"
-        /* 0920 */ "const KEY_LEFT* = 263\n"
-        /* 0921 */ "const KEY_DOWN* = 264\n"
-        /* 0922 */ "const KEY_UP* = 265\n"
-        /* 0923 */ "const KEY_PAGE_UP* = 266\n"
-        /* 0924 */ "const KEY_PAGE_DOWN* = 267\n"
-        /* 0925 */ "const KEY_HOME* = 268\n"
-        /* 0926 */ "const KEY_END* = 269\n"
-        /* 0927 */ "const KEY_CAPS_LOCK* = 280\n"
-        /* 0928 */ "const KEY_SCROLL_LOCK* = 281\n"
-        /* 0929 */ "const KEY_NUM_LOCK* = 282\n"
-        /* 0930 */ "const KEY_PRINT_SCREEN* = 283\n"
-        /* 0931 */ "const KEY_PAUSE* = 284\n"
-        /* 0932 */ "const KEY_F1* = 290\n"
-        /* 0933 */ "const KEY_F2* = 291\n"
-        /* 0934 */ "const KEY_F3* = 292\n"
-        /* 0935 */ "const KEY_F4* = 293\n"
-        /* 0936 */ "const KEY_F5* = 294\n"
-        /* 0937 */ "const KEY_F6* = 295\n"
-        /* 0938 */ "const KEY_F7* = 296\n"
-        /* 0939 */ "const KEY_F8* = 297\n"
-        /* 0940 */ "const KEY_F9* = 298\n"
-        /* 0941 */ "const KEY_F10* = 299\n"
-        /* 0942 */ "const KEY_F11* = 300\n"
-        /* 0943 */ "const KEY_F12* = 301\n"
-        /* 0944 */ "const KEY_LEFT_SHIFT* = 340\n"
-        /* 0945 */ "const KEY_LEFT_CONTROL* = 341\n"
-        /* 0946 */ "const KEY_LEFT_ALT* = 342\n"
-        /* 0947 */ "const KEY_LEFT_SUPER* = 343\n"
-        /* 0948 */ "const KEY_RIGHT_SHIFT* = 344\n"
-        /* 0949 */ "const KEY_RIGHT_CONTROL* = 345\n"
-        /* 0950 */ "const KEY_RIGHT_ALT* = 346\n"
-        /* 0951 */ "const KEY_RIGHT_SUPER* = 347\n"
-        /* 0952 */ "const KEY_KB_MENU* = 348\n"
-        /* 0953 */ "const KEY_KP_0* = 320\n"
-        /* 0954 */ "const KEY_KP_1* = 321\n"
-        /* 0955 */ "const KEY_KP_2* = 322\n"
-        /* 0956 */ "const KEY_KP_3* = 323\n"
-        /* 0957 */ "const KEY_KP_4* = 324\n"
-        /* 0958 */ "const KEY_KP_5* = 325\n"
-        /* 0959 */ "const KEY_KP_6* = 326\n"
-        /* 0960 */ "const KEY_KP_7* = 327\n"
-        /* 0961 */ "const KEY_KP_8* = 328\n"
-        /* 0962 */ "const KEY_KP_9* = 329\n"
-        /* 0963 */ "const KEY_KP_DECIMAL* = 330\n"
-        /* 0964 */ "const KEY_KP_DIVIDE* = 331\n"
-        /* 0965 */ "const KEY_KP_MULTIPLY* = 332\n"
-        /* 0966 */ "const KEY_KP_SUBTRACT* = 333\n"
-        /* 0967 */ "const KEY_KP_ADD* = 334\n"
-        /* 0968 */ "const KEY_KP_ENTER* = 335\n"
-        /* 0969 */ "const KEY_KP_EQUAL* = 336\n"
-        /* 0970 */ "const KEY_BACK* = 4\n"
-        /* 0971 */ "const KEY_MENU* = 82\n"
-        /* 0972 */ "const KEY_VOLUME_UP* = 24\n"
-        /* 0973 */ "const KEY_VOLUME_DOWN* = 25\n"
-        /* 0974 */ "const MOUSE_BUTTON_LEFT* = 0\n"
-        /* 0975 */ "const MOUSE_BUTTON_RIGHT* = 1\n"
-        /* 0976 */ "const MOUSE_BUTTON_MIDDLE* = 2\n"
-        /* 0977 */ "const MOUSE_BUTTON_SIDE* = 3\n"
-        /* 0978 */ "const MOUSE_BUTTON_EXTRA* = 4\n"
-        /* 0979 */ "const MOUSE_BUTTON_FORWARD* = 5\n"
-        /* 0980 */ "const MOUSE_BUTTON_BACK* = 6\n"
-        /* 0981 */ "const MOUSE_CURSOR_DEFAULT* = 0\n"
-        /* 0982 */ "const MOUSE_CURSOR_ARROW* = 1\n"
-        /* 0983 */ "const MOUSE_CURSOR_IBEAM* = 2\n"
-        /* 0984 */ "const MOUSE_CURSOR_CROSSHAIR* = 3\n"
-        /* 0985 */ "const MOUSE_CURSOR_POINTING_HAND* = 4\n"
-        /* 0986 */ "const MOUSE_CURSOR_RESIZE_EW* = 5\n"
-        /* 0987 */ "const MOUSE_CURSOR_RESIZE_NS* = 6\n"
-        /* 0988 */ "const MOUSE_CURSOR_RESIZE_NWSE* = 7\n"
-        /* 0989 */ "const MOUSE_CURSOR_RESIZE_NESW* = 8\n"
-        /* 0990 */ "const MOUSE_CURSOR_RESIZE_ALL* = 9\n"
-        /* 0991 */ "const MOUSE_CURSOR_NOT_ALLOWED* = 10\n"
-        /* 0992 */ "const GAMEPAD_BUTTON_UNKNOWN* = 0\n"
-        /* 0993 */ "const GAMEPAD_BUTTON_LEFT_FACE_UP* = 1\n"
-        /* 0994 */ "const GAMEPAD_BUTTON_LEFT_FACE_RIGHT* = 2\n"
-        /* 0995 */ "const GAMEPAD_BUTTON_LEFT_FACE_DOWN* = 3\n"
-        /* 0996 */ "const GAMEPAD_BUTTON_LEFT_FACE_LEFT* = 4\n"
-        /* 0997 */ "const GAMEPAD_BUTTON_RIGHT_FACE_UP* = 5\n"
-        /* 0998 */ "const GAMEPAD_BUTTON_RIGHT_FACE_RIGHT* = 6\n"
-        /* 0999 */ "const GAMEPAD_BUTTON_RIGHT_FACE_DOWN* = 7\n"
-        /* 1000 */ "const GAMEPAD_BUTTON_RIGHT_FACE_LEFT* = 8\n"
-        /* 1001 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_1* = 9\n"
-        /* 1002 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_2* = 10\n"
-        /* 1003 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_1* = 11\n"
-        /* 1004 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_2* = 12\n"
-        /* 1005 */ "const GAMEPAD_BUTTON_MIDDLE_LEFT* = 13\n"
-        /* 1006 */ "const GAMEPAD_BUTTON_MIDDLE* = 14\n"
-        /* 1007 */ "const GAMEPAD_BUTTON_MIDDLE_RIGHT* = 15\n"
-        /* 1008 */ "const GAMEPAD_BUTTON_LEFT_THUMB* = 16\n"
-        /* 1009 */ "const GAMEPAD_BUTTON_RIGHT_THUMB* = 17\n"
-        /* 1010 */ "const GAMEPAD_AXIS_LEFT_X* = 0\n"
-        /* 1011 */ "const GAMEPAD_AXIS_LEFT_Y* = 1\n"
-        /* 1012 */ "const GAMEPAD_AXIS_RIGHT_X* = 2\n"
-        /* 1013 */ "const GAMEPAD_AXIS_RIGHT_Y* = 3\n"
-        /* 1014 */ "const GAMEPAD_AXIS_LEFT_TRIGGER* = 4\n"
-        /* 1015 */ "const GAMEPAD_AXIS_RIGHT_TRIGGER* = 5\n"
-        /* 1016 */ "const MATERIAL_MAP_ALBEDO* = 0\n"
-        /* 1017 */ "const MATERIAL_MAP_METALNESS* = 1\n"
-        /* 1018 */ "const MATERIAL_MAP_NORMAL* = 2\n"
-        /* 1019 */ "const MATERIAL_MAP_ROUGHNESS* = 3\n"
-        /* 1020 */ "const MATERIAL_MAP_OCCLUSION* = 4\n"
-        /* 1021 */ "const MATERIAL_MAP_EMISSION* = 5\n"
-        /* 1022 */ "const MATERIAL_MAP_HEIGHT* = 6\n"
-        /* 1023 */ "const MATERIAL_MAP_CUBEMAP* = 7\n"
-        /* 1024 */ "const MATERIAL_MAP_IRRADIANCE* = 8\n"
-        /* 1025 */ "const MATERIAL_MAP_PREFILTER* = 9\n"
-        /* 1026 */ "const MATERIAL_MAP_BRDF* = 10\n"
-        /* 1027 */ "const SHADER_LOC_VERTEX_POSITION* = 0\n"
-        /* 1028 */ "const SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
-        /* 1029 */ "const SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
-        /* 1030 */ "const SHADER_LOC_VERTEX_NORMAL* = 3\n"
-        /* 1031 */ "const SHADER_LOC_VERTEX_TANGENT* = 4\n"
-        /* 1032 */ "const SHADER_LOC_VERTEX_COLOR* = 5\n"
-        /* 1033 */ "const SHADER_LOC_MATRIX_MVP* = 6\n"
-        /* 1034 */ "const SHADER_LOC_MATRIX_VIEW* = 7\n"
-        /* 1035 */ "const SHADER_LOC_MATRIX_PROJECTION* = 8\n"
-        /* 1036 */ "const SHADER_LOC_MATRIX_MODEL* = 9\n"
-        /* 1037 */ "const SHADER_LOC_MATRIX_NORMAL* = 10\n"
-        /* 1038 */ "const SHADER_LOC_VECTOR_VIEW* = 11\n"
-        /* 1039 */ "const SHADER_LOC_COLOR_DIFFUSE* = 12\n"
-        /* 1040 */ "const SHADER_LOC_COLOR_SPECULAR* = 13\n"
-        /* 1041 */ "const SHADER_LOC_COLOR_AMBIENT* = 14\n"
-        /* 1042 */ "const SHADER_LOC_MAP_ALBEDO* = 15\n"
-        /* 1043 */ "const SHADER_LOC_MAP_METALNESS* = 16\n"
-        /* 1044 */ "const SHADER_LOC_MAP_NORMAL* = 17\n"
-        /* 1045 */ "const SHADER_LOC_MAP_ROUGHNESS* = 18\n"
-        /* 1046 */ "const SHADER_LOC_MAP_OCCLUSION* = 19\n"
-        /* 1047 */ "const SHADER_LOC_MAP_EMISSION* = 20\n"
-        /* 1048 */ "const SHADER_LOC_MAP_HEIGHT* = 21\n"
-        /* 1049 */ "const SHADER_LOC_MAP_CUBEMAP* = 22\n"
-        /* 1050 */ "const SHADER_LOC_MAP_IRRADIANCE* = 23\n"
-        /* 1051 */ "const SHADER_LOC_MAP_PREFILTER* = 24\n"
-        /* 1052 */ "const SHADER_LOC_MAP_BRDF* = 25\n"
-        /* 1053 */ "const SHADER_UNIFORM_FLOAT* = 0\n"
-        /* 1054 */ "const SHADER_UNIFORM_VEC2* = 1\n"
-        /* 1055 */ "const SHADER_UNIFORM_VEC3* = 2\n"
-        /* 1056 */ "const SHADER_UNIFORM_VEC4* = 3\n"
-        /* 1057 */ "const SHADER_UNIFORM_INT* = 4\n"
-        /* 1058 */ "const SHADER_UNIFORM_IVEC2* = 5\n"
-        /* 1059 */ "const SHADER_UNIFORM_IVEC3* = 6\n"
-        /* 1060 */ "const SHADER_UNIFORM_IVEC4* = 7\n"
-        /* 1061 */ "const SHADER_UNIFORM_SAMPLER2D* = 8\n"
-        /* 1062 */ "const SHADER_ATTRIB_FLOAT* = 0\n"
-        /* 1063 */ "const SHADER_ATTRIB_VEC2* = 1\n"
-        /* 1064 */ "const SHADER_ATTRIB_VEC3* = 2\n"
-        /* 1065 */ "const SHADER_ATTRIB_VEC4* = 3\n"
-        /* 1066 */ "const PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
-        /* 1067 */ "const PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
-        /* 1068 */ "const PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
-        /* 1069 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
-        /* 1070 */ "const PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
-        /* 1071 */ "const PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
-        /* 1072 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
-        /* 1073 */ "const PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
-        /* 1074 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
-        /* 1075 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
-        /* 1076 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
-        /* 1077 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
-        /* 1078 */ "const PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
-        /* 1079 */ "const PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
-        /* 1080 */ "const PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
-        /* 1081 */ "const PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
-        /* 1082 */ "const PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
-        /* 1083 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
-        /* 1084 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
-        /* 1085 */ "const PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
-        /* 1086 */ "const PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
-        /* 1087 */ "const TEXTURE_FILTER_POINT* = 0\n"
-        /* 1088 */ "const TEXTURE_FILTER_BILINEAR* = 1\n"
-        /* 1089 */ "const TEXTURE_FILTER_TRILINEAR* = 2\n"
-        /* 1090 */ "const TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
-        /* 1091 */ "const TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
-        /* 1092 */ "const TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
-        /* 1093 */ "const TEXTURE_WRAP_REPEAT* = 0\n"
-        /* 1094 */ "const TEXTURE_WRAP_CLAMP* = 1\n"
-        /* 1095 */ "const TEXTURE_WRAP_MIRROR_REPEAT* = 2\n"
-        /* 1096 */ "const TEXTURE_WRAP_MIRROR_CLAMP* = 3\n"
-        /* 1097 */ "const CUBEMAP_LAYOUT_AUTO_DETECT* = 0\n"
-        /* 1098 */ "const CUBEMAP_LAYOUT_LINE_VERTICAL* = 1\n"
-        /* 1099 */ "const CUBEMAP_LAYOUT_LINE_HORIZONTAL* = 2\n"
-        /* 1100 */ "const CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR* = 3\n"
-        /* 1101 */ "const CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE* = 4\n"
-        /* 1102 */ "const CUBEMAP_LAYOUT_PANORAMA* = 5\n"
-        /* 1103 */ "const FONT_DEFAULT* = 0\n"
-        /* 1104 */ "const FONT_BITMAP* = 1\n"
-        /* 1105 */ "const FONT_SDF* = 2\n"
-        /* 1106 */ "const BLEND_ALPHA* = 0\n"
-        /* 1107 */ "const BLEND_ADDITIVE* = 1\n"
-        /* 1108 */ "const BLEND_MULTIPLIED* = 2\n"
-        /* 1109 */ "const BLEND_ADD_COLORS* = 3\n"
-        /* 1110 */ "const BLEND_SUBTRACT_COLORS* = 4\n"
-        /* 1111 */ "const BLEND_ALPHA_PREMULTIPLY* = 5\n"
-        /* 1112 */ "const BLEND_CUSTOM* = 6\n"
-        /* 1113 */ "const GESTURE_NONE* = 0\n"
-        /* 1114 */ "const GESTURE_TAP* = 1\n"
-        /* 1115 */ "const GESTURE_DOUBLETAP* = 2\n"
-        /* 1116 */ "const GESTURE_HOLD* = 4\n"
-        /* 1117 */ "const GESTURE_DRAG* = 8\n"
-        /* 1118 */ "const GESTURE_SWIPE_RIGHT* = 16\n"
-        /* 1119 */ "const GESTURE_SWIPE_LEFT* = 32\n"
-        /* 1120 */ "const GESTURE_SWIPE_UP* = 64\n"
-        /* 1121 */ "const GESTURE_SWIPE_DOWN* = 128\n"
-        /* 1122 */ "const GESTURE_PINCH_IN* = 256\n"
-        /* 1123 */ "const GESTURE_PINCH_OUT* = 512\n"
-        /* 1124 */ "const CAMERA_CUSTOM* = 0\n"
-        /* 1125 */ "const CAMERA_FREE* = 1\n"
-        /* 1126 */ "const CAMERA_ORBITAL* = 2\n"
-        /* 1127 */ "const CAMERA_FIRST_PERSON* = 3\n"
-        /* 1128 */ "const CAMERA_THIRD_PERSON* = 4\n"
-        /* 1129 */ "const CAMERA_PERSPECTIVE* = 0\n"
-        /* 1130 */ "const CAMERA_ORTHOGRAPHIC* = 1\n"
-        /* 1131 */ "const NPATCH_NINE_PATCH* = 0\n"
-        /* 1132 */ "const NPATCH_THREE_PATCH_VERTICAL* = 1\n"
-        /* 1133 */ "const NPATCH_THREE_PATCH_HORIZONTAL* = 2\n"
+        /* 0985 */ "const FLAG_VSYNC_HINT* = 64\n"
+        /* 0986 */ "const FLAG_FULLSCREEN_MODE* = 2\n"
+        /* 0987 */ "const FLAG_WINDOW_RESIZABLE* = 4\n"
+        /* 0988 */ "const FLAG_WINDOW_UNDECORATED* = 8\n"
+        /* 0989 */ "const FLAG_WINDOW_HIDDEN* = 128\n"
+        /* 0990 */ "const FLAG_WINDOW_MINIMIZED* = 512\n"
+        /* 0991 */ "const FLAG_WINDOW_MAXIMIZED* = 1024\n"
+        /* 0992 */ "const FLAG_WINDOW_UNFOCUSED* = 2048\n"
+        /* 0993 */ "const FLAG_WINDOW_TOPMOST* = 4096\n"
+        /* 0994 */ "const FLAG_WINDOW_ALWAYS_RUN* = 256\n"
+        /* 0995 */ "const FLAG_WINDOW_TRANSPARENT* = 16\n"
+        /* 0996 */ "const FLAG_WINDOW_HIGHDPI* = 8192\n"
+        /* 0997 */ "const FLAG_WINDOW_MOUSE_PASSTHROUGH* = 16384\n"
+        /* 0998 */ "const FLAG_MSAA_4X_HINT* = 32\n"
+        /* 0999 */ "const FLAG_INTERLACED_HINT* = 65536\n"
+        /* 1000 */ "const LOG_ALL* = 0\n"
+        /* 1001 */ "const LOG_TRACE* = 1\n"
+        /* 1002 */ "const LOG_DEBUG* = 2\n"
+        /* 1003 */ "const LOG_INFO* = 3\n"
+        /* 1004 */ "const LOG_WARNING* = 4\n"
+        /* 1005 */ "const LOG_ERROR* = 5\n"
+        /* 1006 */ "const LOG_FATAL* = 6\n"
+        /* 1007 */ "const LOG_NONE* = 7\n"
+        /* 1008 */ "const KEY_NULL* = 0\n"
+        /* 1009 */ "const KEY_APOSTROPHE* = 39\n"
+        /* 1010 */ "const KEY_COMMA* = 44\n"
+        /* 1011 */ "const KEY_MINUS* = 45\n"
+        /* 1012 */ "const KEY_PERIOD* = 46\n"
+        /* 1013 */ "const KEY_SLASH* = 47\n"
+        /* 1014 */ "const KEY_ZERO* = 48\n"
+        /* 1015 */ "const KEY_ONE* = 49\n"
+        /* 1016 */ "const KEY_TWO* = 50\n"
+        /* 1017 */ "const KEY_THREE* = 51\n"
+        /* 1018 */ "const KEY_FOUR* = 52\n"
+        /* 1019 */ "const KEY_FIVE* = 53\n"
+        /* 1020 */ "const KEY_SIX* = 54\n"
+        /* 1021 */ "const KEY_SEVEN* = 55\n"
+        /* 1022 */ "const KEY_EIGHT* = 56\n"
+        /* 1023 */ "const KEY_NINE* = 57\n"
+        /* 1024 */ "const KEY_SEMICOLON* = 59\n"
+        /* 1025 */ "const KEY_EQUAL* = 61\n"
+        /* 1026 */ "const KEY_A* = 65\n"
+        /* 1027 */ "const KEY_B* = 66\n"
+        /* 1028 */ "const KEY_C* = 67\n"
+        /* 1029 */ "const KEY_D* = 68\n"
+        /* 1030 */ "const KEY_E* = 69\n"
+        /* 1031 */ "const KEY_F* = 70\n"
+        /* 1032 */ "const KEY_G* = 71\n"
+        /* 1033 */ "const KEY_H* = 72\n"
+        /* 1034 */ "const KEY_I* = 73\n"
+        /* 1035 */ "const KEY_J* = 74\n"
+        /* 1036 */ "const KEY_K* = 75\n"
+        /* 1037 */ "const KEY_L* = 76\n"
+        /* 1038 */ "const KEY_M* = 77\n"
+        /* 1039 */ "const KEY_N* = 78\n"
+        /* 1040 */ "const KEY_O* = 79\n"
+        /* 1041 */ "const KEY_P* = 80\n"
+        /* 1042 */ "const KEY_Q* = 81\n"
+        /* 1043 */ "const KEY_R* = 82\n"
+        /* 1044 */ "const KEY_S* = 83\n"
+        /* 1045 */ "const KEY_T* = 84\n"
+        /* 1046 */ "const KEY_U* = 85\n"
+        /* 1047 */ "const KEY_V* = 86\n"
+        /* 1048 */ "const KEY_W* = 87\n"
+        /* 1049 */ "const KEY_X* = 88\n"
+        /* 1050 */ "const KEY_Y* = 89\n"
+        /* 1051 */ "const KEY_Z* = 90\n"
+        /* 1052 */ "const KEY_LEFT_BRACKET* = 91\n"
+        /* 1053 */ "const KEY_BACKSLASH* = 92\n"
+        /* 1054 */ "const KEY_RIGHT_BRACKET* = 93\n"
+        /* 1055 */ "const KEY_GRAVE* = 96\n"
+        /* 1056 */ "const KEY_SPACE* = 32\n"
+        /* 1057 */ "const KEY_ESCAPE* = 256\n"
+        /* 1058 */ "const KEY_ENTER* = 257\n"
+        /* 1059 */ "const KEY_TAB* = 258\n"
+        /* 1060 */ "const KEY_BACKSPACE* = 259\n"
+        /* 1061 */ "const KEY_INSERT* = 260\n"
+        /* 1062 */ "const KEY_DELETE* = 261\n"
+        /* 1063 */ "const KEY_RIGHT* = 262\n"
+        /* 1064 */ "const KEY_LEFT* = 263\n"
+        /* 1065 */ "const KEY_DOWN* = 264\n"
+        /* 1066 */ "const KEY_UP* = 265\n"
+        /* 1067 */ "const KEY_PAGE_UP* = 266\n"
+        /* 1068 */ "const KEY_PAGE_DOWN* = 267\n"
+        /* 1069 */ "const KEY_HOME* = 268\n"
+        /* 1070 */ "const KEY_END* = 269\n"
+        /* 1071 */ "const KEY_CAPS_LOCK* = 280\n"
+        /* 1072 */ "const KEY_SCROLL_LOCK* = 281\n"
+        /* 1073 */ "const KEY_NUM_LOCK* = 282\n"
+        /* 1074 */ "const KEY_PRINT_SCREEN* = 283\n"
+        /* 1075 */ "const KEY_PAUSE* = 284\n"
+        /* 1076 */ "const KEY_F1* = 290\n"
+        /* 1077 */ "const KEY_F2* = 291\n"
+        /* 1078 */ "const KEY_F3* = 292\n"
+        /* 1079 */ "const KEY_F4* = 293\n"
+        /* 1080 */ "const KEY_F5* = 294\n"
+        /* 1081 */ "const KEY_F6* = 295\n"
+        /* 1082 */ "const KEY_F7* = 296\n"
+        /* 1083 */ "const KEY_F8* = 297\n"
+        /* 1084 */ "const KEY_F9* = 298\n"
+        /* 1085 */ "const KEY_F10* = 299\n"
+        /* 1086 */ "const KEY_F11* = 300\n"
+        /* 1087 */ "const KEY_F12* = 301\n"
+        /* 1088 */ "const KEY_LEFT_SHIFT* = 340\n"
+        /* 1089 */ "const KEY_LEFT_CONTROL* = 341\n"
+        /* 1090 */ "const KEY_LEFT_ALT* = 342\n"
+        /* 1091 */ "const KEY_LEFT_SUPER* = 343\n"
+        /* 1092 */ "const KEY_RIGHT_SHIFT* = 344\n"
+        /* 1093 */ "const KEY_RIGHT_CONTROL* = 345\n"
+        /* 1094 */ "const KEY_RIGHT_ALT* = 346\n"
+        /* 1095 */ "const KEY_RIGHT_SUPER* = 347\n"
+        /* 1096 */ "const KEY_KB_MENU* = 348\n"
+        /* 1097 */ "const KEY_KP_0* = 320\n"
+        /* 1098 */ "const KEY_KP_1* = 321\n"
+        /* 1099 */ "const KEY_KP_2* = 322\n"
+        /* 1100 */ "const KEY_KP_3* = 323\n"
+        /* 1101 */ "const KEY_KP_4* = 324\n"
+        /* 1102 */ "const KEY_KP_5* = 325\n"
+        /* 1103 */ "const KEY_KP_6* = 326\n"
+        /* 1104 */ "const KEY_KP_7* = 327\n"
+        /* 1105 */ "const KEY_KP_8* = 328\n"
+        /* 1106 */ "const KEY_KP_9* = 329\n"
+        /* 1107 */ "const KEY_KP_DECIMAL* = 330\n"
+        /* 1108 */ "const KEY_KP_DIVIDE* = 331\n"
+        /* 1109 */ "const KEY_KP_MULTIPLY* = 332\n"
+        /* 1110 */ "const KEY_KP_SUBTRACT* = 333\n"
+        /* 1111 */ "const KEY_KP_ADD* = 334\n"
+        /* 1112 */ "const KEY_KP_ENTER* = 335\n"
+        /* 1113 */ "const KEY_KP_EQUAL* = 336\n"
+        /* 1114 */ "const KEY_BACK* = 4\n"
+        /* 1115 */ "const KEY_MENU* = 82\n"
+        /* 1116 */ "const KEY_VOLUME_UP* = 24\n"
+        /* 1117 */ "const KEY_VOLUME_DOWN* = 25\n"
+        /* 1118 */ "const MOUSE_BUTTON_LEFT* = 0\n"
+        /* 1119 */ "const MOUSE_BUTTON_RIGHT* = 1\n"
+        /* 1120 */ "const MOUSE_BUTTON_MIDDLE* = 2\n"
+        /* 1121 */ "const MOUSE_BUTTON_SIDE* = 3\n"
+        /* 1122 */ "const MOUSE_BUTTON_EXTRA* = 4\n"
+        /* 1123 */ "const MOUSE_BUTTON_FORWARD* = 5\n"
+        /* 1124 */ "const MOUSE_BUTTON_BACK* = 6\n"
+        /* 1125 */ "const MOUSE_CURSOR_DEFAULT* = 0\n"
+        /* 1126 */ "const MOUSE_CURSOR_ARROW* = 1\n"
+        /* 1127 */ "const MOUSE_CURSOR_IBEAM* = 2\n"
+        /* 1128 */ "const MOUSE_CURSOR_CROSSHAIR* = 3\n"
+        /* 1129 */ "const MOUSE_CURSOR_POINTING_HAND* = 4\n"
+        /* 1130 */ "const MOUSE_CURSOR_RESIZE_EW* = 5\n"
+        /* 1131 */ "const MOUSE_CURSOR_RESIZE_NS* = 6\n"
+        /* 1132 */ "const MOUSE_CURSOR_RESIZE_NWSE* = 7\n"
+        /* 1133 */ "const MOUSE_CURSOR_RESIZE_NESW* = 8\n"
+        /* 1134 */ "const MOUSE_CURSOR_RESIZE_ALL* = 9\n"
+        /* 1135 */ "const MOUSE_CURSOR_NOT_ALLOWED* = 10\n"
+        /* 1136 */ "const GAMEPAD_BUTTON_UNKNOWN* = 0\n"
+        /* 1137 */ "const GAMEPAD_BUTTON_LEFT_FACE_UP* = 1\n"
+        /* 1138 */ "const GAMEPAD_BUTTON_LEFT_FACE_RIGHT* = 2\n"
+        /* 1139 */ "const GAMEPAD_BUTTON_LEFT_FACE_DOWN* = 3\n"
+        /* 1140 */ "const GAMEPAD_BUTTON_LEFT_FACE_LEFT* = 4\n"
+        /* 1141 */ "const GAMEPAD_BUTTON_RIGHT_FACE_UP* = 5\n"
+        /* 1142 */ "const GAMEPAD_BUTTON_RIGHT_FACE_RIGHT* = 6\n"
+        /* 1143 */ "const GAMEPAD_BUTTON_RIGHT_FACE_DOWN* = 7\n"
+        /* 1144 */ "const GAMEPAD_BUTTON_RIGHT_FACE_LEFT* = 8\n"
+        /* 1145 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_1* = 9\n"
+        /* 1146 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_2* = 10\n"
+        /* 1147 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_1* = 11\n"
+        /* 1148 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_2* = 12\n"
+        /* 1149 */ "const GAMEPAD_BUTTON_MIDDLE_LEFT* = 13\n"
+        /* 1150 */ "const GAMEPAD_BUTTON_MIDDLE* = 14\n"
+        /* 1151 */ "const GAMEPAD_BUTTON_MIDDLE_RIGHT* = 15\n"
+        /* 1152 */ "const GAMEPAD_BUTTON_LEFT_THUMB* = 16\n"
+        /* 1153 */ "const GAMEPAD_BUTTON_RIGHT_THUMB* = 17\n"
+        /* 1154 */ "const GAMEPAD_AXIS_LEFT_X* = 0\n"
+        /* 1155 */ "const GAMEPAD_AXIS_LEFT_Y* = 1\n"
+        /* 1156 */ "const GAMEPAD_AXIS_RIGHT_X* = 2\n"
+        /* 1157 */ "const GAMEPAD_AXIS_RIGHT_Y* = 3\n"
+        /* 1158 */ "const GAMEPAD_AXIS_LEFT_TRIGGER* = 4\n"
+        /* 1159 */ "const GAMEPAD_AXIS_RIGHT_TRIGGER* = 5\n"
+        /* 1160 */ "const MATERIAL_MAP_ALBEDO* = 0\n"
+        /* 1161 */ "const MATERIAL_MAP_METALNESS* = 1\n"
+        /* 1162 */ "const MATERIAL_MAP_NORMAL* = 2\n"
+        /* 1163 */ "const MATERIAL_MAP_ROUGHNESS* = 3\n"
+        /* 1164 */ "const MATERIAL_MAP_OCCLUSION* = 4\n"
+        /* 1165 */ "const MATERIAL_MAP_EMISSION* = 5\n"
+        /* 1166 */ "const MATERIAL_MAP_HEIGHT* = 6\n"
+        /* 1167 */ "const MATERIAL_MAP_CUBEMAP* = 7\n"
+        /* 1168 */ "const MATERIAL_MAP_IRRADIANCE* = 8\n"
+        /* 1169 */ "const MATERIAL_MAP_PREFILTER* = 9\n"
+        /* 1170 */ "const MATERIAL_MAP_BRDF* = 10\n"
+        /* 1171 */ "const SHADER_LOC_VERTEX_POSITION* = 0\n"
+        /* 1172 */ "const SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
+        /* 1173 */ "const SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
+        /* 1174 */ "const SHADER_LOC_VERTEX_NORMAL* = 3\n"
+        /* 1175 */ "const SHADER_LOC_VERTEX_TANGENT* = 4\n"
+        /* 1176 */ "const SHADER_LOC_VERTEX_COLOR* = 5\n"
+        /* 1177 */ "const SHADER_LOC_MATRIX_MVP* = 6\n"
+        /* 1178 */ "const SHADER_LOC_MATRIX_VIEW* = 7\n"
+        /* 1179 */ "const SHADER_LOC_MATRIX_PROJECTION* = 8\n"
+        /* 1180 */ "const SHADER_LOC_MATRIX_MODEL* = 9\n"
+        /* 1181 */ "const SHADER_LOC_MATRIX_NORMAL* = 10\n"
+        /* 1182 */ "const SHADER_LOC_VECTOR_VIEW* = 11\n"
+        /* 1183 */ "const SHADER_LOC_COLOR_DIFFUSE* = 12\n"
+        /* 1184 */ "const SHADER_LOC_COLOR_SPECULAR* = 13\n"
+        /* 1185 */ "const SHADER_LOC_COLOR_AMBIENT* = 14\n"
+        /* 1186 */ "const SHADER_LOC_MAP_ALBEDO* = 15\n"
+        /* 1187 */ "const SHADER_LOC_MAP_METALNESS* = 16\n"
+        /* 1188 */ "const SHADER_LOC_MAP_NORMAL* = 17\n"
+        /* 1189 */ "const SHADER_LOC_MAP_ROUGHNESS* = 18\n"
+        /* 1190 */ "const SHADER_LOC_MAP_OCCLUSION* = 19\n"
+        /* 1191 */ "const SHADER_LOC_MAP_EMISSION* = 20\n"
+        /* 1192 */ "const SHADER_LOC_MAP_HEIGHT* = 21\n"
+        /* 1193 */ "const SHADER_LOC_MAP_CUBEMAP* = 22\n"
+        /* 1194 */ "const SHADER_LOC_MAP_IRRADIANCE* = 23\n"
+        /* 1195 */ "const SHADER_LOC_MAP_PREFILTER* = 24\n"
+        /* 1196 */ "const SHADER_LOC_MAP_BRDF* = 25\n"
+        /* 1197 */ "const SHADER_UNIFORM_FLOAT* = 0\n"
+        /* 1198 */ "const SHADER_UNIFORM_VEC2* = 1\n"
+        /* 1199 */ "const SHADER_UNIFORM_VEC3* = 2\n"
+        /* 1200 */ "const SHADER_UNIFORM_VEC4* = 3\n"
+        /* 1201 */ "const SHADER_UNIFORM_INT* = 4\n"
+        /* 1202 */ "const SHADER_UNIFORM_IVEC2* = 5\n"
+        /* 1203 */ "const SHADER_UNIFORM_IVEC3* = 6\n"
+        /* 1204 */ "const SHADER_UNIFORM_IVEC4* = 7\n"
+        /* 1205 */ "const SHADER_UNIFORM_SAMPLER2D* = 8\n"
+        /* 1206 */ "const SHADER_ATTRIB_FLOAT* = 0\n"
+        /* 1207 */ "const SHADER_ATTRIB_VEC2* = 1\n"
+        /* 1208 */ "const SHADER_ATTRIB_VEC3* = 2\n"
+        /* 1209 */ "const SHADER_ATTRIB_VEC4* = 3\n"
+        /* 1210 */ "const PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
+        /* 1211 */ "const PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
+        /* 1212 */ "const PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
+        /* 1213 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
+        /* 1214 */ "const PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
+        /* 1215 */ "const PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
+        /* 1216 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
+        /* 1217 */ "const PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
+        /* 1218 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
+        /* 1219 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
+        /* 1220 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
+        /* 1221 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
+        /* 1222 */ "const PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
+        /* 1223 */ "const PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
+        /* 1224 */ "const PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
+        /* 1225 */ "const PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
+        /* 1226 */ "const PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
+        /* 1227 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
+        /* 1228 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
+        /* 1229 */ "const PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
+        /* 1230 */ "const PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
+        /* 1231 */ "const TEXTURE_FILTER_POINT* = 0\n"
+        /* 1232 */ "const TEXTURE_FILTER_BILINEAR* = 1\n"
+        /* 1233 */ "const TEXTURE_FILTER_TRILINEAR* = 2\n"
+        /* 1234 */ "const TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
+        /* 1235 */ "const TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
+        /* 1236 */ "const TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
+        /* 1237 */ "const TEXTURE_WRAP_REPEAT* = 0\n"
+        /* 1238 */ "const TEXTURE_WRAP_CLAMP* = 1\n"
+        /* 1239 */ "const TEXTURE_WRAP_MIRROR_REPEAT* = 2\n"
+        /* 1240 */ "const TEXTURE_WRAP_MIRROR_CLAMP* = 3\n"
+        /* 1241 */ "const CUBEMAP_LAYOUT_AUTO_DETECT* = 0\n"
+        /* 1242 */ "const CUBEMAP_LAYOUT_LINE_VERTICAL* = 1\n"
+        /* 1243 */ "const CUBEMAP_LAYOUT_LINE_HORIZONTAL* = 2\n"
+        /* 1244 */ "const CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR* = 3\n"
+        /* 1245 */ "const CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE* = 4\n"
+        /* 1246 */ "const CUBEMAP_LAYOUT_PANORAMA* = 5\n"
+        /* 1247 */ "const FONT_DEFAULT* = 0\n"
+        /* 1248 */ "const FONT_BITMAP* = 1\n"
+        /* 1249 */ "const FONT_SDF* = 2\n"
+        /* 1250 */ "const BLEND_ALPHA* = 0\n"
+        /* 1251 */ "const BLEND_ADDITIVE* = 1\n"
+        /* 1252 */ "const BLEND_MULTIPLIED* = 2\n"
+        /* 1253 */ "const BLEND_ADD_COLORS* = 3\n"
+        /* 1254 */ "const BLEND_SUBTRACT_COLORS* = 4\n"
+        /* 1255 */ "const BLEND_ALPHA_PREMULTIPLY* = 5\n"
+        /* 1256 */ "const BLEND_CUSTOM* = 6\n"
+        /* 1257 */ "const GESTURE_NONE* = 0\n"
+        /* 1258 */ "const GESTURE_TAP* = 1\n"
+        /* 1259 */ "const GESTURE_DOUBLETAP* = 2\n"
+        /* 1260 */ "const GESTURE_HOLD* = 4\n"
+        /* 1261 */ "const GESTURE_DRAG* = 8\n"
+        /* 1262 */ "const GESTURE_SWIPE_RIGHT* = 16\n"
+        /* 1263 */ "const GESTURE_SWIPE_LEFT* = 32\n"
+        /* 1264 */ "const GESTURE_SWIPE_UP* = 64\n"
+        /* 1265 */ "const GESTURE_SWIPE_DOWN* = 128\n"
+        /* 1266 */ "const GESTURE_PINCH_IN* = 256\n"
+        /* 1267 */ "const GESTURE_PINCH_OUT* = 512\n"
+        /* 1268 */ "const CAMERA_CUSTOM* = 0\n"
+        /* 1269 */ "const CAMERA_FREE* = 1\n"
+        /* 1270 */ "const CAMERA_ORBITAL* = 2\n"
+        /* 1271 */ "const CAMERA_FIRST_PERSON* = 3\n"
+        /* 1272 */ "const CAMERA_THIRD_PERSON* = 4\n"
+        /* 1273 */ "const CAMERA_PERSPECTIVE* = 0\n"
+        /* 1274 */ "const CAMERA_ORTHOGRAPHIC* = 1\n"
+        /* 1275 */ "const NPATCH_NINE_PATCH* = 0\n"
+        /* 1276 */ "const NPATCH_THREE_PATCH_VERTICAL* = 1\n"
+        /* 1277 */ "const NPATCH_THREE_PATCH_HORIZONTAL* = 2\n"
+        /* 1278 */ "const OPENGL_11* = 1\n"
+        /* 1279 */ "const OPENGL_21* = 2\n"
+        /* 1280 */ "const OPENGL_33* = 3\n"
+        /* 1281 */ "const OPENGL_43* = 4\n"
+        /* 1282 */ "const OPENGL_ES_20* = 5\n"
+        /* 1283 */ "const RL_ATTACHMENT_COLOR_CHANNEL0* = 0\n"
+        /* 1284 */ "const RL_ATTACHMENT_COLOR_CHANNEL1* = 1\n"
+        /* 1285 */ "const RL_ATTACHMENT_COLOR_CHANNEL2* = 2\n"
+        /* 1286 */ "const RL_ATTACHMENT_COLOR_CHANNEL3* = 3\n"
+        /* 1287 */ "const RL_ATTACHMENT_COLOR_CHANNEL4* = 4\n"
+        /* 1288 */ "const RL_ATTACHMENT_COLOR_CHANNEL5* = 5\n"
+        /* 1289 */ "const RL_ATTACHMENT_COLOR_CHANNEL6* = 6\n"
+        /* 1290 */ "const RL_ATTACHMENT_COLOR_CHANNEL7* = 7\n"
+        /* 1291 */ "const RL_ATTACHMENT_DEPTH* = 100\n"
+        /* 1292 */ "const RL_ATTACHMENT_STENCIL* = 200\n"
+        /* 1293 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_X* = 0\n"
+        /* 1294 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_X* = 1\n"
+        /* 1295 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_Y* = 2\n"
+        /* 1296 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y* = 3\n"
+        /* 1297 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_Z* = 4\n"
+        /* 1298 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z* = 5\n"
+        /* 1299 */ "const RL_ATTACHMENT_TEXTURE2D* = 100\n"
+        /* 1300 */ "const RL_ATTACHMENT_RENDERBUFFER* = 200\n"
+        /* 1301 */ "const RL_LOG_ALL* = 0\n"
+        /* 1302 */ "const RL_LOG_TRACE* = 1\n"
+        /* 1303 */ "const RL_LOG_DEBUG* = 2\n"
+        /* 1304 */ "const RL_LOG_INFO* = 3\n"
+        /* 1305 */ "const RL_LOG_WARNING* = 4\n"
+        /* 1306 */ "const RL_LOG_ERROR* = 5\n"
+        /* 1307 */ "const RL_LOG_FATAL* = 6\n"
+        /* 1308 */ "const RL_LOG_NONE* = 7\n"
+        /* 1309 */ "const RL_PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
+        /* 1310 */ "const RL_PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
+        /* 1311 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
+        /* 1312 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
+        /* 1313 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
+        /* 1314 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
+        /* 1315 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
+        /* 1316 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
+        /* 1317 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
+        /* 1318 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
+        /* 1319 */ "const RL_PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
+        /* 1320 */ "const RL_PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
+        /* 1321 */ "const RL_PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
+        /* 1322 */ "const RL_PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
+        /* 1323 */ "const RL_PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
+        /* 1324 */ "const RL_PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
+        /* 1325 */ "const RL_PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
+        /* 1326 */ "const RL_PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
+        /* 1327 */ "const RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
+        /* 1328 */ "const RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
+        /* 1329 */ "const RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
+        /* 1330 */ "const RL_TEXTURE_FILTER_POINT* = 0\n"
+        /* 1331 */ "const RL_TEXTURE_FILTER_BILINEAR* = 1\n"
+        /* 1332 */ "const RL_TEXTURE_FILTER_TRILINEAR* = 2\n"
+        /* 1333 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
+        /* 1334 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
+        /* 1335 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
+        /* 1336 */ "const RL_BLEND_ALPHA* = 0\n"
+        /* 1337 */ "const RL_BLEND_ADDITIVE* = 1\n"
+        /* 1338 */ "const RL_BLEND_MULTIPLIED* = 2\n"
+        /* 1339 */ "const RL_BLEND_ADD_COLORS* = 3\n"
+        /* 1340 */ "const RL_BLEND_SUBTRACT_COLORS* = 4\n"
+        /* 1341 */ "const RL_BLEND_ALPHA_PREMULTIPLY* = 5\n"
+        /* 1342 */ "const RL_BLEND_CUSTOM* = 6\n"
+        /* 1343 */ "const RL_SHADER_LOC_VERTEX_POSITION* = 0\n"
+        /* 1344 */ "const RL_SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
+        /* 1345 */ "const RL_SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
+        /* 1346 */ "const RL_SHADER_LOC_VERTEX_NORMAL* = 3\n"
+        /* 1347 */ "const RL_SHADER_LOC_VERTEX_TANGENT* = 4\n"
+        /* 1348 */ "const RL_SHADER_LOC_VERTEX_COLOR* = 5\n"
+        /* 1349 */ "const RL_SHADER_LOC_MATRIX_MVP* = 6\n"
+        /* 1350 */ "const RL_SHADER_LOC_MATRIX_VIEW* = 7\n"
+        /* 1351 */ "const RL_SHADER_LOC_MATRIX_PROJECTION* = 8\n"
+        /* 1352 */ "const RL_SHADER_LOC_MATRIX_MODEL* = 9\n"
+        /* 1353 */ "const RL_SHADER_LOC_MATRIX_NORMAL* = 10\n"
+        /* 1354 */ "const RL_SHADER_LOC_VECTOR_VIEW* = 11\n"
+        /* 1355 */ "const RL_SHADER_LOC_COLOR_DIFFUSE* = 12\n"
+        /* 1356 */ "const RL_SHADER_LOC_COLOR_SPECULAR* = 13\n"
+        /* 1357 */ "const RL_SHADER_LOC_COLOR_AMBIENT* = 14\n"
+        /* 1358 */ "const RL_SHADER_LOC_MAP_ALBEDO* = 15\n"
+        /* 1359 */ "const RL_SHADER_LOC_MAP_METALNESS* = 16\n"
+        /* 1360 */ "const RL_SHADER_LOC_MAP_NORMAL* = 17\n"
+        /* 1361 */ "const RL_SHADER_LOC_MAP_ROUGHNESS* = 18\n"
+        /* 1362 */ "const RL_SHADER_LOC_MAP_OCCLUSION* = 19\n"
+        /* 1363 */ "const RL_SHADER_LOC_MAP_EMISSION* = 20\n"
+        /* 1364 */ "const RL_SHADER_LOC_MAP_HEIGHT* = 21\n"
+        /* 1365 */ "const RL_SHADER_LOC_MAP_CUBEMAP* = 22\n"
+        /* 1366 */ "const RL_SHADER_LOC_MAP_IRRADIANCE* = 23\n"
+        /* 1367 */ "const RL_SHADER_LOC_MAP_PREFILTER* = 24\n"
+        /* 1368 */ "const RL_SHADER_LOC_MAP_BRDF* = 25\n"
+        /* 1369 */ "const RL_SHADER_UNIFORM_FLOAT* = 0\n"
+        /* 1370 */ "const RL_SHADER_UNIFORM_VEC2* = 1\n"
+        /* 1371 */ "const RL_SHADER_UNIFORM_VEC3* = 2\n"
+        /* 1372 */ "const RL_SHADER_UNIFORM_VEC4* = 3\n"
+        /* 1373 */ "const RL_SHADER_UNIFORM_INT* = 4\n"
+        /* 1374 */ "const RL_SHADER_UNIFORM_IVEC2* = 5\n"
+        /* 1375 */ "const RL_SHADER_UNIFORM_IVEC3* = 6\n"
+        /* 1376 */ "const RL_SHADER_UNIFORM_IVEC4* = 7\n"
+        /* 1377 */ "const RL_SHADER_UNIFORM_SAMPLER2D* = 8\n"
+        /* 1378 */ "const RL_SHADER_ATTRIB_FLOAT* = 0\n"
+        /* 1379 */ "const RL_SHADER_ATTRIB_VEC2* = 1\n"
+        /* 1380 */ "const RL_SHADER_ATTRIB_VEC3* = 2\n"
+        /* 1381 */ "const RL_SHADER_ATTRIB_VEC4* = 3\n"
 
         // Defines
-        /* 1134 */ "const RAYLIB_VERSION* = \"4.2\"\n"
+        /* 1382 */ "const RAYLIB_VERSION* = \"4.2\"\n"
         // Skipped define: __declspec(x)
         // Skipped define: RLAPI
-        /* 1135 */ "const PI* = 3.141592653589793\n"
+        /* 1383 */ "const PI* = 3.141592653589793\n"
         // Skipped define: DEG2RAD
         // Skipped define: RAD2DEG
         // Skipped define: RL_MALLOC(sz)
@@ -11533,32 +13988,32 @@ bool umkaAddRaylib(void *umka) {
         // Skipped define: RL_REALLOC(ptr,sz)
         // Skipped define: RL_FREE(ptr)
         // Skipped define: CLITERAL(type)
-        /* 1136 */ "const LIGHTGRAY* = Color{ 200, 200, 200, 255 }\n"
-        /* 1137 */ "const GRAY* = Color{ 130, 130, 130, 255 }\n"
-        /* 1138 */ "const DARKGRAY* = Color{ 80, 80, 80, 255 }\n"
-        /* 1139 */ "const YELLOW* = Color{ 253, 249, 0, 255 }\n"
-        /* 1140 */ "const GOLD* = Color{ 255, 203, 0, 255 }\n"
-        /* 1141 */ "const ORANGE* = Color{ 255, 161, 0, 255 }\n"
-        /* 1142 */ "const PINK* = Color{ 255, 109, 194, 255 }\n"
-        /* 1143 */ "const RED* = Color{ 230, 41, 55, 255 }\n"
-        /* 1144 */ "const MAROON* = Color{ 190, 33, 55, 255 }\n"
-        /* 1145 */ "const GREEN* = Color{ 0, 228, 48, 255 }\n"
-        /* 1146 */ "const LIME* = Color{ 0, 158, 47, 255 }\n"
-        /* 1147 */ "const DARKGREEN* = Color{ 0, 117, 44, 255 }\n"
-        /* 1148 */ "const SKYBLUE* = Color{ 102, 191, 255, 255 }\n"
-        /* 1149 */ "const BLUE* = Color{ 0, 121, 241, 255 }\n"
-        /* 1150 */ "const DARKBLUE* = Color{ 0, 82, 172, 255 }\n"
-        /* 1151 */ "const PURPLE* = Color{ 200, 122, 255, 255 }\n"
-        /* 1152 */ "const VIOLET* = Color{ 135, 60, 190, 255 }\n"
-        /* 1153 */ "const DARKPURPLE* = Color{ 112, 31, 126, 255 }\n"
-        /* 1154 */ "const BEIGE* = Color{ 211, 176, 131, 255 }\n"
-        /* 1155 */ "const BROWN* = Color{ 127, 106, 79, 255 }\n"
-        /* 1156 */ "const DARKBROWN* = Color{ 76, 63, 47, 255 }\n"
-        /* 1157 */ "const WHITE* = Color{ 255, 255, 255, 255 }\n"
-        /* 1158 */ "const BLACK* = Color{ 0, 0, 0, 255 }\n"
-        /* 1159 */ "const BLANK* = Color{ 0, 0, 0, 0 }\n"
-        /* 1160 */ "const MAGENTA* = Color{ 255, 0, 255, 255 }\n"
-        /* 1161 */ "const RAYWHITE* = Color{ 245, 245, 245, 255 }\n"
+        /* 1384 */ "const LIGHTGRAY* = Color{ 200, 200, 200, 255 }\n"
+        /* 1385 */ "const GRAY* = Color{ 130, 130, 130, 255 }\n"
+        /* 1386 */ "const DARKGRAY* = Color{ 80, 80, 80, 255 }\n"
+        /* 1387 */ "const YELLOW* = Color{ 253, 249, 0, 255 }\n"
+        /* 1388 */ "const GOLD* = Color{ 255, 203, 0, 255 }\n"
+        /* 1389 */ "const ORANGE* = Color{ 255, 161, 0, 255 }\n"
+        /* 1390 */ "const PINK* = Color{ 255, 109, 194, 255 }\n"
+        /* 1391 */ "const RED* = Color{ 230, 41, 55, 255 }\n"
+        /* 1392 */ "const MAROON* = Color{ 190, 33, 55, 255 }\n"
+        /* 1393 */ "const GREEN* = Color{ 0, 228, 48, 255 }\n"
+        /* 1394 */ "const LIME* = Color{ 0, 158, 47, 255 }\n"
+        /* 1395 */ "const DARKGREEN* = Color{ 0, 117, 44, 255 }\n"
+        /* 1396 */ "const SKYBLUE* = Color{ 102, 191, 255, 255 }\n"
+        /* 1397 */ "const BLUE* = Color{ 0, 121, 241, 255 }\n"
+        /* 1398 */ "const DARKBLUE* = Color{ 0, 82, 172, 255 }\n"
+        /* 1399 */ "const PURPLE* = Color{ 200, 122, 255, 255 }\n"
+        /* 1400 */ "const VIOLET* = Color{ 135, 60, 190, 255 }\n"
+        /* 1401 */ "const DARKPURPLE* = Color{ 112, 31, 126, 255 }\n"
+        /* 1402 */ "const BEIGE* = Color{ 211, 176, 131, 255 }\n"
+        /* 1403 */ "const BROWN* = Color{ 127, 106, 79, 255 }\n"
+        /* 1404 */ "const DARKBROWN* = Color{ 76, 63, 47, 255 }\n"
+        /* 1405 */ "const WHITE* = Color{ 255, 255, 255, 255 }\n"
+        /* 1406 */ "const BLACK* = Color{ 0, 0, 0, 255 }\n"
+        /* 1407 */ "const BLANK* = Color{ 0, 0, 0, 0 }\n"
+        /* 1408 */ "const MAGENTA* = Color{ 255, 0, 255, 255 }\n"
+        /* 1409 */ "const RAYWHITE* = Color{ 245, 245, 245, 255 }\n"
         // Skipped define: MOUSE_LEFT_BUTTON
         // Skipped define: MOUSE_RIGHT_BUTTON
         // Skipped define: MOUSE_MIDDLE_BUTTON
@@ -11567,9 +14022,59 @@ bool umkaAddRaylib(void *umka) {
         // Skipped define: SHADER_LOC_MAP_DIFFUSE
         // Skipped define: SHADER_LOC_MAP_SPECULAR
         // Skipped define: RMAPI
-        /* 1162 */ "const EPSILON* = 0.000001\n"
+        /* 1410 */ "const EPSILON* = 0.000001\n"
         // Skipped define: MatrixToFloat(mat)
         // Skipped define: Vector3ToFloat(vec)
+        /* 1411 */ "const RLGL_VERSION* = \"4.0\"\n"
+        // Skipped define: TRACELOG(level, ...)
+        // Skipped define: TRACELOGD(...)
+        // Skipped define: RL_REALLOC(n,sz)
+        // Skipped define: RL_FREE(p)
+        // Skipped define: RL_DEFAULT_BATCH_BUFFER_ELEMENTS
+        // Skipped define: RL_DEFAULT_BATCH_BUFFERS
+        // Skipped define: RL_DEFAULT_BATCH_DRAWCALLS
+        // Skipped define: RL_DEFAULT_BATCH_MAX_TEXTURE_UNITS
+        // Skipped define: RL_MAX_MATRIX_STACK_SIZE
+        // Skipped define: RL_MAX_SHADER_LOCATIONS
+        // Skipped define: RL_CULL_DISTANCE_NEAR
+        // Skipped define: RL_CULL_DISTANCE_FAR
+        // Skipped define: RL_TEXTURE_WRAP_S
+        // Skipped define: RL_TEXTURE_WRAP_T
+        // Skipped define: RL_TEXTURE_MAG_FILTER
+        // Skipped define: RL_TEXTURE_MIN_FILTER
+        // Skipped define: RL_TEXTURE_FILTER_NEAREST
+        // Skipped define: RL_TEXTURE_FILTER_LINEAR
+        // Skipped define: RL_TEXTURE_FILTER_MIP_NEAREST
+        // Skipped define: RL_TEXTURE_FILTER_NEAREST_MIP_LINEAR
+        // Skipped define: RL_TEXTURE_FILTER_LINEAR_MIP_NEAREST
+        // Skipped define: RL_TEXTURE_FILTER_MIP_LINEAR
+        // Skipped define: RL_TEXTURE_FILTER_ANISOTROPIC
+        // Skipped define: RL_TEXTURE_WRAP_REPEAT
+        // Skipped define: RL_TEXTURE_WRAP_CLAMP
+        // Skipped define: RL_TEXTURE_WRAP_MIRROR_REPEAT
+        // Skipped define: RL_TEXTURE_WRAP_MIRROR_CLAMP
+        // Skipped define: RL_MODELVIEW
+        // Skipped define: RL_PROJECTION
+        // Skipped define: RL_TEXTURE
+        // Skipped define: RL_LINES
+        // Skipped define: RL_TRIANGLES
+        // Skipped define: RL_QUADS
+        // Skipped define: RL_UNSIGNED_BYTE
+        // Skipped define: RL_FLOAT
+        // Skipped define: RL_STREAM_DRAW
+        // Skipped define: RL_STREAM_READ
+        // Skipped define: RL_STREAM_COPY
+        // Skipped define: RL_STATIC_DRAW
+        // Skipped define: RL_STATIC_READ
+        // Skipped define: RL_STATIC_COPY
+        // Skipped define: RL_DYNAMIC_DRAW
+        // Skipped define: RL_DYNAMIC_READ
+        // Skipped define: RL_DYNAMIC_COPY
+        // Skipped define: RL_FRAGMENT_SHADER
+        // Skipped define: RL_VERTEX_SHADER
+        // Skipped define: RL_COMPUTE_SHADER
+        // Skipped define: RL_SHADER_LOC_MAP_DIFFUSE
+        // Skipped define: RL_SHADER_LOC_MAP_SPECULAR
 
         // Custom functions
         "fn TraceLog*(errorType: int , message: str)\n"

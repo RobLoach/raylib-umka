@@ -45,7 +45,7 @@ raylib-umka core_basic_window.um
 - [x] raymath
 - [ ] raygui
 - [ ] reasings
-- [ ] rlgl
+- [x] rlgl
 
 ## Development
 
