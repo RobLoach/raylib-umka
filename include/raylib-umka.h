@@ -15,7 +15,7 @@
 *   raylib-umka is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software:
 *
-*   Copyright (c) 2022 Rob Loach (@RobLoach)
+*   Copyright (c) 2022 Rob Loach (https://robloach.net)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -95,7 +95,7 @@ extern "C" {
 #endif
 
 /**
- * Umka bindings for InitWindow.
+ * Umka bindings for InitWindow().
  *
  * @see InitWindow()
  */
@@ -107,7 +107,7 @@ void umkaInitWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WindowShouldClose.
+ * Umka bindings for WindowShouldClose().
  *
  * @see WindowShouldClose()
  */
@@ -116,7 +116,7 @@ void umkaWindowShouldClose(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CloseWindow.
+ * Umka bindings for CloseWindow().
  *
  * @see CloseWindow()
  */
@@ -125,7 +125,7 @@ void umkaCloseWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowReady.
+ * Umka bindings for IsWindowReady().
  *
  * @see IsWindowReady()
  */
@@ -134,7 +134,7 @@ void umkaIsWindowReady(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowFullscreen.
+ * Umka bindings for IsWindowFullscreen().
  *
  * @see IsWindowFullscreen()
  */
@@ -143,7 +143,7 @@ void umkaIsWindowFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowHidden.
+ * Umka bindings for IsWindowHidden().
  *
  * @see IsWindowHidden()
  */
@@ -152,7 +152,7 @@ void umkaIsWindowHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowMinimized.
+ * Umka bindings for IsWindowMinimized().
  *
  * @see IsWindowMinimized()
  */
@@ -161,7 +161,7 @@ void umkaIsWindowMinimized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowMaximized.
+ * Umka bindings for IsWindowMaximized().
  *
  * @see IsWindowMaximized()
  */
@@ -170,7 +170,7 @@ void umkaIsWindowMaximized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowFocused.
+ * Umka bindings for IsWindowFocused().
  *
  * @see IsWindowFocused()
  */
@@ -179,7 +179,7 @@ void umkaIsWindowFocused(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowResized.
+ * Umka bindings for IsWindowResized().
  *
  * @see IsWindowResized()
  */
@@ -188,7 +188,7 @@ void umkaIsWindowResized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsWindowState.
+ * Umka bindings for IsWindowState().
  *
  * @see IsWindowState()
  */
@@ -198,7 +198,7 @@ void umkaIsWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowState.
+ * Umka bindings for SetWindowState().
  *
  * @see SetWindowState()
  */
@@ -208,7 +208,7 @@ void umkaSetWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ClearWindowState.
+ * Umka bindings for ClearWindowState().
  *
  * @see ClearWindowState()
  */
@@ -218,7 +218,7 @@ void umkaClearWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ToggleFullscreen.
+ * Umka bindings for ToggleFullscreen().
  *
  * @see ToggleFullscreen()
  */
@@ -227,7 +227,7 @@ void umkaToggleFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MaximizeWindow.
+ * Umka bindings for MaximizeWindow().
  *
  * @see MaximizeWindow()
  */
@@ -236,7 +236,7 @@ void umkaMaximizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MinimizeWindow.
+ * Umka bindings for MinimizeWindow().
  *
  * @see MinimizeWindow()
  */
@@ -245,7 +245,7 @@ void umkaMinimizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for RestoreWindow.
+ * Umka bindings for RestoreWindow().
  *
  * @see RestoreWindow()
  */
@@ -254,7 +254,7 @@ void umkaRestoreWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowIcon.
+ * Umka bindings for SetWindowIcon().
  *
  * @see SetWindowIcon()
  */
@@ -264,7 +264,7 @@ void umkaSetWindowIcon(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowTitle.
+ * Umka bindings for SetWindowTitle().
  *
  * @see SetWindowTitle()
  */
@@ -274,7 +274,7 @@ void umkaSetWindowTitle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowPosition.
+ * Umka bindings for SetWindowPosition().
  *
  * @see SetWindowPosition()
  */
@@ -285,7 +285,7 @@ void umkaSetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowMonitor.
+ * Umka bindings for SetWindowMonitor().
  *
  * @see SetWindowMonitor()
  */
@@ -295,7 +295,7 @@ void umkaSetWindowMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowMinSize.
+ * Umka bindings for SetWindowMinSize().
  *
  * @see SetWindowMinSize()
  */
@@ -306,7 +306,7 @@ void umkaSetWindowMinSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowSize.
+ * Umka bindings for SetWindowSize().
  *
  * @see SetWindowSize()
  */
@@ -317,7 +317,7 @@ void umkaSetWindowSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetWindowOpacity.
+ * Umka bindings for SetWindowOpacity().
  *
  * @see SetWindowOpacity()
  */
@@ -327,7 +327,7 @@ void umkaSetWindowOpacity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWindowHandle.
+ * Umka bindings for GetWindowHandle().
  *
  * @see GetWindowHandle()
  */
@@ -336,7 +336,7 @@ void umkaGetWindowHandle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetScreenWidth.
+ * Umka bindings for GetScreenWidth().
  *
  * @see GetScreenWidth()
  */
@@ -345,7 +345,7 @@ void umkaGetScreenWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetScreenHeight.
+ * Umka bindings for GetScreenHeight().
  *
  * @see GetScreenHeight()
  */
@@ -354,7 +354,7 @@ void umkaGetScreenHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRenderWidth.
+ * Umka bindings for GetRenderWidth().
  *
  * @see GetRenderWidth()
  */
@@ -363,7 +363,7 @@ void umkaGetRenderWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRenderHeight.
+ * Umka bindings for GetRenderHeight().
  *
  * @see GetRenderHeight()
  */
@@ -372,7 +372,7 @@ void umkaGetRenderHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorCount.
+ * Umka bindings for GetMonitorCount().
  *
  * @see GetMonitorCount()
  */
@@ -381,7 +381,7 @@ void umkaGetMonitorCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCurrentMonitor.
+ * Umka bindings for GetCurrentMonitor().
  *
  * @see GetCurrentMonitor()
  */
@@ -390,7 +390,7 @@ void umkaGetCurrentMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorPosition.
+ * Umka bindings for GetMonitorPosition().
  *
  * @see GetMonitorPosition()
  */
@@ -403,7 +403,7 @@ void umkaGetMonitorPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorWidth.
+ * Umka bindings for GetMonitorWidth().
  *
  * @see GetMonitorWidth()
  */
@@ -413,7 +413,7 @@ void umkaGetMonitorWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorHeight.
+ * Umka bindings for GetMonitorHeight().
  *
  * @see GetMonitorHeight()
  */
@@ -423,7 +423,7 @@ void umkaGetMonitorHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorPhysicalWidth.
+ * Umka bindings for GetMonitorPhysicalWidth().
  *
  * @see GetMonitorPhysicalWidth()
  */
@@ -433,7 +433,7 @@ void umkaGetMonitorPhysicalWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorPhysicalHeight.
+ * Umka bindings for GetMonitorPhysicalHeight().
  *
  * @see GetMonitorPhysicalHeight()
  */
@@ -443,7 +443,7 @@ void umkaGetMonitorPhysicalHeight(UmkaStackSlot *params, UmkaStackSlot *result) 
 }
 
 /**
- * Umka bindings for GetMonitorRefreshRate.
+ * Umka bindings for GetMonitorRefreshRate().
  *
  * @see GetMonitorRefreshRate()
  */
@@ -453,7 +453,7 @@ void umkaGetMonitorRefreshRate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWindowPosition.
+ * Umka bindings for GetWindowPosition().
  *
  * @see GetWindowPosition()
  */
@@ -464,7 +464,7 @@ void umkaGetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWindowScaleDPI.
+ * Umka bindings for GetWindowScaleDPI().
  *
  * @see GetWindowScaleDPI()
  */
@@ -475,7 +475,7 @@ void umkaGetWindowScaleDPI(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMonitorName.
+ * Umka bindings for GetMonitorName().
  *
  * @see GetMonitorName()
  */
@@ -485,7 +485,7 @@ void umkaGetMonitorName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetClipboardText.
+ * Umka bindings for SetClipboardText().
  *
  * @see SetClipboardText()
  */
@@ -495,7 +495,7 @@ void umkaSetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetClipboardText.
+ * Umka bindings for GetClipboardText().
  *
  * @see GetClipboardText()
  */
@@ -504,7 +504,7 @@ void umkaGetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EnableEventWaiting.
+ * Umka bindings for EnableEventWaiting().
  *
  * @see EnableEventWaiting()
  */
@@ -513,7 +513,7 @@ void umkaEnableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DisableEventWaiting.
+ * Umka bindings for DisableEventWaiting().
  *
  * @see DisableEventWaiting()
  */
@@ -522,7 +522,7 @@ void umkaDisableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SwapScreenBuffer.
+ * Umka bindings for SwapScreenBuffer().
  *
  * @see SwapScreenBuffer()
  */
@@ -531,7 +531,7 @@ void umkaSwapScreenBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PollInputEvents.
+ * Umka bindings for PollInputEvents().
  *
  * @see PollInputEvents()
  */
@@ -540,7 +540,7 @@ void umkaPollInputEvents(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaitTime.
+ * Umka bindings for WaitTime().
  *
  * @see WaitTime()
  */
@@ -550,7 +550,7 @@ void umkaWaitTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ShowCursor.
+ * Umka bindings for ShowCursor().
  *
  * @see ShowCursor()
  */
@@ -559,7 +559,7 @@ void umkaShowCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for HideCursor.
+ * Umka bindings for HideCursor().
  *
  * @see HideCursor()
  */
@@ -568,7 +568,7 @@ void umkaHideCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsCursorHidden.
+ * Umka bindings for IsCursorHidden().
  *
  * @see IsCursorHidden()
  */
@@ -577,7 +577,7 @@ void umkaIsCursorHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EnableCursor.
+ * Umka bindings for EnableCursor().
  *
  * @see EnableCursor()
  */
@@ -586,7 +586,7 @@ void umkaEnableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DisableCursor.
+ * Umka bindings for DisableCursor().
  *
  * @see DisableCursor()
  */
@@ -595,7 +595,7 @@ void umkaDisableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsCursorOnScreen.
+ * Umka bindings for IsCursorOnScreen().
  *
  * @see IsCursorOnScreen()
  */
@@ -604,7 +604,7 @@ void umkaIsCursorOnScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ClearBackground.
+ * Umka bindings for ClearBackground().
  *
  * @see ClearBackground()
  */
@@ -614,7 +614,7 @@ void umkaClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginDrawing.
+ * Umka bindings for BeginDrawing().
  *
  * @see BeginDrawing()
  */
@@ -623,7 +623,7 @@ void umkaBeginDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndDrawing.
+ * Umka bindings for EndDrawing().
  *
  * @see EndDrawing()
  */
@@ -632,7 +632,7 @@ void umkaEndDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginMode2D.
+ * Umka bindings for BeginMode2D().
  *
  * @see BeginMode2D()
  */
@@ -642,7 +642,7 @@ void umkaBeginMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndMode2D.
+ * Umka bindings for EndMode2D().
  *
  * @see EndMode2D()
  */
@@ -651,7 +651,7 @@ void umkaEndMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginMode3D.
+ * Umka bindings for BeginMode3D().
  *
  * @see BeginMode3D()
  */
@@ -661,7 +661,7 @@ void umkaBeginMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndMode3D.
+ * Umka bindings for EndMode3D().
  *
  * @see EndMode3D()
  */
@@ -670,7 +670,7 @@ void umkaEndMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginTextureMode.
+ * Umka bindings for BeginTextureMode().
  *
  * @see BeginTextureMode()
  */
@@ -680,7 +680,7 @@ void umkaBeginTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndTextureMode.
+ * Umka bindings for EndTextureMode().
  *
  * @see EndTextureMode()
  */
@@ -689,7 +689,7 @@ void umkaEndTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginShaderMode.
+ * Umka bindings for BeginShaderMode().
  *
  * @see BeginShaderMode()
  */
@@ -699,7 +699,7 @@ void umkaBeginShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndShaderMode.
+ * Umka bindings for EndShaderMode().
  *
  * @see EndShaderMode()
  */
@@ -708,7 +708,7 @@ void umkaEndShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginBlendMode.
+ * Umka bindings for BeginBlendMode().
  *
  * @see BeginBlendMode()
  */
@@ -718,7 +718,7 @@ void umkaBeginBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndBlendMode.
+ * Umka bindings for EndBlendMode().
  *
  * @see EndBlendMode()
  */
@@ -727,7 +727,7 @@ void umkaEndBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginScissorMode.
+ * Umka bindings for BeginScissorMode().
  *
  * @see BeginScissorMode()
  */
@@ -740,7 +740,7 @@ void umkaBeginScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndScissorMode.
+ * Umka bindings for EndScissorMode().
  *
  * @see EndScissorMode()
  */
@@ -749,7 +749,7 @@ void umkaEndScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for BeginVrStereoMode.
+ * Umka bindings for BeginVrStereoMode().
  *
  * @see BeginVrStereoMode()
  */
@@ -759,7 +759,7 @@ void umkaBeginVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EndVrStereoMode.
+ * Umka bindings for EndVrStereoMode().
  *
  * @see EndVrStereoMode()
  */
@@ -768,7 +768,7 @@ void umkaEndVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadVrStereoConfig.
+ * Umka bindings for LoadVrStereoConfig().
  *
  * @see LoadVrStereoConfig()
  */
@@ -781,7 +781,7 @@ void umkaLoadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadVrStereoConfig.
+ * Umka bindings for UnloadVrStereoConfig().
  *
  * @see UnloadVrStereoConfig()
  */
@@ -791,7 +791,7 @@ void umkaUnloadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadShader.
+ * Umka bindings for LoadShader().
  *
  * @see LoadShader()
  */
@@ -805,7 +805,7 @@ void umkaLoadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadShaderFromMemory.
+ * Umka bindings for LoadShaderFromMemory().
  *
  * @see LoadShaderFromMemory()
  */
@@ -819,7 +819,7 @@ void umkaLoadShaderFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetShaderLocation.
+ * Umka bindings for GetShaderLocation().
  *
  * @see GetShaderLocation()
  */
@@ -830,7 +830,7 @@ void umkaGetShaderLocation(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetShaderLocationAttrib.
+ * Umka bindings for GetShaderLocationAttrib().
  *
  * @see GetShaderLocationAttrib()
  */
@@ -841,7 +841,7 @@ void umkaGetShaderLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValue.
+ * Umka bindings for SetShaderValue().
  *
  * @see SetShaderValue()
  */
@@ -854,7 +854,7 @@ void umkaSetShaderValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValueV.
+ * Umka bindings for SetShaderValueV().
  *
  * @see SetShaderValueV()
  */
@@ -868,7 +868,7 @@ void umkaSetShaderValueV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValueMatrix.
+ * Umka bindings for SetShaderValueMatrix().
  *
  * @see SetShaderValueMatrix()
  */
@@ -880,7 +880,7 @@ void umkaSetShaderValueMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShaderValueTexture.
+ * Umka bindings for SetShaderValueTexture().
  *
  * @see SetShaderValueTexture()
  */
@@ -892,7 +892,7 @@ void umkaSetShaderValueTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadShader.
+ * Umka bindings for UnloadShader().
  *
  * @see UnloadShader()
  */
@@ -902,7 +902,7 @@ void umkaUnloadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseRay.
+ * Umka bindings for GetMouseRay().
  *
  * @see GetMouseRay()
  */
@@ -916,7 +916,7 @@ void umkaGetMouseRay(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCameraMatrix.
+ * Umka bindings for GetCameraMatrix().
  *
  * @see GetCameraMatrix()
  */
@@ -929,7 +929,7 @@ void umkaGetCameraMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCameraMatrix2D.
+ * Umka bindings for GetCameraMatrix2D().
  *
  * @see GetCameraMatrix2D()
  */
@@ -942,7 +942,7 @@ void umkaGetCameraMatrix2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorldToScreen.
+ * Umka bindings for GetWorldToScreen().
  *
  * @see GetWorldToScreen()
  */
@@ -956,7 +956,7 @@ void umkaGetWorldToScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetScreenToWorld2D.
+ * Umka bindings for GetScreenToWorld2D().
  *
  * @see GetScreenToWorld2D()
  */
@@ -970,7 +970,7 @@ void umkaGetScreenToWorld2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorldToScreenEx.
+ * Umka bindings for GetWorldToScreenEx().
  *
  * @see GetWorldToScreenEx()
  */
@@ -986,7 +986,7 @@ void umkaGetWorldToScreenEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorldToScreen2D.
+ * Umka bindings for GetWorldToScreen2D().
  *
  * @see GetWorldToScreen2D()
  */
@@ -1000,7 +1000,7 @@ void umkaGetWorldToScreen2D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetTargetFPS.
+ * Umka bindings for SetTargetFPS().
  *
  * @see SetTargetFPS()
  */
@@ -1010,7 +1010,7 @@ void umkaSetTargetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFPS.
+ * Umka bindings for GetFPS().
  *
  * @see GetFPS()
  */
@@ -1019,7 +1019,7 @@ void umkaGetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFrameTime.
+ * Umka bindings for GetFrameTime().
  *
  * @see GetFrameTime()
  */
@@ -1028,7 +1028,7 @@ void umkaGetFrameTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTime.
+ * Umka bindings for GetTime().
  *
  * @see GetTime()
  */
@@ -1037,7 +1037,7 @@ void umkaGetTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRandomValue.
+ * Umka bindings for GetRandomValue().
  *
  * @see GetRandomValue()
  */
@@ -1048,7 +1048,7 @@ void umkaGetRandomValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetRandomSeed.
+ * Umka bindings for SetRandomSeed().
  *
  * @see SetRandomSeed()
  */
@@ -1058,7 +1058,7 @@ void umkaSetRandomSeed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TakeScreenshot.
+ * Umka bindings for TakeScreenshot().
  *
  * @see TakeScreenshot()
  */
@@ -1068,7 +1068,7 @@ void umkaTakeScreenshot(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetConfigFlags.
+ * Umka bindings for SetConfigFlags().
  *
  * @see SetConfigFlags()
  */
@@ -1080,7 +1080,7 @@ void umkaSetConfigFlags(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function TraceLog() skipped
 
 /**
- * Umka bindings for SetTraceLogLevel.
+ * Umka bindings for SetTraceLogLevel().
  *
  * @see SetTraceLogLevel()
  */
@@ -1090,7 +1090,7 @@ void umkaSetTraceLogLevel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MemAlloc.
+ * Umka bindings for MemAlloc().
  *
  * @see MemAlloc()
  */
@@ -1100,7 +1100,7 @@ void umkaMemAlloc(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MemRealloc.
+ * Umka bindings for MemRealloc().
  *
  * @see MemRealloc()
  */
@@ -1111,7 +1111,7 @@ void umkaMemRealloc(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MemFree.
+ * Umka bindings for MemFree().
  *
  * @see MemFree()
  */
@@ -1121,7 +1121,7 @@ void umkaMemFree(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for OpenURL.
+ * Umka bindings for OpenURL().
  *
  * @see OpenURL()
  */
@@ -1141,7 +1141,7 @@ void umkaOpenURL(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function SetSaveFileTextCallback() skipped
 
 /**
- * Umka bindings for LoadFileData.
+ * Umka bindings for LoadFileData().
  *
  * @see LoadFileData()
  */
@@ -1152,7 +1152,7 @@ void umkaLoadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFileData.
+ * Umka bindings for UnloadFileData().
  *
  * @see UnloadFileData()
  */
@@ -1162,7 +1162,7 @@ void umkaUnloadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SaveFileData.
+ * Umka bindings for SaveFileData().
  *
  * @see SaveFileData()
  */
@@ -1174,7 +1174,7 @@ void umkaSaveFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportDataAsCode.
+ * Umka bindings for ExportDataAsCode().
  *
  * @see ExportDataAsCode()
  */
@@ -1186,7 +1186,7 @@ void umkaExportDataAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFileText.
+ * Umka bindings for LoadFileText().
  *
  * @see LoadFileText()
  */
@@ -1196,7 +1196,7 @@ void umkaLoadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFileText.
+ * Umka bindings for UnloadFileText().
  *
  * @see UnloadFileText()
  */
@@ -1206,7 +1206,7 @@ void umkaUnloadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SaveFileText.
+ * Umka bindings for SaveFileText().
  *
  * @see SaveFileText()
  */
@@ -1217,7 +1217,7 @@ void umkaSaveFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for FileExists.
+ * Umka bindings for FileExists().
  *
  * @see FileExists()
  */
@@ -1227,7 +1227,7 @@ void umkaFileExists(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DirectoryExists.
+ * Umka bindings for DirectoryExists().
  *
  * @see DirectoryExists()
  */
@@ -1237,7 +1237,7 @@ void umkaDirectoryExists(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsFileExtension.
+ * Umka bindings for IsFileExtension().
  *
  * @see IsFileExtension()
  */
@@ -1248,7 +1248,7 @@ void umkaIsFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileLength.
+ * Umka bindings for GetFileLength().
  *
  * @see GetFileLength()
  */
@@ -1258,7 +1258,7 @@ void umkaGetFileLength(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileExtension.
+ * Umka bindings for GetFileExtension().
  *
  * @see GetFileExtension()
  */
@@ -1268,7 +1268,7 @@ void umkaGetFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileName.
+ * Umka bindings for GetFileName().
  *
  * @see GetFileName()
  */
@@ -1278,7 +1278,7 @@ void umkaGetFileName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileNameWithoutExt.
+ * Umka bindings for GetFileNameWithoutExt().
  *
  * @see GetFileNameWithoutExt()
  */
@@ -1288,7 +1288,7 @@ void umkaGetFileNameWithoutExt(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetDirectoryPath.
+ * Umka bindings for GetDirectoryPath().
  *
  * @see GetDirectoryPath()
  */
@@ -1298,7 +1298,7 @@ void umkaGetDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetPrevDirectoryPath.
+ * Umka bindings for GetPrevDirectoryPath().
  *
  * @see GetPrevDirectoryPath()
  */
@@ -1308,7 +1308,7 @@ void umkaGetPrevDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetWorkingDirectory.
+ * Umka bindings for GetWorkingDirectory().
  *
  * @see GetWorkingDirectory()
  */
@@ -1317,7 +1317,7 @@ void umkaGetWorkingDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetApplicationDirectory.
+ * Umka bindings for GetApplicationDirectory().
  *
  * @see GetApplicationDirectory()
  */
@@ -1326,7 +1326,7 @@ void umkaGetApplicationDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ChangeDirectory.
+ * Umka bindings for ChangeDirectory().
  *
  * @see ChangeDirectory()
  */
@@ -1336,7 +1336,7 @@ void umkaChangeDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsPathFile.
+ * Umka bindings for IsPathFile().
  *
  * @see IsPathFile()
  */
@@ -1346,7 +1346,7 @@ void umkaIsPathFile(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadDirectoryFiles.
+ * Umka bindings for LoadDirectoryFiles().
  *
  * @see LoadDirectoryFiles()
  */
@@ -1359,7 +1359,7 @@ void umkaLoadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadDirectoryFilesEx.
+ * Umka bindings for LoadDirectoryFilesEx().
  *
  * @see LoadDirectoryFilesEx()
  */
@@ -1374,7 +1374,7 @@ void umkaLoadDirectoryFilesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadDirectoryFiles.
+ * Umka bindings for UnloadDirectoryFiles().
  *
  * @see UnloadDirectoryFiles()
  */
@@ -1384,7 +1384,7 @@ void umkaUnloadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsFileDropped.
+ * Umka bindings for IsFileDropped().
  *
  * @see IsFileDropped()
  */
@@ -1393,7 +1393,7 @@ void umkaIsFileDropped(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadDroppedFiles.
+ * Umka bindings for LoadDroppedFiles().
  *
  * @see LoadDroppedFiles()
  */
@@ -1404,7 +1404,7 @@ void umkaLoadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadDroppedFiles.
+ * Umka bindings for UnloadDroppedFiles().
  *
  * @see UnloadDroppedFiles()
  */
@@ -1414,7 +1414,7 @@ void umkaUnloadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFileModTime.
+ * Umka bindings for GetFileModTime().
  *
  * @see GetFileModTime()
  */
@@ -1424,7 +1424,7 @@ void umkaGetFileModTime(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CompressData.
+ * Umka bindings for CompressData().
  *
  * @see CompressData()
  */
@@ -1436,7 +1436,7 @@ void umkaCompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DecompressData.
+ * Umka bindings for DecompressData().
  *
  * @see DecompressData()
  */
@@ -1448,7 +1448,7 @@ void umkaDecompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for EncodeDataBase64.
+ * Umka bindings for EncodeDataBase64().
  *
  * @see EncodeDataBase64()
  */
@@ -1460,7 +1460,7 @@ void umkaEncodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DecodeDataBase64.
+ * Umka bindings for DecodeDataBase64().
  *
  * @see DecodeDataBase64()
  */
@@ -1471,7 +1471,7 @@ void umkaDecodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyPressed.
+ * Umka bindings for IsKeyPressed().
  *
  * @see IsKeyPressed()
  */
@@ -1481,7 +1481,7 @@ void umkaIsKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyDown.
+ * Umka bindings for IsKeyDown().
  *
  * @see IsKeyDown()
  */
@@ -1491,7 +1491,7 @@ void umkaIsKeyDown(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyReleased.
+ * Umka bindings for IsKeyReleased().
  *
  * @see IsKeyReleased()
  */
@@ -1501,7 +1501,7 @@ void umkaIsKeyReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsKeyUp.
+ * Umka bindings for IsKeyUp().
  *
  * @see IsKeyUp()
  */
@@ -1511,7 +1511,7 @@ void umkaIsKeyUp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetExitKey.
+ * Umka bindings for SetExitKey().
  *
  * @see SetExitKey()
  */
@@ -1521,7 +1521,7 @@ void umkaSetExitKey(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetKeyPressed.
+ * Umka bindings for GetKeyPressed().
  *
  * @see GetKeyPressed()
  */
@@ -1530,7 +1530,7 @@ void umkaGetKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCharPressed.
+ * Umka bindings for GetCharPressed().
  *
  * @see GetCharPressed()
  */
@@ -1539,7 +1539,7 @@ void umkaGetCharPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadAvailable.
+ * Umka bindings for IsGamepadAvailable().
  *
  * @see IsGamepadAvailable()
  */
@@ -1549,7 +1549,7 @@ void umkaIsGamepadAvailable(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadName.
+ * Umka bindings for GetGamepadName().
  *
  * @see GetGamepadName()
  */
@@ -1559,7 +1559,7 @@ void umkaGetGamepadName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonPressed.
+ * Umka bindings for IsGamepadButtonPressed().
  *
  * @see IsGamepadButtonPressed()
  */
@@ -1570,7 +1570,7 @@ void umkaIsGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonDown.
+ * Umka bindings for IsGamepadButtonDown().
  *
  * @see IsGamepadButtonDown()
  */
@@ -1581,7 +1581,7 @@ void umkaIsGamepadButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonReleased.
+ * Umka bindings for IsGamepadButtonReleased().
  *
  * @see IsGamepadButtonReleased()
  */
@@ -1592,7 +1592,7 @@ void umkaIsGamepadButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGamepadButtonUp.
+ * Umka bindings for IsGamepadButtonUp().
  *
  * @see IsGamepadButtonUp()
  */
@@ -1603,7 +1603,7 @@ void umkaIsGamepadButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadButtonPressed.
+ * Umka bindings for GetGamepadButtonPressed().
  *
  * @see GetGamepadButtonPressed()
  */
@@ -1612,7 +1612,7 @@ void umkaGetGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadAxisCount.
+ * Umka bindings for GetGamepadAxisCount().
  *
  * @see GetGamepadAxisCount()
  */
@@ -1622,7 +1622,7 @@ void umkaGetGamepadAxisCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGamepadAxisMovement.
+ * Umka bindings for GetGamepadAxisMovement().
  *
  * @see GetGamepadAxisMovement()
  */
@@ -1633,7 +1633,7 @@ void umkaGetGamepadAxisMovement(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetGamepadMappings.
+ * Umka bindings for SetGamepadMappings().
  *
  * @see SetGamepadMappings()
  */
@@ -1643,7 +1643,7 @@ void umkaSetGamepadMappings(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonPressed.
+ * Umka bindings for IsMouseButtonPressed().
  *
  * @see IsMouseButtonPressed()
  */
@@ -1653,7 +1653,7 @@ void umkaIsMouseButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonDown.
+ * Umka bindings for IsMouseButtonDown().
  *
  * @see IsMouseButtonDown()
  */
@@ -1663,7 +1663,7 @@ void umkaIsMouseButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonReleased.
+ * Umka bindings for IsMouseButtonReleased().
  *
  * @see IsMouseButtonReleased()
  */
@@ -1673,7 +1673,7 @@ void umkaIsMouseButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMouseButtonUp.
+ * Umka bindings for IsMouseButtonUp().
  *
  * @see IsMouseButtonUp()
  */
@@ -1683,7 +1683,7 @@ void umkaIsMouseButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseX.
+ * Umka bindings for GetMouseX().
  *
  * @see GetMouseX()
  */
@@ -1692,7 +1692,7 @@ void umkaGetMouseX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseY.
+ * Umka bindings for GetMouseY().
  *
  * @see GetMouseY()
  */
@@ -1701,7 +1701,7 @@ void umkaGetMouseY(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMousePosition.
+ * Umka bindings for GetMousePosition().
  *
  * @see GetMousePosition()
  */
@@ -1712,7 +1712,7 @@ void umkaGetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseDelta.
+ * Umka bindings for GetMouseDelta().
  *
  * @see GetMouseDelta()
  */
@@ -1723,7 +1723,7 @@ void umkaGetMouseDelta(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMousePosition.
+ * Umka bindings for SetMousePosition().
  *
  * @see SetMousePosition()
  */
@@ -1734,7 +1734,7 @@ void umkaSetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMouseOffset.
+ * Umka bindings for SetMouseOffset().
  *
  * @see SetMouseOffset()
  */
@@ -1745,7 +1745,7 @@ void umkaSetMouseOffset(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMouseScale.
+ * Umka bindings for SetMouseScale().
  *
  * @see SetMouseScale()
  */
@@ -1756,7 +1756,7 @@ void umkaSetMouseScale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseWheelMove.
+ * Umka bindings for GetMouseWheelMove().
  *
  * @see GetMouseWheelMove()
  */
@@ -1765,7 +1765,7 @@ void umkaGetMouseWheelMove(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMouseWheelMoveV.
+ * Umka bindings for GetMouseWheelMoveV().
  *
  * @see GetMouseWheelMoveV()
  */
@@ -1776,7 +1776,7 @@ void umkaGetMouseWheelMoveV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMouseCursor.
+ * Umka bindings for SetMouseCursor().
  *
  * @see SetMouseCursor()
  */
@@ -1786,7 +1786,7 @@ void umkaSetMouseCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchX.
+ * Umka bindings for GetTouchX().
  *
  * @see GetTouchX()
  */
@@ -1795,7 +1795,7 @@ void umkaGetTouchX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchY.
+ * Umka bindings for GetTouchY().
  *
  * @see GetTouchY()
  */
@@ -1804,7 +1804,7 @@ void umkaGetTouchY(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchPosition.
+ * Umka bindings for GetTouchPosition().
  *
  * @see GetTouchPosition()
  */
@@ -1817,7 +1817,7 @@ void umkaGetTouchPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchPointId.
+ * Umka bindings for GetTouchPointId().
  *
  * @see GetTouchPointId()
  */
@@ -1827,7 +1827,7 @@ void umkaGetTouchPointId(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetTouchPointCount.
+ * Umka bindings for GetTouchPointCount().
  *
  * @see GetTouchPointCount()
  */
@@ -1836,7 +1836,7 @@ void umkaGetTouchPointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetGesturesEnabled.
+ * Umka bindings for SetGesturesEnabled().
  *
  * @see SetGesturesEnabled()
  */
@@ -1846,7 +1846,7 @@ void umkaSetGesturesEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsGestureDetected.
+ * Umka bindings for IsGestureDetected().
  *
  * @see IsGestureDetected()
  */
@@ -1856,7 +1856,7 @@ void umkaIsGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureDetected.
+ * Umka bindings for GetGestureDetected().
  *
  * @see GetGestureDetected()
  */
@@ -1865,7 +1865,7 @@ void umkaGetGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureHoldDuration.
+ * Umka bindings for GetGestureHoldDuration().
  *
  * @see GetGestureHoldDuration()
  */
@@ -1874,7 +1874,7 @@ void umkaGetGestureHoldDuration(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureDragVector.
+ * Umka bindings for GetGestureDragVector().
  *
  * @see GetGestureDragVector()
  */
@@ -1885,7 +1885,7 @@ void umkaGetGestureDragVector(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGestureDragAngle.
+ * Umka bindings for GetGestureDragAngle().
  *
  * @see GetGestureDragAngle()
  */
@@ -1894,7 +1894,7 @@ void umkaGetGestureDragAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGesturePinchVector.
+ * Umka bindings for GetGesturePinchVector().
  *
  * @see GetGesturePinchVector()
  */
@@ -1905,7 +1905,7 @@ void umkaGetGesturePinchVector(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGesturePinchAngle.
+ * Umka bindings for GetGesturePinchAngle().
  *
  * @see GetGesturePinchAngle()
  */
@@ -1914,7 +1914,7 @@ void umkaGetGesturePinchAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraMode.
+ * Umka bindings for SetCameraMode().
  *
  * @see SetCameraMode()
  */
@@ -1925,7 +1925,7 @@ void umkaSetCameraMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateCamera.
+ * Umka bindings for UpdateCamera().
  *
  * @see UpdateCamera()
  */
@@ -1935,7 +1935,7 @@ void umkaUpdateCamera(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraPanControl.
+ * Umka bindings for SetCameraPanControl().
  *
  * @see SetCameraPanControl()
  */
@@ -1945,7 +1945,7 @@ void umkaSetCameraPanControl(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraAltControl.
+ * Umka bindings for SetCameraAltControl().
  *
  * @see SetCameraAltControl()
  */
@@ -1955,7 +1955,7 @@ void umkaSetCameraAltControl(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetCameraSmoothZoomControl.
+ * Umka bindings for SetCameraSmoothZoomControl().
  *
  * @see SetCameraSmoothZoomControl()
  */
@@ -1965,7 +1965,7 @@ void umkaSetCameraSmoothZoomControl(UmkaStackSlot *params, UmkaStackSlot *result
 }
 
 /**
- * Umka bindings for SetCameraMoveControls.
+ * Umka bindings for SetCameraMoveControls().
  *
  * @see SetCameraMoveControls()
  */
@@ -1980,7 +1980,7 @@ void umkaSetCameraMoveControls(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetShapesTexture.
+ * Umka bindings for SetShapesTexture().
  *
  * @see SetShapesTexture()
  */
@@ -1991,7 +1991,7 @@ void umkaSetShapesTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPixel.
+ * Umka bindings for DrawPixel().
  *
  * @see DrawPixel()
  */
@@ -2003,7 +2003,7 @@ void umkaDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPixelV.
+ * Umka bindings for DrawPixelV().
  *
  * @see DrawPixelV()
  */
@@ -2014,7 +2014,7 @@ void umkaDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLine.
+ * Umka bindings for DrawLine().
  *
  * @see DrawLine()
  */
@@ -2028,7 +2028,7 @@ void umkaDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineV.
+ * Umka bindings for DrawLineV().
  *
  * @see DrawLineV()
  */
@@ -2040,7 +2040,7 @@ void umkaDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineEx.
+ * Umka bindings for DrawLineEx().
  *
  * @see DrawLineEx()
  */
@@ -2053,7 +2053,7 @@ void umkaDrawLineEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineBezier.
+ * Umka bindings for DrawLineBezier().
  *
  * @see DrawLineBezier()
  */
@@ -2066,7 +2066,7 @@ void umkaDrawLineBezier(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineBezierQuad.
+ * Umka bindings for DrawLineBezierQuad().
  *
  * @see DrawLineBezierQuad()
  */
@@ -2080,7 +2080,7 @@ void umkaDrawLineBezierQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineBezierCubic.
+ * Umka bindings for DrawLineBezierCubic().
  *
  * @see DrawLineBezierCubic()
  */
@@ -2095,7 +2095,7 @@ void umkaDrawLineBezierCubic(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLineStrip.
+ * Umka bindings for DrawLineStrip().
  *
  * @see DrawLineStrip()
  */
@@ -2107,7 +2107,7 @@ void umkaDrawLineStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircle.
+ * Umka bindings for DrawCircle().
  *
  * @see DrawCircle()
  */
@@ -2120,7 +2120,7 @@ void umkaDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleSector.
+ * Umka bindings for DrawCircleSector().
  *
  * @see DrawCircleSector()
  */
@@ -2135,7 +2135,7 @@ void umkaDrawCircleSector(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleSectorLines.
+ * Umka bindings for DrawCircleSectorLines().
  *
  * @see DrawCircleSectorLines()
  */
@@ -2150,7 +2150,7 @@ void umkaDrawCircleSectorLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleGradient.
+ * Umka bindings for DrawCircleGradient().
  *
  * @see DrawCircleGradient()
  */
@@ -2164,7 +2164,7 @@ void umkaDrawCircleGradient(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleV.
+ * Umka bindings for DrawCircleV().
  *
  * @see DrawCircleV()
  */
@@ -2176,7 +2176,7 @@ void umkaDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircleLines.
+ * Umka bindings for DrawCircleLines().
  *
  * @see DrawCircleLines()
  */
@@ -2189,7 +2189,7 @@ void umkaDrawCircleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawEllipse.
+ * Umka bindings for DrawEllipse().
  *
  * @see DrawEllipse()
  */
@@ -2203,7 +2203,7 @@ void umkaDrawEllipse(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawEllipseLines.
+ * Umka bindings for DrawEllipseLines().
  *
  * @see DrawEllipseLines()
  */
@@ -2217,7 +2217,7 @@ void umkaDrawEllipseLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRing.
+ * Umka bindings for DrawRing().
  *
  * @see DrawRing()
  */
@@ -2233,7 +2233,7 @@ void umkaDrawRing(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRingLines.
+ * Umka bindings for DrawRingLines().
  *
  * @see DrawRingLines()
  */
@@ -2249,7 +2249,7 @@ void umkaDrawRingLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangle.
+ * Umka bindings for DrawRectangle().
  *
  * @see DrawRectangle()
  */
@@ -2263,7 +2263,7 @@ void umkaDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleV.
+ * Umka bindings for DrawRectangleV().
  *
  * @see DrawRectangleV()
  */
@@ -2275,7 +2275,7 @@ void umkaDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleRec.
+ * Umka bindings for DrawRectangleRec().
  *
  * @see DrawRectangleRec()
  */
@@ -2286,7 +2286,7 @@ void umkaDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectanglePro.
+ * Umka bindings for DrawRectanglePro().
  *
  * @see DrawRectanglePro()
  */
@@ -2299,7 +2299,7 @@ void umkaDrawRectanglePro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleGradientV.
+ * Umka bindings for DrawRectangleGradientV().
  *
  * @see DrawRectangleGradientV()
  */
@@ -2314,7 +2314,7 @@ void umkaDrawRectangleGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleGradientH.
+ * Umka bindings for DrawRectangleGradientH().
  *
  * @see DrawRectangleGradientH()
  */
@@ -2329,7 +2329,7 @@ void umkaDrawRectangleGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleGradientEx.
+ * Umka bindings for DrawRectangleGradientEx().
  *
  * @see DrawRectangleGradientEx()
  */
@@ -2343,7 +2343,7 @@ void umkaDrawRectangleGradientEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleLines.
+ * Umka bindings for DrawRectangleLines().
  *
  * @see DrawRectangleLines()
  */
@@ -2357,7 +2357,7 @@ void umkaDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleLinesEx.
+ * Umka bindings for DrawRectangleLinesEx().
  *
  * @see DrawRectangleLinesEx()
  */
@@ -2369,7 +2369,7 @@ void umkaDrawRectangleLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleRounded.
+ * Umka bindings for DrawRectangleRounded().
  *
  * @see DrawRectangleRounded()
  */
@@ -2382,7 +2382,7 @@ void umkaDrawRectangleRounded(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRectangleRoundedLines.
+ * Umka bindings for DrawRectangleRoundedLines().
  *
  * @see DrawRectangleRoundedLines()
  */
@@ -2396,7 +2396,7 @@ void umkaDrawRectangleRoundedLines(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for DrawTriangle.
+ * Umka bindings for DrawTriangle().
  *
  * @see DrawTriangle()
  */
@@ -2409,7 +2409,7 @@ void umkaDrawTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleLines.
+ * Umka bindings for DrawTriangleLines().
  *
  * @see DrawTriangleLines()
  */
@@ -2422,7 +2422,7 @@ void umkaDrawTriangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleFan.
+ * Umka bindings for DrawTriangleFan().
  *
  * @see DrawTriangleFan()
  */
@@ -2434,7 +2434,7 @@ void umkaDrawTriangleFan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleStrip.
+ * Umka bindings for DrawTriangleStrip().
  *
  * @see DrawTriangleStrip()
  */
@@ -2446,7 +2446,7 @@ void umkaDrawTriangleStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPoly.
+ * Umka bindings for DrawPoly().
  *
  * @see DrawPoly()
  */
@@ -2460,7 +2460,7 @@ void umkaDrawPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPolyLines.
+ * Umka bindings for DrawPolyLines().
  *
  * @see DrawPolyLines()
  */
@@ -2474,7 +2474,7 @@ void umkaDrawPolyLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPolyLinesEx.
+ * Umka bindings for DrawPolyLinesEx().
  *
  * @see DrawPolyLinesEx()
  */
@@ -2489,7 +2489,7 @@ void umkaDrawPolyLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionRecs.
+ * Umka bindings for CheckCollisionRecs().
  *
  * @see CheckCollisionRecs()
  */
@@ -2500,7 +2500,7 @@ void umkaCheckCollisionRecs(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionCircles.
+ * Umka bindings for CheckCollisionCircles().
  *
  * @see CheckCollisionCircles()
  */
@@ -2513,7 +2513,7 @@ void umkaCheckCollisionCircles(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionCircleRec.
+ * Umka bindings for CheckCollisionCircleRec().
  *
  * @see CheckCollisionCircleRec()
  */
@@ -2525,7 +2525,7 @@ void umkaCheckCollisionCircleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionPointRec.
+ * Umka bindings for CheckCollisionPointRec().
  *
  * @see CheckCollisionPointRec()
  */
@@ -2536,7 +2536,7 @@ void umkaCheckCollisionPointRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionPointCircle.
+ * Umka bindings for CheckCollisionPointCircle().
  *
  * @see CheckCollisionPointCircle()
  */
@@ -2548,7 +2548,7 @@ void umkaCheckCollisionPointCircle(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for CheckCollisionPointTriangle.
+ * Umka bindings for CheckCollisionPointTriangle().
  *
  * @see CheckCollisionPointTriangle()
  */
@@ -2561,7 +2561,7 @@ void umkaCheckCollisionPointTriangle(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for CheckCollisionLines.
+ * Umka bindings for CheckCollisionLines().
  *
  * @see CheckCollisionLines()
  */
@@ -2575,7 +2575,7 @@ void umkaCheckCollisionLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionPointLine.
+ * Umka bindings for CheckCollisionPointLine().
  *
  * @see CheckCollisionPointLine()
  */
@@ -2588,7 +2588,7 @@ void umkaCheckCollisionPointLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCollisionRec.
+ * Umka bindings for GetCollisionRec().
  *
  * @see GetCollisionRec()
  */
@@ -2602,7 +2602,7 @@ void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImage.
+ * Umka bindings for LoadImage().
  *
  * @see LoadImage()
  */
@@ -2615,7 +2615,7 @@ void umkaLoadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageRaw.
+ * Umka bindings for LoadImageRaw().
  *
  * @see LoadImageRaw()
  */
@@ -2632,7 +2632,7 @@ void umkaLoadImageRaw(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageAnim.
+ * Umka bindings for LoadImageAnim().
  *
  * @see LoadImageAnim()
  */
@@ -2646,7 +2646,7 @@ void umkaLoadImageAnim(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageFromMemory.
+ * Umka bindings for LoadImageFromMemory().
  *
  * @see LoadImageFromMemory()
  */
@@ -2661,7 +2661,7 @@ void umkaLoadImageFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageFromTexture.
+ * Umka bindings for LoadImageFromTexture().
  *
  * @see LoadImageFromTexture()
  */
@@ -2674,7 +2674,7 @@ void umkaLoadImageFromTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageFromScreen.
+ * Umka bindings for LoadImageFromScreen().
  *
  * @see LoadImageFromScreen()
  */
@@ -2685,7 +2685,7 @@ void umkaLoadImageFromScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadImage.
+ * Umka bindings for UnloadImage().
  *
  * @see UnloadImage()
  */
@@ -2695,7 +2695,7 @@ void umkaUnloadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportImage.
+ * Umka bindings for ExportImage().
  *
  * @see ExportImage()
  */
@@ -2706,7 +2706,7 @@ void umkaExportImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportImageAsCode.
+ * Umka bindings for ExportImageAsCode().
  *
  * @see ExportImageAsCode()
  */
@@ -2717,7 +2717,7 @@ void umkaExportImageAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageColor.
+ * Umka bindings for GenImageColor().
  *
  * @see GenImageColor()
  */
@@ -2732,7 +2732,7 @@ void umkaGenImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageGradientV.
+ * Umka bindings for GenImageGradientV().
  *
  * @see GenImageGradientV()
  */
@@ -2748,7 +2748,7 @@ void umkaGenImageGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageGradientH.
+ * Umka bindings for GenImageGradientH().
  *
  * @see GenImageGradientH()
  */
@@ -2764,7 +2764,7 @@ void umkaGenImageGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageGradientRadial.
+ * Umka bindings for GenImageGradientRadial().
  *
  * @see GenImageGradientRadial()
  */
@@ -2781,7 +2781,7 @@ void umkaGenImageGradientRadial(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageChecked.
+ * Umka bindings for GenImageChecked().
  *
  * @see GenImageChecked()
  */
@@ -2799,7 +2799,7 @@ void umkaGenImageChecked(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageWhiteNoise.
+ * Umka bindings for GenImageWhiteNoise().
  *
  * @see GenImageWhiteNoise()
  */
@@ -2814,7 +2814,7 @@ void umkaGenImageWhiteNoise(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenImageCellular.
+ * Umka bindings for GenImageCellular().
  *
  * @see GenImageCellular()
  */
@@ -2829,7 +2829,7 @@ void umkaGenImageCellular(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageCopy.
+ * Umka bindings for ImageCopy().
  *
  * @see ImageCopy()
  */
@@ -2842,7 +2842,7 @@ void umkaImageCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFromImage.
+ * Umka bindings for ImageFromImage().
  *
  * @see ImageFromImage()
  */
@@ -2856,7 +2856,7 @@ void umkaImageFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageText.
+ * Umka bindings for ImageText().
  *
  * @see ImageText()
  */
@@ -2871,7 +2871,7 @@ void umkaImageText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageTextEx.
+ * Umka bindings for ImageTextEx().
  *
  * @see ImageTextEx()
  */
@@ -2888,7 +2888,7 @@ void umkaImageTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFormat.
+ * Umka bindings for ImageFormat().
  *
  * @see ImageFormat()
  */
@@ -2899,7 +2899,7 @@ void umkaImageFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageToPOT.
+ * Umka bindings for ImageToPOT().
  *
  * @see ImageToPOT()
  */
@@ -2910,7 +2910,7 @@ void umkaImageToPOT(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageCrop.
+ * Umka bindings for ImageCrop().
  *
  * @see ImageCrop()
  */
@@ -2921,7 +2921,7 @@ void umkaImageCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaCrop.
+ * Umka bindings for ImageAlphaCrop().
  *
  * @see ImageAlphaCrop()
  */
@@ -2932,7 +2932,7 @@ void umkaImageAlphaCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaClear.
+ * Umka bindings for ImageAlphaClear().
  *
  * @see ImageAlphaClear()
  */
@@ -2944,7 +2944,7 @@ void umkaImageAlphaClear(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaMask.
+ * Umka bindings for ImageAlphaMask().
  *
  * @see ImageAlphaMask()
  */
@@ -2955,7 +2955,7 @@ void umkaImageAlphaMask(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageAlphaPremultiply.
+ * Umka bindings for ImageAlphaPremultiply().
  *
  * @see ImageAlphaPremultiply()
  */
@@ -2965,7 +2965,7 @@ void umkaImageAlphaPremultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageResize.
+ * Umka bindings for ImageResize().
  *
  * @see ImageResize()
  */
@@ -2977,7 +2977,7 @@ void umkaImageResize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageResizeNN.
+ * Umka bindings for ImageResizeNN().
  *
  * @see ImageResizeNN()
  */
@@ -2989,7 +2989,7 @@ void umkaImageResizeNN(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageResizeCanvas.
+ * Umka bindings for ImageResizeCanvas().
  *
  * @see ImageResizeCanvas()
  */
@@ -3004,7 +3004,7 @@ void umkaImageResizeCanvas(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageMipmaps.
+ * Umka bindings for ImageMipmaps().
  *
  * @see ImageMipmaps()
  */
@@ -3014,7 +3014,7 @@ void umkaImageMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDither.
+ * Umka bindings for ImageDither().
  *
  * @see ImageDither()
  */
@@ -3028,7 +3028,7 @@ void umkaImageDither(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFlipVertical.
+ * Umka bindings for ImageFlipVertical().
  *
  * @see ImageFlipVertical()
  */
@@ -3038,7 +3038,7 @@ void umkaImageFlipVertical(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageFlipHorizontal.
+ * Umka bindings for ImageFlipHorizontal().
  *
  * @see ImageFlipHorizontal()
  */
@@ -3048,7 +3048,7 @@ void umkaImageFlipHorizontal(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageRotateCW.
+ * Umka bindings for ImageRotateCW().
  *
  * @see ImageRotateCW()
  */
@@ -3058,7 +3058,7 @@ void umkaImageRotateCW(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageRotateCCW.
+ * Umka bindings for ImageRotateCCW().
  *
  * @see ImageRotateCCW()
  */
@@ -3068,7 +3068,7 @@ void umkaImageRotateCCW(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorTint.
+ * Umka bindings for ImageColorTint().
  *
  * @see ImageColorTint()
  */
@@ -3079,7 +3079,7 @@ void umkaImageColorTint(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorInvert.
+ * Umka bindings for ImageColorInvert().
  *
  * @see ImageColorInvert()
  */
@@ -3089,7 +3089,7 @@ void umkaImageColorInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorGrayscale.
+ * Umka bindings for ImageColorGrayscale().
  *
  * @see ImageColorGrayscale()
  */
@@ -3099,7 +3099,7 @@ void umkaImageColorGrayscale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorContrast.
+ * Umka bindings for ImageColorContrast().
  *
  * @see ImageColorContrast()
  */
@@ -3110,7 +3110,7 @@ void umkaImageColorContrast(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorBrightness.
+ * Umka bindings for ImageColorBrightness().
  *
  * @see ImageColorBrightness()
  */
@@ -3121,7 +3121,7 @@ void umkaImageColorBrightness(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageColorReplace.
+ * Umka bindings for ImageColorReplace().
  *
  * @see ImageColorReplace()
  */
@@ -3133,7 +3133,7 @@ void umkaImageColorReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImageColors.
+ * Umka bindings for LoadImageColors().
  *
  * @see LoadImageColors()
  */
@@ -3143,7 +3143,7 @@ void umkaLoadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadImagePalette.
+ * Umka bindings for LoadImagePalette().
  *
  * @see LoadImagePalette()
  */
@@ -3155,7 +3155,7 @@ void umkaLoadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadImageColors.
+ * Umka bindings for UnloadImageColors().
  *
  * @see UnloadImageColors()
  */
@@ -3165,7 +3165,7 @@ void umkaUnloadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadImagePalette.
+ * Umka bindings for UnloadImagePalette().
  *
  * @see UnloadImagePalette()
  */
@@ -3175,7 +3175,7 @@ void umkaUnloadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetImageAlphaBorder.
+ * Umka bindings for GetImageAlphaBorder().
  *
  * @see GetImageAlphaBorder()
  */
@@ -3189,7 +3189,7 @@ void umkaGetImageAlphaBorder(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetImageColor.
+ * Umka bindings for GetImageColor().
  *
  * @see GetImageColor()
  */
@@ -3204,7 +3204,7 @@ void umkaGetImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageClearBackground.
+ * Umka bindings for ImageClearBackground().
  *
  * @see ImageClearBackground()
  */
@@ -3215,7 +3215,7 @@ void umkaImageClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawPixel.
+ * Umka bindings for ImageDrawPixel().
  *
  * @see ImageDrawPixel()
  */
@@ -3228,7 +3228,7 @@ void umkaImageDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawPixelV.
+ * Umka bindings for ImageDrawPixelV().
  *
  * @see ImageDrawPixelV()
  */
@@ -3240,7 +3240,7 @@ void umkaImageDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawLine.
+ * Umka bindings for ImageDrawLine().
  *
  * @see ImageDrawLine()
  */
@@ -3255,7 +3255,7 @@ void umkaImageDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawLineV.
+ * Umka bindings for ImageDrawLineV().
  *
  * @see ImageDrawLineV()
  */
@@ -3268,7 +3268,7 @@ void umkaImageDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawCircle.
+ * Umka bindings for ImageDrawCircle().
  *
  * @see ImageDrawCircle()
  */
@@ -3282,7 +3282,7 @@ void umkaImageDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawCircleV.
+ * Umka bindings for ImageDrawCircleV().
  *
  * @see ImageDrawCircleV()
  */
@@ -3295,7 +3295,7 @@ void umkaImageDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangle.
+ * Umka bindings for ImageDrawRectangle().
  *
  * @see ImageDrawRectangle()
  */
@@ -3310,7 +3310,7 @@ void umkaImageDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangleV.
+ * Umka bindings for ImageDrawRectangleV().
  *
  * @see ImageDrawRectangleV()
  */
@@ -3323,7 +3323,7 @@ void umkaImageDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangleRec.
+ * Umka bindings for ImageDrawRectangleRec().
  *
  * @see ImageDrawRectangleRec()
  */
@@ -3335,7 +3335,7 @@ void umkaImageDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawRectangleLines.
+ * Umka bindings for ImageDrawRectangleLines().
  *
  * @see ImageDrawRectangleLines()
  */
@@ -3348,7 +3348,7 @@ void umkaImageDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDraw.
+ * Umka bindings for ImageDraw().
  *
  * @see ImageDraw()
  */
@@ -3362,7 +3362,7 @@ void umkaImageDraw(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawText.
+ * Umka bindings for ImageDrawText().
  *
  * @see ImageDrawText()
  */
@@ -3377,7 +3377,7 @@ void umkaImageDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ImageDrawTextEx.
+ * Umka bindings for ImageDrawTextEx().
  *
  * @see ImageDrawTextEx()
  */
@@ -3393,7 +3393,7 @@ void umkaImageDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadTexture.
+ * Umka bindings for LoadTexture().
  *
  * @see LoadTexture()
  */
@@ -3406,7 +3406,7 @@ void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadTextureFromImage.
+ * Umka bindings for LoadTextureFromImage().
  *
  * @see LoadTextureFromImage()
  */
@@ -3419,7 +3419,7 @@ void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadTextureCubemap.
+ * Umka bindings for LoadTextureCubemap().
  *
  * @see LoadTextureCubemap()
  */
@@ -3433,7 +3433,7 @@ void umkaLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadRenderTexture.
+ * Umka bindings for LoadRenderTexture().
  *
  * @see LoadRenderTexture()
  */
@@ -3447,7 +3447,7 @@ void umkaLoadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadTexture.
+ * Umka bindings for UnloadTexture().
  *
  * @see UnloadTexture()
  */
@@ -3457,7 +3457,7 @@ void umkaUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadRenderTexture.
+ * Umka bindings for UnloadRenderTexture().
  *
  * @see UnloadRenderTexture()
  */
@@ -3467,7 +3467,7 @@ void umkaUnloadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateTexture.
+ * Umka bindings for UpdateTexture().
  *
  * @see UpdateTexture()
  */
@@ -3478,7 +3478,7 @@ void umkaUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateTextureRec.
+ * Umka bindings for UpdateTextureRec().
  *
  * @see UpdateTextureRec()
  */
@@ -3490,7 +3490,7 @@ void umkaUpdateTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenTextureMipmaps.
+ * Umka bindings for GenTextureMipmaps().
  *
  * @see GenTextureMipmaps()
  */
@@ -3500,7 +3500,7 @@ void umkaGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetTextureFilter.
+ * Umka bindings for SetTextureFilter().
  *
  * @see SetTextureFilter()
  */
@@ -3511,7 +3511,7 @@ void umkaSetTextureFilter(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetTextureWrap.
+ * Umka bindings for SetTextureWrap().
  *
  * @see SetTextureWrap()
  */
@@ -3522,7 +3522,7 @@ void umkaSetTextureWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTexture.
+ * Umka bindings for DrawTexture().
  *
  * @see DrawTexture()
  */
@@ -3535,7 +3535,7 @@ void umkaDrawTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureV.
+ * Umka bindings for DrawTextureV().
  *
  * @see DrawTextureV()
  */
@@ -3547,7 +3547,7 @@ void umkaDrawTextureV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureEx.
+ * Umka bindings for DrawTextureEx().
  *
  * @see DrawTextureEx()
  */
@@ -3561,7 +3561,7 @@ void umkaDrawTextureEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureRec.
+ * Umka bindings for DrawTextureRec().
  *
  * @see DrawTextureRec()
  */
@@ -3574,7 +3574,7 @@ void umkaDrawTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureQuad.
+ * Umka bindings for DrawTextureQuad().
  *
  * @see DrawTextureQuad()
  */
@@ -3588,7 +3588,7 @@ void umkaDrawTextureQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureTiled.
+ * Umka bindings for DrawTextureTiled().
  *
  * @see DrawTextureTiled()
  */
@@ -3604,7 +3604,7 @@ void umkaDrawTextureTiled(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTexturePro.
+ * Umka bindings for DrawTexturePro().
  *
  * @see DrawTexturePro()
  */
@@ -3619,7 +3619,7 @@ void umkaDrawTexturePro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextureNPatch.
+ * Umka bindings for DrawTextureNPatch().
  *
  * @see DrawTextureNPatch()
  */
@@ -3634,7 +3634,7 @@ void umkaDrawTextureNPatch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTexturePoly.
+ * Umka bindings for DrawTexturePoly().
  *
  * @see DrawTexturePoly()
  */
@@ -3649,7 +3649,7 @@ void umkaDrawTexturePoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Fade.
+ * Umka bindings for Fade().
  *
  * @see Fade()
  */
@@ -3663,7 +3663,7 @@ void umkaFade(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorToInt.
+ * Umka bindings for ColorToInt().
  *
  * @see ColorToInt()
  */
@@ -3673,7 +3673,7 @@ void umkaColorToInt(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorNormalize.
+ * Umka bindings for ColorNormalize().
  *
  * @see ColorNormalize()
  */
@@ -3686,7 +3686,7 @@ void umkaColorNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorFromNormalized.
+ * Umka bindings for ColorFromNormalized().
  *
  * @see ColorFromNormalized()
  */
@@ -3699,7 +3699,7 @@ void umkaColorFromNormalized(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorToHSV.
+ * Umka bindings for ColorToHSV().
  *
  * @see ColorToHSV()
  */
@@ -3712,7 +3712,7 @@ void umkaColorToHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorFromHSV.
+ * Umka bindings for ColorFromHSV().
  *
  * @see ColorFromHSV()
  */
@@ -3727,7 +3727,7 @@ void umkaColorFromHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorAlpha.
+ * Umka bindings for ColorAlpha().
  *
  * @see ColorAlpha()
  */
@@ -3741,7 +3741,7 @@ void umkaColorAlpha(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ColorAlphaBlend.
+ * Umka bindings for ColorAlphaBlend().
  *
  * @see ColorAlphaBlend()
  */
@@ -3756,7 +3756,7 @@ void umkaColorAlphaBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetColor.
+ * Umka bindings for GetColor().
  *
  * @see GetColor()
  */
@@ -3769,7 +3769,7 @@ void umkaGetColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetPixelColor.
+ * Umka bindings for GetPixelColor().
  *
  * @see GetPixelColor()
  */
@@ -3783,7 +3783,7 @@ void umkaGetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetPixelColor.
+ * Umka bindings for SetPixelColor().
  *
  * @see SetPixelColor()
  */
@@ -3795,7 +3795,7 @@ void umkaSetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetPixelDataSize.
+ * Umka bindings for GetPixelDataSize().
  *
  * @see GetPixelDataSize()
  */
@@ -3807,7 +3807,7 @@ void umkaGetPixelDataSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetFontDefault.
+ * Umka bindings for GetFontDefault().
  *
  * @see GetFontDefault()
  */
@@ -3818,7 +3818,7 @@ void umkaGetFontDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFont.
+ * Umka bindings for LoadFont().
  *
  * @see LoadFont()
  */
@@ -3831,7 +3831,7 @@ void umkaLoadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFontEx.
+ * Umka bindings for LoadFontEx().
  *
  * @see LoadFontEx()
  */
@@ -3847,7 +3847,7 @@ void umkaLoadFontEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFontFromImage.
+ * Umka bindings for LoadFontFromImage().
  *
  * @see LoadFontFromImage()
  */
@@ -3862,7 +3862,7 @@ void umkaLoadFontFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadFontFromMemory.
+ * Umka bindings for LoadFontFromMemory().
  *
  * @see LoadFontFromMemory()
  */
@@ -3882,7 +3882,7 @@ void umkaLoadFontFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function LoadFontData() skipped
 
 /**
- * Umka bindings for GenImageFontAtlas.
+ * Umka bindings for GenImageFontAtlas().
  *
  * @see GenImageFontAtlas()
  */
@@ -3900,7 +3900,7 @@ void umkaGenImageFontAtlas(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFontData.
+ * Umka bindings for UnloadFontData().
  *
  * @see UnloadFontData()
  */
@@ -3911,7 +3911,7 @@ void umkaUnloadFontData(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadFont.
+ * Umka bindings for UnloadFont().
  *
  * @see UnloadFont()
  */
@@ -3921,7 +3921,7 @@ void umkaUnloadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportFontAsCode.
+ * Umka bindings for ExportFontAsCode().
  *
  * @see ExportFontAsCode()
  */
@@ -3932,7 +3932,7 @@ void umkaExportFontAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawFPS.
+ * Umka bindings for DrawFPS().
  *
  * @see DrawFPS()
  */
@@ -3943,7 +3943,7 @@ void umkaDrawFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawText.
+ * Umka bindings for DrawText().
  *
  * @see DrawText()
  */
@@ -3957,7 +3957,7 @@ void umkaDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextEx.
+ * Umka bindings for DrawTextEx().
  *
  * @see DrawTextEx()
  */
@@ -3972,7 +3972,7 @@ void umkaDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextPro.
+ * Umka bindings for DrawTextPro().
  *
  * @see DrawTextPro()
  */
@@ -3989,7 +3989,7 @@ void umkaDrawTextPro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextCodepoint.
+ * Umka bindings for DrawTextCodepoint().
  *
  * @see DrawTextCodepoint()
  */
@@ -4003,7 +4003,7 @@ void umkaDrawTextCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTextCodepoints.
+ * Umka bindings for DrawTextCodepoints().
  *
  * @see DrawTextCodepoints()
  */
@@ -4019,7 +4019,7 @@ void umkaDrawTextCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MeasureText.
+ * Umka bindings for MeasureText().
  *
  * @see MeasureText()
  */
@@ -4030,7 +4030,7 @@ void umkaMeasureText(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MeasureTextEx.
+ * Umka bindings for MeasureTextEx().
  *
  * @see MeasureTextEx()
  */
@@ -4046,7 +4046,7 @@ void umkaMeasureTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGlyphIndex.
+ * Umka bindings for GetGlyphIndex().
  *
  * @see GetGlyphIndex()
  */
@@ -4057,7 +4057,7 @@ void umkaGetGlyphIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGlyphInfo.
+ * Umka bindings for GetGlyphInfo().
  *
  * @see GetGlyphInfo()
  */
@@ -4071,7 +4071,7 @@ void umkaGetGlyphInfo(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetGlyphAtlasRec.
+ * Umka bindings for GetGlyphAtlasRec().
  *
  * @see GetGlyphAtlasRec()
  */
@@ -4085,7 +4085,7 @@ void umkaGetGlyphAtlasRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadCodepoints.
+ * Umka bindings for LoadCodepoints().
  *
  * @see LoadCodepoints()
  */
@@ -4096,7 +4096,7 @@ void umkaLoadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadCodepoints.
+ * Umka bindings for UnloadCodepoints().
  *
  * @see UnloadCodepoints()
  */
@@ -4106,7 +4106,7 @@ void umkaUnloadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCodepointCount.
+ * Umka bindings for GetCodepointCount().
  *
  * @see GetCodepointCount()
  */
@@ -4116,7 +4116,7 @@ void umkaGetCodepointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetCodepoint.
+ * Umka bindings for GetCodepoint().
  *
  * @see GetCodepoint()
  */
@@ -4127,7 +4127,7 @@ void umkaGetCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CodepointToUTF8.
+ * Umka bindings for CodepointToUTF8().
  *
  * @see CodepointToUTF8()
  */
@@ -4138,7 +4138,7 @@ void umkaCodepointToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextCodepointsToUTF8.
+ * Umka bindings for TextCodepointsToUTF8().
  *
  * @see TextCodepointsToUTF8()
  */
@@ -4149,7 +4149,7 @@ void umkaTextCodepointsToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextCopy.
+ * Umka bindings for TextCopy().
  *
  * @see TextCopy()
  */
@@ -4160,7 +4160,7 @@ void umkaTextCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextIsEqual.
+ * Umka bindings for TextIsEqual().
  *
  * @see TextIsEqual()
  */
@@ -4171,7 +4171,7 @@ void umkaTextIsEqual(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextLength.
+ * Umka bindings for TextLength().
  *
  * @see TextLength()
  */
@@ -4183,7 +4183,7 @@ void umkaTextLength(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function TextFormat() skipped
 
 /**
- * Umka bindings for TextSubtext.
+ * Umka bindings for TextSubtext().
  *
  * @see TextSubtext()
  */
@@ -4195,7 +4195,7 @@ void umkaTextSubtext(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextReplace.
+ * Umka bindings for TextReplace().
  *
  * @see TextReplace()
  */
@@ -4207,7 +4207,7 @@ void umkaTextReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextInsert.
+ * Umka bindings for TextInsert().
  *
  * @see TextInsert()
  */
@@ -4219,7 +4219,7 @@ void umkaTextInsert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextJoin.
+ * Umka bindings for TextJoin().
  *
  * @see TextJoin()
  */
@@ -4231,7 +4231,7 @@ void umkaTextJoin(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextSplit.
+ * Umka bindings for TextSplit().
  *
  * @see TextSplit()
  */
@@ -4243,7 +4243,7 @@ void umkaTextSplit(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextAppend.
+ * Umka bindings for TextAppend().
  *
  * @see TextAppend()
  */
@@ -4255,7 +4255,7 @@ void umkaTextAppend(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextFindIndex.
+ * Umka bindings for TextFindIndex().
  *
  * @see TextFindIndex()
  */
@@ -4266,7 +4266,7 @@ void umkaTextFindIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToUpper.
+ * Umka bindings for TextToUpper().
  *
  * @see TextToUpper()
  */
@@ -4276,7 +4276,7 @@ void umkaTextToUpper(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToLower.
+ * Umka bindings for TextToLower().
  *
  * @see TextToLower()
  */
@@ -4286,7 +4286,7 @@ void umkaTextToLower(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToPascal.
+ * Umka bindings for TextToPascal().
  *
  * @see TextToPascal()
  */
@@ -4296,7 +4296,7 @@ void umkaTextToPascal(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for TextToInteger.
+ * Umka bindings for TextToInteger().
  *
  * @see TextToInteger()
  */
@@ -4306,7 +4306,7 @@ void umkaTextToInteger(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawLine3D.
+ * Umka bindings for DrawLine3D().
  *
  * @see DrawLine3D()
  */
@@ -4318,7 +4318,7 @@ void umkaDrawLine3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPoint3D.
+ * Umka bindings for DrawPoint3D().
  *
  * @see DrawPoint3D()
  */
@@ -4329,7 +4329,7 @@ void umkaDrawPoint3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCircle3D.
+ * Umka bindings for DrawCircle3D().
  *
  * @see DrawCircle3D()
  */
@@ -4343,7 +4343,7 @@ void umkaDrawCircle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangle3D.
+ * Umka bindings for DrawTriangle3D().
  *
  * @see DrawTriangle3D()
  */
@@ -4356,7 +4356,7 @@ void umkaDrawTriangle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawTriangleStrip3D.
+ * Umka bindings for DrawTriangleStrip3D().
  *
  * @see DrawTriangleStrip3D()
  */
@@ -4368,7 +4368,7 @@ void umkaDrawTriangleStrip3D(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCube.
+ * Umka bindings for DrawCube().
  *
  * @see DrawCube()
  */
@@ -4382,7 +4382,7 @@ void umkaDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeV.
+ * Umka bindings for DrawCubeV().
  *
  * @see DrawCubeV()
  */
@@ -4394,7 +4394,7 @@ void umkaDrawCubeV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeWires.
+ * Umka bindings for DrawCubeWires().
  *
  * @see DrawCubeWires()
  */
@@ -4408,7 +4408,7 @@ void umkaDrawCubeWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeWiresV.
+ * Umka bindings for DrawCubeWiresV().
  *
  * @see DrawCubeWiresV()
  */
@@ -4420,7 +4420,7 @@ void umkaDrawCubeWiresV(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeTexture.
+ * Umka bindings for DrawCubeTexture().
  *
  * @see DrawCubeTexture()
  */
@@ -4435,7 +4435,7 @@ void umkaDrawCubeTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCubeTextureRec.
+ * Umka bindings for DrawCubeTextureRec().
  *
  * @see DrawCubeTextureRec()
  */
@@ -4451,7 +4451,7 @@ void umkaDrawCubeTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawSphere.
+ * Umka bindings for DrawSphere().
  *
  * @see DrawSphere()
  */
@@ -4463,7 +4463,7 @@ void umkaDrawSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawSphereEx.
+ * Umka bindings for DrawSphereEx().
  *
  * @see DrawSphereEx()
  */
@@ -4477,7 +4477,7 @@ void umkaDrawSphereEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawSphereWires.
+ * Umka bindings for DrawSphereWires().
  *
  * @see DrawSphereWires()
  */
@@ -4491,7 +4491,7 @@ void umkaDrawSphereWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinder.
+ * Umka bindings for DrawCylinder().
  *
  * @see DrawCylinder()
  */
@@ -4506,7 +4506,7 @@ void umkaDrawCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinderEx.
+ * Umka bindings for DrawCylinderEx().
  *
  * @see DrawCylinderEx()
  */
@@ -4521,7 +4521,7 @@ void umkaDrawCylinderEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinderWires.
+ * Umka bindings for DrawCylinderWires().
  *
  * @see DrawCylinderWires()
  */
@@ -4536,7 +4536,7 @@ void umkaDrawCylinderWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawCylinderWiresEx.
+ * Umka bindings for DrawCylinderWiresEx().
  *
  * @see DrawCylinderWiresEx()
  */
@@ -4551,7 +4551,7 @@ void umkaDrawCylinderWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawPlane.
+ * Umka bindings for DrawPlane().
  *
  * @see DrawPlane()
  */
@@ -4563,7 +4563,7 @@ void umkaDrawPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawRay.
+ * Umka bindings for DrawRay().
  *
  * @see DrawRay()
  */
@@ -4574,7 +4574,7 @@ void umkaDrawRay(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawGrid.
+ * Umka bindings for DrawGrid().
  *
  * @see DrawGrid()
  */
@@ -4585,7 +4585,7 @@ void umkaDrawGrid(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadModel.
+ * Umka bindings for LoadModel().
  *
  * @see LoadModel()
  */
@@ -4598,7 +4598,7 @@ void umkaLoadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadModelFromMesh.
+ * Umka bindings for LoadModelFromMesh().
  *
  * @see LoadModelFromMesh()
  */
@@ -4611,7 +4611,7 @@ void umkaLoadModelFromMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModel.
+ * Umka bindings for UnloadModel().
  *
  * @see UnloadModel()
  */
@@ -4621,7 +4621,7 @@ void umkaUnloadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModelKeepMeshes.
+ * Umka bindings for UnloadModelKeepMeshes().
  *
  * @see UnloadModelKeepMeshes()
  */
@@ -4631,7 +4631,7 @@ void umkaUnloadModelKeepMeshes(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetModelBoundingBox.
+ * Umka bindings for GetModelBoundingBox().
  *
  * @see GetModelBoundingBox()
  */
@@ -4644,7 +4644,7 @@ void umkaGetModelBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModel.
+ * Umka bindings for DrawModel().
  *
  * @see DrawModel()
  */
@@ -4657,7 +4657,7 @@ void umkaDrawModel(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModelEx.
+ * Umka bindings for DrawModelEx().
  *
  * @see DrawModelEx()
  */
@@ -4672,7 +4672,7 @@ void umkaDrawModelEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModelWires.
+ * Umka bindings for DrawModelWires().
  *
  * @see DrawModelWires()
  */
@@ -4685,7 +4685,7 @@ void umkaDrawModelWires(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawModelWiresEx.
+ * Umka bindings for DrawModelWiresEx().
  *
  * @see DrawModelWiresEx()
  */
@@ -4700,7 +4700,7 @@ void umkaDrawModelWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBoundingBox.
+ * Umka bindings for DrawBoundingBox().
  *
  * @see DrawBoundingBox()
  */
@@ -4711,7 +4711,7 @@ void umkaDrawBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBillboard.
+ * Umka bindings for DrawBillboard().
  *
  * @see DrawBillboard()
  */
@@ -4725,7 +4725,7 @@ void umkaDrawBillboard(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBillboardRec.
+ * Umka bindings for DrawBillboardRec().
  *
  * @see DrawBillboardRec()
  */
@@ -4740,7 +4740,7 @@ void umkaDrawBillboardRec(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawBillboardPro.
+ * Umka bindings for DrawBillboardPro().
  *
  * @see DrawBillboardPro()
  */
@@ -4758,7 +4758,7 @@ void umkaDrawBillboardPro(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UploadMesh.
+ * Umka bindings for UploadMesh().
  *
  * @see UploadMesh()
  */
@@ -4769,7 +4769,7 @@ void umkaUploadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateMeshBuffer.
+ * Umka bindings for UpdateMeshBuffer().
  *
  * @see UpdateMeshBuffer()
  */
@@ -4783,7 +4783,7 @@ void umkaUpdateMeshBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadMesh.
+ * Umka bindings for UnloadMesh().
  *
  * @see UnloadMesh()
  */
@@ -4793,7 +4793,7 @@ void umkaUnloadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawMesh.
+ * Umka bindings for DrawMesh().
  *
  * @see DrawMesh()
  */
@@ -4805,7 +4805,7 @@ void umkaDrawMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for DrawMeshInstanced.
+ * Umka bindings for DrawMeshInstanced().
  *
  * @see DrawMeshInstanced()
  */
@@ -4818,7 +4818,7 @@ void umkaDrawMeshInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportMesh.
+ * Umka bindings for ExportMesh().
  *
  * @see ExportMesh()
  */
@@ -4829,7 +4829,7 @@ void umkaExportMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMeshBoundingBox.
+ * Umka bindings for GetMeshBoundingBox().
  *
  * @see GetMeshBoundingBox()
  */
@@ -4842,7 +4842,7 @@ void umkaGetMeshBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshTangents.
+ * Umka bindings for GenMeshTangents().
  *
  * @see GenMeshTangents()
  */
@@ -4852,7 +4852,7 @@ void umkaGenMeshTangents(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshPoly.
+ * Umka bindings for GenMeshPoly().
  *
  * @see GenMeshPoly()
  */
@@ -4866,7 +4866,7 @@ void umkaGenMeshPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshPlane.
+ * Umka bindings for GenMeshPlane().
  *
  * @see GenMeshPlane()
  */
@@ -4882,7 +4882,7 @@ void umkaGenMeshPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCube.
+ * Umka bindings for GenMeshCube().
  *
  * @see GenMeshCube()
  */
@@ -4897,7 +4897,7 @@ void umkaGenMeshCube(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshSphere.
+ * Umka bindings for GenMeshSphere().
  *
  * @see GenMeshSphere()
  */
@@ -4912,7 +4912,7 @@ void umkaGenMeshSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshHemiSphere.
+ * Umka bindings for GenMeshHemiSphere().
  *
  * @see GenMeshHemiSphere()
  */
@@ -4927,7 +4927,7 @@ void umkaGenMeshHemiSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCylinder.
+ * Umka bindings for GenMeshCylinder().
  *
  * @see GenMeshCylinder()
  */
@@ -4942,7 +4942,7 @@ void umkaGenMeshCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCone.
+ * Umka bindings for GenMeshCone().
  *
  * @see GenMeshCone()
  */
@@ -4957,7 +4957,7 @@ void umkaGenMeshCone(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshTorus.
+ * Umka bindings for GenMeshTorus().
  *
  * @see GenMeshTorus()
  */
@@ -4973,7 +4973,7 @@ void umkaGenMeshTorus(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshKnot.
+ * Umka bindings for GenMeshKnot().
  *
  * @see GenMeshKnot()
  */
@@ -4989,7 +4989,7 @@ void umkaGenMeshKnot(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshHeightmap.
+ * Umka bindings for GenMeshHeightmap().
  *
  * @see GenMeshHeightmap()
  */
@@ -5003,7 +5003,7 @@ void umkaGenMeshHeightmap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GenMeshCubicmap.
+ * Umka bindings for GenMeshCubicmap().
  *
  * @see GenMeshCubicmap()
  */
@@ -5017,7 +5017,7 @@ void umkaGenMeshCubicmap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMaterials.
+ * Umka bindings for LoadMaterials().
  *
  * @see LoadMaterials()
  */
@@ -5028,7 +5028,7 @@ void umkaLoadMaterials(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMaterialDefault.
+ * Umka bindings for LoadMaterialDefault().
  *
  * @see LoadMaterialDefault()
  */
@@ -5039,7 +5039,7 @@ void umkaLoadMaterialDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadMaterial.
+ * Umka bindings for UnloadMaterial().
  *
  * @see UnloadMaterial()
  */
@@ -5049,7 +5049,7 @@ void umkaUnloadMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMaterialTexture.
+ * Umka bindings for SetMaterialTexture().
  *
  * @see SetMaterialTexture()
  */
@@ -5061,7 +5061,7 @@ void umkaSetMaterialTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetModelMeshMaterial.
+ * Umka bindings for SetModelMeshMaterial().
  *
  * @see SetModelMeshMaterial()
  */
@@ -5073,7 +5073,7 @@ void umkaSetModelMeshMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadModelAnimations.
+ * Umka bindings for LoadModelAnimations().
  *
  * @see LoadModelAnimations()
  */
@@ -5084,7 +5084,7 @@ void umkaLoadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateModelAnimation.
+ * Umka bindings for UpdateModelAnimation().
  *
  * @see UpdateModelAnimation()
  */
@@ -5096,7 +5096,7 @@ void umkaUpdateModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModelAnimation.
+ * Umka bindings for UnloadModelAnimation().
  *
  * @see UnloadModelAnimation()
  */
@@ -5106,7 +5106,7 @@ void umkaUnloadModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadModelAnimations.
+ * Umka bindings for UnloadModelAnimations().
  *
  * @see UnloadModelAnimations()
  */
@@ -5117,7 +5117,7 @@ void umkaUnloadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsModelAnimationValid.
+ * Umka bindings for IsModelAnimationValid().
  *
  * @see IsModelAnimationValid()
  */
@@ -5128,7 +5128,7 @@ void umkaIsModelAnimationValid(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionSpheres.
+ * Umka bindings for CheckCollisionSpheres().
  *
  * @see CheckCollisionSpheres()
  */
@@ -5141,7 +5141,7 @@ void umkaCheckCollisionSpheres(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionBoxes.
+ * Umka bindings for CheckCollisionBoxes().
  *
  * @see CheckCollisionBoxes()
  */
@@ -5152,7 +5152,7 @@ void umkaCheckCollisionBoxes(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CheckCollisionBoxSphere.
+ * Umka bindings for CheckCollisionBoxSphere().
  *
  * @see CheckCollisionBoxSphere()
  */
@@ -5164,7 +5164,7 @@ void umkaCheckCollisionBoxSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionSphere.
+ * Umka bindings for GetRayCollisionSphere().
  *
  * @see GetRayCollisionSphere()
  */
@@ -5179,7 +5179,7 @@ void umkaGetRayCollisionSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionBox.
+ * Umka bindings for GetRayCollisionBox().
  *
  * @see GetRayCollisionBox()
  */
@@ -5193,7 +5193,7 @@ void umkaGetRayCollisionBox(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionMesh.
+ * Umka bindings for GetRayCollisionMesh().
  *
  * @see GetRayCollisionMesh()
  */
@@ -5208,7 +5208,7 @@ void umkaGetRayCollisionMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionTriangle.
+ * Umka bindings for GetRayCollisionTriangle().
  *
  * @see GetRayCollisionTriangle()
  */
@@ -5224,7 +5224,7 @@ void umkaGetRayCollisionTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetRayCollisionQuad.
+ * Umka bindings for GetRayCollisionQuad().
  *
  * @see GetRayCollisionQuad()
  */
@@ -5241,7 +5241,7 @@ void umkaGetRayCollisionQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for InitAudioDevice.
+ * Umka bindings for InitAudioDevice().
  *
  * @see InitAudioDevice()
  */
@@ -5250,7 +5250,7 @@ void umkaInitAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for CloseAudioDevice.
+ * Umka bindings for CloseAudioDevice().
  *
  * @see CloseAudioDevice()
  */
@@ -5259,7 +5259,7 @@ void umkaCloseAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsAudioDeviceReady.
+ * Umka bindings for IsAudioDeviceReady().
  *
  * @see IsAudioDeviceReady()
  */
@@ -5268,7 +5268,7 @@ void umkaIsAudioDeviceReady(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMasterVolume.
+ * Umka bindings for SetMasterVolume().
  *
  * @see SetMasterVolume()
  */
@@ -5278,7 +5278,7 @@ void umkaSetMasterVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadWave.
+ * Umka bindings for LoadWave().
  *
  * @see LoadWave()
  */
@@ -5291,7 +5291,7 @@ void umkaLoadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadWaveFromMemory.
+ * Umka bindings for LoadWaveFromMemory().
  *
  * @see LoadWaveFromMemory()
  */
@@ -5306,7 +5306,7 @@ void umkaLoadWaveFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadSound.
+ * Umka bindings for LoadSound().
  *
  * @see LoadSound()
  */
@@ -5319,7 +5319,7 @@ void umkaLoadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadSoundFromWave.
+ * Umka bindings for LoadSoundFromWave().
  *
  * @see LoadSoundFromWave()
  */
@@ -5332,7 +5332,7 @@ void umkaLoadSoundFromWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateSound.
+ * Umka bindings for UpdateSound().
  *
  * @see UpdateSound()
  */
@@ -5344,7 +5344,7 @@ void umkaUpdateSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadWave.
+ * Umka bindings for UnloadWave().
  *
  * @see UnloadWave()
  */
@@ -5354,7 +5354,7 @@ void umkaUnloadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadSound.
+ * Umka bindings for UnloadSound().
  *
  * @see UnloadSound()
  */
@@ -5364,7 +5364,7 @@ void umkaUnloadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportWave.
+ * Umka bindings for ExportWave().
  *
  * @see ExportWave()
  */
@@ -5375,7 +5375,7 @@ void umkaExportWave(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ExportWaveAsCode.
+ * Umka bindings for ExportWaveAsCode().
  *
  * @see ExportWaveAsCode()
  */
@@ -5386,7 +5386,7 @@ void umkaExportWaveAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlaySound.
+ * Umka bindings for PlaySound().
  *
  * @see PlaySound()
  */
@@ -5396,7 +5396,7 @@ void umkaPlaySound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopSound.
+ * Umka bindings for StopSound().
  *
  * @see StopSound()
  */
@@ -5406,7 +5406,7 @@ void umkaStopSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PauseSound.
+ * Umka bindings for PauseSound().
  *
  * @see PauseSound()
  */
@@ -5416,7 +5416,7 @@ void umkaPauseSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ResumeSound.
+ * Umka bindings for ResumeSound().
  *
  * @see ResumeSound()
  */
@@ -5426,7 +5426,7 @@ void umkaResumeSound(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlaySoundMulti.
+ * Umka bindings for PlaySoundMulti().
  *
  * @see PlaySoundMulti()
  */
@@ -5436,7 +5436,7 @@ void umkaPlaySoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopSoundMulti.
+ * Umka bindings for StopSoundMulti().
  *
  * @see StopSoundMulti()
  */
@@ -5445,7 +5445,7 @@ void umkaStopSoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetSoundsPlaying.
+ * Umka bindings for GetSoundsPlaying().
  *
  * @see GetSoundsPlaying()
  */
@@ -5454,7 +5454,7 @@ void umkaGetSoundsPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsSoundPlaying.
+ * Umka bindings for IsSoundPlaying().
  *
  * @see IsSoundPlaying()
  */
@@ -5464,7 +5464,7 @@ void umkaIsSoundPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetSoundVolume.
+ * Umka bindings for SetSoundVolume().
  *
  * @see SetSoundVolume()
  */
@@ -5475,7 +5475,7 @@ void umkaSetSoundVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetSoundPitch.
+ * Umka bindings for SetSoundPitch().
  *
  * @see SetSoundPitch()
  */
@@ -5486,7 +5486,7 @@ void umkaSetSoundPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetSoundPan.
+ * Umka bindings for SetSoundPan().
  *
  * @see SetSoundPan()
  */
@@ -5497,7 +5497,7 @@ void umkaSetSoundPan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaveCopy.
+ * Umka bindings for WaveCopy().
  *
  * @see WaveCopy()
  */
@@ -5510,7 +5510,7 @@ void umkaWaveCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaveCrop.
+ * Umka bindings for WaveCrop().
  *
  * @see WaveCrop()
  */
@@ -5522,7 +5522,7 @@ void umkaWaveCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for WaveFormat.
+ * Umka bindings for WaveFormat().
  *
  * @see WaveFormat()
  */
@@ -5535,7 +5535,7 @@ void umkaWaveFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadWaveSamples.
+ * Umka bindings for LoadWaveSamples().
  *
  * @see LoadWaveSamples()
  */
@@ -5545,7 +5545,7 @@ void umkaLoadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadWaveSamples.
+ * Umka bindings for UnloadWaveSamples().
  *
  * @see UnloadWaveSamples()
  */
@@ -5555,7 +5555,7 @@ void umkaUnloadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMusicStream.
+ * Umka bindings for LoadMusicStream().
  *
  * @see LoadMusicStream()
  */
@@ -5568,7 +5568,7 @@ void umkaLoadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadMusicStreamFromMemory.
+ * Umka bindings for LoadMusicStreamFromMemory().
  *
  * @see LoadMusicStreamFromMemory()
  */
@@ -5583,7 +5583,7 @@ void umkaLoadMusicStreamFromMemory(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for UnloadMusicStream.
+ * Umka bindings for UnloadMusicStream().
  *
  * @see UnloadMusicStream()
  */
@@ -5593,7 +5593,7 @@ void umkaUnloadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlayMusicStream.
+ * Umka bindings for PlayMusicStream().
  *
  * @see PlayMusicStream()
  */
@@ -5603,7 +5603,7 @@ void umkaPlayMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsMusicStreamPlaying.
+ * Umka bindings for IsMusicStreamPlaying().
  *
  * @see IsMusicStreamPlaying()
  */
@@ -5613,7 +5613,7 @@ void umkaIsMusicStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateMusicStream.
+ * Umka bindings for UpdateMusicStream().
  *
  * @see UpdateMusicStream()
  */
@@ -5623,7 +5623,7 @@ void umkaUpdateMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopMusicStream.
+ * Umka bindings for StopMusicStream().
  *
  * @see StopMusicStream()
  */
@@ -5633,7 +5633,7 @@ void umkaStopMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PauseMusicStream.
+ * Umka bindings for PauseMusicStream().
  *
  * @see PauseMusicStream()
  */
@@ -5643,7 +5643,7 @@ void umkaPauseMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ResumeMusicStream.
+ * Umka bindings for ResumeMusicStream().
  *
  * @see ResumeMusicStream()
  */
@@ -5653,7 +5653,7 @@ void umkaResumeMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SeekMusicStream.
+ * Umka bindings for SeekMusicStream().
  *
  * @see SeekMusicStream()
  */
@@ -5664,7 +5664,7 @@ void umkaSeekMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMusicVolume.
+ * Umka bindings for SetMusicVolume().
  *
  * @see SetMusicVolume()
  */
@@ -5675,7 +5675,7 @@ void umkaSetMusicVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMusicPitch.
+ * Umka bindings for SetMusicPitch().
  *
  * @see SetMusicPitch()
  */
@@ -5686,7 +5686,7 @@ void umkaSetMusicPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetMusicPan.
+ * Umka bindings for SetMusicPan().
  *
  * @see SetMusicPan()
  */
@@ -5697,7 +5697,7 @@ void umkaSetMusicPan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMusicTimeLength.
+ * Umka bindings for GetMusicTimeLength().
  *
  * @see GetMusicTimeLength()
  */
@@ -5707,7 +5707,7 @@ void umkaGetMusicTimeLength(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for GetMusicTimePlayed.
+ * Umka bindings for GetMusicTimePlayed().
  *
  * @see GetMusicTimePlayed()
  */
@@ -5717,7 +5717,7 @@ void umkaGetMusicTimePlayed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for LoadAudioStream.
+ * Umka bindings for LoadAudioStream().
  *
  * @see LoadAudioStream()
  */
@@ -5732,7 +5732,7 @@ void umkaLoadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UnloadAudioStream.
+ * Umka bindings for UnloadAudioStream().
  *
  * @see UnloadAudioStream()
  */
@@ -5742,7 +5742,7 @@ void umkaUnloadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for UpdateAudioStream.
+ * Umka bindings for UpdateAudioStream().
  *
  * @see UpdateAudioStream()
  */
@@ -5754,7 +5754,7 @@ void umkaUpdateAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsAudioStreamProcessed.
+ * Umka bindings for IsAudioStreamProcessed().
  *
  * @see IsAudioStreamProcessed()
  */
@@ -5764,7 +5764,7 @@ void umkaIsAudioStreamProcessed(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PlayAudioStream.
+ * Umka bindings for PlayAudioStream().
  *
  * @see PlayAudioStream()
  */
@@ -5774,7 +5774,7 @@ void umkaPlayAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for PauseAudioStream.
+ * Umka bindings for PauseAudioStream().
  *
  * @see PauseAudioStream()
  */
@@ -5784,7 +5784,7 @@ void umkaPauseAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for ResumeAudioStream.
+ * Umka bindings for ResumeAudioStream().
  *
  * @see ResumeAudioStream()
  */
@@ -5794,7 +5794,7 @@ void umkaResumeAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for IsAudioStreamPlaying.
+ * Umka bindings for IsAudioStreamPlaying().
  *
  * @see IsAudioStreamPlaying()
  */
@@ -5804,7 +5804,7 @@ void umkaIsAudioStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for StopAudioStream.
+ * Umka bindings for StopAudioStream().
  *
  * @see StopAudioStream()
  */
@@ -5814,7 +5814,7 @@ void umkaStopAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamVolume.
+ * Umka bindings for SetAudioStreamVolume().
  *
  * @see SetAudioStreamVolume()
  */
@@ -5825,7 +5825,7 @@ void umkaSetAudioStreamVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamPitch.
+ * Umka bindings for SetAudioStreamPitch().
  *
  * @see SetAudioStreamPitch()
  */
@@ -5836,7 +5836,7 @@ void umkaSetAudioStreamPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamPan.
+ * Umka bindings for SetAudioStreamPan().
  *
  * @see SetAudioStreamPan()
  */
@@ -5847,7 +5847,7 @@ void umkaSetAudioStreamPan(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for SetAudioStreamBufferSizeDefault.
+ * Umka bindings for SetAudioStreamBufferSizeDefault().
  *
  * @see SetAudioStreamBufferSizeDefault()
  */
@@ -5863,7 +5863,7 @@ void umkaSetAudioStreamBufferSizeDefault(UmkaStackSlot *params, UmkaStackSlot *r
 // Function DetachAudioStreamProcessor() skipped
 
 /**
- * Umka bindings for Clamp.
+ * Umka bindings for Clamp().
  *
  * @see Clamp()
  */
@@ -5875,7 +5875,7 @@ void umkaClamp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Lerp.
+ * Umka bindings for Lerp().
  *
  * @see Lerp()
  */
@@ -5887,7 +5887,7 @@ void umkaLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Normalize.
+ * Umka bindings for Normalize().
  *
  * @see Normalize()
  */
@@ -5899,7 +5899,7 @@ void umkaNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Remap.
+ * Umka bindings for Remap().
  *
  * @see Remap()
  */
@@ -5913,7 +5913,7 @@ void umkaRemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Wrap.
+ * Umka bindings for Wrap().
  *
  * @see Wrap()
  */
@@ -5925,7 +5925,7 @@ void umkaWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for FloatEquals.
+ * Umka bindings for FloatEquals().
  *
  * @see FloatEquals()
  */
@@ -5936,7 +5936,7 @@ void umkaFloatEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Zero.
+ * Umka bindings for Vector2Zero().
  *
  * @see Vector2Zero()
  */
@@ -5947,7 +5947,7 @@ void umkaVector2Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2One.
+ * Umka bindings for Vector2One().
  *
  * @see Vector2One()
  */
@@ -5958,7 +5958,7 @@ void umkaVector2One(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Add.
+ * Umka bindings for Vector2Add().
  *
  * @see Vector2Add()
  */
@@ -5972,7 +5972,7 @@ void umkaVector2Add(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2AddValue.
+ * Umka bindings for Vector2AddValue().
  *
  * @see Vector2AddValue()
  */
@@ -5986,7 +5986,7 @@ void umkaVector2AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Subtract.
+ * Umka bindings for Vector2Subtract().
  *
  * @see Vector2Subtract()
  */
@@ -6000,7 +6000,7 @@ void umkaVector2Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2SubtractValue.
+ * Umka bindings for Vector2SubtractValue().
  *
  * @see Vector2SubtractValue()
  */
@@ -6014,7 +6014,7 @@ void umkaVector2SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Length.
+ * Umka bindings for Vector2Length().
  *
  * @see Vector2Length()
  */
@@ -6024,7 +6024,7 @@ void umkaVector2Length(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2LengthSqr.
+ * Umka bindings for Vector2LengthSqr().
  *
  * @see Vector2LengthSqr()
  */
@@ -6034,7 +6034,7 @@ void umkaVector2LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2DotProduct.
+ * Umka bindings for Vector2DotProduct().
  *
  * @see Vector2DotProduct()
  */
@@ -6045,7 +6045,7 @@ void umkaVector2DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Distance.
+ * Umka bindings for Vector2Distance().
  *
  * @see Vector2Distance()
  */
@@ -6056,7 +6056,7 @@ void umkaVector2Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2DistanceSqr.
+ * Umka bindings for Vector2DistanceSqr().
  *
  * @see Vector2DistanceSqr()
  */
@@ -6067,7 +6067,7 @@ void umkaVector2DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Angle.
+ * Umka bindings for Vector2Angle().
  *
  * @see Vector2Angle()
  */
@@ -6078,7 +6078,7 @@ void umkaVector2Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Scale.
+ * Umka bindings for Vector2Scale().
  *
  * @see Vector2Scale()
  */
@@ -6092,7 +6092,7 @@ void umkaVector2Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Multiply.
+ * Umka bindings for Vector2Multiply().
  *
  * @see Vector2Multiply()
  */
@@ -6106,7 +6106,7 @@ void umkaVector2Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Negate.
+ * Umka bindings for Vector2Negate().
  *
  * @see Vector2Negate()
  */
@@ -6119,7 +6119,7 @@ void umkaVector2Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Divide.
+ * Umka bindings for Vector2Divide().
  *
  * @see Vector2Divide()
  */
@@ -6133,7 +6133,7 @@ void umkaVector2Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Normalize.
+ * Umka bindings for Vector2Normalize().
  *
  * @see Vector2Normalize()
  */
@@ -6146,7 +6146,7 @@ void umkaVector2Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Transform.
+ * Umka bindings for Vector2Transform().
  *
  * @see Vector2Transform()
  */
@@ -6160,7 +6160,7 @@ void umkaVector2Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Lerp.
+ * Umka bindings for Vector2Lerp().
  *
  * @see Vector2Lerp()
  */
@@ -6175,7 +6175,7 @@ void umkaVector2Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Reflect.
+ * Umka bindings for Vector2Reflect().
  *
  * @see Vector2Reflect()
  */
@@ -6189,7 +6189,7 @@ void umkaVector2Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Rotate.
+ * Umka bindings for Vector2Rotate().
  *
  * @see Vector2Rotate()
  */
@@ -6203,7 +6203,7 @@ void umkaVector2Rotate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2MoveTowards.
+ * Umka bindings for Vector2MoveTowards().
  *
  * @see Vector2MoveTowards()
  */
@@ -6218,7 +6218,7 @@ void umkaVector2MoveTowards(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Invert.
+ * Umka bindings for Vector2Invert().
  *
  * @see Vector2Invert()
  */
@@ -6231,7 +6231,7 @@ void umkaVector2Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Clamp.
+ * Umka bindings for Vector2Clamp().
  *
  * @see Vector2Clamp()
  */
@@ -6246,7 +6246,7 @@ void umkaVector2Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2ClampValue.
+ * Umka bindings for Vector2ClampValue().
  *
  * @see Vector2ClampValue()
  */
@@ -6261,7 +6261,7 @@ void umkaVector2ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector2Equals.
+ * Umka bindings for Vector2Equals().
  *
  * @see Vector2Equals()
  */
@@ -6272,7 +6272,7 @@ void umkaVector2Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Zero.
+ * Umka bindings for Vector3Zero().
  *
  * @see Vector3Zero()
  */
@@ -6283,7 +6283,7 @@ void umkaVector3Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3One.
+ * Umka bindings for Vector3One().
  *
  * @see Vector3One()
  */
@@ -6294,7 +6294,7 @@ void umkaVector3One(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Add.
+ * Umka bindings for Vector3Add().
  *
  * @see Vector3Add()
  */
@@ -6308,7 +6308,7 @@ void umkaVector3Add(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3AddValue.
+ * Umka bindings for Vector3AddValue().
  *
  * @see Vector3AddValue()
  */
@@ -6322,7 +6322,7 @@ void umkaVector3AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Subtract.
+ * Umka bindings for Vector3Subtract().
  *
  * @see Vector3Subtract()
  */
@@ -6336,7 +6336,7 @@ void umkaVector3Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3SubtractValue.
+ * Umka bindings for Vector3SubtractValue().
  *
  * @see Vector3SubtractValue()
  */
@@ -6350,7 +6350,7 @@ void umkaVector3SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Scale.
+ * Umka bindings for Vector3Scale().
  *
  * @see Vector3Scale()
  */
@@ -6364,7 +6364,7 @@ void umkaVector3Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Multiply.
+ * Umka bindings for Vector3Multiply().
  *
  * @see Vector3Multiply()
  */
@@ -6378,7 +6378,7 @@ void umkaVector3Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3CrossProduct.
+ * Umka bindings for Vector3CrossProduct().
  *
  * @see Vector3CrossProduct()
  */
@@ -6392,7 +6392,7 @@ void umkaVector3CrossProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Perpendicular.
+ * Umka bindings for Vector3Perpendicular().
  *
  * @see Vector3Perpendicular()
  */
@@ -6405,7 +6405,7 @@ void umkaVector3Perpendicular(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Length.
+ * Umka bindings for Vector3Length().
  *
  * @see Vector3Length()
  */
@@ -6415,7 +6415,7 @@ void umkaVector3Length(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3LengthSqr.
+ * Umka bindings for Vector3LengthSqr().
  *
  * @see Vector3LengthSqr()
  */
@@ -6425,7 +6425,7 @@ void umkaVector3LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3DotProduct.
+ * Umka bindings for Vector3DotProduct().
  *
  * @see Vector3DotProduct()
  */
@@ -6436,7 +6436,7 @@ void umkaVector3DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Distance.
+ * Umka bindings for Vector3Distance().
  *
  * @see Vector3Distance()
  */
@@ -6447,7 +6447,7 @@ void umkaVector3Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3DistanceSqr.
+ * Umka bindings for Vector3DistanceSqr().
  *
  * @see Vector3DistanceSqr()
  */
@@ -6458,7 +6458,7 @@ void umkaVector3DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Angle.
+ * Umka bindings for Vector3Angle().
  *
  * @see Vector3Angle()
  */
@@ -6469,7 +6469,7 @@ void umkaVector3Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Negate.
+ * Umka bindings for Vector3Negate().
  *
  * @see Vector3Negate()
  */
@@ -6482,7 +6482,7 @@ void umkaVector3Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Divide.
+ * Umka bindings for Vector3Divide().
  *
  * @see Vector3Divide()
  */
@@ -6496,7 +6496,7 @@ void umkaVector3Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Normalize.
+ * Umka bindings for Vector3Normalize().
  *
  * @see Vector3Normalize()
  */
@@ -6509,7 +6509,7 @@ void umkaVector3Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3OrthoNormalize.
+ * Umka bindings for Vector3OrthoNormalize().
  *
  * @see Vector3OrthoNormalize()
  */
@@ -6520,7 +6520,7 @@ void umkaVector3OrthoNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Transform.
+ * Umka bindings for Vector3Transform().
  *
  * @see Vector3Transform()
  */
@@ -6534,7 +6534,7 @@ void umkaVector3Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3RotateByQuaternion.
+ * Umka bindings for Vector3RotateByQuaternion().
  *
  * @see Vector3RotateByQuaternion()
  */
@@ -6548,7 +6548,7 @@ void umkaVector3RotateByQuaternion(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for Vector3RotateByAxisAngle.
+ * Umka bindings for Vector3RotateByAxisAngle().
  *
  * @see Vector3RotateByAxisAngle()
  */
@@ -6563,7 +6563,7 @@ void umkaVector3RotateByAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) 
 }
 
 /**
- * Umka bindings for Vector3Lerp.
+ * Umka bindings for Vector3Lerp().
  *
  * @see Vector3Lerp()
  */
@@ -6578,7 +6578,7 @@ void umkaVector3Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Reflect.
+ * Umka bindings for Vector3Reflect().
  *
  * @see Vector3Reflect()
  */
@@ -6592,7 +6592,7 @@ void umkaVector3Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Min.
+ * Umka bindings for Vector3Min().
  *
  * @see Vector3Min()
  */
@@ -6606,7 +6606,7 @@ void umkaVector3Min(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Max.
+ * Umka bindings for Vector3Max().
  *
  * @see Vector3Max()
  */
@@ -6620,7 +6620,7 @@ void umkaVector3Max(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Barycenter.
+ * Umka bindings for Vector3Barycenter().
  *
  * @see Vector3Barycenter()
  */
@@ -6636,7 +6636,7 @@ void umkaVector3Barycenter(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Unproject.
+ * Umka bindings for Vector3Unproject().
  *
  * @see Vector3Unproject()
  */
@@ -6651,17 +6651,20 @@ void umkaVector3Unproject(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3ToFloatV.
+ * Umka bindings for Vector3ToFloatV().
  *
  * @see Vector3ToFloatV()
  */
 void umkaVector3ToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
-    Vector3* v = (Vector3*)&params[0];
-    /* TODO: Unknown type float3 */Vector3ToFloatV(*v);
+    // Skipping params[0], as it's a reference to Umka's internal filename
+    Vector3* v = (Vector3*)&params[1];
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(float3), NULL);
+    float3 out = Vector3ToFloatV(*v);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(float3));
 }
 
 /**
- * Umka bindings for Vector3Invert.
+ * Umka bindings for Vector3Invert().
  *
  * @see Vector3Invert()
  */
@@ -6674,7 +6677,7 @@ void umkaVector3Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Clamp.
+ * Umka bindings for Vector3Clamp().
  *
  * @see Vector3Clamp()
  */
@@ -6689,7 +6692,7 @@ void umkaVector3Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3ClampValue.
+ * Umka bindings for Vector3ClampValue().
  *
  * @see Vector3ClampValue()
  */
@@ -6704,7 +6707,7 @@ void umkaVector3ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Equals.
+ * Umka bindings for Vector3Equals().
  *
  * @see Vector3Equals()
  */
@@ -6715,7 +6718,7 @@ void umkaVector3Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for Vector3Refract.
+ * Umka bindings for Vector3Refract().
  *
  * @see Vector3Refract()
  */
@@ -6730,7 +6733,7 @@ void umkaVector3Refract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixDeterminant.
+ * Umka bindings for MatrixDeterminant().
  *
  * @see MatrixDeterminant()
  */
@@ -6740,7 +6743,7 @@ void umkaMatrixDeterminant(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixTrace.
+ * Umka bindings for MatrixTrace().
  *
  * @see MatrixTrace()
  */
@@ -6750,7 +6753,7 @@ void umkaMatrixTrace(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixTranspose.
+ * Umka bindings for MatrixTranspose().
  *
  * @see MatrixTranspose()
  */
@@ -6763,7 +6766,7 @@ void umkaMatrixTranspose(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixInvert.
+ * Umka bindings for MatrixInvert().
  *
  * @see MatrixInvert()
  */
@@ -6776,7 +6779,7 @@ void umkaMatrixInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixIdentity.
+ * Umka bindings for MatrixIdentity().
  *
  * @see MatrixIdentity()
  */
@@ -6787,7 +6790,7 @@ void umkaMatrixIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixAdd.
+ * Umka bindings for MatrixAdd().
  *
  * @see MatrixAdd()
  */
@@ -6801,7 +6804,7 @@ void umkaMatrixAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixSubtract.
+ * Umka bindings for MatrixSubtract().
  *
  * @see MatrixSubtract()
  */
@@ -6815,7 +6818,7 @@ void umkaMatrixSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixMultiply.
+ * Umka bindings for MatrixMultiply().
  *
  * @see MatrixMultiply()
  */
@@ -6829,7 +6832,7 @@ void umkaMatrixMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixTranslate.
+ * Umka bindings for MatrixTranslate().
  *
  * @see MatrixTranslate()
  */
@@ -6844,7 +6847,7 @@ void umkaMatrixTranslate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotate.
+ * Umka bindings for MatrixRotate().
  *
  * @see MatrixRotate()
  */
@@ -6858,7 +6861,7 @@ void umkaMatrixRotate(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateX.
+ * Umka bindings for MatrixRotateX().
  *
  * @see MatrixRotateX()
  */
@@ -6871,7 +6874,7 @@ void umkaMatrixRotateX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateY.
+ * Umka bindings for MatrixRotateY().
  *
  * @see MatrixRotateY()
  */
@@ -6884,7 +6887,7 @@ void umkaMatrixRotateY(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateZ.
+ * Umka bindings for MatrixRotateZ().
  *
  * @see MatrixRotateZ()
  */
@@ -6897,7 +6900,7 @@ void umkaMatrixRotateZ(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateXYZ.
+ * Umka bindings for MatrixRotateXYZ().
  *
  * @see MatrixRotateXYZ()
  */
@@ -6910,7 +6913,7 @@ void umkaMatrixRotateXYZ(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixRotateZYX.
+ * Umka bindings for MatrixRotateZYX().
  *
  * @see MatrixRotateZYX()
  */
@@ -6923,7 +6926,7 @@ void umkaMatrixRotateZYX(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixScale.
+ * Umka bindings for MatrixScale().
  *
  * @see MatrixScale()
  */
@@ -6938,7 +6941,7 @@ void umkaMatrixScale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixFrustum.
+ * Umka bindings for MatrixFrustum().
  *
  * @see MatrixFrustum()
  */
@@ -6956,7 +6959,7 @@ void umkaMatrixFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixPerspective.
+ * Umka bindings for MatrixPerspective().
  *
  * @see MatrixPerspective()
  */
@@ -6972,7 +6975,7 @@ void umkaMatrixPerspective(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixOrtho.
+ * Umka bindings for MatrixOrtho().
  *
  * @see MatrixOrtho()
  */
@@ -6990,7 +6993,7 @@ void umkaMatrixOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixLookAt.
+ * Umka bindings for MatrixLookAt().
  *
  * @see MatrixLookAt()
  */
@@ -7005,17 +7008,20 @@ void umkaMatrixLookAt(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for MatrixToFloatV.
+ * Umka bindings for MatrixToFloatV().
  *
  * @see MatrixToFloatV()
  */
 void umkaMatrixToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
-    Matrix* mat = (Matrix*)&params[0];
-    /* TODO: Unknown type float16 */MatrixToFloatV(*mat);
+    // Skipping params[0], as it's a reference to Umka's internal filename
+    Matrix* mat = (Matrix*)&params[1];
+    result->ptrVal = umkaAllocData(result->ptrVal, sizeof(float16), NULL);
+    float16 out = MatrixToFloatV(*mat);
+    RAYLIB_UMKA_MEMCPY(result->ptrVal, &out, sizeof(float16));
 }
 
 /**
- * Umka bindings for QuaternionAdd.
+ * Umka bindings for QuaternionAdd().
  *
  * @see QuaternionAdd()
  */
@@ -7029,7 +7035,7 @@ void umkaQuaternionAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionAddValue.
+ * Umka bindings for QuaternionAddValue().
  *
  * @see QuaternionAddValue()
  */
@@ -7043,7 +7049,7 @@ void umkaQuaternionAddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionSubtract.
+ * Umka bindings for QuaternionSubtract().
  *
  * @see QuaternionSubtract()
  */
@@ -7057,7 +7063,7 @@ void umkaQuaternionSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionSubtractValue.
+ * Umka bindings for QuaternionSubtractValue().
  *
  * @see QuaternionSubtractValue()
  */
@@ -7071,7 +7077,7 @@ void umkaQuaternionSubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionIdentity.
+ * Umka bindings for QuaternionIdentity().
  *
  * @see QuaternionIdentity()
  */
@@ -7082,7 +7088,7 @@ void umkaQuaternionIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionLength.
+ * Umka bindings for QuaternionLength().
  *
  * @see QuaternionLength()
  */
@@ -7092,7 +7098,7 @@ void umkaQuaternionLength(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionNormalize.
+ * Umka bindings for QuaternionNormalize().
  *
  * @see QuaternionNormalize()
  */
@@ -7105,7 +7111,7 @@ void umkaQuaternionNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionInvert.
+ * Umka bindings for QuaternionInvert().
  *
  * @see QuaternionInvert()
  */
@@ -7118,7 +7124,7 @@ void umkaQuaternionInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionMultiply.
+ * Umka bindings for QuaternionMultiply().
  *
  * @see QuaternionMultiply()
  */
@@ -7132,7 +7138,7 @@ void umkaQuaternionMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionScale.
+ * Umka bindings for QuaternionScale().
  *
  * @see QuaternionScale()
  */
@@ -7146,7 +7152,7 @@ void umkaQuaternionScale(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionDivide.
+ * Umka bindings for QuaternionDivide().
  *
  * @see QuaternionDivide()
  */
@@ -7160,7 +7166,7 @@ void umkaQuaternionDivide(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionLerp.
+ * Umka bindings for QuaternionLerp().
  *
  * @see QuaternionLerp()
  */
@@ -7175,7 +7181,7 @@ void umkaQuaternionLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionNlerp.
+ * Umka bindings for QuaternionNlerp().
  *
  * @see QuaternionNlerp()
  */
@@ -7190,7 +7196,7 @@ void umkaQuaternionNlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionSlerp.
+ * Umka bindings for QuaternionSlerp().
  *
  * @see QuaternionSlerp()
  */
@@ -7205,7 +7211,7 @@ void umkaQuaternionSlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionFromVector3ToVector3.
+ * Umka bindings for QuaternionFromVector3ToVector3().
  *
  * @see QuaternionFromVector3ToVector3()
  */
@@ -7219,7 +7225,7 @@ void umkaQuaternionFromVector3ToVector3(UmkaStackSlot *params, UmkaStackSlot *re
 }
 
 /**
- * Umka bindings for QuaternionFromMatrix.
+ * Umka bindings for QuaternionFromMatrix().
  *
  * @see QuaternionFromMatrix()
  */
@@ -7232,7 +7238,7 @@ void umkaQuaternionFromMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionToMatrix.
+ * Umka bindings for QuaternionToMatrix().
  *
  * @see QuaternionToMatrix()
  */
@@ -7245,7 +7251,7 @@ void umkaQuaternionToMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionFromAxisAngle.
+ * Umka bindings for QuaternionFromAxisAngle().
  *
  * @see QuaternionFromAxisAngle()
  */
@@ -7259,7 +7265,7 @@ void umkaQuaternionFromAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionToAxisAngle.
+ * Umka bindings for QuaternionToAxisAngle().
  *
  * @see QuaternionToAxisAngle()
  */
@@ -7271,7 +7277,7 @@ void umkaQuaternionToAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionFromEuler.
+ * Umka bindings for QuaternionFromEuler().
  *
  * @see QuaternionFromEuler()
  */
@@ -7286,7 +7292,7 @@ void umkaQuaternionFromEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionToEuler.
+ * Umka bindings for QuaternionToEuler().
  *
  * @see QuaternionToEuler()
  */
@@ -7299,7 +7305,7 @@ void umkaQuaternionToEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionTransform.
+ * Umka bindings for QuaternionTransform().
  *
  * @see QuaternionTransform()
  */
@@ -7313,7 +7319,7 @@ void umkaQuaternionTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for QuaternionEquals.
+ * Umka bindings for QuaternionEquals().
  *
  * @see QuaternionEquals()
  */
@@ -7324,7 +7330,7 @@ void umkaQuaternionEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlMatrixMode.
+ * Umka bindings for rlMatrixMode().
  *
  * @see rlMatrixMode()
  */
@@ -7334,7 +7340,7 @@ void umkarlMatrixMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlPushMatrix.
+ * Umka bindings for rlPushMatrix().
  *
  * @see rlPushMatrix()
  */
@@ -7343,7 +7349,7 @@ void umkarlPushMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlPopMatrix.
+ * Umka bindings for rlPopMatrix().
  *
  * @see rlPopMatrix()
  */
@@ -7352,7 +7358,7 @@ void umkarlPopMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadIdentity.
+ * Umka bindings for rlLoadIdentity().
  *
  * @see rlLoadIdentity()
  */
@@ -7361,7 +7367,7 @@ void umkarlLoadIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlTranslatef.
+ * Umka bindings for rlTranslatef().
  *
  * @see rlTranslatef()
  */
@@ -7373,7 +7379,7 @@ void umkarlTranslatef(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlRotatef.
+ * Umka bindings for rlRotatef().
  *
  * @see rlRotatef()
  */
@@ -7386,7 +7392,7 @@ void umkarlRotatef(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlScalef.
+ * Umka bindings for rlScalef().
  *
  * @see rlScalef()
  */
@@ -7398,7 +7404,7 @@ void umkarlScalef(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlMultMatrixf.
+ * Umka bindings for rlMultMatrixf().
  *
  * @see rlMultMatrixf()
  */
@@ -7408,7 +7414,7 @@ void umkarlMultMatrixf(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlFrustum.
+ * Umka bindings for rlFrustum().
  *
  * @see rlFrustum()
  */
@@ -7423,7 +7429,7 @@ void umkarlFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlOrtho.
+ * Umka bindings for rlOrtho().
  *
  * @see rlOrtho()
  */
@@ -7438,7 +7444,7 @@ void umkarlOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlViewport.
+ * Umka bindings for rlViewport().
  *
  * @see rlViewport()
  */
@@ -7451,7 +7457,7 @@ void umkarlViewport(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlBegin.
+ * Umka bindings for rlBegin().
  *
  * @see rlBegin()
  */
@@ -7461,7 +7467,7 @@ void umkarlBegin(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnd.
+ * Umka bindings for rlEnd().
  *
  * @see rlEnd()
  */
@@ -7470,7 +7476,7 @@ void umkarlEnd(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlVertex2i.
+ * Umka bindings for rlVertex2i().
  *
  * @see rlVertex2i()
  */
@@ -7481,7 +7487,7 @@ void umkarlVertex2i(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlVertex2f.
+ * Umka bindings for rlVertex2f().
  *
  * @see rlVertex2f()
  */
@@ -7492,7 +7498,7 @@ void umkarlVertex2f(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlVertex3f.
+ * Umka bindings for rlVertex3f().
  *
  * @see rlVertex3f()
  */
@@ -7504,7 +7510,7 @@ void umkarlVertex3f(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlTexCoord2f.
+ * Umka bindings for rlTexCoord2f().
  *
  * @see rlTexCoord2f()
  */
@@ -7515,7 +7521,7 @@ void umkarlTexCoord2f(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlNormal3f.
+ * Umka bindings for rlNormal3f().
  *
  * @see rlNormal3f()
  */
@@ -7527,7 +7533,7 @@ void umkarlNormal3f(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlColor4ub.
+ * Umka bindings for rlColor4ub().
  *
  * @see rlColor4ub()
  */
@@ -7540,7 +7546,7 @@ void umkarlColor4ub(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlColor3f.
+ * Umka bindings for rlColor3f().
  *
  * @see rlColor3f()
  */
@@ -7552,7 +7558,7 @@ void umkarlColor3f(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlColor4f.
+ * Umka bindings for rlColor4f().
  *
  * @see rlColor4f()
  */
@@ -7565,7 +7571,7 @@ void umkarlColor4f(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableVertexArray.
+ * Umka bindings for rlEnableVertexArray().
  *
  * @see rlEnableVertexArray()
  */
@@ -7575,7 +7581,7 @@ void umkarlEnableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableVertexArray.
+ * Umka bindings for rlDisableVertexArray().
  *
  * @see rlDisableVertexArray()
  */
@@ -7584,7 +7590,7 @@ void umkarlDisableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableVertexBuffer.
+ * Umka bindings for rlEnableVertexBuffer().
  *
  * @see rlEnableVertexBuffer()
  */
@@ -7594,7 +7600,7 @@ void umkarlEnableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableVertexBuffer.
+ * Umka bindings for rlDisableVertexBuffer().
  *
  * @see rlDisableVertexBuffer()
  */
@@ -7603,7 +7609,7 @@ void umkarlDisableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableVertexBufferElement.
+ * Umka bindings for rlEnableVertexBufferElement().
  *
  * @see rlEnableVertexBufferElement()
  */
@@ -7613,7 +7619,7 @@ void umkarlEnableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlDisableVertexBufferElement.
+ * Umka bindings for rlDisableVertexBufferElement().
  *
  * @see rlDisableVertexBufferElement()
  */
@@ -7622,7 +7628,7 @@ void umkarlDisableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *resu
 }
 
 /**
- * Umka bindings for rlEnableVertexAttribute.
+ * Umka bindings for rlEnableVertexAttribute().
  *
  * @see rlEnableVertexAttribute()
  */
@@ -7632,7 +7638,7 @@ void umkarlEnableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableVertexAttribute.
+ * Umka bindings for rlDisableVertexAttribute().
  *
  * @see rlDisableVertexAttribute()
  */
@@ -7646,7 +7652,7 @@ void umkarlDisableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) 
 // Function rlDisableStatePointer() skipped
 
 /**
- * Umka bindings for rlActiveTextureSlot.
+ * Umka bindings for rlActiveTextureSlot().
  *
  * @see rlActiveTextureSlot()
  */
@@ -7656,7 +7662,7 @@ void umkarlActiveTextureSlot(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableTexture.
+ * Umka bindings for rlEnableTexture().
  *
  * @see rlEnableTexture()
  */
@@ -7666,7 +7672,7 @@ void umkarlEnableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableTexture.
+ * Umka bindings for rlDisableTexture().
  *
  * @see rlDisableTexture()
  */
@@ -7675,7 +7681,7 @@ void umkarlDisableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableTextureCubemap.
+ * Umka bindings for rlEnableTextureCubemap().
  *
  * @see rlEnableTextureCubemap()
  */
@@ -7685,7 +7691,7 @@ void umkarlEnableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableTextureCubemap.
+ * Umka bindings for rlDisableTextureCubemap().
  *
  * @see rlDisableTextureCubemap()
  */
@@ -7694,7 +7700,7 @@ void umkarlDisableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlTextureParameters.
+ * Umka bindings for rlTextureParameters().
  *
  * @see rlTextureParameters()
  */
@@ -7706,7 +7712,7 @@ void umkarlTextureParameters(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableShader.
+ * Umka bindings for rlEnableShader().
  *
  * @see rlEnableShader()
  */
@@ -7716,7 +7722,7 @@ void umkarlEnableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableShader.
+ * Umka bindings for rlDisableShader().
  *
  * @see rlDisableShader()
  */
@@ -7725,7 +7731,7 @@ void umkarlDisableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableFramebuffer.
+ * Umka bindings for rlEnableFramebuffer().
  *
  * @see rlEnableFramebuffer()
  */
@@ -7735,7 +7741,7 @@ void umkarlEnableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableFramebuffer.
+ * Umka bindings for rlDisableFramebuffer().
  *
  * @see rlDisableFramebuffer()
  */
@@ -7744,7 +7750,7 @@ void umkarlDisableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlActiveDrawBuffers.
+ * Umka bindings for rlActiveDrawBuffers().
  *
  * @see rlActiveDrawBuffers()
  */
@@ -7754,7 +7760,7 @@ void umkarlActiveDrawBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableColorBlend.
+ * Umka bindings for rlEnableColorBlend().
  *
  * @see rlEnableColorBlend()
  */
@@ -7763,7 +7769,7 @@ void umkarlEnableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableColorBlend.
+ * Umka bindings for rlDisableColorBlend().
  *
  * @see rlDisableColorBlend()
  */
@@ -7772,7 +7778,7 @@ void umkarlDisableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableDepthTest.
+ * Umka bindings for rlEnableDepthTest().
  *
  * @see rlEnableDepthTest()
  */
@@ -7781,7 +7787,7 @@ void umkarlEnableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableDepthTest.
+ * Umka bindings for rlDisableDepthTest().
  *
  * @see rlDisableDepthTest()
  */
@@ -7790,7 +7796,7 @@ void umkarlDisableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableDepthMask.
+ * Umka bindings for rlEnableDepthMask().
  *
  * @see rlEnableDepthMask()
  */
@@ -7799,7 +7805,7 @@ void umkarlEnableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableDepthMask.
+ * Umka bindings for rlDisableDepthMask().
  *
  * @see rlDisableDepthMask()
  */
@@ -7808,7 +7814,7 @@ void umkarlDisableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableBackfaceCulling.
+ * Umka bindings for rlEnableBackfaceCulling().
  *
  * @see rlEnableBackfaceCulling()
  */
@@ -7817,7 +7823,7 @@ void umkarlEnableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableBackfaceCulling.
+ * Umka bindings for rlDisableBackfaceCulling().
  *
  * @see rlDisableBackfaceCulling()
  */
@@ -7826,7 +7832,7 @@ void umkarlDisableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) 
 }
 
 /**
- * Umka bindings for rlEnableScissorTest.
+ * Umka bindings for rlEnableScissorTest().
  *
  * @see rlEnableScissorTest()
  */
@@ -7835,7 +7841,7 @@ void umkarlEnableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableScissorTest.
+ * Umka bindings for rlDisableScissorTest().
  *
  * @see rlDisableScissorTest()
  */
@@ -7844,7 +7850,7 @@ void umkarlDisableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlScissor.
+ * Umka bindings for rlScissor().
  *
  * @see rlScissor()
  */
@@ -7857,7 +7863,7 @@ void umkarlScissor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableWireMode.
+ * Umka bindings for rlEnableWireMode().
  *
  * @see rlEnableWireMode()
  */
@@ -7866,7 +7872,7 @@ void umkarlEnableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableWireMode.
+ * Umka bindings for rlDisableWireMode().
  *
  * @see rlDisableWireMode()
  */
@@ -7875,7 +7881,7 @@ void umkarlDisableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetLineWidth.
+ * Umka bindings for rlSetLineWidth().
  *
  * @see rlSetLineWidth()
  */
@@ -7885,7 +7891,7 @@ void umkarlSetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetLineWidth.
+ * Umka bindings for rlGetLineWidth().
  *
  * @see rlGetLineWidth()
  */
@@ -7894,7 +7900,7 @@ void umkarlGetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableSmoothLines.
+ * Umka bindings for rlEnableSmoothLines().
  *
  * @see rlEnableSmoothLines()
  */
@@ -7903,7 +7909,7 @@ void umkarlEnableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableSmoothLines.
+ * Umka bindings for rlDisableSmoothLines().
  *
  * @see rlDisableSmoothLines()
  */
@@ -7912,7 +7918,7 @@ void umkarlDisableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlEnableStereoRender.
+ * Umka bindings for rlEnableStereoRender().
  *
  * @see rlEnableStereoRender()
  */
@@ -7921,7 +7927,7 @@ void umkarlEnableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDisableStereoRender.
+ * Umka bindings for rlDisableStereoRender().
  *
  * @see rlDisableStereoRender()
  */
@@ -7930,7 +7936,7 @@ void umkarlDisableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlIsStereoRenderEnabled.
+ * Umka bindings for rlIsStereoRenderEnabled().
  *
  * @see rlIsStereoRenderEnabled()
  */
@@ -7939,7 +7945,7 @@ void umkarlIsStereoRenderEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlClearColor.
+ * Umka bindings for rlClearColor().
  *
  * @see rlClearColor()
  */
@@ -7952,7 +7958,7 @@ void umkarlClearColor(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlClearScreenBuffers.
+ * Umka bindings for rlClearScreenBuffers().
  *
  * @see rlClearScreenBuffers()
  */
@@ -7961,7 +7967,7 @@ void umkarlClearScreenBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlCheckErrors.
+ * Umka bindings for rlCheckErrors().
  *
  * @see rlCheckErrors()
  */
@@ -7970,7 +7976,7 @@ void umkarlCheckErrors(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetBlendMode.
+ * Umka bindings for rlSetBlendMode().
  *
  * @see rlSetBlendMode()
  */
@@ -7980,7 +7986,7 @@ void umkarlSetBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetBlendFactors.
+ * Umka bindings for rlSetBlendFactors().
  *
  * @see rlSetBlendFactors()
  */
@@ -7992,7 +7998,7 @@ void umkarlSetBlendFactors(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlglInit.
+ * Umka bindings for rlglInit().
  *
  * @see rlglInit()
  */
@@ -8003,7 +8009,7 @@ void umkarlglInit(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlglClose.
+ * Umka bindings for rlglClose().
  *
  * @see rlglClose()
  */
@@ -8012,7 +8018,7 @@ void umkarlglClose(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadExtensions.
+ * Umka bindings for rlLoadExtensions().
  *
  * @see rlLoadExtensions()
  */
@@ -8022,7 +8028,7 @@ void umkarlLoadExtensions(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetVersion.
+ * Umka bindings for rlGetVersion().
  *
  * @see rlGetVersion()
  */
@@ -8031,7 +8037,7 @@ void umkarlGetVersion(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetFramebufferWidth.
+ * Umka bindings for rlSetFramebufferWidth().
  *
  * @see rlSetFramebufferWidth()
  */
@@ -8041,7 +8047,7 @@ void umkarlSetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetFramebufferWidth.
+ * Umka bindings for rlGetFramebufferWidth().
  *
  * @see rlGetFramebufferWidth()
  */
@@ -8050,7 +8056,7 @@ void umkarlGetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetFramebufferHeight.
+ * Umka bindings for rlSetFramebufferHeight().
  *
  * @see rlSetFramebufferHeight()
  */
@@ -8060,7 +8066,7 @@ void umkarlSetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetFramebufferHeight.
+ * Umka bindings for rlGetFramebufferHeight().
  *
  * @see rlGetFramebufferHeight()
  */
@@ -8069,7 +8075,7 @@ void umkarlGetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetTextureIdDefault.
+ * Umka bindings for rlGetTextureIdDefault().
  *
  * @see rlGetTextureIdDefault()
  */
@@ -8078,7 +8084,7 @@ void umkarlGetTextureIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetShaderIdDefault.
+ * Umka bindings for rlGetShaderIdDefault().
  *
  * @see rlGetShaderIdDefault()
  */
@@ -8087,7 +8093,7 @@ void umkarlGetShaderIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetShaderLocsDefault.
+ * Umka bindings for rlGetShaderLocsDefault().
  *
  * @see rlGetShaderLocsDefault()
  */
@@ -8104,7 +8110,7 @@ void umkarlGetShaderLocsDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
 // Function rlSetRenderBatchActive() skipped
 
 /**
- * Umka bindings for rlDrawRenderBatchActive.
+ * Umka bindings for rlDrawRenderBatchActive().
  *
  * @see rlDrawRenderBatchActive()
  */
@@ -8113,7 +8119,7 @@ void umkarlDrawRenderBatchActive(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlCheckRenderBatchLimit.
+ * Umka bindings for rlCheckRenderBatchLimit().
  *
  * @see rlCheckRenderBatchLimit()
  */
@@ -8123,7 +8129,7 @@ void umkarlCheckRenderBatchLimit(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetTexture.
+ * Umka bindings for rlSetTexture().
  *
  * @see rlSetTexture()
  */
@@ -8133,7 +8139,7 @@ void umkarlSetTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadVertexArray.
+ * Umka bindings for rlLoadVertexArray().
  *
  * @see rlLoadVertexArray()
  */
@@ -8142,7 +8148,7 @@ void umkarlLoadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadVertexBuffer.
+ * Umka bindings for rlLoadVertexBuffer().
  *
  * @see rlLoadVertexBuffer()
  */
@@ -8154,7 +8160,7 @@ void umkarlLoadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadVertexBufferElement.
+ * Umka bindings for rlLoadVertexBufferElement().
  *
  * @see rlLoadVertexBufferElement()
  */
@@ -8166,7 +8172,7 @@ void umkarlLoadVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for rlUpdateVertexBuffer.
+ * Umka bindings for rlUpdateVertexBuffer().
  *
  * @see rlUpdateVertexBuffer()
  */
@@ -8179,7 +8185,7 @@ void umkarlUpdateVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUpdateVertexBufferElements.
+ * Umka bindings for rlUpdateVertexBufferElements().
  *
  * @see rlUpdateVertexBufferElements()
  */
@@ -8192,7 +8198,7 @@ void umkarlUpdateVertexBufferElements(UmkaStackSlot *params, UmkaStackSlot *resu
 }
 
 /**
- * Umka bindings for rlUnloadVertexArray.
+ * Umka bindings for rlUnloadVertexArray().
  *
  * @see rlUnloadVertexArray()
  */
@@ -8202,7 +8208,7 @@ void umkarlUnloadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUnloadVertexBuffer.
+ * Umka bindings for rlUnloadVertexBuffer().
  *
  * @see rlUnloadVertexBuffer()
  */
@@ -8212,7 +8218,7 @@ void umkarlUnloadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetVertexAttribute.
+ * Umka bindings for rlSetVertexAttribute().
  *
  * @see rlSetVertexAttribute()
  */
@@ -8227,7 +8233,7 @@ void umkarlSetVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetVertexAttributeDivisor.
+ * Umka bindings for rlSetVertexAttributeDivisor().
  *
  * @see rlSetVertexAttributeDivisor()
  */
@@ -8238,7 +8244,7 @@ void umkarlSetVertexAttributeDivisor(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlSetVertexAttributeDefault.
+ * Umka bindings for rlSetVertexAttributeDefault().
  *
  * @see rlSetVertexAttributeDefault()
  */
@@ -8251,7 +8257,7 @@ void umkarlSetVertexAttributeDefault(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlDrawVertexArray.
+ * Umka bindings for rlDrawVertexArray().
  *
  * @see rlDrawVertexArray()
  */
@@ -8262,7 +8268,7 @@ void umkarlDrawVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlDrawVertexArrayElements.
+ * Umka bindings for rlDrawVertexArrayElements().
  *
  * @see rlDrawVertexArrayElements()
  */
@@ -8274,7 +8280,7 @@ void umkarlDrawVertexArrayElements(UmkaStackSlot *params, UmkaStackSlot *result)
 }
 
 /**
- * Umka bindings for rlDrawVertexArrayInstanced.
+ * Umka bindings for rlDrawVertexArrayInstanced().
  *
  * @see rlDrawVertexArrayInstanced()
  */
@@ -8286,7 +8292,7 @@ void umkarlDrawVertexArrayInstanced(UmkaStackSlot *params, UmkaStackSlot *result
 }
 
 /**
- * Umka bindings for rlDrawVertexArrayElementsInstanced.
+ * Umka bindings for rlDrawVertexArrayElementsInstanced().
  *
  * @see rlDrawVertexArrayElementsInstanced()
  */
@@ -8299,7 +8305,7 @@ void umkarlDrawVertexArrayElementsInstanced(UmkaStackSlot *params, UmkaStackSlot
 }
 
 /**
- * Umka bindings for rlLoadTexture.
+ * Umka bindings for rlLoadTexture().
  *
  * @see rlLoadTexture()
  */
@@ -8313,7 +8319,7 @@ void umkarlLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadTextureDepth.
+ * Umka bindings for rlLoadTextureDepth().
  *
  * @see rlLoadTextureDepth()
  */
@@ -8325,7 +8331,7 @@ void umkarlLoadTextureDepth(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadTextureCubemap.
+ * Umka bindings for rlLoadTextureCubemap().
  *
  * @see rlLoadTextureCubemap()
  */
@@ -8337,7 +8343,7 @@ void umkarlLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUpdateTexture.
+ * Umka bindings for rlUpdateTexture().
  *
  * @see rlUpdateTexture()
  */
@@ -8353,7 +8359,7 @@ void umkarlUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetGlTextureFormats.
+ * Umka bindings for rlGetGlTextureFormats().
  *
  * @see rlGetGlTextureFormats()
  */
@@ -8366,7 +8372,7 @@ void umkarlGetGlTextureFormats(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetPixelFormatName.
+ * Umka bindings for rlGetPixelFormatName().
  *
  * @see rlGetPixelFormatName()
  */
@@ -8376,7 +8382,7 @@ void umkarlGetPixelFormatName(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUnloadTexture.
+ * Umka bindings for rlUnloadTexture().
  *
  * @see rlUnloadTexture()
  */
@@ -8386,7 +8392,7 @@ void umkarlUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGenTextureMipmaps.
+ * Umka bindings for rlGenTextureMipmaps().
  *
  * @see rlGenTextureMipmaps()
  */
@@ -8400,7 +8406,7 @@ void umkarlGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlReadTexturePixels.
+ * Umka bindings for rlReadTexturePixels().
  *
  * @see rlReadTexturePixels()
  */
@@ -8413,7 +8419,7 @@ void umkarlReadTexturePixels(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlReadScreenPixels.
+ * Umka bindings for rlReadScreenPixels().
  *
  * @see rlReadScreenPixels()
  */
@@ -8424,7 +8430,7 @@ void umkarlReadScreenPixels(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadFramebuffer.
+ * Umka bindings for rlLoadFramebuffer().
  *
  * @see rlLoadFramebuffer()
  */
@@ -8435,7 +8441,7 @@ void umkarlLoadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlFramebufferAttach.
+ * Umka bindings for rlFramebufferAttach().
  *
  * @see rlFramebufferAttach()
  */
@@ -8449,7 +8455,7 @@ void umkarlFramebufferAttach(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlFramebufferComplete.
+ * Umka bindings for rlFramebufferComplete().
  *
  * @see rlFramebufferComplete()
  */
@@ -8459,7 +8465,7 @@ void umkarlFramebufferComplete(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUnloadFramebuffer.
+ * Umka bindings for rlUnloadFramebuffer().
  *
  * @see rlUnloadFramebuffer()
  */
@@ -8469,7 +8475,7 @@ void umkarlUnloadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadShaderCode.
+ * Umka bindings for rlLoadShaderCode().
  *
  * @see rlLoadShaderCode()
  */
@@ -8480,7 +8486,7 @@ void umkarlLoadShaderCode(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlCompileShader.
+ * Umka bindings for rlCompileShader().
  *
  * @see rlCompileShader()
  */
@@ -8491,7 +8497,7 @@ void umkarlCompileShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadShaderProgram.
+ * Umka bindings for rlLoadShaderProgram().
  *
  * @see rlLoadShaderProgram()
  */
@@ -8502,7 +8508,7 @@ void umkarlLoadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUnloadShaderProgram.
+ * Umka bindings for rlUnloadShaderProgram().
  *
  * @see rlUnloadShaderProgram()
  */
@@ -8512,7 +8518,7 @@ void umkarlUnloadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetLocationUniform.
+ * Umka bindings for rlGetLocationUniform().
  *
  * @see rlGetLocationUniform()
  */
@@ -8523,7 +8529,7 @@ void umkarlGetLocationUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetLocationAttrib.
+ * Umka bindings for rlGetLocationAttrib().
  *
  * @see rlGetLocationAttrib()
  */
@@ -8534,7 +8540,7 @@ void umkarlGetLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetUniform.
+ * Umka bindings for rlSetUniform().
  *
  * @see rlSetUniform()
  */
@@ -8547,7 +8553,7 @@ void umkarlSetUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetUniformMatrix.
+ * Umka bindings for rlSetUniformMatrix().
  *
  * @see rlSetUniformMatrix()
  */
@@ -8558,7 +8564,7 @@ void umkarlSetUniformMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetUniformSampler.
+ * Umka bindings for rlSetUniformSampler().
  *
  * @see rlSetUniformSampler()
  */
@@ -8569,7 +8575,7 @@ void umkarlSetUniformSampler(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetShader.
+ * Umka bindings for rlSetShader().
  *
  * @see rlSetShader()
  */
@@ -8580,7 +8586,7 @@ void umkarlSetShader(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadComputeShaderProgram.
+ * Umka bindings for rlLoadComputeShaderProgram().
  *
  * @see rlLoadComputeShaderProgram()
  */
@@ -8590,7 +8596,7 @@ void umkarlLoadComputeShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result
 }
 
 /**
- * Umka bindings for rlComputeShaderDispatch.
+ * Umka bindings for rlComputeShaderDispatch().
  *
  * @see rlComputeShaderDispatch()
  */
@@ -8602,7 +8608,7 @@ void umkarlComputeShaderDispatch(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadShaderBuffer.
+ * Umka bindings for rlLoadShaderBuffer().
  *
  * @see rlLoadShaderBuffer()
  */
@@ -8614,7 +8620,7 @@ void umkarlLoadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUnloadShaderBuffer.
+ * Umka bindings for rlUnloadShaderBuffer().
  *
  * @see rlUnloadShaderBuffer()
  */
@@ -8624,7 +8630,7 @@ void umkarlUnloadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlUpdateShaderBufferElements.
+ * Umka bindings for rlUpdateShaderBufferElements().
  *
  * @see rlUpdateShaderBufferElements()
  */
@@ -8637,7 +8643,7 @@ void umkarlUpdateShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *resu
 }
 
 /**
- * Umka bindings for rlGetShaderBufferSize.
+ * Umka bindings for rlGetShaderBufferSize().
  *
  * @see rlGetShaderBufferSize()
  */
@@ -8647,7 +8653,7 @@ void umkarlGetShaderBufferSize(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlReadShaderBufferElements.
+ * Umka bindings for rlReadShaderBufferElements().
  *
  * @see rlReadShaderBufferElements()
  */
@@ -8660,7 +8666,7 @@ void umkarlReadShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *result
 }
 
 /**
- * Umka bindings for rlBindShaderBuffer.
+ * Umka bindings for rlBindShaderBuffer().
  *
  * @see rlBindShaderBuffer()
  */
@@ -8671,7 +8677,7 @@ void umkarlBindShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlCopyBuffersElements.
+ * Umka bindings for rlCopyBuffersElements().
  *
  * @see rlCopyBuffersElements()
  */
@@ -8685,7 +8691,7 @@ void umkarlCopyBuffersElements(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlBindImageTexture.
+ * Umka bindings for rlBindImageTexture().
  *
  * @see rlBindImageTexture()
  */
@@ -8698,7 +8704,7 @@ void umkarlBindImageTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetMatrixModelview.
+ * Umka bindings for rlGetMatrixModelview().
  *
  * @see rlGetMatrixModelview()
  */
@@ -8709,7 +8715,7 @@ void umkarlGetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetMatrixProjection.
+ * Umka bindings for rlGetMatrixProjection().
  *
  * @see rlGetMatrixProjection()
  */
@@ -8720,7 +8726,7 @@ void umkarlGetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetMatrixTransform.
+ * Umka bindings for rlGetMatrixTransform().
  *
  * @see rlGetMatrixTransform()
  */
@@ -8731,7 +8737,7 @@ void umkarlGetMatrixTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlGetMatrixProjectionStereo.
+ * Umka bindings for rlGetMatrixProjectionStereo().
  *
  * @see rlGetMatrixProjectionStereo()
  */
@@ -8744,7 +8750,7 @@ void umkarlGetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlGetMatrixViewOffsetStereo.
+ * Umka bindings for rlGetMatrixViewOffsetStereo().
  *
  * @see rlGetMatrixViewOffsetStereo()
  */
@@ -8757,7 +8763,7 @@ void umkarlGetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlSetMatrixProjection.
+ * Umka bindings for rlSetMatrixProjection().
  *
  * @see rlSetMatrixProjection()
  */
@@ -8767,7 +8773,7 @@ void umkarlSetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetMatrixModelview.
+ * Umka bindings for rlSetMatrixModelview().
  *
  * @see rlSetMatrixModelview()
  */
@@ -8777,7 +8783,7 @@ void umkarlSetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlSetMatrixProjectionStereo.
+ * Umka bindings for rlSetMatrixProjectionStereo().
  *
  * @see rlSetMatrixProjectionStereo()
  */
@@ -8788,7 +8794,7 @@ void umkarlSetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlSetMatrixViewOffsetStereo.
+ * Umka bindings for rlSetMatrixViewOffsetStereo().
  *
  * @see rlSetMatrixViewOffsetStereo()
  */
@@ -8799,7 +8805,7 @@ void umkarlSetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *resul
 }
 
 /**
- * Umka bindings for rlLoadDrawCube.
+ * Umka bindings for rlLoadDrawCube().
  *
  * @see rlLoadDrawCube()
  */
@@ -8808,7 +8814,7 @@ void umkarlLoadDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
 }
 
 /**
- * Umka bindings for rlLoadDrawQuad.
+ * Umka bindings for rlLoadDrawQuad().
  *
  * @see rlLoadDrawQuad()
  */

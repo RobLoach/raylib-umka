@@ -11,16 +11,13 @@
 *
 ********************************************************************************************/
 
-import (
-    "raylib"
-    "std.um"
-)
+import "raylib"
 
 const screenWidth = 800
 const screenHeight = 450
 
 // Zoom increment
-const zoomIncrement = 0.125
+var zoomIncrement:real = 0.125
 
 var camera:raylib.Camera2D
 
@@ -52,9 +49,9 @@ fn update() {
     }
 
     // Zoom based on mouse wheel
+    // TODO: GetMousewheelMove need a real32 instead of read?
     var wheel:real = raylib.GetMouseWheelMove()
-    std.printf("Wheel: %f\n", wheel)
-    if wheel != 0 {
+    if wheel != 0.0 {
         // Get the world point that is under the mouse
         var mouseWorldPos:raylib.Vector2 = raylib.GetScreenToWorld2D(raylib.GetMousePosition(), camera)
 
@@ -65,9 +62,9 @@ fn update() {
         // under the cursor to the screen space point under the cursor at any zoom
         camera.target = mouseWorldPos
 
-        camera.zoom += wheel * 0.125
-        if camera.zoom < 0.125 {
-            camera.zoom = 0.125
+        camera.zoom += wheel * zoomIncrement
+        if camera.zoom < zoomIncrement {
+            camera.zoom = zoomIncrement
         }
     }
 
@@ -83,7 +80,7 @@ fn update() {
             // Draw the 3d grid, rotated 90 degrees and centered around 0,0
             // just so we have something in the XY plane
             raylib.rlPushMatrix()
-                raylib.rlTranslatef(0, 25*50, 0)
+                raylib.rlTranslatef(0, 25 * 50, 0)
                 raylib.rlRotatef(90, 1, 0, 0)
                 raylib.DrawGrid(100, 50)
             raylib.rlPopMatrix()

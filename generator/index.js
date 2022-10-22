@@ -81,6 +81,8 @@ function getIsRaylibStruct(type) {
         'VrStereoConfig',
         'FilePathList',
         'rAudioProcessor',
+        'float3',
+        'float16'
     ].includes(type)
 }
 
@@ -159,7 +161,7 @@ function getFunctionImplementations(functions) {
 
         // Function Declaration
         output += `/**
- * Umka bindings for ${func.name}.
+ * Umka bindings for ${func.name}().
  *
  * @see ${func.name}()
  */
@@ -607,7 +609,7 @@ let code =
 *   ${pkg.name} is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software:
 *
-*   Copyright (c) 2022 Rob Loach (@RobLoach)
+*   Copyright (c) 2022 ${pkg.author}
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.

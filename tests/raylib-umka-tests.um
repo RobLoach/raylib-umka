@@ -47,6 +47,11 @@ fn main() {
     var vect2:raylib.Vector2 = raylib.Vector2{200, 300}
     var vect3:raylib.Vector2 = raylib.Vector2Multiply(vect1, vect2)
     Assert.True(vect1.x * vect2.x == vect3.x, "raymath test")
+    Assert.True(raylib.Normalize(40, 20, 30) == 2, "raylib.Normalize")
+
+    // rlgl
+    var version:int = raylib.rlGetVersion()
+    Assert.True(version >= 1, "rlGetVersion")
 
     // Finish
     raylib.EndDrawing()
