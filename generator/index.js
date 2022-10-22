@@ -18,6 +18,8 @@ function buildParamType(param, key) {
         case 'unsigned int':
         case 'char':
         case 'unsigned char':
+        case 'unsigned long long':
+        case 'unsigned long':
             return `params[${key}].uintVal`
         case 'int':
         case 'long':
@@ -33,9 +35,12 @@ function buildParamType(param, key) {
 
 /**
  * Sees whether the given type is a reserved raylib type.
+ *
+ * TODO: Have getIsRaylibStruct be dynamic?
  */
 function getIsRaylibStruct(type) {
     return [
+        'rlRenderBatch',
         'Color',
         'Vector2',
         'Vector3',
@@ -89,11 +94,13 @@ function buildFunctionReturn(func) {
         case 'int':
             return [`result->intVal = `, '']
         case 'unsigned int':
+        case 'unsigned long long':
+        case 'unsigned long':
             return [`result->uintVal = `, '']
         case 'long':
             return [`result->intVal = `, '']
         case 'float':
-            return [`result->real32Val = `, '']
+            return [`result->realVal = `, '']
         case 'double':
             return ['result->realVal = ', '']
         case 'void':
@@ -129,6 +136,13 @@ const functionBlackList = [
     'SetAudioStreamCallback',
     'AttachAudioStreamProcessor',
     'DetachAudioStreamProcessor',
+    'rlEnableStatePointer',
+    'rlDisableStatePointer',
+    'rlLoadRenderBatch',
+    'rlUnloadRenderBatch',
+    'rlDrawRenderBatch',
+    'rlSetRenderBatchActive',
+    //'rlSetVertexAttribute', // "type" is a reserved name in umka?
 ]
 
 /**
@@ -189,6 +203,7 @@ void umka${func.name}(UmkaStackSlot *params, UmkaStackSlot *result) {\n`
 function getAllFunctions() {
     return raylib.raylib.functions
         .concat(raylib.raymath.functions)
+        .concat(raylib.rlgl.functions)
 }
 
 const functionsImplementations = getFunctionImplementations(getAllFunctions())
@@ -245,8 +260,6 @@ function raylibTypeToUmka(type) {
             return 'str'
         case 'float *':
             return '^real32'
-        case 'float[2]':
-            return '[2]real32'
         case 'Camera':
             return 'Camera3D'
         case 'Texture2D':
@@ -257,10 +270,12 @@ function raylibTypeToUmka(type) {
         case 'rAudioBuffer *':
         case 'rAudioProcessor *':
             return '^void'
-        case 'float[4]':
-            return '[4]real32'
+        case 'float[2]':
+            return '[2]real32'
         case 'float[3]':
             return '[3]real32'
+        case 'float[4]':
+            return '[4]real32'
         case 'float[16]':
             return '[16]real32'
         case 'unsigned char':
@@ -282,6 +297,8 @@ function raylibTypeToUmka(type) {
             return '^uint32'
         case 'long':
             return 'int'
+        case 'unsigned long long':
+            return 'uint'
         case 'void *':
         case 'const void *':
             return '^void'
@@ -313,13 +330,17 @@ let lineNumber = 1
 /**
  * Structures to black list from displaying.
  */
-const structureBlackList = []
+const structureBlackList = [
+    'rlVertexBuffer',
+    'rlRenderBatch'
+]
 
 function getAllStructs() {
     // Grab all the structs across all libraries
     let structs = [
         ...raylib.raylib.structs,
-        ...raylib.raymath.structs
+        ...raylib.raymath.structs,
+        ...raylib.rlgl.structs
     ]
 
     // Remove duplicate structs.
@@ -375,7 +396,39 @@ function getCallbacks(callbacks) {
     output += `        /* ${outputLineNumber()} */ ")\\n"`
     return output;
 }
+
+
+/**
+ * Retrieve all callbacks across all the raylib modules.
+ */
+ function getAllCallbacks() {
+
+    let callbackNames = []
+
+    let allCallbacks = [
+        ...raylib.raylib.callbacks,
+        ...raylib.raymath.callbacks,
+        ...raylib.rlgl.callbacks
+    ]
+
+    allCallbacks = allCallbacks.filter(details => {
+        if (callbackNames.includes(details.name)) {
+            return false
+        }
+        callbackNames.push(details.name)
+        return true
+    })
+
+    return allCallbacks
+}
 const callbacks = getCallbacks(raylib.raylib.callbacks)
+
+function getModuleFunctionDeclarationsCleanParamName(name) {
+    if (name == 'type') {
+        return name + 'Input'
+    }
+    return name
+}
 
 /**
  * Builds the module declarations for the module.
@@ -392,7 +445,8 @@ function getModuleFunctionDeclarations(functions) {
         let paramList = []
         if (func.params) {
             for (let param of func.params) {
-                paramList.push(`${param.name}: ${raylibTypeToUmka(param.type)}`)
+                let paramName = getModuleFunctionDeclarationsCleanParamName(param.name)
+                paramList.push(`${paramName}: ${raylibTypeToUmka(param.type)}`)
             }
         }
 
@@ -441,7 +495,8 @@ function getAllEnums() {
 
     let allEnums = [
         ...raylib.raylib.enums,
-        ...raylib.raymath.enums
+        ...raylib.raymath.enums,
+        ...raylib.rlgl.enums
     ]
 
     allEnums = allEnums.filter(enumDetails => {
@@ -516,7 +571,8 @@ function getAllDefines() {
 
     let allDefines = [
         ...raylib.raylib.defines,
-        ...raylib.raymath.defines
+        ...raylib.raymath.defines,
+        ...raylib.rlgl.defines
     ]
 
     allDefines = allDefines.filter(defineDetails => {
@@ -607,6 +663,12 @@ bool umkaAddRaylib(void *umka);
 #define RAYLIB_UMKA_RAYMATH_H "raymath.h"
 #endif
 #include RAYLIB_UMKA_RAYMATH_H
+
+// rlgl.h
+#ifndef RAYLIB_UMKA_RLGL_H
+#define RAYLIB_UMKA_RLGL_H "rlgl.h"
+#endif
+#include RAYLIB_UMKA_RLGL_H
 
 // umka_api.h
 #ifndef RAYLIB_UMKA_UMKA_API_H

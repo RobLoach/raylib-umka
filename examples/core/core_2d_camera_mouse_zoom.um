@@ -1,0 +1,107 @@
+/*******************************************************************************************
+*
+*   raylib-umka [core] example - 2d camera mouse zoom
+*
+*   Example originally created with raylib 4.2, last time updated with raylib 4.2
+*
+*   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
+*   BSD-like license that allows static linking with closed source software
+*
+*   Copyright (c) 2022 Jeffery Myers (@JeffM2501), Rob Loach (@RobLoach)
+*
+********************************************************************************************/
+
+import (
+    "raylib"
+    "std.um"
+)
+
+const screenWidth = 800
+const screenHeight = 450
+
+// Zoom increment
+const zoomIncrement = 0.125
+
+var camera:raylib.Camera2D
+
+//------------------------------------------------------------------------------------
+// Program main entry point
+//------------------------------------------------------------------------------------
+fn main () {
+    // Initialization
+    //--------------------------------------------------------------------------------------
+
+    raylib.InitWindow(screenWidth, screenHeight, "raylib [core] example - 2d camera mouse zoom")
+
+    camera.zoom = 1.0
+
+    raylib.SetTargetFPS(60)                   // Set our game to run at 60 frames-per-second
+    //--------------------------------------------------------------------------------------
+}
+
+// Main game loop
+fn update() {
+    // Update
+    //----------------------------------------------------------------------------------
+    // Translate based on mouse right click
+    if raylib.IsMouseButtonDown(raylib.MOUSE_BUTTON_RIGHT) {
+        var delta:raylib.Vector2 = raylib.GetMouseDelta()
+        delta = raylib.Vector2Scale(delta, -1.0 / camera.zoom)
+
+        camera.target = raylib.Vector2Add(camera.target, delta)
+    }
+
+    // Zoom based on mouse wheel
+    var wheel:real = raylib.GetMouseWheelMove()
+    std.printf("Wheel: %f\n", wheel)
+    if wheel != 0 {
+        // Get the world point that is under the mouse
+        var mouseWorldPos:raylib.Vector2 = raylib.GetScreenToWorld2D(raylib.GetMousePosition(), camera)
+
+        // Set the offset to where the mouse is
+        camera.offset = raylib.GetMousePosition()
+
+        // Set the target to match, so that the camera maps the world space point
+        // under the cursor to the screen space point under the cursor at any zoom
+        camera.target = mouseWorldPos
+
+        camera.zoom += wheel * 0.125
+        if camera.zoom < 0.125 {
+            camera.zoom = 0.125
+        }
+    }
+
+    //----------------------------------------------------------------------------------
+
+    // Draw
+    //----------------------------------------------------------------------------------
+    raylib.BeginDrawing()
+        raylib.ClearBackground(raylib.BLACK)
+
+        raylib.BeginMode2D(camera)
+
+            // Draw the 3d grid, rotated 90 degrees and centered around 0,0
+            // just so we have something in the XY plane
+            raylib.rlPushMatrix()
+                raylib.rlTranslatef(0, 25*50, 0)
+                raylib.rlRotatef(90, 1, 0, 0)
+                raylib.DrawGrid(100, 50)
+            raylib.rlPopMatrix()
+
+            // Draw a reference circle
+            raylib.DrawCircle(100, 100, 50, raylib.YELLOW)
+
+        raylib.EndMode2D()
+
+        raylib.DrawText("Mouse right button drag to move, mouse wheel to zoom", 10, 10, 20, raylib.WHITE)
+
+    raylib.EndDrawing()
+    //----------------------------------------------------------------------------------
+}
+
+fn close() {
+    // De-Initialization
+    //--------------------------------------------------------------------------------------
+    raylib.CloseWindow()        // Close window and OpenGL context
+    //--------------------------------------------------------------------------------------
+}
