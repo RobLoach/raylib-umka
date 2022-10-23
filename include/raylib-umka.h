@@ -42,6 +42,11 @@ extern "C" {
 #endif
 
 /**
+ * RAYLIB_UMKA_NO_ADD_MODULE allows enabling or disabling the umkaAddRaylib() method.
+ */
+#ifndef RAYLIB_UMKA_NO_ADD_MODULE
+
+/**
  * Adds the raylib module to an Umka instance.
  *
  * @param umka The Umka instance you would like to add the raylib module to.
@@ -49,6 +54,8 @@ extern "C" {
  * @return True if it succeeds, false otherwise.
  */
 bool umkaAddRaylib(void *umka);
+
+#endif  // RAYLIB_UMKA_NO_ADD_MODULE
 
 #if defined(__cplusplus)
 }
@@ -90,6 +97,10 @@ bool umkaAddRaylib(void *umka);
 #define RAYLIB_UMKA_MEMCPY memcpy
 #endif
 
+#ifndef RAYLIB_UMKA_FUNCTION
+#define RAYLIB_UMKA_FUNCTION(functionName)
+#endif
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -99,6 +110,7 @@ extern "C" {
  *
  * @see InitWindow()
  */
+RAYLIB_UMKA_FUNCTION(InitWindow)
 void umkaInitWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[2].intVal;
     int height = params[1].intVal;
@@ -111,6 +123,7 @@ void umkaInitWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see WindowShouldClose()
  */
+RAYLIB_UMKA_FUNCTION(WindowShouldClose)
 void umkaWindowShouldClose(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)WindowShouldClose();
 }
@@ -120,6 +133,7 @@ void umkaWindowShouldClose(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CloseWindow()
  */
+RAYLIB_UMKA_FUNCTION(CloseWindow)
 void umkaCloseWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
     CloseWindow();
 }
@@ -129,6 +143,7 @@ void umkaCloseWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowReady()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowReady)
 void umkaIsWindowReady(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowReady();
 }
@@ -138,6 +153,7 @@ void umkaIsWindowReady(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowFullscreen()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowFullscreen)
 void umkaIsWindowFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowFullscreen();
 }
@@ -147,6 +163,7 @@ void umkaIsWindowFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowHidden()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowHidden)
 void umkaIsWindowHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowHidden();
 }
@@ -156,6 +173,7 @@ void umkaIsWindowHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowMinimized()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowMinimized)
 void umkaIsWindowMinimized(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowMinimized();
 }
@@ -165,6 +183,7 @@ void umkaIsWindowMinimized(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowMaximized()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowMaximized)
 void umkaIsWindowMaximized(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowMaximized();
 }
@@ -174,6 +193,7 @@ void umkaIsWindowMaximized(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowFocused()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowFocused)
 void umkaIsWindowFocused(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowFocused();
 }
@@ -183,6 +203,7 @@ void umkaIsWindowFocused(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowResized()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowResized)
 void umkaIsWindowResized(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsWindowResized();
 }
@@ -192,6 +213,7 @@ void umkaIsWindowResized(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsWindowState()
  */
+RAYLIB_UMKA_FUNCTION(IsWindowState)
 void umkaIsWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int flag = params[0].uintVal;
     result->intVal = (int)IsWindowState(flag);
@@ -202,6 +224,7 @@ void umkaIsWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowState()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowState)
 void umkaSetWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int flags = params[0].uintVal;
     SetWindowState(flags);
@@ -212,6 +235,7 @@ void umkaSetWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ClearWindowState()
  */
+RAYLIB_UMKA_FUNCTION(ClearWindowState)
 void umkaClearWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int flags = params[0].uintVal;
     ClearWindowState(flags);
@@ -222,6 +246,7 @@ void umkaClearWindowState(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ToggleFullscreen()
  */
+RAYLIB_UMKA_FUNCTION(ToggleFullscreen)
 void umkaToggleFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
     ToggleFullscreen();
 }
@@ -231,6 +256,7 @@ void umkaToggleFullscreen(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MaximizeWindow()
  */
+RAYLIB_UMKA_FUNCTION(MaximizeWindow)
 void umkaMaximizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
     MaximizeWindow();
 }
@@ -240,6 +266,7 @@ void umkaMaximizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MinimizeWindow()
  */
+RAYLIB_UMKA_FUNCTION(MinimizeWindow)
 void umkaMinimizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
     MinimizeWindow();
 }
@@ -249,6 +276,7 @@ void umkaMinimizeWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see RestoreWindow()
  */
+RAYLIB_UMKA_FUNCTION(RestoreWindow)
 void umkaRestoreWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
     RestoreWindow();
 }
@@ -258,6 +286,7 @@ void umkaRestoreWindow(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowIcon()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowIcon)
 void umkaSetWindowIcon(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[0];
     SetWindowIcon(*image);
@@ -268,6 +297,7 @@ void umkaSetWindowIcon(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowTitle()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowTitle)
 void umkaSetWindowTitle(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * title = (const char *)params[0].ptrVal;
     SetWindowTitle(title);
@@ -278,6 +308,7 @@ void umkaSetWindowTitle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowPosition()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowPosition)
 void umkaSetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     int x = params[1].intVal;
     int y = params[0].intVal;
@@ -289,6 +320,7 @@ void umkaSetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowMonitor()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowMonitor)
 void umkaSetWindowMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     SetWindowMonitor(monitor);
@@ -299,6 +331,7 @@ void umkaSetWindowMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowMinSize()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowMinSize)
 void umkaSetWindowMinSize(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[1].intVal;
     int height = params[0].intVal;
@@ -310,6 +343,7 @@ void umkaSetWindowMinSize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowSize()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowSize)
 void umkaSetWindowSize(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[1].intVal;
     int height = params[0].intVal;
@@ -321,6 +355,7 @@ void umkaSetWindowSize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetWindowOpacity()
  */
+RAYLIB_UMKA_FUNCTION(SetWindowOpacity)
 void umkaSetWindowOpacity(UmkaStackSlot *params, UmkaStackSlot *result) {
     float opacity = params[0].real32Val;
     SetWindowOpacity(opacity);
@@ -331,6 +366,7 @@ void umkaSetWindowOpacity(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWindowHandle()
  */
+RAYLIB_UMKA_FUNCTION(GetWindowHandle)
 void umkaGetWindowHandle(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = (void*)GetWindowHandle();
 }
@@ -340,6 +376,7 @@ void umkaGetWindowHandle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetScreenWidth()
  */
+RAYLIB_UMKA_FUNCTION(GetScreenWidth)
 void umkaGetScreenWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetScreenWidth();
 }
@@ -349,6 +386,7 @@ void umkaGetScreenWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetScreenHeight()
  */
+RAYLIB_UMKA_FUNCTION(GetScreenHeight)
 void umkaGetScreenHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetScreenHeight();
 }
@@ -358,6 +396,7 @@ void umkaGetScreenHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRenderWidth()
  */
+RAYLIB_UMKA_FUNCTION(GetRenderWidth)
 void umkaGetRenderWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetRenderWidth();
 }
@@ -367,6 +406,7 @@ void umkaGetRenderWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRenderHeight()
  */
+RAYLIB_UMKA_FUNCTION(GetRenderHeight)
 void umkaGetRenderHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetRenderHeight();
 }
@@ -376,6 +416,7 @@ void umkaGetRenderHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorCount()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorCount)
 void umkaGetMonitorCount(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetMonitorCount();
 }
@@ -385,6 +426,7 @@ void umkaGetMonitorCount(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCurrentMonitor()
  */
+RAYLIB_UMKA_FUNCTION(GetCurrentMonitor)
 void umkaGetCurrentMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetCurrentMonitor();
 }
@@ -394,6 +436,7 @@ void umkaGetCurrentMonitor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorPosition()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorPosition)
 void umkaGetMonitorPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int monitor = params[1].intVal;
@@ -407,6 +450,7 @@ void umkaGetMonitorPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorWidth()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorWidth)
 void umkaGetMonitorWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     result->intVal = GetMonitorWidth(monitor);
@@ -417,6 +461,7 @@ void umkaGetMonitorWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorHeight()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorHeight)
 void umkaGetMonitorHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     result->intVal = GetMonitorHeight(monitor);
@@ -427,6 +472,7 @@ void umkaGetMonitorHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorPhysicalWidth()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorPhysicalWidth)
 void umkaGetMonitorPhysicalWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     result->intVal = GetMonitorPhysicalWidth(monitor);
@@ -437,6 +483,7 @@ void umkaGetMonitorPhysicalWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorPhysicalHeight()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorPhysicalHeight)
 void umkaGetMonitorPhysicalHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     result->intVal = GetMonitorPhysicalHeight(monitor);
@@ -447,6 +494,7 @@ void umkaGetMonitorPhysicalHeight(UmkaStackSlot *params, UmkaStackSlot *result) 
  *
  * @see GetMonitorRefreshRate()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorRefreshRate)
 void umkaGetMonitorRefreshRate(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     result->intVal = GetMonitorRefreshRate(monitor);
@@ -457,6 +505,7 @@ void umkaGetMonitorRefreshRate(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWindowPosition()
  */
+RAYLIB_UMKA_FUNCTION(GetWindowPosition)
 void umkaGetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetWindowPosition();
@@ -468,6 +517,7 @@ void umkaGetWindowPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWindowScaleDPI()
  */
+RAYLIB_UMKA_FUNCTION(GetWindowScaleDPI)
 void umkaGetWindowScaleDPI(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetWindowScaleDPI();
@@ -479,6 +529,7 @@ void umkaGetWindowScaleDPI(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMonitorName()
  */
+RAYLIB_UMKA_FUNCTION(GetMonitorName)
 void umkaGetMonitorName(UmkaStackSlot *params, UmkaStackSlot *result) {
     int monitor = params[0].intVal;
     result->ptrVal = (void*)GetMonitorName(monitor);
@@ -489,6 +540,7 @@ void umkaGetMonitorName(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetClipboardText()
  */
+RAYLIB_UMKA_FUNCTION(SetClipboardText)
 void umkaSetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     SetClipboardText(text);
@@ -499,6 +551,7 @@ void umkaSetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetClipboardText()
  */
+RAYLIB_UMKA_FUNCTION(GetClipboardText)
 void umkaGetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = (void*)GetClipboardText();
 }
@@ -508,6 +561,7 @@ void umkaGetClipboardText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EnableEventWaiting()
  */
+RAYLIB_UMKA_FUNCTION(EnableEventWaiting)
 void umkaEnableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
     EnableEventWaiting();
 }
@@ -517,6 +571,7 @@ void umkaEnableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DisableEventWaiting()
  */
+RAYLIB_UMKA_FUNCTION(DisableEventWaiting)
 void umkaDisableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
     DisableEventWaiting();
 }
@@ -526,6 +581,7 @@ void umkaDisableEventWaiting(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SwapScreenBuffer()
  */
+RAYLIB_UMKA_FUNCTION(SwapScreenBuffer)
 void umkaSwapScreenBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     SwapScreenBuffer();
 }
@@ -535,6 +591,7 @@ void umkaSwapScreenBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PollInputEvents()
  */
+RAYLIB_UMKA_FUNCTION(PollInputEvents)
 void umkaPollInputEvents(UmkaStackSlot *params, UmkaStackSlot *result) {
     PollInputEvents();
 }
@@ -544,6 +601,7 @@ void umkaPollInputEvents(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see WaitTime()
  */
+RAYLIB_UMKA_FUNCTION(WaitTime)
 void umkaWaitTime(UmkaStackSlot *params, UmkaStackSlot *result) {
     double seconds = params[0].realVal;
     WaitTime(seconds);
@@ -554,6 +612,7 @@ void umkaWaitTime(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ShowCursor()
  */
+RAYLIB_UMKA_FUNCTION(ShowCursor)
 void umkaShowCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
     ShowCursor();
 }
@@ -563,6 +622,7 @@ void umkaShowCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see HideCursor()
  */
+RAYLIB_UMKA_FUNCTION(HideCursor)
 void umkaHideCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
     HideCursor();
 }
@@ -572,6 +632,7 @@ void umkaHideCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsCursorHidden()
  */
+RAYLIB_UMKA_FUNCTION(IsCursorHidden)
 void umkaIsCursorHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsCursorHidden();
 }
@@ -581,6 +642,7 @@ void umkaIsCursorHidden(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EnableCursor()
  */
+RAYLIB_UMKA_FUNCTION(EnableCursor)
 void umkaEnableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
     EnableCursor();
 }
@@ -590,6 +652,7 @@ void umkaEnableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DisableCursor()
  */
+RAYLIB_UMKA_FUNCTION(DisableCursor)
 void umkaDisableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
     DisableCursor();
 }
@@ -599,6 +662,7 @@ void umkaDisableCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsCursorOnScreen()
  */
+RAYLIB_UMKA_FUNCTION(IsCursorOnScreen)
 void umkaIsCursorOnScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsCursorOnScreen();
 }
@@ -608,6 +672,7 @@ void umkaIsCursorOnScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ClearBackground()
  */
+RAYLIB_UMKA_FUNCTION(ClearBackground)
 void umkaClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* color = (Color*)&params[0];
     ClearBackground(*color);
@@ -618,6 +683,7 @@ void umkaClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginDrawing()
  */
+RAYLIB_UMKA_FUNCTION(BeginDrawing)
 void umkaBeginDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
     BeginDrawing();
 }
@@ -627,6 +693,7 @@ void umkaBeginDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndDrawing()
  */
+RAYLIB_UMKA_FUNCTION(EndDrawing)
 void umkaEndDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndDrawing();
 }
@@ -636,6 +703,7 @@ void umkaEndDrawing(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginMode2D()
  */
+RAYLIB_UMKA_FUNCTION(BeginMode2D)
 void umkaBeginMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera2D* camera = (Camera2D*)&params[0];
     BeginMode2D(*camera);
@@ -646,6 +714,7 @@ void umkaBeginMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndMode2D()
  */
+RAYLIB_UMKA_FUNCTION(EndMode2D)
 void umkaEndMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndMode2D();
 }
@@ -655,6 +724,7 @@ void umkaEndMode2D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginMode3D()
  */
+RAYLIB_UMKA_FUNCTION(BeginMode3D)
 void umkaBeginMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera3D* camera = (Camera3D*)&params[0];
     BeginMode3D(*camera);
@@ -665,6 +735,7 @@ void umkaBeginMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndMode3D()
  */
+RAYLIB_UMKA_FUNCTION(EndMode3D)
 void umkaEndMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndMode3D();
 }
@@ -674,6 +745,7 @@ void umkaEndMode3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginTextureMode()
  */
+RAYLIB_UMKA_FUNCTION(BeginTextureMode)
 void umkaBeginTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     RenderTexture2D* target = (RenderTexture2D*)&params[0];
     BeginTextureMode(*target);
@@ -684,6 +756,7 @@ void umkaBeginTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndTextureMode()
  */
+RAYLIB_UMKA_FUNCTION(EndTextureMode)
 void umkaEndTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndTextureMode();
 }
@@ -693,6 +766,7 @@ void umkaEndTextureMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginShaderMode()
  */
+RAYLIB_UMKA_FUNCTION(BeginShaderMode)
 void umkaBeginShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[0];
     BeginShaderMode(*shader);
@@ -703,6 +777,7 @@ void umkaBeginShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndShaderMode()
  */
+RAYLIB_UMKA_FUNCTION(EndShaderMode)
 void umkaEndShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndShaderMode();
 }
@@ -712,6 +787,7 @@ void umkaEndShaderMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginBlendMode()
  */
+RAYLIB_UMKA_FUNCTION(BeginBlendMode)
 void umkaBeginBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     int mode = params[0].intVal;
     BeginBlendMode(mode);
@@ -722,6 +798,7 @@ void umkaBeginBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndBlendMode()
  */
+RAYLIB_UMKA_FUNCTION(EndBlendMode)
 void umkaEndBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndBlendMode();
 }
@@ -731,6 +808,7 @@ void umkaEndBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginScissorMode()
  */
+RAYLIB_UMKA_FUNCTION(BeginScissorMode)
 void umkaBeginScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     int x = params[3].intVal;
     int y = params[2].intVal;
@@ -744,6 +822,7 @@ void umkaBeginScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndScissorMode()
  */
+RAYLIB_UMKA_FUNCTION(EndScissorMode)
 void umkaEndScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndScissorMode();
 }
@@ -753,6 +832,7 @@ void umkaEndScissorMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see BeginVrStereoMode()
  */
+RAYLIB_UMKA_FUNCTION(BeginVrStereoMode)
 void umkaBeginVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     VrStereoConfig* config = (VrStereoConfig*)&params[0];
     BeginVrStereoMode(*config);
@@ -763,6 +843,7 @@ void umkaBeginVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EndVrStereoMode()
  */
+RAYLIB_UMKA_FUNCTION(EndVrStereoMode)
 void umkaEndVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     EndVrStereoMode();
 }
@@ -772,6 +853,7 @@ void umkaEndVrStereoMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadVrStereoConfig()
  */
+RAYLIB_UMKA_FUNCTION(LoadVrStereoConfig)
 void umkaLoadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     VrDeviceInfo* device = (VrDeviceInfo*)&params[1];
@@ -785,6 +867,7 @@ void umkaLoadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadVrStereoConfig()
  */
+RAYLIB_UMKA_FUNCTION(UnloadVrStereoConfig)
 void umkaUnloadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
     VrStereoConfig* config = (VrStereoConfig*)&params[0];
     UnloadVrStereoConfig(*config);
@@ -795,6 +878,7 @@ void umkaUnloadVrStereoConfig(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadShader()
  */
+RAYLIB_UMKA_FUNCTION(LoadShader)
 void umkaLoadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * vsFileName = (const char *)params[2].ptrVal;
@@ -809,6 +893,7 @@ void umkaLoadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadShaderFromMemory()
  */
+RAYLIB_UMKA_FUNCTION(LoadShaderFromMemory)
 void umkaLoadShaderFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * vsCode = (const char *)params[2].ptrVal;
@@ -823,6 +908,7 @@ void umkaLoadShaderFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetShaderLocation()
  */
+RAYLIB_UMKA_FUNCTION(GetShaderLocation)
 void umkaGetShaderLocation(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[1];
     const char * uniformName = (const char *)params[0].ptrVal;
@@ -834,6 +920,7 @@ void umkaGetShaderLocation(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetShaderLocationAttrib()
  */
+RAYLIB_UMKA_FUNCTION(GetShaderLocationAttrib)
 void umkaGetShaderLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[1];
     const char * attribName = (const char *)params[0].ptrVal;
@@ -845,6 +932,7 @@ void umkaGetShaderLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetShaderValue()
  */
+RAYLIB_UMKA_FUNCTION(SetShaderValue)
 void umkaSetShaderValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[3];
     int locIndex = params[2].intVal;
@@ -858,6 +946,7 @@ void umkaSetShaderValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetShaderValueV()
  */
+RAYLIB_UMKA_FUNCTION(SetShaderValueV)
 void umkaSetShaderValueV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[4];
     int locIndex = params[3].intVal;
@@ -872,6 +961,7 @@ void umkaSetShaderValueV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetShaderValueMatrix()
  */
+RAYLIB_UMKA_FUNCTION(SetShaderValueMatrix)
 void umkaSetShaderValueMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[2];
     int locIndex = params[1].intVal;
@@ -884,6 +974,7 @@ void umkaSetShaderValueMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetShaderValueTexture()
  */
+RAYLIB_UMKA_FUNCTION(SetShaderValueTexture)
 void umkaSetShaderValueTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[2];
     int locIndex = params[1].intVal;
@@ -896,6 +987,7 @@ void umkaSetShaderValueTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadShader()
  */
+RAYLIB_UMKA_FUNCTION(UnloadShader)
 void umkaUnloadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     Shader* shader = (Shader*)&params[0];
     UnloadShader(*shader);
@@ -906,6 +998,7 @@ void umkaUnloadShader(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMouseRay()
  */
+RAYLIB_UMKA_FUNCTION(GetMouseRay)
 void umkaGetMouseRay(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* mousePosition = (Vector2*)&params[2];
@@ -920,6 +1013,7 @@ void umkaGetMouseRay(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCameraMatrix()
  */
+RAYLIB_UMKA_FUNCTION(GetCameraMatrix)
 void umkaGetCameraMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Camera* camera = (Camera*)&params[1];
@@ -933,6 +1027,7 @@ void umkaGetCameraMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCameraMatrix2D()
  */
+RAYLIB_UMKA_FUNCTION(GetCameraMatrix2D)
 void umkaGetCameraMatrix2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Camera2D* camera = (Camera2D*)&params[1];
@@ -946,6 +1041,7 @@ void umkaGetCameraMatrix2D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWorldToScreen()
  */
+RAYLIB_UMKA_FUNCTION(GetWorldToScreen)
 void umkaGetWorldToScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* position = (Vector3*)&params[2];
@@ -960,6 +1056,7 @@ void umkaGetWorldToScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetScreenToWorld2D()
  */
+RAYLIB_UMKA_FUNCTION(GetScreenToWorld2D)
 void umkaGetScreenToWorld2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* position = (Vector2*)&params[2];
@@ -974,6 +1071,7 @@ void umkaGetScreenToWorld2D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWorldToScreenEx()
  */
+RAYLIB_UMKA_FUNCTION(GetWorldToScreenEx)
 void umkaGetWorldToScreenEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* position = (Vector3*)&params[4];
@@ -990,6 +1088,7 @@ void umkaGetWorldToScreenEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWorldToScreen2D()
  */
+RAYLIB_UMKA_FUNCTION(GetWorldToScreen2D)
 void umkaGetWorldToScreen2D(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* position = (Vector2*)&params[2];
@@ -1004,6 +1103,7 @@ void umkaGetWorldToScreen2D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetTargetFPS()
  */
+RAYLIB_UMKA_FUNCTION(SetTargetFPS)
 void umkaSetTargetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
     int fps = params[0].intVal;
     SetTargetFPS(fps);
@@ -1014,6 +1114,7 @@ void umkaSetTargetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFPS()
  */
+RAYLIB_UMKA_FUNCTION(GetFPS)
 void umkaGetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetFPS();
 }
@@ -1023,6 +1124,7 @@ void umkaGetFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFrameTime()
  */
+RAYLIB_UMKA_FUNCTION(GetFrameTime)
 void umkaGetFrameTime(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = GetFrameTime();
 }
@@ -1032,6 +1134,7 @@ void umkaGetFrameTime(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetTime()
  */
+RAYLIB_UMKA_FUNCTION(GetTime)
 void umkaGetTime(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = GetTime();
 }
@@ -1041,6 +1144,7 @@ void umkaGetTime(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRandomValue()
  */
+RAYLIB_UMKA_FUNCTION(GetRandomValue)
 void umkaGetRandomValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     int min = params[1].intVal;
     int max = params[0].intVal;
@@ -1052,6 +1156,7 @@ void umkaGetRandomValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetRandomSeed()
  */
+RAYLIB_UMKA_FUNCTION(SetRandomSeed)
 void umkaSetRandomSeed(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int seed = params[0].uintVal;
     SetRandomSeed(seed);
@@ -1062,6 +1167,7 @@ void umkaSetRandomSeed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TakeScreenshot()
  */
+RAYLIB_UMKA_FUNCTION(TakeScreenshot)
 void umkaTakeScreenshot(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
     TakeScreenshot(fileName);
@@ -1072,6 +1178,7 @@ void umkaTakeScreenshot(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetConfigFlags()
  */
+RAYLIB_UMKA_FUNCTION(SetConfigFlags)
 void umkaSetConfigFlags(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int flags = params[0].uintVal;
     SetConfigFlags(flags);
@@ -1084,6 +1191,7 @@ void umkaSetConfigFlags(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetTraceLogLevel()
  */
+RAYLIB_UMKA_FUNCTION(SetTraceLogLevel)
 void umkaSetTraceLogLevel(UmkaStackSlot *params, UmkaStackSlot *result) {
     int logLevel = params[0].intVal;
     SetTraceLogLevel(logLevel);
@@ -1094,6 +1202,7 @@ void umkaSetTraceLogLevel(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MemAlloc()
  */
+RAYLIB_UMKA_FUNCTION(MemAlloc)
 void umkaMemAlloc(UmkaStackSlot *params, UmkaStackSlot *result) {
     int size = params[0].intVal;
     result->ptrVal = (void*)MemAlloc(size);
@@ -1104,6 +1213,7 @@ void umkaMemAlloc(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MemRealloc()
  */
+RAYLIB_UMKA_FUNCTION(MemRealloc)
 void umkaMemRealloc(UmkaStackSlot *params, UmkaStackSlot *result) {
     void * ptr = (void *)params[1].ptrVal;
     int size = params[0].intVal;
@@ -1115,6 +1225,7 @@ void umkaMemRealloc(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MemFree()
  */
+RAYLIB_UMKA_FUNCTION(MemFree)
 void umkaMemFree(UmkaStackSlot *params, UmkaStackSlot *result) {
     void * ptr = (void *)params[0].ptrVal;
     MemFree(ptr);
@@ -1125,6 +1236,7 @@ void umkaMemFree(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see OpenURL()
  */
+RAYLIB_UMKA_FUNCTION(OpenURL)
 void umkaOpenURL(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * url = (const char *)params[0].ptrVal;
     OpenURL(url);
@@ -1145,6 +1257,7 @@ void umkaOpenURL(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadFileData()
  */
+RAYLIB_UMKA_FUNCTION(LoadFileData)
 void umkaLoadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[1].ptrVal;
     unsigned int * bytesRead = (unsigned int *)params[0].ptrVal;
@@ -1156,6 +1269,7 @@ void umkaLoadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadFileData()
  */
+RAYLIB_UMKA_FUNCTION(UnloadFileData)
 void umkaUnloadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned char * data = (unsigned char *)params[0].ptrVal;
     UnloadFileData(data);
@@ -1166,6 +1280,7 @@ void umkaUnloadFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SaveFileData()
  */
+RAYLIB_UMKA_FUNCTION(SaveFileData)
 void umkaSaveFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[2].ptrVal;
     void * data = (void *)params[1].ptrVal;
@@ -1178,6 +1293,7 @@ void umkaSaveFileData(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportDataAsCode()
  */
+RAYLIB_UMKA_FUNCTION(ExportDataAsCode)
 void umkaExportDataAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * data = (const char *)params[2].ptrVal;
     unsigned int size = params[1].uintVal;
@@ -1190,6 +1306,7 @@ void umkaExportDataAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadFileText()
  */
+RAYLIB_UMKA_FUNCTION(LoadFileText)
 void umkaLoadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)LoadFileText(fileName);
@@ -1200,6 +1317,7 @@ void umkaLoadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadFileText()
  */
+RAYLIB_UMKA_FUNCTION(UnloadFileText)
 void umkaUnloadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
     char * text = (char *)params[0].ptrVal;
     UnloadFileText(text);
@@ -1210,6 +1328,7 @@ void umkaUnloadFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SaveFileText()
  */
+RAYLIB_UMKA_FUNCTION(SaveFileText)
 void umkaSaveFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[1].ptrVal;
     char * text = (char *)params[0].ptrVal;
@@ -1221,6 +1340,7 @@ void umkaSaveFileText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see FileExists()
  */
+RAYLIB_UMKA_FUNCTION(FileExists)
 void umkaFileExists(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
     result->intVal = (int)FileExists(fileName);
@@ -1231,6 +1351,7 @@ void umkaFileExists(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DirectoryExists()
  */
+RAYLIB_UMKA_FUNCTION(DirectoryExists)
 void umkaDirectoryExists(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * dirPath = (const char *)params[0].ptrVal;
     result->intVal = (int)DirectoryExists(dirPath);
@@ -1241,6 +1362,7 @@ void umkaDirectoryExists(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsFileExtension()
  */
+RAYLIB_UMKA_FUNCTION(IsFileExtension)
 void umkaIsFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[1].ptrVal;
     const char * ext = (const char *)params[0].ptrVal;
@@ -1252,6 +1374,7 @@ void umkaIsFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFileLength()
  */
+RAYLIB_UMKA_FUNCTION(GetFileLength)
 void umkaGetFileLength(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
     result->intVal = GetFileLength(fileName);
@@ -1262,6 +1385,7 @@ void umkaGetFileLength(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFileExtension()
  */
+RAYLIB_UMKA_FUNCTION(GetFileExtension)
 void umkaGetFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)GetFileExtension(fileName);
@@ -1272,6 +1396,7 @@ void umkaGetFileExtension(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFileName()
  */
+RAYLIB_UMKA_FUNCTION(GetFileName)
 void umkaGetFileName(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * filePath = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)GetFileName(filePath);
@@ -1282,6 +1407,7 @@ void umkaGetFileName(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFileNameWithoutExt()
  */
+RAYLIB_UMKA_FUNCTION(GetFileNameWithoutExt)
 void umkaGetFileNameWithoutExt(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * filePath = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)GetFileNameWithoutExt(filePath);
@@ -1292,6 +1418,7 @@ void umkaGetFileNameWithoutExt(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetDirectoryPath()
  */
+RAYLIB_UMKA_FUNCTION(GetDirectoryPath)
 void umkaGetDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * filePath = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)GetDirectoryPath(filePath);
@@ -1302,6 +1429,7 @@ void umkaGetDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetPrevDirectoryPath()
  */
+RAYLIB_UMKA_FUNCTION(GetPrevDirectoryPath)
 void umkaGetPrevDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * dirPath = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)GetPrevDirectoryPath(dirPath);
@@ -1312,6 +1440,7 @@ void umkaGetPrevDirectoryPath(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetWorkingDirectory()
  */
+RAYLIB_UMKA_FUNCTION(GetWorkingDirectory)
 void umkaGetWorkingDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = (void*)GetWorkingDirectory();
 }
@@ -1321,6 +1450,7 @@ void umkaGetWorkingDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetApplicationDirectory()
  */
+RAYLIB_UMKA_FUNCTION(GetApplicationDirectory)
 void umkaGetApplicationDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = (void*)GetApplicationDirectory();
 }
@@ -1330,6 +1460,7 @@ void umkaGetApplicationDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ChangeDirectory()
  */
+RAYLIB_UMKA_FUNCTION(ChangeDirectory)
 void umkaChangeDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * dir = (const char *)params[0].ptrVal;
     result->intVal = (int)ChangeDirectory(dir);
@@ -1340,6 +1471,7 @@ void umkaChangeDirectory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsPathFile()
  */
+RAYLIB_UMKA_FUNCTION(IsPathFile)
 void umkaIsPathFile(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * path = (const char *)params[0].ptrVal;
     result->intVal = (int)IsPathFile(path);
@@ -1350,6 +1482,7 @@ void umkaIsPathFile(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadDirectoryFiles()
  */
+RAYLIB_UMKA_FUNCTION(LoadDirectoryFiles)
 void umkaLoadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * dirPath = (const char *)params[1].ptrVal;
@@ -1363,6 +1496,7 @@ void umkaLoadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadDirectoryFilesEx()
  */
+RAYLIB_UMKA_FUNCTION(LoadDirectoryFilesEx)
 void umkaLoadDirectoryFilesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * basePath = (const char *)params[3].ptrVal;
@@ -1378,6 +1512,7 @@ void umkaLoadDirectoryFilesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadDirectoryFiles()
  */
+RAYLIB_UMKA_FUNCTION(UnloadDirectoryFiles)
 void umkaUnloadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
     FilePathList* files = (FilePathList*)&params[0];
     UnloadDirectoryFiles(*files);
@@ -1388,6 +1523,7 @@ void umkaUnloadDirectoryFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsFileDropped()
  */
+RAYLIB_UMKA_FUNCTION(IsFileDropped)
 void umkaIsFileDropped(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsFileDropped();
 }
@@ -1397,6 +1533,7 @@ void umkaIsFileDropped(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadDroppedFiles()
  */
+RAYLIB_UMKA_FUNCTION(LoadDroppedFiles)
 void umkaLoadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(FilePathList), NULL);
     FilePathList out = LoadDroppedFiles();
@@ -1408,6 +1545,7 @@ void umkaLoadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadDroppedFiles()
  */
+RAYLIB_UMKA_FUNCTION(UnloadDroppedFiles)
 void umkaUnloadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
     FilePathList* files = (FilePathList*)&params[0];
     UnloadDroppedFiles(*files);
@@ -1418,6 +1556,7 @@ void umkaUnloadDroppedFiles(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFileModTime()
  */
+RAYLIB_UMKA_FUNCTION(GetFileModTime)
 void umkaGetFileModTime(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[0].ptrVal;
     result->intVal = GetFileModTime(fileName);
@@ -1428,6 +1567,7 @@ void umkaGetFileModTime(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CompressData()
  */
+RAYLIB_UMKA_FUNCTION(CompressData)
 void umkaCompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
     const unsigned char * data = (const unsigned char *)params[2].ptrVal;
     int dataSize = params[1].intVal;
@@ -1440,6 +1580,7 @@ void umkaCompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DecompressData()
  */
+RAYLIB_UMKA_FUNCTION(DecompressData)
 void umkaDecompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
     const unsigned char * compData = (const unsigned char *)params[2].ptrVal;
     int compDataSize = params[1].intVal;
@@ -1452,6 +1593,7 @@ void umkaDecompressData(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see EncodeDataBase64()
  */
+RAYLIB_UMKA_FUNCTION(EncodeDataBase64)
 void umkaEncodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
     const unsigned char * data = (const unsigned char *)params[2].ptrVal;
     int dataSize = params[1].intVal;
@@ -1464,6 +1606,7 @@ void umkaEncodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DecodeDataBase64()
  */
+RAYLIB_UMKA_FUNCTION(DecodeDataBase64)
 void umkaDecodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
     const unsigned char * data = (const unsigned char *)params[1].ptrVal;
     int * outputSize = (int *)params[0].ptrVal;
@@ -1475,6 +1618,7 @@ void umkaDecodeDataBase64(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsKeyPressed()
  */
+RAYLIB_UMKA_FUNCTION(IsKeyPressed)
 void umkaIsKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
     int key = params[0].intVal;
     result->intVal = (int)IsKeyPressed(key);
@@ -1485,6 +1629,7 @@ void umkaIsKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsKeyDown()
  */
+RAYLIB_UMKA_FUNCTION(IsKeyDown)
 void umkaIsKeyDown(UmkaStackSlot *params, UmkaStackSlot *result) {
     int key = params[0].intVal;
     result->intVal = (int)IsKeyDown(key);
@@ -1495,6 +1640,7 @@ void umkaIsKeyDown(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsKeyReleased()
  */
+RAYLIB_UMKA_FUNCTION(IsKeyReleased)
 void umkaIsKeyReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
     int key = params[0].intVal;
     result->intVal = (int)IsKeyReleased(key);
@@ -1505,6 +1651,7 @@ void umkaIsKeyReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsKeyUp()
  */
+RAYLIB_UMKA_FUNCTION(IsKeyUp)
 void umkaIsKeyUp(UmkaStackSlot *params, UmkaStackSlot *result) {
     int key = params[0].intVal;
     result->intVal = (int)IsKeyUp(key);
@@ -1515,6 +1662,7 @@ void umkaIsKeyUp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetExitKey()
  */
+RAYLIB_UMKA_FUNCTION(SetExitKey)
 void umkaSetExitKey(UmkaStackSlot *params, UmkaStackSlot *result) {
     int key = params[0].intVal;
     SetExitKey(key);
@@ -1525,6 +1673,7 @@ void umkaSetExitKey(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetKeyPressed()
  */
+RAYLIB_UMKA_FUNCTION(GetKeyPressed)
 void umkaGetKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetKeyPressed();
 }
@@ -1534,6 +1683,7 @@ void umkaGetKeyPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCharPressed()
  */
+RAYLIB_UMKA_FUNCTION(GetCharPressed)
 void umkaGetCharPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetCharPressed();
 }
@@ -1543,6 +1693,7 @@ void umkaGetCharPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsGamepadAvailable()
  */
+RAYLIB_UMKA_FUNCTION(IsGamepadAvailable)
 void umkaIsGamepadAvailable(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[0].intVal;
     result->intVal = (int)IsGamepadAvailable(gamepad);
@@ -1553,6 +1704,7 @@ void umkaIsGamepadAvailable(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGamepadName()
  */
+RAYLIB_UMKA_FUNCTION(GetGamepadName)
 void umkaGetGamepadName(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[0].intVal;
     result->ptrVal = (void*)GetGamepadName(gamepad);
@@ -1563,6 +1715,7 @@ void umkaGetGamepadName(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsGamepadButtonPressed()
  */
+RAYLIB_UMKA_FUNCTION(IsGamepadButtonPressed)
 void umkaIsGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[1].intVal;
     int button = params[0].intVal;
@@ -1574,6 +1727,7 @@ void umkaIsGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsGamepadButtonDown()
  */
+RAYLIB_UMKA_FUNCTION(IsGamepadButtonDown)
 void umkaIsGamepadButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[1].intVal;
     int button = params[0].intVal;
@@ -1585,6 +1739,7 @@ void umkaIsGamepadButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsGamepadButtonReleased()
  */
+RAYLIB_UMKA_FUNCTION(IsGamepadButtonReleased)
 void umkaIsGamepadButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[1].intVal;
     int button = params[0].intVal;
@@ -1596,6 +1751,7 @@ void umkaIsGamepadButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsGamepadButtonUp()
  */
+RAYLIB_UMKA_FUNCTION(IsGamepadButtonUp)
 void umkaIsGamepadButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[1].intVal;
     int button = params[0].intVal;
@@ -1607,6 +1763,7 @@ void umkaIsGamepadButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGamepadButtonPressed()
  */
+RAYLIB_UMKA_FUNCTION(GetGamepadButtonPressed)
 void umkaGetGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetGamepadButtonPressed();
 }
@@ -1616,6 +1773,7 @@ void umkaGetGamepadButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGamepadAxisCount()
  */
+RAYLIB_UMKA_FUNCTION(GetGamepadAxisCount)
 void umkaGetGamepadAxisCount(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[0].intVal;
     result->intVal = GetGamepadAxisCount(gamepad);
@@ -1626,6 +1784,7 @@ void umkaGetGamepadAxisCount(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGamepadAxisMovement()
  */
+RAYLIB_UMKA_FUNCTION(GetGamepadAxisMovement)
 void umkaGetGamepadAxisMovement(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gamepad = params[1].intVal;
     int axis = params[0].intVal;
@@ -1637,6 +1796,7 @@ void umkaGetGamepadAxisMovement(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetGamepadMappings()
  */
+RAYLIB_UMKA_FUNCTION(SetGamepadMappings)
 void umkaSetGamepadMappings(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * mappings = (const char *)params[0].ptrVal;
     result->intVal = SetGamepadMappings(mappings);
@@ -1647,6 +1807,7 @@ void umkaSetGamepadMappings(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsMouseButtonPressed()
  */
+RAYLIB_UMKA_FUNCTION(IsMouseButtonPressed)
 void umkaIsMouseButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
     int button = params[0].intVal;
     result->intVal = (int)IsMouseButtonPressed(button);
@@ -1657,6 +1818,7 @@ void umkaIsMouseButtonPressed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsMouseButtonDown()
  */
+RAYLIB_UMKA_FUNCTION(IsMouseButtonDown)
 void umkaIsMouseButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
     int button = params[0].intVal;
     result->intVal = (int)IsMouseButtonDown(button);
@@ -1667,6 +1829,7 @@ void umkaIsMouseButtonDown(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsMouseButtonReleased()
  */
+RAYLIB_UMKA_FUNCTION(IsMouseButtonReleased)
 void umkaIsMouseButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
     int button = params[0].intVal;
     result->intVal = (int)IsMouseButtonReleased(button);
@@ -1677,6 +1840,7 @@ void umkaIsMouseButtonReleased(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsMouseButtonUp()
  */
+RAYLIB_UMKA_FUNCTION(IsMouseButtonUp)
 void umkaIsMouseButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
     int button = params[0].intVal;
     result->intVal = (int)IsMouseButtonUp(button);
@@ -1687,6 +1851,7 @@ void umkaIsMouseButtonUp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMouseX()
  */
+RAYLIB_UMKA_FUNCTION(GetMouseX)
 void umkaGetMouseX(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetMouseX();
 }
@@ -1696,6 +1861,7 @@ void umkaGetMouseX(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMouseY()
  */
+RAYLIB_UMKA_FUNCTION(GetMouseY)
 void umkaGetMouseY(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetMouseY();
 }
@@ -1705,6 +1871,7 @@ void umkaGetMouseY(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMousePosition()
  */
+RAYLIB_UMKA_FUNCTION(GetMousePosition)
 void umkaGetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetMousePosition();
@@ -1716,6 +1883,7 @@ void umkaGetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMouseDelta()
  */
+RAYLIB_UMKA_FUNCTION(GetMouseDelta)
 void umkaGetMouseDelta(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetMouseDelta();
@@ -1727,6 +1895,7 @@ void umkaGetMouseDelta(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMousePosition()
  */
+RAYLIB_UMKA_FUNCTION(SetMousePosition)
 void umkaSetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     int x = params[1].intVal;
     int y = params[0].intVal;
@@ -1738,6 +1907,7 @@ void umkaSetMousePosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMouseOffset()
  */
+RAYLIB_UMKA_FUNCTION(SetMouseOffset)
 void umkaSetMouseOffset(UmkaStackSlot *params, UmkaStackSlot *result) {
     int offsetX = params[1].intVal;
     int offsetY = params[0].intVal;
@@ -1749,6 +1919,7 @@ void umkaSetMouseOffset(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMouseScale()
  */
+RAYLIB_UMKA_FUNCTION(SetMouseScale)
 void umkaSetMouseScale(UmkaStackSlot *params, UmkaStackSlot *result) {
     float scaleX = params[1].real32Val;
     float scaleY = params[0].real32Val;
@@ -1760,6 +1931,7 @@ void umkaSetMouseScale(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMouseWheelMove()
  */
+RAYLIB_UMKA_FUNCTION(GetMouseWheelMove)
 void umkaGetMouseWheelMove(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = GetMouseWheelMove();
 }
@@ -1769,6 +1941,7 @@ void umkaGetMouseWheelMove(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMouseWheelMoveV()
  */
+RAYLIB_UMKA_FUNCTION(GetMouseWheelMoveV)
 void umkaGetMouseWheelMoveV(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetMouseWheelMoveV();
@@ -1780,6 +1953,7 @@ void umkaGetMouseWheelMoveV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMouseCursor()
  */
+RAYLIB_UMKA_FUNCTION(SetMouseCursor)
 void umkaSetMouseCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
     int cursor = params[0].intVal;
     SetMouseCursor(cursor);
@@ -1790,6 +1964,7 @@ void umkaSetMouseCursor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetTouchX()
  */
+RAYLIB_UMKA_FUNCTION(GetTouchX)
 void umkaGetTouchX(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetTouchX();
 }
@@ -1799,6 +1974,7 @@ void umkaGetTouchX(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetTouchY()
  */
+RAYLIB_UMKA_FUNCTION(GetTouchY)
 void umkaGetTouchY(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetTouchY();
 }
@@ -1808,6 +1984,7 @@ void umkaGetTouchY(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetTouchPosition()
  */
+RAYLIB_UMKA_FUNCTION(GetTouchPosition)
 void umkaGetTouchPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int index = params[1].intVal;
@@ -1821,6 +1998,7 @@ void umkaGetTouchPosition(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetTouchPointId()
  */
+RAYLIB_UMKA_FUNCTION(GetTouchPointId)
 void umkaGetTouchPointId(UmkaStackSlot *params, UmkaStackSlot *result) {
     int index = params[0].intVal;
     result->intVal = GetTouchPointId(index);
@@ -1831,6 +2009,7 @@ void umkaGetTouchPointId(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetTouchPointCount()
  */
+RAYLIB_UMKA_FUNCTION(GetTouchPointCount)
 void umkaGetTouchPointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetTouchPointCount();
 }
@@ -1840,6 +2019,7 @@ void umkaGetTouchPointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetGesturesEnabled()
  */
+RAYLIB_UMKA_FUNCTION(SetGesturesEnabled)
 void umkaSetGesturesEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int flags = params[0].uintVal;
     SetGesturesEnabled(flags);
@@ -1850,6 +2030,7 @@ void umkaSetGesturesEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsGestureDetected()
  */
+RAYLIB_UMKA_FUNCTION(IsGestureDetected)
 void umkaIsGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
     int gesture = params[0].intVal;
     result->intVal = (int)IsGestureDetected(gesture);
@@ -1860,6 +2041,7 @@ void umkaIsGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGestureDetected()
  */
+RAYLIB_UMKA_FUNCTION(GetGestureDetected)
 void umkaGetGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetGestureDetected();
 }
@@ -1869,6 +2051,7 @@ void umkaGetGestureDetected(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGestureHoldDuration()
  */
+RAYLIB_UMKA_FUNCTION(GetGestureHoldDuration)
 void umkaGetGestureHoldDuration(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = GetGestureHoldDuration();
 }
@@ -1878,6 +2061,7 @@ void umkaGetGestureHoldDuration(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGestureDragVector()
  */
+RAYLIB_UMKA_FUNCTION(GetGestureDragVector)
 void umkaGetGestureDragVector(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetGestureDragVector();
@@ -1889,6 +2073,7 @@ void umkaGetGestureDragVector(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGestureDragAngle()
  */
+RAYLIB_UMKA_FUNCTION(GetGestureDragAngle)
 void umkaGetGestureDragAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = GetGestureDragAngle();
 }
@@ -1898,6 +2083,7 @@ void umkaGetGestureDragAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGesturePinchVector()
  */
+RAYLIB_UMKA_FUNCTION(GetGesturePinchVector)
 void umkaGetGesturePinchVector(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = GetGesturePinchVector();
@@ -1909,6 +2095,7 @@ void umkaGetGesturePinchVector(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGesturePinchAngle()
  */
+RAYLIB_UMKA_FUNCTION(GetGesturePinchAngle)
 void umkaGetGesturePinchAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = GetGesturePinchAngle();
 }
@@ -1918,6 +2105,7 @@ void umkaGetGesturePinchAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetCameraMode()
  */
+RAYLIB_UMKA_FUNCTION(SetCameraMode)
 void umkaSetCameraMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera* camera = (Camera*)&params[1];
     int mode = params[0].intVal;
@@ -1929,6 +2117,7 @@ void umkaSetCameraMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateCamera()
  */
+RAYLIB_UMKA_FUNCTION(UpdateCamera)
 void umkaUpdateCamera(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera * camera = (Camera *)params[0].ptrVal;
     UpdateCamera(camera);
@@ -1939,6 +2128,7 @@ void umkaUpdateCamera(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetCameraPanControl()
  */
+RAYLIB_UMKA_FUNCTION(SetCameraPanControl)
 void umkaSetCameraPanControl(UmkaStackSlot *params, UmkaStackSlot *result) {
     int keyPan = params[0].intVal;
     SetCameraPanControl(keyPan);
@@ -1949,6 +2139,7 @@ void umkaSetCameraPanControl(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetCameraAltControl()
  */
+RAYLIB_UMKA_FUNCTION(SetCameraAltControl)
 void umkaSetCameraAltControl(UmkaStackSlot *params, UmkaStackSlot *result) {
     int keyAlt = params[0].intVal;
     SetCameraAltControl(keyAlt);
@@ -1959,6 +2150,7 @@ void umkaSetCameraAltControl(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetCameraSmoothZoomControl()
  */
+RAYLIB_UMKA_FUNCTION(SetCameraSmoothZoomControl)
 void umkaSetCameraSmoothZoomControl(UmkaStackSlot *params, UmkaStackSlot *result) {
     int keySmoothZoom = params[0].intVal;
     SetCameraSmoothZoomControl(keySmoothZoom);
@@ -1969,6 +2161,7 @@ void umkaSetCameraSmoothZoomControl(UmkaStackSlot *params, UmkaStackSlot *result
  *
  * @see SetCameraMoveControls()
  */
+RAYLIB_UMKA_FUNCTION(SetCameraMoveControls)
 void umkaSetCameraMoveControls(UmkaStackSlot *params, UmkaStackSlot *result) {
     int keyFront = params[5].intVal;
     int keyBack = params[4].intVal;
@@ -1984,6 +2177,7 @@ void umkaSetCameraMoveControls(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetShapesTexture()
  */
+RAYLIB_UMKA_FUNCTION(SetShapesTexture)
 void umkaSetShapesTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[1];
     Rectangle* source = (Rectangle*)&params[0];
@@ -1995,6 +2189,7 @@ void umkaSetShapesTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPixel()
  */
+RAYLIB_UMKA_FUNCTION(DrawPixel)
 void umkaDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
     int posX = params[2].intVal;
     int posY = params[1].intVal;
@@ -2007,6 +2202,7 @@ void umkaDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPixelV()
  */
+RAYLIB_UMKA_FUNCTION(DrawPixelV)
 void umkaDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* position = (Vector2*)&params[1];
     Color* color = (Color*)&params[0];
@@ -2018,6 +2214,7 @@ void umkaDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLine()
  */
+RAYLIB_UMKA_FUNCTION(DrawLine)
 void umkaDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
     int startPosX = params[4].intVal;
     int startPosY = params[3].intVal;
@@ -2032,6 +2229,7 @@ void umkaDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLineV()
  */
+RAYLIB_UMKA_FUNCTION(DrawLineV)
 void umkaDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* startPos = (Vector2*)&params[2];
     Vector2* endPos = (Vector2*)&params[1];
@@ -2044,6 +2242,7 @@ void umkaDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLineEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawLineEx)
 void umkaDrawLineEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* startPos = (Vector2*)&params[3];
     Vector2* endPos = (Vector2*)&params[2];
@@ -2057,6 +2256,7 @@ void umkaDrawLineEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLineBezier()
  */
+RAYLIB_UMKA_FUNCTION(DrawLineBezier)
 void umkaDrawLineBezier(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* startPos = (Vector2*)&params[3];
     Vector2* endPos = (Vector2*)&params[2];
@@ -2070,6 +2270,7 @@ void umkaDrawLineBezier(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLineBezierQuad()
  */
+RAYLIB_UMKA_FUNCTION(DrawLineBezierQuad)
 void umkaDrawLineBezierQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* startPos = (Vector2*)&params[4];
     Vector2* endPos = (Vector2*)&params[3];
@@ -2084,6 +2285,7 @@ void umkaDrawLineBezierQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLineBezierCubic()
  */
+RAYLIB_UMKA_FUNCTION(DrawLineBezierCubic)
 void umkaDrawLineBezierCubic(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* startPos = (Vector2*)&params[5];
     Vector2* endPos = (Vector2*)&params[4];
@@ -2099,6 +2301,7 @@ void umkaDrawLineBezierCubic(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLineStrip()
  */
+RAYLIB_UMKA_FUNCTION(DrawLineStrip)
 void umkaDrawLineStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2 * points = (Vector2 *)params[2].ptrVal;
     int pointCount = params[1].intVal;
@@ -2111,6 +2314,7 @@ void umkaDrawLineStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircle()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircle)
 void umkaDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
     int centerX = params[3].intVal;
     int centerY = params[2].intVal;
@@ -2124,6 +2328,7 @@ void umkaDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircleSector()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircleSector)
 void umkaDrawCircleSector(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[5];
     float radius = params[4].real32Val;
@@ -2139,6 +2344,7 @@ void umkaDrawCircleSector(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircleSectorLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircleSectorLines)
 void umkaDrawCircleSectorLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[5];
     float radius = params[4].real32Val;
@@ -2154,6 +2360,7 @@ void umkaDrawCircleSectorLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircleGradient()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircleGradient)
 void umkaDrawCircleGradient(UmkaStackSlot *params, UmkaStackSlot *result) {
     int centerX = params[4].intVal;
     int centerY = params[3].intVal;
@@ -2168,6 +2375,7 @@ void umkaDrawCircleGradient(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircleV()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircleV)
 void umkaDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[2];
     float radius = params[1].real32Val;
@@ -2180,6 +2388,7 @@ void umkaDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircleLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircleLines)
 void umkaDrawCircleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     int centerX = params[3].intVal;
     int centerY = params[2].intVal;
@@ -2193,6 +2402,7 @@ void umkaDrawCircleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawEllipse()
  */
+RAYLIB_UMKA_FUNCTION(DrawEllipse)
 void umkaDrawEllipse(UmkaStackSlot *params, UmkaStackSlot *result) {
     int centerX = params[4].intVal;
     int centerY = params[3].intVal;
@@ -2207,6 +2417,7 @@ void umkaDrawEllipse(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawEllipseLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawEllipseLines)
 void umkaDrawEllipseLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     int centerX = params[4].intVal;
     int centerY = params[3].intVal;
@@ -2221,6 +2432,7 @@ void umkaDrawEllipseLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRing()
  */
+RAYLIB_UMKA_FUNCTION(DrawRing)
 void umkaDrawRing(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[6];
     float innerRadius = params[5].real32Val;
@@ -2237,6 +2449,7 @@ void umkaDrawRing(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRingLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawRingLines)
 void umkaDrawRingLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[6];
     float innerRadius = params[5].real32Val;
@@ -2253,6 +2466,7 @@ void umkaDrawRingLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangle()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangle)
 void umkaDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
     int posX = params[4].intVal;
     int posY = params[3].intVal;
@@ -2267,6 +2481,7 @@ void umkaDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleV()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleV)
 void umkaDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* position = (Vector2*)&params[2];
     Vector2* size = (Vector2*)&params[1];
@@ -2279,6 +2494,7 @@ void umkaDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleRec()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleRec)
 void umkaDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec = (Rectangle*)&params[1];
     Color* color = (Color*)&params[0];
@@ -2290,6 +2506,7 @@ void umkaDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectanglePro()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectanglePro)
 void umkaDrawRectanglePro(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec = (Rectangle*)&params[3];
     Vector2* origin = (Vector2*)&params[2];
@@ -2303,6 +2520,7 @@ void umkaDrawRectanglePro(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleGradientV()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleGradientV)
 void umkaDrawRectangleGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
     int posX = params[5].intVal;
     int posY = params[4].intVal;
@@ -2318,6 +2536,7 @@ void umkaDrawRectangleGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleGradientH()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleGradientH)
 void umkaDrawRectangleGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
     int posX = params[5].intVal;
     int posY = params[4].intVal;
@@ -2333,6 +2552,7 @@ void umkaDrawRectangleGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleGradientEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleGradientEx)
 void umkaDrawRectangleGradientEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec = (Rectangle*)&params[4];
     Color* col1 = (Color*)&params[3];
@@ -2347,6 +2567,7 @@ void umkaDrawRectangleGradientEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleLines)
 void umkaDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     int posX = params[4].intVal;
     int posY = params[3].intVal;
@@ -2361,6 +2582,7 @@ void umkaDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleLinesEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleLinesEx)
 void umkaDrawRectangleLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec = (Rectangle*)&params[2];
     float lineThick = params[1].real32Val;
@@ -2373,6 +2595,7 @@ void umkaDrawRectangleLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleRounded()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleRounded)
 void umkaDrawRectangleRounded(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec = (Rectangle*)&params[3];
     float roundness = params[2].real32Val;
@@ -2386,6 +2609,7 @@ void umkaDrawRectangleRounded(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRectangleRoundedLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawRectangleRoundedLines)
 void umkaDrawRectangleRoundedLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec = (Rectangle*)&params[4];
     float roundness = params[3].real32Val;
@@ -2400,6 +2624,7 @@ void umkaDrawRectangleRoundedLines(UmkaStackSlot *params, UmkaStackSlot *result)
  *
  * @see DrawTriangle()
  */
+RAYLIB_UMKA_FUNCTION(DrawTriangle)
 void umkaDrawTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[3];
     Vector2* v2 = (Vector2*)&params[2];
@@ -2413,6 +2638,7 @@ void umkaDrawTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTriangleLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawTriangleLines)
 void umkaDrawTriangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[3];
     Vector2* v2 = (Vector2*)&params[2];
@@ -2426,6 +2652,7 @@ void umkaDrawTriangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTriangleFan()
  */
+RAYLIB_UMKA_FUNCTION(DrawTriangleFan)
 void umkaDrawTriangleFan(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2 * points = (Vector2 *)params[2].ptrVal;
     int pointCount = params[1].intVal;
@@ -2438,6 +2665,7 @@ void umkaDrawTriangleFan(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTriangleStrip()
  */
+RAYLIB_UMKA_FUNCTION(DrawTriangleStrip)
 void umkaDrawTriangleStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2 * points = (Vector2 *)params[2].ptrVal;
     int pointCount = params[1].intVal;
@@ -2450,6 +2678,7 @@ void umkaDrawTriangleStrip(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPoly()
  */
+RAYLIB_UMKA_FUNCTION(DrawPoly)
 void umkaDrawPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[4];
     int sides = params[3].intVal;
@@ -2464,6 +2693,7 @@ void umkaDrawPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPolyLines()
  */
+RAYLIB_UMKA_FUNCTION(DrawPolyLines)
 void umkaDrawPolyLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[4];
     int sides = params[3].intVal;
@@ -2478,6 +2708,7 @@ void umkaDrawPolyLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPolyLinesEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawPolyLinesEx)
 void umkaDrawPolyLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[5];
     int sides = params[4].intVal;
@@ -2493,6 +2724,7 @@ void umkaDrawPolyLinesEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionRecs()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionRecs)
 void umkaCheckCollisionRecs(UmkaStackSlot *params, UmkaStackSlot *result) {
     Rectangle* rec1 = (Rectangle*)&params[1];
     Rectangle* rec2 = (Rectangle*)&params[0];
@@ -2504,6 +2736,7 @@ void umkaCheckCollisionRecs(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionCircles()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionCircles)
 void umkaCheckCollisionCircles(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center1 = (Vector2*)&params[3];
     float radius1 = params[2].real32Val;
@@ -2517,6 +2750,7 @@ void umkaCheckCollisionCircles(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionCircleRec()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionCircleRec)
 void umkaCheckCollisionCircleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* center = (Vector2*)&params[2];
     float radius = params[1].real32Val;
@@ -2529,6 +2763,7 @@ void umkaCheckCollisionCircleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionPointRec()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionPointRec)
 void umkaCheckCollisionPointRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* point = (Vector2*)&params[1];
     Rectangle* rec = (Rectangle*)&params[0];
@@ -2540,6 +2775,7 @@ void umkaCheckCollisionPointRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionPointCircle()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionPointCircle)
 void umkaCheckCollisionPointCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* point = (Vector2*)&params[2];
     Vector2* center = (Vector2*)&params[1];
@@ -2552,6 +2788,7 @@ void umkaCheckCollisionPointCircle(UmkaStackSlot *params, UmkaStackSlot *result)
  *
  * @see CheckCollisionPointTriangle()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionPointTriangle)
 void umkaCheckCollisionPointTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* point = (Vector2*)&params[3];
     Vector2* p1 = (Vector2*)&params[2];
@@ -2565,6 +2802,7 @@ void umkaCheckCollisionPointTriangle(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see CheckCollisionLines()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionLines)
 void umkaCheckCollisionLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* startPos1 = (Vector2*)&params[4];
     Vector2* endPos1 = (Vector2*)&params[3];
@@ -2579,6 +2817,7 @@ void umkaCheckCollisionLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionPointLine()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionPointLine)
 void umkaCheckCollisionPointLine(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* point = (Vector2*)&params[3];
     Vector2* p1 = (Vector2*)&params[2];
@@ -2592,6 +2831,7 @@ void umkaCheckCollisionPointLine(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCollisionRec()
  */
+RAYLIB_UMKA_FUNCTION(GetCollisionRec)
 void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Rectangle* rec1 = (Rectangle*)&params[2];
@@ -2606,6 +2846,7 @@ void umkaGetCollisionRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImage()
  */
+RAYLIB_UMKA_FUNCTION(LoadImage)
 void umkaLoadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -2619,6 +2860,7 @@ void umkaLoadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImageRaw()
  */
+RAYLIB_UMKA_FUNCTION(LoadImageRaw)
 void umkaLoadImageRaw(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[5].ptrVal;
@@ -2636,6 +2878,7 @@ void umkaLoadImageRaw(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImageAnim()
  */
+RAYLIB_UMKA_FUNCTION(LoadImageAnim)
 void umkaLoadImageAnim(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[2].ptrVal;
@@ -2650,6 +2893,7 @@ void umkaLoadImageAnim(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImageFromMemory()
  */
+RAYLIB_UMKA_FUNCTION(LoadImageFromMemory)
 void umkaLoadImageFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileType = (const char *)params[3].ptrVal;
@@ -2665,6 +2909,7 @@ void umkaLoadImageFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImageFromTexture()
  */
+RAYLIB_UMKA_FUNCTION(LoadImageFromTexture)
 void umkaLoadImageFromTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Texture2D* texture = (Texture2D*)&params[1];
@@ -2678,6 +2923,7 @@ void umkaLoadImageFromTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImageFromScreen()
  */
+RAYLIB_UMKA_FUNCTION(LoadImageFromScreen)
 void umkaLoadImageFromScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Image), NULL);
     Image out = LoadImageFromScreen();
@@ -2689,6 +2935,7 @@ void umkaLoadImageFromScreen(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadImage()
  */
+RAYLIB_UMKA_FUNCTION(UnloadImage)
 void umkaUnloadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[0];
     UnloadImage(*image);
@@ -2699,6 +2946,7 @@ void umkaUnloadImage(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportImage()
  */
+RAYLIB_UMKA_FUNCTION(ExportImage)
 void umkaExportImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[1];
     const char * fileName = (const char *)params[0].ptrVal;
@@ -2710,6 +2958,7 @@ void umkaExportImage(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportImageAsCode()
  */
+RAYLIB_UMKA_FUNCTION(ExportImageAsCode)
 void umkaExportImageAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[1];
     const char * fileName = (const char *)params[0].ptrVal;
@@ -2721,6 +2970,7 @@ void umkaExportImageAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageColor()
  */
+RAYLIB_UMKA_FUNCTION(GenImageColor)
 void umkaGenImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[3].intVal;
@@ -2736,6 +2986,7 @@ void umkaGenImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageGradientV()
  */
+RAYLIB_UMKA_FUNCTION(GenImageGradientV)
 void umkaGenImageGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[4].intVal;
@@ -2752,6 +3003,7 @@ void umkaGenImageGradientV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageGradientH()
  */
+RAYLIB_UMKA_FUNCTION(GenImageGradientH)
 void umkaGenImageGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[4].intVal;
@@ -2768,6 +3020,7 @@ void umkaGenImageGradientH(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageGradientRadial()
  */
+RAYLIB_UMKA_FUNCTION(GenImageGradientRadial)
 void umkaGenImageGradientRadial(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[5].intVal;
@@ -2785,6 +3038,7 @@ void umkaGenImageGradientRadial(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageChecked()
  */
+RAYLIB_UMKA_FUNCTION(GenImageChecked)
 void umkaGenImageChecked(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[6].intVal;
@@ -2803,6 +3057,7 @@ void umkaGenImageChecked(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageWhiteNoise()
  */
+RAYLIB_UMKA_FUNCTION(GenImageWhiteNoise)
 void umkaGenImageWhiteNoise(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[3].intVal;
@@ -2818,6 +3073,7 @@ void umkaGenImageWhiteNoise(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageCellular()
  */
+RAYLIB_UMKA_FUNCTION(GenImageCellular)
 void umkaGenImageCellular(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[3].intVal;
@@ -2833,6 +3089,7 @@ void umkaGenImageCellular(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageCopy()
  */
+RAYLIB_UMKA_FUNCTION(ImageCopy)
 void umkaImageCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[1];
@@ -2846,6 +3103,7 @@ void umkaImageCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageFromImage()
  */
+RAYLIB_UMKA_FUNCTION(ImageFromImage)
 void umkaImageFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[2];
@@ -2860,6 +3118,7 @@ void umkaImageFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageText()
  */
+RAYLIB_UMKA_FUNCTION(ImageText)
 void umkaImageText(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * text = (const char *)params[3].ptrVal;
@@ -2875,6 +3134,7 @@ void umkaImageText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageTextEx()
  */
+RAYLIB_UMKA_FUNCTION(ImageTextEx)
 void umkaImageTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Font* font = (Font*)&params[5];
@@ -2892,6 +3152,7 @@ void umkaImageTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageFormat()
  */
+RAYLIB_UMKA_FUNCTION(ImageFormat)
 void umkaImageFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     int newFormat = params[0].intVal;
@@ -2903,6 +3164,7 @@ void umkaImageFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageToPOT()
  */
+RAYLIB_UMKA_FUNCTION(ImageToPOT)
 void umkaImageToPOT(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     Color* fill = (Color*)&params[0];
@@ -2914,6 +3176,7 @@ void umkaImageToPOT(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageCrop()
  */
+RAYLIB_UMKA_FUNCTION(ImageCrop)
 void umkaImageCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     Rectangle* crop = (Rectangle*)&params[0];
@@ -2925,6 +3188,7 @@ void umkaImageCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageAlphaCrop()
  */
+RAYLIB_UMKA_FUNCTION(ImageAlphaCrop)
 void umkaImageAlphaCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     float threshold = params[0].real32Val;
@@ -2936,6 +3200,7 @@ void umkaImageAlphaCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageAlphaClear()
  */
+RAYLIB_UMKA_FUNCTION(ImageAlphaClear)
 void umkaImageAlphaClear(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[2].ptrVal;
     Color* color = (Color*)&params[1];
@@ -2948,6 +3213,7 @@ void umkaImageAlphaClear(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageAlphaMask()
  */
+RAYLIB_UMKA_FUNCTION(ImageAlphaMask)
 void umkaImageAlphaMask(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     Image* alphaMask = (Image*)&params[0];
@@ -2959,6 +3225,7 @@ void umkaImageAlphaMask(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageAlphaPremultiply()
  */
+RAYLIB_UMKA_FUNCTION(ImageAlphaPremultiply)
 void umkaImageAlphaPremultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageAlphaPremultiply(image);
@@ -2969,6 +3236,7 @@ void umkaImageAlphaPremultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageResize()
  */
+RAYLIB_UMKA_FUNCTION(ImageResize)
 void umkaImageResize(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[2].ptrVal;
     int newWidth = params[1].intVal;
@@ -2981,6 +3249,7 @@ void umkaImageResize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageResizeNN()
  */
+RAYLIB_UMKA_FUNCTION(ImageResizeNN)
 void umkaImageResizeNN(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[2].ptrVal;
     int newWidth = params[1].intVal;
@@ -2993,6 +3262,7 @@ void umkaImageResizeNN(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageResizeCanvas()
  */
+RAYLIB_UMKA_FUNCTION(ImageResizeCanvas)
 void umkaImageResizeCanvas(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[5].ptrVal;
     int newWidth = params[4].intVal;
@@ -3008,6 +3278,7 @@ void umkaImageResizeCanvas(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageMipmaps()
  */
+RAYLIB_UMKA_FUNCTION(ImageMipmaps)
 void umkaImageMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageMipmaps(image);
@@ -3018,6 +3289,7 @@ void umkaImageMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDither()
  */
+RAYLIB_UMKA_FUNCTION(ImageDither)
 void umkaImageDither(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[4].ptrVal;
     int rBpp = params[3].intVal;
@@ -3032,6 +3304,7 @@ void umkaImageDither(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageFlipVertical()
  */
+RAYLIB_UMKA_FUNCTION(ImageFlipVertical)
 void umkaImageFlipVertical(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageFlipVertical(image);
@@ -3042,6 +3315,7 @@ void umkaImageFlipVertical(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageFlipHorizontal()
  */
+RAYLIB_UMKA_FUNCTION(ImageFlipHorizontal)
 void umkaImageFlipHorizontal(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageFlipHorizontal(image);
@@ -3052,6 +3326,7 @@ void umkaImageFlipHorizontal(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageRotateCW()
  */
+RAYLIB_UMKA_FUNCTION(ImageRotateCW)
 void umkaImageRotateCW(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageRotateCW(image);
@@ -3062,6 +3337,7 @@ void umkaImageRotateCW(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageRotateCCW()
  */
+RAYLIB_UMKA_FUNCTION(ImageRotateCCW)
 void umkaImageRotateCCW(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageRotateCCW(image);
@@ -3072,6 +3348,7 @@ void umkaImageRotateCCW(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageColorTint()
  */
+RAYLIB_UMKA_FUNCTION(ImageColorTint)
 void umkaImageColorTint(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     Color* color = (Color*)&params[0];
@@ -3083,6 +3360,7 @@ void umkaImageColorTint(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageColorInvert()
  */
+RAYLIB_UMKA_FUNCTION(ImageColorInvert)
 void umkaImageColorInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageColorInvert(image);
@@ -3093,6 +3371,7 @@ void umkaImageColorInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageColorGrayscale()
  */
+RAYLIB_UMKA_FUNCTION(ImageColorGrayscale)
 void umkaImageColorGrayscale(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[0].ptrVal;
     ImageColorGrayscale(image);
@@ -3103,6 +3382,7 @@ void umkaImageColorGrayscale(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageColorContrast()
  */
+RAYLIB_UMKA_FUNCTION(ImageColorContrast)
 void umkaImageColorContrast(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     float contrast = params[0].real32Val;
@@ -3114,6 +3394,7 @@ void umkaImageColorContrast(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageColorBrightness()
  */
+RAYLIB_UMKA_FUNCTION(ImageColorBrightness)
 void umkaImageColorBrightness(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[1].ptrVal;
     int brightness = params[0].intVal;
@@ -3125,6 +3406,7 @@ void umkaImageColorBrightness(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageColorReplace()
  */
+RAYLIB_UMKA_FUNCTION(ImageColorReplace)
 void umkaImageColorReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * image = (Image *)params[2].ptrVal;
     Color* color = (Color*)&params[1];
@@ -3137,6 +3419,7 @@ void umkaImageColorReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImageColors()
  */
+RAYLIB_UMKA_FUNCTION(LoadImageColors)
 void umkaLoadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[0];
     result->ptrVal = (void*)LoadImageColors(*image);
@@ -3147,6 +3430,7 @@ void umkaLoadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadImagePalette()
  */
+RAYLIB_UMKA_FUNCTION(LoadImagePalette)
 void umkaLoadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image* image = (Image*)&params[2];
     int maxPaletteSize = params[1].intVal;
@@ -3159,6 +3443,7 @@ void umkaLoadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadImageColors()
  */
+RAYLIB_UMKA_FUNCTION(UnloadImageColors)
 void umkaUnloadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color * colors = (Color *)params[0].ptrVal;
     UnloadImageColors(colors);
@@ -3169,6 +3454,7 @@ void umkaUnloadImageColors(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadImagePalette()
  */
+RAYLIB_UMKA_FUNCTION(UnloadImagePalette)
 void umkaUnloadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color * colors = (Color *)params[0].ptrVal;
     UnloadImagePalette(colors);
@@ -3179,6 +3465,7 @@ void umkaUnloadImagePalette(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetImageAlphaBorder()
  */
+RAYLIB_UMKA_FUNCTION(GetImageAlphaBorder)
 void umkaGetImageAlphaBorder(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[2];
@@ -3193,6 +3480,7 @@ void umkaGetImageAlphaBorder(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetImageColor()
  */
+RAYLIB_UMKA_FUNCTION(GetImageColor)
 void umkaGetImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[3];
@@ -3208,6 +3496,7 @@ void umkaGetImageColor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageClearBackground()
  */
+RAYLIB_UMKA_FUNCTION(ImageClearBackground)
 void umkaImageClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[1].ptrVal;
     Color* color = (Color*)&params[0];
@@ -3219,6 +3508,7 @@ void umkaImageClearBackground(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawPixel()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawPixel)
 void umkaImageDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[3].ptrVal;
     int posX = params[2].intVal;
@@ -3232,6 +3522,7 @@ void umkaImageDrawPixel(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawPixelV()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawPixelV)
 void umkaImageDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[2].ptrVal;
     Vector2* position = (Vector2*)&params[1];
@@ -3244,6 +3535,7 @@ void umkaImageDrawPixelV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawLine()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawLine)
 void umkaImageDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[5].ptrVal;
     int startPosX = params[4].intVal;
@@ -3259,6 +3551,7 @@ void umkaImageDrawLine(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawLineV()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawLineV)
 void umkaImageDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[3].ptrVal;
     Vector2* start = (Vector2*)&params[2];
@@ -3272,6 +3565,7 @@ void umkaImageDrawLineV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawCircle()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawCircle)
 void umkaImageDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[4].ptrVal;
     int centerX = params[3].intVal;
@@ -3286,6 +3580,7 @@ void umkaImageDrawCircle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawCircleV()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawCircleV)
 void umkaImageDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[3].ptrVal;
     Vector2* center = (Vector2*)&params[2];
@@ -3299,6 +3594,7 @@ void umkaImageDrawCircleV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawRectangle()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawRectangle)
 void umkaImageDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[5].ptrVal;
     int posX = params[4].intVal;
@@ -3314,6 +3610,7 @@ void umkaImageDrawRectangle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawRectangleV()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawRectangleV)
 void umkaImageDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[3].ptrVal;
     Vector2* position = (Vector2*)&params[2];
@@ -3327,6 +3624,7 @@ void umkaImageDrawRectangleV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawRectangleRec()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawRectangleRec)
 void umkaImageDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[2].ptrVal;
     Rectangle* rec = (Rectangle*)&params[1];
@@ -3339,6 +3637,7 @@ void umkaImageDrawRectangleRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawRectangleLines()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawRectangleLines)
 void umkaImageDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[3].ptrVal;
     Rectangle* rec = (Rectangle*)&params[2];
@@ -3352,6 +3651,7 @@ void umkaImageDrawRectangleLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDraw()
  */
+RAYLIB_UMKA_FUNCTION(ImageDraw)
 void umkaImageDraw(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[4].ptrVal;
     Image* src = (Image*)&params[3];
@@ -3366,6 +3666,7 @@ void umkaImageDraw(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawText()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawText)
 void umkaImageDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[5].ptrVal;
     const char * text = (const char *)params[4].ptrVal;
@@ -3381,6 +3682,7 @@ void umkaImageDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ImageDrawTextEx()
  */
+RAYLIB_UMKA_FUNCTION(ImageDrawTextEx)
 void umkaImageDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Image * dst = (Image *)params[6].ptrVal;
     Font* font = (Font*)&params[5];
@@ -3397,6 +3699,7 @@ void umkaImageDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadTexture()
  */
+RAYLIB_UMKA_FUNCTION(LoadTexture)
 void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -3410,6 +3713,7 @@ void umkaLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadTextureFromImage()
  */
+RAYLIB_UMKA_FUNCTION(LoadTextureFromImage)
 void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[1];
@@ -3423,6 +3727,7 @@ void umkaLoadTextureFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadTextureCubemap()
  */
+RAYLIB_UMKA_FUNCTION(LoadTextureCubemap)
 void umkaLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[2];
@@ -3437,6 +3742,7 @@ void umkaLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadRenderTexture()
  */
+RAYLIB_UMKA_FUNCTION(LoadRenderTexture)
 void umkaLoadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int width = params[2].intVal;
@@ -3451,6 +3757,7 @@ void umkaLoadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadTexture()
  */
+RAYLIB_UMKA_FUNCTION(UnloadTexture)
 void umkaUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[0];
     UnloadTexture(*texture);
@@ -3461,6 +3768,7 @@ void umkaUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadRenderTexture()
  */
+RAYLIB_UMKA_FUNCTION(UnloadRenderTexture)
 void umkaUnloadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     RenderTexture2D* target = (RenderTexture2D*)&params[0];
     UnloadRenderTexture(*target);
@@ -3471,6 +3779,7 @@ void umkaUnloadRenderTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateTexture()
  */
+RAYLIB_UMKA_FUNCTION(UpdateTexture)
 void umkaUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[1];
     const void * pixels = (const void *)params[0].ptrVal;
@@ -3482,6 +3791,7 @@ void umkaUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateTextureRec()
  */
+RAYLIB_UMKA_FUNCTION(UpdateTextureRec)
 void umkaUpdateTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[2];
     Rectangle* rec = (Rectangle*)&params[1];
@@ -3494,6 +3804,7 @@ void umkaUpdateTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenTextureMipmaps()
  */
+RAYLIB_UMKA_FUNCTION(GenTextureMipmaps)
 void umkaGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D * texture = (Texture2D *)params[0].ptrVal;
     GenTextureMipmaps(texture);
@@ -3504,6 +3815,7 @@ void umkaGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetTextureFilter()
  */
+RAYLIB_UMKA_FUNCTION(SetTextureFilter)
 void umkaSetTextureFilter(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[1];
     int filter = params[0].intVal;
@@ -3515,6 +3827,7 @@ void umkaSetTextureFilter(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetTextureWrap()
  */
+RAYLIB_UMKA_FUNCTION(SetTextureWrap)
 void umkaSetTextureWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[1];
     int wrap = params[0].intVal;
@@ -3526,6 +3839,7 @@ void umkaSetTextureWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTexture()
  */
+RAYLIB_UMKA_FUNCTION(DrawTexture)
 void umkaDrawTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[3];
     int posX = params[2].intVal;
@@ -3539,6 +3853,7 @@ void umkaDrawTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextureV()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextureV)
 void umkaDrawTextureV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[2];
     Vector2* position = (Vector2*)&params[1];
@@ -3551,6 +3866,7 @@ void umkaDrawTextureV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextureEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextureEx)
 void umkaDrawTextureEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[4];
     Vector2* position = (Vector2*)&params[3];
@@ -3565,6 +3881,7 @@ void umkaDrawTextureEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextureRec()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextureRec)
 void umkaDrawTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[3];
     Rectangle* source = (Rectangle*)&params[2];
@@ -3578,6 +3895,7 @@ void umkaDrawTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextureQuad()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextureQuad)
 void umkaDrawTextureQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[4];
     Vector2* tiling = (Vector2*)&params[3];
@@ -3592,6 +3910,7 @@ void umkaDrawTextureQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextureTiled()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextureTiled)
 void umkaDrawTextureTiled(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[6];
     Rectangle* source = (Rectangle*)&params[5];
@@ -3608,6 +3927,7 @@ void umkaDrawTextureTiled(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTexturePro()
  */
+RAYLIB_UMKA_FUNCTION(DrawTexturePro)
 void umkaDrawTexturePro(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[5];
     Rectangle* source = (Rectangle*)&params[4];
@@ -3623,6 +3943,7 @@ void umkaDrawTexturePro(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextureNPatch()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextureNPatch)
 void umkaDrawTextureNPatch(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[5];
     NPatchInfo* nPatchInfo = (NPatchInfo*)&params[4];
@@ -3638,6 +3959,7 @@ void umkaDrawTextureNPatch(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTexturePoly()
  */
+RAYLIB_UMKA_FUNCTION(DrawTexturePoly)
 void umkaDrawTexturePoly(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[5];
     Vector2* center = (Vector2*)&params[4];
@@ -3653,6 +3975,7 @@ void umkaDrawTexturePoly(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Fade()
  */
+RAYLIB_UMKA_FUNCTION(Fade)
 void umkaFade(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Color* color = (Color*)&params[2];
@@ -3667,6 +3990,7 @@ void umkaFade(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorToInt()
  */
+RAYLIB_UMKA_FUNCTION(ColorToInt)
 void umkaColorToInt(UmkaStackSlot *params, UmkaStackSlot *result) {
     Color* color = (Color*)&params[0];
     result->intVal = ColorToInt(*color);
@@ -3677,6 +4001,7 @@ void umkaColorToInt(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorNormalize()
  */
+RAYLIB_UMKA_FUNCTION(ColorNormalize)
 void umkaColorNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Color* color = (Color*)&params[1];
@@ -3690,6 +4015,7 @@ void umkaColorNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorFromNormalized()
  */
+RAYLIB_UMKA_FUNCTION(ColorFromNormalized)
 void umkaColorFromNormalized(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector4* normalized = (Vector4*)&params[1];
@@ -3703,6 +4029,7 @@ void umkaColorFromNormalized(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorToHSV()
  */
+RAYLIB_UMKA_FUNCTION(ColorToHSV)
 void umkaColorToHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Color* color = (Color*)&params[1];
@@ -3716,6 +4043,7 @@ void umkaColorToHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorFromHSV()
  */
+RAYLIB_UMKA_FUNCTION(ColorFromHSV)
 void umkaColorFromHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float hue = params[3].real32Val;
@@ -3731,6 +4059,7 @@ void umkaColorFromHSV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorAlpha()
  */
+RAYLIB_UMKA_FUNCTION(ColorAlpha)
 void umkaColorAlpha(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Color* color = (Color*)&params[2];
@@ -3745,6 +4074,7 @@ void umkaColorAlpha(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ColorAlphaBlend()
  */
+RAYLIB_UMKA_FUNCTION(ColorAlphaBlend)
 void umkaColorAlphaBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Color* dst = (Color*)&params[3];
@@ -3760,6 +4090,7 @@ void umkaColorAlphaBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetColor()
  */
+RAYLIB_UMKA_FUNCTION(GetColor)
 void umkaGetColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     unsigned int hexValue = params[1].uintVal;
@@ -3773,6 +4104,7 @@ void umkaGetColor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetPixelColor()
  */
+RAYLIB_UMKA_FUNCTION(GetPixelColor)
 void umkaGetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     void * srcPtr = (void *)params[2].ptrVal;
@@ -3787,6 +4119,7 @@ void umkaGetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetPixelColor()
  */
+RAYLIB_UMKA_FUNCTION(SetPixelColor)
 void umkaSetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     void * dstPtr = (void *)params[2].ptrVal;
     Color* color = (Color*)&params[1];
@@ -3799,6 +4132,7 @@ void umkaSetPixelColor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetPixelDataSize()
  */
+RAYLIB_UMKA_FUNCTION(GetPixelDataSize)
 void umkaGetPixelDataSize(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[2].intVal;
     int height = params[1].intVal;
@@ -3811,6 +4145,7 @@ void umkaGetPixelDataSize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetFontDefault()
  */
+RAYLIB_UMKA_FUNCTION(GetFontDefault)
 void umkaGetFontDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Font), NULL);
     Font out = GetFontDefault();
@@ -3822,6 +4157,7 @@ void umkaGetFontDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadFont()
  */
+RAYLIB_UMKA_FUNCTION(LoadFont)
 void umkaLoadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -3835,6 +4171,7 @@ void umkaLoadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadFontEx()
  */
+RAYLIB_UMKA_FUNCTION(LoadFontEx)
 void umkaLoadFontEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[4].ptrVal;
@@ -3851,6 +4188,7 @@ void umkaLoadFontEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadFontFromImage()
  */
+RAYLIB_UMKA_FUNCTION(LoadFontFromImage)
 void umkaLoadFontFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* image = (Image*)&params[3];
@@ -3866,6 +4204,7 @@ void umkaLoadFontFromImage(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadFontFromMemory()
  */
+RAYLIB_UMKA_FUNCTION(LoadFontFromMemory)
 void umkaLoadFontFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileType = (const char *)params[6].ptrVal;
@@ -3886,6 +4225,7 @@ void umkaLoadFontFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenImageFontAtlas()
  */
+RAYLIB_UMKA_FUNCTION(GenImageFontAtlas)
 void umkaGenImageFontAtlas(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const GlyphInfo * chars = (const GlyphInfo *)params[6].ptrVal;
@@ -3904,6 +4244,7 @@ void umkaGenImageFontAtlas(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadFontData()
  */
+RAYLIB_UMKA_FUNCTION(UnloadFontData)
 void umkaUnloadFontData(UmkaStackSlot *params, UmkaStackSlot *result) {
     GlyphInfo * chars = (GlyphInfo *)params[1].ptrVal;
     int glyphCount = params[0].intVal;
@@ -3915,6 +4256,7 @@ void umkaUnloadFontData(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadFont()
  */
+RAYLIB_UMKA_FUNCTION(UnloadFont)
 void umkaUnloadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[0];
     UnloadFont(*font);
@@ -3925,6 +4267,7 @@ void umkaUnloadFont(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportFontAsCode()
  */
+RAYLIB_UMKA_FUNCTION(ExportFontAsCode)
 void umkaExportFontAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[1];
     const char * fileName = (const char *)params[0].ptrVal;
@@ -3936,6 +4279,7 @@ void umkaExportFontAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawFPS()
  */
+RAYLIB_UMKA_FUNCTION(DrawFPS)
 void umkaDrawFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
     int posX = params[1].intVal;
     int posY = params[0].intVal;
@@ -3947,6 +4291,7 @@ void umkaDrawFPS(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawText()
  */
+RAYLIB_UMKA_FUNCTION(DrawText)
 void umkaDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[4].ptrVal;
     int posX = params[3].intVal;
@@ -3961,6 +4306,7 @@ void umkaDrawText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextEx)
 void umkaDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[5];
     const char * text = (const char *)params[4].ptrVal;
@@ -3976,6 +4322,7 @@ void umkaDrawTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextPro()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextPro)
 void umkaDrawTextPro(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[7];
     const char * text = (const char *)params[6].ptrVal;
@@ -3993,6 +4340,7 @@ void umkaDrawTextPro(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextCodepoint()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextCodepoint)
 void umkaDrawTextCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[4];
     int codepoint = params[3].intVal;
@@ -4007,6 +4355,7 @@ void umkaDrawTextCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTextCodepoints()
  */
+RAYLIB_UMKA_FUNCTION(DrawTextCodepoints)
 void umkaDrawTextCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[6];
     const int * codepoints = (const int *)params[5].ptrVal;
@@ -4023,6 +4372,7 @@ void umkaDrawTextCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MeasureText()
  */
+RAYLIB_UMKA_FUNCTION(MeasureText)
 void umkaMeasureText(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[1].ptrVal;
     int fontSize = params[0].intVal;
@@ -4034,6 +4384,7 @@ void umkaMeasureText(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MeasureTextEx()
  */
+RAYLIB_UMKA_FUNCTION(MeasureTextEx)
 void umkaMeasureTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Font* font = (Font*)&params[4];
@@ -4050,6 +4401,7 @@ void umkaMeasureTextEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGlyphIndex()
  */
+RAYLIB_UMKA_FUNCTION(GetGlyphIndex)
 void umkaGetGlyphIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
     Font* font = (Font*)&params[1];
     int codepoint = params[0].intVal;
@@ -4061,6 +4413,7 @@ void umkaGetGlyphIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGlyphInfo()
  */
+RAYLIB_UMKA_FUNCTION(GetGlyphInfo)
 void umkaGetGlyphInfo(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Font* font = (Font*)&params[2];
@@ -4075,6 +4428,7 @@ void umkaGetGlyphInfo(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetGlyphAtlasRec()
  */
+RAYLIB_UMKA_FUNCTION(GetGlyphAtlasRec)
 void umkaGetGlyphAtlasRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Font* font = (Font*)&params[2];
@@ -4089,6 +4443,7 @@ void umkaGetGlyphAtlasRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadCodepoints()
  */
+RAYLIB_UMKA_FUNCTION(LoadCodepoints)
 void umkaLoadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[1].ptrVal;
     int * count = (int *)params[0].ptrVal;
@@ -4100,6 +4455,7 @@ void umkaLoadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadCodepoints()
  */
+RAYLIB_UMKA_FUNCTION(UnloadCodepoints)
 void umkaUnloadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
     int * codepoints = (int *)params[0].ptrVal;
     UnloadCodepoints(codepoints);
@@ -4110,6 +4466,7 @@ void umkaUnloadCodepoints(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCodepointCount()
  */
+RAYLIB_UMKA_FUNCTION(GetCodepointCount)
 void umkaGetCodepointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     result->intVal = GetCodepointCount(text);
@@ -4120,6 +4477,7 @@ void umkaGetCodepointCount(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetCodepoint()
  */
+RAYLIB_UMKA_FUNCTION(GetCodepoint)
 void umkaGetCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[1].ptrVal;
     int * bytesProcessed = (int *)params[0].ptrVal;
@@ -4131,6 +4489,7 @@ void umkaGetCodepoint(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CodepointToUTF8()
  */
+RAYLIB_UMKA_FUNCTION(CodepointToUTF8)
 void umkaCodepointToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
     int codepoint = params[1].intVal;
     int * byteSize = (int *)params[0].ptrVal;
@@ -4142,6 +4501,7 @@ void umkaCodepointToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextCodepointsToUTF8()
  */
+RAYLIB_UMKA_FUNCTION(TextCodepointsToUTF8)
 void umkaTextCodepointsToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
     const int * codepoints = (const int *)params[1].ptrVal;
     int length = params[0].intVal;
@@ -4153,6 +4513,7 @@ void umkaTextCodepointsToUTF8(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextCopy()
  */
+RAYLIB_UMKA_FUNCTION(TextCopy)
 void umkaTextCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
     char * dst = (char *)params[1].ptrVal;
     const char * src = (const char *)params[0].ptrVal;
@@ -4164,6 +4525,7 @@ void umkaTextCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextIsEqual()
  */
+RAYLIB_UMKA_FUNCTION(TextIsEqual)
 void umkaTextIsEqual(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text1 = (const char *)params[1].ptrVal;
     const char * text2 = (const char *)params[0].ptrVal;
@@ -4175,6 +4537,7 @@ void umkaTextIsEqual(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextLength()
  */
+RAYLIB_UMKA_FUNCTION(TextLength)
 void umkaTextLength(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     result->uintVal = TextLength(text);
@@ -4187,6 +4550,7 @@ void umkaTextLength(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextSubtext()
  */
+RAYLIB_UMKA_FUNCTION(TextSubtext)
 void umkaTextSubtext(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[2].ptrVal;
     int position = params[1].intVal;
@@ -4199,6 +4563,7 @@ void umkaTextSubtext(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextReplace()
  */
+RAYLIB_UMKA_FUNCTION(TextReplace)
 void umkaTextReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
     char * text = (char *)params[2].ptrVal;
     const char * replace = (const char *)params[1].ptrVal;
@@ -4211,6 +4576,7 @@ void umkaTextReplace(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextInsert()
  */
+RAYLIB_UMKA_FUNCTION(TextInsert)
 void umkaTextInsert(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[2].ptrVal;
     const char * insert = (const char *)params[1].ptrVal;
@@ -4223,6 +4589,7 @@ void umkaTextInsert(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextJoin()
  */
+RAYLIB_UMKA_FUNCTION(TextJoin)
 void umkaTextJoin(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char ** textList = (const char **)params[2].ptrVal;
     int count = params[1].intVal;
@@ -4235,6 +4602,7 @@ void umkaTextJoin(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextSplit()
  */
+RAYLIB_UMKA_FUNCTION(TextSplit)
 void umkaTextSplit(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[2].ptrVal;
     char delimiter = params[1].uintVal;
@@ -4247,6 +4615,7 @@ void umkaTextSplit(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextAppend()
  */
+RAYLIB_UMKA_FUNCTION(TextAppend)
 void umkaTextAppend(UmkaStackSlot *params, UmkaStackSlot *result) {
     char * text = (char *)params[2].ptrVal;
     const char * append = (const char *)params[1].ptrVal;
@@ -4259,6 +4628,7 @@ void umkaTextAppend(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextFindIndex()
  */
+RAYLIB_UMKA_FUNCTION(TextFindIndex)
 void umkaTextFindIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[1].ptrVal;
     const char * find = (const char *)params[0].ptrVal;
@@ -4270,6 +4640,7 @@ void umkaTextFindIndex(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextToUpper()
  */
+RAYLIB_UMKA_FUNCTION(TextToUpper)
 void umkaTextToUpper(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)TextToUpper(text);
@@ -4280,6 +4651,7 @@ void umkaTextToUpper(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextToLower()
  */
+RAYLIB_UMKA_FUNCTION(TextToLower)
 void umkaTextToLower(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)TextToLower(text);
@@ -4290,6 +4662,7 @@ void umkaTextToLower(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextToPascal()
  */
+RAYLIB_UMKA_FUNCTION(TextToPascal)
 void umkaTextToPascal(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     result->ptrVal = (void*)TextToPascal(text);
@@ -4300,6 +4673,7 @@ void umkaTextToPascal(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see TextToInteger()
  */
+RAYLIB_UMKA_FUNCTION(TextToInteger)
 void umkaTextToInteger(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * text = (const char *)params[0].ptrVal;
     result->intVal = TextToInteger(text);
@@ -4310,6 +4684,7 @@ void umkaTextToInteger(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawLine3D()
  */
+RAYLIB_UMKA_FUNCTION(DrawLine3D)
 void umkaDrawLine3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* startPos = (Vector3*)&params[2];
     Vector3* endPos = (Vector3*)&params[1];
@@ -4322,6 +4697,7 @@ void umkaDrawLine3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPoint3D()
  */
+RAYLIB_UMKA_FUNCTION(DrawPoint3D)
 void umkaDrawPoint3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[1];
     Color* color = (Color*)&params[0];
@@ -4333,6 +4709,7 @@ void umkaDrawPoint3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCircle3D()
  */
+RAYLIB_UMKA_FUNCTION(DrawCircle3D)
 void umkaDrawCircle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* center = (Vector3*)&params[4];
     float radius = params[3].real32Val;
@@ -4347,6 +4724,7 @@ void umkaDrawCircle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTriangle3D()
  */
+RAYLIB_UMKA_FUNCTION(DrawTriangle3D)
 void umkaDrawTriangle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[3];
     Vector3* v2 = (Vector3*)&params[2];
@@ -4360,6 +4738,7 @@ void umkaDrawTriangle3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawTriangleStrip3D()
  */
+RAYLIB_UMKA_FUNCTION(DrawTriangleStrip3D)
 void umkaDrawTriangleStrip3D(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3 * points = (Vector3 *)params[2].ptrVal;
     int pointCount = params[1].intVal;
@@ -4372,6 +4751,7 @@ void umkaDrawTriangleStrip3D(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCube()
  */
+RAYLIB_UMKA_FUNCTION(DrawCube)
 void umkaDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[4];
     float width = params[3].real32Val;
@@ -4386,6 +4766,7 @@ void umkaDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCubeV()
  */
+RAYLIB_UMKA_FUNCTION(DrawCubeV)
 void umkaDrawCubeV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[2];
     Vector3* size = (Vector3*)&params[1];
@@ -4398,6 +4779,7 @@ void umkaDrawCubeV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCubeWires()
  */
+RAYLIB_UMKA_FUNCTION(DrawCubeWires)
 void umkaDrawCubeWires(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[4];
     float width = params[3].real32Val;
@@ -4412,6 +4794,7 @@ void umkaDrawCubeWires(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCubeWiresV()
  */
+RAYLIB_UMKA_FUNCTION(DrawCubeWiresV)
 void umkaDrawCubeWiresV(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[2];
     Vector3* size = (Vector3*)&params[1];
@@ -4424,6 +4807,7 @@ void umkaDrawCubeWiresV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCubeTexture()
  */
+RAYLIB_UMKA_FUNCTION(DrawCubeTexture)
 void umkaDrawCubeTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[5];
     Vector3* position = (Vector3*)&params[4];
@@ -4439,6 +4823,7 @@ void umkaDrawCubeTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCubeTextureRec()
  */
+RAYLIB_UMKA_FUNCTION(DrawCubeTextureRec)
 void umkaDrawCubeTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Texture2D* texture = (Texture2D*)&params[6];
     Rectangle* source = (Rectangle*)&params[5];
@@ -4455,6 +4840,7 @@ void umkaDrawCubeTextureRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawSphere()
  */
+RAYLIB_UMKA_FUNCTION(DrawSphere)
 void umkaDrawSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* centerPos = (Vector3*)&params[2];
     float radius = params[1].real32Val;
@@ -4467,6 +4853,7 @@ void umkaDrawSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawSphereEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawSphereEx)
 void umkaDrawSphereEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* centerPos = (Vector3*)&params[4];
     float radius = params[3].real32Val;
@@ -4481,6 +4868,7 @@ void umkaDrawSphereEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawSphereWires()
  */
+RAYLIB_UMKA_FUNCTION(DrawSphereWires)
 void umkaDrawSphereWires(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* centerPos = (Vector3*)&params[4];
     float radius = params[3].real32Val;
@@ -4495,6 +4883,7 @@ void umkaDrawSphereWires(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCylinder()
  */
+RAYLIB_UMKA_FUNCTION(DrawCylinder)
 void umkaDrawCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[5];
     float radiusTop = params[4].real32Val;
@@ -4510,6 +4899,7 @@ void umkaDrawCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCylinderEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawCylinderEx)
 void umkaDrawCylinderEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* startPos = (Vector3*)&params[5];
     Vector3* endPos = (Vector3*)&params[4];
@@ -4525,6 +4915,7 @@ void umkaDrawCylinderEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCylinderWires()
  */
+RAYLIB_UMKA_FUNCTION(DrawCylinderWires)
 void umkaDrawCylinderWires(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* position = (Vector3*)&params[5];
     float radiusTop = params[4].real32Val;
@@ -4540,6 +4931,7 @@ void umkaDrawCylinderWires(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawCylinderWiresEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawCylinderWiresEx)
 void umkaDrawCylinderWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* startPos = (Vector3*)&params[5];
     Vector3* endPos = (Vector3*)&params[4];
@@ -4555,6 +4947,7 @@ void umkaDrawCylinderWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawPlane()
  */
+RAYLIB_UMKA_FUNCTION(DrawPlane)
 void umkaDrawPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* centerPos = (Vector3*)&params[2];
     Vector2* size = (Vector2*)&params[1];
@@ -4567,6 +4960,7 @@ void umkaDrawPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawRay()
  */
+RAYLIB_UMKA_FUNCTION(DrawRay)
 void umkaDrawRay(UmkaStackSlot *params, UmkaStackSlot *result) {
     Ray* ray = (Ray*)&params[1];
     Color* color = (Color*)&params[0];
@@ -4578,6 +4972,7 @@ void umkaDrawRay(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawGrid()
  */
+RAYLIB_UMKA_FUNCTION(DrawGrid)
 void umkaDrawGrid(UmkaStackSlot *params, UmkaStackSlot *result) {
     int slices = params[1].intVal;
     float spacing = params[0].real32Val;
@@ -4589,6 +4984,7 @@ void umkaDrawGrid(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadModel()
  */
+RAYLIB_UMKA_FUNCTION(LoadModel)
 void umkaLoadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -4602,6 +4998,7 @@ void umkaLoadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadModelFromMesh()
  */
+RAYLIB_UMKA_FUNCTION(LoadModelFromMesh)
 void umkaLoadModelFromMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Mesh* mesh = (Mesh*)&params[1];
@@ -4615,6 +5012,7 @@ void umkaLoadModelFromMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadModel()
  */
+RAYLIB_UMKA_FUNCTION(UnloadModel)
 void umkaUnloadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[0];
     UnloadModel(*model);
@@ -4625,6 +5023,7 @@ void umkaUnloadModel(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadModelKeepMeshes()
  */
+RAYLIB_UMKA_FUNCTION(UnloadModelKeepMeshes)
 void umkaUnloadModelKeepMeshes(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[0];
     UnloadModelKeepMeshes(*model);
@@ -4635,6 +5034,7 @@ void umkaUnloadModelKeepMeshes(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetModelBoundingBox()
  */
+RAYLIB_UMKA_FUNCTION(GetModelBoundingBox)
 void umkaGetModelBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Model* model = (Model*)&params[1];
@@ -4648,6 +5048,7 @@ void umkaGetModelBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawModel()
  */
+RAYLIB_UMKA_FUNCTION(DrawModel)
 void umkaDrawModel(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[3];
     Vector3* position = (Vector3*)&params[2];
@@ -4661,6 +5062,7 @@ void umkaDrawModel(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawModelEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawModelEx)
 void umkaDrawModelEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[5];
     Vector3* position = (Vector3*)&params[4];
@@ -4676,6 +5078,7 @@ void umkaDrawModelEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawModelWires()
  */
+RAYLIB_UMKA_FUNCTION(DrawModelWires)
 void umkaDrawModelWires(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[3];
     Vector3* position = (Vector3*)&params[2];
@@ -4689,6 +5092,7 @@ void umkaDrawModelWires(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawModelWiresEx()
  */
+RAYLIB_UMKA_FUNCTION(DrawModelWiresEx)
 void umkaDrawModelWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[5];
     Vector3* position = (Vector3*)&params[4];
@@ -4704,6 +5108,7 @@ void umkaDrawModelWiresEx(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawBoundingBox()
  */
+RAYLIB_UMKA_FUNCTION(DrawBoundingBox)
 void umkaDrawBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     BoundingBox* box = (BoundingBox*)&params[1];
     Color* color = (Color*)&params[0];
@@ -4715,6 +5120,7 @@ void umkaDrawBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawBillboard()
  */
+RAYLIB_UMKA_FUNCTION(DrawBillboard)
 void umkaDrawBillboard(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera* camera = (Camera*)&params[4];
     Texture2D* texture = (Texture2D*)&params[3];
@@ -4729,6 +5135,7 @@ void umkaDrawBillboard(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawBillboardRec()
  */
+RAYLIB_UMKA_FUNCTION(DrawBillboardRec)
 void umkaDrawBillboardRec(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera* camera = (Camera*)&params[5];
     Texture2D* texture = (Texture2D*)&params[4];
@@ -4744,6 +5151,7 @@ void umkaDrawBillboardRec(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawBillboardPro()
  */
+RAYLIB_UMKA_FUNCTION(DrawBillboardPro)
 void umkaDrawBillboardPro(UmkaStackSlot *params, UmkaStackSlot *result) {
     Camera* camera = (Camera*)&params[8];
     Texture2D* texture = (Texture2D*)&params[7];
@@ -4762,6 +5170,7 @@ void umkaDrawBillboardPro(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UploadMesh()
  */
+RAYLIB_UMKA_FUNCTION(UploadMesh)
 void umkaUploadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh * mesh = (Mesh *)params[1].ptrVal;
     bool dynamic = (bool)params[0].intVal;
@@ -4773,6 +5182,7 @@ void umkaUploadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateMeshBuffer()
  */
+RAYLIB_UMKA_FUNCTION(UpdateMeshBuffer)
 void umkaUpdateMeshBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[4];
     int index = params[3].intVal;
@@ -4787,6 +5197,7 @@ void umkaUpdateMeshBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadMesh()
  */
+RAYLIB_UMKA_FUNCTION(UnloadMesh)
 void umkaUnloadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[0];
     UnloadMesh(*mesh);
@@ -4797,6 +5208,7 @@ void umkaUnloadMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawMesh()
  */
+RAYLIB_UMKA_FUNCTION(DrawMesh)
 void umkaDrawMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[2];
     Material* material = (Material*)&params[1];
@@ -4809,6 +5221,7 @@ void umkaDrawMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see DrawMeshInstanced()
  */
+RAYLIB_UMKA_FUNCTION(DrawMeshInstanced)
 void umkaDrawMeshInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[3];
     Material* material = (Material*)&params[2];
@@ -4822,6 +5235,7 @@ void umkaDrawMeshInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportMesh()
  */
+RAYLIB_UMKA_FUNCTION(ExportMesh)
 void umkaExportMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh* mesh = (Mesh*)&params[1];
     const char * fileName = (const char *)params[0].ptrVal;
@@ -4833,6 +5247,7 @@ void umkaExportMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMeshBoundingBox()
  */
+RAYLIB_UMKA_FUNCTION(GetMeshBoundingBox)
 void umkaGetMeshBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Mesh* mesh = (Mesh*)&params[1];
@@ -4846,6 +5261,7 @@ void umkaGetMeshBoundingBox(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshTangents()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshTangents)
 void umkaGenMeshTangents(UmkaStackSlot *params, UmkaStackSlot *result) {
     Mesh * mesh = (Mesh *)params[0].ptrVal;
     GenMeshTangents(mesh);
@@ -4856,6 +5272,7 @@ void umkaGenMeshTangents(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshPoly()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshPoly)
 void umkaGenMeshPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int sides = params[2].intVal;
@@ -4870,6 +5287,7 @@ void umkaGenMeshPoly(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshPlane()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshPlane)
 void umkaGenMeshPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float width = params[4].real32Val;
@@ -4886,6 +5304,7 @@ void umkaGenMeshPlane(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshCube()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshCube)
 void umkaGenMeshCube(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float width = params[3].real32Val;
@@ -4901,6 +5320,7 @@ void umkaGenMeshCube(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshSphere()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshSphere)
 void umkaGenMeshSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float radius = params[3].real32Val;
@@ -4916,6 +5336,7 @@ void umkaGenMeshSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshHemiSphere()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshHemiSphere)
 void umkaGenMeshHemiSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float radius = params[3].real32Val;
@@ -4931,6 +5352,7 @@ void umkaGenMeshHemiSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshCylinder()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshCylinder)
 void umkaGenMeshCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float radius = params[3].real32Val;
@@ -4946,6 +5368,7 @@ void umkaGenMeshCylinder(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshCone()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshCone)
 void umkaGenMeshCone(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float radius = params[3].real32Val;
@@ -4961,6 +5384,7 @@ void umkaGenMeshCone(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshTorus()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshTorus)
 void umkaGenMeshTorus(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float radius = params[4].real32Val;
@@ -4977,6 +5401,7 @@ void umkaGenMeshTorus(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshKnot()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshKnot)
 void umkaGenMeshKnot(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float radius = params[4].real32Val;
@@ -4993,6 +5418,7 @@ void umkaGenMeshKnot(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshHeightmap()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshHeightmap)
 void umkaGenMeshHeightmap(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* heightmap = (Image*)&params[2];
@@ -5007,6 +5433,7 @@ void umkaGenMeshHeightmap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GenMeshCubicmap()
  */
+RAYLIB_UMKA_FUNCTION(GenMeshCubicmap)
 void umkaGenMeshCubicmap(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Image* cubicmap = (Image*)&params[2];
@@ -5021,6 +5448,7 @@ void umkaGenMeshCubicmap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadMaterials()
  */
+RAYLIB_UMKA_FUNCTION(LoadMaterials)
 void umkaLoadMaterials(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[1].ptrVal;
     int * materialCount = (int *)params[0].ptrVal;
@@ -5032,6 +5460,7 @@ void umkaLoadMaterials(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadMaterialDefault()
  */
+RAYLIB_UMKA_FUNCTION(LoadMaterialDefault)
 void umkaLoadMaterialDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Material), NULL);
     Material out = LoadMaterialDefault();
@@ -5043,6 +5472,7 @@ void umkaLoadMaterialDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadMaterial()
  */
+RAYLIB_UMKA_FUNCTION(UnloadMaterial)
 void umkaUnloadMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
     Material* material = (Material*)&params[0];
     UnloadMaterial(*material);
@@ -5053,6 +5483,7 @@ void umkaUnloadMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMaterialTexture()
  */
+RAYLIB_UMKA_FUNCTION(SetMaterialTexture)
 void umkaSetMaterialTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     Material * material = (Material *)params[2].ptrVal;
     int mapType = params[1].intVal;
@@ -5065,6 +5496,7 @@ void umkaSetMaterialTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetModelMeshMaterial()
  */
+RAYLIB_UMKA_FUNCTION(SetModelMeshMaterial)
 void umkaSetModelMeshMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model * model = (Model *)params[2].ptrVal;
     int meshId = params[1].intVal;
@@ -5077,6 +5509,7 @@ void umkaSetModelMeshMaterial(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadModelAnimations()
  */
+RAYLIB_UMKA_FUNCTION(LoadModelAnimations)
 void umkaLoadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * fileName = (const char *)params[1].ptrVal;
     unsigned int * animCount = (unsigned int *)params[0].ptrVal;
@@ -5088,6 +5521,7 @@ void umkaLoadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateModelAnimation()
  */
+RAYLIB_UMKA_FUNCTION(UpdateModelAnimation)
 void umkaUpdateModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[2];
     ModelAnimation* anim = (ModelAnimation*)&params[1];
@@ -5100,6 +5534,7 @@ void umkaUpdateModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadModelAnimation()
  */
+RAYLIB_UMKA_FUNCTION(UnloadModelAnimation)
 void umkaUnloadModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
     ModelAnimation* anim = (ModelAnimation*)&params[0];
     UnloadModelAnimation(*anim);
@@ -5110,6 +5545,7 @@ void umkaUnloadModelAnimation(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadModelAnimations()
  */
+RAYLIB_UMKA_FUNCTION(UnloadModelAnimations)
 void umkaUnloadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
     ModelAnimation * animations = (ModelAnimation *)params[1].ptrVal;
     unsigned int count = params[0].uintVal;
@@ -5121,6 +5557,7 @@ void umkaUnloadModelAnimations(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsModelAnimationValid()
  */
+RAYLIB_UMKA_FUNCTION(IsModelAnimationValid)
 void umkaIsModelAnimationValid(UmkaStackSlot *params, UmkaStackSlot *result) {
     Model* model = (Model*)&params[1];
     ModelAnimation* anim = (ModelAnimation*)&params[0];
@@ -5132,6 +5569,7 @@ void umkaIsModelAnimationValid(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionSpheres()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionSpheres)
 void umkaCheckCollisionSpheres(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* center1 = (Vector3*)&params[3];
     float radius1 = params[2].real32Val;
@@ -5145,6 +5583,7 @@ void umkaCheckCollisionSpheres(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionBoxes()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionBoxes)
 void umkaCheckCollisionBoxes(UmkaStackSlot *params, UmkaStackSlot *result) {
     BoundingBox* box1 = (BoundingBox*)&params[1];
     BoundingBox* box2 = (BoundingBox*)&params[0];
@@ -5156,6 +5595,7 @@ void umkaCheckCollisionBoxes(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CheckCollisionBoxSphere()
  */
+RAYLIB_UMKA_FUNCTION(CheckCollisionBoxSphere)
 void umkaCheckCollisionBoxSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     BoundingBox* box = (BoundingBox*)&params[2];
     Vector3* center = (Vector3*)&params[1];
@@ -5168,6 +5608,7 @@ void umkaCheckCollisionBoxSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRayCollisionSphere()
  */
+RAYLIB_UMKA_FUNCTION(GetRayCollisionSphere)
 void umkaGetRayCollisionSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Ray* ray = (Ray*)&params[3];
@@ -5183,6 +5624,7 @@ void umkaGetRayCollisionSphere(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRayCollisionBox()
  */
+RAYLIB_UMKA_FUNCTION(GetRayCollisionBox)
 void umkaGetRayCollisionBox(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Ray* ray = (Ray*)&params[2];
@@ -5197,6 +5639,7 @@ void umkaGetRayCollisionBox(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRayCollisionMesh()
  */
+RAYLIB_UMKA_FUNCTION(GetRayCollisionMesh)
 void umkaGetRayCollisionMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Ray* ray = (Ray*)&params[3];
@@ -5212,6 +5655,7 @@ void umkaGetRayCollisionMesh(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRayCollisionTriangle()
  */
+RAYLIB_UMKA_FUNCTION(GetRayCollisionTriangle)
 void umkaGetRayCollisionTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Ray* ray = (Ray*)&params[4];
@@ -5228,6 +5672,7 @@ void umkaGetRayCollisionTriangle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetRayCollisionQuad()
  */
+RAYLIB_UMKA_FUNCTION(GetRayCollisionQuad)
 void umkaGetRayCollisionQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Ray* ray = (Ray*)&params[5];
@@ -5245,6 +5690,7 @@ void umkaGetRayCollisionQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see InitAudioDevice()
  */
+RAYLIB_UMKA_FUNCTION(InitAudioDevice)
 void umkaInitAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
     InitAudioDevice();
 }
@@ -5254,6 +5700,7 @@ void umkaInitAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see CloseAudioDevice()
  */
+RAYLIB_UMKA_FUNCTION(CloseAudioDevice)
 void umkaCloseAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
     CloseAudioDevice();
 }
@@ -5263,6 +5710,7 @@ void umkaCloseAudioDevice(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsAudioDeviceReady()
  */
+RAYLIB_UMKA_FUNCTION(IsAudioDeviceReady)
 void umkaIsAudioDeviceReady(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)IsAudioDeviceReady();
 }
@@ -5272,6 +5720,7 @@ void umkaIsAudioDeviceReady(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMasterVolume()
  */
+RAYLIB_UMKA_FUNCTION(SetMasterVolume)
 void umkaSetMasterVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
     float volume = params[0].real32Val;
     SetMasterVolume(volume);
@@ -5282,6 +5731,7 @@ void umkaSetMasterVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadWave()
  */
+RAYLIB_UMKA_FUNCTION(LoadWave)
 void umkaLoadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -5295,6 +5745,7 @@ void umkaLoadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadWaveFromMemory()
  */
+RAYLIB_UMKA_FUNCTION(LoadWaveFromMemory)
 void umkaLoadWaveFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileType = (const char *)params[3].ptrVal;
@@ -5310,6 +5761,7 @@ void umkaLoadWaveFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadSound()
  */
+RAYLIB_UMKA_FUNCTION(LoadSound)
 void umkaLoadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -5323,6 +5775,7 @@ void umkaLoadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadSoundFromWave()
  */
+RAYLIB_UMKA_FUNCTION(LoadSoundFromWave)
 void umkaLoadSoundFromWave(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Wave* wave = (Wave*)&params[1];
@@ -5336,6 +5789,7 @@ void umkaLoadSoundFromWave(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateSound()
  */
+RAYLIB_UMKA_FUNCTION(UpdateSound)
 void umkaUpdateSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[2];
     const void * data = (const void *)params[1].ptrVal;
@@ -5348,6 +5802,7 @@ void umkaUpdateSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadWave()
  */
+RAYLIB_UMKA_FUNCTION(UnloadWave)
 void umkaUnloadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave* wave = (Wave*)&params[0];
     UnloadWave(*wave);
@@ -5358,6 +5813,7 @@ void umkaUnloadWave(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadSound()
  */
+RAYLIB_UMKA_FUNCTION(UnloadSound)
 void umkaUnloadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     UnloadSound(*sound);
@@ -5368,6 +5824,7 @@ void umkaUnloadSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportWave()
  */
+RAYLIB_UMKA_FUNCTION(ExportWave)
 void umkaExportWave(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave* wave = (Wave*)&params[1];
     const char * fileName = (const char *)params[0].ptrVal;
@@ -5379,6 +5836,7 @@ void umkaExportWave(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ExportWaveAsCode()
  */
+RAYLIB_UMKA_FUNCTION(ExportWaveAsCode)
 void umkaExportWaveAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave* wave = (Wave*)&params[1];
     const char * fileName = (const char *)params[0].ptrVal;
@@ -5390,6 +5848,7 @@ void umkaExportWaveAsCode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PlaySound()
  */
+RAYLIB_UMKA_FUNCTION(PlaySound)
 void umkaPlaySound(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     PlaySound(*sound);
@@ -5400,6 +5859,7 @@ void umkaPlaySound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see StopSound()
  */
+RAYLIB_UMKA_FUNCTION(StopSound)
 void umkaStopSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     StopSound(*sound);
@@ -5410,6 +5870,7 @@ void umkaStopSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PauseSound()
  */
+RAYLIB_UMKA_FUNCTION(PauseSound)
 void umkaPauseSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     PauseSound(*sound);
@@ -5420,6 +5881,7 @@ void umkaPauseSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ResumeSound()
  */
+RAYLIB_UMKA_FUNCTION(ResumeSound)
 void umkaResumeSound(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     ResumeSound(*sound);
@@ -5430,6 +5892,7 @@ void umkaResumeSound(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PlaySoundMulti()
  */
+RAYLIB_UMKA_FUNCTION(PlaySoundMulti)
 void umkaPlaySoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     PlaySoundMulti(*sound);
@@ -5440,6 +5903,7 @@ void umkaPlaySoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see StopSoundMulti()
  */
+RAYLIB_UMKA_FUNCTION(StopSoundMulti)
 void umkaStopSoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
     StopSoundMulti();
 }
@@ -5449,6 +5913,7 @@ void umkaStopSoundMulti(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetSoundsPlaying()
  */
+RAYLIB_UMKA_FUNCTION(GetSoundsPlaying)
 void umkaGetSoundsPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = GetSoundsPlaying();
 }
@@ -5458,6 +5923,7 @@ void umkaGetSoundsPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsSoundPlaying()
  */
+RAYLIB_UMKA_FUNCTION(IsSoundPlaying)
 void umkaIsSoundPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[0];
     result->intVal = (int)IsSoundPlaying(*sound);
@@ -5468,6 +5934,7 @@ void umkaIsSoundPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetSoundVolume()
  */
+RAYLIB_UMKA_FUNCTION(SetSoundVolume)
 void umkaSetSoundVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[1];
     float volume = params[0].real32Val;
@@ -5479,6 +5946,7 @@ void umkaSetSoundVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetSoundPitch()
  */
+RAYLIB_UMKA_FUNCTION(SetSoundPitch)
 void umkaSetSoundPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[1];
     float pitch = params[0].real32Val;
@@ -5490,6 +5958,7 @@ void umkaSetSoundPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetSoundPan()
  */
+RAYLIB_UMKA_FUNCTION(SetSoundPan)
 void umkaSetSoundPan(UmkaStackSlot *params, UmkaStackSlot *result) {
     Sound* sound = (Sound*)&params[1];
     float pan = params[0].real32Val;
@@ -5501,6 +5970,7 @@ void umkaSetSoundPan(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see WaveCopy()
  */
+RAYLIB_UMKA_FUNCTION(WaveCopy)
 void umkaWaveCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Wave* wave = (Wave*)&params[1];
@@ -5514,6 +5984,7 @@ void umkaWaveCopy(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see WaveCrop()
  */
+RAYLIB_UMKA_FUNCTION(WaveCrop)
 void umkaWaveCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave * wave = (Wave *)params[2].ptrVal;
     int initSample = params[1].intVal;
@@ -5526,6 +5997,7 @@ void umkaWaveCrop(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see WaveFormat()
  */
+RAYLIB_UMKA_FUNCTION(WaveFormat)
 void umkaWaveFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave * wave = (Wave *)params[3].ptrVal;
     int sampleRate = params[2].intVal;
@@ -5539,6 +6011,7 @@ void umkaWaveFormat(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadWaveSamples()
  */
+RAYLIB_UMKA_FUNCTION(LoadWaveSamples)
 void umkaLoadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
     Wave* wave = (Wave*)&params[0];
     result->ptrVal = (void*)LoadWaveSamples(*wave);
@@ -5549,6 +6022,7 @@ void umkaLoadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadWaveSamples()
  */
+RAYLIB_UMKA_FUNCTION(UnloadWaveSamples)
 void umkaUnloadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
     float * samples = (float *)params[0].ptrVal;
     UnloadWaveSamples(samples);
@@ -5559,6 +6033,7 @@ void umkaUnloadWaveSamples(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(LoadMusicStream)
 void umkaLoadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileName = (const char *)params[1].ptrVal;
@@ -5572,6 +6047,7 @@ void umkaLoadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadMusicStreamFromMemory()
  */
+RAYLIB_UMKA_FUNCTION(LoadMusicStreamFromMemory)
 void umkaLoadMusicStreamFromMemory(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     const char * fileType = (const char *)params[3].ptrVal;
@@ -5587,6 +6063,7 @@ void umkaLoadMusicStreamFromMemory(UmkaStackSlot *params, UmkaStackSlot *result)
  *
  * @see UnloadMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(UnloadMusicStream)
 void umkaUnloadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     UnloadMusicStream(*music);
@@ -5597,6 +6074,7 @@ void umkaUnloadMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PlayMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(PlayMusicStream)
 void umkaPlayMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     PlayMusicStream(*music);
@@ -5607,6 +6085,7 @@ void umkaPlayMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsMusicStreamPlaying()
  */
+RAYLIB_UMKA_FUNCTION(IsMusicStreamPlaying)
 void umkaIsMusicStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     result->intVal = (int)IsMusicStreamPlaying(*music);
@@ -5617,6 +6096,7 @@ void umkaIsMusicStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(UpdateMusicStream)
 void umkaUpdateMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     UpdateMusicStream(*music);
@@ -5627,6 +6107,7 @@ void umkaUpdateMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see StopMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(StopMusicStream)
 void umkaStopMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     StopMusicStream(*music);
@@ -5637,6 +6118,7 @@ void umkaStopMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PauseMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(PauseMusicStream)
 void umkaPauseMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     PauseMusicStream(*music);
@@ -5647,6 +6129,7 @@ void umkaPauseMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ResumeMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(ResumeMusicStream)
 void umkaResumeMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     ResumeMusicStream(*music);
@@ -5657,6 +6140,7 @@ void umkaResumeMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SeekMusicStream()
  */
+RAYLIB_UMKA_FUNCTION(SeekMusicStream)
 void umkaSeekMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[1];
     float position = params[0].real32Val;
@@ -5668,6 +6152,7 @@ void umkaSeekMusicStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMusicVolume()
  */
+RAYLIB_UMKA_FUNCTION(SetMusicVolume)
 void umkaSetMusicVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[1];
     float volume = params[0].real32Val;
@@ -5679,6 +6164,7 @@ void umkaSetMusicVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMusicPitch()
  */
+RAYLIB_UMKA_FUNCTION(SetMusicPitch)
 void umkaSetMusicPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[1];
     float pitch = params[0].real32Val;
@@ -5690,6 +6176,7 @@ void umkaSetMusicPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetMusicPan()
  */
+RAYLIB_UMKA_FUNCTION(SetMusicPan)
 void umkaSetMusicPan(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[1];
     float pan = params[0].real32Val;
@@ -5701,6 +6188,7 @@ void umkaSetMusicPan(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMusicTimeLength()
  */
+RAYLIB_UMKA_FUNCTION(GetMusicTimeLength)
 void umkaGetMusicTimeLength(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     result->realVal = GetMusicTimeLength(*music);
@@ -5711,6 +6199,7 @@ void umkaGetMusicTimeLength(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see GetMusicTimePlayed()
  */
+RAYLIB_UMKA_FUNCTION(GetMusicTimePlayed)
 void umkaGetMusicTimePlayed(UmkaStackSlot *params, UmkaStackSlot *result) {
     Music* music = (Music*)&params[0];
     result->realVal = GetMusicTimePlayed(*music);
@@ -5721,6 +6210,7 @@ void umkaGetMusicTimePlayed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see LoadAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(LoadAudioStream)
 void umkaLoadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     unsigned int sampleRate = params[3].uintVal;
@@ -5736,6 +6226,7 @@ void umkaLoadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UnloadAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(UnloadAudioStream)
 void umkaUnloadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     UnloadAudioStream(*stream);
@@ -5746,6 +6237,7 @@ void umkaUnloadAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see UpdateAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(UpdateAudioStream)
 void umkaUpdateAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[2];
     const void * data = (const void *)params[1].ptrVal;
@@ -5758,6 +6250,7 @@ void umkaUpdateAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsAudioStreamProcessed()
  */
+RAYLIB_UMKA_FUNCTION(IsAudioStreamProcessed)
 void umkaIsAudioStreamProcessed(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     result->intVal = (int)IsAudioStreamProcessed(*stream);
@@ -5768,6 +6261,7 @@ void umkaIsAudioStreamProcessed(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PlayAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(PlayAudioStream)
 void umkaPlayAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     PlayAudioStream(*stream);
@@ -5778,6 +6272,7 @@ void umkaPlayAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see PauseAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(PauseAudioStream)
 void umkaPauseAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     PauseAudioStream(*stream);
@@ -5788,6 +6283,7 @@ void umkaPauseAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see ResumeAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(ResumeAudioStream)
 void umkaResumeAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     ResumeAudioStream(*stream);
@@ -5798,6 +6294,7 @@ void umkaResumeAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see IsAudioStreamPlaying()
  */
+RAYLIB_UMKA_FUNCTION(IsAudioStreamPlaying)
 void umkaIsAudioStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     result->intVal = (int)IsAudioStreamPlaying(*stream);
@@ -5808,6 +6305,7 @@ void umkaIsAudioStreamPlaying(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see StopAudioStream()
  */
+RAYLIB_UMKA_FUNCTION(StopAudioStream)
 void umkaStopAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[0];
     StopAudioStream(*stream);
@@ -5818,6 +6316,7 @@ void umkaStopAudioStream(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetAudioStreamVolume()
  */
+RAYLIB_UMKA_FUNCTION(SetAudioStreamVolume)
 void umkaSetAudioStreamVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[1];
     float volume = params[0].real32Val;
@@ -5829,6 +6328,7 @@ void umkaSetAudioStreamVolume(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetAudioStreamPitch()
  */
+RAYLIB_UMKA_FUNCTION(SetAudioStreamPitch)
 void umkaSetAudioStreamPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[1];
     float pitch = params[0].real32Val;
@@ -5840,6 +6340,7 @@ void umkaSetAudioStreamPitch(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetAudioStreamPan()
  */
+RAYLIB_UMKA_FUNCTION(SetAudioStreamPan)
 void umkaSetAudioStreamPan(UmkaStackSlot *params, UmkaStackSlot *result) {
     AudioStream* stream = (AudioStream*)&params[1];
     float pan = params[0].real32Val;
@@ -5851,6 +6352,7 @@ void umkaSetAudioStreamPan(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see SetAudioStreamBufferSizeDefault()
  */
+RAYLIB_UMKA_FUNCTION(SetAudioStreamBufferSizeDefault)
 void umkaSetAudioStreamBufferSizeDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     int size = params[0].intVal;
     SetAudioStreamBufferSizeDefault(size);
@@ -5867,6 +6369,7 @@ void umkaSetAudioStreamBufferSizeDefault(UmkaStackSlot *params, UmkaStackSlot *r
  *
  * @see Clamp()
  */
+RAYLIB_UMKA_FUNCTION(Clamp)
 void umkaClamp(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[2].real32Val;
     float min = params[1].real32Val;
@@ -5879,6 +6382,7 @@ void umkaClamp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Lerp()
  */
+RAYLIB_UMKA_FUNCTION(Lerp)
 void umkaLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     float start = params[2].real32Val;
     float end = params[1].real32Val;
@@ -5891,6 +6395,7 @@ void umkaLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Normalize()
  */
+RAYLIB_UMKA_FUNCTION(Normalize)
 void umkaNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[2].real32Val;
     float start = params[1].real32Val;
@@ -5903,6 +6408,7 @@ void umkaNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Remap()
  */
+RAYLIB_UMKA_FUNCTION(Remap)
 void umkaRemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[4].real32Val;
     float inputStart = params[3].real32Val;
@@ -5917,6 +6423,7 @@ void umkaRemap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Wrap()
  */
+RAYLIB_UMKA_FUNCTION(Wrap)
 void umkaWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
     float value = params[2].real32Val;
     float min = params[1].real32Val;
@@ -5929,6 +6436,7 @@ void umkaWrap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see FloatEquals()
  */
+RAYLIB_UMKA_FUNCTION(FloatEquals)
 void umkaFloatEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[1].real32Val;
     float y = params[0].real32Val;
@@ -5940,6 +6448,7 @@ void umkaFloatEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Zero()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Zero)
 void umkaVector2Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = Vector2Zero();
@@ -5951,6 +6460,7 @@ void umkaVector2Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2One()
  */
+RAYLIB_UMKA_FUNCTION(Vector2One)
 void umkaVector2One(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector2), NULL);
     Vector2 out = Vector2One();
@@ -5962,6 +6472,7 @@ void umkaVector2One(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Add()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Add)
 void umkaVector2Add(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v1 = (Vector2*)&params[2];
@@ -5976,6 +6487,7 @@ void umkaVector2Add(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2AddValue()
  */
+RAYLIB_UMKA_FUNCTION(Vector2AddValue)
 void umkaVector2AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[2];
@@ -5990,6 +6502,7 @@ void umkaVector2AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Subtract()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Subtract)
 void umkaVector2Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v1 = (Vector2*)&params[2];
@@ -6004,6 +6517,7 @@ void umkaVector2Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2SubtractValue()
  */
+RAYLIB_UMKA_FUNCTION(Vector2SubtractValue)
 void umkaVector2SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[2];
@@ -6018,6 +6532,7 @@ void umkaVector2SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Length()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Length)
 void umkaVector2Length(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v = (Vector2*)&params[0];
     result->realVal = Vector2Length(*v);
@@ -6028,6 +6543,7 @@ void umkaVector2Length(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2LengthSqr()
  */
+RAYLIB_UMKA_FUNCTION(Vector2LengthSqr)
 void umkaVector2LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v = (Vector2*)&params[0];
     result->realVal = Vector2LengthSqr(*v);
@@ -6038,6 +6554,7 @@ void umkaVector2LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2DotProduct()
  */
+RAYLIB_UMKA_FUNCTION(Vector2DotProduct)
 void umkaVector2DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
@@ -6049,6 +6566,7 @@ void umkaVector2DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Distance()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Distance)
 void umkaVector2Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
@@ -6060,6 +6578,7 @@ void umkaVector2Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2DistanceSqr()
  */
+RAYLIB_UMKA_FUNCTION(Vector2DistanceSqr)
 void umkaVector2DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
@@ -6071,6 +6590,7 @@ void umkaVector2DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Angle()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Angle)
 void umkaVector2Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* v1 = (Vector2*)&params[1];
     Vector2* v2 = (Vector2*)&params[0];
@@ -6082,6 +6602,7 @@ void umkaVector2Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Scale()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Scale)
 void umkaVector2Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[2];
@@ -6096,6 +6617,7 @@ void umkaVector2Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Multiply()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Multiply)
 void umkaVector2Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v1 = (Vector2*)&params[2];
@@ -6110,6 +6632,7 @@ void umkaVector2Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Negate()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Negate)
 void umkaVector2Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[1];
@@ -6123,6 +6646,7 @@ void umkaVector2Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Divide()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Divide)
 void umkaVector2Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v1 = (Vector2*)&params[2];
@@ -6137,6 +6661,7 @@ void umkaVector2Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Normalize()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Normalize)
 void umkaVector2Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[1];
@@ -6150,6 +6675,7 @@ void umkaVector2Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Transform()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Transform)
 void umkaVector2Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[2];
@@ -6164,6 +6690,7 @@ void umkaVector2Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Lerp()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Lerp)
 void umkaVector2Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v1 = (Vector2*)&params[3];
@@ -6179,6 +6706,7 @@ void umkaVector2Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Reflect()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Reflect)
 void umkaVector2Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[2];
@@ -6193,6 +6721,7 @@ void umkaVector2Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Rotate()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Rotate)
 void umkaVector2Rotate(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[2];
@@ -6207,6 +6736,7 @@ void umkaVector2Rotate(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2MoveTowards()
  */
+RAYLIB_UMKA_FUNCTION(Vector2MoveTowards)
 void umkaVector2MoveTowards(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[3];
@@ -6222,6 +6752,7 @@ void umkaVector2MoveTowards(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Invert()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Invert)
 void umkaVector2Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[1];
@@ -6235,6 +6766,7 @@ void umkaVector2Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Clamp()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Clamp)
 void umkaVector2Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[3];
@@ -6250,6 +6782,7 @@ void umkaVector2Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2ClampValue()
  */
+RAYLIB_UMKA_FUNCTION(Vector2ClampValue)
 void umkaVector2ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector2* v = (Vector2*)&params[3];
@@ -6265,6 +6798,7 @@ void umkaVector2ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector2Equals()
  */
+RAYLIB_UMKA_FUNCTION(Vector2Equals)
 void umkaVector2Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector2* p = (Vector2*)&params[1];
     Vector2* q = (Vector2*)&params[0];
@@ -6276,6 +6810,7 @@ void umkaVector2Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Zero()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Zero)
 void umkaVector3Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector3), NULL);
     Vector3 out = Vector3Zero();
@@ -6287,6 +6822,7 @@ void umkaVector3Zero(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3One()
  */
+RAYLIB_UMKA_FUNCTION(Vector3One)
 void umkaVector3One(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Vector3), NULL);
     Vector3 out = Vector3One();
@@ -6298,6 +6834,7 @@ void umkaVector3One(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Add()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Add)
 void umkaVector3Add(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6312,6 +6849,7 @@ void umkaVector3Add(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3AddValue()
  */
+RAYLIB_UMKA_FUNCTION(Vector3AddValue)
 void umkaVector3AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[2];
@@ -6326,6 +6864,7 @@ void umkaVector3AddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Subtract()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Subtract)
 void umkaVector3Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6340,6 +6879,7 @@ void umkaVector3Subtract(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3SubtractValue()
  */
+RAYLIB_UMKA_FUNCTION(Vector3SubtractValue)
 void umkaVector3SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[2];
@@ -6354,6 +6894,7 @@ void umkaVector3SubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Scale()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Scale)
 void umkaVector3Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[2];
@@ -6368,6 +6909,7 @@ void umkaVector3Scale(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Multiply()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Multiply)
 void umkaVector3Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6382,6 +6924,7 @@ void umkaVector3Multiply(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3CrossProduct()
  */
+RAYLIB_UMKA_FUNCTION(Vector3CrossProduct)
 void umkaVector3CrossProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6396,6 +6939,7 @@ void umkaVector3CrossProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Perpendicular()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Perpendicular)
 void umkaVector3Perpendicular(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[1];
@@ -6409,6 +6953,7 @@ void umkaVector3Perpendicular(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Length()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Length)
 void umkaVector3Length(UmkaStackSlot *params, UmkaStackSlot *result) {
     const Vector3* v = (const Vector3*)&params[0];
     result->realVal = Vector3Length(*v);
@@ -6419,6 +6964,7 @@ void umkaVector3Length(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3LengthSqr()
  */
+RAYLIB_UMKA_FUNCTION(Vector3LengthSqr)
 void umkaVector3LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     const Vector3* v = (const Vector3*)&params[0];
     result->realVal = Vector3LengthSqr(*v);
@@ -6429,6 +6975,7 @@ void umkaVector3LengthSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3DotProduct()
  */
+RAYLIB_UMKA_FUNCTION(Vector3DotProduct)
 void umkaVector3DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
@@ -6440,6 +6987,7 @@ void umkaVector3DotProduct(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Distance()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Distance)
 void umkaVector3Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
@@ -6451,6 +6999,7 @@ void umkaVector3Distance(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3DistanceSqr()
  */
+RAYLIB_UMKA_FUNCTION(Vector3DistanceSqr)
 void umkaVector3DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
@@ -6462,6 +7011,7 @@ void umkaVector3DistanceSqr(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Angle()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Angle)
 void umkaVector3Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* v1 = (Vector3*)&params[1];
     Vector3* v2 = (Vector3*)&params[0];
@@ -6473,6 +7023,7 @@ void umkaVector3Angle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Negate()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Negate)
 void umkaVector3Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[1];
@@ -6486,6 +7037,7 @@ void umkaVector3Negate(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Divide()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Divide)
 void umkaVector3Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6500,6 +7052,7 @@ void umkaVector3Divide(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Normalize()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Normalize)
 void umkaVector3Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[1];
@@ -6513,6 +7066,7 @@ void umkaVector3Normalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3OrthoNormalize()
  */
+RAYLIB_UMKA_FUNCTION(Vector3OrthoNormalize)
 void umkaVector3OrthoNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3 * v1 = (Vector3 *)params[1].ptrVal;
     Vector3 * v2 = (Vector3 *)params[0].ptrVal;
@@ -6524,6 +7078,7 @@ void umkaVector3OrthoNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Transform()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Transform)
 void umkaVector3Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[2];
@@ -6538,6 +7093,7 @@ void umkaVector3Transform(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3RotateByQuaternion()
  */
+RAYLIB_UMKA_FUNCTION(Vector3RotateByQuaternion)
 void umkaVector3RotateByQuaternion(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[2];
@@ -6552,6 +7108,7 @@ void umkaVector3RotateByQuaternion(UmkaStackSlot *params, UmkaStackSlot *result)
  *
  * @see Vector3RotateByAxisAngle()
  */
+RAYLIB_UMKA_FUNCTION(Vector3RotateByAxisAngle)
 void umkaVector3RotateByAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[3];
@@ -6567,6 +7124,7 @@ void umkaVector3RotateByAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) 
  *
  * @see Vector3Lerp()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Lerp)
 void umkaVector3Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[3];
@@ -6582,6 +7140,7 @@ void umkaVector3Lerp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Reflect()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Reflect)
 void umkaVector3Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[2];
@@ -6596,6 +7155,7 @@ void umkaVector3Reflect(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Min()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Min)
 void umkaVector3Min(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6610,6 +7170,7 @@ void umkaVector3Min(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Max()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Max)
 void umkaVector3Max(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v1 = (Vector3*)&params[2];
@@ -6624,6 +7185,7 @@ void umkaVector3Max(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Barycenter()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Barycenter)
 void umkaVector3Barycenter(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* p = (Vector3*)&params[4];
@@ -6640,6 +7202,7 @@ void umkaVector3Barycenter(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Unproject()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Unproject)
 void umkaVector3Unproject(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* source = (Vector3*)&params[3];
@@ -6655,6 +7218,7 @@ void umkaVector3Unproject(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3ToFloatV()
  */
+RAYLIB_UMKA_FUNCTION(Vector3ToFloatV)
 void umkaVector3ToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[1];
@@ -6668,6 +7232,7 @@ void umkaVector3ToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Invert()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Invert)
 void umkaVector3Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[1];
@@ -6681,6 +7246,7 @@ void umkaVector3Invert(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Clamp()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Clamp)
 void umkaVector3Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[3];
@@ -6696,6 +7262,7 @@ void umkaVector3Clamp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3ClampValue()
  */
+RAYLIB_UMKA_FUNCTION(Vector3ClampValue)
 void umkaVector3ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[3];
@@ -6711,6 +7278,7 @@ void umkaVector3ClampValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Equals()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Equals)
 void umkaVector3Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
     Vector3* p = (Vector3*)&params[1];
     Vector3* q = (Vector3*)&params[0];
@@ -6722,6 +7290,7 @@ void umkaVector3Equals(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see Vector3Refract()
  */
+RAYLIB_UMKA_FUNCTION(Vector3Refract)
 void umkaVector3Refract(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* v = (Vector3*)&params[3];
@@ -6737,6 +7306,7 @@ void umkaVector3Refract(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixDeterminant()
  */
+RAYLIB_UMKA_FUNCTION(MatrixDeterminant)
 void umkaMatrixDeterminant(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* mat = (Matrix*)&params[0];
     result->realVal = MatrixDeterminant(*mat);
@@ -6747,6 +7317,7 @@ void umkaMatrixDeterminant(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixTrace()
  */
+RAYLIB_UMKA_FUNCTION(MatrixTrace)
 void umkaMatrixTrace(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* mat = (Matrix*)&params[0];
     result->realVal = MatrixTrace(*mat);
@@ -6757,6 +7328,7 @@ void umkaMatrixTrace(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixTranspose()
  */
+RAYLIB_UMKA_FUNCTION(MatrixTranspose)
 void umkaMatrixTranspose(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* mat = (Matrix*)&params[1];
@@ -6770,6 +7342,7 @@ void umkaMatrixTranspose(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixInvert()
  */
+RAYLIB_UMKA_FUNCTION(MatrixInvert)
 void umkaMatrixInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* mat = (Matrix*)&params[1];
@@ -6783,6 +7356,7 @@ void umkaMatrixInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixIdentity()
  */
+RAYLIB_UMKA_FUNCTION(MatrixIdentity)
 void umkaMatrixIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
     Matrix out = MatrixIdentity();
@@ -6794,6 +7368,7 @@ void umkaMatrixIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixAdd()
  */
+RAYLIB_UMKA_FUNCTION(MatrixAdd)
 void umkaMatrixAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* left = (Matrix*)&params[2];
@@ -6808,6 +7383,7 @@ void umkaMatrixAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixSubtract()
  */
+RAYLIB_UMKA_FUNCTION(MatrixSubtract)
 void umkaMatrixSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* left = (Matrix*)&params[2];
@@ -6822,6 +7398,7 @@ void umkaMatrixSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixMultiply()
  */
+RAYLIB_UMKA_FUNCTION(MatrixMultiply)
 void umkaMatrixMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* left = (Matrix*)&params[2];
@@ -6836,6 +7413,7 @@ void umkaMatrixMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixTranslate()
  */
+RAYLIB_UMKA_FUNCTION(MatrixTranslate)
 void umkaMatrixTranslate(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float x = params[3].real32Val;
@@ -6851,6 +7429,7 @@ void umkaMatrixTranslate(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixRotate()
  */
+RAYLIB_UMKA_FUNCTION(MatrixRotate)
 void umkaMatrixRotate(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* axis = (Vector3*)&params[2];
@@ -6865,6 +7444,7 @@ void umkaMatrixRotate(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixRotateX()
  */
+RAYLIB_UMKA_FUNCTION(MatrixRotateX)
 void umkaMatrixRotateX(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float angle = params[1].real32Val;
@@ -6878,6 +7458,7 @@ void umkaMatrixRotateX(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixRotateY()
  */
+RAYLIB_UMKA_FUNCTION(MatrixRotateY)
 void umkaMatrixRotateY(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float angle = params[1].real32Val;
@@ -6891,6 +7472,7 @@ void umkaMatrixRotateY(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixRotateZ()
  */
+RAYLIB_UMKA_FUNCTION(MatrixRotateZ)
 void umkaMatrixRotateZ(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float angle = params[1].real32Val;
@@ -6904,6 +7486,7 @@ void umkaMatrixRotateZ(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixRotateXYZ()
  */
+RAYLIB_UMKA_FUNCTION(MatrixRotateXYZ)
 void umkaMatrixRotateXYZ(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* angle = (Vector3*)&params[1];
@@ -6917,6 +7500,7 @@ void umkaMatrixRotateXYZ(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixRotateZYX()
  */
+RAYLIB_UMKA_FUNCTION(MatrixRotateZYX)
 void umkaMatrixRotateZYX(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* angle = (Vector3*)&params[1];
@@ -6930,6 +7514,7 @@ void umkaMatrixRotateZYX(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixScale()
  */
+RAYLIB_UMKA_FUNCTION(MatrixScale)
 void umkaMatrixScale(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float x = params[3].real32Val;
@@ -6945,6 +7530,7 @@ void umkaMatrixScale(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixFrustum()
  */
+RAYLIB_UMKA_FUNCTION(MatrixFrustum)
 void umkaMatrixFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     double left = params[6].realVal;
@@ -6963,6 +7549,7 @@ void umkaMatrixFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixPerspective()
  */
+RAYLIB_UMKA_FUNCTION(MatrixPerspective)
 void umkaMatrixPerspective(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     double fovy = params[4].realVal;
@@ -6979,6 +7566,7 @@ void umkaMatrixPerspective(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixOrtho()
  */
+RAYLIB_UMKA_FUNCTION(MatrixOrtho)
 void umkaMatrixOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     double left = params[6].realVal;
@@ -6997,6 +7585,7 @@ void umkaMatrixOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixLookAt()
  */
+RAYLIB_UMKA_FUNCTION(MatrixLookAt)
 void umkaMatrixLookAt(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* eye = (Vector3*)&params[3];
@@ -7012,6 +7601,7 @@ void umkaMatrixLookAt(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see MatrixToFloatV()
  */
+RAYLIB_UMKA_FUNCTION(MatrixToFloatV)
 void umkaMatrixToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* mat = (Matrix*)&params[1];
@@ -7025,6 +7615,7 @@ void umkaMatrixToFloatV(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionAdd()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionAdd)
 void umkaQuaternionAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[2];
@@ -7039,6 +7630,7 @@ void umkaQuaternionAdd(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionAddValue()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionAddValue)
 void umkaQuaternionAddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[2];
@@ -7053,6 +7645,7 @@ void umkaQuaternionAddValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionSubtract()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionSubtract)
 void umkaQuaternionSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[2];
@@ -7067,6 +7660,7 @@ void umkaQuaternionSubtract(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionSubtractValue()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionSubtractValue)
 void umkaQuaternionSubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[2];
@@ -7081,6 +7675,7 @@ void umkaQuaternionSubtractValue(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionIdentity()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionIdentity)
 void umkaQuaternionIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Quaternion), NULL);
     Quaternion out = QuaternionIdentity();
@@ -7092,6 +7687,7 @@ void umkaQuaternionIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionLength()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionLength)
 void umkaQuaternionLength(UmkaStackSlot *params, UmkaStackSlot *result) {
     Quaternion* q = (Quaternion*)&params[0];
     result->realVal = QuaternionLength(*q);
@@ -7102,6 +7698,7 @@ void umkaQuaternionLength(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionNormalize()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionNormalize)
 void umkaQuaternionNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[1];
@@ -7115,6 +7712,7 @@ void umkaQuaternionNormalize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionInvert()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionInvert)
 void umkaQuaternionInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[1];
@@ -7128,6 +7726,7 @@ void umkaQuaternionInvert(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionMultiply()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionMultiply)
 void umkaQuaternionMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[2];
@@ -7142,6 +7741,7 @@ void umkaQuaternionMultiply(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionScale()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionScale)
 void umkaQuaternionScale(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[2];
@@ -7156,6 +7756,7 @@ void umkaQuaternionScale(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionDivide()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionDivide)
 void umkaQuaternionDivide(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[2];
@@ -7170,6 +7771,7 @@ void umkaQuaternionDivide(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionLerp()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionLerp)
 void umkaQuaternionLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[3];
@@ -7185,6 +7787,7 @@ void umkaQuaternionLerp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionNlerp()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionNlerp)
 void umkaQuaternionNlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[3];
@@ -7200,6 +7803,7 @@ void umkaQuaternionNlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionSlerp()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionSlerp)
 void umkaQuaternionSlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q1 = (Quaternion*)&params[3];
@@ -7215,6 +7819,7 @@ void umkaQuaternionSlerp(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionFromVector3ToVector3()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionFromVector3ToVector3)
 void umkaQuaternionFromVector3ToVector3(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* from = (Vector3*)&params[2];
@@ -7229,6 +7834,7 @@ void umkaQuaternionFromVector3ToVector3(UmkaStackSlot *params, UmkaStackSlot *re
  *
  * @see QuaternionFromMatrix()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionFromMatrix)
 void umkaQuaternionFromMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Matrix* mat = (Matrix*)&params[1];
@@ -7242,6 +7848,7 @@ void umkaQuaternionFromMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionToMatrix()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionToMatrix)
 void umkaQuaternionToMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[1];
@@ -7255,6 +7862,7 @@ void umkaQuaternionToMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionFromAxisAngle()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionFromAxisAngle)
 void umkaQuaternionFromAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Vector3* axis = (Vector3*)&params[2];
@@ -7269,6 +7877,7 @@ void umkaQuaternionFromAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionToAxisAngle()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionToAxisAngle)
 void umkaQuaternionToAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
     Quaternion* q = (Quaternion*)&params[2];
     Vector3 * outAxis = (Vector3 *)params[1].ptrVal;
@@ -7281,6 +7890,7 @@ void umkaQuaternionToAxisAngle(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionFromEuler()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionFromEuler)
 void umkaQuaternionFromEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     float pitch = params[3].real32Val;
@@ -7296,6 +7906,7 @@ void umkaQuaternionFromEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionToEuler()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionToEuler)
 void umkaQuaternionToEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[1];
@@ -7309,6 +7920,7 @@ void umkaQuaternionToEuler(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionTransform()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionTransform)
 void umkaQuaternionTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     Quaternion* q = (Quaternion*)&params[2];
@@ -7323,6 +7935,7 @@ void umkaQuaternionTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see QuaternionEquals()
  */
+RAYLIB_UMKA_FUNCTION(QuaternionEquals)
 void umkaQuaternionEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
     Quaternion* p = (Quaternion*)&params[1];
     Quaternion* q = (Quaternion*)&params[0];
@@ -7334,6 +7947,7 @@ void umkaQuaternionEquals(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlMatrixMode()
  */
+RAYLIB_UMKA_FUNCTION(rlMatrixMode)
 void umkarlMatrixMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     int mode = params[0].intVal;
     rlMatrixMode(mode);
@@ -7344,6 +7958,7 @@ void umkarlMatrixMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlPushMatrix()
  */
+RAYLIB_UMKA_FUNCTION(rlPushMatrix)
 void umkarlPushMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlPushMatrix();
 }
@@ -7353,6 +7968,7 @@ void umkarlPushMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlPopMatrix()
  */
+RAYLIB_UMKA_FUNCTION(rlPopMatrix)
 void umkarlPopMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlPopMatrix();
 }
@@ -7362,6 +7978,7 @@ void umkarlPopMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadIdentity()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadIdentity)
 void umkarlLoadIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlLoadIdentity();
 }
@@ -7371,6 +7988,7 @@ void umkarlLoadIdentity(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlTranslatef()
  */
+RAYLIB_UMKA_FUNCTION(rlTranslatef)
 void umkarlTranslatef(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[2].real32Val;
     float y = params[1].real32Val;
@@ -7383,6 +8001,7 @@ void umkarlTranslatef(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlRotatef()
  */
+RAYLIB_UMKA_FUNCTION(rlRotatef)
 void umkarlRotatef(UmkaStackSlot *params, UmkaStackSlot *result) {
     float angle = params[3].real32Val;
     float x = params[2].real32Val;
@@ -7396,6 +8015,7 @@ void umkarlRotatef(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlScalef()
  */
+RAYLIB_UMKA_FUNCTION(rlScalef)
 void umkarlScalef(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[2].real32Val;
     float y = params[1].real32Val;
@@ -7408,6 +8028,7 @@ void umkarlScalef(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlMultMatrixf()
  */
+RAYLIB_UMKA_FUNCTION(rlMultMatrixf)
 void umkarlMultMatrixf(UmkaStackSlot *params, UmkaStackSlot *result) {
     float * matf = (float *)params[0].ptrVal;
     rlMultMatrixf(matf);
@@ -7418,6 +8039,7 @@ void umkarlMultMatrixf(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlFrustum()
  */
+RAYLIB_UMKA_FUNCTION(rlFrustum)
 void umkarlFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
     double left = params[5].realVal;
     double right = params[4].realVal;
@@ -7433,6 +8055,7 @@ void umkarlFrustum(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlOrtho()
  */
+RAYLIB_UMKA_FUNCTION(rlOrtho)
 void umkarlOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
     double left = params[5].realVal;
     double right = params[4].realVal;
@@ -7448,6 +8071,7 @@ void umkarlOrtho(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlViewport()
  */
+RAYLIB_UMKA_FUNCTION(rlViewport)
 void umkarlViewport(UmkaStackSlot *params, UmkaStackSlot *result) {
     int x = params[3].intVal;
     int y = params[2].intVal;
@@ -7461,6 +8085,7 @@ void umkarlViewport(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlBegin()
  */
+RAYLIB_UMKA_FUNCTION(rlBegin)
 void umkarlBegin(UmkaStackSlot *params, UmkaStackSlot *result) {
     int mode = params[0].intVal;
     rlBegin(mode);
@@ -7471,6 +8096,7 @@ void umkarlBegin(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnd()
  */
+RAYLIB_UMKA_FUNCTION(rlEnd)
 void umkarlEnd(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnd();
 }
@@ -7480,6 +8106,7 @@ void umkarlEnd(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlVertex2i()
  */
+RAYLIB_UMKA_FUNCTION(rlVertex2i)
 void umkarlVertex2i(UmkaStackSlot *params, UmkaStackSlot *result) {
     int x = params[1].intVal;
     int y = params[0].intVal;
@@ -7491,6 +8118,7 @@ void umkarlVertex2i(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlVertex2f()
  */
+RAYLIB_UMKA_FUNCTION(rlVertex2f)
 void umkarlVertex2f(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[1].real32Val;
     float y = params[0].real32Val;
@@ -7502,6 +8130,7 @@ void umkarlVertex2f(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlVertex3f()
  */
+RAYLIB_UMKA_FUNCTION(rlVertex3f)
 void umkarlVertex3f(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[2].real32Val;
     float y = params[1].real32Val;
@@ -7514,6 +8143,7 @@ void umkarlVertex3f(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlTexCoord2f()
  */
+RAYLIB_UMKA_FUNCTION(rlTexCoord2f)
 void umkarlTexCoord2f(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[1].real32Val;
     float y = params[0].real32Val;
@@ -7525,6 +8155,7 @@ void umkarlTexCoord2f(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlNormal3f()
  */
+RAYLIB_UMKA_FUNCTION(rlNormal3f)
 void umkarlNormal3f(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[2].real32Val;
     float y = params[1].real32Val;
@@ -7537,6 +8168,7 @@ void umkarlNormal3f(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlColor4ub()
  */
+RAYLIB_UMKA_FUNCTION(rlColor4ub)
 void umkarlColor4ub(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned char r = params[3].uintVal;
     unsigned char g = params[2].uintVal;
@@ -7550,6 +8182,7 @@ void umkarlColor4ub(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlColor3f()
  */
+RAYLIB_UMKA_FUNCTION(rlColor3f)
 void umkarlColor3f(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[2].real32Val;
     float y = params[1].real32Val;
@@ -7562,6 +8195,7 @@ void umkarlColor3f(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlColor4f()
  */
+RAYLIB_UMKA_FUNCTION(rlColor4f)
 void umkarlColor4f(UmkaStackSlot *params, UmkaStackSlot *result) {
     float x = params[3].real32Val;
     float y = params[2].real32Val;
@@ -7575,6 +8209,7 @@ void umkarlColor4f(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableVertexArray()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableVertexArray)
 void umkarlEnableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int vaoId = params[0].uintVal;
     result->intVal = (int)rlEnableVertexArray(vaoId);
@@ -7585,6 +8220,7 @@ void umkarlEnableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableVertexArray()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableVertexArray)
 void umkarlDisableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableVertexArray();
 }
@@ -7594,6 +8230,7 @@ void umkarlDisableVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableVertexBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableVertexBuffer)
 void umkarlEnableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlEnableVertexBuffer(id);
@@ -7604,6 +8241,7 @@ void umkarlEnableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableVertexBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableVertexBuffer)
 void umkarlDisableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableVertexBuffer();
 }
@@ -7613,6 +8251,7 @@ void umkarlDisableVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableVertexBufferElement()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableVertexBufferElement)
 void umkarlEnableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlEnableVertexBufferElement(id);
@@ -7623,6 +8262,7 @@ void umkarlEnableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlDisableVertexBufferElement()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableVertexBufferElement)
 void umkarlDisableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableVertexBufferElement();
 }
@@ -7632,6 +8272,7 @@ void umkarlDisableVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *resu
  *
  * @see rlEnableVertexAttribute()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableVertexAttribute)
 void umkarlEnableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int index = params[0].uintVal;
     rlEnableVertexAttribute(index);
@@ -7642,6 +8283,7 @@ void umkarlEnableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableVertexAttribute()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableVertexAttribute)
 void umkarlDisableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int index = params[0].uintVal;
     rlDisableVertexAttribute(index);
@@ -7656,6 +8298,7 @@ void umkarlDisableVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) 
  *
  * @see rlActiveTextureSlot()
  */
+RAYLIB_UMKA_FUNCTION(rlActiveTextureSlot)
 void umkarlActiveTextureSlot(UmkaStackSlot *params, UmkaStackSlot *result) {
     int slot = params[0].intVal;
     rlActiveTextureSlot(slot);
@@ -7666,6 +8309,7 @@ void umkarlActiveTextureSlot(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableTexture)
 void umkarlEnableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlEnableTexture(id);
@@ -7676,6 +8320,7 @@ void umkarlEnableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableTexture)
 void umkarlDisableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableTexture();
 }
@@ -7685,6 +8330,7 @@ void umkarlDisableTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableTextureCubemap()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableTextureCubemap)
 void umkarlEnableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlEnableTextureCubemap(id);
@@ -7695,6 +8341,7 @@ void umkarlEnableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableTextureCubemap()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableTextureCubemap)
 void umkarlDisableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableTextureCubemap();
 }
@@ -7704,6 +8351,7 @@ void umkarlDisableTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlTextureParameters()
  */
+RAYLIB_UMKA_FUNCTION(rlTextureParameters)
 void umkarlTextureParameters(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[2].uintVal;
     int param = params[1].intVal;
@@ -7716,6 +8364,7 @@ void umkarlTextureParameters(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableShader()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableShader)
 void umkarlEnableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlEnableShader(id);
@@ -7726,6 +8375,7 @@ void umkarlEnableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableShader()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableShader)
 void umkarlDisableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableShader();
 }
@@ -7735,6 +8385,7 @@ void umkarlDisableShader(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableFramebuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableFramebuffer)
 void umkarlEnableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlEnableFramebuffer(id);
@@ -7745,6 +8396,7 @@ void umkarlEnableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableFramebuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableFramebuffer)
 void umkarlDisableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableFramebuffer();
 }
@@ -7754,6 +8406,7 @@ void umkarlDisableFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlActiveDrawBuffers()
  */
+RAYLIB_UMKA_FUNCTION(rlActiveDrawBuffers)
 void umkarlActiveDrawBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
     int count = params[0].intVal;
     rlActiveDrawBuffers(count);
@@ -7764,6 +8417,7 @@ void umkarlActiveDrawBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableColorBlend()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableColorBlend)
 void umkarlEnableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableColorBlend();
 }
@@ -7773,6 +8427,7 @@ void umkarlEnableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableColorBlend()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableColorBlend)
 void umkarlDisableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableColorBlend();
 }
@@ -7782,6 +8437,7 @@ void umkarlDisableColorBlend(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableDepthTest()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableDepthTest)
 void umkarlEnableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableDepthTest();
 }
@@ -7791,6 +8447,7 @@ void umkarlEnableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableDepthTest()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableDepthTest)
 void umkarlDisableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableDepthTest();
 }
@@ -7800,6 +8457,7 @@ void umkarlDisableDepthTest(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableDepthMask()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableDepthMask)
 void umkarlEnableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableDepthMask();
 }
@@ -7809,6 +8467,7 @@ void umkarlEnableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableDepthMask()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableDepthMask)
 void umkarlDisableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableDepthMask();
 }
@@ -7818,6 +8477,7 @@ void umkarlDisableDepthMask(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableBackfaceCulling()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableBackfaceCulling)
 void umkarlEnableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableBackfaceCulling();
 }
@@ -7827,6 +8487,7 @@ void umkarlEnableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableBackfaceCulling()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableBackfaceCulling)
 void umkarlDisableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableBackfaceCulling();
 }
@@ -7836,6 +8497,7 @@ void umkarlDisableBackfaceCulling(UmkaStackSlot *params, UmkaStackSlot *result) 
  *
  * @see rlEnableScissorTest()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableScissorTest)
 void umkarlEnableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableScissorTest();
 }
@@ -7845,6 +8507,7 @@ void umkarlEnableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableScissorTest()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableScissorTest)
 void umkarlDisableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableScissorTest();
 }
@@ -7854,6 +8517,7 @@ void umkarlDisableScissorTest(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlScissor()
  */
+RAYLIB_UMKA_FUNCTION(rlScissor)
 void umkarlScissor(UmkaStackSlot *params, UmkaStackSlot *result) {
     int x = params[3].intVal;
     int y = params[2].intVal;
@@ -7867,6 +8531,7 @@ void umkarlScissor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableWireMode()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableWireMode)
 void umkarlEnableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableWireMode();
 }
@@ -7876,6 +8541,7 @@ void umkarlEnableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableWireMode()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableWireMode)
 void umkarlDisableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableWireMode();
 }
@@ -7885,6 +8551,7 @@ void umkarlDisableWireMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetLineWidth()
  */
+RAYLIB_UMKA_FUNCTION(rlSetLineWidth)
 void umkarlSetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     float width = params[0].real32Val;
     rlSetLineWidth(width);
@@ -7895,6 +8562,7 @@ void umkarlSetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetLineWidth()
  */
+RAYLIB_UMKA_FUNCTION(rlGetLineWidth)
 void umkarlGetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->realVal = rlGetLineWidth();
 }
@@ -7904,6 +8572,7 @@ void umkarlGetLineWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableSmoothLines()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableSmoothLines)
 void umkarlEnableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableSmoothLines();
 }
@@ -7913,6 +8582,7 @@ void umkarlEnableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableSmoothLines()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableSmoothLines)
 void umkarlDisableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableSmoothLines();
 }
@@ -7922,6 +8592,7 @@ void umkarlDisableSmoothLines(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlEnableStereoRender()
  */
+RAYLIB_UMKA_FUNCTION(rlEnableStereoRender)
 void umkarlEnableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlEnableStereoRender();
 }
@@ -7931,6 +8602,7 @@ void umkarlEnableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDisableStereoRender()
  */
+RAYLIB_UMKA_FUNCTION(rlDisableStereoRender)
 void umkarlDisableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDisableStereoRender();
 }
@@ -7940,6 +8612,7 @@ void umkarlDisableStereoRender(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlIsStereoRenderEnabled()
  */
+RAYLIB_UMKA_FUNCTION(rlIsStereoRenderEnabled)
 void umkarlIsStereoRenderEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = (int)rlIsStereoRenderEnabled();
 }
@@ -7949,6 +8622,7 @@ void umkarlIsStereoRenderEnabled(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlClearColor()
  */
+RAYLIB_UMKA_FUNCTION(rlClearColor)
 void umkarlClearColor(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned char r = params[3].uintVal;
     unsigned char g = params[2].uintVal;
@@ -7962,6 +8636,7 @@ void umkarlClearColor(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlClearScreenBuffers()
  */
+RAYLIB_UMKA_FUNCTION(rlClearScreenBuffers)
 void umkarlClearScreenBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlClearScreenBuffers();
 }
@@ -7971,6 +8646,7 @@ void umkarlClearScreenBuffers(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlCheckErrors()
  */
+RAYLIB_UMKA_FUNCTION(rlCheckErrors)
 void umkarlCheckErrors(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlCheckErrors();
 }
@@ -7980,6 +8656,7 @@ void umkarlCheckErrors(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetBlendMode()
  */
+RAYLIB_UMKA_FUNCTION(rlSetBlendMode)
 void umkarlSetBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
     int mode = params[0].intVal;
     rlSetBlendMode(mode);
@@ -7990,6 +8667,7 @@ void umkarlSetBlendMode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetBlendFactors()
  */
+RAYLIB_UMKA_FUNCTION(rlSetBlendFactors)
 void umkarlSetBlendFactors(UmkaStackSlot *params, UmkaStackSlot *result) {
     int glSrcFactor = params[2].intVal;
     int glDstFactor = params[1].intVal;
@@ -8002,6 +8680,7 @@ void umkarlSetBlendFactors(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlglInit()
  */
+RAYLIB_UMKA_FUNCTION(rlglInit)
 void umkarlglInit(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[1].intVal;
     int height = params[0].intVal;
@@ -8013,6 +8692,7 @@ void umkarlglInit(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlglClose()
  */
+RAYLIB_UMKA_FUNCTION(rlglClose)
 void umkarlglClose(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlglClose();
 }
@@ -8022,6 +8702,7 @@ void umkarlglClose(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadExtensions()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadExtensions)
 void umkarlLoadExtensions(UmkaStackSlot *params, UmkaStackSlot *result) {
     void * loader = (void *)params[0].ptrVal;
     rlLoadExtensions(loader);
@@ -8032,6 +8713,7 @@ void umkarlLoadExtensions(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetVersion()
  */
+RAYLIB_UMKA_FUNCTION(rlGetVersion)
 void umkarlGetVersion(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = rlGetVersion();
 }
@@ -8041,6 +8723,7 @@ void umkarlGetVersion(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetFramebufferWidth()
  */
+RAYLIB_UMKA_FUNCTION(rlSetFramebufferWidth)
 void umkarlSetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[0].intVal;
     rlSetFramebufferWidth(width);
@@ -8051,6 +8734,7 @@ void umkarlSetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetFramebufferWidth()
  */
+RAYLIB_UMKA_FUNCTION(rlGetFramebufferWidth)
 void umkarlGetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = rlGetFramebufferWidth();
 }
@@ -8060,6 +8744,7 @@ void umkarlGetFramebufferWidth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetFramebufferHeight()
  */
+RAYLIB_UMKA_FUNCTION(rlSetFramebufferHeight)
 void umkarlSetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
     int height = params[0].intVal;
     rlSetFramebufferHeight(height);
@@ -8070,6 +8755,7 @@ void umkarlSetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetFramebufferHeight()
  */
+RAYLIB_UMKA_FUNCTION(rlGetFramebufferHeight)
 void umkarlGetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->intVal = rlGetFramebufferHeight();
 }
@@ -8079,6 +8765,7 @@ void umkarlGetFramebufferHeight(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetTextureIdDefault()
  */
+RAYLIB_UMKA_FUNCTION(rlGetTextureIdDefault)
 void umkarlGetTextureIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->uintVal = rlGetTextureIdDefault();
 }
@@ -8088,6 +8775,7 @@ void umkarlGetTextureIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetShaderIdDefault()
  */
+RAYLIB_UMKA_FUNCTION(rlGetShaderIdDefault)
 void umkarlGetShaderIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->uintVal = rlGetShaderIdDefault();
 }
@@ -8097,6 +8785,7 @@ void umkarlGetShaderIdDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetShaderLocsDefault()
  */
+RAYLIB_UMKA_FUNCTION(rlGetShaderLocsDefault)
 void umkarlGetShaderLocsDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = (void*)rlGetShaderLocsDefault();
 }
@@ -8114,6 +8803,7 @@ void umkarlGetShaderLocsDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDrawRenderBatchActive()
  */
+RAYLIB_UMKA_FUNCTION(rlDrawRenderBatchActive)
 void umkarlDrawRenderBatchActive(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlDrawRenderBatchActive();
 }
@@ -8123,6 +8813,7 @@ void umkarlDrawRenderBatchActive(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlCheckRenderBatchLimit()
  */
+RAYLIB_UMKA_FUNCTION(rlCheckRenderBatchLimit)
 void umkarlCheckRenderBatchLimit(UmkaStackSlot *params, UmkaStackSlot *result) {
     int vCount = params[0].intVal;
     result->intVal = (int)rlCheckRenderBatchLimit(vCount);
@@ -8133,6 +8824,7 @@ void umkarlCheckRenderBatchLimit(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlSetTexture)
 void umkarlSetTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlSetTexture(id);
@@ -8143,6 +8835,7 @@ void umkarlSetTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadVertexArray()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadVertexArray)
 void umkarlLoadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->uintVal = rlLoadVertexArray();
 }
@@ -8152,6 +8845,7 @@ void umkarlLoadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadVertexBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadVertexBuffer)
 void umkarlLoadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     const void * buffer = (const void *)params[2].ptrVal;
     int size = params[1].intVal;
@@ -8164,6 +8858,7 @@ void umkarlLoadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadVertexBufferElement()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadVertexBufferElement)
 void umkarlLoadVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result) {
     const void * buffer = (const void *)params[2].ptrVal;
     int size = params[1].intVal;
@@ -8176,6 +8871,7 @@ void umkarlLoadVertexBufferElement(UmkaStackSlot *params, UmkaStackSlot *result)
  *
  * @see rlUpdateVertexBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlUpdateVertexBuffer)
 void umkarlUpdateVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int bufferId = params[3].uintVal;
     const void * data = (const void *)params[2].ptrVal;
@@ -8189,6 +8885,7 @@ void umkarlUpdateVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUpdateVertexBufferElements()
  */
+RAYLIB_UMKA_FUNCTION(rlUpdateVertexBufferElements)
 void umkarlUpdateVertexBufferElements(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[3].uintVal;
     const void * data = (const void *)params[2].ptrVal;
@@ -8202,6 +8899,7 @@ void umkarlUpdateVertexBufferElements(UmkaStackSlot *params, UmkaStackSlot *resu
  *
  * @see rlUnloadVertexArray()
  */
+RAYLIB_UMKA_FUNCTION(rlUnloadVertexArray)
 void umkarlUnloadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int vaoId = params[0].uintVal;
     rlUnloadVertexArray(vaoId);
@@ -8212,6 +8910,7 @@ void umkarlUnloadVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUnloadVertexBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlUnloadVertexBuffer)
 void umkarlUnloadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int vboId = params[0].uintVal;
     rlUnloadVertexBuffer(vboId);
@@ -8222,6 +8921,7 @@ void umkarlUnloadVertexBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetVertexAttribute()
  */
+RAYLIB_UMKA_FUNCTION(rlSetVertexAttribute)
 void umkarlSetVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int index = params[5].uintVal;
     int compSize = params[4].intVal;
@@ -8237,6 +8937,7 @@ void umkarlSetVertexAttribute(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetVertexAttributeDivisor()
  */
+RAYLIB_UMKA_FUNCTION(rlSetVertexAttributeDivisor)
 void umkarlSetVertexAttributeDivisor(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int index = params[1].uintVal;
     int divisor = params[0].intVal;
@@ -8248,6 +8949,7 @@ void umkarlSetVertexAttributeDivisor(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlSetVertexAttributeDefault()
  */
+RAYLIB_UMKA_FUNCTION(rlSetVertexAttributeDefault)
 void umkarlSetVertexAttributeDefault(UmkaStackSlot *params, UmkaStackSlot *result) {
     int locIndex = params[3].intVal;
     const void * value = (const void *)params[2].ptrVal;
@@ -8261,6 +8963,7 @@ void umkarlSetVertexAttributeDefault(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlDrawVertexArray()
  */
+RAYLIB_UMKA_FUNCTION(rlDrawVertexArray)
 void umkarlDrawVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
     int offset = params[1].intVal;
     int count = params[0].intVal;
@@ -8272,6 +8975,7 @@ void umkarlDrawVertexArray(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlDrawVertexArrayElements()
  */
+RAYLIB_UMKA_FUNCTION(rlDrawVertexArrayElements)
 void umkarlDrawVertexArrayElements(UmkaStackSlot *params, UmkaStackSlot *result) {
     int offset = params[2].intVal;
     int count = params[1].intVal;
@@ -8284,6 +8988,7 @@ void umkarlDrawVertexArrayElements(UmkaStackSlot *params, UmkaStackSlot *result)
  *
  * @see rlDrawVertexArrayInstanced()
  */
+RAYLIB_UMKA_FUNCTION(rlDrawVertexArrayInstanced)
 void umkarlDrawVertexArrayInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
     int offset = params[2].intVal;
     int count = params[1].intVal;
@@ -8296,6 +9001,7 @@ void umkarlDrawVertexArrayInstanced(UmkaStackSlot *params, UmkaStackSlot *result
  *
  * @see rlDrawVertexArrayElementsInstanced()
  */
+RAYLIB_UMKA_FUNCTION(rlDrawVertexArrayElementsInstanced)
 void umkarlDrawVertexArrayElementsInstanced(UmkaStackSlot *params, UmkaStackSlot *result) {
     int offset = params[3].intVal;
     int count = params[2].intVal;
@@ -8309,6 +9015,7 @@ void umkarlDrawVertexArrayElementsInstanced(UmkaStackSlot *params, UmkaStackSlot
  *
  * @see rlLoadTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadTexture)
 void umkarlLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     const void * data = (const void *)params[4].ptrVal;
     int width = params[3].intVal;
@@ -8323,6 +9030,7 @@ void umkarlLoadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadTextureDepth()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadTextureDepth)
 void umkarlLoadTextureDepth(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[2].intVal;
     int height = params[1].intVal;
@@ -8335,6 +9043,7 @@ void umkarlLoadTextureDepth(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadTextureCubemap()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadTextureCubemap)
 void umkarlLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
     const void * data = (const void *)params[2].ptrVal;
     int size = params[1].intVal;
@@ -8347,6 +9056,7 @@ void umkarlLoadTextureCubemap(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUpdateTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlUpdateTexture)
 void umkarlUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[6].uintVal;
     int offsetX = params[5].intVal;
@@ -8363,6 +9073,7 @@ void umkarlUpdateTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetGlTextureFormats()
  */
+RAYLIB_UMKA_FUNCTION(rlGetGlTextureFormats)
 void umkarlGetGlTextureFormats(UmkaStackSlot *params, UmkaStackSlot *result) {
     int format = params[3].intVal;
     unsigned int * glInternalFormat = (unsigned int *)params[2].ptrVal;
@@ -8376,6 +9087,7 @@ void umkarlGetGlTextureFormats(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetPixelFormatName()
  */
+RAYLIB_UMKA_FUNCTION(rlGetPixelFormatName)
 void umkarlGetPixelFormatName(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int format = params[0].uintVal;
     result->ptrVal = (void*)rlGetPixelFormatName(format);
@@ -8386,6 +9098,7 @@ void umkarlGetPixelFormatName(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUnloadTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlUnloadTexture)
 void umkarlUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlUnloadTexture(id);
@@ -8396,6 +9109,7 @@ void umkarlUnloadTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGenTextureMipmaps()
  */
+RAYLIB_UMKA_FUNCTION(rlGenTextureMipmaps)
 void umkarlGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[4].uintVal;
     int width = params[3].intVal;
@@ -8410,6 +9124,7 @@ void umkarlGenTextureMipmaps(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlReadTexturePixels()
  */
+RAYLIB_UMKA_FUNCTION(rlReadTexturePixels)
 void umkarlReadTexturePixels(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[3].uintVal;
     int width = params[2].intVal;
@@ -8423,6 +9138,7 @@ void umkarlReadTexturePixels(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlReadScreenPixels()
  */
+RAYLIB_UMKA_FUNCTION(rlReadScreenPixels)
 void umkarlReadScreenPixels(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[1].intVal;
     int height = params[0].intVal;
@@ -8434,6 +9150,7 @@ void umkarlReadScreenPixels(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadFramebuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadFramebuffer)
 void umkarlLoadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     int width = params[1].intVal;
     int height = params[0].intVal;
@@ -8445,6 +9162,7 @@ void umkarlLoadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlFramebufferAttach()
  */
+RAYLIB_UMKA_FUNCTION(rlFramebufferAttach)
 void umkarlFramebufferAttach(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int fboId = params[4].uintVal;
     unsigned int texId = params[3].uintVal;
@@ -8459,6 +9177,7 @@ void umkarlFramebufferAttach(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlFramebufferComplete()
  */
+RAYLIB_UMKA_FUNCTION(rlFramebufferComplete)
 void umkarlFramebufferComplete(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     result->intVal = (int)rlFramebufferComplete(id);
@@ -8469,6 +9188,7 @@ void umkarlFramebufferComplete(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUnloadFramebuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlUnloadFramebuffer)
 void umkarlUnloadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlUnloadFramebuffer(id);
@@ -8479,6 +9199,7 @@ void umkarlUnloadFramebuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadShaderCode()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadShaderCode)
 void umkarlLoadShaderCode(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * vsCode = (const char *)params[1].ptrVal;
     const char * fsCode = (const char *)params[0].ptrVal;
@@ -8490,6 +9211,7 @@ void umkarlLoadShaderCode(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlCompileShader()
  */
+RAYLIB_UMKA_FUNCTION(rlCompileShader)
 void umkarlCompileShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     const char * shaderCode = (const char *)params[1].ptrVal;
     int type = params[0].intVal;
@@ -8501,6 +9223,7 @@ void umkarlCompileShader(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadShaderProgram()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadShaderProgram)
 void umkarlLoadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int vShaderId = params[1].uintVal;
     unsigned int fShaderId = params[0].uintVal;
@@ -8512,6 +9235,7 @@ void umkarlLoadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUnloadShaderProgram()
  */
+RAYLIB_UMKA_FUNCTION(rlUnloadShaderProgram)
 void umkarlUnloadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     rlUnloadShaderProgram(id);
@@ -8522,6 +9246,7 @@ void umkarlUnloadShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetLocationUniform()
  */
+RAYLIB_UMKA_FUNCTION(rlGetLocationUniform)
 void umkarlGetLocationUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int shaderId = params[1].uintVal;
     const char * uniformName = (const char *)params[0].ptrVal;
@@ -8533,6 +9258,7 @@ void umkarlGetLocationUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetLocationAttrib()
  */
+RAYLIB_UMKA_FUNCTION(rlGetLocationAttrib)
 void umkarlGetLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int shaderId = params[1].uintVal;
     const char * attribName = (const char *)params[0].ptrVal;
@@ -8544,6 +9270,7 @@ void umkarlGetLocationAttrib(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetUniform()
  */
+RAYLIB_UMKA_FUNCTION(rlSetUniform)
 void umkarlSetUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
     int locIndex = params[3].intVal;
     const void * value = (const void *)params[2].ptrVal;
@@ -8557,6 +9284,7 @@ void umkarlSetUniform(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetUniformMatrix()
  */
+RAYLIB_UMKA_FUNCTION(rlSetUniformMatrix)
 void umkarlSetUniformMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
     int locIndex = params[1].intVal;
     Matrix* mat = (Matrix*)&params[0];
@@ -8568,6 +9296,7 @@ void umkarlSetUniformMatrix(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetUniformSampler()
  */
+RAYLIB_UMKA_FUNCTION(rlSetUniformSampler)
 void umkarlSetUniformSampler(UmkaStackSlot *params, UmkaStackSlot *result) {
     int locIndex = params[1].intVal;
     unsigned int textureId = params[0].uintVal;
@@ -8579,6 +9308,7 @@ void umkarlSetUniformSampler(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetShader()
  */
+RAYLIB_UMKA_FUNCTION(rlSetShader)
 void umkarlSetShader(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[1].uintVal;
     int * locs = (int *)params[0].ptrVal;
@@ -8590,6 +9320,7 @@ void umkarlSetShader(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadComputeShaderProgram()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadComputeShaderProgram)
 void umkarlLoadComputeShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int shaderId = params[0].uintVal;
     result->uintVal = rlLoadComputeShaderProgram(shaderId);
@@ -8600,6 +9331,7 @@ void umkarlLoadComputeShaderProgram(UmkaStackSlot *params, UmkaStackSlot *result
  *
  * @see rlComputeShaderDispatch()
  */
+RAYLIB_UMKA_FUNCTION(rlComputeShaderDispatch)
 void umkarlComputeShaderDispatch(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int groupX = params[2].uintVal;
     unsigned int groupY = params[1].uintVal;
@@ -8612,6 +9344,7 @@ void umkarlComputeShaderDispatch(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadShaderBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadShaderBuffer)
 void umkarlLoadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned long long size = params[2].uintVal;
     const void * data = (const void *)params[1].ptrVal;
@@ -8624,6 +9357,7 @@ void umkarlLoadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUnloadShaderBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlUnloadShaderBuffer)
 void umkarlUnloadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int ssboId = params[0].uintVal;
     rlUnloadShaderBuffer(ssboId);
@@ -8634,6 +9368,7 @@ void umkarlUnloadShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlUpdateShaderBufferElements()
  */
+RAYLIB_UMKA_FUNCTION(rlUpdateShaderBufferElements)
 void umkarlUpdateShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[3].uintVal;
     const void * data = (const void *)params[2].ptrVal;
@@ -8647,6 +9382,7 @@ void umkarlUpdateShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *resu
  *
  * @see rlGetShaderBufferSize()
  */
+RAYLIB_UMKA_FUNCTION(rlGetShaderBufferSize)
 void umkarlGetShaderBufferSize(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[0].uintVal;
     result->uintVal = rlGetShaderBufferSize(id);
@@ -8657,6 +9393,7 @@ void umkarlGetShaderBufferSize(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlReadShaderBufferElements()
  */
+RAYLIB_UMKA_FUNCTION(rlReadShaderBufferElements)
 void umkarlReadShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[3].uintVal;
     void * dest = (void *)params[2].ptrVal;
@@ -8670,6 +9407,7 @@ void umkarlReadShaderBufferElements(UmkaStackSlot *params, UmkaStackSlot *result
  *
  * @see rlBindShaderBuffer()
  */
+RAYLIB_UMKA_FUNCTION(rlBindShaderBuffer)
 void umkarlBindShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[1].uintVal;
     unsigned int index = params[0].uintVal;
@@ -8681,6 +9419,7 @@ void umkarlBindShaderBuffer(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlCopyBuffersElements()
  */
+RAYLIB_UMKA_FUNCTION(rlCopyBuffersElements)
 void umkarlCopyBuffersElements(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int destId = params[4].uintVal;
     unsigned int srcId = params[3].uintVal;
@@ -8695,6 +9434,7 @@ void umkarlCopyBuffersElements(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlBindImageTexture()
  */
+RAYLIB_UMKA_FUNCTION(rlBindImageTexture)
 void umkarlBindImageTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
     unsigned int id = params[3].uintVal;
     unsigned int index = params[2].uintVal;
@@ -8708,6 +9448,7 @@ void umkarlBindImageTexture(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetMatrixModelview()
  */
+RAYLIB_UMKA_FUNCTION(rlGetMatrixModelview)
 void umkarlGetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
     Matrix out = rlGetMatrixModelview();
@@ -8719,6 +9460,7 @@ void umkarlGetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetMatrixProjection()
  */
+RAYLIB_UMKA_FUNCTION(rlGetMatrixProjection)
 void umkarlGetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
     Matrix out = rlGetMatrixProjection();
@@ -8730,6 +9472,7 @@ void umkarlGetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetMatrixTransform()
  */
+RAYLIB_UMKA_FUNCTION(rlGetMatrixTransform)
 void umkarlGetMatrixTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
     result->ptrVal = umkaAllocData(result->ptrVal, sizeof(Matrix), NULL);
     Matrix out = rlGetMatrixTransform();
@@ -8741,6 +9484,7 @@ void umkarlGetMatrixTransform(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlGetMatrixProjectionStereo()
  */
+RAYLIB_UMKA_FUNCTION(rlGetMatrixProjectionStereo)
 void umkarlGetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int eye = params[1].intVal;
@@ -8754,6 +9498,7 @@ void umkarlGetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlGetMatrixViewOffsetStereo()
  */
+RAYLIB_UMKA_FUNCTION(rlGetMatrixViewOffsetStereo)
 void umkarlGetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
     // Skipping params[0], as it's a reference to Umka's internal filename
     int eye = params[1].intVal;
@@ -8767,6 +9512,7 @@ void umkarlGetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlSetMatrixProjection()
  */
+RAYLIB_UMKA_FUNCTION(rlSetMatrixProjection)
 void umkarlSetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* proj = (Matrix*)&params[0];
     rlSetMatrixProjection(*proj);
@@ -8777,6 +9523,7 @@ void umkarlSetMatrixProjection(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetMatrixModelview()
  */
+RAYLIB_UMKA_FUNCTION(rlSetMatrixModelview)
 void umkarlSetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* view = (Matrix*)&params[0];
     rlSetMatrixModelview(*view);
@@ -8787,6 +9534,7 @@ void umkarlSetMatrixModelview(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlSetMatrixProjectionStereo()
  */
+RAYLIB_UMKA_FUNCTION(rlSetMatrixProjectionStereo)
 void umkarlSetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* right = (Matrix*)&params[1];
     Matrix* left = (Matrix*)&params[0];
@@ -8798,6 +9546,7 @@ void umkarlSetMatrixProjectionStereo(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlSetMatrixViewOffsetStereo()
  */
+RAYLIB_UMKA_FUNCTION(rlSetMatrixViewOffsetStereo)
 void umkarlSetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *result) {
     Matrix* right = (Matrix*)&params[1];
     Matrix* left = (Matrix*)&params[0];
@@ -8809,6 +9558,7 @@ void umkarlSetMatrixViewOffsetStereo(UmkaStackSlot *params, UmkaStackSlot *resul
  *
  * @see rlLoadDrawCube()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadDrawCube)
 void umkarlLoadDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlLoadDrawCube();
 }
@@ -8818,6 +9568,7 @@ void umkarlLoadDrawCube(UmkaStackSlot *params, UmkaStackSlot *result) {
  *
  * @see rlLoadDrawQuad()
  */
+RAYLIB_UMKA_FUNCTION(rlLoadDrawQuad)
 void umkarlLoadDrawQuad(UmkaStackSlot *params, UmkaStackSlot *result) {
     rlLoadDrawQuad();
 }
@@ -8834,6 +9585,7 @@ void umkaTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
     TraceLog(logType, "%s", message);
 }
 
+#ifndef RAYLIB_UMKA_NO_ADD_MODULE
 /**
  * Adds the raylib module to the given Umka instance.
  *
@@ -12810,1280 +13562,1279 @@ bool umkaAddRaylib(void *umka) {
 
         // Callbacks
         /* 0238 */ "type (\n"
-        // Skipped TraceLogCallback
-        /* 0239 */ "    LoadFileDataCallback = fn(fileName: str, bytesRead: ^uint32): ^uint8\n"
-        /* 0240 */ "    SaveFileDataCallback = fn(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
-        /* 0241 */ "    LoadFileTextCallback = fn(fileName: str): str\n"
-        /* 0242 */ "    SaveFileTextCallback = fn(fileName: str, text: str): bool\n"
-        /* 0243 */ "    AudioCallback = fn(bufferData: ^void, frames: uint32)\n"
-        /* 0244 */ ")\n"
+        /* 0239 */ "// Skipped TraceLogCallback\n"
+        /* 0240 */ "    LoadFileDataCallback = fn(fileName: str, bytesRead: ^uint32): ^uint8\n"
+        /* 0241 */ "    SaveFileDataCallback = fn(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
+        /* 0242 */ "    LoadFileTextCallback = fn(fileName: str): str\n"
+        /* 0243 */ "    SaveFileTextCallback = fn(fileName: str, text: str): bool\n"
+        /* 0244 */ "    AudioCallback = fn(bufferData: ^void, frames: uint32)\n"
+        /* 0245 */ ")\n"
 
         // Function Declarations
-        /* 0245 */ "fn InitWindow*(width: int32, height: int32, title: str)\n"
-        /* 0246 */ "fn WindowShouldClose*(): bool\n"
-        /* 0247 */ "fn CloseWindow*()\n"
-        /* 0248 */ "fn IsWindowReady*(): bool\n"
-        /* 0249 */ "fn IsWindowFullscreen*(): bool\n"
-        /* 0250 */ "fn IsWindowHidden*(): bool\n"
-        /* 0251 */ "fn IsWindowMinimized*(): bool\n"
-        /* 0252 */ "fn IsWindowMaximized*(): bool\n"
-        /* 0253 */ "fn IsWindowFocused*(): bool\n"
-        /* 0254 */ "fn IsWindowResized*(): bool\n"
-        /* 0255 */ "fn IsWindowState*(flag: uint32): bool\n"
-        /* 0256 */ "fn SetWindowState*(flags: uint32)\n"
-        /* 0257 */ "fn ClearWindowState*(flags: uint32)\n"
-        /* 0258 */ "fn ToggleFullscreen*()\n"
-        /* 0259 */ "fn MaximizeWindow*()\n"
-        /* 0260 */ "fn MinimizeWindow*()\n"
-        /* 0261 */ "fn RestoreWindow*()\n"
-        /* 0262 */ "fn SetWindowIcon*(image: Image)\n"
-        /* 0263 */ "fn SetWindowTitle*(title: str)\n"
-        /* 0264 */ "fn SetWindowPosition*(x: int32, y: int32)\n"
-        /* 0265 */ "fn SetWindowMonitor*(monitor: int32)\n"
-        /* 0266 */ "fn SetWindowMinSize*(width: int32, height: int32)\n"
-        /* 0267 */ "fn SetWindowSize*(width: int32, height: int32)\n"
-        /* 0268 */ "fn SetWindowOpacity*(opacity: real32)\n"
-        /* 0269 */ "fn GetWindowHandle*(): ^void\n"
-        /* 0270 */ "fn GetScreenWidth*(): int32\n"
-        /* 0271 */ "fn GetScreenHeight*(): int32\n"
-        /* 0272 */ "fn GetRenderWidth*(): int32\n"
-        /* 0273 */ "fn GetRenderHeight*(): int32\n"
-        /* 0274 */ "fn GetMonitorCount*(): int32\n"
-        /* 0275 */ "fn GetCurrentMonitor*(): int32\n"
-        /* 0276 */ "fn GetMonitorPosition*(monitor: int32): Vector2\n"
-        /* 0277 */ "fn GetMonitorWidth*(monitor: int32): int32\n"
-        /* 0278 */ "fn GetMonitorHeight*(monitor: int32): int32\n"
-        /* 0279 */ "fn GetMonitorPhysicalWidth*(monitor: int32): int32\n"
-        /* 0280 */ "fn GetMonitorPhysicalHeight*(monitor: int32): int32\n"
-        /* 0281 */ "fn GetMonitorRefreshRate*(monitor: int32): int32\n"
-        /* 0282 */ "fn GetWindowPosition*(): Vector2\n"
-        /* 0283 */ "fn GetWindowScaleDPI*(): Vector2\n"
-        /* 0284 */ "fn GetMonitorName*(monitor: int32): str\n"
-        /* 0285 */ "fn SetClipboardText*(text: str)\n"
-        /* 0286 */ "fn GetClipboardText*(): str\n"
-        /* 0287 */ "fn EnableEventWaiting*()\n"
-        /* 0288 */ "fn DisableEventWaiting*()\n"
-        /* 0289 */ "fn SwapScreenBuffer*()\n"
-        /* 0290 */ "fn PollInputEvents*()\n"
-        /* 0291 */ "fn WaitTime*(seconds: real)\n"
-        /* 0292 */ "fn ShowCursor*()\n"
-        /* 0293 */ "fn HideCursor*()\n"
-        /* 0294 */ "fn IsCursorHidden*(): bool\n"
-        /* 0295 */ "fn EnableCursor*()\n"
-        /* 0296 */ "fn DisableCursor*()\n"
-        /* 0297 */ "fn IsCursorOnScreen*(): bool\n"
-        /* 0298 */ "fn ClearBackground*(color: Color)\n"
-        /* 0299 */ "fn BeginDrawing*()\n"
-        /* 0300 */ "fn EndDrawing*()\n"
-        /* 0301 */ "fn BeginMode2D*(camera: Camera2D)\n"
-        /* 0302 */ "fn EndMode2D*()\n"
-        /* 0303 */ "fn BeginMode3D*(camera: Camera3D)\n"
-        /* 0304 */ "fn EndMode3D*()\n"
-        /* 0305 */ "fn BeginTextureMode*(target: RenderTexture)\n"
-        /* 0306 */ "fn EndTextureMode*()\n"
-        /* 0307 */ "fn BeginShaderMode*(shader: Shader)\n"
-        /* 0308 */ "fn EndShaderMode*()\n"
-        /* 0309 */ "fn BeginBlendMode*(mode: int32)\n"
-        /* 0310 */ "fn EndBlendMode*()\n"
-        /* 0311 */ "fn BeginScissorMode*(x: int32, y: int32, width: int32, height: int32)\n"
-        /* 0312 */ "fn EndScissorMode*()\n"
-        /* 0313 */ "fn BeginVrStereoMode*(config: VrStereoConfig)\n"
-        /* 0314 */ "fn EndVrStereoMode*()\n"
-        /* 0315 */ "fn LoadVrStereoConfig*(device: VrDeviceInfo): VrStereoConfig\n"
-        /* 0316 */ "fn UnloadVrStereoConfig*(config: VrStereoConfig)\n"
-        /* 0317 */ "fn LoadShader*(vsFileName: str, fsFileName: str): Shader\n"
-        /* 0318 */ "fn LoadShaderFromMemory*(vsCode: str, fsCode: str): Shader\n"
-        /* 0319 */ "fn GetShaderLocation*(shader: Shader, uniformName: str): int32\n"
-        /* 0320 */ "fn GetShaderLocationAttrib*(shader: Shader, attribName: str): int32\n"
-        /* 0321 */ "fn SetShaderValue*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32)\n"
-        /* 0322 */ "fn SetShaderValueV*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
-        /* 0323 */ "fn SetShaderValueMatrix*(shader: Shader, locIndex: int32, mat: Matrix)\n"
-        /* 0324 */ "fn SetShaderValueTexture*(shader: Shader, locIndex: int32, texture: Texture)\n"
-        /* 0325 */ "fn UnloadShader*(shader: Shader)\n"
-        /* 0326 */ "fn GetMouseRay*(mousePosition: Vector2, camera: Camera3D): Ray\n"
-        /* 0327 */ "fn GetCameraMatrix*(camera: Camera3D): Matrix\n"
-        /* 0328 */ "fn GetCameraMatrix2D*(camera: Camera2D): Matrix\n"
-        /* 0329 */ "fn GetWorldToScreen*(position: Vector3, camera: Camera3D): Vector2\n"
-        /* 0330 */ "fn GetScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2\n"
-        /* 0331 */ "fn GetWorldToScreenEx*(position: Vector3, camera: Camera3D, width: int32, height: int32): Vector2\n"
-        /* 0332 */ "fn GetWorldToScreen2D*(position: Vector2, camera: Camera2D): Vector2\n"
-        /* 0333 */ "fn SetTargetFPS*(fps: int32)\n"
-        /* 0334 */ "fn GetFPS*(): int32\n"
-        /* 0335 */ "fn GetFrameTime*(): real32\n"
-        /* 0336 */ "fn GetTime*(): real\n"
-        /* 0337 */ "fn GetRandomValue*(min: int32, max: int32): int32\n"
-        /* 0338 */ "fn SetRandomSeed*(seed: uint32)\n"
-        /* 0339 */ "fn TakeScreenshot*(fileName: str)\n"
-        /* 0340 */ "fn SetConfigFlags*(flags: uint32)\n"
-        // Skipping TraceLog
-        /* 0341 */ "fn SetTraceLogLevel*(logLevel: int32)\n"
-        /* 0342 */ "fn MemAlloc*(size: int32): ^void\n"
-        /* 0343 */ "fn MemRealloc*(ptr: ^void, size: int32): ^void\n"
-        /* 0344 */ "fn MemFree*(ptr: ^void)\n"
-        /* 0345 */ "fn OpenURL*(url: str)\n"
-        // Skipping SetTraceLogCallback
-        // Skipping SetLoadFileDataCallback
-        // Skipping SetSaveFileDataCallback
-        // Skipping SetLoadFileTextCallback
-        // Skipping SetSaveFileTextCallback
-        /* 0346 */ "fn LoadFileData*(fileName: str, bytesRead: ^uint32): ^uint8\n"
-        /* 0347 */ "fn UnloadFileData*(data: ^uint8)\n"
-        /* 0348 */ "fn SaveFileData*(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
-        /* 0349 */ "fn ExportDataAsCode*(data: str, size: uint32, fileName: str): bool\n"
-        /* 0350 */ "fn LoadFileText*(fileName: str): str\n"
-        /* 0351 */ "fn UnloadFileText*(text: str)\n"
-        /* 0352 */ "fn SaveFileText*(fileName: str, text: str): bool\n"
-        /* 0353 */ "fn FileExists*(fileName: str): bool\n"
-        /* 0354 */ "fn DirectoryExists*(dirPath: str): bool\n"
-        /* 0355 */ "fn IsFileExtension*(fileName: str, ext: str): bool\n"
-        /* 0356 */ "fn GetFileLength*(fileName: str): int32\n"
-        /* 0357 */ "fn GetFileExtension*(fileName: str): str\n"
-        /* 0358 */ "fn GetFileName*(filePath: str): str\n"
-        /* 0359 */ "fn GetFileNameWithoutExt*(filePath: str): str\n"
-        /* 0360 */ "fn GetDirectoryPath*(filePath: str): str\n"
-        /* 0361 */ "fn GetPrevDirectoryPath*(dirPath: str): str\n"
-        /* 0362 */ "fn GetWorkingDirectory*(): str\n"
-        /* 0363 */ "fn GetApplicationDirectory*(): str\n"
-        /* 0364 */ "fn ChangeDirectory*(dir: str): bool\n"
-        /* 0365 */ "fn IsPathFile*(path: str): bool\n"
-        /* 0366 */ "fn LoadDirectoryFiles*(dirPath: str): FilePathList\n"
-        /* 0367 */ "fn LoadDirectoryFilesEx*(basePath: str, filter: str, scanSubdirs: bool): FilePathList\n"
-        /* 0368 */ "fn UnloadDirectoryFiles*(files: FilePathList)\n"
-        /* 0369 */ "fn IsFileDropped*(): bool\n"
-        /* 0370 */ "fn LoadDroppedFiles*(): FilePathList\n"
-        /* 0371 */ "fn UnloadDroppedFiles*(files: FilePathList)\n"
-        /* 0372 */ "fn GetFileModTime*(fileName: str): int\n"
-        /* 0373 */ "fn CompressData*(data: ^uint8, dataSize: int32, compDataSize: ^int32): ^uint8\n"
-        /* 0374 */ "fn DecompressData*(compData: ^uint8, compDataSize: int32, dataSize: ^int32): ^uint8\n"
-        /* 0375 */ "fn EncodeDataBase64*(data: ^uint8, dataSize: int32, outputSize: ^int32): str\n"
-        /* 0376 */ "fn DecodeDataBase64*(data: ^uint8, outputSize: ^int32): ^uint8\n"
-        /* 0377 */ "fn IsKeyPressed*(key: int32): bool\n"
-        /* 0378 */ "fn IsKeyDown*(key: int32): bool\n"
-        /* 0379 */ "fn IsKeyReleased*(key: int32): bool\n"
-        /* 0380 */ "fn IsKeyUp*(key: int32): bool\n"
-        /* 0381 */ "fn SetExitKey*(key: int32)\n"
-        /* 0382 */ "fn GetKeyPressed*(): int32\n"
-        /* 0383 */ "fn GetCharPressed*(): int32\n"
-        /* 0384 */ "fn IsGamepadAvailable*(gamepad: int32): bool\n"
-        /* 0385 */ "fn GetGamepadName*(gamepad: int32): str\n"
-        /* 0386 */ "fn IsGamepadButtonPressed*(gamepad: int32, button: int32): bool\n"
-        /* 0387 */ "fn IsGamepadButtonDown*(gamepad: int32, button: int32): bool\n"
-        /* 0388 */ "fn IsGamepadButtonReleased*(gamepad: int32, button: int32): bool\n"
-        /* 0389 */ "fn IsGamepadButtonUp*(gamepad: int32, button: int32): bool\n"
-        /* 0390 */ "fn GetGamepadButtonPressed*(): int32\n"
-        /* 0391 */ "fn GetGamepadAxisCount*(gamepad: int32): int32\n"
-        /* 0392 */ "fn GetGamepadAxisMovement*(gamepad: int32, axis: int32): real32\n"
-        /* 0393 */ "fn SetGamepadMappings*(mappings: str): int32\n"
-        /* 0394 */ "fn IsMouseButtonPressed*(button: int32): bool\n"
-        /* 0395 */ "fn IsMouseButtonDown*(button: int32): bool\n"
-        /* 0396 */ "fn IsMouseButtonReleased*(button: int32): bool\n"
-        /* 0397 */ "fn IsMouseButtonUp*(button: int32): bool\n"
-        /* 0398 */ "fn GetMouseX*(): int32\n"
-        /* 0399 */ "fn GetMouseY*(): int32\n"
-        /* 0400 */ "fn GetMousePosition*(): Vector2\n"
-        /* 0401 */ "fn GetMouseDelta*(): Vector2\n"
-        /* 0402 */ "fn SetMousePosition*(x: int32, y: int32)\n"
-        /* 0403 */ "fn SetMouseOffset*(offsetX: int32, offsetY: int32)\n"
-        /* 0404 */ "fn SetMouseScale*(scaleX: real32, scaleY: real32)\n"
-        /* 0405 */ "fn GetMouseWheelMove*(): real32\n"
-        /* 0406 */ "fn GetMouseWheelMoveV*(): Vector2\n"
-        /* 0407 */ "fn SetMouseCursor*(cursor: int32)\n"
-        /* 0408 */ "fn GetTouchX*(): int32\n"
-        /* 0409 */ "fn GetTouchY*(): int32\n"
-        /* 0410 */ "fn GetTouchPosition*(index: int32): Vector2\n"
-        /* 0411 */ "fn GetTouchPointId*(index: int32): int32\n"
-        /* 0412 */ "fn GetTouchPointCount*(): int32\n"
-        /* 0413 */ "fn SetGesturesEnabled*(flags: uint32)\n"
-        /* 0414 */ "fn IsGestureDetected*(gesture: int32): bool\n"
-        /* 0415 */ "fn GetGestureDetected*(): int32\n"
-        /* 0416 */ "fn GetGestureHoldDuration*(): real32\n"
-        /* 0417 */ "fn GetGestureDragVector*(): Vector2\n"
-        /* 0418 */ "fn GetGestureDragAngle*(): real32\n"
-        /* 0419 */ "fn GetGesturePinchVector*(): Vector2\n"
-        /* 0420 */ "fn GetGesturePinchAngle*(): real32\n"
-        /* 0421 */ "fn SetCameraMode*(camera: Camera3D, mode: int32)\n"
-        /* 0422 */ "fn UpdateCamera*(camera: ^Camera3D)\n"
-        /* 0423 */ "fn SetCameraPanControl*(keyPan: int32)\n"
-        /* 0424 */ "fn SetCameraAltControl*(keyAlt: int32)\n"
-        /* 0425 */ "fn SetCameraSmoothZoomControl*(keySmoothZoom: int32)\n"
-        /* 0426 */ "fn SetCameraMoveControls*(keyFront: int32, keyBack: int32, keyRight: int32, keyLeft: int32, keyUp: int32, keyDown: int32)\n"
-        /* 0427 */ "fn SetShapesTexture*(texture: Texture, source: Rectangle)\n"
-        /* 0428 */ "fn DrawPixel*(posX: int32, posY: int32, color: Color)\n"
-        /* 0429 */ "fn DrawPixelV*(position: Vector2, color: Color)\n"
-        /* 0430 */ "fn DrawLine*(startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
-        /* 0431 */ "fn DrawLineV*(startPos: Vector2, endPos: Vector2, color: Color)\n"
-        /* 0432 */ "fn DrawLineEx*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
-        /* 0433 */ "fn DrawLineBezier*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
-        /* 0434 */ "fn DrawLineBezierQuad*(startPos: Vector2, endPos: Vector2, controlPos: Vector2, thick: real32, color: Color)\n"
-        /* 0435 */ "fn DrawLineBezierCubic*(startPos: Vector2, endPos: Vector2, startControlPos: Vector2, endControlPos: Vector2, thick: real32, color: Color)\n"
-        /* 0436 */ "fn DrawLineStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
-        /* 0437 */ "fn DrawCircle*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
-        /* 0438 */ "fn DrawCircleSector*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0439 */ "fn DrawCircleSectorLines*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0440 */ "fn DrawCircleGradient*(centerX: int32, centerY: int32, radius: real32, color1: Color, color2: Color)\n"
-        /* 0441 */ "fn DrawCircleV*(center: Vector2, radius: real32, color: Color)\n"
-        /* 0442 */ "fn DrawCircleLines*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
-        /* 0443 */ "fn DrawEllipse*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
-        /* 0444 */ "fn DrawEllipseLines*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
-        /* 0445 */ "fn DrawRing*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0446 */ "fn DrawRingLines*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
-        /* 0447 */ "fn DrawRectangle*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
-        /* 0448 */ "fn DrawRectangleV*(position: Vector2, size: Vector2, color: Color)\n"
-        /* 0449 */ "fn DrawRectangleRec*(rec: Rectangle, color: Color)\n"
-        /* 0450 */ "fn DrawRectanglePro*(rec: Rectangle, origin: Vector2, rotation: real32, color: Color)\n"
-        /* 0451 */ "fn DrawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
-        /* 0452 */ "fn DrawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
-        /* 0453 */ "fn DrawRectangleGradientEx*(rec: Rectangle, col1: Color, col2: Color, col3: Color, col4: Color)\n"
-        /* 0454 */ "fn DrawRectangleLines*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
-        /* 0455 */ "fn DrawRectangleLinesEx*(rec: Rectangle, lineThick: real32, color: Color)\n"
-        /* 0456 */ "fn DrawRectangleRounded*(rec: Rectangle, roundness: real32, segments: int32, color: Color)\n"
-        /* 0457 */ "fn DrawRectangleRoundedLines*(rec: Rectangle, roundness: real32, segments: int32, lineThick: real32, color: Color)\n"
-        /* 0458 */ "fn DrawTriangle*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
-        /* 0459 */ "fn DrawTriangleLines*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
-        /* 0460 */ "fn DrawTriangleFan*(points: ^Vector2, pointCount: int32, color: Color)\n"
-        /* 0461 */ "fn DrawTriangleStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
-        /* 0462 */ "fn DrawPoly*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
-        /* 0463 */ "fn DrawPolyLines*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
-        /* 0464 */ "fn DrawPolyLinesEx*(center: Vector2, sides: int32, radius: real32, rotation: real32, lineThick: real32, color: Color)\n"
-        /* 0465 */ "fn CheckCollisionRecs*(rec1: Rectangle, rec2: Rectangle): bool\n"
-        /* 0466 */ "fn CheckCollisionCircles*(center1: Vector2, radius1: real32, center2: Vector2, radius2: real32): bool\n"
-        /* 0467 */ "fn CheckCollisionCircleRec*(center: Vector2, radius: real32, rec: Rectangle): bool\n"
-        /* 0468 */ "fn CheckCollisionPointRec*(point: Vector2, rec: Rectangle): bool\n"
-        /* 0469 */ "fn CheckCollisionPointCircle*(point: Vector2, center: Vector2, radius: real32): bool\n"
-        /* 0470 */ "fn CheckCollisionPointTriangle*(point: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): bool\n"
-        /* 0471 */ "fn CheckCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: ^Vector2): bool\n"
-        /* 0472 */ "fn CheckCollisionPointLine*(point: Vector2, p1: Vector2, p2: Vector2, threshold: int32): bool\n"
-        /* 0473 */ "fn GetCollisionRec*(rec1: Rectangle, rec2: Rectangle): Rectangle\n"
-        /* 0474 */ "fn LoadImage*(fileName: str): Image\n"
-        /* 0475 */ "fn LoadImageRaw*(fileName: str, width: int32, height: int32, format: int32, headerSize: int32): Image\n"
-        /* 0476 */ "fn LoadImageAnim*(fileName: str, frames: ^int32): Image\n"
-        /* 0477 */ "fn LoadImageFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Image\n"
-        /* 0478 */ "fn LoadImageFromTexture*(texture: Texture): Image\n"
-        /* 0479 */ "fn LoadImageFromScreen*(): Image\n"
-        /* 0480 */ "fn UnloadImage*(image: Image)\n"
-        /* 0481 */ "fn ExportImage*(image: Image, fileName: str): bool\n"
-        /* 0482 */ "fn ExportImageAsCode*(image: Image, fileName: str): bool\n"
-        /* 0483 */ "fn GenImageColor*(width: int32, height: int32, color: Color): Image\n"
-        /* 0484 */ "fn GenImageGradientV*(width: int32, height: int32, top: Color, bottom: Color): Image\n"
-        /* 0485 */ "fn GenImageGradientH*(width: int32, height: int32, left: Color, right: Color): Image\n"
-        /* 0486 */ "fn GenImageGradientRadial*(width: int32, height: int32, density: real32, inner: Color, outer: Color): Image\n"
-        /* 0487 */ "fn GenImageChecked*(width: int32, height: int32, checksX: int32, checksY: int32, col1: Color, col2: Color): Image\n"
-        /* 0488 */ "fn GenImageWhiteNoise*(width: int32, height: int32, factor: real32): Image\n"
-        /* 0489 */ "fn GenImageCellular*(width: int32, height: int32, tileSize: int32): Image\n"
-        /* 0490 */ "fn ImageCopy*(image: Image): Image\n"
-        /* 0491 */ "fn ImageFromImage*(image: Image, rec: Rectangle): Image\n"
-        /* 0492 */ "fn ImageText*(text: str, fontSize: int32, color: Color): Image\n"
-        /* 0493 */ "fn ImageTextEx*(font: Font, text: str, fontSize: real32, spacing: real32, tint: Color): Image\n"
-        /* 0494 */ "fn ImageFormat*(image: ^Image, newFormat: int32)\n"
-        /* 0495 */ "fn ImageToPOT*(image: ^Image, fill: Color)\n"
-        /* 0496 */ "fn ImageCrop*(image: ^Image, crop: Rectangle)\n"
-        /* 0497 */ "fn ImageAlphaCrop*(image: ^Image, threshold: real32)\n"
-        /* 0498 */ "fn ImageAlphaClear*(image: ^Image, color: Color, threshold: real32)\n"
-        /* 0499 */ "fn ImageAlphaMask*(image: ^Image, alphaMask: Image)\n"
-        /* 0500 */ "fn ImageAlphaPremultiply*(image: ^Image)\n"
-        /* 0501 */ "fn ImageResize*(image: ^Image, newWidth: int32, newHeight: int32)\n"
-        /* 0502 */ "fn ImageResizeNN*(image: ^Image, newWidth: int32, newHeight: int32)\n"
-        /* 0503 */ "fn ImageResizeCanvas*(image: ^Image, newWidth: int32, newHeight: int32, offsetX: int32, offsetY: int32, fill: Color)\n"
-        /* 0504 */ "fn ImageMipmaps*(image: ^Image)\n"
-        /* 0505 */ "fn ImageDither*(image: ^Image, rBpp: int32, gBpp: int32, bBpp: int32, aBpp: int32)\n"
-        /* 0506 */ "fn ImageFlipVertical*(image: ^Image)\n"
-        /* 0507 */ "fn ImageFlipHorizontal*(image: ^Image)\n"
-        /* 0508 */ "fn ImageRotateCW*(image: ^Image)\n"
-        /* 0509 */ "fn ImageRotateCCW*(image: ^Image)\n"
-        /* 0510 */ "fn ImageColorTint*(image: ^Image, color: Color)\n"
-        /* 0511 */ "fn ImageColorInvert*(image: ^Image)\n"
-        /* 0512 */ "fn ImageColorGrayscale*(image: ^Image)\n"
-        /* 0513 */ "fn ImageColorContrast*(image: ^Image, contrast: real32)\n"
-        /* 0514 */ "fn ImageColorBrightness*(image: ^Image, brightness: int32)\n"
-        /* 0515 */ "fn ImageColorReplace*(image: ^Image, color: Color, replace: Color)\n"
-        /* 0516 */ "fn LoadImageColors*(image: Image): ^Color\n"
-        /* 0517 */ "fn LoadImagePalette*(image: Image, maxPaletteSize: int32, colorCount: ^int32): ^Color\n"
-        /* 0518 */ "fn UnloadImageColors*(colors: ^Color)\n"
-        /* 0519 */ "fn UnloadImagePalette*(colors: ^Color)\n"
-        /* 0520 */ "fn GetImageAlphaBorder*(image: Image, threshold: real32): Rectangle\n"
-        /* 0521 */ "fn GetImageColor*(image: Image, x: int32, y: int32): Color\n"
-        /* 0522 */ "fn ImageClearBackground*(dst: ^Image, color: Color)\n"
-        /* 0523 */ "fn ImageDrawPixel*(dst: ^Image, posX: int32, posY: int32, color: Color)\n"
-        /* 0524 */ "fn ImageDrawPixelV*(dst: ^Image, position: Vector2, color: Color)\n"
-        /* 0525 */ "fn ImageDrawLine*(dst: ^Image, startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
-        /* 0526 */ "fn ImageDrawLineV*(dst: ^Image, start: Vector2, end: Vector2, color: Color)\n"
-        /* 0527 */ "fn ImageDrawCircle*(dst: ^Image, centerX: int32, centerY: int32, radius: int32, color: Color)\n"
-        /* 0528 */ "fn ImageDrawCircleV*(dst: ^Image, center: Vector2, radius: int32, color: Color)\n"
-        /* 0529 */ "fn ImageDrawRectangle*(dst: ^Image, posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
-        /* 0530 */ "fn ImageDrawRectangleV*(dst: ^Image, position: Vector2, size: Vector2, color: Color)\n"
-        /* 0531 */ "fn ImageDrawRectangleRec*(dst: ^Image, rec: Rectangle, color: Color)\n"
-        /* 0532 */ "fn ImageDrawRectangleLines*(dst: ^Image, rec: Rectangle, thick: int32, color: Color)\n"
-        /* 0533 */ "fn ImageDraw*(dst: ^Image, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color)\n"
-        /* 0534 */ "fn ImageDrawText*(dst: ^Image, text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
-        /* 0535 */ "fn ImageDrawTextEx*(dst: ^Image, font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0536 */ "fn LoadTexture*(fileName: str): Texture\n"
-        /* 0537 */ "fn LoadTextureFromImage*(image: Image): Texture\n"
-        /* 0538 */ "fn LoadTextureCubemap*(image: Image, layout: int32): Texture\n"
-        /* 0539 */ "fn LoadRenderTexture*(width: int32, height: int32): RenderTexture\n"
-        /* 0540 */ "fn UnloadTexture*(texture: Texture)\n"
-        /* 0541 */ "fn UnloadRenderTexture*(target: RenderTexture)\n"
-        /* 0542 */ "fn UpdateTexture*(texture: Texture, pixels: ^void)\n"
-        /* 0543 */ "fn UpdateTextureRec*(texture: Texture, rec: Rectangle, pixels: ^void)\n"
-        /* 0544 */ "fn GenTextureMipmaps*(texture: ^Texture)\n"
-        /* 0545 */ "fn SetTextureFilter*(texture: Texture, filter: int32)\n"
-        /* 0546 */ "fn SetTextureWrap*(texture: Texture, wrap: int32)\n"
-        /* 0547 */ "fn DrawTexture*(texture: Texture, posX: int32, posY: int32, tint: Color)\n"
-        /* 0548 */ "fn DrawTextureV*(texture: Texture, position: Vector2, tint: Color)\n"
-        /* 0549 */ "fn DrawTextureEx*(texture: Texture, position: Vector2, rotation: real32, scale: real32, tint: Color)\n"
-        /* 0550 */ "fn DrawTextureRec*(texture: Texture, source: Rectangle, position: Vector2, tint: Color)\n"
-        /* 0551 */ "fn DrawTextureQuad*(texture: Texture, tiling: Vector2, offset: Vector2, quad: Rectangle, tint: Color)\n"
-        /* 0552 */ "fn DrawTextureTiled*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, scale: real32, tint: Color)\n"
-        /* 0553 */ "fn DrawTexturePro*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
-        /* 0554 */ "fn DrawTextureNPatch*(texture: Texture, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
-        /* 0555 */ "fn DrawTexturePoly*(texture: Texture, center: Vector2, points: ^Vector2, texcoords: ^Vector2, pointCount: int32, tint: Color)\n"
-        /* 0556 */ "fn Fade*(color: Color, alpha: real32): Color\n"
-        /* 0557 */ "fn ColorToInt*(color: Color): int32\n"
-        /* 0558 */ "fn ColorNormalize*(color: Color): Vector4\n"
-        /* 0559 */ "fn ColorFromNormalized*(normalized: Vector4): Color\n"
-        /* 0560 */ "fn ColorToHSV*(color: Color): Vector3\n"
-        /* 0561 */ "fn ColorFromHSV*(hue: real32, saturation: real32, value: real32): Color\n"
-        /* 0562 */ "fn ColorAlpha*(color: Color, alpha: real32): Color\n"
-        /* 0563 */ "fn ColorAlphaBlend*(dst: Color, src: Color, tint: Color): Color\n"
-        /* 0564 */ "fn GetColor*(hexValue: uint32): Color\n"
-        /* 0565 */ "fn GetPixelColor*(srcPtr: ^void, format: int32): Color\n"
-        /* 0566 */ "fn SetPixelColor*(dstPtr: ^void, color: Color, format: int32)\n"
-        /* 0567 */ "fn GetPixelDataSize*(width: int32, height: int32, format: int32): int32\n"
-        /* 0568 */ "fn GetFontDefault*(): Font\n"
-        /* 0569 */ "fn LoadFont*(fileName: str): Font\n"
-        /* 0570 */ "fn LoadFontEx*(fileName: str, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
-        /* 0571 */ "fn LoadFontFromImage*(image: Image, key: Color, firstChar: int32): Font\n"
-        /* 0572 */ "fn LoadFontFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
-        // Skipping LoadFontData
-        /* 0573 */ "fn GenImageFontAtlas*(chars: ^void, recs: ^void, glyphCount: int32, fontSize: int32, padding: int32, packMethod: int32): Image\n"
-        /* 0574 */ "fn UnloadFontData*(chars: ^GlyphInfo, glyphCount: int32)\n"
-        /* 0575 */ "fn UnloadFont*(font: Font)\n"
-        /* 0576 */ "fn ExportFontAsCode*(font: Font, fileName: str): bool\n"
-        /* 0577 */ "fn DrawFPS*(posX: int32, posY: int32)\n"
-        /* 0578 */ "fn DrawText*(text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
-        /* 0579 */ "fn DrawTextEx*(font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0580 */ "fn DrawTextPro*(font: Font, text: str, position: Vector2, origin: Vector2, rotation: real32, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0581 */ "fn DrawTextCodepoint*(font: Font, codepoint: int32, position: Vector2, fontSize: real32, tint: Color)\n"
-        /* 0582 */ "fn DrawTextCodepoints*(font: Font, codepoints: ^int32, count: int32, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
-        /* 0583 */ "fn MeasureText*(text: str, fontSize: int32): int32\n"
-        /* 0584 */ "fn MeasureTextEx*(font: Font, text: str, fontSize: real32, spacing: real32): Vector2\n"
-        /* 0585 */ "fn GetGlyphIndex*(font: Font, codepoint: int32): int32\n"
-        /* 0586 */ "fn GetGlyphInfo*(font: Font, codepoint: int32): GlyphInfo\n"
-        /* 0587 */ "fn GetGlyphAtlasRec*(font: Font, codepoint: int32): Rectangle\n"
-        /* 0588 */ "fn LoadCodepoints*(text: str, count: ^int32): ^int32\n"
-        /* 0589 */ "fn UnloadCodepoints*(codepoints: ^int32)\n"
-        /* 0590 */ "fn GetCodepointCount*(text: str): int32\n"
-        /* 0591 */ "fn GetCodepoint*(text: str, bytesProcessed: ^int32): int32\n"
-        /* 0592 */ "fn CodepointToUTF8*(codepoint: int32, byteSize: ^int32): str\n"
-        /* 0593 */ "fn TextCodepointsToUTF8*(codepoints: ^int32, length: int32): str\n"
-        /* 0594 */ "fn TextCopy*(dst: str, src: str): int32\n"
-        /* 0595 */ "fn TextIsEqual*(text1: str, text2: str): bool\n"
-        /* 0596 */ "fn TextLength*(text: str): uint32\n"
-        // Skipping TextFormat
-        /* 0597 */ "fn TextSubtext*(text: str, position: int32, length: int32): str\n"
-        /* 0598 */ "fn TextReplace*(text: str, replace: str, by: str): str\n"
-        /* 0599 */ "fn TextInsert*(text: str, insert: str, position: int32): str\n"
-        /* 0600 */ "fn TextJoin*(textList: ^str, count: int32, delimiter: str): str\n"
-        /* 0601 */ "fn TextSplit*(text: str, delimiter: char, count: ^int32): ^str\n"
-        /* 0602 */ "fn TextAppend*(text: str, append: str, position: ^int32)\n"
-        /* 0603 */ "fn TextFindIndex*(text: str, find: str): int32\n"
-        /* 0604 */ "fn TextToUpper*(text: str): str\n"
-        /* 0605 */ "fn TextToLower*(text: str): str\n"
-        /* 0606 */ "fn TextToPascal*(text: str): str\n"
-        /* 0607 */ "fn TextToInteger*(text: str): int32\n"
-        /* 0608 */ "fn DrawLine3D*(startPos: Vector3, endPos: Vector3, color: Color)\n"
-        /* 0609 */ "fn DrawPoint3D*(position: Vector3, color: Color)\n"
-        /* 0610 */ "fn DrawCircle3D*(center: Vector3, radius: real32, rotationAxis: Vector3, rotationAngle: real32, color: Color)\n"
-        /* 0611 */ "fn DrawTriangle3D*(v1: Vector3, v2: Vector3, v3: Vector3, color: Color)\n"
-        /* 0612 */ "fn DrawTriangleStrip3D*(points: ^Vector3, pointCount: int32, color: Color)\n"
-        /* 0613 */ "fn DrawCube*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0614 */ "fn DrawCubeV*(position: Vector3, size: Vector3, color: Color)\n"
-        /* 0615 */ "fn DrawCubeWires*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0616 */ "fn DrawCubeWiresV*(position: Vector3, size: Vector3, color: Color)\n"
-        /* 0617 */ "fn DrawCubeTexture*(texture: Texture, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0618 */ "fn DrawCubeTextureRec*(texture: Texture, source: Rectangle, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
-        /* 0619 */ "fn DrawSphere*(centerPos: Vector3, radius: real32, color: Color)\n"
-        /* 0620 */ "fn DrawSphereEx*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
-        /* 0621 */ "fn DrawSphereWires*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
-        /* 0622 */ "fn DrawCylinder*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
-        /* 0623 */ "fn DrawCylinderEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
-        /* 0624 */ "fn DrawCylinderWires*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
-        /* 0625 */ "fn DrawCylinderWiresEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
-        /* 0626 */ "fn DrawPlane*(centerPos: Vector3, size: Vector2, color: Color)\n"
-        /* 0627 */ "fn DrawRay*(ray: Ray, color: Color)\n"
-        /* 0628 */ "fn DrawGrid*(slices: int32, spacing: real32)\n"
-        /* 0629 */ "fn LoadModel*(fileName: str): Model\n"
-        /* 0630 */ "fn LoadModelFromMesh*(mesh: Mesh): Model\n"
-        /* 0631 */ "fn UnloadModel*(model: Model)\n"
-        /* 0632 */ "fn UnloadModelKeepMeshes*(model: Model)\n"
-        /* 0633 */ "fn GetModelBoundingBox*(model: Model): BoundingBox\n"
-        /* 0634 */ "fn DrawModel*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
-        /* 0635 */ "fn DrawModelEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
-        /* 0636 */ "fn DrawModelWires*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
-        /* 0637 */ "fn DrawModelWiresEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
-        /* 0638 */ "fn DrawBoundingBox*(box: BoundingBox, color: Color)\n"
-        /* 0639 */ "fn DrawBillboard*(camera: Camera3D, texture: Texture, position: Vector3, size: real32, tint: Color)\n"
-        /* 0640 */ "fn DrawBillboardRec*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, size: Vector2, tint: Color)\n"
-        /* 0641 */ "fn DrawBillboardPro*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, up: Vector3, size: Vector2, origin: Vector2, rotation: real32, tint: Color)\n"
-        /* 0642 */ "fn UploadMesh*(mesh: ^Mesh, dynamic: bool)\n"
-        /* 0643 */ "fn UpdateMeshBuffer*(mesh: Mesh, index: int32, data: ^void, dataSize: int32, offset: int32)\n"
-        /* 0644 */ "fn UnloadMesh*(mesh: Mesh)\n"
-        /* 0645 */ "fn DrawMesh*(mesh: Mesh, material: Material, transform: Matrix)\n"
-        /* 0646 */ "fn DrawMeshInstanced*(mesh: Mesh, material: Material, transforms: ^Matrix, instances: int32)\n"
-        /* 0647 */ "fn ExportMesh*(mesh: Mesh, fileName: str): bool\n"
-        /* 0648 */ "fn GetMeshBoundingBox*(mesh: Mesh): BoundingBox\n"
-        /* 0649 */ "fn GenMeshTangents*(mesh: ^Mesh)\n"
-        /* 0650 */ "fn GenMeshPoly*(sides: int32, radius: real32): Mesh\n"
-        /* 0651 */ "fn GenMeshPlane*(width: real32, length: real32, resX: int32, resZ: int32): Mesh\n"
-        /* 0652 */ "fn GenMeshCube*(width: real32, height: real32, length: real32): Mesh\n"
-        /* 0653 */ "fn GenMeshSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
-        /* 0654 */ "fn GenMeshHemiSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
-        /* 0655 */ "fn GenMeshCylinder*(radius: real32, height: real32, slices: int32): Mesh\n"
-        /* 0656 */ "fn GenMeshCone*(radius: real32, height: real32, slices: int32): Mesh\n"
-        /* 0657 */ "fn GenMeshTorus*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
-        /* 0658 */ "fn GenMeshKnot*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
-        /* 0659 */ "fn GenMeshHeightmap*(heightmap: Image, size: Vector3): Mesh\n"
-        /* 0660 */ "fn GenMeshCubicmap*(cubicmap: Image, cubeSize: Vector3): Mesh\n"
-        /* 0661 */ "fn LoadMaterials*(fileName: str, materialCount: ^int32): ^Material\n"
-        /* 0662 */ "fn LoadMaterialDefault*(): Material\n"
-        /* 0663 */ "fn UnloadMaterial*(material: Material)\n"
-        /* 0664 */ "fn SetMaterialTexture*(material: ^Material, mapType: int32, texture: Texture)\n"
-        /* 0665 */ "fn SetModelMeshMaterial*(model: ^Model, meshId: int32, materialId: int32)\n"
-        /* 0666 */ "fn LoadModelAnimations*(fileName: str, animCount: ^uint32): ^ModelAnimation\n"
-        /* 0667 */ "fn UpdateModelAnimation*(model: Model, anim: ModelAnimation, frame: int32)\n"
-        /* 0668 */ "fn UnloadModelAnimation*(anim: ModelAnimation)\n"
-        /* 0669 */ "fn UnloadModelAnimations*(animations: ^ModelAnimation, count: uint32)\n"
-        /* 0670 */ "fn IsModelAnimationValid*(model: Model, anim: ModelAnimation): bool\n"
-        /* 0671 */ "fn CheckCollisionSpheres*(center1: Vector3, radius1: real32, center2: Vector3, radius2: real32): bool\n"
-        /* 0672 */ "fn CheckCollisionBoxes*(box1: BoundingBox, box2: BoundingBox): bool\n"
-        /* 0673 */ "fn CheckCollisionBoxSphere*(box: BoundingBox, center: Vector3, radius: real32): bool\n"
-        /* 0674 */ "fn GetRayCollisionSphere*(ray: Ray, center: Vector3, radius: real32): RayCollision\n"
-        /* 0675 */ "fn GetRayCollisionBox*(ray: Ray, box: BoundingBox): RayCollision\n"
-        /* 0676 */ "fn GetRayCollisionMesh*(ray: Ray, mesh: Mesh, transform: Matrix): RayCollision\n"
-        /* 0677 */ "fn GetRayCollisionTriangle*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3): RayCollision\n"
-        /* 0678 */ "fn GetRayCollisionQuad*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3, p4: Vector3): RayCollision\n"
-        /* 0679 */ "fn InitAudioDevice*()\n"
-        /* 0680 */ "fn CloseAudioDevice*()\n"
-        /* 0681 */ "fn IsAudioDeviceReady*(): bool\n"
-        /* 0682 */ "fn SetMasterVolume*(volume: real32)\n"
-        /* 0683 */ "fn LoadWave*(fileName: str): Wave\n"
-        /* 0684 */ "fn LoadWaveFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Wave\n"
-        /* 0685 */ "fn LoadSound*(fileName: str): Sound\n"
-        /* 0686 */ "fn LoadSoundFromWave*(wave: Wave): Sound\n"
-        /* 0687 */ "fn UpdateSound*(sound: Sound, data: ^void, sampleCount: int32)\n"
-        /* 0688 */ "fn UnloadWave*(wave: Wave)\n"
-        /* 0689 */ "fn UnloadSound*(sound: Sound)\n"
-        /* 0690 */ "fn ExportWave*(wave: Wave, fileName: str): bool\n"
-        /* 0691 */ "fn ExportWaveAsCode*(wave: Wave, fileName: str): bool\n"
-        /* 0692 */ "fn PlaySound*(sound: Sound)\n"
-        /* 0693 */ "fn StopSound*(sound: Sound)\n"
-        /* 0694 */ "fn PauseSound*(sound: Sound)\n"
-        /* 0695 */ "fn ResumeSound*(sound: Sound)\n"
-        /* 0696 */ "fn PlaySoundMulti*(sound: Sound)\n"
-        /* 0697 */ "fn StopSoundMulti*()\n"
-        /* 0698 */ "fn GetSoundsPlaying*(): int32\n"
-        /* 0699 */ "fn IsSoundPlaying*(sound: Sound): bool\n"
-        /* 0700 */ "fn SetSoundVolume*(sound: Sound, volume: real32)\n"
-        /* 0701 */ "fn SetSoundPitch*(sound: Sound, pitch: real32)\n"
-        /* 0702 */ "fn SetSoundPan*(sound: Sound, pan: real32)\n"
-        /* 0703 */ "fn WaveCopy*(wave: Wave): Wave\n"
-        /* 0704 */ "fn WaveCrop*(wave: ^Wave, initSample: int32, finalSample: int32)\n"
-        /* 0705 */ "fn WaveFormat*(wave: ^Wave, sampleRate: int32, sampleSize: int32, channels: int32)\n"
-        /* 0706 */ "fn LoadWaveSamples*(wave: Wave): ^real32\n"
-        /* 0707 */ "fn UnloadWaveSamples*(samples: ^real32)\n"
-        /* 0708 */ "fn LoadMusicStream*(fileName: str): Music\n"
-        /* 0709 */ "fn LoadMusicStreamFromMemory*(fileType: str, data: ^uint8, dataSize: int32): Music\n"
-        /* 0710 */ "fn UnloadMusicStream*(music: Music)\n"
-        /* 0711 */ "fn PlayMusicStream*(music: Music)\n"
-        /* 0712 */ "fn IsMusicStreamPlaying*(music: Music): bool\n"
-        /* 0713 */ "fn UpdateMusicStream*(music: Music)\n"
-        /* 0714 */ "fn StopMusicStream*(music: Music)\n"
-        /* 0715 */ "fn PauseMusicStream*(music: Music)\n"
-        /* 0716 */ "fn ResumeMusicStream*(music: Music)\n"
-        /* 0717 */ "fn SeekMusicStream*(music: Music, position: real32)\n"
-        /* 0718 */ "fn SetMusicVolume*(music: Music, volume: real32)\n"
-        /* 0719 */ "fn SetMusicPitch*(music: Music, pitch: real32)\n"
-        /* 0720 */ "fn SetMusicPan*(music: Music, pan: real32)\n"
-        /* 0721 */ "fn GetMusicTimeLength*(music: Music): real32\n"
-        /* 0722 */ "fn GetMusicTimePlayed*(music: Music): real32\n"
-        /* 0723 */ "fn LoadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream\n"
-        /* 0724 */ "fn UnloadAudioStream*(stream: AudioStream)\n"
-        /* 0725 */ "fn UpdateAudioStream*(stream: AudioStream, data: ^void, frameCount: int32)\n"
-        /* 0726 */ "fn IsAudioStreamProcessed*(stream: AudioStream): bool\n"
-        /* 0727 */ "fn PlayAudioStream*(stream: AudioStream)\n"
-        /* 0728 */ "fn PauseAudioStream*(stream: AudioStream)\n"
-        /* 0729 */ "fn ResumeAudioStream*(stream: AudioStream)\n"
-        /* 0730 */ "fn IsAudioStreamPlaying*(stream: AudioStream): bool\n"
-        /* 0731 */ "fn StopAudioStream*(stream: AudioStream)\n"
-        /* 0732 */ "fn SetAudioStreamVolume*(stream: AudioStream, volume: real32)\n"
-        /* 0733 */ "fn SetAudioStreamPitch*(stream: AudioStream, pitch: real32)\n"
-        /* 0734 */ "fn SetAudioStreamPan*(stream: AudioStream, pan: real32)\n"
-        /* 0735 */ "fn SetAudioStreamBufferSizeDefault*(size: int32)\n"
-        // Skipping SetAudioStreamCallback
-        // Skipping AttachAudioStreamProcessor
-        // Skipping DetachAudioStreamProcessor
-        /* 0736 */ "fn Clamp*(value: real32, min: real32, max: real32): real32\n"
-        /* 0737 */ "fn Lerp*(start: real32, end: real32, amount: real32): real32\n"
-        /* 0738 */ "fn Normalize*(value: real32, start: real32, end: real32): real32\n"
-        /* 0739 */ "fn Remap*(value: real32, inputStart: real32, inputEnd: real32, outputStart: real32, outputEnd: real32): real32\n"
-        /* 0740 */ "fn Wrap*(value: real32, min: real32, max: real32): real32\n"
-        /* 0741 */ "fn FloatEquals*(x: real32, y: real32): int32\n"
-        /* 0742 */ "fn Vector2Zero*(): Vector2\n"
-        /* 0743 */ "fn Vector2One*(): Vector2\n"
-        /* 0744 */ "fn Vector2Add*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0745 */ "fn Vector2AddValue*(v: Vector2, add: real32): Vector2\n"
-        /* 0746 */ "fn Vector2Subtract*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0747 */ "fn Vector2SubtractValue*(v: Vector2, sub: real32): Vector2\n"
-        /* 0748 */ "fn Vector2Length*(v: Vector2): real32\n"
-        /* 0749 */ "fn Vector2LengthSqr*(v: Vector2): real32\n"
-        /* 0750 */ "fn Vector2DotProduct*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0751 */ "fn Vector2Distance*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0752 */ "fn Vector2DistanceSqr*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0753 */ "fn Vector2Angle*(v1: Vector2, v2: Vector2): real32\n"
-        /* 0754 */ "fn Vector2Scale*(v: Vector2, scale: real32): Vector2\n"
-        /* 0755 */ "fn Vector2Multiply*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0756 */ "fn Vector2Negate*(v: Vector2): Vector2\n"
-        /* 0757 */ "fn Vector2Divide*(v1: Vector2, v2: Vector2): Vector2\n"
-        /* 0758 */ "fn Vector2Normalize*(v: Vector2): Vector2\n"
-        /* 0759 */ "fn Vector2Transform*(v: Vector2, mat: Matrix): Vector2\n"
-        /* 0760 */ "fn Vector2Lerp*(v1: Vector2, v2: Vector2, amount: real32): Vector2\n"
-        /* 0761 */ "fn Vector2Reflect*(v: Vector2, normal: Vector2): Vector2\n"
-        /* 0762 */ "fn Vector2Rotate*(v: Vector2, angle: real32): Vector2\n"
-        /* 0763 */ "fn Vector2MoveTowards*(v: Vector2, target: Vector2, maxDistance: real32): Vector2\n"
-        /* 0764 */ "fn Vector2Invert*(v: Vector2): Vector2\n"
-        /* 0765 */ "fn Vector2Clamp*(v: Vector2, min: Vector2, max: Vector2): Vector2\n"
-        /* 0766 */ "fn Vector2ClampValue*(v: Vector2, min: real32, max: real32): Vector2\n"
-        /* 0767 */ "fn Vector2Equals*(p: Vector2, q: Vector2): int32\n"
-        /* 0768 */ "fn Vector3Zero*(): Vector3\n"
-        /* 0769 */ "fn Vector3One*(): Vector3\n"
-        /* 0770 */ "fn Vector3Add*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0771 */ "fn Vector3AddValue*(v: Vector3, add: real32): Vector3\n"
-        /* 0772 */ "fn Vector3Subtract*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0773 */ "fn Vector3SubtractValue*(v: Vector3, sub: real32): Vector3\n"
-        /* 0774 */ "fn Vector3Scale*(v: Vector3, scalar: real32): Vector3\n"
-        /* 0775 */ "fn Vector3Multiply*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0776 */ "fn Vector3CrossProduct*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0777 */ "fn Vector3Perpendicular*(v: Vector3): Vector3\n"
-        /* 0778 */ "fn Vector3Length*(v: Vector3): real32\n"
-        /* 0779 */ "fn Vector3LengthSqr*(v: Vector3): real32\n"
-        /* 0780 */ "fn Vector3DotProduct*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0781 */ "fn Vector3Distance*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0782 */ "fn Vector3DistanceSqr*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0783 */ "fn Vector3Angle*(v1: Vector3, v2: Vector3): real32\n"
-        /* 0784 */ "fn Vector3Negate*(v: Vector3): Vector3\n"
-        /* 0785 */ "fn Vector3Divide*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0786 */ "fn Vector3Normalize*(v: Vector3): Vector3\n"
-        /* 0787 */ "fn Vector3OrthoNormalize*(v1: ^Vector3, v2: ^Vector3)\n"
-        /* 0788 */ "fn Vector3Transform*(v: Vector3, mat: Matrix): Vector3\n"
-        /* 0789 */ "fn Vector3RotateByQuaternion*(v: Vector3, q: Vector4): Vector3\n"
-        /* 0790 */ "fn Vector3RotateByAxisAngle*(v: Vector3, axis: Vector3, angle: real32): Vector3\n"
-        /* 0791 */ "fn Vector3Lerp*(v1: Vector3, v2: Vector3, amount: real32): Vector3\n"
-        /* 0792 */ "fn Vector3Reflect*(v: Vector3, normal: Vector3): Vector3\n"
-        /* 0793 */ "fn Vector3Min*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0794 */ "fn Vector3Max*(v1: Vector3, v2: Vector3): Vector3\n"
-        /* 0795 */ "fn Vector3Barycenter*(p: Vector3, a: Vector3, b: Vector3, c: Vector3): Vector3\n"
-        /* 0796 */ "fn Vector3Unproject*(source: Vector3, projection: Matrix, view: Matrix): Vector3\n"
-        /* 0797 */ "fn Vector3ToFloatV*(v: Vector3): float3\n"
-        /* 0798 */ "fn Vector3Invert*(v: Vector3): Vector3\n"
-        /* 0799 */ "fn Vector3Clamp*(v: Vector3, min: Vector3, max: Vector3): Vector3\n"
-        /* 0800 */ "fn Vector3ClampValue*(v: Vector3, min: real32, max: real32): Vector3\n"
-        /* 0801 */ "fn Vector3Equals*(p: Vector3, q: Vector3): int32\n"
-        /* 0802 */ "fn Vector3Refract*(v: Vector3, n: Vector3, r: real32): Vector3\n"
-        /* 0803 */ "fn MatrixDeterminant*(mat: Matrix): real32\n"
-        /* 0804 */ "fn MatrixTrace*(mat: Matrix): real32\n"
-        /* 0805 */ "fn MatrixTranspose*(mat: Matrix): Matrix\n"
-        /* 0806 */ "fn MatrixInvert*(mat: Matrix): Matrix\n"
-        /* 0807 */ "fn MatrixIdentity*(): Matrix\n"
-        /* 0808 */ "fn MatrixAdd*(left: Matrix, right: Matrix): Matrix\n"
-        /* 0809 */ "fn MatrixSubtract*(left: Matrix, right: Matrix): Matrix\n"
-        /* 0810 */ "fn MatrixMultiply*(left: Matrix, right: Matrix): Matrix\n"
-        /* 0811 */ "fn MatrixTranslate*(x: real32, y: real32, z: real32): Matrix\n"
-        /* 0812 */ "fn MatrixRotate*(axis: Vector3, angle: real32): Matrix\n"
-        /* 0813 */ "fn MatrixRotateX*(angle: real32): Matrix\n"
-        /* 0814 */ "fn MatrixRotateY*(angle: real32): Matrix\n"
-        /* 0815 */ "fn MatrixRotateZ*(angle: real32): Matrix\n"
-        /* 0816 */ "fn MatrixRotateXYZ*(angle: Vector3): Matrix\n"
-        /* 0817 */ "fn MatrixRotateZYX*(angle: Vector3): Matrix\n"
-        /* 0818 */ "fn MatrixScale*(x: real32, y: real32, z: real32): Matrix\n"
-        /* 0819 */ "fn MatrixFrustum*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
-        /* 0820 */ "fn MatrixPerspective*(fovy: real, aspect: real, near: real, far: real): Matrix\n"
-        /* 0821 */ "fn MatrixOrtho*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
-        /* 0822 */ "fn MatrixLookAt*(eye: Vector3, target: Vector3, up: Vector3): Matrix\n"
-        /* 0823 */ "fn MatrixToFloatV*(mat: Matrix): float16\n"
-        /* 0824 */ "fn QuaternionAdd*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0825 */ "fn QuaternionAddValue*(q: Vector4, add: real32): Vector4\n"
-        /* 0826 */ "fn QuaternionSubtract*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0827 */ "fn QuaternionSubtractValue*(q: Vector4, sub: real32): Vector4\n"
-        /* 0828 */ "fn QuaternionIdentity*(): Vector4\n"
-        /* 0829 */ "fn QuaternionLength*(q: Vector4): real32\n"
-        /* 0830 */ "fn QuaternionNormalize*(q: Vector4): Vector4\n"
-        /* 0831 */ "fn QuaternionInvert*(q: Vector4): Vector4\n"
-        /* 0832 */ "fn QuaternionMultiply*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0833 */ "fn QuaternionScale*(q: Vector4, mul: real32): Vector4\n"
-        /* 0834 */ "fn QuaternionDivide*(q1: Vector4, q2: Vector4): Vector4\n"
-        /* 0835 */ "fn QuaternionLerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
-        /* 0836 */ "fn QuaternionNlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
-        /* 0837 */ "fn QuaternionSlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
-        /* 0838 */ "fn QuaternionFromVector3ToVector3*(from: Vector3, to: Vector3): Vector4\n"
-        /* 0839 */ "fn QuaternionFromMatrix*(mat: Matrix): Vector4\n"
-        /* 0840 */ "fn QuaternionToMatrix*(q: Vector4): Matrix\n"
-        /* 0841 */ "fn QuaternionFromAxisAngle*(axis: Vector3, angle: real32): Vector4\n"
-        /* 0842 */ "fn QuaternionToAxisAngle*(q: Vector4, outAxis: ^Vector3, outAngle: ^real32)\n"
-        /* 0843 */ "fn QuaternionFromEuler*(pitch: real32, yaw: real32, roll: real32): Vector4\n"
-        /* 0844 */ "fn QuaternionToEuler*(q: Vector4): Vector3\n"
-        /* 0845 */ "fn QuaternionTransform*(q: Vector4, mat: Matrix): Vector4\n"
-        /* 0846 */ "fn QuaternionEquals*(p: Vector4, q: Vector4): int32\n"
-        /* 0847 */ "fn rlMatrixMode*(mode: int32)\n"
-        /* 0848 */ "fn rlPushMatrix*()\n"
-        /* 0849 */ "fn rlPopMatrix*()\n"
-        /* 0850 */ "fn rlLoadIdentity*()\n"
-        /* 0851 */ "fn rlTranslatef*(x: real32, y: real32, z: real32)\n"
-        /* 0852 */ "fn rlRotatef*(angle: real32, x: real32, y: real32, z: real32)\n"
-        /* 0853 */ "fn rlScalef*(x: real32, y: real32, z: real32)\n"
-        /* 0854 */ "fn rlMultMatrixf*(matf: ^real32)\n"
-        /* 0855 */ "fn rlFrustum*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)\n"
-        /* 0856 */ "fn rlOrtho*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)\n"
-        /* 0857 */ "fn rlViewport*(x: int32, y: int32, width: int32, height: int32)\n"
-        /* 0858 */ "fn rlBegin*(mode: int32)\n"
-        /* 0859 */ "fn rlEnd*()\n"
-        /* 0860 */ "fn rlVertex2i*(x: int32, y: int32)\n"
-        /* 0861 */ "fn rlVertex2f*(x: real32, y: real32)\n"
-        /* 0862 */ "fn rlVertex3f*(x: real32, y: real32, z: real32)\n"
-        /* 0863 */ "fn rlTexCoord2f*(x: real32, y: real32)\n"
-        /* 0864 */ "fn rlNormal3f*(x: real32, y: real32, z: real32)\n"
-        /* 0865 */ "fn rlColor4ub*(r: uint8, g: uint8, b: uint8, a: uint8)\n"
-        /* 0866 */ "fn rlColor3f*(x: real32, y: real32, z: real32)\n"
-        /* 0867 */ "fn rlColor4f*(x: real32, y: real32, z: real32, w: real32)\n"
-        /* 0868 */ "fn rlEnableVertexArray*(vaoId: uint32): bool\n"
-        /* 0869 */ "fn rlDisableVertexArray*()\n"
-        /* 0870 */ "fn rlEnableVertexBuffer*(id: uint32)\n"
-        /* 0871 */ "fn rlDisableVertexBuffer*()\n"
-        /* 0872 */ "fn rlEnableVertexBufferElement*(id: uint32)\n"
-        /* 0873 */ "fn rlDisableVertexBufferElement*()\n"
-        /* 0874 */ "fn rlEnableVertexAttribute*(index: uint32)\n"
-        /* 0875 */ "fn rlDisableVertexAttribute*(index: uint32)\n"
-        // Skipping rlEnableStatePointer
-        // Skipping rlDisableStatePointer
-        /* 0876 */ "fn rlActiveTextureSlot*(slot: int32)\n"
-        /* 0877 */ "fn rlEnableTexture*(id: uint32)\n"
-        /* 0878 */ "fn rlDisableTexture*()\n"
-        /* 0879 */ "fn rlEnableTextureCubemap*(id: uint32)\n"
-        /* 0880 */ "fn rlDisableTextureCubemap*()\n"
-        /* 0881 */ "fn rlTextureParameters*(id: uint32, param: int32, value: int32)\n"
-        /* 0882 */ "fn rlEnableShader*(id: uint32)\n"
-        /* 0883 */ "fn rlDisableShader*()\n"
-        /* 0884 */ "fn rlEnableFramebuffer*(id: uint32)\n"
-        /* 0885 */ "fn rlDisableFramebuffer*()\n"
-        /* 0886 */ "fn rlActiveDrawBuffers*(count: int32)\n"
-        /* 0887 */ "fn rlEnableColorBlend*()\n"
-        /* 0888 */ "fn rlDisableColorBlend*()\n"
-        /* 0889 */ "fn rlEnableDepthTest*()\n"
-        /* 0890 */ "fn rlDisableDepthTest*()\n"
-        /* 0891 */ "fn rlEnableDepthMask*()\n"
-        /* 0892 */ "fn rlDisableDepthMask*()\n"
-        /* 0893 */ "fn rlEnableBackfaceCulling*()\n"
-        /* 0894 */ "fn rlDisableBackfaceCulling*()\n"
-        /* 0895 */ "fn rlEnableScissorTest*()\n"
-        /* 0896 */ "fn rlDisableScissorTest*()\n"
-        /* 0897 */ "fn rlScissor*(x: int32, y: int32, width: int32, height: int32)\n"
-        /* 0898 */ "fn rlEnableWireMode*()\n"
-        /* 0899 */ "fn rlDisableWireMode*()\n"
-        /* 0900 */ "fn rlSetLineWidth*(width: real32)\n"
-        /* 0901 */ "fn rlGetLineWidth*(): real32\n"
-        /* 0902 */ "fn rlEnableSmoothLines*()\n"
-        /* 0903 */ "fn rlDisableSmoothLines*()\n"
-        /* 0904 */ "fn rlEnableStereoRender*()\n"
-        /* 0905 */ "fn rlDisableStereoRender*()\n"
-        /* 0906 */ "fn rlIsStereoRenderEnabled*(): bool\n"
-        /* 0907 */ "fn rlClearColor*(r: uint8, g: uint8, b: uint8, a: uint8)\n"
-        /* 0908 */ "fn rlClearScreenBuffers*()\n"
-        /* 0909 */ "fn rlCheckErrors*()\n"
-        /* 0910 */ "fn rlSetBlendMode*(mode: int32)\n"
-        /* 0911 */ "fn rlSetBlendFactors*(glSrcFactor: int32, glDstFactor: int32, glEquation: int32)\n"
-        /* 0912 */ "fn rlglInit*(width: int32, height: int32)\n"
-        /* 0913 */ "fn rlglClose*()\n"
-        /* 0914 */ "fn rlLoadExtensions*(loader: ^void)\n"
-        /* 0915 */ "fn rlGetVersion*(): int32\n"
-        /* 0916 */ "fn rlSetFramebufferWidth*(width: int32)\n"
-        /* 0917 */ "fn rlGetFramebufferWidth*(): int32\n"
-        /* 0918 */ "fn rlSetFramebufferHeight*(height: int32)\n"
-        /* 0919 */ "fn rlGetFramebufferHeight*(): int32\n"
-        /* 0920 */ "fn rlGetTextureIdDefault*(): uint32\n"
-        /* 0921 */ "fn rlGetShaderIdDefault*(): uint32\n"
-        /* 0922 */ "fn rlGetShaderLocsDefault*(): ^int32\n"
-        // Skipping rlLoadRenderBatch
-        // Skipping rlUnloadRenderBatch
-        // Skipping rlDrawRenderBatch
-        // Skipping rlSetRenderBatchActive
-        /* 0923 */ "fn rlDrawRenderBatchActive*()\n"
-        /* 0924 */ "fn rlCheckRenderBatchLimit*(vCount: int32): bool\n"
-        /* 0925 */ "fn rlSetTexture*(id: uint32)\n"
-        /* 0926 */ "fn rlLoadVertexArray*(): uint32\n"
-        /* 0927 */ "fn rlLoadVertexBuffer*(buffer: ^void, size: int32, dynamic: bool): uint32\n"
-        /* 0928 */ "fn rlLoadVertexBufferElement*(buffer: ^void, size: int32, dynamic: bool): uint32\n"
-        /* 0929 */ "fn rlUpdateVertexBuffer*(bufferId: uint32, data: ^void, dataSize: int32, offset: int32)\n"
-        /* 0930 */ "fn rlUpdateVertexBufferElements*(id: uint32, data: ^void, dataSize: int32, offset: int32)\n"
-        /* 0931 */ "fn rlUnloadVertexArray*(vaoId: uint32)\n"
-        /* 0932 */ "fn rlUnloadVertexBuffer*(vboId: uint32)\n"
-        /* 0933 */ "fn rlSetVertexAttribute*(index: uint32, compSize: int32, typeInput: int32, normalized: bool, stride: int32, pointer: ^void)\n"
-        /* 0934 */ "fn rlSetVertexAttributeDivisor*(index: uint32, divisor: int32)\n"
-        /* 0935 */ "fn rlSetVertexAttributeDefault*(locIndex: int32, value: ^void, attribType: int32, count: int32)\n"
-        /* 0936 */ "fn rlDrawVertexArray*(offset: int32, count: int32)\n"
-        /* 0937 */ "fn rlDrawVertexArrayElements*(offset: int32, count: int32, buffer: ^void)\n"
-        /* 0938 */ "fn rlDrawVertexArrayInstanced*(offset: int32, count: int32, instances: int32)\n"
-        /* 0939 */ "fn rlDrawVertexArrayElementsInstanced*(offset: int32, count: int32, buffer: ^void, instances: int32)\n"
-        /* 0940 */ "fn rlLoadTexture*(data: ^void, width: int32, height: int32, format: int32, mipmapCount: int32): uint32\n"
-        /* 0941 */ "fn rlLoadTextureDepth*(width: int32, height: int32, useRenderBuffer: bool): uint32\n"
-        /* 0942 */ "fn rlLoadTextureCubemap*(data: ^void, size: int32, format: int32): uint32\n"
-        /* 0943 */ "fn rlUpdateTexture*(id: uint32, offsetX: int32, offsetY: int32, width: int32, height: int32, format: int32, data: ^void)\n"
-        /* 0944 */ "fn rlGetGlTextureFormats*(format: int32, glInternalFormat: ^uint32, glFormat: ^uint32, glType: ^uint32)\n"
-        /* 0945 */ "fn rlGetPixelFormatName*(format: uint32): str\n"
-        /* 0946 */ "fn rlUnloadTexture*(id: uint32)\n"
-        /* 0947 */ "fn rlGenTextureMipmaps*(id: uint32, width: int32, height: int32, format: int32, mipmaps: ^int32)\n"
-        /* 0948 */ "fn rlReadTexturePixels*(id: uint32, width: int32, height: int32, format: int32): ^void\n"
-        /* 0949 */ "fn rlReadScreenPixels*(width: int32, height: int32): ^uint8\n"
-        /* 0950 */ "fn rlLoadFramebuffer*(width: int32, height: int32): uint32\n"
-        /* 0951 */ "fn rlFramebufferAttach*(fboId: uint32, texId: uint32, attachType: int32, texType: int32, mipLevel: int32)\n"
-        /* 0952 */ "fn rlFramebufferComplete*(id: uint32): bool\n"
-        /* 0953 */ "fn rlUnloadFramebuffer*(id: uint32)\n"
-        /* 0954 */ "fn rlLoadShaderCode*(vsCode: str, fsCode: str): uint32\n"
-        /* 0955 */ "fn rlCompileShader*(shaderCode: str, typeInput: int32): uint32\n"
-        /* 0956 */ "fn rlLoadShaderProgram*(vShaderId: uint32, fShaderId: uint32): uint32\n"
-        /* 0957 */ "fn rlUnloadShaderProgram*(id: uint32)\n"
-        /* 0958 */ "fn rlGetLocationUniform*(shaderId: uint32, uniformName: str): int32\n"
-        /* 0959 */ "fn rlGetLocationAttrib*(shaderId: uint32, attribName: str): int32\n"
-        /* 0960 */ "fn rlSetUniform*(locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
-        /* 0961 */ "fn rlSetUniformMatrix*(locIndex: int32, mat: Matrix)\n"
-        /* 0962 */ "fn rlSetUniformSampler*(locIndex: int32, textureId: uint32)\n"
-        /* 0963 */ "fn rlSetShader*(id: uint32, locs: ^int32)\n"
-        /* 0964 */ "fn rlLoadComputeShaderProgram*(shaderId: uint32): uint32\n"
-        /* 0965 */ "fn rlComputeShaderDispatch*(groupX: uint32, groupY: uint32, groupZ: uint32)\n"
-        /* 0966 */ "fn rlLoadShaderBuffer*(size: uint, data: ^void, usageHint: int32): uint32\n"
-        /* 0967 */ "fn rlUnloadShaderBuffer*(ssboId: uint32)\n"
-        /* 0968 */ "fn rlUpdateShaderBufferElements*(id: uint32, data: ^void, dataSize: uint, offset: uint)\n"
-        /* 0969 */ "fn rlGetShaderBufferSize*(id: uint32): uint\n"
-        /* 0970 */ "fn rlReadShaderBufferElements*(id: uint32, dest: ^void, count: uint, offset: uint)\n"
-        /* 0971 */ "fn rlBindShaderBuffer*(id: uint32, index: uint32)\n"
-        /* 0972 */ "fn rlCopyBuffersElements*(destId: uint32, srcId: uint32, destOffset: uint, srcOffset: uint, count: uint)\n"
-        /* 0973 */ "fn rlBindImageTexture*(id: uint32, index: uint32, format: uint32, readonly: int32)\n"
-        /* 0974 */ "fn rlGetMatrixModelview*(): Matrix\n"
-        /* 0975 */ "fn rlGetMatrixProjection*(): Matrix\n"
-        /* 0976 */ "fn rlGetMatrixTransform*(): Matrix\n"
-        /* 0977 */ "fn rlGetMatrixProjectionStereo*(eye: int32): Matrix\n"
-        /* 0978 */ "fn rlGetMatrixViewOffsetStereo*(eye: int32): Matrix\n"
-        /* 0979 */ "fn rlSetMatrixProjection*(proj: Matrix)\n"
-        /* 0980 */ "fn rlSetMatrixModelview*(view: Matrix)\n"
-        /* 0981 */ "fn rlSetMatrixProjectionStereo*(right: Matrix, left: Matrix)\n"
-        /* 0982 */ "fn rlSetMatrixViewOffsetStereo*(right: Matrix, left: Matrix)\n"
-        /* 0983 */ "fn rlLoadDrawCube*()\n"
-        /* 0984 */ "fn rlLoadDrawQuad*()\n"
-
+        /* 0246 */ "fn TraceLog*(errorType: int , message: str)\n"
+        /* 0247 */ "fn InitWindow*(width: int32, height: int32, title: str)\n"
+        /* 0248 */ "fn WindowShouldClose*(): bool\n"
+        /* 0249 */ "fn CloseWindow*()\n"
+        /* 0250 */ "fn IsWindowReady*(): bool\n"
+        /* 0251 */ "fn IsWindowFullscreen*(): bool\n"
+        /* 0252 */ "fn IsWindowHidden*(): bool\n"
+        /* 0253 */ "fn IsWindowMinimized*(): bool\n"
+        /* 0254 */ "fn IsWindowMaximized*(): bool\n"
+        /* 0255 */ "fn IsWindowFocused*(): bool\n"
+        /* 0256 */ "fn IsWindowResized*(): bool\n"
+        /* 0257 */ "fn IsWindowState*(flag: uint32): bool\n"
+        /* 0258 */ "fn SetWindowState*(flags: uint32)\n"
+        /* 0259 */ "fn ClearWindowState*(flags: uint32)\n"
+        /* 0260 */ "fn ToggleFullscreen*()\n"
+        /* 0261 */ "fn MaximizeWindow*()\n"
+        /* 0262 */ "fn MinimizeWindow*()\n"
+        /* 0263 */ "fn RestoreWindow*()\n"
+        /* 0264 */ "fn SetWindowIcon*(image: Image)\n"
+        /* 0265 */ "fn SetWindowTitle*(title: str)\n"
+        /* 0266 */ "fn SetWindowPosition*(x: int32, y: int32)\n"
+        /* 0267 */ "fn SetWindowMonitor*(monitor: int32)\n"
+        /* 0268 */ "fn SetWindowMinSize*(width: int32, height: int32)\n"
+        /* 0269 */ "fn SetWindowSize*(width: int32, height: int32)\n"
+        /* 0270 */ "fn SetWindowOpacity*(opacity: real32)\n"
+        /* 0271 */ "fn GetWindowHandle*(): ^void\n"
+        /* 0272 */ "fn GetScreenWidth*(): int32\n"
+        /* 0273 */ "fn GetScreenHeight*(): int32\n"
+        /* 0274 */ "fn GetRenderWidth*(): int32\n"
+        /* 0275 */ "fn GetRenderHeight*(): int32\n"
+        /* 0276 */ "fn GetMonitorCount*(): int32\n"
+        /* 0277 */ "fn GetCurrentMonitor*(): int32\n"
+        /* 0278 */ "fn GetMonitorPosition*(monitor: int32): Vector2\n"
+        /* 0279 */ "fn GetMonitorWidth*(monitor: int32): int32\n"
+        /* 0280 */ "fn GetMonitorHeight*(monitor: int32): int32\n"
+        /* 0281 */ "fn GetMonitorPhysicalWidth*(monitor: int32): int32\n"
+        /* 0282 */ "fn GetMonitorPhysicalHeight*(monitor: int32): int32\n"
+        /* 0283 */ "fn GetMonitorRefreshRate*(monitor: int32): int32\n"
+        /* 0284 */ "fn GetWindowPosition*(): Vector2\n"
+        /* 0285 */ "fn GetWindowScaleDPI*(): Vector2\n"
+        /* 0286 */ "fn GetMonitorName*(monitor: int32): str\n"
+        /* 0287 */ "fn SetClipboardText*(text: str)\n"
+        /* 0288 */ "fn GetClipboardText*(): str\n"
+        /* 0289 */ "fn EnableEventWaiting*()\n"
+        /* 0290 */ "fn DisableEventWaiting*()\n"
+        /* 0291 */ "fn SwapScreenBuffer*()\n"
+        /* 0292 */ "fn PollInputEvents*()\n"
+        /* 0293 */ "fn WaitTime*(seconds: real)\n"
+        /* 0294 */ "fn ShowCursor*()\n"
+        /* 0295 */ "fn HideCursor*()\n"
+        /* 0296 */ "fn IsCursorHidden*(): bool\n"
+        /* 0297 */ "fn EnableCursor*()\n"
+        /* 0298 */ "fn DisableCursor*()\n"
+        /* 0299 */ "fn IsCursorOnScreen*(): bool\n"
+        /* 0300 */ "fn ClearBackground*(color: Color)\n"
+        /* 0301 */ "fn BeginDrawing*()\n"
+        /* 0302 */ "fn EndDrawing*()\n"
+        /* 0303 */ "fn BeginMode2D*(camera: Camera2D)\n"
+        /* 0304 */ "fn EndMode2D*()\n"
+        /* 0305 */ "fn BeginMode3D*(camera: Camera3D)\n"
+        /* 0306 */ "fn EndMode3D*()\n"
+        /* 0307 */ "fn BeginTextureMode*(target: RenderTexture)\n"
+        /* 0308 */ "fn EndTextureMode*()\n"
+        /* 0309 */ "fn BeginShaderMode*(shader: Shader)\n"
+        /* 0310 */ "fn EndShaderMode*()\n"
+        /* 0311 */ "fn BeginBlendMode*(mode: int32)\n"
+        /* 0312 */ "fn EndBlendMode*()\n"
+        /* 0313 */ "fn BeginScissorMode*(x: int32, y: int32, width: int32, height: int32)\n"
+        /* 0314 */ "fn EndScissorMode*()\n"
+        /* 0315 */ "fn BeginVrStereoMode*(config: VrStereoConfig)\n"
+        /* 0316 */ "fn EndVrStereoMode*()\n"
+        /* 0317 */ "fn LoadVrStereoConfig*(device: VrDeviceInfo): VrStereoConfig\n"
+        /* 0318 */ "fn UnloadVrStereoConfig*(config: VrStereoConfig)\n"
+        /* 0319 */ "fn LoadShader*(vsFileName: str, fsFileName: str): Shader\n"
+        /* 0320 */ "fn LoadShaderFromMemory*(vsCode: str, fsCode: str): Shader\n"
+        /* 0321 */ "fn GetShaderLocation*(shader: Shader, uniformName: str): int32\n"
+        /* 0322 */ "fn GetShaderLocationAttrib*(shader: Shader, attribName: str): int32\n"
+        /* 0323 */ "fn SetShaderValue*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32)\n"
+        /* 0324 */ "fn SetShaderValueV*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
+        /* 0325 */ "fn SetShaderValueMatrix*(shader: Shader, locIndex: int32, mat: Matrix)\n"
+        /* 0326 */ "fn SetShaderValueTexture*(shader: Shader, locIndex: int32, texture: Texture)\n"
+        /* 0327 */ "fn UnloadShader*(shader: Shader)\n"
+        /* 0328 */ "fn GetMouseRay*(mousePosition: Vector2, camera: Camera3D): Ray\n"
+        /* 0329 */ "fn GetCameraMatrix*(camera: Camera3D): Matrix\n"
+        /* 0330 */ "fn GetCameraMatrix2D*(camera: Camera2D): Matrix\n"
+        /* 0331 */ "fn GetWorldToScreen*(position: Vector3, camera: Camera3D): Vector2\n"
+        /* 0332 */ "fn GetScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2\n"
+        /* 0333 */ "fn GetWorldToScreenEx*(position: Vector3, camera: Camera3D, width: int32, height: int32): Vector2\n"
+        /* 0334 */ "fn GetWorldToScreen2D*(position: Vector2, camera: Camera2D): Vector2\n"
+        /* 0335 */ "fn SetTargetFPS*(fps: int32)\n"
+        /* 0336 */ "fn GetFPS*(): int32\n"
+        /* 0337 */ "fn GetFrameTime*(): real32\n"
+        /* 0338 */ "fn GetTime*(): real\n"
+        /* 0339 */ "fn GetRandomValue*(min: int32, max: int32): int32\n"
+        /* 0340 */ "fn SetRandomSeed*(seed: uint32)\n"
+        /* 0341 */ "fn TakeScreenshot*(fileName: str)\n"
+        /* 0342 */ "fn SetConfigFlags*(flags: uint32)\n"
+        /* 0343 */ "// Skipping TraceLog\n"
+        /* 0344 */ "fn SetTraceLogLevel*(logLevel: int32)\n"
+        /* 0345 */ "fn MemAlloc*(size: int32): ^void\n"
+        /* 0346 */ "fn MemRealloc*(ptr: ^void, size: int32): ^void\n"
+        /* 0347 */ "fn MemFree*(ptr: ^void)\n"
+        /* 0348 */ "fn OpenURL*(url: str)\n"
+        /* 0349 */ "// Skipping SetTraceLogCallback\n"
+        /* 0350 */ "// Skipping SetLoadFileDataCallback\n"
+        /* 0351 */ "// Skipping SetSaveFileDataCallback\n"
+        /* 0352 */ "// Skipping SetLoadFileTextCallback\n"
+        /* 0353 */ "// Skipping SetSaveFileTextCallback\n"
+        /* 0354 */ "fn LoadFileData*(fileName: str, bytesRead: ^uint32): ^uint8\n"
+        /* 0355 */ "fn UnloadFileData*(data: ^uint8)\n"
+        /* 0356 */ "fn SaveFileData*(fileName: str, data: ^void, bytesToWrite: uint32): bool\n"
+        /* 0357 */ "fn ExportDataAsCode*(data: str, size: uint32, fileName: str): bool\n"
+        /* 0358 */ "fn LoadFileText*(fileName: str): str\n"
+        /* 0359 */ "fn UnloadFileText*(text: str)\n"
+        /* 0360 */ "fn SaveFileText*(fileName: str, text: str): bool\n"
+        /* 0361 */ "fn FileExists*(fileName: str): bool\n"
+        /* 0362 */ "fn DirectoryExists*(dirPath: str): bool\n"
+        /* 0363 */ "fn IsFileExtension*(fileName: str, ext: str): bool\n"
+        /* 0364 */ "fn GetFileLength*(fileName: str): int32\n"
+        /* 0365 */ "fn GetFileExtension*(fileName: str): str\n"
+        /* 0366 */ "fn GetFileName*(filePath: str): str\n"
+        /* 0367 */ "fn GetFileNameWithoutExt*(filePath: str): str\n"
+        /* 0368 */ "fn GetDirectoryPath*(filePath: str): str\n"
+        /* 0369 */ "fn GetPrevDirectoryPath*(dirPath: str): str\n"
+        /* 0370 */ "fn GetWorkingDirectory*(): str\n"
+        /* 0371 */ "fn GetApplicationDirectory*(): str\n"
+        /* 0372 */ "fn ChangeDirectory*(dir: str): bool\n"
+        /* 0373 */ "fn IsPathFile*(path: str): bool\n"
+        /* 0374 */ "fn LoadDirectoryFiles*(dirPath: str): FilePathList\n"
+        /* 0375 */ "fn LoadDirectoryFilesEx*(basePath: str, filter: str, scanSubdirs: bool): FilePathList\n"
+        /* 0376 */ "fn UnloadDirectoryFiles*(files: FilePathList)\n"
+        /* 0377 */ "fn IsFileDropped*(): bool\n"
+        /* 0378 */ "fn LoadDroppedFiles*(): FilePathList\n"
+        /* 0379 */ "fn UnloadDroppedFiles*(files: FilePathList)\n"
+        /* 0380 */ "fn GetFileModTime*(fileName: str): int\n"
+        /* 0381 */ "fn CompressData*(data: ^uint8, dataSize: int32, compDataSize: ^int32): ^uint8\n"
+        /* 0382 */ "fn DecompressData*(compData: ^uint8, compDataSize: int32, dataSize: ^int32): ^uint8\n"
+        /* 0383 */ "fn EncodeDataBase64*(data: ^uint8, dataSize: int32, outputSize: ^int32): str\n"
+        /* 0384 */ "fn DecodeDataBase64*(data: ^uint8, outputSize: ^int32): ^uint8\n"
+        /* 0385 */ "fn IsKeyPressed*(key: int32): bool\n"
+        /* 0386 */ "fn IsKeyDown*(key: int32): bool\n"
+        /* 0387 */ "fn IsKeyReleased*(key: int32): bool\n"
+        /* 0388 */ "fn IsKeyUp*(key: int32): bool\n"
+        /* 0389 */ "fn SetExitKey*(key: int32)\n"
+        /* 0390 */ "fn GetKeyPressed*(): int32\n"
+        /* 0391 */ "fn GetCharPressed*(): int32\n"
+        /* 0392 */ "fn IsGamepadAvailable*(gamepad: int32): bool\n"
+        /* 0393 */ "fn GetGamepadName*(gamepad: int32): str\n"
+        /* 0394 */ "fn IsGamepadButtonPressed*(gamepad: int32, button: int32): bool\n"
+        /* 0395 */ "fn IsGamepadButtonDown*(gamepad: int32, button: int32): bool\n"
+        /* 0396 */ "fn IsGamepadButtonReleased*(gamepad: int32, button: int32): bool\n"
+        /* 0397 */ "fn IsGamepadButtonUp*(gamepad: int32, button: int32): bool\n"
+        /* 0398 */ "fn GetGamepadButtonPressed*(): int32\n"
+        /* 0399 */ "fn GetGamepadAxisCount*(gamepad: int32): int32\n"
+        /* 0400 */ "fn GetGamepadAxisMovement*(gamepad: int32, axis: int32): real32\n"
+        /* 0401 */ "fn SetGamepadMappings*(mappings: str): int32\n"
+        /* 0402 */ "fn IsMouseButtonPressed*(button: int32): bool\n"
+        /* 0403 */ "fn IsMouseButtonDown*(button: int32): bool\n"
+        /* 0404 */ "fn IsMouseButtonReleased*(button: int32): bool\n"
+        /* 0405 */ "fn IsMouseButtonUp*(button: int32): bool\n"
+        /* 0406 */ "fn GetMouseX*(): int32\n"
+        /* 0407 */ "fn GetMouseY*(): int32\n"
+        /* 0408 */ "fn GetMousePosition*(): Vector2\n"
+        /* 0409 */ "fn GetMouseDelta*(): Vector2\n"
+        /* 0410 */ "fn SetMousePosition*(x: int32, y: int32)\n"
+        /* 0411 */ "fn SetMouseOffset*(offsetX: int32, offsetY: int32)\n"
+        /* 0412 */ "fn SetMouseScale*(scaleX: real32, scaleY: real32)\n"
+        /* 0413 */ "fn GetMouseWheelMove*(): real32\n"
+        /* 0414 */ "fn GetMouseWheelMoveV*(): Vector2\n"
+        /* 0415 */ "fn SetMouseCursor*(cursor: int32)\n"
+        /* 0416 */ "fn GetTouchX*(): int32\n"
+        /* 0417 */ "fn GetTouchY*(): int32\n"
+        /* 0418 */ "fn GetTouchPosition*(index: int32): Vector2\n"
+        /* 0419 */ "fn GetTouchPointId*(index: int32): int32\n"
+        /* 0420 */ "fn GetTouchPointCount*(): int32\n"
+        /* 0421 */ "fn SetGesturesEnabled*(flags: uint32)\n"
+        /* 0422 */ "fn IsGestureDetected*(gesture: int32): bool\n"
+        /* 0423 */ "fn GetGestureDetected*(): int32\n"
+        /* 0424 */ "fn GetGestureHoldDuration*(): real32\n"
+        /* 0425 */ "fn GetGestureDragVector*(): Vector2\n"
+        /* 0426 */ "fn GetGestureDragAngle*(): real32\n"
+        /* 0427 */ "fn GetGesturePinchVector*(): Vector2\n"
+        /* 0428 */ "fn GetGesturePinchAngle*(): real32\n"
+        /* 0429 */ "fn SetCameraMode*(camera: Camera3D, mode: int32)\n"
+        /* 0430 */ "fn UpdateCamera*(camera: ^Camera3D)\n"
+        /* 0431 */ "fn SetCameraPanControl*(keyPan: int32)\n"
+        /* 0432 */ "fn SetCameraAltControl*(keyAlt: int32)\n"
+        /* 0433 */ "fn SetCameraSmoothZoomControl*(keySmoothZoom: int32)\n"
+        /* 0434 */ "fn SetCameraMoveControls*(keyFront: int32, keyBack: int32, keyRight: int32, keyLeft: int32, keyUp: int32, keyDown: int32)\n"
+        /* 0435 */ "fn SetShapesTexture*(texture: Texture, source: Rectangle)\n"
+        /* 0436 */ "fn DrawPixel*(posX: int32, posY: int32, color: Color)\n"
+        /* 0437 */ "fn DrawPixelV*(position: Vector2, color: Color)\n"
+        /* 0438 */ "fn DrawLine*(startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
+        /* 0439 */ "fn DrawLineV*(startPos: Vector2, endPos: Vector2, color: Color)\n"
+        /* 0440 */ "fn DrawLineEx*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
+        /* 0441 */ "fn DrawLineBezier*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)\n"
+        /* 0442 */ "fn DrawLineBezierQuad*(startPos: Vector2, endPos: Vector2, controlPos: Vector2, thick: real32, color: Color)\n"
+        /* 0443 */ "fn DrawLineBezierCubic*(startPos: Vector2, endPos: Vector2, startControlPos: Vector2, endControlPos: Vector2, thick: real32, color: Color)\n"
+        /* 0444 */ "fn DrawLineStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
+        /* 0445 */ "fn DrawCircle*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
+        /* 0446 */ "fn DrawCircleSector*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0447 */ "fn DrawCircleSectorLines*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0448 */ "fn DrawCircleGradient*(centerX: int32, centerY: int32, radius: real32, color1: Color, color2: Color)\n"
+        /* 0449 */ "fn DrawCircleV*(center: Vector2, radius: real32, color: Color)\n"
+        /* 0450 */ "fn DrawCircleLines*(centerX: int32, centerY: int32, radius: real32, color: Color)\n"
+        /* 0451 */ "fn DrawEllipse*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
+        /* 0452 */ "fn DrawEllipseLines*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)\n"
+        /* 0453 */ "fn DrawRing*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0454 */ "fn DrawRingLines*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)\n"
+        /* 0455 */ "fn DrawRectangle*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
+        /* 0456 */ "fn DrawRectangleV*(position: Vector2, size: Vector2, color: Color)\n"
+        /* 0457 */ "fn DrawRectangleRec*(rec: Rectangle, color: Color)\n"
+        /* 0458 */ "fn DrawRectanglePro*(rec: Rectangle, origin: Vector2, rotation: real32, color: Color)\n"
+        /* 0459 */ "fn DrawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
+        /* 0460 */ "fn DrawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)\n"
+        /* 0461 */ "fn DrawRectangleGradientEx*(rec: Rectangle, col1: Color, col2: Color, col3: Color, col4: Color)\n"
+        /* 0462 */ "fn DrawRectangleLines*(posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
+        /* 0463 */ "fn DrawRectangleLinesEx*(rec: Rectangle, lineThick: real32, color: Color)\n"
+        /* 0464 */ "fn DrawRectangleRounded*(rec: Rectangle, roundness: real32, segments: int32, color: Color)\n"
+        /* 0465 */ "fn DrawRectangleRoundedLines*(rec: Rectangle, roundness: real32, segments: int32, lineThick: real32, color: Color)\n"
+        /* 0466 */ "fn DrawTriangle*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
+        /* 0467 */ "fn DrawTriangleLines*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)\n"
+        /* 0468 */ "fn DrawTriangleFan*(points: ^Vector2, pointCount: int32, color: Color)\n"
+        /* 0469 */ "fn DrawTriangleStrip*(points: ^Vector2, pointCount: int32, color: Color)\n"
+        /* 0470 */ "fn DrawPoly*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
+        /* 0471 */ "fn DrawPolyLines*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)\n"
+        /* 0472 */ "fn DrawPolyLinesEx*(center: Vector2, sides: int32, radius: real32, rotation: real32, lineThick: real32, color: Color)\n"
+        /* 0473 */ "fn CheckCollisionRecs*(rec1: Rectangle, rec2: Rectangle): bool\n"
+        /* 0474 */ "fn CheckCollisionCircles*(center1: Vector2, radius1: real32, center2: Vector2, radius2: real32): bool\n"
+        /* 0475 */ "fn CheckCollisionCircleRec*(center: Vector2, radius: real32, rec: Rectangle): bool\n"
+        /* 0476 */ "fn CheckCollisionPointRec*(point: Vector2, rec: Rectangle): bool\n"
+        /* 0477 */ "fn CheckCollisionPointCircle*(point: Vector2, center: Vector2, radius: real32): bool\n"
+        /* 0478 */ "fn CheckCollisionPointTriangle*(point: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): bool\n"
+        /* 0479 */ "fn CheckCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: ^Vector2): bool\n"
+        /* 0480 */ "fn CheckCollisionPointLine*(point: Vector2, p1: Vector2, p2: Vector2, threshold: int32): bool\n"
+        /* 0481 */ "fn GetCollisionRec*(rec1: Rectangle, rec2: Rectangle): Rectangle\n"
+        /* 0482 */ "fn LoadImage*(fileName: str): Image\n"
+        /* 0483 */ "fn LoadImageRaw*(fileName: str, width: int32, height: int32, format: int32, headerSize: int32): Image\n"
+        /* 0484 */ "fn LoadImageAnim*(fileName: str, frames: ^int32): Image\n"
+        /* 0485 */ "fn LoadImageFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Image\n"
+        /* 0486 */ "fn LoadImageFromTexture*(texture: Texture): Image\n"
+        /* 0487 */ "fn LoadImageFromScreen*(): Image\n"
+        /* 0488 */ "fn UnloadImage*(image: Image)\n"
+        /* 0489 */ "fn ExportImage*(image: Image, fileName: str): bool\n"
+        /* 0490 */ "fn ExportImageAsCode*(image: Image, fileName: str): bool\n"
+        /* 0491 */ "fn GenImageColor*(width: int32, height: int32, color: Color): Image\n"
+        /* 0492 */ "fn GenImageGradientV*(width: int32, height: int32, top: Color, bottom: Color): Image\n"
+        /* 0493 */ "fn GenImageGradientH*(width: int32, height: int32, left: Color, right: Color): Image\n"
+        /* 0494 */ "fn GenImageGradientRadial*(width: int32, height: int32, density: real32, inner: Color, outer: Color): Image\n"
+        /* 0495 */ "fn GenImageChecked*(width: int32, height: int32, checksX: int32, checksY: int32, col1: Color, col2: Color): Image\n"
+        /* 0496 */ "fn GenImageWhiteNoise*(width: int32, height: int32, factor: real32): Image\n"
+        /* 0497 */ "fn GenImageCellular*(width: int32, height: int32, tileSize: int32): Image\n"
+        /* 0498 */ "fn ImageCopy*(image: Image): Image\n"
+        /* 0499 */ "fn ImageFromImage*(image: Image, rec: Rectangle): Image\n"
+        /* 0500 */ "fn ImageText*(text: str, fontSize: int32, color: Color): Image\n"
+        /* 0501 */ "fn ImageTextEx*(font: Font, text: str, fontSize: real32, spacing: real32, tint: Color): Image\n"
+        /* 0502 */ "fn ImageFormat*(image: ^Image, newFormat: int32)\n"
+        /* 0503 */ "fn ImageToPOT*(image: ^Image, fill: Color)\n"
+        /* 0504 */ "fn ImageCrop*(image: ^Image, crop: Rectangle)\n"
+        /* 0505 */ "fn ImageAlphaCrop*(image: ^Image, threshold: real32)\n"
+        /* 0506 */ "fn ImageAlphaClear*(image: ^Image, color: Color, threshold: real32)\n"
+        /* 0507 */ "fn ImageAlphaMask*(image: ^Image, alphaMask: Image)\n"
+        /* 0508 */ "fn ImageAlphaPremultiply*(image: ^Image)\n"
+        /* 0509 */ "fn ImageResize*(image: ^Image, newWidth: int32, newHeight: int32)\n"
+        /* 0510 */ "fn ImageResizeNN*(image: ^Image, newWidth: int32, newHeight: int32)\n"
+        /* 0511 */ "fn ImageResizeCanvas*(image: ^Image, newWidth: int32, newHeight: int32, offsetX: int32, offsetY: int32, fill: Color)\n"
+        /* 0512 */ "fn ImageMipmaps*(image: ^Image)\n"
+        /* 0513 */ "fn ImageDither*(image: ^Image, rBpp: int32, gBpp: int32, bBpp: int32, aBpp: int32)\n"
+        /* 0514 */ "fn ImageFlipVertical*(image: ^Image)\n"
+        /* 0515 */ "fn ImageFlipHorizontal*(image: ^Image)\n"
+        /* 0516 */ "fn ImageRotateCW*(image: ^Image)\n"
+        /* 0517 */ "fn ImageRotateCCW*(image: ^Image)\n"
+        /* 0518 */ "fn ImageColorTint*(image: ^Image, color: Color)\n"
+        /* 0519 */ "fn ImageColorInvert*(image: ^Image)\n"
+        /* 0520 */ "fn ImageColorGrayscale*(image: ^Image)\n"
+        /* 0521 */ "fn ImageColorContrast*(image: ^Image, contrast: real32)\n"
+        /* 0522 */ "fn ImageColorBrightness*(image: ^Image, brightness: int32)\n"
+        /* 0523 */ "fn ImageColorReplace*(image: ^Image, color: Color, replace: Color)\n"
+        /* 0524 */ "fn LoadImageColors*(image: Image): ^Color\n"
+        /* 0525 */ "fn LoadImagePalette*(image: Image, maxPaletteSize: int32, colorCount: ^int32): ^Color\n"
+        /* 0526 */ "fn UnloadImageColors*(colors: ^Color)\n"
+        /* 0527 */ "fn UnloadImagePalette*(colors: ^Color)\n"
+        /* 0528 */ "fn GetImageAlphaBorder*(image: Image, threshold: real32): Rectangle\n"
+        /* 0529 */ "fn GetImageColor*(image: Image, x: int32, y: int32): Color\n"
+        /* 0530 */ "fn ImageClearBackground*(dst: ^Image, color: Color)\n"
+        /* 0531 */ "fn ImageDrawPixel*(dst: ^Image, posX: int32, posY: int32, color: Color)\n"
+        /* 0532 */ "fn ImageDrawPixelV*(dst: ^Image, position: Vector2, color: Color)\n"
+        /* 0533 */ "fn ImageDrawLine*(dst: ^Image, startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)\n"
+        /* 0534 */ "fn ImageDrawLineV*(dst: ^Image, start: Vector2, end: Vector2, color: Color)\n"
+        /* 0535 */ "fn ImageDrawCircle*(dst: ^Image, centerX: int32, centerY: int32, radius: int32, color: Color)\n"
+        /* 0536 */ "fn ImageDrawCircleV*(dst: ^Image, center: Vector2, radius: int32, color: Color)\n"
+        /* 0537 */ "fn ImageDrawRectangle*(dst: ^Image, posX: int32, posY: int32, width: int32, height: int32, color: Color)\n"
+        /* 0538 */ "fn ImageDrawRectangleV*(dst: ^Image, position: Vector2, size: Vector2, color: Color)\n"
+        /* 0539 */ "fn ImageDrawRectangleRec*(dst: ^Image, rec: Rectangle, color: Color)\n"
+        /* 0540 */ "fn ImageDrawRectangleLines*(dst: ^Image, rec: Rectangle, thick: int32, color: Color)\n"
+        /* 0541 */ "fn ImageDraw*(dst: ^Image, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color)\n"
+        /* 0542 */ "fn ImageDrawText*(dst: ^Image, text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
+        /* 0543 */ "fn ImageDrawTextEx*(dst: ^Image, font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0544 */ "fn LoadTexture*(fileName: str): Texture\n"
+        /* 0545 */ "fn LoadTextureFromImage*(image: Image): Texture\n"
+        /* 0546 */ "fn LoadTextureCubemap*(image: Image, layout: int32): Texture\n"
+        /* 0547 */ "fn LoadRenderTexture*(width: int32, height: int32): RenderTexture\n"
+        /* 0548 */ "fn UnloadTexture*(texture: Texture)\n"
+        /* 0549 */ "fn UnloadRenderTexture*(target: RenderTexture)\n"
+        /* 0550 */ "fn UpdateTexture*(texture: Texture, pixels: ^void)\n"
+        /* 0551 */ "fn UpdateTextureRec*(texture: Texture, rec: Rectangle, pixels: ^void)\n"
+        /* 0552 */ "fn GenTextureMipmaps*(texture: ^Texture)\n"
+        /* 0553 */ "fn SetTextureFilter*(texture: Texture, filter: int32)\n"
+        /* 0554 */ "fn SetTextureWrap*(texture: Texture, wrap: int32)\n"
+        /* 0555 */ "fn DrawTexture*(texture: Texture, posX: int32, posY: int32, tint: Color)\n"
+        /* 0556 */ "fn DrawTextureV*(texture: Texture, position: Vector2, tint: Color)\n"
+        /* 0557 */ "fn DrawTextureEx*(texture: Texture, position: Vector2, rotation: real32, scale: real32, tint: Color)\n"
+        /* 0558 */ "fn DrawTextureRec*(texture: Texture, source: Rectangle, position: Vector2, tint: Color)\n"
+        /* 0559 */ "fn DrawTextureQuad*(texture: Texture, tiling: Vector2, offset: Vector2, quad: Rectangle, tint: Color)\n"
+        /* 0560 */ "fn DrawTextureTiled*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, scale: real32, tint: Color)\n"
+        /* 0561 */ "fn DrawTexturePro*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
+        /* 0562 */ "fn DrawTextureNPatch*(texture: Texture, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)\n"
+        /* 0563 */ "fn DrawTexturePoly*(texture: Texture, center: Vector2, points: ^Vector2, texcoords: ^Vector2, pointCount: int32, tint: Color)\n"
+        /* 0564 */ "fn Fade*(color: Color, alpha: real32): Color\n"
+        /* 0565 */ "fn ColorToInt*(color: Color): int32\n"
+        /* 0566 */ "fn ColorNormalize*(color: Color): Vector4\n"
+        /* 0567 */ "fn ColorFromNormalized*(normalized: Vector4): Color\n"
+        /* 0568 */ "fn ColorToHSV*(color: Color): Vector3\n"
+        /* 0569 */ "fn ColorFromHSV*(hue: real32, saturation: real32, value: real32): Color\n"
+        /* 0570 */ "fn ColorAlpha*(color: Color, alpha: real32): Color\n"
+        /* 0571 */ "fn ColorAlphaBlend*(dst: Color, src: Color, tint: Color): Color\n"
+        /* 0572 */ "fn GetColor*(hexValue: uint32): Color\n"
+        /* 0573 */ "fn GetPixelColor*(srcPtr: ^void, format: int32): Color\n"
+        /* 0574 */ "fn SetPixelColor*(dstPtr: ^void, color: Color, format: int32)\n"
+        /* 0575 */ "fn GetPixelDataSize*(width: int32, height: int32, format: int32): int32\n"
+        /* 0576 */ "fn GetFontDefault*(): Font\n"
+        /* 0577 */ "fn LoadFont*(fileName: str): Font\n"
+        /* 0578 */ "fn LoadFontEx*(fileName: str, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
+        /* 0579 */ "fn LoadFontFromImage*(image: Image, key: Color, firstChar: int32): Font\n"
+        /* 0580 */ "fn LoadFontFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font\n"
+        /* 0581 */ "// Skipping LoadFontData\n"
+        /* 0582 */ "fn GenImageFontAtlas*(chars: ^void, recs: ^void, glyphCount: int32, fontSize: int32, padding: int32, packMethod: int32): Image\n"
+        /* 0583 */ "fn UnloadFontData*(chars: ^GlyphInfo, glyphCount: int32)\n"
+        /* 0584 */ "fn UnloadFont*(font: Font)\n"
+        /* 0585 */ "fn ExportFontAsCode*(font: Font, fileName: str): bool\n"
+        /* 0586 */ "fn DrawFPS*(posX: int32, posY: int32)\n"
+        /* 0587 */ "fn DrawText*(text: str, posX: int32, posY: int32, fontSize: int32, color: Color)\n"
+        /* 0588 */ "fn DrawTextEx*(font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0589 */ "fn DrawTextPro*(font: Font, text: str, position: Vector2, origin: Vector2, rotation: real32, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0590 */ "fn DrawTextCodepoint*(font: Font, codepoint: int32, position: Vector2, fontSize: real32, tint: Color)\n"
+        /* 0591 */ "fn DrawTextCodepoints*(font: Font, codepoints: ^int32, count: int32, position: Vector2, fontSize: real32, spacing: real32, tint: Color)\n"
+        /* 0592 */ "fn MeasureText*(text: str, fontSize: int32): int32\n"
+        /* 0593 */ "fn MeasureTextEx*(font: Font, text: str, fontSize: real32, spacing: real32): Vector2\n"
+        /* 0594 */ "fn GetGlyphIndex*(font: Font, codepoint: int32): int32\n"
+        /* 0595 */ "fn GetGlyphInfo*(font: Font, codepoint: int32): GlyphInfo\n"
+        /* 0596 */ "fn GetGlyphAtlasRec*(font: Font, codepoint: int32): Rectangle\n"
+        /* 0597 */ "fn LoadCodepoints*(text: str, count: ^int32): ^int32\n"
+        /* 0598 */ "fn UnloadCodepoints*(codepoints: ^int32)\n"
+        /* 0599 */ "fn GetCodepointCount*(text: str): int32\n"
+        /* 0600 */ "fn GetCodepoint*(text: str, bytesProcessed: ^int32): int32\n"
+        /* 0601 */ "fn CodepointToUTF8*(codepoint: int32, byteSize: ^int32): str\n"
+        /* 0602 */ "fn TextCodepointsToUTF8*(codepoints: ^int32, length: int32): str\n"
+        /* 0603 */ "fn TextCopy*(dst: str, src: str): int32\n"
+        /* 0604 */ "fn TextIsEqual*(text1: str, text2: str): bool\n"
+        /* 0605 */ "fn TextLength*(text: str): uint32\n"
+        /* 0606 */ "// Skipping TextFormat\n"
+        /* 0607 */ "fn TextSubtext*(text: str, position: int32, length: int32): str\n"
+        /* 0608 */ "fn TextReplace*(text: str, replace: str, by: str): str\n"
+        /* 0609 */ "fn TextInsert*(text: str, insert: str, position: int32): str\n"
+        /* 0610 */ "fn TextJoin*(textList: ^str, count: int32, delimiter: str): str\n"
+        /* 0611 */ "fn TextSplit*(text: str, delimiter: char, count: ^int32): ^str\n"
+        /* 0612 */ "fn TextAppend*(text: str, append: str, position: ^int32)\n"
+        /* 0613 */ "fn TextFindIndex*(text: str, find: str): int32\n"
+        /* 0614 */ "fn TextToUpper*(text: str): str\n"
+        /* 0615 */ "fn TextToLower*(text: str): str\n"
+        /* 0616 */ "fn TextToPascal*(text: str): str\n"
+        /* 0617 */ "fn TextToInteger*(text: str): int32\n"
+        /* 0618 */ "fn DrawLine3D*(startPos: Vector3, endPos: Vector3, color: Color)\n"
+        /* 0619 */ "fn DrawPoint3D*(position: Vector3, color: Color)\n"
+        /* 0620 */ "fn DrawCircle3D*(center: Vector3, radius: real32, rotationAxis: Vector3, rotationAngle: real32, color: Color)\n"
+        /* 0621 */ "fn DrawTriangle3D*(v1: Vector3, v2: Vector3, v3: Vector3, color: Color)\n"
+        /* 0622 */ "fn DrawTriangleStrip3D*(points: ^Vector3, pointCount: int32, color: Color)\n"
+        /* 0623 */ "fn DrawCube*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0624 */ "fn DrawCubeV*(position: Vector3, size: Vector3, color: Color)\n"
+        /* 0625 */ "fn DrawCubeWires*(position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0626 */ "fn DrawCubeWiresV*(position: Vector3, size: Vector3, color: Color)\n"
+        /* 0627 */ "fn DrawCubeTexture*(texture: Texture, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0628 */ "fn DrawCubeTextureRec*(texture: Texture, source: Rectangle, position: Vector3, width: real32, height: real32, length: real32, color: Color)\n"
+        /* 0629 */ "fn DrawSphere*(centerPos: Vector3, radius: real32, color: Color)\n"
+        /* 0630 */ "fn DrawSphereEx*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
+        /* 0631 */ "fn DrawSphereWires*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)\n"
+        /* 0632 */ "fn DrawCylinder*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
+        /* 0633 */ "fn DrawCylinderEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
+        /* 0634 */ "fn DrawCylinderWires*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)\n"
+        /* 0635 */ "fn DrawCylinderWiresEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)\n"
+        /* 0636 */ "fn DrawPlane*(centerPos: Vector3, size: Vector2, color: Color)\n"
+        /* 0637 */ "fn DrawRay*(ray: Ray, color: Color)\n"
+        /* 0638 */ "fn DrawGrid*(slices: int32, spacing: real32)\n"
+        /* 0639 */ "fn LoadModel*(fileName: str): Model\n"
+        /* 0640 */ "fn LoadModelFromMesh*(mesh: Mesh): Model\n"
+        /* 0641 */ "fn UnloadModel*(model: Model)\n"
+        /* 0642 */ "fn UnloadModelKeepMeshes*(model: Model)\n"
+        /* 0643 */ "fn GetModelBoundingBox*(model: Model): BoundingBox\n"
+        /* 0644 */ "fn DrawModel*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
+        /* 0645 */ "fn DrawModelEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
+        /* 0646 */ "fn DrawModelWires*(model: Model, position: Vector3, scale: real32, tint: Color)\n"
+        /* 0647 */ "fn DrawModelWiresEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)\n"
+        /* 0648 */ "fn DrawBoundingBox*(box: BoundingBox, color: Color)\n"
+        /* 0649 */ "fn DrawBillboard*(camera: Camera3D, texture: Texture, position: Vector3, size: real32, tint: Color)\n"
+        /* 0650 */ "fn DrawBillboardRec*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, size: Vector2, tint: Color)\n"
+        /* 0651 */ "fn DrawBillboardPro*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, up: Vector3, size: Vector2, origin: Vector2, rotation: real32, tint: Color)\n"
+        /* 0652 */ "fn UploadMesh*(mesh: ^Mesh, dynamic: bool)\n"
+        /* 0653 */ "fn UpdateMeshBuffer*(mesh: Mesh, index: int32, data: ^void, dataSize: int32, offset: int32)\n"
+        /* 0654 */ "fn UnloadMesh*(mesh: Mesh)\n"
+        /* 0655 */ "fn DrawMesh*(mesh: Mesh, material: Material, transform: Matrix)\n"
+        /* 0656 */ "fn DrawMeshInstanced*(mesh: Mesh, material: Material, transforms: ^Matrix, instances: int32)\n"
+        /* 0657 */ "fn ExportMesh*(mesh: Mesh, fileName: str): bool\n"
+        /* 0658 */ "fn GetMeshBoundingBox*(mesh: Mesh): BoundingBox\n"
+        /* 0659 */ "fn GenMeshTangents*(mesh: ^Mesh)\n"
+        /* 0660 */ "fn GenMeshPoly*(sides: int32, radius: real32): Mesh\n"
+        /* 0661 */ "fn GenMeshPlane*(width: real32, length: real32, resX: int32, resZ: int32): Mesh\n"
+        /* 0662 */ "fn GenMeshCube*(width: real32, height: real32, length: real32): Mesh\n"
+        /* 0663 */ "fn GenMeshSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
+        /* 0664 */ "fn GenMeshHemiSphere*(radius: real32, rings: int32, slices: int32): Mesh\n"
+        /* 0665 */ "fn GenMeshCylinder*(radius: real32, height: real32, slices: int32): Mesh\n"
+        /* 0666 */ "fn GenMeshCone*(radius: real32, height: real32, slices: int32): Mesh\n"
+        /* 0667 */ "fn GenMeshTorus*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
+        /* 0668 */ "fn GenMeshKnot*(radius: real32, size: real32, radSeg: int32, sides: int32): Mesh\n"
+        /* 0669 */ "fn GenMeshHeightmap*(heightmap: Image, size: Vector3): Mesh\n"
+        /* 0670 */ "fn GenMeshCubicmap*(cubicmap: Image, cubeSize: Vector3): Mesh\n"
+        /* 0671 */ "fn LoadMaterials*(fileName: str, materialCount: ^int32): ^Material\n"
+        /* 0672 */ "fn LoadMaterialDefault*(): Material\n"
+        /* 0673 */ "fn UnloadMaterial*(material: Material)\n"
+        /* 0674 */ "fn SetMaterialTexture*(material: ^Material, mapType: int32, texture: Texture)\n"
+        /* 0675 */ "fn SetModelMeshMaterial*(model: ^Model, meshId: int32, materialId: int32)\n"
+        /* 0676 */ "fn LoadModelAnimations*(fileName: str, animCount: ^uint32): ^ModelAnimation\n"
+        /* 0677 */ "fn UpdateModelAnimation*(model: Model, anim: ModelAnimation, frame: int32)\n"
+        /* 0678 */ "fn UnloadModelAnimation*(anim: ModelAnimation)\n"
+        /* 0679 */ "fn UnloadModelAnimations*(animations: ^ModelAnimation, count: uint32)\n"
+        /* 0680 */ "fn IsModelAnimationValid*(model: Model, anim: ModelAnimation): bool\n"
+        /* 0681 */ "fn CheckCollisionSpheres*(center1: Vector3, radius1: real32, center2: Vector3, radius2: real32): bool\n"
+        /* 0682 */ "fn CheckCollisionBoxes*(box1: BoundingBox, box2: BoundingBox): bool\n"
+        /* 0683 */ "fn CheckCollisionBoxSphere*(box: BoundingBox, center: Vector3, radius: real32): bool\n"
+        /* 0684 */ "fn GetRayCollisionSphere*(ray: Ray, center: Vector3, radius: real32): RayCollision\n"
+        /* 0685 */ "fn GetRayCollisionBox*(ray: Ray, box: BoundingBox): RayCollision\n"
+        /* 0686 */ "fn GetRayCollisionMesh*(ray: Ray, mesh: Mesh, transform: Matrix): RayCollision\n"
+        /* 0687 */ "fn GetRayCollisionTriangle*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3): RayCollision\n"
+        /* 0688 */ "fn GetRayCollisionQuad*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3, p4: Vector3): RayCollision\n"
+        /* 0689 */ "fn InitAudioDevice*()\n"
+        /* 0690 */ "fn CloseAudioDevice*()\n"
+        /* 0691 */ "fn IsAudioDeviceReady*(): bool\n"
+        /* 0692 */ "fn SetMasterVolume*(volume: real32)\n"
+        /* 0693 */ "fn LoadWave*(fileName: str): Wave\n"
+        /* 0694 */ "fn LoadWaveFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Wave\n"
+        /* 0695 */ "fn LoadSound*(fileName: str): Sound\n"
+        /* 0696 */ "fn LoadSoundFromWave*(wave: Wave): Sound\n"
+        /* 0697 */ "fn UpdateSound*(sound: Sound, data: ^void, sampleCount: int32)\n"
+        /* 0698 */ "fn UnloadWave*(wave: Wave)\n"
+        /* 0699 */ "fn UnloadSound*(sound: Sound)\n"
+        /* 0700 */ "fn ExportWave*(wave: Wave, fileName: str): bool\n"
+        /* 0701 */ "fn ExportWaveAsCode*(wave: Wave, fileName: str): bool\n"
+        /* 0702 */ "fn PlaySound*(sound: Sound)\n"
+        /* 0703 */ "fn StopSound*(sound: Sound)\n"
+        /* 0704 */ "fn PauseSound*(sound: Sound)\n"
+        /* 0705 */ "fn ResumeSound*(sound: Sound)\n"
+        /* 0706 */ "fn PlaySoundMulti*(sound: Sound)\n"
+        /* 0707 */ "fn StopSoundMulti*()\n"
+        /* 0708 */ "fn GetSoundsPlaying*(): int32\n"
+        /* 0709 */ "fn IsSoundPlaying*(sound: Sound): bool\n"
+        /* 0710 */ "fn SetSoundVolume*(sound: Sound, volume: real32)\n"
+        /* 0711 */ "fn SetSoundPitch*(sound: Sound, pitch: real32)\n"
+        /* 0712 */ "fn SetSoundPan*(sound: Sound, pan: real32)\n"
+        /* 0713 */ "fn WaveCopy*(wave: Wave): Wave\n"
+        /* 0714 */ "fn WaveCrop*(wave: ^Wave, initSample: int32, finalSample: int32)\n"
+        /* 0715 */ "fn WaveFormat*(wave: ^Wave, sampleRate: int32, sampleSize: int32, channels: int32)\n"
+        /* 0716 */ "fn LoadWaveSamples*(wave: Wave): ^real32\n"
+        /* 0717 */ "fn UnloadWaveSamples*(samples: ^real32)\n"
+        /* 0718 */ "fn LoadMusicStream*(fileName: str): Music\n"
+        /* 0719 */ "fn LoadMusicStreamFromMemory*(fileType: str, data: ^uint8, dataSize: int32): Music\n"
+        /* 0720 */ "fn UnloadMusicStream*(music: Music)\n"
+        /* 0721 */ "fn PlayMusicStream*(music: Music)\n"
+        /* 0722 */ "fn IsMusicStreamPlaying*(music: Music): bool\n"
+        /* 0723 */ "fn UpdateMusicStream*(music: Music)\n"
+        /* 0724 */ "fn StopMusicStream*(music: Music)\n"
+        /* 0725 */ "fn PauseMusicStream*(music: Music)\n"
+        /* 0726 */ "fn ResumeMusicStream*(music: Music)\n"
+        /* 0727 */ "fn SeekMusicStream*(music: Music, position: real32)\n"
+        /* 0728 */ "fn SetMusicVolume*(music: Music, volume: real32)\n"
+        /* 0729 */ "fn SetMusicPitch*(music: Music, pitch: real32)\n"
+        /* 0730 */ "fn SetMusicPan*(music: Music, pan: real32)\n"
+        /* 0731 */ "fn GetMusicTimeLength*(music: Music): real32\n"
+        /* 0732 */ "fn GetMusicTimePlayed*(music: Music): real32\n"
+        /* 0733 */ "fn LoadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream\n"
+        /* 0734 */ "fn UnloadAudioStream*(stream: AudioStream)\n"
+        /* 0735 */ "fn UpdateAudioStream*(stream: AudioStream, data: ^void, frameCount: int32)\n"
+        /* 0736 */ "fn IsAudioStreamProcessed*(stream: AudioStream): bool\n"
+        /* 0737 */ "fn PlayAudioStream*(stream: AudioStream)\n"
+        /* 0738 */ "fn PauseAudioStream*(stream: AudioStream)\n"
+        /* 0739 */ "fn ResumeAudioStream*(stream: AudioStream)\n"
+        /* 0740 */ "fn IsAudioStreamPlaying*(stream: AudioStream): bool\n"
+        /* 0741 */ "fn StopAudioStream*(stream: AudioStream)\n"
+        /* 0742 */ "fn SetAudioStreamVolume*(stream: AudioStream, volume: real32)\n"
+        /* 0743 */ "fn SetAudioStreamPitch*(stream: AudioStream, pitch: real32)\n"
+        /* 0744 */ "fn SetAudioStreamPan*(stream: AudioStream, pan: real32)\n"
+        /* 0745 */ "fn SetAudioStreamBufferSizeDefault*(size: int32)\n"
+        /* 0746 */ "// Skipping SetAudioStreamCallback\n"
+        /* 0747 */ "// Skipping AttachAudioStreamProcessor\n"
+        /* 0748 */ "// Skipping DetachAudioStreamProcessor\n"
+        /* 0749 */ "fn Clamp*(value: real32, min: real32, max: real32): real32\n"
+        /* 0750 */ "fn Lerp*(start: real32, end: real32, amount: real32): real32\n"
+        /* 0751 */ "fn Normalize*(value: real32, start: real32, end: real32): real32\n"
+        /* 0752 */ "fn Remap*(value: real32, inputStart: real32, inputEnd: real32, outputStart: real32, outputEnd: real32): real32\n"
+        /* 0753 */ "fn Wrap*(value: real32, min: real32, max: real32): real32\n"
+        /* 0754 */ "fn FloatEquals*(x: real32, y: real32): int32\n"
+        /* 0755 */ "fn Vector2Zero*(): Vector2\n"
+        /* 0756 */ "fn Vector2One*(): Vector2\n"
+        /* 0757 */ "fn Vector2Add*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0758 */ "fn Vector2AddValue*(v: Vector2, add: real32): Vector2\n"
+        /* 0759 */ "fn Vector2Subtract*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0760 */ "fn Vector2SubtractValue*(v: Vector2, sub: real32): Vector2\n"
+        /* 0761 */ "fn Vector2Length*(v: Vector2): real32\n"
+        /* 0762 */ "fn Vector2LengthSqr*(v: Vector2): real32\n"
+        /* 0763 */ "fn Vector2DotProduct*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0764 */ "fn Vector2Distance*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0765 */ "fn Vector2DistanceSqr*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0766 */ "fn Vector2Angle*(v1: Vector2, v2: Vector2): real32\n"
+        /* 0767 */ "fn Vector2Scale*(v: Vector2, scale: real32): Vector2\n"
+        /* 0768 */ "fn Vector2Multiply*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0769 */ "fn Vector2Negate*(v: Vector2): Vector2\n"
+        /* 0770 */ "fn Vector2Divide*(v1: Vector2, v2: Vector2): Vector2\n"
+        /* 0771 */ "fn Vector2Normalize*(v: Vector2): Vector2\n"
+        /* 0772 */ "fn Vector2Transform*(v: Vector2, mat: Matrix): Vector2\n"
+        /* 0773 */ "fn Vector2Lerp*(v1: Vector2, v2: Vector2, amount: real32): Vector2\n"
+        /* 0774 */ "fn Vector2Reflect*(v: Vector2, normal: Vector2): Vector2\n"
+        /* 0775 */ "fn Vector2Rotate*(v: Vector2, angle: real32): Vector2\n"
+        /* 0776 */ "fn Vector2MoveTowards*(v: Vector2, target: Vector2, maxDistance: real32): Vector2\n"
+        /* 0777 */ "fn Vector2Invert*(v: Vector2): Vector2\n"
+        /* 0778 */ "fn Vector2Clamp*(v: Vector2, min: Vector2, max: Vector2): Vector2\n"
+        /* 0779 */ "fn Vector2ClampValue*(v: Vector2, min: real32, max: real32): Vector2\n"
+        /* 0780 */ "fn Vector2Equals*(p: Vector2, q: Vector2): int32\n"
+        /* 0781 */ "fn Vector3Zero*(): Vector3\n"
+        /* 0782 */ "fn Vector3One*(): Vector3\n"
+        /* 0783 */ "fn Vector3Add*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0784 */ "fn Vector3AddValue*(v: Vector3, add: real32): Vector3\n"
+        /* 0785 */ "fn Vector3Subtract*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0786 */ "fn Vector3SubtractValue*(v: Vector3, sub: real32): Vector3\n"
+        /* 0787 */ "fn Vector3Scale*(v: Vector3, scalar: real32): Vector3\n"
+        /* 0788 */ "fn Vector3Multiply*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0789 */ "fn Vector3CrossProduct*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0790 */ "fn Vector3Perpendicular*(v: Vector3): Vector3\n"
+        /* 0791 */ "fn Vector3Length*(v: Vector3): real32\n"
+        /* 0792 */ "fn Vector3LengthSqr*(v: Vector3): real32\n"
+        /* 0793 */ "fn Vector3DotProduct*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0794 */ "fn Vector3Distance*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0795 */ "fn Vector3DistanceSqr*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0796 */ "fn Vector3Angle*(v1: Vector3, v2: Vector3): real32\n"
+        /* 0797 */ "fn Vector3Negate*(v: Vector3): Vector3\n"
+        /* 0798 */ "fn Vector3Divide*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0799 */ "fn Vector3Normalize*(v: Vector3): Vector3\n"
+        /* 0800 */ "fn Vector3OrthoNormalize*(v1: ^Vector3, v2: ^Vector3)\n"
+        /* 0801 */ "fn Vector3Transform*(v: Vector3, mat: Matrix): Vector3\n"
+        /* 0802 */ "fn Vector3RotateByQuaternion*(v: Vector3, q: Vector4): Vector3\n"
+        /* 0803 */ "fn Vector3RotateByAxisAngle*(v: Vector3, axis: Vector3, angle: real32): Vector3\n"
+        /* 0804 */ "fn Vector3Lerp*(v1: Vector3, v2: Vector3, amount: real32): Vector3\n"
+        /* 0805 */ "fn Vector3Reflect*(v: Vector3, normal: Vector3): Vector3\n"
+        /* 0806 */ "fn Vector3Min*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0807 */ "fn Vector3Max*(v1: Vector3, v2: Vector3): Vector3\n"
+        /* 0808 */ "fn Vector3Barycenter*(p: Vector3, a: Vector3, b: Vector3, c: Vector3): Vector3\n"
+        /* 0809 */ "fn Vector3Unproject*(source: Vector3, projection: Matrix, view: Matrix): Vector3\n"
+        /* 0810 */ "fn Vector3ToFloatV*(v: Vector3): float3\n"
+        /* 0811 */ "fn Vector3Invert*(v: Vector3): Vector3\n"
+        /* 0812 */ "fn Vector3Clamp*(v: Vector3, min: Vector3, max: Vector3): Vector3\n"
+        /* 0813 */ "fn Vector3ClampValue*(v: Vector3, min: real32, max: real32): Vector3\n"
+        /* 0814 */ "fn Vector3Equals*(p: Vector3, q: Vector3): int32\n"
+        /* 0815 */ "fn Vector3Refract*(v: Vector3, n: Vector3, r: real32): Vector3\n"
+        /* 0816 */ "fn MatrixDeterminant*(mat: Matrix): real32\n"
+        /* 0817 */ "fn MatrixTrace*(mat: Matrix): real32\n"
+        /* 0818 */ "fn MatrixTranspose*(mat: Matrix): Matrix\n"
+        /* 0819 */ "fn MatrixInvert*(mat: Matrix): Matrix\n"
+        /* 0820 */ "fn MatrixIdentity*(): Matrix\n"
+        /* 0821 */ "fn MatrixAdd*(left: Matrix, right: Matrix): Matrix\n"
+        /* 0822 */ "fn MatrixSubtract*(left: Matrix, right: Matrix): Matrix\n"
+        /* 0823 */ "fn MatrixMultiply*(left: Matrix, right: Matrix): Matrix\n"
+        /* 0824 */ "fn MatrixTranslate*(x: real32, y: real32, z: real32): Matrix\n"
+        /* 0825 */ "fn MatrixRotate*(axis: Vector3, angle: real32): Matrix\n"
+        /* 0826 */ "fn MatrixRotateX*(angle: real32): Matrix\n"
+        /* 0827 */ "fn MatrixRotateY*(angle: real32): Matrix\n"
+        /* 0828 */ "fn MatrixRotateZ*(angle: real32): Matrix\n"
+        /* 0829 */ "fn MatrixRotateXYZ*(angle: Vector3): Matrix\n"
+        /* 0830 */ "fn MatrixRotateZYX*(angle: Vector3): Matrix\n"
+        /* 0831 */ "fn MatrixScale*(x: real32, y: real32, z: real32): Matrix\n"
+        /* 0832 */ "fn MatrixFrustum*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
+        /* 0833 */ "fn MatrixPerspective*(fovy: real, aspect: real, near: real, far: real): Matrix\n"
+        /* 0834 */ "fn MatrixOrtho*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix\n"
+        /* 0835 */ "fn MatrixLookAt*(eye: Vector3, target: Vector3, up: Vector3): Matrix\n"
+        /* 0836 */ "fn MatrixToFloatV*(mat: Matrix): float16\n"
+        /* 0837 */ "fn QuaternionAdd*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0838 */ "fn QuaternionAddValue*(q: Vector4, add: real32): Vector4\n"
+        /* 0839 */ "fn QuaternionSubtract*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0840 */ "fn QuaternionSubtractValue*(q: Vector4, sub: real32): Vector4\n"
+        /* 0841 */ "fn QuaternionIdentity*(): Vector4\n"
+        /* 0842 */ "fn QuaternionLength*(q: Vector4): real32\n"
+        /* 0843 */ "fn QuaternionNormalize*(q: Vector4): Vector4\n"
+        /* 0844 */ "fn QuaternionInvert*(q: Vector4): Vector4\n"
+        /* 0845 */ "fn QuaternionMultiply*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0846 */ "fn QuaternionScale*(q: Vector4, mul: real32): Vector4\n"
+        /* 0847 */ "fn QuaternionDivide*(q1: Vector4, q2: Vector4): Vector4\n"
+        /* 0848 */ "fn QuaternionLerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
+        /* 0849 */ "fn QuaternionNlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
+        /* 0850 */ "fn QuaternionSlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4\n"
+        /* 0851 */ "fn QuaternionFromVector3ToVector3*(from: Vector3, to: Vector3): Vector4\n"
+        /* 0852 */ "fn QuaternionFromMatrix*(mat: Matrix): Vector4\n"
+        /* 0853 */ "fn QuaternionToMatrix*(q: Vector4): Matrix\n"
+        /* 0854 */ "fn QuaternionFromAxisAngle*(axis: Vector3, angle: real32): Vector4\n"
+        /* 0855 */ "fn QuaternionToAxisAngle*(q: Vector4, outAxis: ^Vector3, outAngle: ^real32)\n"
+        /* 0856 */ "fn QuaternionFromEuler*(pitch: real32, yaw: real32, roll: real32): Vector4\n"
+        /* 0857 */ "fn QuaternionToEuler*(q: Vector4): Vector3\n"
+        /* 0858 */ "fn QuaternionTransform*(q: Vector4, mat: Matrix): Vector4\n"
+        /* 0859 */ "fn QuaternionEquals*(p: Vector4, q: Vector4): int32\n"
+        /* 0860 */ "fn rlMatrixMode*(mode: int32)\n"
+        /* 0861 */ "fn rlPushMatrix*()\n"
+        /* 0862 */ "fn rlPopMatrix*()\n"
+        /* 0863 */ "fn rlLoadIdentity*()\n"
+        /* 0864 */ "fn rlTranslatef*(x: real32, y: real32, z: real32)\n"
+        /* 0865 */ "fn rlRotatef*(angle: real32, x: real32, y: real32, z: real32)\n"
+        /* 0866 */ "fn rlScalef*(x: real32, y: real32, z: real32)\n"
+        /* 0867 */ "fn rlMultMatrixf*(matf: ^real32)\n"
+        /* 0868 */ "fn rlFrustum*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)\n"
+        /* 0869 */ "fn rlOrtho*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)\n"
+        /* 0870 */ "fn rlViewport*(x: int32, y: int32, width: int32, height: int32)\n"
+        /* 0871 */ "fn rlBegin*(mode: int32)\n"
+        /* 0872 */ "fn rlEnd*()\n"
+        /* 0873 */ "fn rlVertex2i*(x: int32, y: int32)\n"
+        /* 0874 */ "fn rlVertex2f*(x: real32, y: real32)\n"
+        /* 0875 */ "fn rlVertex3f*(x: real32, y: real32, z: real32)\n"
+        /* 0876 */ "fn rlTexCoord2f*(x: real32, y: real32)\n"
+        /* 0877 */ "fn rlNormal3f*(x: real32, y: real32, z: real32)\n"
+        /* 0878 */ "fn rlColor4ub*(r: uint8, g: uint8, b: uint8, a: uint8)\n"
+        /* 0879 */ "fn rlColor3f*(x: real32, y: real32, z: real32)\n"
+        /* 0880 */ "fn rlColor4f*(x: real32, y: real32, z: real32, w: real32)\n"
+        /* 0881 */ "fn rlEnableVertexArray*(vaoId: uint32): bool\n"
+        /* 0882 */ "fn rlDisableVertexArray*()\n"
+        /* 0883 */ "fn rlEnableVertexBuffer*(id: uint32)\n"
+        /* 0884 */ "fn rlDisableVertexBuffer*()\n"
+        /* 0885 */ "fn rlEnableVertexBufferElement*(id: uint32)\n"
+        /* 0886 */ "fn rlDisableVertexBufferElement*()\n"
+        /* 0887 */ "fn rlEnableVertexAttribute*(index: uint32)\n"
+        /* 0888 */ "fn rlDisableVertexAttribute*(index: uint32)\n"
+        /* 0889 */ "// Skipping rlEnableStatePointer\n"
+        /* 0890 */ "// Skipping rlDisableStatePointer\n"
+        /* 0891 */ "fn rlActiveTextureSlot*(slot: int32)\n"
+        /* 0892 */ "fn rlEnableTexture*(id: uint32)\n"
+        /* 0893 */ "fn rlDisableTexture*()\n"
+        /* 0894 */ "fn rlEnableTextureCubemap*(id: uint32)\n"
+        /* 0895 */ "fn rlDisableTextureCubemap*()\n"
+        /* 0896 */ "fn rlTextureParameters*(id: uint32, param: int32, value: int32)\n"
+        /* 0897 */ "fn rlEnableShader*(id: uint32)\n"
+        /* 0898 */ "fn rlDisableShader*()\n"
+        /* 0899 */ "fn rlEnableFramebuffer*(id: uint32)\n"
+        /* 0900 */ "fn rlDisableFramebuffer*()\n"
+        /* 0901 */ "fn rlActiveDrawBuffers*(count: int32)\n"
+        /* 0902 */ "fn rlEnableColorBlend*()\n"
+        /* 0903 */ "fn rlDisableColorBlend*()\n"
+        /* 0904 */ "fn rlEnableDepthTest*()\n"
+        /* 0905 */ "fn rlDisableDepthTest*()\n"
+        /* 0906 */ "fn rlEnableDepthMask*()\n"
+        /* 0907 */ "fn rlDisableDepthMask*()\n"
+        /* 0908 */ "fn rlEnableBackfaceCulling*()\n"
+        /* 0909 */ "fn rlDisableBackfaceCulling*()\n"
+        /* 0910 */ "fn rlEnableScissorTest*()\n"
+        /* 0911 */ "fn rlDisableScissorTest*()\n"
+        /* 0912 */ "fn rlScissor*(x: int32, y: int32, width: int32, height: int32)\n"
+        /* 0913 */ "fn rlEnableWireMode*()\n"
+        /* 0914 */ "fn rlDisableWireMode*()\n"
+        /* 0915 */ "fn rlSetLineWidth*(width: real32)\n"
+        /* 0916 */ "fn rlGetLineWidth*(): real32\n"
+        /* 0917 */ "fn rlEnableSmoothLines*()\n"
+        /* 0918 */ "fn rlDisableSmoothLines*()\n"
+        /* 0919 */ "fn rlEnableStereoRender*()\n"
+        /* 0920 */ "fn rlDisableStereoRender*()\n"
+        /* 0921 */ "fn rlIsStereoRenderEnabled*(): bool\n"
+        /* 0922 */ "fn rlClearColor*(r: uint8, g: uint8, b: uint8, a: uint8)\n"
+        /* 0923 */ "fn rlClearScreenBuffers*()\n"
+        /* 0924 */ "fn rlCheckErrors*()\n"
+        /* 0925 */ "fn rlSetBlendMode*(mode: int32)\n"
+        /* 0926 */ "fn rlSetBlendFactors*(glSrcFactor: int32, glDstFactor: int32, glEquation: int32)\n"
+        /* 0927 */ "fn rlglInit*(width: int32, height: int32)\n"
+        /* 0928 */ "fn rlglClose*()\n"
+        /* 0929 */ "fn rlLoadExtensions*(loader: ^void)\n"
+        /* 0930 */ "fn rlGetVersion*(): int32\n"
+        /* 0931 */ "fn rlSetFramebufferWidth*(width: int32)\n"
+        /* 0932 */ "fn rlGetFramebufferWidth*(): int32\n"
+        /* 0933 */ "fn rlSetFramebufferHeight*(height: int32)\n"
+        /* 0934 */ "fn rlGetFramebufferHeight*(): int32\n"
+        /* 0935 */ "fn rlGetTextureIdDefault*(): uint32\n"
+        /* 0936 */ "fn rlGetShaderIdDefault*(): uint32\n"
+        /* 0937 */ "fn rlGetShaderLocsDefault*(): ^int32\n"
+        /* 0938 */ "// Skipping rlLoadRenderBatch\n"
+        /* 0939 */ "// Skipping rlUnloadRenderBatch\n"
+        /* 0940 */ "// Skipping rlDrawRenderBatch\n"
+        /* 0941 */ "// Skipping rlSetRenderBatchActive\n"
+        /* 0942 */ "fn rlDrawRenderBatchActive*()\n"
+        /* 0943 */ "fn rlCheckRenderBatchLimit*(vCount: int32): bool\n"
+        /* 0944 */ "fn rlSetTexture*(id: uint32)\n"
+        /* 0945 */ "fn rlLoadVertexArray*(): uint32\n"
+        /* 0946 */ "fn rlLoadVertexBuffer*(buffer: ^void, size: int32, dynamic: bool): uint32\n"
+        /* 0947 */ "fn rlLoadVertexBufferElement*(buffer: ^void, size: int32, dynamic: bool): uint32\n"
+        /* 0948 */ "fn rlUpdateVertexBuffer*(bufferId: uint32, data: ^void, dataSize: int32, offset: int32)\n"
+        /* 0949 */ "fn rlUpdateVertexBufferElements*(id: uint32, data: ^void, dataSize: int32, offset: int32)\n"
+        /* 0950 */ "fn rlUnloadVertexArray*(vaoId: uint32)\n"
+        /* 0951 */ "fn rlUnloadVertexBuffer*(vboId: uint32)\n"
+        /* 0952 */ "fn rlSetVertexAttribute*(index: uint32, compSize: int32, typeInput: int32, normalized: bool, stride: int32, pointer: ^void)\n"
+        /* 0953 */ "fn rlSetVertexAttributeDivisor*(index: uint32, divisor: int32)\n"
+        /* 0954 */ "fn rlSetVertexAttributeDefault*(locIndex: int32, value: ^void, attribType: int32, count: int32)\n"
+        /* 0955 */ "fn rlDrawVertexArray*(offset: int32, count: int32)\n"
+        /* 0956 */ "fn rlDrawVertexArrayElements*(offset: int32, count: int32, buffer: ^void)\n"
+        /* 0957 */ "fn rlDrawVertexArrayInstanced*(offset: int32, count: int32, instances: int32)\n"
+        /* 0958 */ "fn rlDrawVertexArrayElementsInstanced*(offset: int32, count: int32, buffer: ^void, instances: int32)\n"
+        /* 0959 */ "fn rlLoadTexture*(data: ^void, width: int32, height: int32, format: int32, mipmapCount: int32): uint32\n"
+        /* 0960 */ "fn rlLoadTextureDepth*(width: int32, height: int32, useRenderBuffer: bool): uint32\n"
+        /* 0961 */ "fn rlLoadTextureCubemap*(data: ^void, size: int32, format: int32): uint32\n"
+        /* 0962 */ "fn rlUpdateTexture*(id: uint32, offsetX: int32, offsetY: int32, width: int32, height: int32, format: int32, data: ^void)\n"
+        /* 0963 */ "fn rlGetGlTextureFormats*(format: int32, glInternalFormat: ^uint32, glFormat: ^uint32, glType: ^uint32)\n"
+        /* 0964 */ "fn rlGetPixelFormatName*(format: uint32): str\n"
+        /* 0965 */ "fn rlUnloadTexture*(id: uint32)\n"
+        /* 0966 */ "fn rlGenTextureMipmaps*(id: uint32, width: int32, height: int32, format: int32, mipmaps: ^int32)\n"
+        /* 0967 */ "fn rlReadTexturePixels*(id: uint32, width: int32, height: int32, format: int32): ^void\n"
+        /* 0968 */ "fn rlReadScreenPixels*(width: int32, height: int32): ^uint8\n"
+        /* 0969 */ "fn rlLoadFramebuffer*(width: int32, height: int32): uint32\n"
+        /* 0970 */ "fn rlFramebufferAttach*(fboId: uint32, texId: uint32, attachType: int32, texType: int32, mipLevel: int32)\n"
+        /* 0971 */ "fn rlFramebufferComplete*(id: uint32): bool\n"
+        /* 0972 */ "fn rlUnloadFramebuffer*(id: uint32)\n"
+        /* 0973 */ "fn rlLoadShaderCode*(vsCode: str, fsCode: str): uint32\n"
+        /* 0974 */ "fn rlCompileShader*(shaderCode: str, typeInput: int32): uint32\n"
+        /* 0975 */ "fn rlLoadShaderProgram*(vShaderId: uint32, fShaderId: uint32): uint32\n"
+        /* 0976 */ "fn rlUnloadShaderProgram*(id: uint32)\n"
+        /* 0977 */ "fn rlGetLocationUniform*(shaderId: uint32, uniformName: str): int32\n"
+        /* 0978 */ "fn rlGetLocationAttrib*(shaderId: uint32, attribName: str): int32\n"
+        /* 0979 */ "fn rlSetUniform*(locIndex: int32, value: ^void, uniformType: int32, count: int32)\n"
+        /* 0980 */ "fn rlSetUniformMatrix*(locIndex: int32, mat: Matrix)\n"
+        /* 0981 */ "fn rlSetUniformSampler*(locIndex: int32, textureId: uint32)\n"
+        /* 0982 */ "fn rlSetShader*(id: uint32, locs: ^int32)\n"
+        /* 0983 */ "fn rlLoadComputeShaderProgram*(shaderId: uint32): uint32\n"
+        /* 0984 */ "fn rlComputeShaderDispatch*(groupX: uint32, groupY: uint32, groupZ: uint32)\n"
+        /* 0985 */ "fn rlLoadShaderBuffer*(size: uint, data: ^void, usageHint: int32): uint32\n"
+        /* 0986 */ "fn rlUnloadShaderBuffer*(ssboId: uint32)\n"
+        /* 0987 */ "fn rlUpdateShaderBufferElements*(id: uint32, data: ^void, dataSize: uint, offset: uint)\n"
+        /* 0988 */ "fn rlGetShaderBufferSize*(id: uint32): uint\n"
+        /* 0989 */ "fn rlReadShaderBufferElements*(id: uint32, dest: ^void, count: uint, offset: uint)\n"
+        /* 0990 */ "fn rlBindShaderBuffer*(id: uint32, index: uint32)\n"
+        /* 0991 */ "fn rlCopyBuffersElements*(destId: uint32, srcId: uint32, destOffset: uint, srcOffset: uint, count: uint)\n"
+        /* 0992 */ "fn rlBindImageTexture*(id: uint32, index: uint32, format: uint32, readonly: int32)\n"
+        /* 0993 */ "fn rlGetMatrixModelview*(): Matrix\n"
+        /* 0994 */ "fn rlGetMatrixProjection*(): Matrix\n"
+        /* 0995 */ "fn rlGetMatrixTransform*(): Matrix\n"
+        /* 0996 */ "fn rlGetMatrixProjectionStereo*(eye: int32): Matrix\n"
+        /* 0997 */ "fn rlGetMatrixViewOffsetStereo*(eye: int32): Matrix\n"
+        /* 0998 */ "fn rlSetMatrixProjection*(proj: Matrix)\n"
+        /* 0999 */ "fn rlSetMatrixModelview*(view: Matrix)\n"
+        /* 1000 */ "fn rlSetMatrixProjectionStereo*(right: Matrix, left: Matrix)\n"
+        /* 1001 */ "fn rlSetMatrixViewOffsetStereo*(right: Matrix, left: Matrix)\n"
+        /* 1002 */ "fn rlLoadDrawCube*()\n"
+        /* 1003 */ "fn rlLoadDrawQuad*()\n"
         // Enums
-        /* 0985 */ "const FLAG_VSYNC_HINT* = 64\n"
-        /* 0986 */ "const FLAG_FULLSCREEN_MODE* = 2\n"
-        /* 0987 */ "const FLAG_WINDOW_RESIZABLE* = 4\n"
-        /* 0988 */ "const FLAG_WINDOW_UNDECORATED* = 8\n"
-        /* 0989 */ "const FLAG_WINDOW_HIDDEN* = 128\n"
-        /* 0990 */ "const FLAG_WINDOW_MINIMIZED* = 512\n"
-        /* 0991 */ "const FLAG_WINDOW_MAXIMIZED* = 1024\n"
-        /* 0992 */ "const FLAG_WINDOW_UNFOCUSED* = 2048\n"
-        /* 0993 */ "const FLAG_WINDOW_TOPMOST* = 4096\n"
-        /* 0994 */ "const FLAG_WINDOW_ALWAYS_RUN* = 256\n"
-        /* 0995 */ "const FLAG_WINDOW_TRANSPARENT* = 16\n"
-        /* 0996 */ "const FLAG_WINDOW_HIGHDPI* = 8192\n"
-        /* 0997 */ "const FLAG_WINDOW_MOUSE_PASSTHROUGH* = 16384\n"
-        /* 0998 */ "const FLAG_MSAA_4X_HINT* = 32\n"
-        /* 0999 */ "const FLAG_INTERLACED_HINT* = 65536\n"
-        /* 1000 */ "const LOG_ALL* = 0\n"
-        /* 1001 */ "const LOG_TRACE* = 1\n"
-        /* 1002 */ "const LOG_DEBUG* = 2\n"
-        /* 1003 */ "const LOG_INFO* = 3\n"
-        /* 1004 */ "const LOG_WARNING* = 4\n"
-        /* 1005 */ "const LOG_ERROR* = 5\n"
-        /* 1006 */ "const LOG_FATAL* = 6\n"
-        /* 1007 */ "const LOG_NONE* = 7\n"
-        /* 1008 */ "const KEY_NULL* = 0\n"
-        /* 1009 */ "const KEY_APOSTROPHE* = 39\n"
-        /* 1010 */ "const KEY_COMMA* = 44\n"
-        /* 1011 */ "const KEY_MINUS* = 45\n"
-        /* 1012 */ "const KEY_PERIOD* = 46\n"
-        /* 1013 */ "const KEY_SLASH* = 47\n"
-        /* 1014 */ "const KEY_ZERO* = 48\n"
-        /* 1015 */ "const KEY_ONE* = 49\n"
-        /* 1016 */ "const KEY_TWO* = 50\n"
-        /* 1017 */ "const KEY_THREE* = 51\n"
-        /* 1018 */ "const KEY_FOUR* = 52\n"
-        /* 1019 */ "const KEY_FIVE* = 53\n"
-        /* 1020 */ "const KEY_SIX* = 54\n"
-        /* 1021 */ "const KEY_SEVEN* = 55\n"
-        /* 1022 */ "const KEY_EIGHT* = 56\n"
-        /* 1023 */ "const KEY_NINE* = 57\n"
-        /* 1024 */ "const KEY_SEMICOLON* = 59\n"
-        /* 1025 */ "const KEY_EQUAL* = 61\n"
-        /* 1026 */ "const KEY_A* = 65\n"
-        /* 1027 */ "const KEY_B* = 66\n"
-        /* 1028 */ "const KEY_C* = 67\n"
-        /* 1029 */ "const KEY_D* = 68\n"
-        /* 1030 */ "const KEY_E* = 69\n"
-        /* 1031 */ "const KEY_F* = 70\n"
-        /* 1032 */ "const KEY_G* = 71\n"
-        /* 1033 */ "const KEY_H* = 72\n"
-        /* 1034 */ "const KEY_I* = 73\n"
-        /* 1035 */ "const KEY_J* = 74\n"
-        /* 1036 */ "const KEY_K* = 75\n"
-        /* 1037 */ "const KEY_L* = 76\n"
-        /* 1038 */ "const KEY_M* = 77\n"
-        /* 1039 */ "const KEY_N* = 78\n"
-        /* 1040 */ "const KEY_O* = 79\n"
-        /* 1041 */ "const KEY_P* = 80\n"
-        /* 1042 */ "const KEY_Q* = 81\n"
-        /* 1043 */ "const KEY_R* = 82\n"
-        /* 1044 */ "const KEY_S* = 83\n"
-        /* 1045 */ "const KEY_T* = 84\n"
-        /* 1046 */ "const KEY_U* = 85\n"
-        /* 1047 */ "const KEY_V* = 86\n"
-        /* 1048 */ "const KEY_W* = 87\n"
-        /* 1049 */ "const KEY_X* = 88\n"
-        /* 1050 */ "const KEY_Y* = 89\n"
-        /* 1051 */ "const KEY_Z* = 90\n"
-        /* 1052 */ "const KEY_LEFT_BRACKET* = 91\n"
-        /* 1053 */ "const KEY_BACKSLASH* = 92\n"
-        /* 1054 */ "const KEY_RIGHT_BRACKET* = 93\n"
-        /* 1055 */ "const KEY_GRAVE* = 96\n"
-        /* 1056 */ "const KEY_SPACE* = 32\n"
-        /* 1057 */ "const KEY_ESCAPE* = 256\n"
-        /* 1058 */ "const KEY_ENTER* = 257\n"
-        /* 1059 */ "const KEY_TAB* = 258\n"
-        /* 1060 */ "const KEY_BACKSPACE* = 259\n"
-        /* 1061 */ "const KEY_INSERT* = 260\n"
-        /* 1062 */ "const KEY_DELETE* = 261\n"
-        /* 1063 */ "const KEY_RIGHT* = 262\n"
-        /* 1064 */ "const KEY_LEFT* = 263\n"
-        /* 1065 */ "const KEY_DOWN* = 264\n"
-        /* 1066 */ "const KEY_UP* = 265\n"
-        /* 1067 */ "const KEY_PAGE_UP* = 266\n"
-        /* 1068 */ "const KEY_PAGE_DOWN* = 267\n"
-        /* 1069 */ "const KEY_HOME* = 268\n"
-        /* 1070 */ "const KEY_END* = 269\n"
-        /* 1071 */ "const KEY_CAPS_LOCK* = 280\n"
-        /* 1072 */ "const KEY_SCROLL_LOCK* = 281\n"
-        /* 1073 */ "const KEY_NUM_LOCK* = 282\n"
-        /* 1074 */ "const KEY_PRINT_SCREEN* = 283\n"
-        /* 1075 */ "const KEY_PAUSE* = 284\n"
-        /* 1076 */ "const KEY_F1* = 290\n"
-        /* 1077 */ "const KEY_F2* = 291\n"
-        /* 1078 */ "const KEY_F3* = 292\n"
-        /* 1079 */ "const KEY_F4* = 293\n"
-        /* 1080 */ "const KEY_F5* = 294\n"
-        /* 1081 */ "const KEY_F6* = 295\n"
-        /* 1082 */ "const KEY_F7* = 296\n"
-        /* 1083 */ "const KEY_F8* = 297\n"
-        /* 1084 */ "const KEY_F9* = 298\n"
-        /* 1085 */ "const KEY_F10* = 299\n"
-        /* 1086 */ "const KEY_F11* = 300\n"
-        /* 1087 */ "const KEY_F12* = 301\n"
-        /* 1088 */ "const KEY_LEFT_SHIFT* = 340\n"
-        /* 1089 */ "const KEY_LEFT_CONTROL* = 341\n"
-        /* 1090 */ "const KEY_LEFT_ALT* = 342\n"
-        /* 1091 */ "const KEY_LEFT_SUPER* = 343\n"
-        /* 1092 */ "const KEY_RIGHT_SHIFT* = 344\n"
-        /* 1093 */ "const KEY_RIGHT_CONTROL* = 345\n"
-        /* 1094 */ "const KEY_RIGHT_ALT* = 346\n"
-        /* 1095 */ "const KEY_RIGHT_SUPER* = 347\n"
-        /* 1096 */ "const KEY_KB_MENU* = 348\n"
-        /* 1097 */ "const KEY_KP_0* = 320\n"
-        /* 1098 */ "const KEY_KP_1* = 321\n"
-        /* 1099 */ "const KEY_KP_2* = 322\n"
-        /* 1100 */ "const KEY_KP_3* = 323\n"
-        /* 1101 */ "const KEY_KP_4* = 324\n"
-        /* 1102 */ "const KEY_KP_5* = 325\n"
-        /* 1103 */ "const KEY_KP_6* = 326\n"
-        /* 1104 */ "const KEY_KP_7* = 327\n"
-        /* 1105 */ "const KEY_KP_8* = 328\n"
-        /* 1106 */ "const KEY_KP_9* = 329\n"
-        /* 1107 */ "const KEY_KP_DECIMAL* = 330\n"
-        /* 1108 */ "const KEY_KP_DIVIDE* = 331\n"
-        /* 1109 */ "const KEY_KP_MULTIPLY* = 332\n"
-        /* 1110 */ "const KEY_KP_SUBTRACT* = 333\n"
-        /* 1111 */ "const KEY_KP_ADD* = 334\n"
-        /* 1112 */ "const KEY_KP_ENTER* = 335\n"
-        /* 1113 */ "const KEY_KP_EQUAL* = 336\n"
-        /* 1114 */ "const KEY_BACK* = 4\n"
-        /* 1115 */ "const KEY_MENU* = 82\n"
-        /* 1116 */ "const KEY_VOLUME_UP* = 24\n"
-        /* 1117 */ "const KEY_VOLUME_DOWN* = 25\n"
-        /* 1118 */ "const MOUSE_BUTTON_LEFT* = 0\n"
-        /* 1119 */ "const MOUSE_BUTTON_RIGHT* = 1\n"
-        /* 1120 */ "const MOUSE_BUTTON_MIDDLE* = 2\n"
-        /* 1121 */ "const MOUSE_BUTTON_SIDE* = 3\n"
-        /* 1122 */ "const MOUSE_BUTTON_EXTRA* = 4\n"
-        /* 1123 */ "const MOUSE_BUTTON_FORWARD* = 5\n"
-        /* 1124 */ "const MOUSE_BUTTON_BACK* = 6\n"
-        /* 1125 */ "const MOUSE_CURSOR_DEFAULT* = 0\n"
-        /* 1126 */ "const MOUSE_CURSOR_ARROW* = 1\n"
-        /* 1127 */ "const MOUSE_CURSOR_IBEAM* = 2\n"
-        /* 1128 */ "const MOUSE_CURSOR_CROSSHAIR* = 3\n"
-        /* 1129 */ "const MOUSE_CURSOR_POINTING_HAND* = 4\n"
-        /* 1130 */ "const MOUSE_CURSOR_RESIZE_EW* = 5\n"
-        /* 1131 */ "const MOUSE_CURSOR_RESIZE_NS* = 6\n"
-        /* 1132 */ "const MOUSE_CURSOR_RESIZE_NWSE* = 7\n"
-        /* 1133 */ "const MOUSE_CURSOR_RESIZE_NESW* = 8\n"
-        /* 1134 */ "const MOUSE_CURSOR_RESIZE_ALL* = 9\n"
-        /* 1135 */ "const MOUSE_CURSOR_NOT_ALLOWED* = 10\n"
-        /* 1136 */ "const GAMEPAD_BUTTON_UNKNOWN* = 0\n"
-        /* 1137 */ "const GAMEPAD_BUTTON_LEFT_FACE_UP* = 1\n"
-        /* 1138 */ "const GAMEPAD_BUTTON_LEFT_FACE_RIGHT* = 2\n"
-        /* 1139 */ "const GAMEPAD_BUTTON_LEFT_FACE_DOWN* = 3\n"
-        /* 1140 */ "const GAMEPAD_BUTTON_LEFT_FACE_LEFT* = 4\n"
-        /* 1141 */ "const GAMEPAD_BUTTON_RIGHT_FACE_UP* = 5\n"
-        /* 1142 */ "const GAMEPAD_BUTTON_RIGHT_FACE_RIGHT* = 6\n"
-        /* 1143 */ "const GAMEPAD_BUTTON_RIGHT_FACE_DOWN* = 7\n"
-        /* 1144 */ "const GAMEPAD_BUTTON_RIGHT_FACE_LEFT* = 8\n"
-        /* 1145 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_1* = 9\n"
-        /* 1146 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_2* = 10\n"
-        /* 1147 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_1* = 11\n"
-        /* 1148 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_2* = 12\n"
-        /* 1149 */ "const GAMEPAD_BUTTON_MIDDLE_LEFT* = 13\n"
-        /* 1150 */ "const GAMEPAD_BUTTON_MIDDLE* = 14\n"
-        /* 1151 */ "const GAMEPAD_BUTTON_MIDDLE_RIGHT* = 15\n"
-        /* 1152 */ "const GAMEPAD_BUTTON_LEFT_THUMB* = 16\n"
-        /* 1153 */ "const GAMEPAD_BUTTON_RIGHT_THUMB* = 17\n"
-        /* 1154 */ "const GAMEPAD_AXIS_LEFT_X* = 0\n"
-        /* 1155 */ "const GAMEPAD_AXIS_LEFT_Y* = 1\n"
-        /* 1156 */ "const GAMEPAD_AXIS_RIGHT_X* = 2\n"
-        /* 1157 */ "const GAMEPAD_AXIS_RIGHT_Y* = 3\n"
-        /* 1158 */ "const GAMEPAD_AXIS_LEFT_TRIGGER* = 4\n"
-        /* 1159 */ "const GAMEPAD_AXIS_RIGHT_TRIGGER* = 5\n"
-        /* 1160 */ "const MATERIAL_MAP_ALBEDO* = 0\n"
-        /* 1161 */ "const MATERIAL_MAP_METALNESS* = 1\n"
-        /* 1162 */ "const MATERIAL_MAP_NORMAL* = 2\n"
-        /* 1163 */ "const MATERIAL_MAP_ROUGHNESS* = 3\n"
-        /* 1164 */ "const MATERIAL_MAP_OCCLUSION* = 4\n"
-        /* 1165 */ "const MATERIAL_MAP_EMISSION* = 5\n"
-        /* 1166 */ "const MATERIAL_MAP_HEIGHT* = 6\n"
-        /* 1167 */ "const MATERIAL_MAP_CUBEMAP* = 7\n"
-        /* 1168 */ "const MATERIAL_MAP_IRRADIANCE* = 8\n"
-        /* 1169 */ "const MATERIAL_MAP_PREFILTER* = 9\n"
-        /* 1170 */ "const MATERIAL_MAP_BRDF* = 10\n"
-        /* 1171 */ "const SHADER_LOC_VERTEX_POSITION* = 0\n"
-        /* 1172 */ "const SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
-        /* 1173 */ "const SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
-        /* 1174 */ "const SHADER_LOC_VERTEX_NORMAL* = 3\n"
-        /* 1175 */ "const SHADER_LOC_VERTEX_TANGENT* = 4\n"
-        /* 1176 */ "const SHADER_LOC_VERTEX_COLOR* = 5\n"
-        /* 1177 */ "const SHADER_LOC_MATRIX_MVP* = 6\n"
-        /* 1178 */ "const SHADER_LOC_MATRIX_VIEW* = 7\n"
-        /* 1179 */ "const SHADER_LOC_MATRIX_PROJECTION* = 8\n"
-        /* 1180 */ "const SHADER_LOC_MATRIX_MODEL* = 9\n"
-        /* 1181 */ "const SHADER_LOC_MATRIX_NORMAL* = 10\n"
-        /* 1182 */ "const SHADER_LOC_VECTOR_VIEW* = 11\n"
-        /* 1183 */ "const SHADER_LOC_COLOR_DIFFUSE* = 12\n"
-        /* 1184 */ "const SHADER_LOC_COLOR_SPECULAR* = 13\n"
-        /* 1185 */ "const SHADER_LOC_COLOR_AMBIENT* = 14\n"
-        /* 1186 */ "const SHADER_LOC_MAP_ALBEDO* = 15\n"
-        /* 1187 */ "const SHADER_LOC_MAP_METALNESS* = 16\n"
-        /* 1188 */ "const SHADER_LOC_MAP_NORMAL* = 17\n"
-        /* 1189 */ "const SHADER_LOC_MAP_ROUGHNESS* = 18\n"
-        /* 1190 */ "const SHADER_LOC_MAP_OCCLUSION* = 19\n"
-        /* 1191 */ "const SHADER_LOC_MAP_EMISSION* = 20\n"
-        /* 1192 */ "const SHADER_LOC_MAP_HEIGHT* = 21\n"
-        /* 1193 */ "const SHADER_LOC_MAP_CUBEMAP* = 22\n"
-        /* 1194 */ "const SHADER_LOC_MAP_IRRADIANCE* = 23\n"
-        /* 1195 */ "const SHADER_LOC_MAP_PREFILTER* = 24\n"
-        /* 1196 */ "const SHADER_LOC_MAP_BRDF* = 25\n"
-        /* 1197 */ "const SHADER_UNIFORM_FLOAT* = 0\n"
-        /* 1198 */ "const SHADER_UNIFORM_VEC2* = 1\n"
-        /* 1199 */ "const SHADER_UNIFORM_VEC3* = 2\n"
-        /* 1200 */ "const SHADER_UNIFORM_VEC4* = 3\n"
-        /* 1201 */ "const SHADER_UNIFORM_INT* = 4\n"
-        /* 1202 */ "const SHADER_UNIFORM_IVEC2* = 5\n"
-        /* 1203 */ "const SHADER_UNIFORM_IVEC3* = 6\n"
-        /* 1204 */ "const SHADER_UNIFORM_IVEC4* = 7\n"
-        /* 1205 */ "const SHADER_UNIFORM_SAMPLER2D* = 8\n"
-        /* 1206 */ "const SHADER_ATTRIB_FLOAT* = 0\n"
-        /* 1207 */ "const SHADER_ATTRIB_VEC2* = 1\n"
-        /* 1208 */ "const SHADER_ATTRIB_VEC3* = 2\n"
-        /* 1209 */ "const SHADER_ATTRIB_VEC4* = 3\n"
-        /* 1210 */ "const PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
-        /* 1211 */ "const PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
-        /* 1212 */ "const PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
-        /* 1213 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
-        /* 1214 */ "const PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
-        /* 1215 */ "const PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
-        /* 1216 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
-        /* 1217 */ "const PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
-        /* 1218 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
-        /* 1219 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
-        /* 1220 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
-        /* 1221 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
-        /* 1222 */ "const PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
-        /* 1223 */ "const PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
-        /* 1224 */ "const PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
-        /* 1225 */ "const PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
-        /* 1226 */ "const PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
-        /* 1227 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
-        /* 1228 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
-        /* 1229 */ "const PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
-        /* 1230 */ "const PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
-        /* 1231 */ "const TEXTURE_FILTER_POINT* = 0\n"
-        /* 1232 */ "const TEXTURE_FILTER_BILINEAR* = 1\n"
-        /* 1233 */ "const TEXTURE_FILTER_TRILINEAR* = 2\n"
-        /* 1234 */ "const TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
-        /* 1235 */ "const TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
-        /* 1236 */ "const TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
-        /* 1237 */ "const TEXTURE_WRAP_REPEAT* = 0\n"
-        /* 1238 */ "const TEXTURE_WRAP_CLAMP* = 1\n"
-        /* 1239 */ "const TEXTURE_WRAP_MIRROR_REPEAT* = 2\n"
-        /* 1240 */ "const TEXTURE_WRAP_MIRROR_CLAMP* = 3\n"
-        /* 1241 */ "const CUBEMAP_LAYOUT_AUTO_DETECT* = 0\n"
-        /* 1242 */ "const CUBEMAP_LAYOUT_LINE_VERTICAL* = 1\n"
-        /* 1243 */ "const CUBEMAP_LAYOUT_LINE_HORIZONTAL* = 2\n"
-        /* 1244 */ "const CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR* = 3\n"
-        /* 1245 */ "const CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE* = 4\n"
-        /* 1246 */ "const CUBEMAP_LAYOUT_PANORAMA* = 5\n"
-        /* 1247 */ "const FONT_DEFAULT* = 0\n"
-        /* 1248 */ "const FONT_BITMAP* = 1\n"
-        /* 1249 */ "const FONT_SDF* = 2\n"
-        /* 1250 */ "const BLEND_ALPHA* = 0\n"
-        /* 1251 */ "const BLEND_ADDITIVE* = 1\n"
-        /* 1252 */ "const BLEND_MULTIPLIED* = 2\n"
-        /* 1253 */ "const BLEND_ADD_COLORS* = 3\n"
-        /* 1254 */ "const BLEND_SUBTRACT_COLORS* = 4\n"
-        /* 1255 */ "const BLEND_ALPHA_PREMULTIPLY* = 5\n"
-        /* 1256 */ "const BLEND_CUSTOM* = 6\n"
-        /* 1257 */ "const GESTURE_NONE* = 0\n"
-        /* 1258 */ "const GESTURE_TAP* = 1\n"
-        /* 1259 */ "const GESTURE_DOUBLETAP* = 2\n"
-        /* 1260 */ "const GESTURE_HOLD* = 4\n"
-        /* 1261 */ "const GESTURE_DRAG* = 8\n"
-        /* 1262 */ "const GESTURE_SWIPE_RIGHT* = 16\n"
-        /* 1263 */ "const GESTURE_SWIPE_LEFT* = 32\n"
-        /* 1264 */ "const GESTURE_SWIPE_UP* = 64\n"
-        /* 1265 */ "const GESTURE_SWIPE_DOWN* = 128\n"
-        /* 1266 */ "const GESTURE_PINCH_IN* = 256\n"
-        /* 1267 */ "const GESTURE_PINCH_OUT* = 512\n"
-        /* 1268 */ "const CAMERA_CUSTOM* = 0\n"
-        /* 1269 */ "const CAMERA_FREE* = 1\n"
-        /* 1270 */ "const CAMERA_ORBITAL* = 2\n"
-        /* 1271 */ "const CAMERA_FIRST_PERSON* = 3\n"
-        /* 1272 */ "const CAMERA_THIRD_PERSON* = 4\n"
-        /* 1273 */ "const CAMERA_PERSPECTIVE* = 0\n"
-        /* 1274 */ "const CAMERA_ORTHOGRAPHIC* = 1\n"
-        /* 1275 */ "const NPATCH_NINE_PATCH* = 0\n"
-        /* 1276 */ "const NPATCH_THREE_PATCH_VERTICAL* = 1\n"
-        /* 1277 */ "const NPATCH_THREE_PATCH_HORIZONTAL* = 2\n"
-        /* 1278 */ "const OPENGL_11* = 1\n"
-        /* 1279 */ "const OPENGL_21* = 2\n"
-        /* 1280 */ "const OPENGL_33* = 3\n"
-        /* 1281 */ "const OPENGL_43* = 4\n"
-        /* 1282 */ "const OPENGL_ES_20* = 5\n"
-        /* 1283 */ "const RL_ATTACHMENT_COLOR_CHANNEL0* = 0\n"
-        /* 1284 */ "const RL_ATTACHMENT_COLOR_CHANNEL1* = 1\n"
-        /* 1285 */ "const RL_ATTACHMENT_COLOR_CHANNEL2* = 2\n"
-        /* 1286 */ "const RL_ATTACHMENT_COLOR_CHANNEL3* = 3\n"
-        /* 1287 */ "const RL_ATTACHMENT_COLOR_CHANNEL4* = 4\n"
-        /* 1288 */ "const RL_ATTACHMENT_COLOR_CHANNEL5* = 5\n"
-        /* 1289 */ "const RL_ATTACHMENT_COLOR_CHANNEL6* = 6\n"
-        /* 1290 */ "const RL_ATTACHMENT_COLOR_CHANNEL7* = 7\n"
-        /* 1291 */ "const RL_ATTACHMENT_DEPTH* = 100\n"
-        /* 1292 */ "const RL_ATTACHMENT_STENCIL* = 200\n"
-        /* 1293 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_X* = 0\n"
-        /* 1294 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_X* = 1\n"
-        /* 1295 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_Y* = 2\n"
-        /* 1296 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y* = 3\n"
-        /* 1297 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_Z* = 4\n"
-        /* 1298 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z* = 5\n"
-        /* 1299 */ "const RL_ATTACHMENT_TEXTURE2D* = 100\n"
-        /* 1300 */ "const RL_ATTACHMENT_RENDERBUFFER* = 200\n"
-        /* 1301 */ "const RL_LOG_ALL* = 0\n"
-        /* 1302 */ "const RL_LOG_TRACE* = 1\n"
-        /* 1303 */ "const RL_LOG_DEBUG* = 2\n"
-        /* 1304 */ "const RL_LOG_INFO* = 3\n"
-        /* 1305 */ "const RL_LOG_WARNING* = 4\n"
-        /* 1306 */ "const RL_LOG_ERROR* = 5\n"
-        /* 1307 */ "const RL_LOG_FATAL* = 6\n"
-        /* 1308 */ "const RL_LOG_NONE* = 7\n"
-        /* 1309 */ "const RL_PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
-        /* 1310 */ "const RL_PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
-        /* 1311 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
-        /* 1312 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
-        /* 1313 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
-        /* 1314 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
-        /* 1315 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
-        /* 1316 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
-        /* 1317 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
-        /* 1318 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
-        /* 1319 */ "const RL_PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
-        /* 1320 */ "const RL_PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
-        /* 1321 */ "const RL_PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
-        /* 1322 */ "const RL_PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
-        /* 1323 */ "const RL_PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
-        /* 1324 */ "const RL_PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
-        /* 1325 */ "const RL_PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
-        /* 1326 */ "const RL_PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
-        /* 1327 */ "const RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
-        /* 1328 */ "const RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
-        /* 1329 */ "const RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
-        /* 1330 */ "const RL_TEXTURE_FILTER_POINT* = 0\n"
-        /* 1331 */ "const RL_TEXTURE_FILTER_BILINEAR* = 1\n"
-        /* 1332 */ "const RL_TEXTURE_FILTER_TRILINEAR* = 2\n"
-        /* 1333 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
-        /* 1334 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
-        /* 1335 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
-        /* 1336 */ "const RL_BLEND_ALPHA* = 0\n"
-        /* 1337 */ "const RL_BLEND_ADDITIVE* = 1\n"
-        /* 1338 */ "const RL_BLEND_MULTIPLIED* = 2\n"
-        /* 1339 */ "const RL_BLEND_ADD_COLORS* = 3\n"
-        /* 1340 */ "const RL_BLEND_SUBTRACT_COLORS* = 4\n"
-        /* 1341 */ "const RL_BLEND_ALPHA_PREMULTIPLY* = 5\n"
-        /* 1342 */ "const RL_BLEND_CUSTOM* = 6\n"
-        /* 1343 */ "const RL_SHADER_LOC_VERTEX_POSITION* = 0\n"
-        /* 1344 */ "const RL_SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
-        /* 1345 */ "const RL_SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
-        /* 1346 */ "const RL_SHADER_LOC_VERTEX_NORMAL* = 3\n"
-        /* 1347 */ "const RL_SHADER_LOC_VERTEX_TANGENT* = 4\n"
-        /* 1348 */ "const RL_SHADER_LOC_VERTEX_COLOR* = 5\n"
-        /* 1349 */ "const RL_SHADER_LOC_MATRIX_MVP* = 6\n"
-        /* 1350 */ "const RL_SHADER_LOC_MATRIX_VIEW* = 7\n"
-        /* 1351 */ "const RL_SHADER_LOC_MATRIX_PROJECTION* = 8\n"
-        /* 1352 */ "const RL_SHADER_LOC_MATRIX_MODEL* = 9\n"
-        /* 1353 */ "const RL_SHADER_LOC_MATRIX_NORMAL* = 10\n"
-        /* 1354 */ "const RL_SHADER_LOC_VECTOR_VIEW* = 11\n"
-        /* 1355 */ "const RL_SHADER_LOC_COLOR_DIFFUSE* = 12\n"
-        /* 1356 */ "const RL_SHADER_LOC_COLOR_SPECULAR* = 13\n"
-        /* 1357 */ "const RL_SHADER_LOC_COLOR_AMBIENT* = 14\n"
-        /* 1358 */ "const RL_SHADER_LOC_MAP_ALBEDO* = 15\n"
-        /* 1359 */ "const RL_SHADER_LOC_MAP_METALNESS* = 16\n"
-        /* 1360 */ "const RL_SHADER_LOC_MAP_NORMAL* = 17\n"
-        /* 1361 */ "const RL_SHADER_LOC_MAP_ROUGHNESS* = 18\n"
-        /* 1362 */ "const RL_SHADER_LOC_MAP_OCCLUSION* = 19\n"
-        /* 1363 */ "const RL_SHADER_LOC_MAP_EMISSION* = 20\n"
-        /* 1364 */ "const RL_SHADER_LOC_MAP_HEIGHT* = 21\n"
-        /* 1365 */ "const RL_SHADER_LOC_MAP_CUBEMAP* = 22\n"
-        /* 1366 */ "const RL_SHADER_LOC_MAP_IRRADIANCE* = 23\n"
-        /* 1367 */ "const RL_SHADER_LOC_MAP_PREFILTER* = 24\n"
-        /* 1368 */ "const RL_SHADER_LOC_MAP_BRDF* = 25\n"
-        /* 1369 */ "const RL_SHADER_UNIFORM_FLOAT* = 0\n"
-        /* 1370 */ "const RL_SHADER_UNIFORM_VEC2* = 1\n"
-        /* 1371 */ "const RL_SHADER_UNIFORM_VEC3* = 2\n"
-        /* 1372 */ "const RL_SHADER_UNIFORM_VEC4* = 3\n"
-        /* 1373 */ "const RL_SHADER_UNIFORM_INT* = 4\n"
-        /* 1374 */ "const RL_SHADER_UNIFORM_IVEC2* = 5\n"
-        /* 1375 */ "const RL_SHADER_UNIFORM_IVEC3* = 6\n"
-        /* 1376 */ "const RL_SHADER_UNIFORM_IVEC4* = 7\n"
-        /* 1377 */ "const RL_SHADER_UNIFORM_SAMPLER2D* = 8\n"
-        /* 1378 */ "const RL_SHADER_ATTRIB_FLOAT* = 0\n"
-        /* 1379 */ "const RL_SHADER_ATTRIB_VEC2* = 1\n"
-        /* 1380 */ "const RL_SHADER_ATTRIB_VEC3* = 2\n"
-        /* 1381 */ "const RL_SHADER_ATTRIB_VEC4* = 3\n"
+        /* 1004 */ "const FLAG_VSYNC_HINT* = 64\n"
+        /* 1005 */ "const FLAG_FULLSCREEN_MODE* = 2\n"
+        /* 1006 */ "const FLAG_WINDOW_RESIZABLE* = 4\n"
+        /* 1007 */ "const FLAG_WINDOW_UNDECORATED* = 8\n"
+        /* 1008 */ "const FLAG_WINDOW_HIDDEN* = 128\n"
+        /* 1009 */ "const FLAG_WINDOW_MINIMIZED* = 512\n"
+        /* 1010 */ "const FLAG_WINDOW_MAXIMIZED* = 1024\n"
+        /* 1011 */ "const FLAG_WINDOW_UNFOCUSED* = 2048\n"
+        /* 1012 */ "const FLAG_WINDOW_TOPMOST* = 4096\n"
+        /* 1013 */ "const FLAG_WINDOW_ALWAYS_RUN* = 256\n"
+        /* 1014 */ "const FLAG_WINDOW_TRANSPARENT* = 16\n"
+        /* 1015 */ "const FLAG_WINDOW_HIGHDPI* = 8192\n"
+        /* 1016 */ "const FLAG_WINDOW_MOUSE_PASSTHROUGH* = 16384\n"
+        /* 1017 */ "const FLAG_MSAA_4X_HINT* = 32\n"
+        /* 1018 */ "const FLAG_INTERLACED_HINT* = 65536\n"
+        /* 1019 */ "const LOG_ALL* = 0\n"
+        /* 1020 */ "const LOG_TRACE* = 1\n"
+        /* 1021 */ "const LOG_DEBUG* = 2\n"
+        /* 1022 */ "const LOG_INFO* = 3\n"
+        /* 1023 */ "const LOG_WARNING* = 4\n"
+        /* 1024 */ "const LOG_ERROR* = 5\n"
+        /* 1025 */ "const LOG_FATAL* = 6\n"
+        /* 1026 */ "const LOG_NONE* = 7\n"
+        /* 1027 */ "const KEY_NULL* = 0\n"
+        /* 1028 */ "const KEY_APOSTROPHE* = 39\n"
+        /* 1029 */ "const KEY_COMMA* = 44\n"
+        /* 1030 */ "const KEY_MINUS* = 45\n"
+        /* 1031 */ "const KEY_PERIOD* = 46\n"
+        /* 1032 */ "const KEY_SLASH* = 47\n"
+        /* 1033 */ "const KEY_ZERO* = 48\n"
+        /* 1034 */ "const KEY_ONE* = 49\n"
+        /* 1035 */ "const KEY_TWO* = 50\n"
+        /* 1036 */ "const KEY_THREE* = 51\n"
+        /* 1037 */ "const KEY_FOUR* = 52\n"
+        /* 1038 */ "const KEY_FIVE* = 53\n"
+        /* 1039 */ "const KEY_SIX* = 54\n"
+        /* 1040 */ "const KEY_SEVEN* = 55\n"
+        /* 1041 */ "const KEY_EIGHT* = 56\n"
+        /* 1042 */ "const KEY_NINE* = 57\n"
+        /* 1043 */ "const KEY_SEMICOLON* = 59\n"
+        /* 1044 */ "const KEY_EQUAL* = 61\n"
+        /* 1045 */ "const KEY_A* = 65\n"
+        /* 1046 */ "const KEY_B* = 66\n"
+        /* 1047 */ "const KEY_C* = 67\n"
+        /* 1048 */ "const KEY_D* = 68\n"
+        /* 1049 */ "const KEY_E* = 69\n"
+        /* 1050 */ "const KEY_F* = 70\n"
+        /* 1051 */ "const KEY_G* = 71\n"
+        /* 1052 */ "const KEY_H* = 72\n"
+        /* 1053 */ "const KEY_I* = 73\n"
+        /* 1054 */ "const KEY_J* = 74\n"
+        /* 1055 */ "const KEY_K* = 75\n"
+        /* 1056 */ "const KEY_L* = 76\n"
+        /* 1057 */ "const KEY_M* = 77\n"
+        /* 1058 */ "const KEY_N* = 78\n"
+        /* 1059 */ "const KEY_O* = 79\n"
+        /* 1060 */ "const KEY_P* = 80\n"
+        /* 1061 */ "const KEY_Q* = 81\n"
+        /* 1062 */ "const KEY_R* = 82\n"
+        /* 1063 */ "const KEY_S* = 83\n"
+        /* 1064 */ "const KEY_T* = 84\n"
+        /* 1065 */ "const KEY_U* = 85\n"
+        /* 1066 */ "const KEY_V* = 86\n"
+        /* 1067 */ "const KEY_W* = 87\n"
+        /* 1068 */ "const KEY_X* = 88\n"
+        /* 1069 */ "const KEY_Y* = 89\n"
+        /* 1070 */ "const KEY_Z* = 90\n"
+        /* 1071 */ "const KEY_LEFT_BRACKET* = 91\n"
+        /* 1072 */ "const KEY_BACKSLASH* = 92\n"
+        /* 1073 */ "const KEY_RIGHT_BRACKET* = 93\n"
+        /* 1074 */ "const KEY_GRAVE* = 96\n"
+        /* 1075 */ "const KEY_SPACE* = 32\n"
+        /* 1076 */ "const KEY_ESCAPE* = 256\n"
+        /* 1077 */ "const KEY_ENTER* = 257\n"
+        /* 1078 */ "const KEY_TAB* = 258\n"
+        /* 1079 */ "const KEY_BACKSPACE* = 259\n"
+        /* 1080 */ "const KEY_INSERT* = 260\n"
+        /* 1081 */ "const KEY_DELETE* = 261\n"
+        /* 1082 */ "const KEY_RIGHT* = 262\n"
+        /* 1083 */ "const KEY_LEFT* = 263\n"
+        /* 1084 */ "const KEY_DOWN* = 264\n"
+        /* 1085 */ "const KEY_UP* = 265\n"
+        /* 1086 */ "const KEY_PAGE_UP* = 266\n"
+        /* 1087 */ "const KEY_PAGE_DOWN* = 267\n"
+        /* 1088 */ "const KEY_HOME* = 268\n"
+        /* 1089 */ "const KEY_END* = 269\n"
+        /* 1090 */ "const KEY_CAPS_LOCK* = 280\n"
+        /* 1091 */ "const KEY_SCROLL_LOCK* = 281\n"
+        /* 1092 */ "const KEY_NUM_LOCK* = 282\n"
+        /* 1093 */ "const KEY_PRINT_SCREEN* = 283\n"
+        /* 1094 */ "const KEY_PAUSE* = 284\n"
+        /* 1095 */ "const KEY_F1* = 290\n"
+        /* 1096 */ "const KEY_F2* = 291\n"
+        /* 1097 */ "const KEY_F3* = 292\n"
+        /* 1098 */ "const KEY_F4* = 293\n"
+        /* 1099 */ "const KEY_F5* = 294\n"
+        /* 1100 */ "const KEY_F6* = 295\n"
+        /* 1101 */ "const KEY_F7* = 296\n"
+        /* 1102 */ "const KEY_F8* = 297\n"
+        /* 1103 */ "const KEY_F9* = 298\n"
+        /* 1104 */ "const KEY_F10* = 299\n"
+        /* 1105 */ "const KEY_F11* = 300\n"
+        /* 1106 */ "const KEY_F12* = 301\n"
+        /* 1107 */ "const KEY_LEFT_SHIFT* = 340\n"
+        /* 1108 */ "const KEY_LEFT_CONTROL* = 341\n"
+        /* 1109 */ "const KEY_LEFT_ALT* = 342\n"
+        /* 1110 */ "const KEY_LEFT_SUPER* = 343\n"
+        /* 1111 */ "const KEY_RIGHT_SHIFT* = 344\n"
+        /* 1112 */ "const KEY_RIGHT_CONTROL* = 345\n"
+        /* 1113 */ "const KEY_RIGHT_ALT* = 346\n"
+        /* 1114 */ "const KEY_RIGHT_SUPER* = 347\n"
+        /* 1115 */ "const KEY_KB_MENU* = 348\n"
+        /* 1116 */ "const KEY_KP_0* = 320\n"
+        /* 1117 */ "const KEY_KP_1* = 321\n"
+        /* 1118 */ "const KEY_KP_2* = 322\n"
+        /* 1119 */ "const KEY_KP_3* = 323\n"
+        /* 1120 */ "const KEY_KP_4* = 324\n"
+        /* 1121 */ "const KEY_KP_5* = 325\n"
+        /* 1122 */ "const KEY_KP_6* = 326\n"
+        /* 1123 */ "const KEY_KP_7* = 327\n"
+        /* 1124 */ "const KEY_KP_8* = 328\n"
+        /* 1125 */ "const KEY_KP_9* = 329\n"
+        /* 1126 */ "const KEY_KP_DECIMAL* = 330\n"
+        /* 1127 */ "const KEY_KP_DIVIDE* = 331\n"
+        /* 1128 */ "const KEY_KP_MULTIPLY* = 332\n"
+        /* 1129 */ "const KEY_KP_SUBTRACT* = 333\n"
+        /* 1130 */ "const KEY_KP_ADD* = 334\n"
+        /* 1131 */ "const KEY_KP_ENTER* = 335\n"
+        /* 1132 */ "const KEY_KP_EQUAL* = 336\n"
+        /* 1133 */ "const KEY_BACK* = 4\n"
+        /* 1134 */ "const KEY_MENU* = 82\n"
+        /* 1135 */ "const KEY_VOLUME_UP* = 24\n"
+        /* 1136 */ "const KEY_VOLUME_DOWN* = 25\n"
+        /* 1137 */ "const MOUSE_BUTTON_LEFT* = 0\n"
+        /* 1138 */ "const MOUSE_BUTTON_RIGHT* = 1\n"
+        /* 1139 */ "const MOUSE_BUTTON_MIDDLE* = 2\n"
+        /* 1140 */ "const MOUSE_BUTTON_SIDE* = 3\n"
+        /* 1141 */ "const MOUSE_BUTTON_EXTRA* = 4\n"
+        /* 1142 */ "const MOUSE_BUTTON_FORWARD* = 5\n"
+        /* 1143 */ "const MOUSE_BUTTON_BACK* = 6\n"
+        /* 1144 */ "const MOUSE_CURSOR_DEFAULT* = 0\n"
+        /* 1145 */ "const MOUSE_CURSOR_ARROW* = 1\n"
+        /* 1146 */ "const MOUSE_CURSOR_IBEAM* = 2\n"
+        /* 1147 */ "const MOUSE_CURSOR_CROSSHAIR* = 3\n"
+        /* 1148 */ "const MOUSE_CURSOR_POINTING_HAND* = 4\n"
+        /* 1149 */ "const MOUSE_CURSOR_RESIZE_EW* = 5\n"
+        /* 1150 */ "const MOUSE_CURSOR_RESIZE_NS* = 6\n"
+        /* 1151 */ "const MOUSE_CURSOR_RESIZE_NWSE* = 7\n"
+        /* 1152 */ "const MOUSE_CURSOR_RESIZE_NESW* = 8\n"
+        /* 1153 */ "const MOUSE_CURSOR_RESIZE_ALL* = 9\n"
+        /* 1154 */ "const MOUSE_CURSOR_NOT_ALLOWED* = 10\n"
+        /* 1155 */ "const GAMEPAD_BUTTON_UNKNOWN* = 0\n"
+        /* 1156 */ "const GAMEPAD_BUTTON_LEFT_FACE_UP* = 1\n"
+        /* 1157 */ "const GAMEPAD_BUTTON_LEFT_FACE_RIGHT* = 2\n"
+        /* 1158 */ "const GAMEPAD_BUTTON_LEFT_FACE_DOWN* = 3\n"
+        /* 1159 */ "const GAMEPAD_BUTTON_LEFT_FACE_LEFT* = 4\n"
+        /* 1160 */ "const GAMEPAD_BUTTON_RIGHT_FACE_UP* = 5\n"
+        /* 1161 */ "const GAMEPAD_BUTTON_RIGHT_FACE_RIGHT* = 6\n"
+        /* 1162 */ "const GAMEPAD_BUTTON_RIGHT_FACE_DOWN* = 7\n"
+        /* 1163 */ "const GAMEPAD_BUTTON_RIGHT_FACE_LEFT* = 8\n"
+        /* 1164 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_1* = 9\n"
+        /* 1165 */ "const GAMEPAD_BUTTON_LEFT_TRIGGER_2* = 10\n"
+        /* 1166 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_1* = 11\n"
+        /* 1167 */ "const GAMEPAD_BUTTON_RIGHT_TRIGGER_2* = 12\n"
+        /* 1168 */ "const GAMEPAD_BUTTON_MIDDLE_LEFT* = 13\n"
+        /* 1169 */ "const GAMEPAD_BUTTON_MIDDLE* = 14\n"
+        /* 1170 */ "const GAMEPAD_BUTTON_MIDDLE_RIGHT* = 15\n"
+        /* 1171 */ "const GAMEPAD_BUTTON_LEFT_THUMB* = 16\n"
+        /* 1172 */ "const GAMEPAD_BUTTON_RIGHT_THUMB* = 17\n"
+        /* 1173 */ "const GAMEPAD_AXIS_LEFT_X* = 0\n"
+        /* 1174 */ "const GAMEPAD_AXIS_LEFT_Y* = 1\n"
+        /* 1175 */ "const GAMEPAD_AXIS_RIGHT_X* = 2\n"
+        /* 1176 */ "const GAMEPAD_AXIS_RIGHT_Y* = 3\n"
+        /* 1177 */ "const GAMEPAD_AXIS_LEFT_TRIGGER* = 4\n"
+        /* 1178 */ "const GAMEPAD_AXIS_RIGHT_TRIGGER* = 5\n"
+        /* 1179 */ "const MATERIAL_MAP_ALBEDO* = 0\n"
+        /* 1180 */ "const MATERIAL_MAP_METALNESS* = 1\n"
+        /* 1181 */ "const MATERIAL_MAP_NORMAL* = 2\n"
+        /* 1182 */ "const MATERIAL_MAP_ROUGHNESS* = 3\n"
+        /* 1183 */ "const MATERIAL_MAP_OCCLUSION* = 4\n"
+        /* 1184 */ "const MATERIAL_MAP_EMISSION* = 5\n"
+        /* 1185 */ "const MATERIAL_MAP_HEIGHT* = 6\n"
+        /* 1186 */ "const MATERIAL_MAP_CUBEMAP* = 7\n"
+        /* 1187 */ "const MATERIAL_MAP_IRRADIANCE* = 8\n"
+        /* 1188 */ "const MATERIAL_MAP_PREFILTER* = 9\n"
+        /* 1189 */ "const MATERIAL_MAP_BRDF* = 10\n"
+        /* 1190 */ "const SHADER_LOC_VERTEX_POSITION* = 0\n"
+        /* 1191 */ "const SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
+        /* 1192 */ "const SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
+        /* 1193 */ "const SHADER_LOC_VERTEX_NORMAL* = 3\n"
+        /* 1194 */ "const SHADER_LOC_VERTEX_TANGENT* = 4\n"
+        /* 1195 */ "const SHADER_LOC_VERTEX_COLOR* = 5\n"
+        /* 1196 */ "const SHADER_LOC_MATRIX_MVP* = 6\n"
+        /* 1197 */ "const SHADER_LOC_MATRIX_VIEW* = 7\n"
+        /* 1198 */ "const SHADER_LOC_MATRIX_PROJECTION* = 8\n"
+        /* 1199 */ "const SHADER_LOC_MATRIX_MODEL* = 9\n"
+        /* 1200 */ "const SHADER_LOC_MATRIX_NORMAL* = 10\n"
+        /* 1201 */ "const SHADER_LOC_VECTOR_VIEW* = 11\n"
+        /* 1202 */ "const SHADER_LOC_COLOR_DIFFUSE* = 12\n"
+        /* 1203 */ "const SHADER_LOC_COLOR_SPECULAR* = 13\n"
+        /* 1204 */ "const SHADER_LOC_COLOR_AMBIENT* = 14\n"
+        /* 1205 */ "const SHADER_LOC_MAP_ALBEDO* = 15\n"
+        /* 1206 */ "const SHADER_LOC_MAP_METALNESS* = 16\n"
+        /* 1207 */ "const SHADER_LOC_MAP_NORMAL* = 17\n"
+        /* 1208 */ "const SHADER_LOC_MAP_ROUGHNESS* = 18\n"
+        /* 1209 */ "const SHADER_LOC_MAP_OCCLUSION* = 19\n"
+        /* 1210 */ "const SHADER_LOC_MAP_EMISSION* = 20\n"
+        /* 1211 */ "const SHADER_LOC_MAP_HEIGHT* = 21\n"
+        /* 1212 */ "const SHADER_LOC_MAP_CUBEMAP* = 22\n"
+        /* 1213 */ "const SHADER_LOC_MAP_IRRADIANCE* = 23\n"
+        /* 1214 */ "const SHADER_LOC_MAP_PREFILTER* = 24\n"
+        /* 1215 */ "const SHADER_LOC_MAP_BRDF* = 25\n"
+        /* 1216 */ "const SHADER_UNIFORM_FLOAT* = 0\n"
+        /* 1217 */ "const SHADER_UNIFORM_VEC2* = 1\n"
+        /* 1218 */ "const SHADER_UNIFORM_VEC3* = 2\n"
+        /* 1219 */ "const SHADER_UNIFORM_VEC4* = 3\n"
+        /* 1220 */ "const SHADER_UNIFORM_INT* = 4\n"
+        /* 1221 */ "const SHADER_UNIFORM_IVEC2* = 5\n"
+        /* 1222 */ "const SHADER_UNIFORM_IVEC3* = 6\n"
+        /* 1223 */ "const SHADER_UNIFORM_IVEC4* = 7\n"
+        /* 1224 */ "const SHADER_UNIFORM_SAMPLER2D* = 8\n"
+        /* 1225 */ "const SHADER_ATTRIB_FLOAT* = 0\n"
+        /* 1226 */ "const SHADER_ATTRIB_VEC2* = 1\n"
+        /* 1227 */ "const SHADER_ATTRIB_VEC3* = 2\n"
+        /* 1228 */ "const SHADER_ATTRIB_VEC4* = 3\n"
+        /* 1229 */ "const PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
+        /* 1230 */ "const PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
+        /* 1231 */ "const PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
+        /* 1232 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
+        /* 1233 */ "const PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
+        /* 1234 */ "const PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
+        /* 1235 */ "const PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
+        /* 1236 */ "const PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
+        /* 1237 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
+        /* 1238 */ "const PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
+        /* 1239 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
+        /* 1240 */ "const PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
+        /* 1241 */ "const PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
+        /* 1242 */ "const PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
+        /* 1243 */ "const PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
+        /* 1244 */ "const PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
+        /* 1245 */ "const PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
+        /* 1246 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
+        /* 1247 */ "const PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
+        /* 1248 */ "const PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
+        /* 1249 */ "const PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
+        /* 1250 */ "const TEXTURE_FILTER_POINT* = 0\n"
+        /* 1251 */ "const TEXTURE_FILTER_BILINEAR* = 1\n"
+        /* 1252 */ "const TEXTURE_FILTER_TRILINEAR* = 2\n"
+        /* 1253 */ "const TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
+        /* 1254 */ "const TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
+        /* 1255 */ "const TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
+        /* 1256 */ "const TEXTURE_WRAP_REPEAT* = 0\n"
+        /* 1257 */ "const TEXTURE_WRAP_CLAMP* = 1\n"
+        /* 1258 */ "const TEXTURE_WRAP_MIRROR_REPEAT* = 2\n"
+        /* 1259 */ "const TEXTURE_WRAP_MIRROR_CLAMP* = 3\n"
+        /* 1260 */ "const CUBEMAP_LAYOUT_AUTO_DETECT* = 0\n"
+        /* 1261 */ "const CUBEMAP_LAYOUT_LINE_VERTICAL* = 1\n"
+        /* 1262 */ "const CUBEMAP_LAYOUT_LINE_HORIZONTAL* = 2\n"
+        /* 1263 */ "const CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR* = 3\n"
+        /* 1264 */ "const CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE* = 4\n"
+        /* 1265 */ "const CUBEMAP_LAYOUT_PANORAMA* = 5\n"
+        /* 1266 */ "const FONT_DEFAULT* = 0\n"
+        /* 1267 */ "const FONT_BITMAP* = 1\n"
+        /* 1268 */ "const FONT_SDF* = 2\n"
+        /* 1269 */ "const BLEND_ALPHA* = 0\n"
+        /* 1270 */ "const BLEND_ADDITIVE* = 1\n"
+        /* 1271 */ "const BLEND_MULTIPLIED* = 2\n"
+        /* 1272 */ "const BLEND_ADD_COLORS* = 3\n"
+        /* 1273 */ "const BLEND_SUBTRACT_COLORS* = 4\n"
+        /* 1274 */ "const BLEND_ALPHA_PREMULTIPLY* = 5\n"
+        /* 1275 */ "const BLEND_CUSTOM* = 6\n"
+        /* 1276 */ "const GESTURE_NONE* = 0\n"
+        /* 1277 */ "const GESTURE_TAP* = 1\n"
+        /* 1278 */ "const GESTURE_DOUBLETAP* = 2\n"
+        /* 1279 */ "const GESTURE_HOLD* = 4\n"
+        /* 1280 */ "const GESTURE_DRAG* = 8\n"
+        /* 1281 */ "const GESTURE_SWIPE_RIGHT* = 16\n"
+        /* 1282 */ "const GESTURE_SWIPE_LEFT* = 32\n"
+        /* 1283 */ "const GESTURE_SWIPE_UP* = 64\n"
+        /* 1284 */ "const GESTURE_SWIPE_DOWN* = 128\n"
+        /* 1285 */ "const GESTURE_PINCH_IN* = 256\n"
+        /* 1286 */ "const GESTURE_PINCH_OUT* = 512\n"
+        /* 1287 */ "const CAMERA_CUSTOM* = 0\n"
+        /* 1288 */ "const CAMERA_FREE* = 1\n"
+        /* 1289 */ "const CAMERA_ORBITAL* = 2\n"
+        /* 1290 */ "const CAMERA_FIRST_PERSON* = 3\n"
+        /* 1291 */ "const CAMERA_THIRD_PERSON* = 4\n"
+        /* 1292 */ "const CAMERA_PERSPECTIVE* = 0\n"
+        /* 1293 */ "const CAMERA_ORTHOGRAPHIC* = 1\n"
+        /* 1294 */ "const NPATCH_NINE_PATCH* = 0\n"
+        /* 1295 */ "const NPATCH_THREE_PATCH_VERTICAL* = 1\n"
+        /* 1296 */ "const NPATCH_THREE_PATCH_HORIZONTAL* = 2\n"
+        /* 1297 */ "const OPENGL_11* = 1\n"
+        /* 1298 */ "const OPENGL_21* = 2\n"
+        /* 1299 */ "const OPENGL_33* = 3\n"
+        /* 1300 */ "const OPENGL_43* = 4\n"
+        /* 1301 */ "const OPENGL_ES_20* = 5\n"
+        /* 1302 */ "const RL_ATTACHMENT_COLOR_CHANNEL0* = 0\n"
+        /* 1303 */ "const RL_ATTACHMENT_COLOR_CHANNEL1* = 1\n"
+        /* 1304 */ "const RL_ATTACHMENT_COLOR_CHANNEL2* = 2\n"
+        /* 1305 */ "const RL_ATTACHMENT_COLOR_CHANNEL3* = 3\n"
+        /* 1306 */ "const RL_ATTACHMENT_COLOR_CHANNEL4* = 4\n"
+        /* 1307 */ "const RL_ATTACHMENT_COLOR_CHANNEL5* = 5\n"
+        /* 1308 */ "const RL_ATTACHMENT_COLOR_CHANNEL6* = 6\n"
+        /* 1309 */ "const RL_ATTACHMENT_COLOR_CHANNEL7* = 7\n"
+        /* 1310 */ "const RL_ATTACHMENT_DEPTH* = 100\n"
+        /* 1311 */ "const RL_ATTACHMENT_STENCIL* = 200\n"
+        /* 1312 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_X* = 0\n"
+        /* 1313 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_X* = 1\n"
+        /* 1314 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_Y* = 2\n"
+        /* 1315 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y* = 3\n"
+        /* 1316 */ "const RL_ATTACHMENT_CUBEMAP_POSITIVE_Z* = 4\n"
+        /* 1317 */ "const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z* = 5\n"
+        /* 1318 */ "const RL_ATTACHMENT_TEXTURE2D* = 100\n"
+        /* 1319 */ "const RL_ATTACHMENT_RENDERBUFFER* = 200\n"
+        /* 1320 */ "const RL_LOG_ALL* = 0\n"
+        /* 1321 */ "const RL_LOG_TRACE* = 1\n"
+        /* 1322 */ "const RL_LOG_DEBUG* = 2\n"
+        /* 1323 */ "const RL_LOG_INFO* = 3\n"
+        /* 1324 */ "const RL_LOG_WARNING* = 4\n"
+        /* 1325 */ "const RL_LOG_ERROR* = 5\n"
+        /* 1326 */ "const RL_LOG_FATAL* = 6\n"
+        /* 1327 */ "const RL_LOG_NONE* = 7\n"
+        /* 1328 */ "const RL_PIXELFORMAT_UNCOMPRESSED_GRAYSCALE* = 1\n"
+        /* 1329 */ "const RL_PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA* = 2\n"
+        /* 1330 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R5G6B5* = 3\n"
+        /* 1331 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8* = 4\n"
+        /* 1332 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R5G5B5A1* = 5\n"
+        /* 1333 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R4G4B4A4* = 6\n"
+        /* 1334 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7\n"
+        /* 1335 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32* = 8\n"
+        /* 1336 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9\n"
+        /* 1337 */ "const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10\n"
+        /* 1338 */ "const RL_PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11\n"
+        /* 1339 */ "const RL_PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12\n"
+        /* 1340 */ "const RL_PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13\n"
+        /* 1341 */ "const RL_PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14\n"
+        /* 1342 */ "const RL_PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15\n"
+        /* 1343 */ "const RL_PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16\n"
+        /* 1344 */ "const RL_PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17\n"
+        /* 1345 */ "const RL_PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18\n"
+        /* 1346 */ "const RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19\n"
+        /* 1347 */ "const RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20\n"
+        /* 1348 */ "const RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21\n"
+        /* 1349 */ "const RL_TEXTURE_FILTER_POINT* = 0\n"
+        /* 1350 */ "const RL_TEXTURE_FILTER_BILINEAR* = 1\n"
+        /* 1351 */ "const RL_TEXTURE_FILTER_TRILINEAR* = 2\n"
+        /* 1352 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_4X* = 3\n"
+        /* 1353 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_8X* = 4\n"
+        /* 1354 */ "const RL_TEXTURE_FILTER_ANISOTROPIC_16X* = 5\n"
+        /* 1355 */ "const RL_BLEND_ALPHA* = 0\n"
+        /* 1356 */ "const RL_BLEND_ADDITIVE* = 1\n"
+        /* 1357 */ "const RL_BLEND_MULTIPLIED* = 2\n"
+        /* 1358 */ "const RL_BLEND_ADD_COLORS* = 3\n"
+        /* 1359 */ "const RL_BLEND_SUBTRACT_COLORS* = 4\n"
+        /* 1360 */ "const RL_BLEND_ALPHA_PREMULTIPLY* = 5\n"
+        /* 1361 */ "const RL_BLEND_CUSTOM* = 6\n"
+        /* 1362 */ "const RL_SHADER_LOC_VERTEX_POSITION* = 0\n"
+        /* 1363 */ "const RL_SHADER_LOC_VERTEX_TEXCOORD01* = 1\n"
+        /* 1364 */ "const RL_SHADER_LOC_VERTEX_TEXCOORD02* = 2\n"
+        /* 1365 */ "const RL_SHADER_LOC_VERTEX_NORMAL* = 3\n"
+        /* 1366 */ "const RL_SHADER_LOC_VERTEX_TANGENT* = 4\n"
+        /* 1367 */ "const RL_SHADER_LOC_VERTEX_COLOR* = 5\n"
+        /* 1368 */ "const RL_SHADER_LOC_MATRIX_MVP* = 6\n"
+        /* 1369 */ "const RL_SHADER_LOC_MATRIX_VIEW* = 7\n"
+        /* 1370 */ "const RL_SHADER_LOC_MATRIX_PROJECTION* = 8\n"
+        /* 1371 */ "const RL_SHADER_LOC_MATRIX_MODEL* = 9\n"
+        /* 1372 */ "const RL_SHADER_LOC_MATRIX_NORMAL* = 10\n"
+        /* 1373 */ "const RL_SHADER_LOC_VECTOR_VIEW* = 11\n"
+        /* 1374 */ "const RL_SHADER_LOC_COLOR_DIFFUSE* = 12\n"
+        /* 1375 */ "const RL_SHADER_LOC_COLOR_SPECULAR* = 13\n"
+        /* 1376 */ "const RL_SHADER_LOC_COLOR_AMBIENT* = 14\n"
+        /* 1377 */ "const RL_SHADER_LOC_MAP_ALBEDO* = 15\n"
+        /* 1378 */ "const RL_SHADER_LOC_MAP_METALNESS* = 16\n"
+        /* 1379 */ "const RL_SHADER_LOC_MAP_NORMAL* = 17\n"
+        /* 1380 */ "const RL_SHADER_LOC_MAP_ROUGHNESS* = 18\n"
+        /* 1381 */ "const RL_SHADER_LOC_MAP_OCCLUSION* = 19\n"
+        /* 1382 */ "const RL_SHADER_LOC_MAP_EMISSION* = 20\n"
+        /* 1383 */ "const RL_SHADER_LOC_MAP_HEIGHT* = 21\n"
+        /* 1384 */ "const RL_SHADER_LOC_MAP_CUBEMAP* = 22\n"
+        /* 1385 */ "const RL_SHADER_LOC_MAP_IRRADIANCE* = 23\n"
+        /* 1386 */ "const RL_SHADER_LOC_MAP_PREFILTER* = 24\n"
+        /* 1387 */ "const RL_SHADER_LOC_MAP_BRDF* = 25\n"
+        /* 1388 */ "const RL_SHADER_UNIFORM_FLOAT* = 0\n"
+        /* 1389 */ "const RL_SHADER_UNIFORM_VEC2* = 1\n"
+        /* 1390 */ "const RL_SHADER_UNIFORM_VEC3* = 2\n"
+        /* 1391 */ "const RL_SHADER_UNIFORM_VEC4* = 3\n"
+        /* 1392 */ "const RL_SHADER_UNIFORM_INT* = 4\n"
+        /* 1393 */ "const RL_SHADER_UNIFORM_IVEC2* = 5\n"
+        /* 1394 */ "const RL_SHADER_UNIFORM_IVEC3* = 6\n"
+        /* 1395 */ "const RL_SHADER_UNIFORM_IVEC4* = 7\n"
+        /* 1396 */ "const RL_SHADER_UNIFORM_SAMPLER2D* = 8\n"
+        /* 1397 */ "const RL_SHADER_ATTRIB_FLOAT* = 0\n"
+        /* 1398 */ "const RL_SHADER_ATTRIB_VEC2* = 1\n"
+        /* 1399 */ "const RL_SHADER_ATTRIB_VEC3* = 2\n"
+        /* 1400 */ "const RL_SHADER_ATTRIB_VEC4* = 3\n"
 
         // Defines
-        /* 1382 */ "const RAYLIB_VERSION* = \"4.2\"\n"
-        // Skipped define: __declspec(x)
-        // Skipped define: RLAPI
-        /* 1383 */ "const PI* = 3.141592653589793\n"
-        // Skipped define: DEG2RAD
-        // Skipped define: RAD2DEG
-        // Skipped define: RL_MALLOC(sz)
-        // Skipped define: RL_CALLOC(n,sz)
-        // Skipped define: RL_REALLOC(ptr,sz)
-        // Skipped define: RL_FREE(ptr)
-        // Skipped define: CLITERAL(type)
-        /* 1384 */ "const LIGHTGRAY* = Color{ 200, 200, 200, 255 }\n"
-        /* 1385 */ "const GRAY* = Color{ 130, 130, 130, 255 }\n"
-        /* 1386 */ "const DARKGRAY* = Color{ 80, 80, 80, 255 }\n"
-        /* 1387 */ "const YELLOW* = Color{ 253, 249, 0, 255 }\n"
-        /* 1388 */ "const GOLD* = Color{ 255, 203, 0, 255 }\n"
-        /* 1389 */ "const ORANGE* = Color{ 255, 161, 0, 255 }\n"
-        /* 1390 */ "const PINK* = Color{ 255, 109, 194, 255 }\n"
-        /* 1391 */ "const RED* = Color{ 230, 41, 55, 255 }\n"
-        /* 1392 */ "const MAROON* = Color{ 190, 33, 55, 255 }\n"
-        /* 1393 */ "const GREEN* = Color{ 0, 228, 48, 255 }\n"
-        /* 1394 */ "const LIME* = Color{ 0, 158, 47, 255 }\n"
-        /* 1395 */ "const DARKGREEN* = Color{ 0, 117, 44, 255 }\n"
-        /* 1396 */ "const SKYBLUE* = Color{ 102, 191, 255, 255 }\n"
-        /* 1397 */ "const BLUE* = Color{ 0, 121, 241, 255 }\n"
-        /* 1398 */ "const DARKBLUE* = Color{ 0, 82, 172, 255 }\n"
-        /* 1399 */ "const PURPLE* = Color{ 200, 122, 255, 255 }\n"
-        /* 1400 */ "const VIOLET* = Color{ 135, 60, 190, 255 }\n"
-        /* 1401 */ "const DARKPURPLE* = Color{ 112, 31, 126, 255 }\n"
-        /* 1402 */ "const BEIGE* = Color{ 211, 176, 131, 255 }\n"
-        /* 1403 */ "const BROWN* = Color{ 127, 106, 79, 255 }\n"
-        /* 1404 */ "const DARKBROWN* = Color{ 76, 63, 47, 255 }\n"
-        /* 1405 */ "const WHITE* = Color{ 255, 255, 255, 255 }\n"
-        /* 1406 */ "const BLACK* = Color{ 0, 0, 0, 255 }\n"
-        /* 1407 */ "const BLANK* = Color{ 0, 0, 0, 0 }\n"
-        /* 1408 */ "const MAGENTA* = Color{ 255, 0, 255, 255 }\n"
-        /* 1409 */ "const RAYWHITE* = Color{ 245, 245, 245, 255 }\n"
-        // Skipped define: MOUSE_LEFT_BUTTON
-        // Skipped define: MOUSE_RIGHT_BUTTON
-        // Skipped define: MOUSE_MIDDLE_BUTTON
-        // Skipped define: MATERIAL_MAP_DIFFUSE
-        // Skipped define: MATERIAL_MAP_SPECULAR
-        // Skipped define: SHADER_LOC_MAP_DIFFUSE
-        // Skipped define: SHADER_LOC_MAP_SPECULAR
-        // Skipped define: RMAPI
-        /* 1410 */ "const EPSILON* = 0.000001\n"
-        // Skipped define: MatrixToFloat(mat)
-        // Skipped define: Vector3ToFloat(vec)
-        /* 1411 */ "const RLGL_VERSION* = \"4.0\"\n"
-        // Skipped define: TRACELOG(level, ...)
-        // Skipped define: TRACELOGD(...)
-        // Skipped define: RL_REALLOC(n,sz)
-        // Skipped define: RL_FREE(p)
-        // Skipped define: RL_DEFAULT_BATCH_BUFFER_ELEMENTS
-        // Skipped define: RL_DEFAULT_BATCH_BUFFERS
-        // Skipped define: RL_DEFAULT_BATCH_DRAWCALLS
-        // Skipped define: RL_DEFAULT_BATCH_MAX_TEXTURE_UNITS
-        // Skipped define: RL_MAX_MATRIX_STACK_SIZE
-        // Skipped define: RL_MAX_SHADER_LOCATIONS
-        // Skipped define: RL_CULL_DISTANCE_NEAR
-        // Skipped define: RL_CULL_DISTANCE_FAR
-        // Skipped define: RL_TEXTURE_WRAP_S
-        // Skipped define: RL_TEXTURE_WRAP_T
-        // Skipped define: RL_TEXTURE_MAG_FILTER
-        // Skipped define: RL_TEXTURE_MIN_FILTER
-        // Skipped define: RL_TEXTURE_FILTER_NEAREST
-        // Skipped define: RL_TEXTURE_FILTER_LINEAR
-        // Skipped define: RL_TEXTURE_FILTER_MIP_NEAREST
-        // Skipped define: RL_TEXTURE_FILTER_NEAREST_MIP_LINEAR
-        // Skipped define: RL_TEXTURE_FILTER_LINEAR_MIP_NEAREST
-        // Skipped define: RL_TEXTURE_FILTER_MIP_LINEAR
-        // Skipped define: RL_TEXTURE_FILTER_ANISOTROPIC
-        // Skipped define: RL_TEXTURE_WRAP_REPEAT
-        // Skipped define: RL_TEXTURE_WRAP_CLAMP
-        // Skipped define: RL_TEXTURE_WRAP_MIRROR_REPEAT
-        // Skipped define: RL_TEXTURE_WRAP_MIRROR_CLAMP
-        // Skipped define: RL_MODELVIEW
-        // Skipped define: RL_PROJECTION
-        // Skipped define: RL_TEXTURE
-        // Skipped define: RL_LINES
-        // Skipped define: RL_TRIANGLES
-        // Skipped define: RL_QUADS
-        // Skipped define: RL_UNSIGNED_BYTE
-        // Skipped define: RL_FLOAT
-        // Skipped define: RL_STREAM_DRAW
-        // Skipped define: RL_STREAM_READ
-        // Skipped define: RL_STREAM_COPY
-        // Skipped define: RL_STATIC_DRAW
-        // Skipped define: RL_STATIC_READ
-        // Skipped define: RL_STATIC_COPY
-        // Skipped define: RL_DYNAMIC_DRAW
-        // Skipped define: RL_DYNAMIC_READ
-        // Skipped define: RL_DYNAMIC_COPY
-        // Skipped define: RL_FRAGMENT_SHADER
-        // Skipped define: RL_VERTEX_SHADER
-        // Skipped define: RL_COMPUTE_SHADER
-        // Skipped define: RL_SHADER_LOC_MAP_DIFFUSE
-        // Skipped define: RL_SHADER_LOC_MAP_SPECULAR
-
-        // Custom functions
-        "fn TraceLog*(errorType: int , message: str)\n"
+        /* 1401 */ "const RAYLIB_VERSION* = \"4.2\"\n"
+        /* 1402 */ "// Skipped define: __declspec(x)\n"
+        /* 1403 */ "// Skipped define: RLAPI\n"
+        /* 1404 */ "const PI* = 3.141592653589793\n"
+        /* 1405 */ "// Skipped define: DEG2RAD\n"
+        /* 1406 */ "// Skipped define: RAD2DEG\n"
+        /* 1407 */ "// Skipped define: RL_MALLOC(sz)\n"
+        /* 1408 */ "// Skipped define: RL_CALLOC(n,sz)\n"
+        /* 1409 */ "// Skipped define: RL_REALLOC(ptr,sz)\n"
+        /* 1410 */ "// Skipped define: RL_FREE(ptr)\n"
+        /* 1411 */ "// Skipped define: CLITERAL(type)\n"
+        /* 1412 */ "const LIGHTGRAY* = Color{ 200, 200, 200, 255 }\n"
+        /* 1413 */ "const GRAY* = Color{ 130, 130, 130, 255 }\n"
+        /* 1414 */ "const DARKGRAY* = Color{ 80, 80, 80, 255 }\n"
+        /* 1415 */ "const YELLOW* = Color{ 253, 249, 0, 255 }\n"
+        /* 1416 */ "const GOLD* = Color{ 255, 203, 0, 255 }\n"
+        /* 1417 */ "const ORANGE* = Color{ 255, 161, 0, 255 }\n"
+        /* 1418 */ "const PINK* = Color{ 255, 109, 194, 255 }\n"
+        /* 1419 */ "const RED* = Color{ 230, 41, 55, 255 }\n"
+        /* 1420 */ "const MAROON* = Color{ 190, 33, 55, 255 }\n"
+        /* 1421 */ "const GREEN* = Color{ 0, 228, 48, 255 }\n"
+        /* 1422 */ "const LIME* = Color{ 0, 158, 47, 255 }\n"
+        /* 1423 */ "const DARKGREEN* = Color{ 0, 117, 44, 255 }\n"
+        /* 1424 */ "const SKYBLUE* = Color{ 102, 191, 255, 255 }\n"
+        /* 1425 */ "const BLUE* = Color{ 0, 121, 241, 255 }\n"
+        /* 1426 */ "const DARKBLUE* = Color{ 0, 82, 172, 255 }\n"
+        /* 1427 */ "const PURPLE* = Color{ 200, 122, 255, 255 }\n"
+        /* 1428 */ "const VIOLET* = Color{ 135, 60, 190, 255 }\n"
+        /* 1429 */ "const DARKPURPLE* = Color{ 112, 31, 126, 255 }\n"
+        /* 1430 */ "const BEIGE* = Color{ 211, 176, 131, 255 }\n"
+        /* 1431 */ "const BROWN* = Color{ 127, 106, 79, 255 }\n"
+        /* 1432 */ "const DARKBROWN* = Color{ 76, 63, 47, 255 }\n"
+        /* 1433 */ "const WHITE* = Color{ 255, 255, 255, 255 }\n"
+        /* 1434 */ "const BLACK* = Color{ 0, 0, 0, 255 }\n"
+        /* 1435 */ "const BLANK* = Color{ 0, 0, 0, 0 }\n"
+        /* 1436 */ "const MAGENTA* = Color{ 255, 0, 255, 255 }\n"
+        /* 1437 */ "const RAYWHITE* = Color{ 245, 245, 245, 255 }\n"
+        /* 1438 */ "// Skipped define: MOUSE_LEFT_BUTTON\n"
+        /* 1439 */ "// Skipped define: MOUSE_RIGHT_BUTTON\n"
+        /* 1440 */ "// Skipped define: MOUSE_MIDDLE_BUTTON\n"
+        /* 1441 */ "// Skipped define: MATERIAL_MAP_DIFFUSE\n"
+        /* 1442 */ "// Skipped define: MATERIAL_MAP_SPECULAR\n"
+        /* 1443 */ "// Skipped define: SHADER_LOC_MAP_DIFFUSE\n"
+        /* 1444 */ "// Skipped define: SHADER_LOC_MAP_SPECULAR\n"
+        /* 1445 */ "// Skipped define: RMAPI\n"
+        /* 1446 */ "const EPSILON* = 0.000001\n"
+        /* 1447 */ "// Skipped define: MatrixToFloat(mat)\n"
+        /* 1448 */ "// Skipped define: Vector3ToFloat(vec)\n"
+        /* 1449 */ "const RLGL_VERSION* = \"4.0\"\n"
+        /* 1450 */ "// Skipped define: TRACELOG(level, ...)\n"
+        /* 1451 */ "// Skipped define: TRACELOGD(...)\n"
+        /* 1452 */ "// Skipped define: RL_REALLOC(n,sz)\n"
+        /* 1453 */ "// Skipped define: RL_FREE(p)\n"
+        /* 1454 */ "// Skipped define: RL_DEFAULT_BATCH_BUFFER_ELEMENTS\n"
+        /* 1455 */ "// Skipped define: RL_DEFAULT_BATCH_BUFFERS\n"
+        /* 1456 */ "// Skipped define: RL_DEFAULT_BATCH_DRAWCALLS\n"
+        /* 1457 */ "// Skipped define: RL_DEFAULT_BATCH_MAX_TEXTURE_UNITS\n"
+        /* 1458 */ "// Skipped define: RL_MAX_MATRIX_STACK_SIZE\n"
+        /* 1459 */ "// Skipped define: RL_MAX_SHADER_LOCATIONS\n"
+        /* 1460 */ "// Skipped define: RL_CULL_DISTANCE_NEAR\n"
+        /* 1461 */ "// Skipped define: RL_CULL_DISTANCE_FAR\n"
+        /* 1462 */ "// Skipped define: RL_TEXTURE_WRAP_S\n"
+        /* 1463 */ "// Skipped define: RL_TEXTURE_WRAP_T\n"
+        /* 1464 */ "// Skipped define: RL_TEXTURE_MAG_FILTER\n"
+        /* 1465 */ "// Skipped define: RL_TEXTURE_MIN_FILTER\n"
+        /* 1466 */ "// Skipped define: RL_TEXTURE_FILTER_NEAREST\n"
+        /* 1467 */ "// Skipped define: RL_TEXTURE_FILTER_LINEAR\n"
+        /* 1468 */ "// Skipped define: RL_TEXTURE_FILTER_MIP_NEAREST\n"
+        /* 1469 */ "// Skipped define: RL_TEXTURE_FILTER_NEAREST_MIP_LINEAR\n"
+        /* 1470 */ "// Skipped define: RL_TEXTURE_FILTER_LINEAR_MIP_NEAREST\n"
+        /* 1471 */ "// Skipped define: RL_TEXTURE_FILTER_MIP_LINEAR\n"
+        /* 1472 */ "// Skipped define: RL_TEXTURE_FILTER_ANISOTROPIC\n"
+        /* 1473 */ "// Skipped define: RL_TEXTURE_WRAP_REPEAT\n"
+        /* 1474 */ "// Skipped define: RL_TEXTURE_WRAP_CLAMP\n"
+        /* 1475 */ "// Skipped define: RL_TEXTURE_WRAP_MIRROR_REPEAT\n"
+        /* 1476 */ "// Skipped define: RL_TEXTURE_WRAP_MIRROR_CLAMP\n"
+        /* 1477 */ "// Skipped define: RL_MODELVIEW\n"
+        /* 1478 */ "// Skipped define: RL_PROJECTION\n"
+        /* 1479 */ "// Skipped define: RL_TEXTURE\n"
+        /* 1480 */ "// Skipped define: RL_LINES\n"
+        /* 1481 */ "// Skipped define: RL_TRIANGLES\n"
+        /* 1482 */ "// Skipped define: RL_QUADS\n"
+        /* 1483 */ "// Skipped define: RL_UNSIGNED_BYTE\n"
+        /* 1484 */ "// Skipped define: RL_FLOAT\n"
+        /* 1485 */ "// Skipped define: RL_STREAM_DRAW\n"
+        /* 1486 */ "// Skipped define: RL_STREAM_READ\n"
+        /* 1487 */ "// Skipped define: RL_STREAM_COPY\n"
+        /* 1488 */ "// Skipped define: RL_STATIC_DRAW\n"
+        /* 1489 */ "// Skipped define: RL_STATIC_READ\n"
+        /* 1490 */ "// Skipped define: RL_STATIC_COPY\n"
+        /* 1491 */ "// Skipped define: RL_DYNAMIC_DRAW\n"
+        /* 1492 */ "// Skipped define: RL_DYNAMIC_READ\n"
+        /* 1493 */ "// Skipped define: RL_DYNAMIC_COPY\n"
+        /* 1494 */ "// Skipped define: RL_FRAGMENT_SHADER\n"
+        /* 1495 */ "// Skipped define: RL_VERTEX_SHADER\n"
+        /* 1496 */ "// Skipped define: RL_COMPUTE_SHADER\n"
+        /* 1497 */ "// Skipped define: RL_SHADER_LOC_MAP_DIFFUSE\n"
+        /* 1498 */ "// Skipped define: RL_SHADER_LOC_MAP_SPECULAR\n"
 
         // End of the module.
         " ";
 
     return umkaAddModule(umka, "raylib", moduleCode);
 }
+
+#endif  // RAYLIB_UMKA_NO_ADD_MODULE
 
 #if defined(__cplusplus)
 }

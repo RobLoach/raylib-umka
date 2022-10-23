@@ -21,6 +21,7 @@ else()
     set(RAYLIB_UMKA_IS_MAIN FALSE)
 endif()
 option(RAYLIB_UMKA_BUILD_BIN "Binary" ${RAYLIB_UMKA_IS_MAIN})
+option(RAYLIB_UMKA_BUILD_UMI "UMI" ${RAYLIB_UMKA_IS_MAIN})
 
 # raylib-umka
 if (RAYLIB_UMKA_BUILD_BIN)
@@ -42,4 +43,9 @@ if (RAYLIB_UMKA_BUILD_BIN)
             COMMAND raylib-umka ${CMAKE_CURRENT_SOURCE_DIR}/tests/raylib-umka-tests.um
         )
     endif()
+endif()
+
+# raylib.umi
+if (RAYLIB_UMKA_BUILD_UMI)
+    add_subdirectory(umi)
 endif()
