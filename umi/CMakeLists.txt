@@ -1,4 +1,5 @@
-add_library(raylib-umi STATIC raylib.c)
+find_package(raylib)
+add_library(raylib-umi SHARED raylib.c)
 set_target_properties(raylib-umi PROPERTIES
     OUTPUT_NAME "raylib"
     SUFFIX ".umi"

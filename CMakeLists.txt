@@ -25,6 +25,7 @@ option(RAYLIB_UMKA_BUILD_UMI "UMI" ${RAYLIB_UMKA_IS_MAIN})
 
 # raylib-umka
 if (RAYLIB_UMKA_BUILD_BIN)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
     add_subdirectory(bin)
 
     # Testing
@@ -47,5 +48,6 @@ endif()
 
 # raylib.umi
 if (RAYLIB_UMKA_BUILD_UMI)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
     add_subdirectory(umi)
 endif()
