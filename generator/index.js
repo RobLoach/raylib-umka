@@ -3,9 +3,6 @@ const { fstat } = require('fs')
 const path = require('path')
 const fs = require('fs')
 
-// Where to write the file to.
-const outputFile = path.join(__dirname, '..', 'include', 'raylib-umka.h')
-
 /**
  * Translates raylib parameters into umka values.
  */
@@ -165,6 +162,7 @@ function getFunctionImplementations(functions) {
  *
  * @see ${func.name}()
  */
+RAYLIB_UMKA_FUNCTION(${func.name})
 void umka${func.name}(UmkaStackSlot *params, UmkaStackSlot *result) {\n`
         let params = []
         let paramsInFunction = []
@@ -370,12 +368,23 @@ const callbacksBlacklist = [
     // 'SaveFileTextCallback',
     // 'AudioCallback'
 ]
+
 function getCallbacks(callbacks) {
-    let output = `        /* ${outputLineNumber()} */ "type (\\n"\n`
+    let code = getCallbacksCode(callbacks)
+
+    let output = code.split('\n').map(line => {
+        return `        /* ${outputLineNumber()} */ "${line}\\n"`
+    }).join('\n')
+
+    return output
+}
+
+function getCallbacksCode(callbacks) {
+    let output = [`type (`]
 
     for (let callback of callbacks) {
         if (callbacksBlacklist.includes(callback.name)) {
-            output += `        // Skipped ${callback.name}\n`
+            output.push(`// Skipped ${callback.name}`)
             continue
         }
         let params = []
@@ -392,11 +401,11 @@ function getCallbacks(callbacks) {
                 returnType = ': ' + returnType
             }
         }
-        output += `        /* ${outputLineNumber()} */ "    ${callback.name} = fn(${params.join(', ')})${returnType}\\n"\n`
+        output.push(`    ${callback.name} = fn(${params.join(', ')})${returnType}`)
     }
 
-    output += `        /* ${outputLineNumber()} */ ")\\n"`
-    return output;
+    output.push(`)`)
+    return output.join('\n')
 }
 
 
@@ -436,11 +445,24 @@ function getModuleFunctionDeclarationsCleanParamName(name) {
  * Builds the module declarations for the module.
  */
 function getModuleFunctionDeclarations(functions) {
-    output = ''
+    let code = getModuleFunctionDeclarationsCode(functions)
+
+    let output = code.split('\n').map(line => {
+        return `        /* ${outputLineNumber()} */ "${line}\\n"`
+    }).join('\n')
+
+    return output
+}
+
+function getModuleFunctionDeclarationsCode(functions) {
+    let output = [
+        // Custom TraceLog Implementation
+        'fn TraceLog*(errorType: int , message: str)'
+    ]
     for (let func of functions) {
         // Blacklist
         if (functionBlackList.includes(func.name)) {
-            output += `        // Skipping ${func.name}\n`
+            output.push(`// Skipping ${func.name}`)
             continue
         }
 
@@ -457,10 +479,11 @@ function getModuleFunctionDeclarations(functions) {
             returnType = `: ${raylibTypeToUmka(func.returnType)}`
         }
 
-        output += `        /* ${outputLineNumber()} */ "fn ${func.name}*(${paramList.join(', ')})${returnType}\\n"\n`
+        output.push(`fn ${func.name}*(${paramList.join(', ')})${returnType}`)
     }
-    return output
+    return output.join('\n')
 }
+
 const moduleFunctionDeclarations = getModuleFunctionDeclarations(getAllFunctions())
 
 /**
@@ -474,22 +497,32 @@ function outputLineNumber() {
  * Translates all structs into a valid Umka code.
  */
 function getStructures(structs) {
-    output = `        /* ${outputLineNumber()} */ "type (\\n"\n`
+    let code = getStructuresCode(structs)
+
+    let output = code.split('\n').map(line => {
+        return `        /* ${outputLineNumber()} */ "${line}\\n"`
+    }).join('\n')
+
+    return output
+}
+
+function getStructuresCode(structs) {
+    let output = [`type (`]
 
     for (let struct of structs) {
         if (structureBlackList.includes(struct.name)) {
             continue
         }
 
-        output += `        /* ${outputLineNumber()} */ "  ${struct.name}* = struct {\\n"\n`
+        output.push(`  ${struct.name}* = struct {`)
         for (let field of struct.fields) {
-            output += `        /* ${outputLineNumber()} */ "    ${field.name}: ${raylibTypeToUmka(field.type)}\\n"\n`
+            output.push(`    ${field.name}: ${raylibTypeToUmka(field.type)}`)
         }
-        output += `        /* ${outputLineNumber()} */ "  }\\n"\n`
+        output.push(`  }`)
     }
+    output.push(')')
 
-    output += `        /* ${outputLineNumber()} */ ")\\n"`
-    return output
+    return output.join('\n')
 }
 
 function getAllEnums() {
@@ -516,22 +549,39 @@ function getAllEnums() {
  * Creates Umka code for all the given enums.
  */
 function getEnums(enums) {
+    let output = getEnumsCode(enums)
+    let out = output.split('\n').map(line => {
+        return `        /* ${outputLineNumber()} */ "${line}\\n"`
+    }).join('\n')
+    return out
+}
+
+function getEnumsCode(enums) {
     output = []
 
     for (let define of enums) {
         for (let val of define.values) {
-            output.push(`        /* ${outputLineNumber()} */ "const ${val.name}* = ${val.value}\\n"`)
+            output.push(`const ${val.name}* = ${val.value}`)
         }
     }
     return output.join('\n')
 }
+
 const enums = getEnums(getAllEnums())
 
 // Blacklist of defines
 const definesBlackList = []
 
 function getDefines(defines) {
-    let output = ''
+    let output = getDefinesCode(defines)
+    let out = output.split('\n').map(line => {
+        return `        /* ${outputLineNumber()} */ "${line.replaceAll('"', '\\"')}\\n"`
+    }).join('\n')
+    return out
+}
+
+function getDefinesCode(defines) {
+    let output = []
     for (let define of defines) {
         // Blacklist
         if (definesBlackList.includes(define)) {
@@ -545,23 +595,23 @@ function getDefines(defines) {
 
         // Manually handle the colors.
         if (define.type == 'COLOR') {
-            output += `        /* ${outputLineNumber()} */ "const ${define.name}* = ${define.value.replace('CLITERAL(Color)', 'Color')}\\n"\n`
+            output.push(`const ${define.name}* = ${define.value.replace('CLITERAL(Color)', 'Color')}`)
             continue
         }
 
         if (define.type == 'STRING') {
-            output += `        /* ${outputLineNumber()} */ "const ${define.name}* = \\"${define.value}\\"\\n"\n`
+            output.push(`const ${define.name}* = "${define.value}"`)
             continue
         }
 
         if (define.type == 'FLOAT') {
-            output += `        /* ${outputLineNumber()} */ "const ${define.name}* = ${define.value}\\n"\n`
+            output.push(`const ${define.name}* = ${define.value}`)
             continue
         }
 
-        output += `        // Skipped define: ${define.name}\n`
+        output.push(`// Skipped define: ${define.name}`)
     }
-    return output
+    return output.join('\n')
 }
 
 /**
@@ -636,6 +686,11 @@ extern "C" {
 #endif
 
 /**
+ * RAYLIB_UMKA_NO_ADD_MODULE allows enabling or disabling the umkaAddRaylib() method.
+ */
+#ifndef RAYLIB_UMKA_NO_ADD_MODULE
+
+/**
  * Adds the raylib module to an Umka instance.
  *
  * @param umka The Umka instance you would like to add the raylib module to.
@@ -643,6 +698,8 @@ extern "C" {
  * @return True if it succeeds, false otherwise.
  */
 bool umkaAddRaylib(void *umka);
+
+#endif  // RAYLIB_UMKA_NO_ADD_MODULE
 
 #if defined(__cplusplus)
 }
@@ -684,6 +741,10 @@ bool umkaAddRaylib(void *umka);
 #define RAYLIB_UMKA_MEMCPY memcpy
 #endif
 
+#ifndef RAYLIB_UMKA_FUNCTION
+#define RAYLIB_UMKA_FUNCTION(functionName)
+#endif
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -700,6 +761,7 @@ void umkaTraceLog(UmkaStackSlot *params, UmkaStackSlot *result) {
     TraceLog(logType, "%s", message);
 }
 
+#ifndef RAYLIB_UMKA_NO_ADD_MODULE
 /**
  * Adds the raylib module to the given Umka instance.
  *
@@ -731,14 +793,14 @@ ${enums}
 
         // Defines
 ${defines}
-        // Custom functions
-        "fn TraceLog*(errorType: int , message: str)\\n"
 
         // End of the module.
         " ";
 
     return umkaAddModule(umka, "raylib", moduleCode);
 }
+
+#endif  // RAYLIB_UMKA_NO_ADD_MODULE
 
 #if defined(__cplusplus)
 }
@@ -748,4 +810,35 @@ ${defines}
 #endif // RAYLIB_UMKA_IMPLEMENTATION
 `
 
+// Where to write the file to.
+const outputFile = path.join(__dirname, '..', 'include', 'raylib-umka.h')
 fs.writeFileSync(outputFile, code)
+
+// raylib.um
+const raylibModule = `/**
+ * ${pkg.name} v${pkg.version} - ${pkg.description}
+ *
+ * ${pkg.homepage}
+ *
+ * NOTE: Do not edit this file, as it is automatically generated.
+ *
+ * LICENSE: ${pkg.license}
+ */
+
+// Structures
+${getStructuresCode(getAllStructs())}
+
+// Callbacks
+${getCallbacksCode(getAllCallbacks())}
+
+// Functions
+${getModuleFunctionDeclarationsCode(getAllFunctions())}
+
+// Enums
+${getEnumsCode(getAllEnums())}
+
+// Defines
+${getDefinesCode(getAllDefines())}
+`
+const moduleFile = path.join(__dirname, '..', 'umi', 'raylib.um')
+fs.writeFileSync(moduleFile, raylibModule)
