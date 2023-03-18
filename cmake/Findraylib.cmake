@@ -1,7 +1,7 @@
 # RAYLIB_VERSION
 # todo: Switch to FindPackageHandleStandardArgs
 if (NOT RAYLIB_VERSION)
-    set(RAYLIB_VERSION "4.2.0")
+    set(RAYLIB_VERSION "4.5.0")
 endif()
 
 include(FetchContent)
