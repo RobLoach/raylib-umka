@@ -1,5 +1,5 @@
 /**
- * raylib-umka v0.0.3 - Umka bindings for raylib.
+ * raylib-umka v0.0.6 - Umka bindings for raylib.
  *
  * https://github.com/RobLoach/raylib-umka
  *
@@ -120,10 +120,11 @@ type (
     tangents: ^real32
     colors: ^uint8
     indices: ^uint16
+    boneCount: int32
+    boneIndices: ^uint8
+    boneWeights: ^real32
     animVertices: ^real32
     animNormals: ^real32
-    boneIds: ^uint8
-    boneWeights: ^real32
     vaoId: uint32
     vboId: ^uint32
   }
@@ -150,6 +151,11 @@ type (
     name: [32]char
     parent: int32
   }
+  ModelSkeleton* = struct {
+    boneCount: int32
+    bones: ^BoneInfo
+    bindPose: ^Transform
+  }
   Model* = struct {
     transform: Matrix
     meshCount: int32
@@ -157,15 +163,15 @@ type (
     meshes: ^Mesh
     materials: ^Material
     meshMaterial: ^int32
-    boneCount: int32
-    bones: ^BoneInfo
-    bindPose: ^Transform
+    skeleton: ModelSkeleton
+    currentPose: ^Transform
+    boneMatrices: ^Matrix
   }
   ModelAnimation* = struct {
+    name: [32]char
     boneCount: int32
-    frameCount: int32
-    bones: ^BoneInfo
-    framePoses: ^void
+    keyframeCount: int32
+    keyframePoses: ^^Transform
   }
   Ray* = struct {
     position: Vector3
@@ -211,7 +217,6 @@ type (
     vResolution: int32
     hScreenSize: real32
     vScreenSize: real32
-    vScreenCenter: real32
     eyeToScreenDistance: real32
     lensSeparationDistance: real32
     interpupillaryDistance: real32
@@ -229,9 +234,18 @@ type (
     scaleIn: [2]real32
   }
   FilePathList* = struct {
-    capacity: uint32
     count: uint32
     paths: ^str
+  }
+  AutomationEvent* = struct {
+    frame: uint32
+    type: uint32
+    params: [4]int32
+  }
+  AutomationEventList* = struct {
+    capacity: uint32
+    count: uint32
+    events: ^AutomationEvent
   }
   float3* = struct {
     v: [3]real32
@@ -250,18 +264,18 @@ type (
 // Callbacks
 type (
 // Skipped TraceLogCallback
-    LoadFileDataCallback = fn(fileName: str, bytesRead: ^uint32): ^uint8
-    SaveFileDataCallback = fn(fileName: str, data: ^void, bytesToWrite: uint32): bool
+    LoadFileDataCallback = fn(fileName: str, dataSize: ^int32): ^uint8
+    SaveFileDataCallback = fn(fileName: str, data: ^void, dataSize: int32): bool
     LoadFileTextCallback = fn(fileName: str): str
     SaveFileTextCallback = fn(fileName: str, text: str): bool
     AudioCallback = fn(bufferData: ^void, frames: uint32)
 )
 
 // Functions
-fn TraceLog*(errorType: int , message: str)
+fn TraceLog*(errorType: int, message: str)
 fn InitWindow*(width: int32, height: int32, title: str)
-fn WindowShouldClose*(): bool
 fn CloseWindow*()
+fn WindowShouldClose*(): bool
 fn IsWindowReady*(): bool
 fn IsWindowFullscreen*(): bool
 fn IsWindowHidden*(): bool
@@ -273,16 +287,20 @@ fn IsWindowState*(flag: uint32): bool
 fn SetWindowState*(flags: uint32)
 fn ClearWindowState*(flags: uint32)
 fn ToggleFullscreen*()
+fn ToggleBorderlessWindowed*()
 fn MaximizeWindow*()
 fn MinimizeWindow*()
 fn RestoreWindow*()
 fn SetWindowIcon*(image: Image)
+fn SetWindowIcons*(images: ^Image, count: int32)
 fn SetWindowTitle*(title: str)
 fn SetWindowPosition*(x: int32, y: int32)
 fn SetWindowMonitor*(monitor: int32)
 fn SetWindowMinSize*(width: int32, height: int32)
+fn SetWindowMaxSize*(width: int32, height: int32)
 fn SetWindowSize*(width: int32, height: int32)
 fn SetWindowOpacity*(opacity: real32)
+fn SetWindowFocused*()
 fn GetWindowHandle*(): ^void
 fn GetScreenWidth*(): int32
 fn GetScreenHeight*(): int32
@@ -301,11 +319,9 @@ fn GetWindowScaleDPI*(): Vector2
 fn GetMonitorName*(monitor: int32): str
 fn SetClipboardText*(text: str)
 fn GetClipboardText*(): str
+fn GetClipboardImage*(): Image
 fn EnableEventWaiting*()
 fn DisableEventWaiting*()
-fn SwapScreenBuffer*()
-fn PollInputEvents*()
-fn WaitTime*(seconds: real)
 fn ShowCursor*()
 fn HideCursor*()
 fn IsCursorHidden*(): bool
@@ -333,6 +349,7 @@ fn LoadVrStereoConfig*(device: VrDeviceInfo): VrStereoConfig
 fn UnloadVrStereoConfig*(config: VrStereoConfig)
 fn LoadShader*(vsFileName: str, fsFileName: str): Shader
 fn LoadShaderFromMemory*(vsCode: str, fsCode: str): Shader
+fn IsShaderValid*(shader: Shader): bool
 fn GetShaderLocation*(shader: Shader, uniformName: str): int32
 fn GetShaderLocationAttrib*(shader: Shader, attribName: str): int32
 fn SetShaderValue*(shader: Shader, locIndex: int32, value: ^void, uniformType: int32)
@@ -340,43 +357,56 @@ fn SetShaderValueV*(shader: Shader, locIndex: int32, value: ^void, uniformType: 
 fn SetShaderValueMatrix*(shader: Shader, locIndex: int32, mat: Matrix)
 fn SetShaderValueTexture*(shader: Shader, locIndex: int32, texture: Texture)
 fn UnloadShader*(shader: Shader)
-fn GetMouseRay*(mousePosition: Vector2, camera: Camera3D): Ray
-fn GetCameraMatrix*(camera: Camera3D): Matrix
-fn GetCameraMatrix2D*(camera: Camera2D): Matrix
+fn GetScreenToWorldRay*(position: Vector2, camera: Camera3D): Ray
+fn GetScreenToWorldRayEx*(position: Vector2, camera: Camera3D, width: int32, height: int32): Ray
 fn GetWorldToScreen*(position: Vector3, camera: Camera3D): Vector2
-fn GetScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2
 fn GetWorldToScreenEx*(position: Vector3, camera: Camera3D, width: int32, height: int32): Vector2
 fn GetWorldToScreen2D*(position: Vector2, camera: Camera2D): Vector2
+fn GetScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2
+fn GetCameraMatrix*(camera: Camera3D): Matrix
+fn GetCameraMatrix2D*(camera: Camera2D): Matrix
 fn SetTargetFPS*(fps: int32)
-fn GetFPS*(): int32
 fn GetFrameTime*(): real32
 fn GetTime*(): real
-fn GetRandomValue*(min: int32, max: int32): int32
+fn GetFPS*(): int32
+fn SwapScreenBuffer*()
+fn PollInputEvents*()
+fn WaitTime*(seconds: real)
 fn SetRandomSeed*(seed: uint32)
+fn GetRandomValue*(min: int32, max: int32): int32
+fn LoadRandomSequence*(count: uint32, min: int32, max: int32): ^int32
+fn UnloadRandomSequence*(sequence: ^int32)
 fn TakeScreenshot*(fileName: str)
 fn SetConfigFlags*(flags: uint32)
-// Skipping TraceLog
-fn SetTraceLogLevel*(logLevel: int32)
-fn MemAlloc*(size: int32): ^void
-fn MemRealloc*(ptr: ^void, size: int32): ^void
-fn MemFree*(ptr: ^void)
 fn OpenURL*(url: str)
+fn SetTraceLogLevel*(logLevel: int32)
+// Skipping TraceLog
 // Skipping SetTraceLogCallback
+fn MemAlloc*(size: uint32): ^void
+fn MemRealloc*(ptr: ^void, size: uint32): ^void
+fn MemFree*(ptr: ^void)
+fn LoadFileData*(fileName: str, dataSize: ^int32): ^uint8
+fn UnloadFileData*(data: ^uint8)
+fn SaveFileData*(fileName: str, data: ^void, dataSize: int32): bool
+fn ExportDataAsCode*(data: ^uint8, dataSize: int32, fileName: str): bool
+fn LoadFileText*(fileName: str): str
+fn UnloadFileText*(text: str)
+fn SaveFileText*(fileName: str, text: str): bool
 // Skipping SetLoadFileDataCallback
 // Skipping SetSaveFileDataCallback
 // Skipping SetLoadFileTextCallback
 // Skipping SetSaveFileTextCallback
-fn LoadFileData*(fileName: str, bytesRead: ^uint32): ^uint8
-fn UnloadFileData*(data: ^uint8)
-fn SaveFileData*(fileName: str, data: ^void, bytesToWrite: uint32): bool
-fn ExportDataAsCode*(data: str, size: uint32, fileName: str): bool
-fn LoadFileText*(fileName: str): str
-fn UnloadFileText*(text: str)
-fn SaveFileText*(fileName: str, text: str): bool
+fn FileRename*(fileName: str, fileRename: str): int32
+fn FileRemove*(fileName: str): int32
+fn FileCopy*(srcPath: str, dstPath: str): int32
+fn FileMove*(srcPath: str, dstPath: str): int32
+fn FileTextReplace*(fileName: str, search: str, replacement: str): int32
+fn FileTextFindIndex*(fileName: str, search: str): int32
 fn FileExists*(fileName: str): bool
 fn DirectoryExists*(dirPath: str): bool
 fn IsFileExtension*(fileName: str, ext: str): bool
 fn GetFileLength*(fileName: str): int32
+fn GetFileModTime*(fileName: str): int
 fn GetFileExtension*(fileName: str): str
 fn GetFileName*(filePath: str): str
 fn GetFileNameWithoutExt*(filePath: str): str
@@ -384,26 +414,43 @@ fn GetDirectoryPath*(filePath: str): str
 fn GetPrevDirectoryPath*(dirPath: str): str
 fn GetWorkingDirectory*(): str
 fn GetApplicationDirectory*(): str
-fn ChangeDirectory*(dir: str): bool
+fn MakeDirectory*(dirPath: str): int32
+fn ChangeDirectory*(dirPath: str): bool
 fn IsPathFile*(path: str): bool
+fn IsFileNameValid*(fileName: str): bool
 fn LoadDirectoryFiles*(dirPath: str): FilePathList
 fn LoadDirectoryFilesEx*(basePath: str, filter: str, scanSubdirs: bool): FilePathList
 fn UnloadDirectoryFiles*(files: FilePathList)
 fn IsFileDropped*(): bool
 fn LoadDroppedFiles*(): FilePathList
 fn UnloadDroppedFiles*(files: FilePathList)
-fn GetFileModTime*(fileName: str): int
+fn GetDirectoryFileCount*(dirPath: str): uint32
+fn GetDirectoryFileCountEx*(basePath: str, filter: str, scanSubdirs: bool): uint32
 fn CompressData*(data: ^uint8, dataSize: int32, compDataSize: ^int32): ^uint8
 fn DecompressData*(compData: ^uint8, compDataSize: int32, dataSize: ^int32): ^uint8
 fn EncodeDataBase64*(data: ^uint8, dataSize: int32, outputSize: ^int32): str
-fn DecodeDataBase64*(data: ^uint8, outputSize: ^int32): ^uint8
+fn DecodeDataBase64*(text: str, outputSize: ^int32): ^uint8
+fn ComputeCRC32*(data: ^uint8, dataSize: int32): uint32
+fn ComputeMD5*(data: ^uint8, dataSize: int32): ^uint32
+fn ComputeSHA1*(data: ^uint8, dataSize: int32): ^uint32
+fn ComputeSHA256*(data: ^uint8, dataSize: int32): ^uint32
+fn LoadAutomationEventList*(fileName: str): AutomationEventList
+fn UnloadAutomationEventList*(list: AutomationEventList)
+fn ExportAutomationEventList*(list: AutomationEventList, fileName: str): bool
+fn SetAutomationEventList*(list: ^AutomationEventList)
+fn SetAutomationEventBaseFrame*(frame: int32)
+fn StartAutomationEventRecording*()
+fn StopAutomationEventRecording*()
+fn PlayAutomationEvent*(event: AutomationEvent)
 fn IsKeyPressed*(key: int32): bool
+fn IsKeyPressedRepeat*(key: int32): bool
 fn IsKeyDown*(key: int32): bool
 fn IsKeyReleased*(key: int32): bool
 fn IsKeyUp*(key: int32): bool
-fn SetExitKey*(key: int32)
 fn GetKeyPressed*(): int32
 fn GetCharPressed*(): int32
+fn GetKeyName*(key: int32): str
+fn SetExitKey*(key: int32)
 fn IsGamepadAvailable*(gamepad: int32): bool
 fn GetGamepadName*(gamepad: int32): str
 fn IsGamepadButtonPressed*(gamepad: int32, button: int32): bool
@@ -414,6 +461,7 @@ fn GetGamepadButtonPressed*(): int32
 fn GetGamepadAxisCount*(gamepad: int32): int32
 fn GetGamepadAxisMovement*(gamepad: int32, axis: int32): real32
 fn SetGamepadMappings*(mappings: str): int32
+fn SetGamepadVibration*(gamepad: int32, leftMotor: real32, rightMotor: real32, duration: real32)
 fn IsMouseButtonPressed*(button: int32): bool
 fn IsMouseButtonDown*(button: int32): bool
 fn IsMouseButtonReleased*(button: int32): bool
@@ -434,84 +482,108 @@ fn GetTouchPosition*(index: int32): Vector2
 fn GetTouchPointId*(index: int32): int32
 fn GetTouchPointCount*(): int32
 fn SetGesturesEnabled*(flags: uint32)
-fn IsGestureDetected*(gesture: int32): bool
+fn IsGestureDetected*(gesture: uint32): bool
 fn GetGestureDetected*(): int32
 fn GetGestureHoldDuration*(): real32
 fn GetGestureDragVector*(): Vector2
 fn GetGestureDragAngle*(): real32
 fn GetGesturePinchVector*(): Vector2
 fn GetGesturePinchAngle*(): real32
-fn SetCameraMode*(camera: Camera3D, mode: int32)
-fn UpdateCamera*(camera: ^Camera3D)
-fn SetCameraPanControl*(keyPan: int32)
-fn SetCameraAltControl*(keyAlt: int32)
-fn SetCameraSmoothZoomControl*(keySmoothZoom: int32)
-fn SetCameraMoveControls*(keyFront: int32, keyBack: int32, keyRight: int32, keyLeft: int32, keyUp: int32, keyDown: int32)
+fn UpdateCamera*(camera: ^Camera3D, mode: int32)
+fn UpdateCameraPro*(camera: ^Camera3D, movement: Vector3, rotation: Vector3, zoom: real32)
 fn SetShapesTexture*(texture: Texture, source: Rectangle)
+fn GetShapesTexture*(): Texture
+fn GetShapesTextureRectangle*(): Rectangle
 fn DrawPixel*(posX: int32, posY: int32, color: Color)
 fn DrawPixelV*(position: Vector2, color: Color)
 fn DrawLine*(startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)
 fn DrawLineV*(startPos: Vector2, endPos: Vector2, color: Color)
 fn DrawLineEx*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)
+fn DrawLineStrip*(points: const ^Vector2, pointCount: int32, color: Color)
 fn DrawLineBezier*(startPos: Vector2, endPos: Vector2, thick: real32, color: Color)
-fn DrawLineBezierQuad*(startPos: Vector2, endPos: Vector2, controlPos: Vector2, thick: real32, color: Color)
-fn DrawLineBezierCubic*(startPos: Vector2, endPos: Vector2, startControlPos: Vector2, endControlPos: Vector2, thick: real32, color: Color)
-fn DrawLineStrip*(points: ^Vector2, pointCount: int32, color: Color)
+fn DrawLineDashed*(startPos: Vector2, endPos: Vector2, dashSize: int32, spaceSize: int32, color: Color)
 fn DrawCircle*(centerX: int32, centerY: int32, radius: real32, color: Color)
 fn DrawCircleSector*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)
 fn DrawCircleSectorLines*(center: Vector2, radius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)
-fn DrawCircleGradient*(centerX: int32, centerY: int32, radius: real32, color1: Color, color2: Color)
+fn DrawCircleGradient*(centerX: int32, centerY: int32, radius: real32, inner: Color, outer: Color)
 fn DrawCircleV*(center: Vector2, radius: real32, color: Color)
 fn DrawCircleLines*(centerX: int32, centerY: int32, radius: real32, color: Color)
+fn DrawCircleLinesV*(center: Vector2, radius: real32, color: Color)
 fn DrawEllipse*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)
+fn DrawEllipseV*(center: Vector2, radiusH: real32, radiusV: real32, color: Color)
 fn DrawEllipseLines*(centerX: int32, centerY: int32, radiusH: real32, radiusV: real32, color: Color)
+fn DrawEllipseLinesV*(center: Vector2, radiusH: real32, radiusV: real32, color: Color)
 fn DrawRing*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)
 fn DrawRingLines*(center: Vector2, innerRadius: real32, outerRadius: real32, startAngle: real32, endAngle: real32, segments: int32, color: Color)
 fn DrawRectangle*(posX: int32, posY: int32, width: int32, height: int32, color: Color)
 fn DrawRectangleV*(position: Vector2, size: Vector2, color: Color)
 fn DrawRectangleRec*(rec: Rectangle, color: Color)
 fn DrawRectanglePro*(rec: Rectangle, origin: Vector2, rotation: real32, color: Color)
-fn DrawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)
-fn DrawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, color1: Color, color2: Color)
-fn DrawRectangleGradientEx*(rec: Rectangle, col1: Color, col2: Color, col3: Color, col4: Color)
+fn DrawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, top: Color, bottom: Color)
+fn DrawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, left: Color, right: Color)
+fn DrawRectangleGradientEx*(rec: Rectangle, topLeft: Color, bottomLeft: Color, bottomRight: Color, topRight: Color)
 fn DrawRectangleLines*(posX: int32, posY: int32, width: int32, height: int32, color: Color)
 fn DrawRectangleLinesEx*(rec: Rectangle, lineThick: real32, color: Color)
 fn DrawRectangleRounded*(rec: Rectangle, roundness: real32, segments: int32, color: Color)
-fn DrawRectangleRoundedLines*(rec: Rectangle, roundness: real32, segments: int32, lineThick: real32, color: Color)
+fn DrawRectangleRoundedLines*(rec: Rectangle, roundness: real32, segments: int32, color: Color)
+fn DrawRectangleRoundedLinesEx*(rec: Rectangle, roundness: real32, segments: int32, lineThick: real32, color: Color)
 fn DrawTriangle*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)
 fn DrawTriangleLines*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color)
-fn DrawTriangleFan*(points: ^Vector2, pointCount: int32, color: Color)
-fn DrawTriangleStrip*(points: ^Vector2, pointCount: int32, color: Color)
+fn DrawTriangleFan*(points: const ^Vector2, pointCount: int32, color: Color)
+fn DrawTriangleStrip*(points: const ^Vector2, pointCount: int32, color: Color)
 fn DrawPoly*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)
 fn DrawPolyLines*(center: Vector2, sides: int32, radius: real32, rotation: real32, color: Color)
 fn DrawPolyLinesEx*(center: Vector2, sides: int32, radius: real32, rotation: real32, lineThick: real32, color: Color)
+fn DrawSplineLinear*(points: const ^Vector2, pointCount: int32, thick: real32, color: Color)
+fn DrawSplineBasis*(points: const ^Vector2, pointCount: int32, thick: real32, color: Color)
+fn DrawSplineCatmullRom*(points: const ^Vector2, pointCount: int32, thick: real32, color: Color)
+fn DrawSplineBezierQuadratic*(points: const ^Vector2, pointCount: int32, thick: real32, color: Color)
+fn DrawSplineBezierCubic*(points: const ^Vector2, pointCount: int32, thick: real32, color: Color)
+fn DrawSplineSegmentLinear*(p1: Vector2, p2: Vector2, thick: real32, color: Color)
+fn DrawSplineSegmentBasis*(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, thick: real32, color: Color)
+fn DrawSplineSegmentCatmullRom*(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, thick: real32, color: Color)
+fn DrawSplineSegmentBezierQuadratic*(p1: Vector2, c2: Vector2, p3: Vector2, thick: real32, color: Color)
+fn DrawSplineSegmentBezierCubic*(p1: Vector2, c2: Vector2, c3: Vector2, p4: Vector2, thick: real32, color: Color)
+fn GetSplinePointLinear*(startPos: Vector2, endPos: Vector2, t: real32): Vector2
+fn GetSplinePointBasis*(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, t: real32): Vector2
+fn GetSplinePointCatmullRom*(p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, t: real32): Vector2
+fn GetSplinePointBezierQuad*(p1: Vector2, c2: Vector2, p3: Vector2, t: real32): Vector2
+fn GetSplinePointBezierCubic*(p1: Vector2, c2: Vector2, c3: Vector2, p4: Vector2, t: real32): Vector2
 fn CheckCollisionRecs*(rec1: Rectangle, rec2: Rectangle): bool
 fn CheckCollisionCircles*(center1: Vector2, radius1: real32, center2: Vector2, radius2: real32): bool
 fn CheckCollisionCircleRec*(center: Vector2, radius: real32, rec: Rectangle): bool
+fn CheckCollisionCircleLine*(center: Vector2, radius: real32, p1: Vector2, p2: Vector2): bool
 fn CheckCollisionPointRec*(point: Vector2, rec: Rectangle): bool
 fn CheckCollisionPointCircle*(point: Vector2, center: Vector2, radius: real32): bool
 fn CheckCollisionPointTriangle*(point: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): bool
-fn CheckCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: ^Vector2): bool
 fn CheckCollisionPointLine*(point: Vector2, p1: Vector2, p2: Vector2, threshold: int32): bool
+fn CheckCollisionPointPoly*(point: Vector2, points: const ^Vector2, pointCount: int32): bool
+fn CheckCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: ^Vector2): bool
 fn GetCollisionRec*(rec1: Rectangle, rec2: Rectangle): Rectangle
 fn LoadImage*(fileName: str): Image
 fn LoadImageRaw*(fileName: str, width: int32, height: int32, format: int32, headerSize: int32): Image
 fn LoadImageAnim*(fileName: str, frames: ^int32): Image
+fn LoadImageAnimFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, frames: ^int32): Image
 fn LoadImageFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Image
 fn LoadImageFromTexture*(texture: Texture): Image
 fn LoadImageFromScreen*(): Image
+fn IsImageValid*(image: Image): bool
 fn UnloadImage*(image: Image)
 fn ExportImage*(image: Image, fileName: str): bool
+fn ExportImageToMemory*(image: Image, fileType: str, fileSize: ^int32): ^uint8
 fn ExportImageAsCode*(image: Image, fileName: str): bool
 fn GenImageColor*(width: int32, height: int32, color: Color): Image
-fn GenImageGradientV*(width: int32, height: int32, top: Color, bottom: Color): Image
-fn GenImageGradientH*(width: int32, height: int32, left: Color, right: Color): Image
+fn GenImageGradientLinear*(width: int32, height: int32, direction: int32, start: Color, end: Color): Image
 fn GenImageGradientRadial*(width: int32, height: int32, density: real32, inner: Color, outer: Color): Image
+fn GenImageGradientSquare*(width: int32, height: int32, density: real32, inner: Color, outer: Color): Image
 fn GenImageChecked*(width: int32, height: int32, checksX: int32, checksY: int32, col1: Color, col2: Color): Image
 fn GenImageWhiteNoise*(width: int32, height: int32, factor: real32): Image
+fn GenImagePerlinNoise*(width: int32, height: int32, offsetX: int32, offsetY: int32, scale: real32): Image
 fn GenImageCellular*(width: int32, height: int32, tileSize: int32): Image
+fn GenImageText*(width: int32, height: int32, text: str): Image
 fn ImageCopy*(image: Image): Image
 fn ImageFromImage*(image: Image, rec: Rectangle): Image
+fn ImageFromChannel*(image: Image, selectedChannel: int32): Image
 fn ImageText*(text: str, fontSize: int32, color: Color): Image
 fn ImageTextEx*(font: Font, text: str, fontSize: real32, spacing: real32, tint: Color): Image
 fn ImageFormat*(image: ^Image, newFormat: int32)
@@ -521,6 +593,8 @@ fn ImageAlphaCrop*(image: ^Image, threshold: real32)
 fn ImageAlphaClear*(image: ^Image, color: Color, threshold: real32)
 fn ImageAlphaMask*(image: ^Image, alphaMask: Image)
 fn ImageAlphaPremultiply*(image: ^Image)
+fn ImageBlurGaussian*(image: ^Image, blurSize: int32)
+fn ImageKernelConvolution*(image: ^Image, kernel: const ^real32, kernelSize: int32)
 fn ImageResize*(image: ^Image, newWidth: int32, newHeight: int32)
 fn ImageResizeNN*(image: ^Image, newWidth: int32, newHeight: int32)
 fn ImageResizeCanvas*(image: ^Image, newWidth: int32, newHeight: int32, offsetX: int32, offsetY: int32, fill: Color)
@@ -528,6 +602,7 @@ fn ImageMipmaps*(image: ^Image)
 fn ImageDither*(image: ^Image, rBpp: int32, gBpp: int32, bBpp: int32, aBpp: int32)
 fn ImageFlipVertical*(image: ^Image)
 fn ImageFlipHorizontal*(image: ^Image)
+fn ImageRotate*(image: ^Image, degrees: int32)
 fn ImageRotateCW*(image: ^Image)
 fn ImageRotateCCW*(image: ^Image)
 fn ImageColorTint*(image: ^Image, color: Color)
@@ -547,12 +622,20 @@ fn ImageDrawPixel*(dst: ^Image, posX: int32, posY: int32, color: Color)
 fn ImageDrawPixelV*(dst: ^Image, position: Vector2, color: Color)
 fn ImageDrawLine*(dst: ^Image, startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)
 fn ImageDrawLineV*(dst: ^Image, start: Vector2, end: Vector2, color: Color)
+fn ImageDrawLineEx*(dst: ^Image, start: Vector2, end: Vector2, thick: int32, color: Color)
 fn ImageDrawCircle*(dst: ^Image, centerX: int32, centerY: int32, radius: int32, color: Color)
 fn ImageDrawCircleV*(dst: ^Image, center: Vector2, radius: int32, color: Color)
+fn ImageDrawCircleLines*(dst: ^Image, centerX: int32, centerY: int32, radius: int32, color: Color)
+fn ImageDrawCircleLinesV*(dst: ^Image, center: Vector2, radius: int32, color: Color)
 fn ImageDrawRectangle*(dst: ^Image, posX: int32, posY: int32, width: int32, height: int32, color: Color)
 fn ImageDrawRectangleV*(dst: ^Image, position: Vector2, size: Vector2, color: Color)
 fn ImageDrawRectangleRec*(dst: ^Image, rec: Rectangle, color: Color)
 fn ImageDrawRectangleLines*(dst: ^Image, rec: Rectangle, thick: int32, color: Color)
+fn ImageDrawTriangle*(dst: ^Image, v1: Vector2, v2: Vector2, v3: Vector2, color: Color)
+fn ImageDrawTriangleEx*(dst: ^Image, v1: Vector2, v2: Vector2, v3: Vector2, c1: Color, c2: Color, c3: Color)
+fn ImageDrawTriangleLines*(dst: ^Image, v1: Vector2, v2: Vector2, v3: Vector2, color: Color)
+fn ImageDrawTriangleFan*(dst: ^Image, points: const ^Vector2, pointCount: int32, color: Color)
+fn ImageDrawTriangleStrip*(dst: ^Image, points: const ^Vector2, pointCount: int32, color: Color)
 fn ImageDraw*(dst: ^Image, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color)
 fn ImageDrawText*(dst: ^Image, text: str, posX: int32, posY: int32, fontSize: int32, color: Color)
 fn ImageDrawTextEx*(dst: ^Image, font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)
@@ -560,7 +643,9 @@ fn LoadTexture*(fileName: str): Texture
 fn LoadTextureFromImage*(image: Image): Texture
 fn LoadTextureCubemap*(image: Image, layout: int32): Texture
 fn LoadRenderTexture*(width: int32, height: int32): RenderTexture
+fn IsTextureValid*(texture: Texture): bool
 fn UnloadTexture*(texture: Texture)
+fn IsRenderTextureValid*(target: RenderTexture): bool
 fn UnloadRenderTexture*(target: RenderTexture)
 fn UpdateTexture*(texture: Texture, pixels: ^void)
 fn UpdateTextureRec*(texture: Texture, rec: Rectangle, pixels: ^void)
@@ -571,31 +656,34 @@ fn DrawTexture*(texture: Texture, posX: int32, posY: int32, tint: Color)
 fn DrawTextureV*(texture: Texture, position: Vector2, tint: Color)
 fn DrawTextureEx*(texture: Texture, position: Vector2, rotation: real32, scale: real32, tint: Color)
 fn DrawTextureRec*(texture: Texture, source: Rectangle, position: Vector2, tint: Color)
-fn DrawTextureQuad*(texture: Texture, tiling: Vector2, offset: Vector2, quad: Rectangle, tint: Color)
-fn DrawTextureTiled*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, scale: real32, tint: Color)
 fn DrawTexturePro*(texture: Texture, source: Rectangle, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)
 fn DrawTextureNPatch*(texture: Texture, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vector2, rotation: real32, tint: Color)
-fn DrawTexturePoly*(texture: Texture, center: Vector2, points: ^Vector2, texcoords: ^Vector2, pointCount: int32, tint: Color)
+fn ColorIsEqual*(col1: Color, col2: Color): bool
 fn Fade*(color: Color, alpha: real32): Color
 fn ColorToInt*(color: Color): int32
 fn ColorNormalize*(color: Color): Vector4
 fn ColorFromNormalized*(normalized: Vector4): Color
 fn ColorToHSV*(color: Color): Vector3
 fn ColorFromHSV*(hue: real32, saturation: real32, value: real32): Color
+fn ColorTint*(color: Color, tint: Color): Color
+fn ColorBrightness*(color: Color, factor: real32): Color
+fn ColorContrast*(color: Color, contrast: real32): Color
 fn ColorAlpha*(color: Color, alpha: real32): Color
 fn ColorAlphaBlend*(dst: Color, src: Color, tint: Color): Color
+fn ColorLerp*(color1: Color, color2: Color, factor: real32): Color
 fn GetColor*(hexValue: uint32): Color
 fn GetPixelColor*(srcPtr: ^void, format: int32): Color
 fn SetPixelColor*(dstPtr: ^void, color: Color, format: int32)
 fn GetPixelDataSize*(width: int32, height: int32, format: int32): int32
 fn GetFontDefault*(): Font
 fn LoadFont*(fileName: str): Font
-fn LoadFontEx*(fileName: str, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font
+fn LoadFontEx*(fileName: str, fontSize: int32, codepoints: ^int32, codepointCount: int32): Font
 fn LoadFontFromImage*(image: Image, key: Color, firstChar: int32): Font
-fn LoadFontFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, fontSize: int32, fontChars: ^int32, glyphCount: int32): Font
+fn LoadFontFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32, fontSize: int32, codepoints: ^int32, codepointCount: int32): Font
+fn IsFontValid*(font: Font): bool
 // Skipping LoadFontData
-fn GenImageFontAtlas*(chars: ^void, recs: ^void, glyphCount: int32, fontSize: int32, padding: int32, packMethod: int32): Image
-fn UnloadFontData*(chars: ^GlyphInfo, glyphCount: int32)
+fn GenImageFontAtlas*(glyphs: ^void, glyphRecs: ^void, glyphCount: int32, fontSize: int32, padding: int32, packMethod: int32): Image
+fn UnloadFontData*(glyphs: ^GlyphInfo, glyphCount: int32)
 fn UnloadFont*(font: Font)
 fn ExportFontAsCode*(font: Font, fileName: str): bool
 fn DrawFPS*(posX: int32, posY: int32)
@@ -603,33 +691,46 @@ fn DrawText*(text: str, posX: int32, posY: int32, fontSize: int32, color: Color)
 fn DrawTextEx*(font: Font, text: str, position: Vector2, fontSize: real32, spacing: real32, tint: Color)
 fn DrawTextPro*(font: Font, text: str, position: Vector2, origin: Vector2, rotation: real32, fontSize: real32, spacing: real32, tint: Color)
 fn DrawTextCodepoint*(font: Font, codepoint: int32, position: Vector2, fontSize: real32, tint: Color)
-fn DrawTextCodepoints*(font: Font, codepoints: ^int32, count: int32, position: Vector2, fontSize: real32, spacing: real32, tint: Color)
+fn DrawTextCodepoints*(font: Font, codepoints: ^int32, codepointCount: int32, position: Vector2, fontSize: real32, spacing: real32, tint: Color)
+fn SetTextLineSpacing*(spacing: int32)
 fn MeasureText*(text: str, fontSize: int32): int32
 fn MeasureTextEx*(font: Font, text: str, fontSize: real32, spacing: real32): Vector2
+fn MeasureTextCodepoints*(font: Font, codepoints: ^int32, length: int32, fontSize: real32, spacing: real32): Vector2
 fn GetGlyphIndex*(font: Font, codepoint: int32): int32
 fn GetGlyphInfo*(font: Font, codepoint: int32): GlyphInfo
 fn GetGlyphAtlasRec*(font: Font, codepoint: int32): Rectangle
+fn LoadUTF8*(codepoints: ^int32, length: int32): str
+fn UnloadUTF8*(text: str)
 fn LoadCodepoints*(text: str, count: ^int32): ^int32
 fn UnloadCodepoints*(codepoints: ^int32)
 fn GetCodepointCount*(text: str): int32
-fn GetCodepoint*(text: str, bytesProcessed: ^int32): int32
-fn CodepointToUTF8*(codepoint: int32, byteSize: ^int32): str
-fn TextCodepointsToUTF8*(codepoints: ^int32, length: int32): str
+fn GetCodepoint*(text: str, codepointSize: ^int32): int32
+fn GetCodepointNext*(text: str, codepointSize: ^int32): int32
+fn GetCodepointPrevious*(text: str, codepointSize: ^int32): int32
+fn CodepointToUTF8*(codepoint: int32, utf8Size: ^int32): str
+fn LoadTextLines*(text: str, count: ^int32): ^str
+fn UnloadTextLines*(text: ^str, lineCount: int32)
 fn TextCopy*(dst: str, src: str): int32
 fn TextIsEqual*(text1: str, text2: str): bool
 fn TextLength*(text: str): uint32
 // Skipping TextFormat
 fn TextSubtext*(text: str, position: int32, length: int32): str
-fn TextReplace*(text: str, replace: str, by: str): str
+fn TextRemoveSpaces*(text: str): str
+fn GetTextBetween*(text: str, begin: str, end: str): str
+fn TextReplace*(text: str, search: str, replacement: str): str
+fn TextReplaceBetween*(text: str, begin: str, end: str, replacement: str): str
 fn TextInsert*(text: str, insert: str, position: int32): str
 fn TextJoin*(textList: ^str, count: int32, delimiter: str): str
 fn TextSplit*(text: str, delimiter: char, count: ^int32): ^str
 fn TextAppend*(text: str, append: str, position: ^int32)
-fn TextFindIndex*(text: str, find: str): int32
+fn TextFindIndex*(text: str, search: str): int32
 fn TextToUpper*(text: str): str
 fn TextToLower*(text: str): str
 fn TextToPascal*(text: str): str
+fn TextToSnake*(text: str): str
+fn TextToCamel*(text: str): str
 fn TextToInteger*(text: str): int32
+fn TextToFloat*(text: str): real32
 fn DrawLine3D*(startPos: Vector3, endPos: Vector3, color: Color)
 fn DrawPoint3D*(position: Vector3, color: Color)
 fn DrawCircle3D*(center: Vector3, radius: real32, rotationAxis: Vector3, rotationAngle: real32, color: Color)
@@ -639,8 +740,6 @@ fn DrawCube*(position: Vector3, width: real32, height: real32, length: real32, c
 fn DrawCubeV*(position: Vector3, size: Vector3, color: Color)
 fn DrawCubeWires*(position: Vector3, width: real32, height: real32, length: real32, color: Color)
 fn DrawCubeWiresV*(position: Vector3, size: Vector3, color: Color)
-fn DrawCubeTexture*(texture: Texture, position: Vector3, width: real32, height: real32, length: real32, color: Color)
-fn DrawCubeTextureRec*(texture: Texture, source: Rectangle, position: Vector3, width: real32, height: real32, length: real32, color: Color)
 fn DrawSphere*(centerPos: Vector3, radius: real32, color: Color)
 fn DrawSphereEx*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)
 fn DrawSphereWires*(centerPos: Vector3, radius: real32, rings: int32, slices: int32, color: Color)
@@ -648,20 +747,24 @@ fn DrawCylinder*(position: Vector3, radiusTop: real32, radiusBottom: real32, hei
 fn DrawCylinderEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)
 fn DrawCylinderWires*(position: Vector3, radiusTop: real32, radiusBottom: real32, height: real32, slices: int32, color: Color)
 fn DrawCylinderWiresEx*(startPos: Vector3, endPos: Vector3, startRadius: real32, endRadius: real32, sides: int32, color: Color)
+fn DrawCapsule*(startPos: Vector3, endPos: Vector3, radius: real32, slices: int32, rings: int32, color: Color)
+fn DrawCapsuleWires*(startPos: Vector3, endPos: Vector3, radius: real32, slices: int32, rings: int32, color: Color)
 fn DrawPlane*(centerPos: Vector3, size: Vector2, color: Color)
 fn DrawRay*(ray: Ray, color: Color)
 fn DrawGrid*(slices: int32, spacing: real32)
 fn LoadModel*(fileName: str): Model
 fn LoadModelFromMesh*(mesh: Mesh): Model
+fn IsModelValid*(model: Model): bool
 fn UnloadModel*(model: Model)
-fn UnloadModelKeepMeshes*(model: Model)
 fn GetModelBoundingBox*(model: Model): BoundingBox
 fn DrawModel*(model: Model, position: Vector3, scale: real32, tint: Color)
 fn DrawModelEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)
 fn DrawModelWires*(model: Model, position: Vector3, scale: real32, tint: Color)
 fn DrawModelWiresEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)
+fn DrawModelPoints*(model: Model, position: Vector3, scale: real32, tint: Color)
+fn DrawModelPointsEx*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: real32, scale: Vector3, tint: Color)
 fn DrawBoundingBox*(box: BoundingBox, color: Color)
-fn DrawBillboard*(camera: Camera3D, texture: Texture, position: Vector3, size: real32, tint: Color)
+fn DrawBillboard*(camera: Camera3D, texture: Texture, position: Vector3, scale: real32, tint: Color)
 fn DrawBillboardRec*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, size: Vector2, tint: Color)
 fn DrawBillboardPro*(camera: Camera3D, texture: Texture, source: Rectangle, position: Vector3, up: Vector3, size: Vector2, origin: Vector2, rotation: real32, tint: Color)
 fn UploadMesh*(mesh: ^Mesh, dynamic: bool)
@@ -669,9 +772,10 @@ fn UpdateMeshBuffer*(mesh: Mesh, index: int32, data: ^void, dataSize: int32, off
 fn UnloadMesh*(mesh: Mesh)
 fn DrawMesh*(mesh: Mesh, material: Material, transform: Matrix)
 fn DrawMeshInstanced*(mesh: Mesh, material: Material, transforms: ^Matrix, instances: int32)
-fn ExportMesh*(mesh: Mesh, fileName: str): bool
 fn GetMeshBoundingBox*(mesh: Mesh): BoundingBox
 fn GenMeshTangents*(mesh: ^Mesh)
+fn ExportMesh*(mesh: Mesh, fileName: str): bool
+fn ExportMeshAsCode*(mesh: Mesh, fileName: str): bool
 fn GenMeshPoly*(sides: int32, radius: real32): Mesh
 fn GenMeshPlane*(width: real32, length: real32, resX: int32, resZ: int32): Mesh
 fn GenMeshCube*(width: real32, height: real32, length: real32): Mesh
@@ -685,13 +789,14 @@ fn GenMeshHeightmap*(heightmap: Image, size: Vector3): Mesh
 fn GenMeshCubicmap*(cubicmap: Image, cubeSize: Vector3): Mesh
 fn LoadMaterials*(fileName: str, materialCount: ^int32): ^Material
 fn LoadMaterialDefault*(): Material
+fn IsMaterialValid*(material: Material): bool
 fn UnloadMaterial*(material: Material)
 fn SetMaterialTexture*(material: ^Material, mapType: int32, texture: Texture)
 fn SetModelMeshMaterial*(model: ^Model, meshId: int32, materialId: int32)
-fn LoadModelAnimations*(fileName: str, animCount: ^uint32): ^ModelAnimation
-fn UpdateModelAnimation*(model: Model, anim: ModelAnimation, frame: int32)
-fn UnloadModelAnimation*(anim: ModelAnimation)
-fn UnloadModelAnimations*(animations: ^ModelAnimation, count: uint32)
+fn LoadModelAnimations*(fileName: str, animCount: ^int32): ^ModelAnimation
+fn UpdateModelAnimation*(model: Model, anim: ModelAnimation, frame: real32)
+fn UpdateModelAnimationEx*(model: Model, animA: ModelAnimation, frameA: real32, animB: ModelAnimation, frameB: real32, blend: real32)
+fn UnloadModelAnimations*(animations: ^ModelAnimation, animCount: int32)
 fn IsModelAnimationValid*(model: Model, anim: ModelAnimation): bool
 fn CheckCollisionSpheres*(center1: Vector3, radius1: real32, center2: Vector3, radius2: real32): bool
 fn CheckCollisionBoxes*(box1: BoundingBox, box2: BoundingBox): bool
@@ -705,33 +810,36 @@ fn InitAudioDevice*()
 fn CloseAudioDevice*()
 fn IsAudioDeviceReady*(): bool
 fn SetMasterVolume*(volume: real32)
+fn GetMasterVolume*(): real32
 fn LoadWave*(fileName: str): Wave
 fn LoadWaveFromMemory*(fileType: str, fileData: ^uint8, dataSize: int32): Wave
+fn IsWaveValid*(wave: Wave): bool
 fn LoadSound*(fileName: str): Sound
 fn LoadSoundFromWave*(wave: Wave): Sound
+fn LoadSoundAlias*(source: Sound): Sound
+fn IsSoundValid*(sound: Sound): bool
 fn UpdateSound*(sound: Sound, data: ^void, sampleCount: int32)
 fn UnloadWave*(wave: Wave)
 fn UnloadSound*(sound: Sound)
+fn UnloadSoundAlias*(alias: Sound)
 fn ExportWave*(wave: Wave, fileName: str): bool
 fn ExportWaveAsCode*(wave: Wave, fileName: str): bool
 fn PlaySound*(sound: Sound)
 fn StopSound*(sound: Sound)
 fn PauseSound*(sound: Sound)
 fn ResumeSound*(sound: Sound)
-fn PlaySoundMulti*(sound: Sound)
-fn StopSoundMulti*()
-fn GetSoundsPlaying*(): int32
 fn IsSoundPlaying*(sound: Sound): bool
 fn SetSoundVolume*(sound: Sound, volume: real32)
 fn SetSoundPitch*(sound: Sound, pitch: real32)
 fn SetSoundPan*(sound: Sound, pan: real32)
 fn WaveCopy*(wave: Wave): Wave
-fn WaveCrop*(wave: ^Wave, initSample: int32, finalSample: int32)
+fn WaveCrop*(wave: ^Wave, initFrame: int32, finalFrame: int32)
 fn WaveFormat*(wave: ^Wave, sampleRate: int32, sampleSize: int32, channels: int32)
 fn LoadWaveSamples*(wave: Wave): ^real32
 fn UnloadWaveSamples*(samples: ^real32)
 fn LoadMusicStream*(fileName: str): Music
 fn LoadMusicStreamFromMemory*(fileType: str, data: ^uint8, dataSize: int32): Music
+fn IsMusicValid*(music: Music): bool
 fn UnloadMusicStream*(music: Music)
 fn PlayMusicStream*(music: Music)
 fn IsMusicStreamPlaying*(music: Music): bool
@@ -746,6 +854,7 @@ fn SetMusicPan*(music: Music, pan: real32)
 fn GetMusicTimeLength*(music: Music): real32
 fn GetMusicTimePlayed*(music: Music): real32
 fn LoadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream
+fn IsAudioStreamValid*(stream: AudioStream): bool
 fn UnloadAudioStream*(stream: AudioStream)
 fn UpdateAudioStream*(stream: AudioStream, data: ^void, frameCount: int32)
 fn IsAudioStreamProcessed*(stream: AudioStream): bool
@@ -761,6 +870,8 @@ fn SetAudioStreamBufferSizeDefault*(size: int32)
 // Skipping SetAudioStreamCallback
 // Skipping AttachAudioStreamProcessor
 // Skipping DetachAudioStreamProcessor
+fn AttachAudioMixedProcessor*(processor: AudioCallback)
+fn DetachAudioMixedProcessor*(processor: AudioCallback)
 fn Clamp*(value: real32, min: real32, max: real32): real32
 fn Lerp*(start: real32, end: real32, amount: real32): real32
 fn Normalize*(value: real32, start: real32, end: real32): real32
@@ -776,9 +887,11 @@ fn Vector2SubtractValue*(v: Vector2, sub: real32): Vector2
 fn Vector2Length*(v: Vector2): real32
 fn Vector2LengthSqr*(v: Vector2): real32
 fn Vector2DotProduct*(v1: Vector2, v2: Vector2): real32
+fn Vector2CrossProduct*(v1: Vector2, v2: Vector2): real32
 fn Vector2Distance*(v1: Vector2, v2: Vector2): real32
 fn Vector2DistanceSqr*(v1: Vector2, v2: Vector2): real32
 fn Vector2Angle*(v1: Vector2, v2: Vector2): real32
+fn Vector2LineAngle*(start: Vector2, end: Vector2): real32
 fn Vector2Scale*(v: Vector2, scale: real32): Vector2
 fn Vector2Multiply*(v1: Vector2, v2: Vector2): Vector2
 fn Vector2Negate*(v: Vector2): Vector2
@@ -787,12 +900,15 @@ fn Vector2Normalize*(v: Vector2): Vector2
 fn Vector2Transform*(v: Vector2, mat: Matrix): Vector2
 fn Vector2Lerp*(v1: Vector2, v2: Vector2, amount: real32): Vector2
 fn Vector2Reflect*(v: Vector2, normal: Vector2): Vector2
+fn Vector2Min*(v1: Vector2, v2: Vector2): Vector2
+fn Vector2Max*(v1: Vector2, v2: Vector2): Vector2
 fn Vector2Rotate*(v: Vector2, angle: real32): Vector2
 fn Vector2MoveTowards*(v: Vector2, target: Vector2, maxDistance: real32): Vector2
 fn Vector2Invert*(v: Vector2): Vector2
 fn Vector2Clamp*(v: Vector2, min: Vector2, max: Vector2): Vector2
 fn Vector2ClampValue*(v: Vector2, min: real32, max: real32): Vector2
 fn Vector2Equals*(p: Vector2, q: Vector2): int32
+fn Vector2Refract*(v: Vector2, n: Vector2, r: real32): Vector2
 fn Vector3Zero*(): Vector3
 fn Vector3One*(): Vector3
 fn Vector3Add*(v1: Vector3, v2: Vector3): Vector3
@@ -812,11 +928,15 @@ fn Vector3Angle*(v1: Vector3, v2: Vector3): real32
 fn Vector3Negate*(v: Vector3): Vector3
 fn Vector3Divide*(v1: Vector3, v2: Vector3): Vector3
 fn Vector3Normalize*(v: Vector3): Vector3
+fn Vector3Project*(v1: Vector3, v2: Vector3): Vector3
+fn Vector3Reject*(v1: Vector3, v2: Vector3): Vector3
 fn Vector3OrthoNormalize*(v1: ^Vector3, v2: ^Vector3)
 fn Vector3Transform*(v: Vector3, mat: Matrix): Vector3
 fn Vector3RotateByQuaternion*(v: Vector3, q: Vector4): Vector3
 fn Vector3RotateByAxisAngle*(v: Vector3, axis: Vector3, angle: real32): Vector3
+fn Vector3MoveTowards*(v: Vector3, target: Vector3, maxDistance: real32): Vector3
 fn Vector3Lerp*(v1: Vector3, v2: Vector3, amount: real32): Vector3
+fn Vector3CubicHermite*(v1: Vector3, tangent1: Vector3, v2: Vector3, tangent2: Vector3, amount: real32): Vector3
 fn Vector3Reflect*(v: Vector3, normal: Vector3): Vector3
 fn Vector3Min*(v1: Vector3, v2: Vector3): Vector3
 fn Vector3Max*(v1: Vector3, v2: Vector3): Vector3
@@ -828,6 +948,28 @@ fn Vector3Clamp*(v: Vector3, min: Vector3, max: Vector3): Vector3
 fn Vector3ClampValue*(v: Vector3, min: real32, max: real32): Vector3
 fn Vector3Equals*(p: Vector3, q: Vector3): int32
 fn Vector3Refract*(v: Vector3, n: Vector3, r: real32): Vector3
+fn Vector4Zero*(): Vector4
+fn Vector4One*(): Vector4
+fn Vector4Add*(v1: Vector4, v2: Vector4): Vector4
+fn Vector4AddValue*(v: Vector4, add: real32): Vector4
+fn Vector4Subtract*(v1: Vector4, v2: Vector4): Vector4
+fn Vector4SubtractValue*(v: Vector4, add: real32): Vector4
+fn Vector4Length*(v: Vector4): real32
+fn Vector4LengthSqr*(v: Vector4): real32
+fn Vector4DotProduct*(v1: Vector4, v2: Vector4): real32
+fn Vector4Distance*(v1: Vector4, v2: Vector4): real32
+fn Vector4DistanceSqr*(v1: Vector4, v2: Vector4): real32
+fn Vector4Scale*(v: Vector4, scale: real32): Vector4
+fn Vector4Multiply*(v1: Vector4, v2: Vector4): Vector4
+fn Vector4Negate*(v: Vector4): Vector4
+fn Vector4Divide*(v1: Vector4, v2: Vector4): Vector4
+fn Vector4Normalize*(v: Vector4): Vector4
+fn Vector4Min*(v1: Vector4, v2: Vector4): Vector4
+fn Vector4Max*(v1: Vector4, v2: Vector4): Vector4
+fn Vector4Lerp*(v1: Vector4, v2: Vector4, amount: real32): Vector4
+fn Vector4MoveTowards*(v: Vector4, target: Vector4, maxDistance: real32): Vector4
+fn Vector4Invert*(v: Vector4): Vector4
+fn Vector4Equals*(p: Vector4, q: Vector4): int32
 fn MatrixDeterminant*(mat: Matrix): real32
 fn MatrixTrace*(mat: Matrix): real32
 fn MatrixTranspose*(mat: Matrix): Matrix
@@ -836,6 +978,7 @@ fn MatrixIdentity*(): Matrix
 fn MatrixAdd*(left: Matrix, right: Matrix): Matrix
 fn MatrixSubtract*(left: Matrix, right: Matrix): Matrix
 fn MatrixMultiply*(left: Matrix, right: Matrix): Matrix
+fn MatrixMultiplyValue*(left: Matrix, value: real32): Matrix
 fn MatrixTranslate*(x: real32, y: real32, z: real32): Matrix
 fn MatrixRotate*(axis: Vector3, angle: real32): Matrix
 fn MatrixRotateX*(angle: real32): Matrix
@@ -844,9 +987,9 @@ fn MatrixRotateZ*(angle: real32): Matrix
 fn MatrixRotateXYZ*(angle: Vector3): Matrix
 fn MatrixRotateZYX*(angle: Vector3): Matrix
 fn MatrixScale*(x: real32, y: real32, z: real32): Matrix
-fn MatrixFrustum*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix
-fn MatrixPerspective*(fovy: real, aspect: real, near: real, far: real): Matrix
-fn MatrixOrtho*(left: real, right: real, bottom: real, top: real, near: real, far: real): Matrix
+fn MatrixFrustum*(left: real, right: real, bottom: real, top: real, nearPlane: real, farPlane: real): Matrix
+fn MatrixPerspective*(fovY: real, aspect: real, nearPlane: real, farPlane: real): Matrix
+fn MatrixOrtho*(left: real, right: real, bottom: real, top: real, nearPlane: real, farPlane: real): Matrix
 fn MatrixLookAt*(eye: Vector3, target: Vector3, up: Vector3): Matrix
 fn MatrixToFloatV*(mat: Matrix): float16
 fn QuaternionAdd*(q1: Vector4, q2: Vector4): Vector4
@@ -863,6 +1006,7 @@ fn QuaternionDivide*(q1: Vector4, q2: Vector4): Vector4
 fn QuaternionLerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4
 fn QuaternionNlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4
 fn QuaternionSlerp*(q1: Vector4, q2: Vector4, amount: real32): Vector4
+fn QuaternionCubicHermiteSpline*(q1: Vector4, outTangent1: Vector4, q2: Vector4, inTangent2: Vector4, t: real32): Vector4
 fn QuaternionFromVector3ToVector3*(from: Vector3, to: Vector3): Vector4
 fn QuaternionFromMatrix*(mat: Matrix): Vector4
 fn QuaternionToMatrix*(q: Vector4): Matrix
@@ -872,6 +1016,8 @@ fn QuaternionFromEuler*(pitch: real32, yaw: real32, roll: real32): Vector4
 fn QuaternionToEuler*(q: Vector4): Vector3
 fn QuaternionTransform*(q: Vector4, mat: Matrix): Vector4
 fn QuaternionEquals*(p: Vector4, q: Vector4): int32
+fn MatrixCompose*(translation: Vector3, rotation: Vector4, scale: Vector3): Matrix
+fn MatrixDecompose*(mat: Matrix, translation: ^Vector3, rotation: ^Vector4, scale: ^Vector3)
 fn rlMatrixMode*(mode: int32)
 fn rlPushMatrix*()
 fn rlPopMatrix*()
@@ -879,10 +1025,13 @@ fn rlLoadIdentity*()
 fn rlTranslatef*(x: real32, y: real32, z: real32)
 fn rlRotatef*(angle: real32, x: real32, y: real32, z: real32)
 fn rlScalef*(x: real32, y: real32, z: real32)
-fn rlMultMatrixf*(matf: ^real32)
+fn rlMultMatrixf*(matf: const ^real32)
 fn rlFrustum*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)
 fn rlOrtho*(left: real, right: real, bottom: real, top: real, znear: real, zfar: real)
 fn rlViewport*(x: int32, y: int32, width: int32, height: int32)
+fn rlSetClipPlanes*(nearPlane: real, farPlane: real)
+fn rlGetCullDistanceNear*(): real
+fn rlGetCullDistanceFar*(): real
 fn rlBegin*(mode: int32)
 fn rlEnd*()
 fn rlVertex2i*(x: int32, y: int32)
@@ -909,11 +1058,15 @@ fn rlDisableTexture*()
 fn rlEnableTextureCubemap*(id: uint32)
 fn rlDisableTextureCubemap*()
 fn rlTextureParameters*(id: uint32, param: int32, value: int32)
+fn rlCubemapParameters*(id: uint32, param: int32, value: int32)
 fn rlEnableShader*(id: uint32)
 fn rlDisableShader*()
 fn rlEnableFramebuffer*(id: uint32)
 fn rlDisableFramebuffer*()
+fn rlGetActiveFramebuffer*(): uint32
 fn rlActiveDrawBuffers*(count: int32)
+fn rlBlitFramebuffer*(srcX: int32, srcY: int32, srcWidth: int32, srcHeight: int32, dstX: int32, dstY: int32, dstWidth: int32, dstHeight: int32, bufferMask: int32)
+fn rlBindFramebuffer*(target: uint32, framebuffer: uint32)
 fn rlEnableColorBlend*()
 fn rlDisableColorBlend*()
 fn rlEnableDepthTest*()
@@ -922,9 +1075,15 @@ fn rlEnableDepthMask*()
 fn rlDisableDepthMask*()
 fn rlEnableBackfaceCulling*()
 fn rlDisableBackfaceCulling*()
+fn rlColorMask*(r: bool, g: bool, b: bool, a: bool)
+fn rlSetCullFace*(mode: int32)
 fn rlEnableScissorTest*()
 fn rlDisableScissorTest*()
 fn rlScissor*(x: int32, y: int32, width: int32, height: int32)
+fn rlEnablePointMode*()
+fn rlDisablePointMode*()
+fn rlSetPointSize*(size: real32)
+fn rlGetPointSize*(): real32
 fn rlEnableWireMode*()
 fn rlDisableWireMode*()
 fn rlSetLineWidth*(width: real32)
@@ -939,9 +1098,11 @@ fn rlClearScreenBuffers*()
 fn rlCheckErrors*()
 fn rlSetBlendMode*(mode: int32)
 fn rlSetBlendFactors*(glSrcFactor: int32, glDstFactor: int32, glEquation: int32)
+fn rlSetBlendFactorsSeparate*(glSrcRGB: int32, glDstRGB: int32, glSrcAlpha: int32, glDstAlpha: int32, glEqRGB: int32, glEqAlpha: int32)
 fn rlglInit*(width: int32, height: int32)
 fn rlglClose*()
 fn rlLoadExtensions*(loader: ^void)
+fn rlGetProcAddress*(procName: str): ^void
 fn rlGetVersion*(): int32
 fn rlSetFramebufferWidth*(width: int32)
 fn rlGetFramebufferWidth*(): int32
@@ -964,7 +1125,7 @@ fn rlUpdateVertexBuffer*(bufferId: uint32, data: ^void, dataSize: int32, offset:
 fn rlUpdateVertexBufferElements*(id: uint32, data: ^void, dataSize: int32, offset: int32)
 fn rlUnloadVertexArray*(vaoId: uint32)
 fn rlUnloadVertexBuffer*(vboId: uint32)
-fn rlSetVertexAttribute*(index: uint32, compSize: int32, typeInput: int32, normalized: bool, stride: int32, pointer: ^void)
+fn rlSetVertexAttribute*(index: uint32, compSize: int32, typeInput: int32, normalized: bool, stride: int32, offset: int32)
 fn rlSetVertexAttributeDivisor*(index: uint32, divisor: int32)
 fn rlSetVertexAttributeDefault*(locIndex: int32, value: ^void, attribType: int32, count: int32)
 fn rlDrawVertexArray*(offset: int32, count: int32)
@@ -973,7 +1134,7 @@ fn rlDrawVertexArrayInstanced*(offset: int32, count: int32, instances: int32)
 fn rlDrawVertexArrayElementsInstanced*(offset: int32, count: int32, buffer: ^void, instances: int32)
 fn rlLoadTexture*(data: ^void, width: int32, height: int32, format: int32, mipmapCount: int32): uint32
 fn rlLoadTextureDepth*(width: int32, height: int32, useRenderBuffer: bool): uint32
-fn rlLoadTextureCubemap*(data: ^void, size: int32, format: int32): uint32
+fn rlLoadTextureCubemap*(data: ^void, size: int32, format: int32, mipmapCount: int32): uint32
 fn rlUpdateTexture*(id: uint32, offsetX: int32, offsetY: int32, width: int32, height: int32, format: int32, data: ^void)
 fn rlGetGlTextureFormats*(format: int32, glInternalFormat: ^uint32, glFormat: ^uint32, glType: ^uint32)
 fn rlGetPixelFormatName*(format: uint32): str
@@ -981,30 +1142,34 @@ fn rlUnloadTexture*(id: uint32)
 fn rlGenTextureMipmaps*(id: uint32, width: int32, height: int32, format: int32, mipmaps: ^int32)
 fn rlReadTexturePixels*(id: uint32, width: int32, height: int32, format: int32): ^void
 fn rlReadScreenPixels*(width: int32, height: int32): ^uint8
-fn rlLoadFramebuffer*(width: int32, height: int32): uint32
-fn rlFramebufferAttach*(fboId: uint32, texId: uint32, attachType: int32, texType: int32, mipLevel: int32)
+fn rlLoadFramebuffer*(): uint32
+fn rlFramebufferAttach*(id: uint32, texId: uint32, attachType: int32, texType: int32, mipLevel: int32)
 fn rlFramebufferComplete*(id: uint32): bool
 fn rlUnloadFramebuffer*(id: uint32)
-fn rlLoadShaderCode*(vsCode: str, fsCode: str): uint32
-fn rlCompileShader*(shaderCode: str, typeInput: int32): uint32
-fn rlLoadShaderProgram*(vShaderId: uint32, fShaderId: uint32): uint32
+fn rlCopyFramebuffer*(x: int32, y: int32, width: int32, height: int32, format: int32, pixels: ^void)
+fn rlResizeFramebuffer*(width: int32, height: int32)
+fn rlLoadShader*(code: str, typeInput: int32): uint32
+fn rlLoadShaderProgram*(vsCode: str, fsCode: str): uint32
+fn rlLoadShaderProgramEx*(vsId: uint32, fsId: uint32): uint32
+fn rlLoadShaderProgramCompute*(csId: uint32): uint32
+fn rlUnloadShader*(id: uint32)
 fn rlUnloadShaderProgram*(id: uint32)
-fn rlGetLocationUniform*(shaderId: uint32, uniformName: str): int32
-fn rlGetLocationAttrib*(shaderId: uint32, attribName: str): int32
+fn rlGetLocationUniform*(id: uint32, uniformName: str): int32
+fn rlGetLocationAttrib*(id: uint32, attribName: str): int32
 fn rlSetUniform*(locIndex: int32, value: ^void, uniformType: int32, count: int32)
 fn rlSetUniformMatrix*(locIndex: int32, mat: Matrix)
+fn rlSetUniformMatrices*(locIndex: int32, mat: ^Matrix, count: int32)
 fn rlSetUniformSampler*(locIndex: int32, textureId: uint32)
 fn rlSetShader*(id: uint32, locs: ^int32)
-fn rlLoadComputeShaderProgram*(shaderId: uint32): uint32
 fn rlComputeShaderDispatch*(groupX: uint32, groupY: uint32, groupZ: uint32)
-fn rlLoadShaderBuffer*(size: uint, data: ^void, usageHint: int32): uint32
+fn rlLoadShaderBuffer*(size: uint32, data: ^void, usageHint: int32): uint32
 fn rlUnloadShaderBuffer*(ssboId: uint32)
-fn rlUpdateShaderBufferElements*(id: uint32, data: ^void, dataSize: uint, offset: uint)
-fn rlGetShaderBufferSize*(id: uint32): uint
-fn rlReadShaderBufferElements*(id: uint32, dest: ^void, count: uint, offset: uint)
+fn rlUpdateShaderBuffer*(id: uint32, data: ^void, dataSize: uint32, offset: uint32)
 fn rlBindShaderBuffer*(id: uint32, index: uint32)
-fn rlCopyBuffersElements*(destId: uint32, srcId: uint32, destOffset: uint, srcOffset: uint, count: uint)
-fn rlBindImageTexture*(id: uint32, index: uint32, format: uint32, readonly: int32)
+fn rlReadShaderBuffer*(id: uint32, dest: ^void, count: uint32, offset: uint32)
+fn rlCopyShaderBuffer*(destId: uint32, srcId: uint32, destOffset: uint32, srcOffset: uint32, count: uint32)
+fn rlGetShaderBufferSize*(id: uint32): uint32
+fn rlBindImageTexture*(id: uint32, index: uint32, format: int32, readonly: bool)
 fn rlGetMatrixModelview*(): Matrix
 fn rlGetMatrixProjection*(): Matrix
 fn rlGetMatrixTransform*(): Matrix
@@ -1031,6 +1196,7 @@ const FLAG_WINDOW_ALWAYS_RUN* = 256
 const FLAG_WINDOW_TRANSPARENT* = 16
 const FLAG_WINDOW_HIGHDPI* = 8192
 const FLAG_WINDOW_MOUSE_PASSTHROUGH* = 16384
+const FLAG_BORDERLESS_WINDOWED_MODE* = 32768
 const FLAG_MSAA_4X_HINT* = 32
 const FLAG_INTERLACED_HINT* = 65536
 const LOG_ALL* = 0
@@ -1148,7 +1314,7 @@ const KEY_KP_ADD* = 334
 const KEY_KP_ENTER* = 335
 const KEY_KP_EQUAL* = 336
 const KEY_BACK* = 4
-const KEY_MENU* = 82
+const KEY_MENU* = 5
 const KEY_VOLUME_UP* = 24
 const KEY_VOLUME_DOWN* = 25
 const MOUSE_BUTTON_LEFT* = 0
@@ -1230,6 +1396,10 @@ const SHADER_LOC_MAP_CUBEMAP* = 22
 const SHADER_LOC_MAP_IRRADIANCE* = 23
 const SHADER_LOC_MAP_PREFILTER* = 24
 const SHADER_LOC_MAP_BRDF* = 25
+const SHADER_LOC_VERTEX_BONEIDS* = 26
+const SHADER_LOC_VERTEX_BONEWEIGHTS* = 27
+const SHADER_LOC_MATRIX_BONETRANSFORMS* = 28
+const SHADER_LOC_VERTEX_INSTANCETRANSFORM* = 29
 const SHADER_UNIFORM_FLOAT* = 0
 const SHADER_UNIFORM_VEC2* = 1
 const SHADER_UNIFORM_VEC3* = 2
@@ -1238,7 +1408,11 @@ const SHADER_UNIFORM_INT* = 4
 const SHADER_UNIFORM_IVEC2* = 5
 const SHADER_UNIFORM_IVEC3* = 6
 const SHADER_UNIFORM_IVEC4* = 7
-const SHADER_UNIFORM_SAMPLER2D* = 8
+const SHADER_UNIFORM_UINT* = 8
+const SHADER_UNIFORM_UIVEC2* = 9
+const SHADER_UNIFORM_UIVEC3* = 10
+const SHADER_UNIFORM_UIVEC4* = 11
+const SHADER_UNIFORM_SAMPLER2D* = 12
 const SHADER_ATTRIB_FLOAT* = 0
 const SHADER_ATTRIB_VEC2* = 1
 const SHADER_ATTRIB_VEC3* = 2
@@ -1253,17 +1427,20 @@ const PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7
 const PIXELFORMAT_UNCOMPRESSED_R32* = 8
 const PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9
 const PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10
-const PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11
-const PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12
-const PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13
-const PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14
-const PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15
-const PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16
-const PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17
-const PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18
-const PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19
-const PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20
-const PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21
+const PIXELFORMAT_UNCOMPRESSED_R16* = 11
+const PIXELFORMAT_UNCOMPRESSED_R16G16B16* = 12
+const PIXELFORMAT_UNCOMPRESSED_R16G16B16A16* = 13
+const PIXELFORMAT_COMPRESSED_DXT1_RGB* = 14
+const PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 15
+const PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 16
+const PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 17
+const PIXELFORMAT_COMPRESSED_ETC1_RGB* = 18
+const PIXELFORMAT_COMPRESSED_ETC2_RGB* = 19
+const PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 20
+const PIXELFORMAT_COMPRESSED_PVRT_RGB* = 21
+const PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 22
+const PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 23
+const PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 24
 const TEXTURE_FILTER_POINT* = 0
 const TEXTURE_FILTER_BILINEAR* = 1
 const TEXTURE_FILTER_TRILINEAR* = 2
@@ -1279,7 +1456,6 @@ const CUBEMAP_LAYOUT_LINE_VERTICAL* = 1
 const CUBEMAP_LAYOUT_LINE_HORIZONTAL* = 2
 const CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR* = 3
 const CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE* = 4
-const CUBEMAP_LAYOUT_PANORAMA* = 5
 const FONT_DEFAULT* = 0
 const FONT_BITMAP* = 1
 const FONT_SDF* = 2
@@ -1290,6 +1466,7 @@ const BLEND_ADD_COLORS* = 3
 const BLEND_SUBTRACT_COLORS* = 4
 const BLEND_ALPHA_PREMULTIPLY* = 5
 const BLEND_CUSTOM* = 6
+const BLEND_CUSTOM_SEPARATE* = 7
 const GESTURE_NONE* = 0
 const GESTURE_TAP* = 1
 const GESTURE_DOUBLETAP* = 2
@@ -1311,29 +1488,13 @@ const CAMERA_ORTHOGRAPHIC* = 1
 const NPATCH_NINE_PATCH* = 0
 const NPATCH_THREE_PATCH_VERTICAL* = 1
 const NPATCH_THREE_PATCH_HORIZONTAL* = 2
-const OPENGL_11* = 1
-const OPENGL_21* = 2
-const OPENGL_33* = 3
-const OPENGL_43* = 4
-const OPENGL_ES_20* = 5
-const RL_ATTACHMENT_COLOR_CHANNEL0* = 0
-const RL_ATTACHMENT_COLOR_CHANNEL1* = 1
-const RL_ATTACHMENT_COLOR_CHANNEL2* = 2
-const RL_ATTACHMENT_COLOR_CHANNEL3* = 3
-const RL_ATTACHMENT_COLOR_CHANNEL4* = 4
-const RL_ATTACHMENT_COLOR_CHANNEL5* = 5
-const RL_ATTACHMENT_COLOR_CHANNEL6* = 6
-const RL_ATTACHMENT_COLOR_CHANNEL7* = 7
-const RL_ATTACHMENT_DEPTH* = 100
-const RL_ATTACHMENT_STENCIL* = 200
-const RL_ATTACHMENT_CUBEMAP_POSITIVE_X* = 0
-const RL_ATTACHMENT_CUBEMAP_NEGATIVE_X* = 1
-const RL_ATTACHMENT_CUBEMAP_POSITIVE_Y* = 2
-const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y* = 3
-const RL_ATTACHMENT_CUBEMAP_POSITIVE_Z* = 4
-const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z* = 5
-const RL_ATTACHMENT_TEXTURE2D* = 100
-const RL_ATTACHMENT_RENDERBUFFER* = 200
+const RL_OPENGL_11_SOFTWARE* = 0
+const RL_OPENGL_11* = 1
+const RL_OPENGL_21* = 2
+const RL_OPENGL_33* = 3
+const RL_OPENGL_43* = 4
+const RL_OPENGL_ES_20* = 5
+const RL_OPENGL_ES_30* = 6
 const RL_LOG_ALL* = 0
 const RL_LOG_TRACE* = 1
 const RL_LOG_DEBUG* = 2
@@ -1352,17 +1513,20 @@ const RL_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8* = 7
 const RL_PIXELFORMAT_UNCOMPRESSED_R32* = 8
 const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32* = 9
 const RL_PIXELFORMAT_UNCOMPRESSED_R32G32B32A32* = 10
-const RL_PIXELFORMAT_COMPRESSED_DXT1_RGB* = 11
-const RL_PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 12
-const RL_PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 13
-const RL_PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 14
-const RL_PIXELFORMAT_COMPRESSED_ETC1_RGB* = 15
-const RL_PIXELFORMAT_COMPRESSED_ETC2_RGB* = 16
-const RL_PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 17
-const RL_PIXELFORMAT_COMPRESSED_PVRT_RGB* = 18
-const RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 19
-const RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 20
-const RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 21
+const RL_PIXELFORMAT_UNCOMPRESSED_R16* = 11
+const RL_PIXELFORMAT_UNCOMPRESSED_R16G16B16* = 12
+const RL_PIXELFORMAT_UNCOMPRESSED_R16G16B16A16* = 13
+const RL_PIXELFORMAT_COMPRESSED_DXT1_RGB* = 14
+const RL_PIXELFORMAT_COMPRESSED_DXT1_RGBA* = 15
+const RL_PIXELFORMAT_COMPRESSED_DXT3_RGBA* = 16
+const RL_PIXELFORMAT_COMPRESSED_DXT5_RGBA* = 17
+const RL_PIXELFORMAT_COMPRESSED_ETC1_RGB* = 18
+const RL_PIXELFORMAT_COMPRESSED_ETC2_RGB* = 19
+const RL_PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA* = 20
+const RL_PIXELFORMAT_COMPRESSED_PVRT_RGB* = 21
+const RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA* = 22
+const RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA* = 23
+const RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA* = 24
 const RL_TEXTURE_FILTER_POINT* = 0
 const RL_TEXTURE_FILTER_BILINEAR* = 1
 const RL_TEXTURE_FILTER_TRILINEAR* = 2
@@ -1376,6 +1540,7 @@ const RL_BLEND_ADD_COLORS* = 3
 const RL_BLEND_SUBTRACT_COLORS* = 4
 const RL_BLEND_ALPHA_PREMULTIPLY* = 5
 const RL_BLEND_CUSTOM* = 6
+const RL_BLEND_CUSTOM_SEPARATE* = 7
 const RL_SHADER_LOC_VERTEX_POSITION* = 0
 const RL_SHADER_LOC_VERTEX_TEXCOORD01* = 1
 const RL_SHADER_LOC_VERTEX_TEXCOORD02* = 2
@@ -1410,14 +1575,41 @@ const RL_SHADER_UNIFORM_INT* = 4
 const RL_SHADER_UNIFORM_IVEC2* = 5
 const RL_SHADER_UNIFORM_IVEC3* = 6
 const RL_SHADER_UNIFORM_IVEC4* = 7
-const RL_SHADER_UNIFORM_SAMPLER2D* = 8
+const RL_SHADER_UNIFORM_UINT* = 8
+const RL_SHADER_UNIFORM_UIVEC2* = 9
+const RL_SHADER_UNIFORM_UIVEC3* = 10
+const RL_SHADER_UNIFORM_UIVEC4* = 11
+const RL_SHADER_UNIFORM_SAMPLER2D* = 12
 const RL_SHADER_ATTRIB_FLOAT* = 0
 const RL_SHADER_ATTRIB_VEC2* = 1
 const RL_SHADER_ATTRIB_VEC3* = 2
 const RL_SHADER_ATTRIB_VEC4* = 3
+const RL_ATTACHMENT_COLOR_CHANNEL0* = 0
+const RL_ATTACHMENT_COLOR_CHANNEL1* = 1
+const RL_ATTACHMENT_COLOR_CHANNEL2* = 2
+const RL_ATTACHMENT_COLOR_CHANNEL3* = 3
+const RL_ATTACHMENT_COLOR_CHANNEL4* = 4
+const RL_ATTACHMENT_COLOR_CHANNEL5* = 5
+const RL_ATTACHMENT_COLOR_CHANNEL6* = 6
+const RL_ATTACHMENT_COLOR_CHANNEL7* = 7
+const RL_ATTACHMENT_DEPTH* = 100
+const RL_ATTACHMENT_STENCIL* = 200
+const RL_ATTACHMENT_CUBEMAP_POSITIVE_X* = 0
+const RL_ATTACHMENT_CUBEMAP_NEGATIVE_X* = 1
+const RL_ATTACHMENT_CUBEMAP_POSITIVE_Y* = 2
+const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Y* = 3
+const RL_ATTACHMENT_CUBEMAP_POSITIVE_Z* = 4
+const RL_ATTACHMENT_CUBEMAP_NEGATIVE_Z* = 5
+const RL_ATTACHMENT_TEXTURE2D* = 100
+const RL_ATTACHMENT_RENDERBUFFER* = 200
+const RL_CULL_FACE_FRONT* = 0
+const RL_CULL_FACE_BACK* = 1
 
 // Defines
-const RAYLIB_VERSION* = "4.2"
+// Skipped define: RAYLIB_VERSION_MAJOR
+// Skipped define: RAYLIB_VERSION_MINOR
+// Skipped define: RAYLIB_VERSION_PATCH
+const RAYLIB_VERSION* = "6.0"
 // Skipped define: __declspec(x)
 // Skipped define: RLAPI
 const PI* = 3.141592653589793
@@ -1461,13 +1653,13 @@ const RAYWHITE* = Color{ 245, 245, 245, 255 }
 // Skipped define: MATERIAL_MAP_SPECULAR
 // Skipped define: SHADER_LOC_MAP_DIFFUSE
 // Skipped define: SHADER_LOC_MAP_SPECULAR
+// Skipped define: GetMouseRay
 // Skipped define: RMAPI
 const EPSILON* = 0.000001
 // Skipped define: MatrixToFloat(mat)
 // Skipped define: Vector3ToFloat(vec)
-const RLGL_VERSION* = "4.0"
+const RLGL_VERSION* = "5.0"
 // Skipped define: TRACELOG(level, ...)
-// Skipped define: TRACELOGD(...)
 // Skipped define: RL_REALLOC(n,sz)
 // Skipped define: RL_FREE(p)
 // Skipped define: RL_DEFAULT_BATCH_BUFFER_ELEMENTS
@@ -1489,6 +1681,7 @@ const RLGL_VERSION* = "4.0"
 // Skipped define: RL_TEXTURE_FILTER_LINEAR_MIP_NEAREST
 // Skipped define: RL_TEXTURE_FILTER_MIP_LINEAR
 // Skipped define: RL_TEXTURE_FILTER_ANISOTROPIC
+// Skipped define: RL_TEXTURE_MIPMAP_BIAS_RATIO
 // Skipped define: RL_TEXTURE_WRAP_REPEAT
 // Skipped define: RL_TEXTURE_WRAP_CLAMP
 // Skipped define: RL_TEXTURE_WRAP_MIRROR_REPEAT
@@ -1513,5 +1706,45 @@ const RLGL_VERSION* = "4.0"
 // Skipped define: RL_FRAGMENT_SHADER
 // Skipped define: RL_VERTEX_SHADER
 // Skipped define: RL_COMPUTE_SHADER
+// Skipped define: RL_ZERO
+// Skipped define: RL_ONE
+// Skipped define: RL_SRC_COLOR
+// Skipped define: RL_ONE_MINUS_SRC_COLOR
+// Skipped define: RL_SRC_ALPHA
+// Skipped define: RL_ONE_MINUS_SRC_ALPHA
+// Skipped define: RL_DST_ALPHA
+// Skipped define: RL_ONE_MINUS_DST_ALPHA
+// Skipped define: RL_DST_COLOR
+// Skipped define: RL_ONE_MINUS_DST_COLOR
+// Skipped define: RL_SRC_ALPHA_SATURATE
+// Skipped define: RL_CONSTANT_COLOR
+// Skipped define: RL_ONE_MINUS_CONSTANT_COLOR
+// Skipped define: RL_CONSTANT_ALPHA
+// Skipped define: RL_ONE_MINUS_CONSTANT_ALPHA
+// Skipped define: RL_FUNC_ADD
+// Skipped define: RL_MIN
+// Skipped define: RL_MAX
+// Skipped define: RL_FUNC_SUBTRACT
+// Skipped define: RL_FUNC_REVERSE_SUBTRACT
+// Skipped define: RL_BLEND_EQUATION
+// Skipped define: RL_BLEND_EQUATION_RGB
+// Skipped define: RL_BLEND_EQUATION_ALPHA
+// Skipped define: RL_BLEND_DST_RGB
+// Skipped define: RL_BLEND_SRC_RGB
+// Skipped define: RL_BLEND_DST_ALPHA
+// Skipped define: RL_BLEND_SRC_ALPHA
+// Skipped define: RL_BLEND_COLOR
+// Skipped define: RL_READ_FRAMEBUFFER
+// Skipped define: RL_DRAW_FRAMEBUFFER
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_POSITION
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_NORMAL
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_COLOR
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_TANGENT
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD2
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_INDICES
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_BONEINDICES
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_BONEWEIGHTS
+// Skipped define: RL_DEFAULT_SHADER_ATTRIB_LOCATION_INSTANCETRANSFORM
 // Skipped define: RL_SHADER_LOC_MAP_DIFFUSE
 // Skipped define: RL_SHADER_LOC_MAP_SPECULAR
