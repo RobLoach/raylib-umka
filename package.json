@@ -1,15 +1,16 @@
 {
   "name": "raylib-umka",
   "description": "Umka bindings for raylib.",
-  "version": "0.1.0",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "generator": "node generator",
-    "build": "cmake -B build -S . && cmake --build build",
     "prebuild": "npm run generator",
-    "test": "ctest --verbose --test-dir build",
+    "build": "cmake -B build -S .",
+    "postbuild": "cmake --build build",
     "pretest": "npm run build",
-    "start": "build/bin/raylib-umka",
+    "test": "ctest --verbose --test-dir build",
+    "start": "build/bin/raylib-umka examples/core/core_basic_window.um",
     "prestart": "npm run build",
     "web": "mkdir -p build && cd build && emcmake cmake .. -DPLATFORM=Web -DCMAKE_BUILD_TYPE=Release && emmake make",
     "publish": "npm run web && gh-pages --src \"*.html\" -d build/bin",
@@ -32,7 +33,7 @@
   },
   "homepage": "https://github.com/RobLoach/raylib-umka",
   "devDependencies": {
-    "@raylib/api": "~4.5.0",
-    "gh-pages": "^4.0.0"
+    "@raylib/api": "robloach/raylib-api#6",
+    "gh-pages": "^6.0.0"
   }
 }
