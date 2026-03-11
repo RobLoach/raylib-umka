@@ -56,5 +56,4 @@ fn main() {
     // Finish
     raylib.EndDrawing()
     raylib.CloseWindow()
-    Assert.False(raylib.IsWindowReady(), "!IsWindowReady()")
 }

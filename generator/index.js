@@ -247,9 +247,9 @@ function raylibTypeToUmka(type) {
         case 'Rectangle **':
             return '^void'
         case 'const Vector3':
-            return 'const Vector3'
+            return 'Vector3'
         case 'const Vector2 *':
-            return 'const ^Vector2' // Need to remove the const?
+            return '^Vector2'
         case 'const Matrix *':
             return '^Matrix'
         case 'const float *':
@@ -482,6 +482,16 @@ function outputLineNumber() {
     return String(lineNumber++).padStart(4, '0')
 }
 
+function getStructuresCleanFieldName(name) {
+    // Protect against claimed Umka keywords
+    switch (name) {
+        case 'type': return '_type'
+        case 'map': return '_map'
+        case 'interface': return '_interface'
+    }
+    return name;
+}
+
 /**
  * Translates all structs into a valid Umka code.
  */
@@ -495,7 +505,8 @@ function getStructures(structs) {
 
         output += `        /* ${outputLineNumber()} */ "  ${struct.name}* = struct {\\n"\n`
         for (let field of struct.fields) {
-            output += `        /* ${outputLineNumber()} */ "    ${field.name}: ${raylibTypeToUmka(field.type)}\\n"\n`
+            const cleanFieldName = getStructuresCleanFieldName(field.name)
+            output += `        /* ${outputLineNumber()} */ "    ${cleanFieldName}: ${raylibTypeToUmka(field.type)}\\n"\n`
         }
         output += `        /* ${outputLineNumber()} */ "  }\\n"\n`
     }
@@ -557,7 +568,7 @@ function getDefines(defines) {
 
         // Manually handle the colors.
         if (define.type == 'COLOR') {
-            output += `        /* ${outputLineNumber()} */ "const ${define.name}* = ${define.value.replace('CLITERAL(Color)', 'Color')}\\n"\n`
+            output += `        /* ${outputLineNumber()} */ "${define.name}* := ${define.value.replace('CLITERAL(Color)', 'Color')}\\n"\n`
             continue
         }
 
