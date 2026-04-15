@@ -268,8 +268,6 @@ function raylibTypeToUmka(type) {
             return 'str'
         case 'float *':
             return '^real32'
-        case 'const float *':
-            return 'const ^real32';
         case 'Camera':
             return 'Camera3D'
         case 'Texture2D':
