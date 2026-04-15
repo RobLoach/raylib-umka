@@ -27,8 +27,9 @@ void *umka;
  * Emscripten update callback.
  */
 void umkaUpdate(void* userData) {
-    int* updateCall = (int*)userData;
-    umkaCall(umka, *updateCall, 0, NULL, NULL);
+    if (userData != NULL) {
+        umkaCall(umka, (UmkaFuncContext*)userData);
+    }
 }
 
 /**
@@ -44,9 +45,9 @@ EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString
         #endif
 
         // Call the close function if needed.
-        int closeCall = umkaGetFunc(umka, NULL, "close");
-        if (closeCall != -1) {
-            umkaCall(umka, closeCall, 0, NULL, NULL);
+        UmkaFuncContext closeCall;
+        if (umkaGetFunc(umka, NULL, "close", &closeCall)) {
+            umkaCall(umka, &closeCall);
         }
 
         // Close the window if the application didn't do it.
@@ -86,20 +87,20 @@ EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString
 
     if (result) {
         // main()
-        int mainCall = umkaGetFunc(umka, NULL, "main");
-        if (mainCall != -1) {
-            result = umkaCall(umka, mainCall, 0, NULL, NULL);
+        UmkaFuncContext mainCall;
+        if (umkaGetFunc(umka, NULL, "main", &mainCall)) {
+            result = umkaCall(umka, &mainCall) == 0;
         }
 
         // init()
-        int initCall = umkaGetFunc(umka, NULL, "init");
-        if (initCall != -1) {
-            umkaCall(umka, initCall, 0, NULL, NULL);
+        UmkaFuncContext initCall;
+        if (umkaGetFunc(umka, NULL, "init", &initCall)) {
+            umkaCall(umka, &initCall);
         }
 
         // update()
-        int updateCall = umkaGetFunc(umka, NULL, "update");
-        if (updateCall != -1) {
+        UmkaFuncContext updateCall;
+        if (umkaGetFunc(umka, NULL, "update", &updateCall)) {
             // Start the Game Loop
             #if defined(PLATFORM_WEB)
                 // TODO: Figure out desired FPS?
@@ -108,22 +109,21 @@ EMSCRIPTEN_KEEPALIVE bool runCode(const char* fileName, const char* sourceString
             #else
                 // Stop running if the Window or App have been told to close.
                 while (!WindowShouldClose()) {
-                    umkaCall(umka, updateCall, 0, NULL, NULL);
+                    umkaCall(umka, &updateCall);
                 }
             #endif
         }
 
         // close()
-        int closeCall = umkaGetFunc(umka, NULL, "close");
-        if (closeCall != -1) {
-            umkaCall(umka, closeCall, 0, NULL, NULL);
+        UmkaFuncContext closeCall;
+        if (umkaGetFunc(umka, NULL, "close", &closeCall)) {
+            umkaCall(umka, &closeCall);
         }
     }
 
     if (!result) {
-        UmkaError error;
-        umkaGetError(umka, &error);
-        TraceLog(LOG_ERROR, "UMKA: %s (%d, %d): %s\n", error.fileName, error.line, error.pos, error.msg);
+        UmkaError *error = umkaGetError(umka);
+        TraceLog(LOG_ERROR, "UMKA: %s (%d, %d): %s\n", error->fileName, error->line, error->pos, error->msg);
     }
 
     umkaFree(umka);

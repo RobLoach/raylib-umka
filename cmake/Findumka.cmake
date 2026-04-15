@@ -1,7 +1,7 @@
 # UMKA_VERSION
 # todo: Switch to FindPackageHandleStandardArgs
 if (NOT UMKA_VERSION)
-    set(UMKA_VERSION "v0.10")
+    set(UMKA_VERSION "v1.5.5")
 endif()
 
 # Options
